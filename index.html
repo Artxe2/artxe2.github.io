@@ -1,1 +1,72 @@
-hi
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Eternal Return: Black Survival Damage Calculator</title>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', (e) => {
+			document.querySelector('#s_character').addEventListener('change', (e) => {
+				let select = document.querySelector('#s_character').value;
+				if ('Jackie' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Jackie_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Aya' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Aya_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Fiora' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Fiora_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Magnus' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Magnus_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Zahir' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Zahir_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Nadine' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Nadine_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Hyunwoo' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Hyunwoo_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Hart' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Hart_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Isol' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Isol_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Li Dailin' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Li_Dailin_Model.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Yuki' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Yuki.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Hyejin' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Hyejin.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Xiukai' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Xiukai.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Chiara' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Chiara.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Sissela' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Sissela.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Adriana' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Adriana.png' style = 'width: 150px; height: 330px'>";
+				} else if ('Shoichi' == select) {
+					document.querySelector('#d_character').innerHTML = "<img id = 'i_character' src = './character/Shoichi.png' style = 'width: 150px; height: 330px'>";
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id = 'd_character' style = 'width: 150px; height: 330px'></div>
+	<select id = 's_character'>
+		<option selected disabled hidden='true'>select character</option>
+		<option>Jackie</option>
+		<option>Aya</option>
+		<option>Fiora</option>
+		<option>Magnus</option>
+		<option>Zahir</option>
+		<option>Nadine</option>
+		<option>Hyunwoo</option>
+		<option>Hart</option>
+		<option>Isol</option>
+		<option>Li Dailin</option>
+		<option>Yuki</option>
+		<option>Hyejin</option>
+		<option>Xiukai</option>
+		<option>Chiara</option>
+		<option>Sissela</option>
+		<option>Adriana</option>
+		<option>Shoichi</option>
+	</select>
+</body>
+</html>
