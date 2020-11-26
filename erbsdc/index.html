@@ -1,879 +1,167 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Eternal Return: Black Survival Damage Calculator</title>
-	<style type="text/css">
-		#mastery select, .stat, #mastery2 select {
-			float: right;
+function updateDamage() {
+	if (weapon != undefined) {	
+		//(공격력 * 계수 * (100 + 크확 * (100 + 크뎀증) / 100) / 100 / (100 + 적 방어력) + 기공추 - 적 기감) * (100 + 뎀증 - 적 뎀감) / 100
+		//(공격력 * 계수 / (100 + 적 방어력) + 기공추 - 적 기감) * (100 + 뎀증 - 적 뎀감) / 100
+		//(공격력 * 계수 * (200 + 크뎀증) / 100 / (100 + 적 방어력) + 기공추 - 적 기감) * (100 + 뎀증 - 적 뎀감) / 100
+		if (weapon.Type == 'AssaultRifle') {
+			document.querySelector('#base_attack_damage').innerText = 
+				((attack_power * 105 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + (extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 3) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' (' + 
+				((attack_power * 
+				30 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 
+				30 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 
+				45 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
+				((attack_power * 30 * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 30 * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 45 * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ')';
+			document.querySelector('#dps').innerText = 
+				((attack_power * 105 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + (extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 3) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100 * attack_speed).toFixed(2);
+		} else if (weapon.Type == 'Guitar') {
+			document.querySelector('#base_attack_damage').innerText = 
+				((attack_power * 130 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + (extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 3) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' (' + 
+				((attack_power * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 
+				15 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 
+				15 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
+				((attack_power * 100 * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 15 * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ', ' +
+				((attack_power * 15 * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ')';
+			document.querySelector('#dps').innerText = ((attack_power * 130 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + (extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 3) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100 * attack_speed).toFixed(2);
+		} else {
+			document.querySelector('#base_attack_damage').innerText = 
+				((attack_power * 100 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' (' + 
+				((attack_power * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
+				((attack_power * 100 * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ')';
+			document.querySelector('#dps').innerText = 
+				((attack_power * 100 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100 * attack_speed).toFixed(2);
+		}	
+		if (character == Jackie) {
+		} else if (character == Aya) {
+			document.querySelector('#q_damage').innerText = 
+				((attack_power * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ', ' + 
+				(((20 + document.querySelector('#q_level').selectedIndex * 40 + attack_power * 0.5) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2);
+			document.querySelector('#w_damage').innerText = 
+				(((22 + document.querySelector('#w_level').selectedIndex * 22 + attack_power * (0.25 + document.querySelector('#w_level').selectedIndex * 0.05)) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ' x 10';
+			document.querySelector('#e_damage').innerText = ' - ';
+			document.querySelector('#r_damage').innerText = 
+				(((200 + document.querySelector('#r_level').selectedIndex * 150 + attack_power * 0.7) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2);
+			document.querySelector('#d_damage').innerText = 'dps - ' + 
+				((attack_power * 105 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + (extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 3) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100 * 
+				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.6 : 0.4))).toFixed(2);
+			document.querySelector('#t_damage').innerText = 'shield - ' + (150 + document.querySelector('#t_level').selectedIndex * 50 + attack_power * 0.1);
+		} else if (character == Fiora) {
+		} else if (character == Magnus) {
+		} else if (character == Zahir) {
+		} else if (character == Nadine) {
+		} else if (character == Hyunwoo) {
+		} else if (character == Hart) {
+		} else if (character == Isol) {
+		} else if (character == Li_Dailin) {
+			document.querySelector('#q_damage').innerText = 
+				(((20 + document.querySelector('#q_level').selectedIndex * 20 + attack_power * 0.5) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
+				(((28 + document.querySelector('#q_level').selectedIndex * 28 + attack_power * 0.7) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2);
+			document.querySelector('#w_damage').innerText = ' - ';
+			document.querySelector('#e_damage').innerText = 
+				(((80 + document.querySelector('#e_level').selectedIndex * 55 + attack_power * 0.5) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2);
+			document.querySelector('#r_damage').innerText = 
+				(((40 + document.querySelector('#r_level').selectedIndex * 30 + attack_power * 0.2) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
+				(((120 + document.querySelector('#r_level').selectedIndex * 90 + attack_power * 0.6) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ' x2 x4';
+			document.querySelector('#d_damage').innerText = 
+				((attack_power * (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 200 : 100) * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + 
+				(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 100 :  50) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' (' + 
+				((attack_power * (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 200 : 100) / 
+				(100 + (character2 == undefined ? 0 : defense2)) + 
+				(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 100 : 50) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
+				((attack_power * (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 200 : 100) * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + 
+				(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 100 : 50) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ')';
+			document.querySelector('#t_damage').innerText = 
+				((attack_power * (50 + document.querySelector('#t_level').selectedIndex * 25) * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' (' + 
+				((attack_power * (50 + document.querySelector('#t_level').selectedIndex * 25) / 
+				(100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
+				((attack_power * (50 + document.querySelector('#t_level').selectedIndex * 25) * (200 + critical_strike_damage) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ')';
+		} else if (character == Yuki) {
+		} else if (character == Hyejin) {
+		} else if (character == Xiukai) {
+		} else if (character == Chiara) {
+		} else if (character == Sissela) {
+		} else if (character == Adriana) {
+		} else if (character == Shoichi) {
 		}
-		#mastery p, #mastery2 p {
-			text-align: left;
-			margin: 5px;
-		}
-		.label {
-			margin: 5px;
-		}
-	</style>
-	<script type="text/javascript" src = './js/ajax.js'></script>
-	<script type="text/javascript" src = './js/characterDB.js'></script>
-	<script type="text/javascript" src = './js/weaponDB.js'></script>
-	<script type="text/javascript" src = './js/armorDB.js'></script>
-	<script type="text/javascript" src = './js/selectCharacter.js'></script>
-	<script type="text/javascript" src = './js/selectWeapon.js'></script>
-	<script type="text/javascript" src = './js/changeWeapon.js'></script>
-	<script type="text/javascript" src = './js/selectArmors.js'></script>
-	<script type="text/javascript" src = './js/changeArmors.js'></script>
-	<script type="text/javascript" src = './js/updateDisplay.js'></script>
-	<script type="text/javascript" src = './js/updateDamage.js'></script>
-	<script type="text/javascript">
-		let character;
-		
-		let weapon;
-		let chest;
-		let head;
-		let arm;
-		let leg;
-		let accessory;
-		
-		let weapon_mastery_attack_speed;
-		let weapon_mastery_extra_normal_attack_damage_percent;
-		let weapon_mastery_skill_damage_reduction_percent;
-		
-		let attack_power;
-		let attack_speed;
-		let critical_strike_chance;
-		let critical_strike_damage;
-		let life_steal;
-		let extra_normal_attack_damage;
-		let extra_normal_attack_damage_percent;
-		let skill_amplification;
-		let skill_amplification_percent;
-		let cooldown_reduction;
-		let sp_regen;
-		let sp_regen_percent;
-		let skill_damage_reduction;
-		let skill_damage_reduction_percent;
-		let defense;
-		let max_hp;
-		let max_sp;
-		let hp_regen;
-		let hp_regen_percent;
-		let normal_attack_damage_reduction;
-		let normal_attack_damage_reduction_percent;
-		let movement_speed;
-		let out_of_combat_movement_speed;
-		let vision_range;
-		let attack_range;
-		
-		function closeItemList() {
-			document.querySelector('#d_itemList').style.display = 'none';
-		}
-	</script>
-	<script type="text/javascript">
-		let character2;
-		
-		let weapon2;
-		let chest2;
-		let head2;
-		let arm2;
-		let leg2;
-		let accessory2;
-		
-		let weapon_mastery_attack_speed2;
-		let weapon_mastery_extra_normal_attack_damage_percent2;
-		let weapon_mastery_skill_damage_reduction_percent2;
-		
-		let attack_power2;
-		let attack_speed2;
-		let critical_strike_chance2;
-		let critical_strike_damage2;
-		let life_steal2;
-		let extra_normal_attack_damage2;
-		let extra_normal_attack_damage_percent2;
-		let skill_amplification2;
-		let skill_amplification_percent2;
-		let cooldown_reduction2;
-		let sp_regen2;
-		let sp_regen_percent2;
-		let skill_damage_reduction2;
-		let skill_damage_reduction_percent2;
-		let defense2;
-		let max_hp2;
-		let max_sp2;
-		let hp_regen2;
-		let hp_regen_percent2;
-		let normal_attack_damage_reduction2;
-		let normal_attack_damage_reduction_percent2;
-		let movement_speed2;
-		let out_of_combat_movement_speed2;
-		let vision_range2;
-		let attack_range2;
-		
-		function closeItemList2() {
-			document.querySelector('#d_itemList2').style.display = 'none';
-		}
-	</script>
-</head>
-<body>
-	<h1>Eternal Return: Black Survival Damage Calculator</h1>
-	<div id = 'd_itemList' style = 'background-color: #CCCCCC; position: absolute; display: none'>
-		<span onclick = 'closeItemList()' style = 'float: right;'>(X)</span><br>
-		<span id = 's_itemList'></span>
-	</div>
-	<table border = '1'>
-		<tr>
-			<td rowspan = '4'>
-				<img id = 'i_character' style = 'width: 150px; height: 300px; float: left'>
-			</td>
-			<td id = 'weapon' onclick = 'selectWeapon()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'chest' onclick = 'selectChest()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'head' onclick = 'selectHead()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'arm' onclick = 'selectArm()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'leg' onclick = 'selectLeg()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'accessory' onclick = 'selectAccessory()' style = 'width: 75px; height: 75px;'>
-			</td>
-		</tr>
-		<tr>
-			<td colspan = '2' rowspan = '3'>
-				<div id = 'mastery'>
-					<p>
-						Weapon
-						<select id = 'weapon_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<br>
-					<p>
-						Hunt
-						<select id = 'hunt_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Craft
-						<select id = 'craft_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Search
-						<select id = 'search_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Move
-						<select id = 'move_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<br>
-					<p>
-						Health
-						<select id = 'health_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Defense
-						<select id = 'defense_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Meditation
-						<select id = 'meditation_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Trap
-						<select id = 'trap_mastery'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-				</div>
-			</td>
-			<td colspan = '2' rowspan = '3' style = 'vertical-align: top'>
-				<br>
-				<span class = label title = 'Attack Power'> 깡공: <span class = 'stat' id = 'attack_power'></span></span><br>
-				<span class = label title = 'Attack Speed'> 공속: <span class = 'stat' id = 'attack_speed'>%</span></span><br>
-				<span class = label title = 'Critical Strike Chance'> 치확: <span class = 'stat' id = 'critical_strike_chance'>%</span></span><br>
-				<span class = label title = 'Critical Strike Damage'> 치뎀: <span class = 'stat' id = 'critical_strike_damage'>%</span></span><br>
-				<span class = label title = 'Life Steal'> 흡혈: <span class = 'stat' id = 'life_steal'>%</span></span><br>
-				<span class = label title = 'Extra Normal Attack Damage'> 기추: <span class = 'stat' id = 'extra_normal_attack_damage'>| %</span></span><br>
-				<span class = label title = 'Skill Amplification'> 스증: <span class = 'stat' id = 'skill_amplification'>| %</span></span><br>
-				<span class = label title = 'Cooldown Reduction'> 쿨감: <span class = 'stat' id = 'cooldown_reduction'>%</span></span><br>
-				<span class = label title = 'SP Regen'> 마젠: <span class = 'stat' id = 'sp_regen'>| %</span></span><br>
-				<span class = label title = 'Skill Damage Reduction'> 스감: <span class = 'stat' id = 'skill_damage_reduction'>| %</span></span><br>
-			</td>
-			<td colspan = '2' rowspan = '3' style = 'vertical-align: top'>
-				<br>
-				<span class = label title = 'Defense'> 방어: <span class = 'stat' id = 'defense'></span></span><br>
-				<span class = label title = 'Max HP'> 체력: <span class = 'stat' id = 'max_hp'></span></span><br>
-				<span class = label title = 'Max SP'> 마나: <span class = 'stat' id = 'max_sp'></span></span><br>
-				<span class = label title = 'HP Regen'> 체젠: <span class = 'stat' id = 'hp_regen'>| %</span></span><br>
-				<span class = label title = 'Normal Attack Damage Reduction'> 기감 : <span class = 'stat' id = 'normal_attack_damage_reduction'>| %</span></span><br>
-				<span class = label title = 'Movement Speed'> 이속 : <span class = 'stat' id = 'movement_speed'></span></span><br>
-				<span class = label title = 'Out of Combat Movement Speed'> 비속 : <span class = 'stat' id = 'out_of_combat_movement_speed'></span></span><br>
-				<span class = label title = 'Vision Range'> 시야 : <span class = 'stat' id = 'vision_range'></span></span><br>
-				<span class = label title = 'Attack Range'> 사거리 : <span class = 'stat' id = 'attack_range'></span></span><br>
-			</td>
-		</tr>
-		<tr></tr>
-		<tr></tr>
-		<tr>
-			<td>
-				<select id = 's_character' style = 'width: 150px;'>
-					<option selected disabled hidden='true'>select character</option>
-					<option>Jackie</option>
-					<option>Aya</option>
-					<option>Fiora</option>
-					<option>Magnus</option>
-					<option>Zahir</option>
-					<option>Nadine</option>
-					<option>Hyunwoo</option>
-					<option>Hart</option>
-					<option>Isol</option>
-					<option>Li Dailin</option>
-					<option>Yuki</option>
-					<option>Hyejin</option>
-					<option>Xiukai</option>
-					<option>Chiara</option>
-					<option>Sissela</option>
-					<option>Adriana</option>
-					<option>Shoichi</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'level' style = 'width: 75px;'>
-					<option>Lv 01</option>
-					<option>Lv 02</option>
-					<option>Lv 03</option>
-					<option>Lv 04</option>
-					<option>Lv 05</option>
-					<option>Lv 06</option>
-					<option>Lv 07</option>
-					<option>Lv 08</option>
-					<option>Lv 09</option>
-					<option>Lv 10</option>
-					<option>Lv 11</option>
-					<option>Lv 12</option>
-					<option>Lv 13</option>
-					<option>Lv 14</option>
-					<option>Lv 15</option>
-					<option>Lv 16</option>
-					<option>Lv 17</option>
-					<option>Lv 18</option>
-					<option>Lv 19</option>
-					<option>Lv 20</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'q_level' style = 'width: 75px;'>
-					<option>Q lv 1</option>
-					<option>Q lv 2</option>
-					<option>Q lv 3</option>
-					<option>Q lv 4</option>
-					<option>Q lv 5</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'w_level' style = 'width: 75px;'>
-					<option>W lv 1</option>
-					<option>W lv 2</option>
-					<option>W lv 3</option>
-					<option>W lv 4</option>
-					<option>W lv 5</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'e_level' style = 'width: 75px;'>
-					<option>E lv 1</option>
-					<option>E lv 2</option>
-					<option>E lv 3</option>
-					<option>E lv 4</option>
-					<option>E lv 5</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'r_level' style = 'width: 75px;'>
-					<option>R lv 1</option>
-					<option>R lv 2</option>
-					<option>R lv 3</option>
-				</select>
-			</td>
-			<td>
-				<select id = 't_level' style = 'width: 75px;'>
-					<option>T lv 1</option>
-					<option>T lv 2</option>
-					<option>T lv 3</option>
-				</select>
-			</td>
-		</tr>
-	</table>
-	<h4>↑ Striker</h4>
-	<!-- 
-	Combo: <input> - Damage: <span id = 'combo_damage'></span><br>
-	target's Food: <input id = 'food' type = "number"><br>
-	 -->
-	A : <span id = 'base_attack_damage'></span><br>
-	DPS : <span id = 'dps'></span><br>
-	Q : <span id = 'q_damage'></span><br>
-	W : <span id = 'w_damage'></span><br>
-	E : <span id = 'e_damage'></span><br>
-	R : <span id = 'r_damage'></span><br>
-	D : <span id = 'd_damage'></span><br>
-	T : <span id = 't_damage'></span><br>
-	<h4>↓ Target</h4>
-	<div id = 'd_itemList2' style = 'background-color: #CCCCCC; position: absolute; display: none'>
-		<span onclick = 'closeItemList2()' style = 'float: right;'>(X)</span><br>
-		<span id = 's_itemList2'></span>
-	</div>
-	<table border = '1'>
-		<tr>
-			<td rowspan = '4'>
-				<img id = 'i_character2' style = 'width: 150px; height: 300px; float: left'>
-			</td>
-			<td id = 'weapon2' onclick = 'selectWeapon2()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'chest2' onclick = 'selectChest2()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'head2' onclick = 'selectHead2()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'arm2' onclick = 'selectArm2()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'leg2' onclick = 'selectLeg2()' style = 'width: 75px; height: 75px;'>
-			</td>
-			<td id = 'accessory2' onclick = 'selectAccessory2()' style = 'width: 75px; height: 75px;'>
-			</td>
-		</tr>
-		<tr>
-			<td colspan = '2' rowspan = '3'>
-				<div id = 'mastery2'>
-					<p>
-						Weapon
-						<select id = 'weapon_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<br>
-					<p>
-						Hunt
-						<select id = 'hunt_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Craft
-						<select id = 'craft_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Search
-						<select id = 'search_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Move
-						<select id = 'move_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<br>
-					<p>
-						Health
-						<select id = 'health_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Defense
-						<select id = 'defense_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Meditation
-						<select id = 'meditation_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-					<p>
-						Trap
-						<select id = 'trap_mastery2'>
-							<option>Lv 01</option>
-							<option>Lv 02</option>
-							<option>Lv 03</option>
-							<option>Lv 04</option>
-							<option>Lv 05</option>
-							<option>Lv 06</option>
-							<option>Lv 07</option>
-							<option>Lv 08</option>
-							<option>Lv 09</option>
-							<option>Lv 10</option>
-							<option>Lv 11</option>
-							<option>Lv 12</option>
-							<option>Lv 13</option>
-							<option>Lv 14</option>
-							<option>Lv 15</option>
-							<option>Lv 16</option>
-							<option>Lv 17</option>
-							<option>Lv 18</option>
-							<option>Lv 19</option>
-							<option>Lv 20</option>
-						</select>
-					</p>
-				</div>
-			</td>
-			<td colspan = '2' rowspan = '3' style = 'vertical-align: top'>
-				<br>
-				<span class = label title = 'Attack Power'> 깡공: <span class = 'stat' id = 'attack_power2'></span></span><br>
-				<span class = label title = 'Attack Speed'> 공속: <span class = 'stat' id = 'attack_speed2'>%</span></span><br>
-				<span class = label title = 'Critical Strike Chance'> 치확: <span class = 'stat' id = 'critical_strike_chance2'>%</span></span><br>
-				<span class = label title = 'Critical Strike Damage'> 치뎀: <span class = 'stat' id = 'critical_strike_damage2'>%</span></span><br>
-				<span class = label title = 'Life Steal'> 흡혈: <span class = 'stat' id = 'life_steal2'>%</span></span><br>
-				<span class = label title = 'Extra Normal Attack Damage'> 기추: <span class = 'stat' id = 'extra_normal_attack_damage2'>| %</span></span><br>
-				<span class = label title = 'Skill Amplification'> 스증: <span class = 'stat' id = 'skill_amplification2'>| %</span></span><br>
-				<span class = label title = 'Cooldown Reduction'> 쿨감: <span class = 'stat' id = 'cooldown_reduction2'>%</span></span><br>
-				<span class = label title = 'SP Regen'> 마젠: <span class = 'stat' id = 'sp_regen2'>| %</span></span><br>
-				<span class = label title = 'Skill Damage Reduction'> 스감: <span class = 'stat' id = 'skill_damage_reduction2'>| %</span></span><br>
-			</td>
-			<td colspan = '2' rowspan = '3' style = 'vertical-align: top'>
-				<br>
-				<span class = label title = 'Defense'> 방어: <span class = 'stat' id = 'defense2'></span></span><br>
-				<span class = label title = 'Max HP'> 체력: <span class = 'stat' id = 'max_hp2'></span></span><br>
-				<span class = label title = 'Max SP'> 마나: <span class = 'stat' id = 'max_sp2'></span></span><br>
-				<span class = label title = 'HP Regen'> 체젠: <span class = 'stat' id = 'hp_regen2'>| %</span></span><br>
-				<span class = label title = 'Normal Attack Damage Reduction'> 기감 : <span class = 'stat' id = 'normal_attack_damage_reduction2'>| %</span></span><br>
-				<span class = label title = 'Movement Speed'> 이속 : <span class = 'stat' id = 'movement_speed2'></span></span><br>
-				<span class = label title = 'Out of Combat Movement Speed'> 비속 : <span class = 'stat' id = 'out_of_combat_movement_speed2'></span></span><br>
-				<span class = label title = 'Vision Range'> 시야 : <span class = 'stat' id = 'vision_range2'></span></span><br>
-				<span class = label title = 'Attack Range'> 사거리 : <span class = 'stat' id = 'attack_range2'></span></span><br>
-			</td>
-		</tr>
-		<tr></tr>
-		<tr></tr>
-		<tr>
-			<td>
-				<select id = 's_character2' style = 'width: 150px;'>
-					<option selected disabled hidden='true'>select character</option>
-					<option>Jackie</option>
-					<option>Aya</option>
-					<option>Fiora</option>
-					<option>Magnus</option>
-					<option>Zahir</option>
-					<option>Nadine</option>
-					<option>Hyunwoo</option>
-					<option>Hart</option>
-					<option>Isol</option>
-					<option>Li Dailin</option>
-					<option>Yuki</option>
-					<option>Hyejin</option>
-					<option>Xiukai</option>
-					<option>Chiara</option>
-					<option>Sissela</option>
-					<option>Adriana</option>
-					<option>Shoichi</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'level2' style = 'width: 75px;'>
-					<option>Lv 01</option>
-					<option>Lv 02</option>
-					<option>Lv 03</option>
-					<option>Lv 04</option>
-					<option>Lv 05</option>
-					<option>Lv 06</option>
-					<option>Lv 07</option>
-					<option>Lv 08</option>
-					<option>Lv 09</option>
-					<option>Lv 10</option>
-					<option>Lv 11</option>
-					<option>Lv 12</option>
-					<option>Lv 13</option>
-					<option>Lv 14</option>
-					<option>Lv 15</option>
-					<option>Lv 16</option>
-					<option>Lv 17</option>
-					<option>Lv 18</option>
-					<option>Lv 19</option>
-					<option>Lv 20</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'q_level2' style = 'width: 75px;'>
-					<option>Q lv 1</option>
-					<option>Q lv 2</option>
-					<option>Q lv 3</option>
-					<option>Q lv 4</option>
-					<option>Q lv 5</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'w_level2' style = 'width: 75px;'>
-					<option>W lv 1</option>
-					<option>W lv 2</option>
-					<option>W lv 3</option>
-					<option>W lv 4</option>
-					<option>W lv 5</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'e_level2' style = 'width: 75px;'>
-					<option>E lv 1</option>
-					<option>E lv 2</option>
-					<option>E lv 3</option>
-					<option>E lv 4</option>
-					<option>E lv 5</option>
-				</select>
-			</td>
-			<td>
-				<select id = 'r_level2' style = 'width: 75px;'>
-					<option>R lv 1</option>
-					<option>R lv 2</option>
-					<option>R lv 3</option>
-				</select>
-			</td>
-			<td>
-				<select id = 't_level2' style = 'width: 75px;'>
-					<option>T lv 1</option>
-					<option>T lv 2</option>
-					<option>T lv 3</option>
-				</select>
-			</td>
-		</tr>
-	</table>
-</body>
-</html>
+	} else {
+		document.querySelector('#base_attack_damage').innerText = '0';
+		document.querySelector('#dps').innerText = '0';
+		document.querySelector('#q_damage').innerText = '0';
+		document.querySelector('#w_damage').innerText = '0';
+		document.querySelector('#e_damage').innerText = '0';
+		document.querySelector('#r_damage').innerText = '0';
+		document.querySelector('#d_damage').innerText = '0';
+		document.querySelector('#t_damage').innerText = '0';
+	}
+}
