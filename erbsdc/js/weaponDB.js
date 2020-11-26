@@ -2120,9 +2120,9 @@ let sniperRifle = [
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 30
+		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
+		,Skill_Amplification_Percent: 30
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
