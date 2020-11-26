@@ -74,6 +74,28 @@ function updateDamage() {
 		}	
 		if (character == Jackie) {
 		} else if (character == Aya) {
+			document.querySelector('#q_damage').innerText = 
+				((attack_power * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ', ' + 
+				(((20 + document.querySelector('#q_level').selectedIndex * 40 + attack_power * 0.5) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2);
+			document.querySelector('#w_damage').innerText = 
+				(((22 + document.querySelector('#w_level').selectedIndex * 22 + attack_power * (0.25 + document.querySelector('#w_level').selectedIndex * 0.05)) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ' x 10';
+			document.querySelector('#e_damage').innerText = ' - ';
+			document.querySelector('#r_damage').innerText = 
+				(((200 + document.querySelector('#r_level').selectedIndex * 150 + attack_power * 0.7) * 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2);
+			document.querySelector('#d_damage').innerText = 'dps - ' + 
+				((attack_power * 105 * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
+				100 / (100 + (character2 == undefined ? 0 : defense2)) + (extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * 3) * 
+				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100 * 
+				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.6 : 0.4))).toFixed(2);
+			document.querySelector('#t_damage').innerText = 'shield - ' + (150 + document.querySelector('#t_level').selectedIndex * 50 + attack_power * 0.1);
 		} else if (character == Fiora) {
 		} else if (character == Magnus) {
 		} else if (character == Zahir) {
@@ -100,7 +122,7 @@ function updateDamage() {
 				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ' - ' + 
 				(((120 + document.querySelector('#r_level').selectedIndex * 90 + attack_power * 0.6) * 
 				100 / (100 + (character2 == undefined ? 0 : defense2)) + skill_amplification - (character2 == undefined ? 0 : skill_damage_reduction2)) * 
-				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2);
+				(100 + skill_amplification_percent - (character2 == undefined ? 0 : skill_damage_reduction_percent2)) / 100).toFixed(2) + ' x2 x4';
 			document.querySelector('#d_damage').innerText = 
 				((attack_power * (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 200 : 100) * (100 + critical_strike_chance * (100 + critical_strike_damage) / 100) / 
 				100 / (100 + (character2 == undefined ? 0 : defense2)) + 
