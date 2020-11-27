@@ -583,4 +583,4 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	document.querySelector('#t_level2').addEventListener('change', (e) => {
 		updateDisplay();
 	});
-}
+});
