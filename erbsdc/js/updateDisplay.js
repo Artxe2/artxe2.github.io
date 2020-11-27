@@ -482,3 +482,105 @@ function updateDisplay2() {
 	updateDamage();
 	closeItemList2();
 }
+document.addEventListener('DOMContentLoaded', (e) => {
+	document.querySelector('#weapon_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	
+	document.querySelector('#hunt_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#craft_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#search_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#move_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	
+	document.querySelector('#health_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#defense_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#meditation_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#trap_mastery').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	
+	document.querySelector('#level').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	
+	document.querySelector('#q_level').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#w_level').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#e_level').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#r_level').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#t_level').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	
+	document.querySelector('#weapon_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	
+	
+	document.querySelector('#hunt_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	document.querySelector('#craft_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	document.querySelector('#search_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	document.querySelector('#move_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	
+	document.querySelector('#health_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	document.querySelector('#defense_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	document.querySelector('#meditation_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	document.querySelector('#trap_mastery2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	
+	document.querySelector('#level2').addEventListener('change', (e) => {
+		updateDisplay2();
+	});
+	
+	document.querySelector('#q_level2').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#w_level2').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#e_level2').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#r_level2').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+	document.querySelector('#t_level2').addEventListener('change', (e) => {
+		updateDisplay();
+	});
+}
