@@ -3920,8 +3920,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -3950,8 +3950,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -3980,8 +3980,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4010,8 +4010,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4040,8 +4040,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4070,8 +4070,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4100,8 +4100,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4130,8 +4130,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4160,8 +4160,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4190,8 +4190,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4220,8 +4220,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4250,8 +4250,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4280,8 +4280,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4310,8 +4310,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4340,8 +4340,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4370,8 +4370,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4400,8 +4400,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4430,8 +4430,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4460,8 +4460,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4490,8 +4490,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4520,8 +4520,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4550,8 +4550,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4580,8 +4580,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 	,{
 		 Type: "Shuriken"
@@ -4610,8 +4610,8 @@ let shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 4.4
+		,Base_Range: 4.4
+		,Atk_Speed: 0.55
 	}
 ];
 let bow = [
@@ -6180,7 +6180,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6210,7 +6210,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6240,7 +6240,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6270,7 +6270,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6300,7 +6300,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 3
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6330,7 +6330,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6360,7 +6360,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6390,7 +6390,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6420,7 +6420,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6450,7 +6450,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6480,7 +6480,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 4
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6510,7 +6510,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6540,7 +6540,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6570,7 +6570,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6600,7 +6600,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 	,{
@@ -6630,7 +6630,7 @@ let guitar = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 3.85
 		,Atk_Speed: 0.43
 	}
 ];
