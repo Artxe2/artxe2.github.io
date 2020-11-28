@@ -148,7 +148,7 @@ let Hart = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3.05
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.4
 };
 let Isol = {
 	 "Attack_Power": 32
@@ -167,7 +167,7 @@ let Isol = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3.05
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.45
 };
 let Li_Dailin = {
 	 "Attack_Power": 33
@@ -243,7 +243,7 @@ let Xiukai = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3.1
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.48
 };
 let Chiara = {
 	 "Attack_Power": 34
@@ -281,7 +281,7 @@ let Sissela = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.4
 };
 let Adriana = {
 	 "Attack_Power": 31
@@ -319,5 +319,5 @@ let Shoichi = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3.1
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.43
 };
