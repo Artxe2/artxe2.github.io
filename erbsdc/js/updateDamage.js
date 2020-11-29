@@ -37,26 +37,38 @@ function updateDamage() {
 				baseAttackDamage(0, 1, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 1, 100, 1, 0, true) + ' )';
 			document.querySelector('#dps').innerText = 
 				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance, 2, 0, true)) * attack_speed).toFixed(2);
+			document.querySelector('#lsps').innerText = 
+				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance, 2, 0, true)) * attack_speed * life_steal / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance, 2, 0, true)) * attack_speed * life_steal / 100).toFixed(2);
 		} else if (weapon.Type == 'AssaultRifle') {
 			document.querySelector('#base_attack_damage').innerText = 
 				baseAttackDamage(0, 1.12, critical_strike_chance, 3, 0, true) + ' ( ' + 
 				baseAttackDamage(0, 0.32, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.32, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.48, 0, 1, 0, true) + ' - ' + 
 				baseAttackDamage(0, 0.32, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.32, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.48, 100, 1, 0, true) + ' )';
 			document.querySelector('#dps').innerText = 
-				(parseFloat(baseAttackDamage(0, 1.05, critical_strike_chance, 3, 0, true)) * attack_speed).toFixed(2);
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance, 3, 0, true)) * attack_speed).toFixed(2);
+			document.querySelector('#lsps').innerText = 
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance, 3, 0, true)) * attack_speed * life_steal / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance, 3, 0, true)) * attack_speed * life_steal / 100).toFixed(2);
 		} else if (weapon.Type == 'Guitar') {
 			document.querySelector('#base_attack_damage').innerText = 
 				baseAttackDamage(0, 1.3, critical_strike_chance, 3, 0, true) + ' ( ' + 
-				baseAttackDamage(0, 1, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, true) + ' - ' + 
-				baseAttackDamage(0, 1, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, true) + ' )';
+				baseAttackDamage(0, 1.3, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, true) + ' - ' + 
+				baseAttackDamage(0, 1.3, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, true) + ' )';
 			document.querySelector('#dps').innerText = 
 				(parseFloat(baseAttackDamage(0, 1.3, critical_strike_chance, 3, 0, true)) * attack_speed).toFixed(2);
+			document.querySelector('#lsps').innerText = 
+				(parseFloat(baseAttackDamage(0, 1.3, critical_strike_chance, 3, 0, true)) * attack_speed * life_steal / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 1.3, critical_strike_chance, 3, 0, true)) * attack_speed * life_steal / 100).toFixed(2);
 		} else {
 			document.querySelector('#base_attack_damage').innerText = 
 				baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true) + 
 				' ( ' + baseAttackDamage(0, 1, 0, 1, 0, true) + ' - ' + baseAttackDamage(0, 1, 100, 1, 0, true) + ' )';
 			document.querySelector('#dps').innerText = 
 				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * attack_speed).toFixed(2);
+			document.querySelector('#lsps').innerText = 
+				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * attack_speed * life_steal / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * attack_speed * life_steal / 100).toFixed(2);
 		}
 		if (weapon.Type == 'Dagger') {
 			document.querySelector('#d_damage').innerText = 
@@ -163,7 +175,7 @@ function updateDamage() {
 					document.querySelector('#r_level').selectedIndex == 1 ? 500 : 800, 0.7, true) + ' _ dps: ' + 
 				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * 
 				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
-				(0.3 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
+				(0.3 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
 			document.querySelector('#t_damage').innerText = 'AP increases: ' + 
 				(document.querySelector('#t_level').selectedIndex == 0 ? Math.round(attack_power * 0.03) + ' ~ ' + Math.round(attack_power * 0.08) : 
 				document.querySelector('#t_level').selectedIndex == 1 ? Math.round(attack_power * 0.08) + ' ~ ' + Math.round(attack_power * 0.2) : 
@@ -466,6 +478,7 @@ function updateDamage() {
 	} else {
 		document.querySelector('#base_attack_damage').innerText = '0';
 		document.querySelector('#dps').innerText = '0';
+		document.querySelector('#lsps').innerText = '0';
 		document.querySelector('#q_damage').innerText = '0';
 		document.querySelector('#w_damage').innerText = '0';
 		document.querySelector('#e_damage').innerText = '0';
@@ -482,25 +495,37 @@ function updateDamage() {
 				baseAttackDamage(0, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 1, 100, 1, 0, false) + ' )';
 			document.querySelector('#dps2').innerText = 
 				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance2, 2, 0, false)) * attack_speed2).toFixed(2);
+			document.querySelector('#lsps2').innerText = 
+				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance2, 2, 0, false)) * attack_speed2 * life_steal2 / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance2, 2, 0, false)) * attack_speed2 * life_steal2 / 100).toFixed(2);
 		} else if (weapon2.Type == 'AssaultRifle') {
 			document.querySelector('#base_attack_damage2').innerText = 
 				baseAttackDamage(0, 1.12, critical_strike_chance2, 3, 0, false) + ' ( ' + 
 				baseAttackDamage(0, 0.32, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.32, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.48, 0, 1, 0, false) + ' - ' + 
 				baseAttackDamage(0, 0.32, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.32, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.48, 100, 1, 0, false) + ' )';
 			document.querySelector('#dps2').innerText = 
-				(parseFloat(baseAttackDamage(0, 1.05, critical_strike_chance2, 3, 0, false)) * attack_speed2).toFixed(2);
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance2, 3, 0, false)) * attack_speed2).toFixed(2);
+			document.querySelector('#lsps2').innerText = 
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance2, 3, 0, false)) * attack_speed2 * life_steal2 / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance2, 3, 0, false)) * attack_speed2 * life_steal2 / 100).toFixed(2);
 		} else if (weapon2.Type == 'Guitar') {
 			document.querySelector('#base_attack_damage2').innerText = 
 				baseAttackDamage(0, 1.3, critical_strike_chance2, 3, 0, false) + ' ( ' + 
-				baseAttackDamage(0, 1, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, false) + ' - ' + 
-				baseAttackDamage(0, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, false) + ' )';
+				baseAttackDamage(0, 1.3, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 0, 1, 0, false) + ' - ' + 
+				baseAttackDamage(0, 1.3, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.15, 100, 1, 0, false) + ' )';
 			document.querySelector('#dps2').innerText = 
 				(parseFloat(baseAttackDamage(0, 1.3, critical_strike_chance2, 3, 0, false)) * attack_speed2).toFixed(2);
+			document.querySelector('#lsps2').innerText = 
+				(parseFloat(baseAttackDamage(0, 1.3, critical_strike_chance2, 3, 0, false)) * attack_speed2 * life_steal2 / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 1.3, critical_strike_chance2, 3, 0, false)) * attack_speed2 * life_steal2 / 100).toFixed(2);
 		} else {
 			document.querySelector('#base_attack_damage2').innerText = 
 				baseAttackDamage(0, 1, critical_strike_chance2, 1, 0, false) + ' ( ' + baseAttackDamage(0, 1, 0, 1, 0, false) + ' - ' + baseAttackDamage(0, 1, 100, 1, 0, false) + ' )';
 			document.querySelector('#dps2').innerText = 
 				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance2, 1, 0, false)) * attack_speed2).toFixed(2);
+			document.querySelector('#lsps2').innerText = 
+				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance2, 1, 0, false)) * attack_speed2 * life_steal2 / 100 * 0.6).toFixed(2) + ' - ' + 
+				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance2, 1, 0, false)) * attack_speed2 * life_steal2 / 100).toFixed(2);
 		}
 		if (weapon2.Type == 'Dagger') {
 			document.querySelector('#d_damage2').innerText = 
@@ -910,6 +935,7 @@ function updateDamage() {
 	} else {
 		document.querySelector('#base_attack_damage2').innerText = '0';
 		document.querySelector('#dps2').innerText = '0';
+		document.querySelector('#lsps2').innerText = '0';
 		document.querySelector('#q_damage2').innerText = '0';
 		document.querySelector('#w_damage2').innerText = '0';
 		document.querySelector('#e_damage2').innerText = '0';
