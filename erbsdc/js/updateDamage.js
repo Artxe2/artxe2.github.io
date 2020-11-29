@@ -39,9 +39,9 @@ function updateDamage() {
 				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance, 2, 0, true)) * attack_speed).toFixed(2);
 		} else if (weapon.Type == 'AssaultRifle') {
 			document.querySelector('#base_attack_damage').innerText = 
-				baseAttackDamage(0, 1.05, critical_strike_chance, 3, 0, true) + ' ( ' + 
-				baseAttackDamage(0, 0.3, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.3, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.45, 0, 1, 0, true) + ' - ' + 
-				baseAttackDamage(0, 0.3, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.3, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.45, 100, 1, 0, true) + ' )';
+				baseAttackDamage(0, 1.12, critical_strike_chance, 3, 0, true) + ' ( ' + 
+				baseAttackDamage(0, 0.32, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.32, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.48, 0, 1, 0, true) + ' - ' + 
+				baseAttackDamage(0, 0.32, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.32, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.48, 100, 1, 0, true) + ' )';
 			document.querySelector('#dps').innerText = 
 				(parseFloat(baseAttackDamage(0, 1.05, critical_strike_chance, 3, 0, true)) * attack_speed).toFixed(2);
 		} else if (weapon.Type == 'Guitar') {
@@ -78,7 +78,7 @@ function updateDamage() {
 			document.querySelector('#d_damage').innerText = ' - ';
 		} else if (weapon.Type == 'AssaultRifle') {
 			document.querySelector('#d_damage').innerText = 'dps: ' + 
-				(parseFloat(baseAttackDamage(0, 1.05, critical_strike_chance, 3, 0, true)) * 
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance, 3, 0, true)) * 
 				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
 				(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.6 : 0.4))).toFixed(2);
 		} else if (weapon.Type == 'SniperRifle') {
@@ -484,9 +484,9 @@ function updateDamage() {
 				(parseFloat(baseAttackDamage(0, 2, critical_strike_chance2, 2, 0, false)) * attack_speed2).toFixed(2);
 		} else if (weapon2.Type == 'AssaultRifle') {
 			document.querySelector('#base_attack_damage2').innerText = 
-				baseAttackDamage(0, 1.05, critical_strike_chance2, 3, 0, false) + ' ( ' + 
-				baseAttackDamage(0, 0.3, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.3, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.45, 0, 1, 0, false) + ' - ' + 
-				baseAttackDamage(0, 0.3, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.3, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.45, 100, 1, 0, false) + ' )';
+				baseAttackDamage(0, 1.12, critical_strike_chance2, 3, 0, false) + ' ( ' + 
+				baseAttackDamage(0, 0.32, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.32, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.48, 0, 1, 0, false) + ' - ' + 
+				baseAttackDamage(0, 0.32, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.32, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.48, 100, 1, 0, false) + ' )';
 			document.querySelector('#dps2').innerText = 
 				(parseFloat(baseAttackDamage(0, 1.05, critical_strike_chance2, 3, 0, false)) * attack_speed2).toFixed(2);
 		} else if (weapon2.Type == 'Guitar') {
@@ -522,7 +522,7 @@ function updateDamage() {
 			document.querySelector('#d_damage2').innerText = ' - ';
 		} else if (weapon2.Type == 'AssaultRifle') {
 			document.querySelector('#d_damage2').innerText = 'dps: ' + 
-				(parseFloat(baseAttackDamage(0, 1.05, critical_strike_chance2, 3, 0, false)) * 
+				(parseFloat(baseAttackDamage(0, 1.12, critical_strike_chance2, 3, 0, false)) * 
 				(attack_speed2 + (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
 				(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.6 : 0.4))).toFixed(2);
 		} else if (weapon2.Type == 'SniperRifle') {
