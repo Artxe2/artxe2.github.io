@@ -224,7 +224,7 @@ function updateDamage() {
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(200 + document.querySelector('#r_level').selectedIndex * 200, 2, true);
 			document.querySelector('#t_damage').innerText = 'DEF increases: 0 ~ ' + 
-				defense * (0.2 + document.querySelector('#t_level').selectedIndex * 0.15);
+				(defense * (0.2 + document.querySelector('#t_level').selectedIndex * 0.15)).toFixed(2);
 		} else if (character == Zahir) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(40 + document.querySelector('#q_level').selectedIndex * 60, 0.5, true) + ' - ' + 
@@ -681,7 +681,7 @@ function updateDamage() {
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(200 + document.querySelector('#r_level2').selectedIndex * 200, 2, false);
 			document.querySelector('#t_damage2').innerText = 'DEF increases: 0 ~ ' + 
-				defense2 * (0.2 + document.querySelector('#t_level2').selectedIndex * 0.15);
+				(defense2 * (0.2 + document.querySelector('#t_level2').selectedIndex * 0.15)).toFixed(2);
 		} else if (character2 == Zahir) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(40 + document.querySelector('#q_level2').selectedIndex * 60, 0.5, false) + ' - ' + 
