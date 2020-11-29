@@ -2808,7 +2808,7 @@ let spear = [
 	,{
 		 Type: "Spear"
 		,Name: "Spear_of_Longinus"
-		,Attack_Power: 140
+		,Attack_Power: 150
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -4642,8 +4642,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4672,8 +4672,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4702,8 +4702,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4732,8 +4732,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4762,8 +4762,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4792,8 +4792,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4822,8 +4822,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4852,8 +4852,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4882,8 +4882,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4912,8 +4912,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4942,8 +4942,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -4972,8 +4972,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -5002,8 +5002,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 	,{
 		 Type: "Bow"
@@ -5032,8 +5032,8 @@ let bow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
-		,Atk_Speed: 5.85
+		,Base_Range: 5.85
+		,Atk_Speed: 0.65
 	}
 ];
 let crossbow = [
