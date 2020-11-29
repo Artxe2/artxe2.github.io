@@ -32,6 +32,9 @@ function updateDisplay() {
 			(leg == undefined ? 0 : leg.Critical_Strike_Chance) + 
 			(accessory == undefined ? 0 : accessory.Critical_Strike_Chance)) * 
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
+		if (critical_strike_chance > 100) {
+			critical_strike_chance = 100;
+		}
 		document.querySelector('#critical_strike_chance').innerText = (critical_strike_chance).toFixed(2) + '%';
 		critical_strike_damage = 
 			((weapon == undefined ? 0 : weapon.Critical_Strike_Damage) + 
@@ -93,6 +96,9 @@ function updateDisplay() {
 			(leg == undefined ? 0 : leg.Cooldown_Reduction) + 
 			(accessory == undefined ? 0 : accessory.Cooldown_Reduction)) * 
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
+		if (cooldown_reduction > 40) {
+			cooldown_reduction = 40;
+		}
 		document.querySelector('#cooldown_reduction').innerText = (cooldown_reduction).toFixed(2) + '%';
 		sp_regen = 
 			character.Stamina_Regen + character.Stamina_Regen_Growth * document.querySelector('#level').selectedIndex + 
@@ -276,6 +282,9 @@ function updateDisplay2() {
 			(leg2 == undefined ? 0 : leg2.Critical_Strike_Chance) + 
 			(accessory2 == undefined ? 0 : accessory2.Critical_Strike_Chance)) * 
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
+		if (critical_strike_chance2 > 100) {
+			critical_strike_chance2 = 100;
+		}
 		document.querySelector('#critical_strike_chance2').innerText = (critical_strike_chance2).toFixed(2) + '%';
 		critical_strike_damage2 = 
 			((weapon2 == undefined ? 0 : weapon2.Critical_Strike_Damage) + 
@@ -337,6 +346,9 @@ function updateDisplay2() {
 			(leg2 == undefined ? 0 : leg2.Cooldown_Reduction) + 
 			(accessory2 == undefined ? 0 : accessory2.Cooldown_Reduction)) * 
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
+		if (cooldown_reduction2 > 40) {
+			cooldown_reduction2 = 40;
+		}
 		document.querySelector('#cooldown_reduction2').innerText = (cooldown_reduction2).toFixed(2) + '%';
 		sp_regen2 = 
 			character2.Stamina_Regen + character2.Stamina_Regen_Growth * document.querySelector('#level2').selectedIndex + 
