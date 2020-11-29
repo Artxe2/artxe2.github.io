@@ -11,6 +11,7 @@ function selectChest() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove chest' onclick = 'changeChest(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList').innerHTML = list;
 		document.querySelector('#d_itemList').style.display = 'block';
 	}
@@ -28,6 +29,7 @@ function selectHead() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove head' onclick = 'changeHead(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList').innerHTML = list;
 		document.querySelector('#d_itemList').style.display = 'block';
 	}
@@ -45,6 +47,7 @@ function selectArm() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove arm' onclick = 'changeArm(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList').innerHTML = list;
 		document.querySelector('#d_itemList').style.display = 'block';
 	}
@@ -62,6 +65,7 @@ function selectLeg() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove leg' onclick = 'changeLeg(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList').innerHTML = list;
 		document.querySelector('#d_itemList').style.display = 'block';
 	}
@@ -79,6 +83,7 @@ function selectAccessory() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove accessory' onclick = 'changeAccessory(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList').innerHTML = list;
 		document.querySelector('#d_itemList').style.display = 'block';
 	}
@@ -96,6 +101,7 @@ function selectChest2() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove chest' onclick = 'changeChest2(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList2').innerHTML = list;
 		document.querySelector('#d_itemList2').style.display = 'block';
 	}
@@ -113,6 +119,7 @@ function selectHead2() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove head' onclick = 'changeHead2(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList2').innerHTML = list;
 		document.querySelector('#d_itemList2').style.display = 'block';
 	}
@@ -130,6 +137,7 @@ function selectArm2() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove arm' onclick = 'changeArm2(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList2').innerHTML = list;
 		document.querySelector('#d_itemList2').style.display = 'block';
 	}
@@ -147,6 +155,7 @@ function selectLeg2() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove leg' onclick = 'changeLeg2(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList2').innerHTML = list;
 		document.querySelector('#d_itemList2').style.display = 'block';
 	}
@@ -164,6 +173,7 @@ function selectAccessory2() {
 				list += '<br>';
 			}
 		}
+		list += "<img title = 'remove accessory' onclick = 'changeAccessory2(\"\", -1)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList2').innerHTML = list;
 		document.querySelector('#d_itemList2').style.display = 'block';
 	}

@@ -321,3 +321,22 @@ let Shoichi = {
 	,"Sight_Range": 8
 	,"Attack_Range": 0.43
 };
+let Silvia = {
+	 "Attack_Power": 28
+	,"Attack_Power_Growth": 2
+	,"Health": 500
+	,"Health_Growth": 63
+	,"Health_Regen": 0.4
+	,"Health_Regen_Growth": 0.03
+	,"Stamina": 440
+	,"Stamina_Growth": 22
+	,"Stamina_Regen": 2.1
+	,"Stamina_Regen_Growth": 0.06
+	,"Defense": 20
+	,"Defense_Growth": 1.4
+	,"Atk_Speed": 0.02
+	,"Crit_Rate": 0
+	,"Move_Speed": 3
+	,"Sight_Range": 8
+	,"Attack_Range": 0.4
+};

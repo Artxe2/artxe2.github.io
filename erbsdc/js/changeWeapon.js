@@ -99,8 +99,13 @@ function changeWeapon(type, index) {
 		weapon_mastery_attack_speed = 0;
 		weapon_mastery_extra_normal_attack_damage_percent = 0;
 		weapon_mastery_skill_damage_reduction_percent = 0;
+	} else {
+		weapon = null;
+		document.querySelector('#weapon').innerHTML = '';
+		updateDisplay();
+		return;
 	}
-	document.querySelector('#weapon').innerHTML = "<img title = '" + weapon.Name + "' src = './weapon/" + weapon.Name + ".png' width = '75px' height = '42px'>";
+	document.querySelector('#weapon').innerHTML = "<img title = '" + weapon.Name + "' src = './weapon/" + weapon.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
 function changeWeapon2(type, index) {
@@ -204,7 +209,12 @@ function changeWeapon2(type, index) {
 		weapon_mastery_attack_speed2 = 0;
 		weapon_mastery_extra_normal_attack_damage_percent2 = 0;
 		weapon_mastery_skill_damage_reduction_percent2 = 0;
+	} else {
+		weapon2 = null;
+		document.querySelector('#weapon2').innerHTML = '';
+		updateDisplay2();
+		return;
 	}
-	document.querySelector('#weapon2').innerHTML = "<img title = '" + weapon2.Name + "' src = './weapon/" + weapon2.Name + ".png' width = '75px' height = '42px'>";
+	document.querySelector('#weapon2').innerHTML = "<img title = '" + weapon2.Name + "' src = './weapon/" + weapon2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
 }

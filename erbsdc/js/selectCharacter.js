@@ -168,6 +168,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
 					document.querySelector('#weapon').innerHTML = '';
 				}
 			}
+		} else if ('Silvia' == select) {
+			document.querySelector('#i_character').src = './character/Silvia.png';
+			character = Silvia;
+			if (weapon != undefined) {
+				if (weapon.Type != 'Pistol') {
+					weapon = null;
+					document.querySelector('#weapon').innerHTML = '';
+				}
+			}
 		}
 		updateDisplay();
 	});
@@ -338,6 +347,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			character2 = Shoichi;
 			if (weapon2 != undefined) {
 				if (weapon2.Type != 'Dagger') {
+					weapon2 = null;
+					document.querySelector('#weapon2').innerHTML = '';
+				}
+			}
+		} else if ('Silvia' == select) {
+			document.querySelector('#i_character2').src = './character/Silvia.png';
+			character2 = Silvia;
+			if (weapon2 != undefined) {
+				if (weapon2.Type != 'Pistol') {
 					weapon2 = null;
 					document.querySelector('#weapon2').innerHTML = '';
 				}

@@ -238,7 +238,16 @@ function selectWeapon() {
 					list += '<br>';
 				}
 			}
+		} else if (character == Silvia) {
+			for (let i = 0; i < pistol.length; i++) {
+				list += "<img title = '" + pistol[i].Name + "' onclick = 'changeWeapon(\"pistol\", " + i + ")' src = './weapon/" + pistol[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 		}
+		list += "<img title = 'remove weapon' onclick = 'changeWeapon(\"\", 0)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList').innerHTML = list;
 		document.querySelector('#d_itemList').style.display = 'block';
 	}
@@ -483,7 +492,16 @@ function selectWeapon2() {
 					list += '<br>';
 				}
 			}
+		} else if (character2 == Silvia) {
+			for (let i = 0; i < pistol.length; i++) {
+				list += "<img title = '" + pistol[i].Name + "' onclick = 'changeWeapon2(\"pistol\", " + i + ")' src = './weapon/" + pistol[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 		}
+		list += "<img title = 'remove weapon' onclick = 'changeWeapon2(\"\", 0)' src = './weapon/blank.png' width = '128px' height = '71px' border = '1'>";
 		document.querySelector('#s_itemList2').innerHTML = list;
 		document.querySelector('#d_itemList2').style.display = 'block';
 	}

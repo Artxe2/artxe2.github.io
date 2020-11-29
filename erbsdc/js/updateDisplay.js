@@ -151,7 +151,9 @@ function updateDisplay() {
 			(leg == undefined ? 0 : leg.Max_HP) + 
 			(accessory == undefined ? 0 : accessory.Max_HP)) * 
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007)) * 
-			(1.013 + document.querySelector('#health_mastery').selectedIndex * 0.013);
+			(1.013 + document.querySelector('#health_mastery').selectedIndex * 0.013) + 
+			(character != Xiukai ? 0 : (2 + document.querySelector('#t_level').selectedIndex * 2 + 
+				(2 + document.querySelector('#t_level').selectedIndex * 2) * document.querySelector('#level').selectedIndex) * 8);
 		document.querySelector('#max_hp').innerText = (max_hp).toFixed(2);
 		max_sp = 
 			(character.Stamina + character.Stamina_Growth * document.querySelector('#level').selectedIndex + 
@@ -393,7 +395,9 @@ function updateDisplay2() {
 			(leg2 == undefined ? 0 : leg2.Max_HP) + 
 			(accessory2 == undefined ? 0 : accessory2.Max_HP)) * 
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007)) * 
-			(1.013 + document.querySelector('#health_mastery2').selectedIndex * 0.013);
+			(1.013 + document.querySelector('#health_mastery2').selectedIndex * 0.013) + 
+			(character2 != Xiukai ? 0 : (2 + document.querySelector('#t_level2').selectedIndex * 2 + 
+				(2 + document.querySelector('#t_level2').selectedIndex * 2) * document.querySelector('#level2').selectedIndex) * 8);
 		document.querySelector('#max_hp2').innerText = (max_hp2).toFixed(2);
 		max_sp2 = 
 			(character2.Stamina + character2.Stamina_Growth * document.querySelector('#level2').selectedIndex + 
@@ -569,18 +573,18 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	});
 	
 	document.querySelector('#q_level2').addEventListener('change', (e) => {
-		updateDisplay();
+		updateDisplay2();
 	});
 	document.querySelector('#w_level2').addEventListener('change', (e) => {
-		updateDisplay();
+		updateDisplay2();
 	});
 	document.querySelector('#e_level2').addEventListener('change', (e) => {
-		updateDisplay();
+		updateDisplay2();
 	});
 	document.querySelector('#r_level2').addEventListener('change', (e) => {
-		updateDisplay();
+		updateDisplay2();
 	});
 	document.querySelector('#t_level2').addEventListener('change', (e) => {
-		updateDisplay();
+		updateDisplay2();
 	});
 });
