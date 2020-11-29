@@ -2808,7 +2808,7 @@ let spear = [
 	,{
 		 Type: "Spear"
 		,Name: "Spear_of_Longinus"
-		,Attack_Power: 150
+		,Attack_Power: 140
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
