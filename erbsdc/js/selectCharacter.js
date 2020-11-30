@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', (e) => {
 	document.querySelector('#s_character').addEventListener('change', (e) => {
 		let select = document.querySelector('#s_character').value;
-		document.querySelector('#passive').innerHTML = '';
 		if ('Jackie' == select) {
 			document.querySelector('#i_character').src = './character/Jackie.png';
 			character = Jackie;
@@ -211,7 +210,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 document.addEventListener('DOMContentLoaded', (e) => {
 	document.querySelector('#s_character2').addEventListener('change', (e) => {
 		let select = document.querySelector('#s_character2').value;
-		document.querySelector('#passive2').innerHTML = '';
 		if ('Jackie' == select) {
 			document.querySelector('#i_character2').src = './character/Jackie.png';
 			character2 = Jackie;
