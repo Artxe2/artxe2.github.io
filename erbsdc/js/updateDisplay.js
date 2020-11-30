@@ -15,14 +15,16 @@ function updateDisplay() {
 		attack_speed = (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
 			(100 + (weapon == undefined ? 0 : weapon_mastery_attack_speed + 
 			document.querySelector('#weapon_mastery').selectedIndex * 
-			weapon_mastery_attack_speed) + 
+			weapon_mastery_attack_speed + 
+			(character != Silvia ? 0 : parseInt(document.querySelector('#stack').value) * 
+				(1 + document.querySelector('#t_level').selectedIndex))) + 
 			((weapon == undefined ? 0 : weapon.Attack_Speed) + 
 			(chest == undefined ? 0 : chest.Attack_Speed) + 
 			(head == undefined ? 0 : head.Attack_Speed) + 
 			(arm == undefined ? 0 : arm.Attack_Speed) + 
 			(leg == undefined ? 0 : leg.Attack_Speed) + 
 			(accessory == undefined ? 0 : accessory.Attack_Speed)) * 
-			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007)) / 100;
+			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007)) / 100;			
 		document.querySelector('#attack_speed').innerText = (attack_speed).toFixed(2);
 		critical_strike_chance = 
 			((weapon == undefined ? 0 : weapon.Critical_Strike_Chance) + 
@@ -79,6 +81,7 @@ function updateDisplay() {
 			(weapon == undefined ? 0 : weapon_mastery_skill_damage_reduction_percent + 
 			document.querySelector('#weapon_mastery').selectedIndex * 
 			weapon_mastery_skill_damage_reduction_percent) + 
+			(character != Silvia || parseInt(document.querySelector('#stack').value) != 15 ? 0 : 15) + 
 			((weapon == undefined ? 0 : weapon.Skill_Amplification_Percent) + 
 			(chest == undefined ? 0 : chest.Skill_Amplification_Percent) + 
 			(head == undefined ? 0 : head.Skill_Amplification_Percent) + 
@@ -156,10 +159,9 @@ function updateDisplay() {
 			(arm == undefined ? 0 : arm.Max_HP) + 
 			(leg == undefined ? 0 : leg.Max_HP) + 
 			(accessory == undefined ? 0 : accessory.Max_HP)) * 
-			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007)) * 
-			(1.013 + document.querySelector('#health_mastery').selectedIndex * 0.013) + 
-			(character != Xiukai ? 0 : (2 + document.querySelector('#t_level').selectedIndex * 2 + 
-				(2 + document.querySelector('#t_level').selectedIndex * 2) * document.querySelector('#level').selectedIndex) * 8);
+			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007) + 
+			(character != Xiukai ? 0 : parseInt(document.querySelector('#stack').value) * 8)) * 
+			(1.013 + document.querySelector('#health_mastery').selectedIndex * 0.013);
 		document.querySelector('#max_hp').innerText = (max_hp).toFixed(2);
 		max_sp = 
 			(character.Stamina + character.Stamina_Growth * document.querySelector('#level').selectedIndex + 
@@ -265,7 +267,9 @@ function updateDisplay2() {
 		attack_speed2 = (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
 			(100 + (weapon2 == undefined ? 0 : weapon_mastery_attack_speed2 + 
 			document.querySelector('#weapon_mastery2').selectedIndex * 
-			weapon_mastery_attack_speed2) + 
+			weapon_mastery_attack_speed2 + 
+			(character2 != Silvia ? 0 : parseInt(document.querySelector('#stack2').value) * 
+				(1 + document.querySelector('#t_level2').selectedIndex))) + 
 			((weapon2 == undefined ? 0 : weapon2.Attack_Speed) + 
 			(chest2 == undefined ? 0 : chest2.Attack_Speed) + 
 			(head2 == undefined ? 0 : head2.Attack_Speed) + 
@@ -329,6 +333,7 @@ function updateDisplay2() {
 			(weapon2 == undefined ? 0 : weapon_mastery_skill_damage_reduction_percent2 + 
 			document.querySelector('#weapon_mastery2').selectedIndex * 
 			weapon_mastery_skill_damage_reduction_percent2) + 
+			(character2 != Silvia || parseInt(document.querySelector('#stack2').value) != 15 ? 0 : 15) + 
 			((weapon2 == undefined ? 0 : weapon2.Skill_Amplification_Percent) + 
 			(chest2 == undefined ? 0 : chest2.Skill_Amplification_Percent) + 
 			(head2 == undefined ? 0 : head2.Skill_Amplification_Percent) + 
@@ -406,10 +411,9 @@ function updateDisplay2() {
 			(arm2 == undefined ? 0 : arm2.Max_HP) + 
 			(leg2 == undefined ? 0 : leg2.Max_HP) + 
 			(accessory2 == undefined ? 0 : accessory2.Max_HP)) * 
-			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007)) * 
-			(1.013 + document.querySelector('#health_mastery2').selectedIndex * 0.013) + 
-			(character2 != Xiukai ? 0 : (2 + document.querySelector('#t_level2').selectedIndex * 2 + 
-				(2 + document.querySelector('#t_level2').selectedIndex * 2) * document.querySelector('#level2').selectedIndex) * 8);
+			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007) + 
+			(character2 != Xiukai ? 0 : parseInt(document.querySelector('#stack2').value) * 8)) * 
+			(1.013 + document.querySelector('#health_mastery2').selectedIndex * 0.013);
 		document.querySelector('#max_hp2').innerText = (max_hp2).toFixed(2);
 		max_sp2 = 
 			(character2.Stamina + character2.Stamina_Growth * document.querySelector('#level2').selectedIndex + 
