@@ -241,13 +241,10 @@ function updateDamage() {
 			document.querySelector('#t_damage').innerText = 
 				calcSkillDamage(10 + document.querySelector('#t_level').selectedIndex * 25, 0.3, true);
 		} else if (character == Nadine) {
+			let stack = parseInt(document.querySelector('#stack').value);
 			document.querySelector('#q_damage').innerText = 
-				calcSkillDamage(70 + document.querySelector('#q_level').selectedIndex * 45 + 
-					10 + document.querySelector('#t_level').selectedIndex * 5 + document.querySelector('#weapon_mastery').selectedIndex * 
-					(10 + document.querySelector('#t_level').selectedIndex * 5), 0.6, true) + ' - ' + 
-				calcSkillDamage(140 + document.querySelector('#q_level').selectedIndex * 90 + 
-					10 + document.querySelector('#t_level').selectedIndex * 5 + document.querySelector('#weapon_mastery').selectedIndex * 
-					(10 + document.querySelector('#t_level').selectedIndex * 5), 1.2, true);
+				calcSkillDamage(70 + document.querySelector('#q_level').selectedIndex * 45 + stack, 0.6, true) + ' - ' + 
+				calcSkillDamage(140 + document.querySelector('#q_level').selectedIndex * 90 + stack, 1.2, true);
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(100 + document.querySelector('#r_level').selectedIndex * 70, 0.6, true) + ', ' + 
 				calcSkillDamage(100 + document.querySelector('#r_level').selectedIndex * 70, 0.6, true) + ', ' + 
@@ -257,16 +254,8 @@ function updateDamage() {
 				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
 				(0.2 + document.querySelector('#e_level').selectedIndex * 0.1))).toFixed(2);
 			document.querySelector('#r_damage').innerText = 
-				calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 50 + 
-					10 + document.querySelector('#t_level').selectedIndex * 5 + document.querySelector('#weapon_mastery').selectedIndex * 
-					(10 + document.querySelector('#t_level').selectedIndex * 5), 0.5, true) + ' _ dps: ' + 
-					(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 50 + 
-					10 + document.querySelector('#t_level').selectedIndex * 5 + document.querySelector('#weapon_mastery').selectedIndex * 
-					(10 + document.querySelector('#t_level').selectedIndex * 5), 0.5, true)) / 3 * attack_speed).toFixed(2);
-			document.querySelector('#t_damage').innerText = 'option - ' + 
-				(10 + document.querySelector('#t_level').selectedIndex * 5) + ' stack per 1 weapon_mastery: ' + 
-				(10 + document.querySelector('#t_level').selectedIndex * 5 + 
-				document.querySelector('#weapon_mastery').selectedIndex * (10 + document.querySelector('#t_level').selectedIndex * 5)) + ' stack';
+				calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 50 + stack, 0.5, true) + ' _ dps: ' + 
+					(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 50 + stack, 0.5, true)) / 3 * attack_speed).toFixed(2);
 		} else if (character == Hyunwoo) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(100 + document.querySelector('#q_level').selectedIndex * 50, 0.4, true);
@@ -361,6 +350,7 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage(80 + document.querySelector('#r_level').selectedIndex * 50, 0.5, true))) * 5) + ' )'; 
 			document.querySelector('#t_damage').innerText = ' - ';
 		} else if (character == Xiukai) {
+			let stack = parseInt(document.querySelector('#stack').value);
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(80 + document.querySelector('#q_level').selectedIndex * 40, 0.5, true);
 			document.querySelector('#w_damage').innerText = 
@@ -376,21 +366,11 @@ function updateDamage() {
 					(0.03 + document.querySelector('#e_level').selectedIndex * 0.01) - 
 					(document.querySelector('#e_level').selectedIndex == 4 ? 10 : 0), 0.4, true);
 			document.querySelector('#r_damage').innerText = 
-				calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 50 + 
-					2 + document.querySelector('#t_level').selectedIndex * 2 + 
-					(2 + document.querySelector('#t_level').selectedIndex * 2) * document.querySelector('#level').selectedIndex, 0.5, true) + ' - ' + 
-				calcSkillDamage2(50 + document.querySelector('#r_level').selectedIndex * 50 + 
-					2 + document.querySelector('#t_level').selectedIndex * 2 + 
-					(2 + document.querySelector('#t_level').selectedIndex * 2) * document.querySelector('#level').selectedIndex, 0.5,
+				calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 50 + stack, 0.5, true) + ' - ' + 
+				calcSkillDamage2(50 + document.querySelector('#r_level').selectedIndex * 50 + stack, 0.5,
 					10 + document.querySelector('#r_level').selectedIndex * 5, true) + ' x 6 ( ' + 
-				Math.round(parseFloat(calcSkillDamage2(50 + document.querySelector('#r_level').selectedIndex * 50 + 
-					2 + document.querySelector('#t_level').selectedIndex * 2 + 
-					(2 + document.querySelector('#t_level').selectedIndex * 2) * document.querySelector('#level').selectedIndex, 0.5,
+				Math.round(parseFloat(calcSkillDamage2(50 + document.querySelector('#r_level').selectedIndex * 50 + stack, 0.5,
 					10 + document.querySelector('#r_level').selectedIndex * 5, true))) * 6 + ' )';
-			document.querySelector('#t_damage').innerText = 'option - ' + 
-				(2 + document.querySelector('#t_level').selectedIndex * 2) + ' stack per 1 level: ' + 
-				(2 + document.querySelector('#t_level').selectedIndex * 2 + 
-				(2 + document.querySelector('#t_level').selectedIndex * 2) * document.querySelector('#level').selectedIndex) + ' stack';
 		} else if (character == Chiara) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 40, 0.6, true);
@@ -403,10 +383,15 @@ function updateDamage() {
 				(Math.round(parseFloat(calcSkillDamage(60 + document.querySelector('#e_level').selectedIndex * 20, 0.3, true))) + 
 				Math.round(parseFloat(calcSkillDamage(70 + document.querySelector('#e_level').selectedIndex * 40, 0.7, true)))) + ' )';
 			document.querySelector('#r_damage').innerText = 
-				calcSkillDamage(20 + document.querySelector('#r_level').selectedIndex * 7, 0.15, true) + ' x 12 + ' + 
-				calcSkillDamage(200 + document.querySelector('#r_level').selectedIndex * 100, 1.2, true) + ' ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#r_level').selectedIndex * 7, 0.15, true))) * 12 + 
-				Math.round(parseFloat(calcSkillDamage(200 + document.querySelector('#r_level').selectedIndex * 100, 1.2, true)))) + ' )';
+				calcSkillDamage(20 + document.querySelector('#r_level').selectedIndex * 7, 0.15, true) + ' - ' + 
+				calcSkillDamage2(20 + document.querySelector('#r_level').selectedIndex * 7, 0.15, 
+					8 + document.querySelector('#t_level').selectedIndex * 8, true) + ' x 12 + ' + 
+				calcSkillDamage2(200 + document.querySelector('#r_level').selectedIndex * 100, 1.2, 
+					8 + document.querySelector('#t_level').selectedIndex * 8, true) + ' ( ' + 
+				(Math.round(parseFloat(calcSkillDamage2(20 + document.querySelector('#r_level').selectedIndex * 7, 0.15, 
+					8 + document.querySelector('#t_level').selectedIndex * 8, true))) * 12 + 
+				Math.round(parseFloat(calcSkillDamage2(200 + document.querySelector('#r_level').selectedIndex * 100, 1.2, 
+					8 + document.querySelector('#t_level').selectedIndex * 8, true)))) + ' )';
 			document.querySelector('#t_damage').innerText = 'DEF decreases: 0 ~ ' + 
 				(character2 == undefined ? 0 : defense2 * (0.02 + document.querySelector('#t_level').selectedIndex * 0.02) * 4).toFixed(2);
 		} else if (character == Sissela) {
@@ -473,7 +458,6 @@ function updateDamage() {
 				movement_speed * (1.2 + document.querySelector('#r_level').selectedIndex * 0.05) * 
 				(6 + document.querySelector('#e_level').selectedIndex * 4), 0.6, true);
 			document.querySelector('#r_damage').innerText = ' - ';
-			document.querySelector('#t_damage').innerText = ' - ';
 		}
 	} else {
 		document.querySelector('#base_attack_damage').innerText = '0';
@@ -484,7 +468,9 @@ function updateDamage() {
 		document.querySelector('#e_damage').innerText = '0';
 		document.querySelector('#r_damage').innerText = '0';
 		document.querySelector('#d_damage').innerText = '0';
-		document.querySelector('#t_damage').innerText = '0';
+		if (character != Nadine && character != Xiukai && character != Silvia) {			
+			document.querySelector('#t_damage').innerText = '0';
+		}
 	}
 	
 	if (weapon2 != undefined) {
@@ -698,13 +684,10 @@ function updateDamage() {
 			document.querySelector('#t_damage2').innerText = 
 				calcSkillDamage(10 + document.querySelector('#t_level2').selectedIndex * 25, 0.3, false);
 		} else if (character2 == Nadine) {
+			let stack2 = parseInt(document.querySelector('#stack2').value);
 			document.querySelector('#q_damage2').innerText = 
-				calcSkillDamage(70 + document.querySelector('#q_level2').selectedIndex * 45 + 
-					10 + document.querySelector('#t_level2').selectedIndex * 5 + document.querySelector('#weapon_mastery2').selectedIndex * 
-					(10 + document.querySelector('#t_level2').selectedIndex * 5), 0.6, false) + ' - ' + 
-				calcSkillDamage(140 + document.querySelector('#q_level2').selectedIndex * 90 + 
-					10 + document.querySelector('#t_level2').selectedIndex * 5 + document.querySelector('#weapon_mastery2').selectedIndex * 
-					(10 + document.querySelector('#t_level2').selectedIndex * 5), 1.2, false);
+				calcSkillDamage(70 + document.querySelector('#q_level2').selectedIndex * 45 + stack2, 0.6, false) + ' - ' + 
+				calcSkillDamage(140 + document.querySelector('#q_level2').selectedIndex * 90 + stack2, 1.2, false);
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(100 + document.querySelector('#r_level2').selectedIndex * 70, 0.6, false) + ', ' + 
 				calcSkillDamage(100 + document.querySelector('#r_level2').selectedIndex * 70, 0.6, false) + ', ' + 
@@ -714,16 +697,8 @@ function updateDamage() {
 				(attack_speed2 + (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
 				(0.2 + document.querySelector('#e_level2').selectedIndex * 0.1))).toFixed(2);
 			document.querySelector('#r_damage2').innerText = 
-				calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 50 + 
-					10 + document.querySelector('#t_level2').selectedIndex * 5 + document.querySelector('#weapon_mastery2').selectedIndex * 
-					(10 + document.querySelector('#t_level2').selectedIndex * 5), 0.5, false) + ' _ dps: ' + 
-					(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 50 + 
-					10 + document.querySelector('#t_level2').selectedIndex * 5 + document.querySelector('#weapon_mastery2').selectedIndex * 
-					(10 + document.querySelector('#t_level2').selectedIndex * 5), 0.5, false)) / 3 * attack_speed2).toFixed(2);
-			document.querySelector('#t_damage2').innerText = 'option - ' + 
-				(10 + document.querySelector('#t_level2').selectedIndex * 5) + ' stack per 1 weapon_mastery: ' + 
-				(10 + document.querySelector('#t_level2').selectedIndex * 5 + 
-				document.querySelector('#weapon_mastery2').selectedIndex * (10 + document.querySelector('#t_level2').selectedIndex * 5)) + ' stack';
+				calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 50 + stack2, 0.5, false) + ' _ dps: ' + 
+					(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 50 + stack2, 0.5, false)) / 3 * attack_speed2).toFixed(2);
 		} else if (character2 == Hyunwoo) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(100 + document.querySelector('#q_level2').selectedIndex * 50, 0.4, false);
@@ -818,6 +793,7 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage(80 + document.querySelector('#r_level2').selectedIndex * 50, 0.5, false))) * 5) + ' )'; 
 			document.querySelector('#t_damage2').innerText = ' - ';
 		} else if (character2 == Xiukai) {
+			let stack2 = parseInt(document.querySelector('#stack2').value);
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(80 + document.querySelector('#q_level2').selectedIndex * 40, 0.5, false);
 			document.querySelector('#w_damage2').innerText = 
@@ -833,21 +809,11 @@ function updateDamage() {
 					(0.03 + document.querySelector('#e_level2').selectedIndex * 0.01) - 
 					(document.querySelector('#e_level2').selectedIndex == 4 ? 10 : 0), 0.4, false);
 			document.querySelector('#r_damage2').innerText = 
-				calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 50 + 
-					2 + document.querySelector('#t_level2').selectedIndex * 2 + 
-					(2 + document.querySelector('#t_level2').selectedIndex * 2) * document.querySelector('#level2').selectedIndex, 0.5, false) + ' - ' + 
-				calcSkillDamage2(50 + document.querySelector('#r_level2').selectedIndex * 50 + 
-					2 + document.querySelector('#t_level2').selectedIndex * 2 + 
-					(2 + document.querySelector('#t_level2').selectedIndex * 2) * document.querySelector('#level2').selectedIndex, 0.5,
+				calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 50 + stack2, 0.5, false) + ' - ' + 
+				calcSkillDamage2(50 + document.querySelector('#r_level2').selectedIndex * 50 + stack2, 0.5,
 					10 + document.querySelector('#r_level2').selectedIndex * 5, false) + ' x 6 ( ' + 
-				Math.round(parseFloat(calcSkillDamage2(50 + document.querySelector('#r_level2').selectedIndex * 50 + 
-					2 + document.querySelector('#t_level2').selectedIndex * 2 + 
-					(2 + document.querySelector('#t_level2').selectedIndex * 2) * document.querySelector('#level2').selectedIndex, 0.5,
+				Math.round(parseFloat(calcSkillDamage2(50 + document.querySelector('#r_level2').selectedIndex * 50 + stack2, 0.5,
 					10 + document.querySelector('#r_level2').selectedIndex * 5, false))) * 6 + ' )';
-			document.querySelector('#t_damage2').innerText = 'option - ' + 
-				(2 + document.querySelector('#t_level2').selectedIndex * 2) + ' stack per 1 level: ' + 
-				(2 + document.querySelector('#t_level2').selectedIndex * 2 + 
-				(2 + document.querySelector('#t_level2').selectedIndex * 2) * document.querySelector('#level2').selectedIndex) + ' stack';
 		} else if (character2 == Chiara) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 40, 0.6, false);
@@ -860,10 +826,15 @@ function updateDamage() {
 				(Math.round(parseFloat(calcSkillDamage(60 + document.querySelector('#e_level2').selectedIndex * 20, 0.3, false))) + 
 				Math.round(parseFloat(calcSkillDamage(70 + document.querySelector('#e_level2').selectedIndex * 40, 0.7, false)))) + ' )';
 			document.querySelector('#r_damage2').innerText = 
-				calcSkillDamage(20 + document.querySelector('#r_level2').selectedIndex * 7, 0.15, false) + ' x 12 + ' + 
-				calcSkillDamage(200 + document.querySelector('#r_level2').selectedIndex * 100, 1.2, false) + ' ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#r_level2').selectedIndex * 7, 0.15, false))) * 12 + 
-				Math.round(parseFloat(calcSkillDamage(200 + document.querySelector('#r_level2').selectedIndex * 100, 1.2, false)))) + ' )';
+				calcSkillDamage(20 + document.querySelector('#r_level2').selectedIndex * 7, 0.15, false) + ' - ' + 
+				calcSkillDamage2(20 + document.querySelector('#r_level2').selectedIndex * 7, 0.15, 
+					8 + document.querySelector('#t_level2').selectedIndex * 8, false) + ' x 12 + ' + 
+				calcSkillDamage2(200 + document.querySelector('#r_level2').selectedIndex * 100, 1.2, 
+					8 + document.querySelector('#t_level2').selectedIndex * 8, false) + ' ( ' + 
+				(Math.round(parseFloat(calcSkillDamage2(20 + document.querySelector('#r_level2').selectedIndex * 7, 0.15, 
+					8 + document.querySelector('#t_level2').selectedIndex * 8, false))) * 12 + 
+				Math.round(parseFloat(calcSkillDamage2(200 + document.querySelector('#r_level2').selectedIndex * 100, 1.2, 
+					8 + document.querySelector('#t_level2').selectedIndex * 8, false)))) + ' )';
 			document.querySelector('#t_damage2').innerText = 'DEF decreases: 0 ~ ' + 
 				(character == undefined ? 0 : defense * (0.02 + document.querySelector('#t_level2').selectedIndex * 0.02) * 4).toFixed(2);
 		} else if (character2 == Sissela) {
@@ -930,7 +901,6 @@ function updateDamage() {
 				movement_speed2 * (1.2 + document.querySelector('#r_level2').selectedIndex * 0.05) * 
 				(6 + document.querySelector('#e_level2').selectedIndex * 4), 0.6, false);
 			document.querySelector('#r_damage2').innerText = ' - ';
-			document.querySelector('#t_damage2').innerText = ' - ';
 		}
 	} else {
 		document.querySelector('#base_attack_damage2').innerText = '0';
@@ -941,6 +911,8 @@ function updateDamage() {
 		document.querySelector('#e_damage2').innerText = '0';
 		document.querySelector('#r_damage2').innerText = '0';
 		document.querySelector('#d_damage2').innerText = '0';
-		document.querySelector('#t_damage2').innerText = '0';
+		if (character2 != Nadine && character2 != Xiukai && character2 != Silvia) {			
+			document.querySelector('#t_damage2').innerText = '0';
+		}
 	}
 }
