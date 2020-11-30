@@ -4,14 +4,14 @@
 <meta charset='UTF-8'>
 <title>Insert title here</title>
 <script type="text/javascript">
-	var d;//#timer
-	var t;//#target
-	var s;//#dist
-	var x;//target.x
-	var y;//target.y
-	var m;//shot_@_ms
-	var l;//target move distance
-	var c;//target move count
+	let d;//#timer
+	let t;//#target
+	let s;//#dist
+	let x;//target.x
+	let y;//target.y
+	let m;//shot_@_ms
+	let l;//target move distance
+	let c;//target move count
 	document.addEventListener("DOMContentLoaded", function() {
 		d = document.getElementById('timer');
 		t = document.getElementById('target');
@@ -32,16 +32,16 @@
 	}
 	function shot() {
 		if (m) {
-			var n = Date.now();
+			let n = Date.now();
 			d.innerHTML = n - m + 'ms';
 			m = n;
 		} else {
 			m = Date.now();
 		}
 		while (true) {
-			var r = Math.random() * 360;
-			var xi = parseInt(l * Math.cos(r * (Math.PI/180)));
-			var yi = parseInt(l * Math.sin(r * (Math.PI/180)));
+			let r = Math.random() * 360;
+			let xi = parseInt(l * Math.cos(r * (Math.PI/180)));
+			let yi = parseInt(l * Math.sin(r * (Math.PI/180)));
 			if (x + xi >= 0 && x + xi <= 950 && y + yi >= 0 && y + yi <= 530) {
 				x += xi;
 				y += yi;
