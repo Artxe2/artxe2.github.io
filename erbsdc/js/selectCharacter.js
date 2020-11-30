@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', (e) => {
 	document.querySelector('#s_character').addEventListener('change', (e) => {
 		let select = document.querySelector('#s_character').value;
+		document.querySelector('#passive').innerHTML = '';
 		if ('Jackie' == select) {
 			document.querySelector('#i_character').src = './character/Jackie.png';
 			character = Jackie;
@@ -58,6 +59,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Nadine' == select) {
 			document.querySelector('#i_character').src = './character/Nadine.png';
 			character = Nadine;
+			document.querySelector('#t_damage').innerHTML = "<input id = 'stack' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				}
+				updateDisplay();
+			});
 			if (weapon != undefined) {
 				if (weapon.Type != 'Bow' && 
 						weapon.Type != 'Crossbow') {
@@ -126,6 +135,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Xiukai' == select) {
 			document.querySelector('#i_character').src = './character/Xiukai.png';
 			character = Xiukai;
+			document.querySelector('#t_damage').innerHTML = "<input id = 'stack' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				}
+				updateDisplay();
+			});
 			if (weapon != undefined) {
 				if (weapon.Type != 'Spear') {
 					weapon = null;
@@ -171,6 +188,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Silvia' == select) {
 			document.querySelector('#i_character').src = './character/Silvia.png';
 			character = Silvia;
+			document.querySelector('#t_damage').innerHTML = "<input id = 'stack' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				} else if (stack.value > 15) {
+					stack.value = 15;
+				}
+				updateDisplay();
+			});
 			if (weapon != undefined) {
 				if (weapon.Type != 'Pistol') {
 					weapon = null;
@@ -184,6 +211,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 document.addEventListener('DOMContentLoaded', (e) => {
 	document.querySelector('#s_character2').addEventListener('change', (e) => {
 		let select = document.querySelector('#s_character2').value;
+		document.querySelector('#passive2').innerHTML = '';
 		if ('Jackie' == select) {
 			document.querySelector('#i_character2').src = './character/Jackie.png';
 			character2 = Jackie;
@@ -241,6 +269,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Nadine' == select) {
 			document.querySelector('#i_character2').src = './character/Nadine.png';
 			character2 = Nadine;
+			document.querySelector('#t_damage2').innerHTML = "<input id = 'stack2' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack2').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack2');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				}
+				updateDisplay2();
+			});
 			if (weapon2 != undefined) {
 				if (weapon2.Type != 'Bow' && 
 						weapon2.Type != 'Crossbow') {
@@ -309,6 +345,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Xiukai' == select) {
 			document.querySelector('#i_character2').src = './character/Xiukai.png';
 			character2 = Xiukai;
+			document.querySelector('#t_damage2').innerHTML = "<input id = 'stack2' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack2').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack2');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				}
+				updateDisplay2();
+			});
 			if (weapon2 != undefined) {
 				if (weapon2.Type != 'Spear') {
 					weapon2 = null;
@@ -354,6 +398,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Silvia' == select) {
 			document.querySelector('#i_character2').src = './character/Silvia.png';
 			character2 = Silvia;
+			document.querySelector('#t_damage2').innerHTML = "<input id = 'stack2' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack2').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack2');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				} else if (stack.value > 15) {
+					stack.value = 15;
+				}
+				updateDisplay2();
+			});
 			if (weapon2 != undefined) {
 				if (weapon2.Type != 'Pistol') {
 					weapon2 = null;
