@@ -92,7 +92,7 @@ let dagger = [
 	,{
 		 Type: "Dagger"
 		,Name: "Army_Knife"
-		,Attack_Power: 11
+		,Attack_Power: 14
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -122,7 +122,7 @@ let dagger = [
 	,{
 		 Type: "Dagger"
 		,Name: "Rose_Knife"
-		,Attack_Power: 16
+		,Attack_Power: 20
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -152,7 +152,7 @@ let dagger = [
 	,{
 		 Type: "Dagger"
 		,Name: "Carnwennan"
-		,Attack_Power: 22
+		,Attack_Power: 26
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -212,7 +212,7 @@ let dagger = [
 	,{
 		 Type: "Dagger"
 		,Name: "Vibroblade"
-		,Attack_Power: 46
+		,Attack_Power: 53
 		,Attack_Speed: 30
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -1035,7 +1035,7 @@ let axe = [
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 15
+		,Cooldown_Reduction: 10
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
@@ -1063,7 +1063,7 @@ let axe = [
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 50
+		,Skill_Amplification: 45
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
@@ -1757,7 +1757,7 @@ let assaultRifle = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 14
+		,Extra_Normal_Attack_Damage: 12
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -2266,7 +2266,7 @@ let rapier = [
 	,{
 		 Type: "Rapier"
 		,Name: "Durendal_mk2"
-		,Attack_Power: 48
+		,Attack_Power: 51
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 10
 		,Critical_Strike_Damage: 25
@@ -2628,7 +2628,7 @@ let spear = [
 	,{
 		 Type: "Spear"
 		,Name: "Eighteen_foot_spear"
-		,Attack_Power: 110
+		,Attack_Power: 100
 		,Attack_Speed: 40
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -3309,7 +3309,7 @@ let bat = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 1.5
+		,HP_Regen: 1.2
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0.15
@@ -3774,7 +3774,7 @@ let throws = [
 	,{
 		 Type: "Throws"
 		,Name: "David`s_Sling"
-		,Attack_Power: 70
+		,Attack_Power: 75
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -4441,7 +4441,7 @@ let shuriken = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 33
+		,Extra_Normal_Attack_Damage: 29
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 24
 		,Skill_Amplification_Percent: 0
@@ -4591,7 +4591,7 @@ let shuriken = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 50
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 140
+		,Extra_Normal_Attack_Damage: 130
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 25
 		,Skill_Amplification_Percent: 0
@@ -5732,7 +5732,7 @@ let glove = [
 	,{
 		 Type: "Glove"
 		,Name: "Divine_Fist"
-		,Attack_Power: 38
+		,Attack_Power: 42
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -5852,7 +5852,7 @@ let glove = [
 	,{
 		 Type: "Glove"
 		,Name: "Brasil_Gauntlet"
-		,Attack_Power: 45
+		,Attack_Power: 48
 		,Attack_Speed: 30
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -6611,7 +6611,7 @@ let guitar = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 23
+		,Extra_Normal_Attack_Damage: 20
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0

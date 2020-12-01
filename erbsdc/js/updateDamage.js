@@ -200,18 +200,18 @@ function updateDamage() {
 				calcSkillDamage(40 + document.querySelector('#q_level').selectedIndex * 40, 0.2, true) + ' - ' + 
 				calcSkillDamage(80 + document.querySelector('#q_level').selectedIndex * 80, 0.4, true);
 			document.querySelector('#w_damage').innerText = 
-				baseAttackDamage(0, 0.8 + document.querySelector('#w_level').selectedIndex * 0.25, critical_strike_chance, 2, 0, true) + ' ( ' + 
+				baseAttackDamage(0, 0.8 + document.querySelector('#w_level').selectedIndex * 0.2, critical_strike_chance, 2, 0, true) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level').selectedIndex * 0.1, 0, 1, 0, true) + ', ' + 
-				baseAttackDamage(0, 0.2 + document.querySelector('#w_level').selectedIndex * 0.15, 0, 1, 0, true) + ' - ' + 
+				baseAttackDamage(0, 0.2 + document.querySelector('#w_level').selectedIndex * 0.1, 0, 1, 0, true) + ' - ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level').selectedIndex * 0.1, 100, 1, 0, true) + ', ' + 
-				baseAttackDamage(0, 0.2 + document.querySelector('#w_level').selectedIndex * 0.15, 100, 1, 0, true) + ' )';
+				baseAttackDamage(0, 0.2 + document.querySelector('#w_level').selectedIndex * 0.1, 100, 1, 0, true) + ' )';
 			document.querySelector('#e_damage').innerText = 
 				calcSkillDamage(90 + document.querySelector('#e_level').selectedIndex * 40, 0.5, true);
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(30 + document.querySelector('#r_level').selectedIndex * 5, 
-					0.1 + document.querySelector('#r_level').selectedIndex * 0.1, true) + ' _ dps: ' + 
+					0.06 + document.querySelector('#r_level').selectedIndex * 0.12, true) + ' _ dps: ' + 
 				(parseFloat(calcSkillDamage(30 + document.querySelector('#r_level').selectedIndex * 5, 
-					0.1 + document.querySelector('#r_level').selectedIndex * 0.1, true)) * attack_speed).toFixed(2);
+					0.06 + document.querySelector('#r_level').selectedIndex * 0.12, true)) * attack_speed).toFixed(2);
 			document.querySelector('#t_damage').innerText = ' - ';
 		} else if (character == Magnus) {
 			document.querySelector('#q_damage').innerText = 
@@ -445,7 +445,7 @@ function updateDamage() {
 				calcSkillDamage(25 + document.querySelector('#t_level').selectedIndex * 35, 0.3, true);
 		} else if (character == Silvia) {
 			document.querySelector('#q_damage').innerText =  'd: ' + 
-				calcSkillDamage(25 + document.querySelector('#q_level').selectedIndex * 25, 0.4, true) + ' / h: ' + 
+				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 30, 0.4, true) + ' / h: ' + 
 				(40 + document.querySelector('#q_level').selectedIndex * 20 + attack_power * 0.3).toFixed(2) + ' / r: ' + 
 				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 42, 0.5, true);
 			document.querySelector('#w_damage').innerText = 
@@ -643,18 +643,18 @@ function updateDamage() {
 				calcSkillDamage(40 + document.querySelector('#q_level2').selectedIndex * 40, 0.2, false) + ' - ' + 
 				calcSkillDamage(80 + document.querySelector('#q_level2').selectedIndex * 80, 0.4, false);
 			document.querySelector('#w_damage2').innerText = 
-				baseAttackDamage(0, 0.8 + document.querySelector('#w_level2').selectedIndex * 0.25, critical_strike_chance2, 2, 0, false) + ' ( ' + 
+				baseAttackDamage(0, 0.8 + document.querySelector('#w_level2').selectedIndex * 0.2, critical_strike_chance2, 2, 0, false) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level2').selectedIndex * 0.1, 0, 1, 0, false) + ', ' + 
-				baseAttackDamage(0, 0.2 + document.querySelector('#w_level2').selectedIndex * 0.15, 0, 1, 0, false) + ' - ' + 
+				baseAttackDamage(0, 0.2 + document.querySelector('#w_level2').selectedIndex * 0.1, 0, 1, 0, false) + ' - ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level2').selectedIndex * 0.1, 100, 1, 0, false) + ', ' + 
-				baseAttackDamage(0, 0.2 + document.querySelector('#w_level2').selectedIndex * 0.15, 100, 1, 0, false) + ' )';
+				baseAttackDamage(0, 0.2 + document.querySelector('#w_level2').selectedIndex * 0.1, 100, 1, 0, false) + ' )';
 			document.querySelector('#e_damage2').innerText = 
 				calcSkillDamage(90 + document.querySelector('#e_level2').selectedIndex * 40, 0.5, false);
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(30 + document.querySelector('#r_level2').selectedIndex * 5, 
-					0.1 + document.querySelector('#r_level2').selectedIndex * 0.1, false) + ' _ dps: ' + 
+					0.06 + document.querySelector('#r_level2').selectedIndex * 0.12, false) + ' _ dps: ' + 
 				(parseFloat(calcSkillDamage(30 + document.querySelector('#r_level2').selectedIndex * 5, 
-					0.1 + document.querySelector('#r_level2').selectedIndex * 0.1, false)) * attack_speed2).toFixed(2);
+					0.06 + document.querySelector('#r_level2').selectedIndex * 0.12, false)) * attack_speed2).toFixed(2);
 			document.querySelector('#t_damage2').innerText = ' - ';
 		} else if (character2 == Magnus) {
 			document.querySelector('#q_damage2').innerText = 
@@ -888,7 +888,7 @@ function updateDamage() {
 				calcSkillDamage(25 + document.querySelector('#t_level2').selectedIndex * 35, 0.3, false);
 		} else if (character2 == Silvia) {
 			document.querySelector('#q_damage2').innerText =  'd: ' + 
-				calcSkillDamage(25 + document.querySelector('#q_level2').selectedIndex * 25, 0.4, false) + ' / h: ' + 
+				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 30, 0.4, false) + ' / h: ' + 
 				(40 + document.querySelector('#q_level2').selectedIndex * 20 + attack_power2 * 0.3).toFixed(2) + ' / r: ' + 
 				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 42, 0.5, false);
 			document.querySelector('#w_damage2').innerText = 

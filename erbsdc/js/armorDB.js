@@ -2139,7 +2139,7 @@ let arms = [
 		,Attack_Power: 30
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 25
+		,Critical_Strike_Damage: 20
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0

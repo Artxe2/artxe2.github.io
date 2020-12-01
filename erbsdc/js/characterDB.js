@@ -61,7 +61,7 @@ let Magnus = {
 	,"Health": 600
 	,"Health_Growth": 100
 	,"Health_Regen": 1
-	,"Health_Regen_Growth": 0.08
+	,"Health_Regen_Growth": 0.05
 	,"Stamina": 410
 	,"Stamina_Growth": 14
 	,"Stamina_Regen": 1.9
@@ -114,7 +114,7 @@ let Nadine = {
 };
 let Hyunwoo = {
 	 "Attack_Power": 40
-	,"Attack_Power_Growth": 2.4
+	,"Attack_Power_Growth": 2.7
 	,"Health": 500
 	,"Health_Growth": 85
 	,"Health_Regen": 0.8
@@ -132,8 +132,8 @@ let Hyunwoo = {
 	,"Attack_Range": 0.45
 };
 let Hart = {
-	 "Attack_Power": 25
-	,"Attack_Power_Growth": 2.8
+	 "Attack_Power": 22
+	,"Attack_Power_Growth": 3
 	,"Health": 500
 	,"Health_Growth": 74
 	,"Health_Regen": 0.8
@@ -175,7 +175,7 @@ let Li_Dailin = {
 	,"Health": 550
 	,"Health_Growth": 92
 	,"Health_Regen": 1.1
-	,"Health_Regen_Growth": 0.09
+	,"Health_Regen_Growth": 0.07
 	,"Stamina": 420
 	,"Stamina_Growth": 16
 	,"Stamina_Regen": 0.2
@@ -194,7 +194,7 @@ let Yuki = {
 	,"Health": 550
 	,"Health_Growth": 81
 	,"Health_Regen": 0.2
-	,"Health_Regen_Growth": 0.06
+	,"Health_Regen_Growth": 0.05
 	,"Stamina": 410
 	,"Stamina_Growth": 20
 	,"Stamina_Regen": 2.2
@@ -304,9 +304,9 @@ let Adriana = {
 };
 let Shoichi = {
 	 "Attack_Power": 30
-	,"Attack_Power_Growth": 2.4
+	,"Attack_Power_Growth": 2.9
 	,"Health": 550
-	,"Health_Growth": 75
+	,"Health_Growth": 78
 	,"Health_Regen": 0.8
 	,"Health_Regen_Growth": 0.04
 	,"Stamina": 370
@@ -334,7 +334,7 @@ let Silvia = {
 	,"Stamina_Regen_Growth": 0.06
 	,"Defense": 20
 	,"Defense_Growth": 1.4
-	,"Atk_Speed": 0.02
+	,"Atk_Speed": 0.12
 	,"Crit_Rate": 0
 	,"Move_Speed": 3
 	,"Sight_Range": 8

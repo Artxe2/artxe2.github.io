@@ -78,9 +78,9 @@ function updateDisplay() {
 			(accessory == undefined ? 0 : accessory.Skill_Amplification)) * 
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
 		skill_amplification_percent = 
-			(weapon == undefined ? 0 : weapon_mastery_skill_damage_reduction_percent + 
+			(weapon == undefined ? 0 : weapon_mastery_skill_amplification_percent + 
 			document.querySelector('#weapon_mastery').selectedIndex * 
-			weapon_mastery_skill_damage_reduction_percent) + 
+			weapon_mastery_skill_amplification_percent) + 
 			(character != Silvia || parseInt(document.querySelector('#stack').value) != 15 ? 0 : 15) + 
 			((weapon == undefined ? 0 : weapon.Skill_Amplification_Percent) + 
 			(chest == undefined ? 0 : chest.Skill_Amplification_Percent) + 
@@ -330,9 +330,9 @@ function updateDisplay2() {
 			(accessory2 == undefined ? 0 : accessory2.Skill_Amplification)) * 
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
 		skill_amplification_percent2 = 
-			(weapon2 == undefined ? 0 : weapon_mastery_skill_damage_reduction_percent2 + 
+			(weapon2 == undefined ? 0 : weapon_mastery_skill_amplification_percent2 + 
 			document.querySelector('#weapon_mastery2').selectedIndex * 
-			weapon_mastery_skill_damage_reduction_percent2) + 
+			weapon_mastery_skill_amplification_percent2) + 
 			(character2 != Silvia || parseInt(document.querySelector('#stack2').value) != 15 ? 0 : 15) + 
 			((weapon2 == undefined ? 0 : weapon2.Skill_Amplification_Percent) + 
 			(chest2 == undefined ? 0 : chest2.Skill_Amplification_Percent) + 
