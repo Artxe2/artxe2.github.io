@@ -114,10 +114,10 @@ function updateDamage() {
 			document.querySelector('#d_damage').innerText = ' - ';
 		} else if (weapon.Type == 'Shuriken') {
 			document.querySelector('#d_damage').innerText = 
-				calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 110 : 180, 0.3, true) + ' + ' + 
-				Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 110 : 180, 0.3, true) * 0.3)) + ' x 11 ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 110 : 180, 0.3, true))) + 
-				Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 110 : 180, 0.3, true) * 0.3)) * 11) + ' )';
+				calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 180 : 110, 0.3, true) + ' + ' + 
+				calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 54 : 33, 0.09, true) + ' x 11 ( ' + 
+				(Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 180 : 110, 0.3, true))) + 
+				Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 54 : 33, 0.09, true))) * 11) + ' )';
 		} else if (weapon.Type == 'Bow') {
 			document.querySelector('#d_damage').innerText = 
 				calcSkillDamage(document.querySelector('#weapon_mastery').selectedIndex > 12 ? 250 : 150, 1, true) + ' - ' + 
@@ -428,7 +428,7 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage(70 + document.querySelector('#r_level').selectedIndex * 60, 0.4, true))) * 3 + ' )';
 			document.querySelector('#t_damage').innerText = 
 				calcSkillDamage(4 + document.querySelector('#t_level').selectedIndex * 3, 0.15, true) + ' ~ ' + 
-				Math.round(parseFloat(calcSkillDamage(4 + document.querySelector('#t_level').selectedIndex * 3, 0.15, true)) * 1.8) * 9;
+				Math.round(parseFloat(calcSkillDamage((4 + document.querySelector('#t_level').selectedIndex * 3) * 1.8, 0.27, true))) * 9;
 		} else if (character == Shoichi) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 45, 0.45, true)
@@ -557,10 +557,10 @@ function updateDamage() {
 			document.querySelector('#d_damage2').innerText = ' - ';
 		} else if (weapon2.Type == 'Shuriken') {
 			document.querySelector('#d_damage2').innerText = 
-				calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 110 : 180, 0.3, false) + ' + ' + 
-				Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 110 : 180, 0.3, false) * 0.3)) + ' x 11 ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 110 : 180, 0.3, false))) + 
-				Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 110 : 180, 0.3, false) * 0.3)) * 11) + ' )';
+				calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 180 : 110, 0.3, false) + ' + ' + 
+				calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 54 : 33, 0.09, false) + ' x 11 ( ' + 
+				(Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 180 : 110, 0.3, false))) + 
+				Math.round(parseFloat(calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 54 : 33, 0.09, false))) * 11) + ' )';
 		} else if (weapon2.Type == 'Bow') {
 			document.querySelector('#d_damage2').innerText = 
 				calcSkillDamage(document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 250 : 150, 1, false) + ' - ' + 
@@ -871,7 +871,7 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage(70 + document.querySelector('#r_level2').selectedIndex * 60, 0.4, false))) * 3 + ' )';
 			document.querySelector('#t_damage2').innerText = 
 				calcSkillDamage(4 + document.querySelector('#t_level2').selectedIndex * 3, 0.15, false) + ' ~ ' + 
-				Math.round(parseFloat(calcSkillDamage(4 + document.querySelector('#t_level2').selectedIndex * 3, 0.15, false)) * 1.8) * 9;
+				Math.round(parseFloat(calcSkillDamage((4 + document.querySelector('#t_level2').selectedIndex * 3) * 1.8, 0.27, false))) * 9;
 		} else if (character2 == Shoichi) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 45, 0.45, false)
