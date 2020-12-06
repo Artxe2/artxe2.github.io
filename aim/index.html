@@ -1,65 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset = 'UTF-8'>
+<meta charset='UTF-8'>
 <title>Aim practice</title>
-<script type="text/javascript">
-	let d;//#timer
-	let t;//#target
-	let s;//#dist
-	let x;//target.x
-	let y;//target.y
-	let m;//shot_ms
-	let l;//target move distance
-	let c;//target move count
-	document.addEventListener("DOMContentLoaded", function() {
-		d = document.getElementById('timer');
-		t = document.getElementById('target');
-		s = document.getElementById('dist');
-		x = 475;
-		y = 265;
-		changeDistance();
-		refresh();
-	});
-	function refresh() {
-		t.style.left = x + 'px';
-		t.style.top = y - 7.5 + 'px';
-	}
-	function changeDistance() {
-		c = 0;
-		l = parseInt(Math.random() * 39) * 20 + 20;
-		s.innerHTML = l + 'px';
-	}
-	function shot() {
-		if (m) {
-			let n = Date.now();
-			d.innerHTML = n - m + 'ms';
-			m = n;
-		} else {
-			m = Date.now();
+    <style type="text/css">
+        .target {
+            position:relative;
+            display:inline-block;
+            width:16px;
+            height:16px;
+            border-radius:8px;
+            background-color:red
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.14.0/babel.min.js"></script>
+    <script type="text/babel">
+class Target extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+             x: 472
+            ,y: 262
+			,size: 16
+			,count: 1
+			,distance: 20 + parseInt(Math.random() * 22) * 20
+        };
+    }
+    render() {
+        return (
+            <div class='target' id='target' style={{
+					 left: this.state.x
+					,top: this.state.y
+					,width: this.state.size
+            		,height: this.state.size
+            		,borderRadius: parseInt(this.state.size / 2)
+			}} onClick={this.shot}></div>
+        );
+    }
+    shot = () => {
+		let r, x, y;
+		do {
+			r = Math.random() * 360;
+          	x = this.state.x + parseInt(this.state.distance * Math.cos(r * (Math.PI/180)));
+         	y = this.state.y + parseInt(this.state.distance * Math.sin(r * (Math.PI/180)));
+		} while (x < 0 || x > 960 - this.state.size || y < 0 || y > 540 - this.state.y);
+		if (this.state.count == 10) {
+          	this.setState({
+				 x: x
+            	,y: y
+				,count: 1
+				,distance: 20 + parseInt(Math.random() * 22) * 20
+			});
+      	} else {
+        	this.setState({
+            	 x: x
+            	,y: y
+				,count: this.state.count + 1
+        	});
 		}
-		while (true) {
-			let r = Math.random() * 360;
-			let xi = parseInt(l * Math.cos(r * (Math.PI/180)));
-			let yi = parseInt(l * Math.sin(r * (Math.PI/180)));
-			if (x + xi >= 0 && x + xi <= 950 && y + yi >= 0 && y + yi <= 530) {
-				x += xi;
-				y += yi;
-				break;
-			}
-		}
-		if (++c == 10) {
-			changeDistance();
-		}
-		refresh();
-	}
-</script>
+    }
+}
+ReactDOM.render(<Target/>, document.querySelector('#display'));
+    </script>
 </head>
-<body style = "align-content: center; background-color: black">
-<div id ='display' style = "position: absolute; left: 25%; top: 100px; width: 960px; height: 540px; background-color: green; cursor: crosshair;">
-<div id ='target' style = "position: relative; display: inline-block; left: 100px; top: 100px; width: 10px; height: 10px; border-radius: 5px; background-color: red;" onclick = "shot()"></div>
-</div>
-<div id = 'timer' style = "position: relative; display: inline-block; color: white;">0ms</div><br>
-<div id = 'dist' style = "position: relative; display: inline-block; color: white;">0px</div>
+<body style="background-color:black;">
+    <div id='display' style="bottom:0;left:0;right:0;top:0;margin:auto;position:absolute;width:960px;height:540px;background-color:green;cursor:crosshair;">
+    </div>
 </body>
 </html>
