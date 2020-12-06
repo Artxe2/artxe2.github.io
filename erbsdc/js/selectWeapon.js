@@ -183,6 +183,13 @@ function selectWeapon() {
 					list += '<br>';
 				}
 			}
+			for (let i = 0; i < dualSwords.length; i++) {
+				list += "<img title = '" + dualSwords[i].Name + "' onclick = 'changeWeapon(\"dualSwords\", " + i + ")' src = './weapon/" + dualSwords[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 		} else if (character == Hyejin) {
 			for (let i = 0; i < shuriken.length; i++) {
 				list += "<img title = '" + shuriken[i].Name + "' onclick = 'changeWeapon(\"shuriken\", " + i + ")' src = './weapon/" + shuriken[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
@@ -199,6 +206,13 @@ function selectWeapon() {
 				}
 			}
 		} else if (character == Xiukai) {
+			for (let i = 0; i < dagger.length; i++) {
+				list += "<img title = '" + dagger[i].Name + "' onclick = 'changeWeapon(\"dagger\", " + i + ")' src = './weapon/" + dagger[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 			for (let i = 0; i < spear.length; i++) {
 				list += "<img title = '" + spear[i].Name + "' onclick = 'changeWeapon(\"spear\", " + i + ")' src = './weapon/" + spear[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 				if (++index == 3) {
@@ -215,6 +229,13 @@ function selectWeapon() {
 				}
 			}
 		} else if (character == Sissela) {
+			for (let i = 0; i < throws.length; i++) {
+				list += "<img title = '" + throws[i].Name + "' onclick = 'changeWeapon(\"throws\", " + i + ")' src = './weapon/" + throws[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 			for (let i = 0; i < shuriken.length; i++) {
 				list += "<img title = '" + shuriken[i].Name + "' onclick = 'changeWeapon(\"shuriken\", " + i + ")' src = './weapon/" + shuriken[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 				if (++index == 3) {
@@ -437,6 +458,13 @@ function selectWeapon2() {
 					list += '<br>';
 				}
 			}
+			for (let i = 0; i < dualSwords.length; i++) {
+				list += "<img title = '" + dualSwords[i].Name + "' onclick = 'changeWeapon2(\"dualSwords\", " + i + ")' src = './weapon/" + dualSwords[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 		} else if (character2 == Hyejin) {
 			for (let i = 0; i < shuriken.length; i++) {
 				list += "<img title = '" + shuriken[i].Name + "' onclick = 'changeWeapon2(\"shuriken\", " + i + ")' src = './weapon/" + shuriken[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
@@ -453,6 +481,13 @@ function selectWeapon2() {
 				}
 			}
 		} else if (character2 == Xiukai) {
+			for (let i = 0; i < dagger.length; i++) {
+				list += "<img title = '" + dagger[i].Name + "' onclick = 'changeWeapon2(\"dagger\", " + i + ")' src = './weapon/" + dagger[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 			for (let i = 0; i < spear.length; i++) {
 				list += "<img title = '" + spear[i].Name + "' onclick = 'changeWeapon2(\"spear\", " + i + ")' src = './weapon/" + spear[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 				if (++index == 3) {
@@ -469,6 +504,13 @@ function selectWeapon2() {
 				}
 			}
 		} else if (character2 == Sissela) {
+			for (let i = 0; i < throws.length; i++) {
+				list += "<img title = '" + throws[i].Name + "' onclick = 'changeWeapon2(\"throws\", " + i + ")' src = './weapon/" + throws[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+				if (++index == 3) {
+					index = 0;
+					list += '<br>';
+				}
+			}
 			for (let i = 0; i < shuriken.length; i++) {
 				list += "<img title = '" + shuriken[i].Name + "' onclick = 'changeWeapon2(\"shuriken\", " + i + ")' src = './weapon/" + shuriken[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 				if (++index == 3) {
