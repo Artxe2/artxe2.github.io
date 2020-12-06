@@ -45,6 +45,7 @@ class Target extends React.Component {
 			r = Math.random() * 360;
           	x = this.state.x + parseInt(this.state.distance * Math.cos(r * (Math.PI/180)));
          	y = this.state.y + parseInt(this.state.distance * Math.sin(r * (Math.PI/180)));
+			console.log(x + ', ' + y);
 		} while (x < 0 || x > 960 - this.state.size || y < 0 || y > 540 - this.state.y);
 		if (this.state.count == 10) {
           	this.setState({
