@@ -4,7 +4,7 @@ function baseAttackDamage(base, coe, cri, onhit, bonus, isPlayer1) {
 				100 / (100 + (character2 == undefined ? 0 : defense2)) + (extra_normal_attack_damage - (character2 == undefined ? 0 : normal_attack_damage_reduction2)) * onhit) * 
 				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2);
 	}
-	return (((base + attack_power2 * coe * (100 + cri * (100 + critical_strike_damage2) / 100) / 100 + bonus) * 
+	return ((((base + attack_power2 * coe) * (100 + cri * (100 + critical_strike_damage2) / 100) / 100 + bonus) * 
 			100 / (100 + (character == undefined ? 0 : defense)) + (extra_normal_attack_damage2 - (character == undefined ? 0 : normal_attack_damage_reduction)) * onhit) * 
 			(100 + extra_normal_attack_damage_percent2 - (character == undefined ? 0 : normal_attack_damage_reduction_percent)) / 100).toFixed(2);
 }
