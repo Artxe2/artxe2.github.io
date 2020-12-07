@@ -284,8 +284,8 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#e_level').selectedIndex * 10, 0.4, true) )) + 
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#e_level').selectedIndex * 10, 0.4, true)))) + ' )';
 			document.querySelector('#r_damage').innerText = 'heal: ' + 
-				(150 + document.querySelector('#t_level').selectedIndex * 50 + 
-				max_hp * (0.1 + document.querySelector('#t_level').selectedIndex * 0.05)).toFixed(2);
+				(150 + document.querySelector('#r_level').selectedIndex * 50 + 
+				max_hp * (0.1 + document.querySelector('#r_level').selectedIndex * 0.05)).toFixed(2);
 			document.querySelector('#t_damage').innerText = ' - ';
 		} else if (character == Isol) {
 			document.querySelector('#q_damage').innerText = 
@@ -728,8 +728,8 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#e_level2').selectedIndex * 10, 0.4, false) )) + 
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#e_level2').selectedIndex * 10, 0.4, false)))) + ' )';
 			document.querySelector('#r_damage2').innerText = 'heal: ' + 
-				(150 + document.querySelector('#t_level2').selectedIndex * 50 + 
-				max_hp2 * (0.1 + document.querySelector('#t_level2').selectedIndex * 0.05)).toFixed(2);
+				(150 + document.querySelector('#r_level2').selectedIndex * 50 + 
+				max_hp2 * (0.1 + document.querySelector('#r_level2').selectedIndex * 0.05)).toFixed(2);
 			document.querySelector('#t_damage2').innerText = ' - ';
 		} else if (character2 == Isol) {
 			document.querySelector('#q_damage2').innerText = 
