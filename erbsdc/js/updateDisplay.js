@@ -329,7 +329,7 @@ function updateDisplay2() {
 		document.querySelector('#extra_normal_attack_damage2').innerText = 
 			(extra_normal_attack_damage2).toFixed(2) + '| ' + (extra_normal_attack_damage_percent2).toFixed(2) + '%';
 		skill_amplification2 = 
-			(character != Sissela ? 0 : 
+			(character2 != Sissela ? 0 : 
 				(2 + document.querySelector('#t_level2').selectedIndex * 2) * 
 				(document.querySelector('#stack2').value < 10 ? 
 					0 : (document.querySelector('#stack2').value > 89 ? 5 : document.querySelector('#stack2').value / 20 + 0.5)) * 
