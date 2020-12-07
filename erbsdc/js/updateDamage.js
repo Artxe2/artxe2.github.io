@@ -764,7 +764,7 @@ function updateDamage() {
 				baseAttackDamage(0, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level2').selectedIndex * 0.25, 100, 1, 0, false) + ' )';
 		} else if (character2 == Yuki) {
 			if (weapon2.Type == 'DualSwords') {
-				document.querySelector('#base_attack_damage2').innerText = 
+				document.querySelector('#q_damage2').innerText = 
 					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 2, critical_strike_chance2, 2, 0, false) + ' ( ' + 
 					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 1, 0, 1, 0, false) + ' - ' + 
 					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 1, 100, 1, 0, false) + ' )';
