@@ -319,10 +319,17 @@ function updateDamage() {
 				baseAttackDamage(0, 1, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level').selectedIndex * 0.25, 0, 1, 0, true) + ' - ' + 
 				baseAttackDamage(0, 1, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level').selectedIndex * 0.25, 100, 1, 0, true) + ' )';
 		} else if (character == Yuki) {
-			document.querySelector('#q_damage').innerText = 
-				baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, critical_strike_chance, 1, 0, true) + ' ( ' + 
-				baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 0, 1, 0, true) + ' - ' + 
-				baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 100, 1, 0, true) + ' )';
+			if (weapon.Type == 'DualSwords') {
+				document.querySelector('#q_damage').innerText = 
+					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 2, critical_strike_chance, 2, 0, true) + ' ( ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 1, 0, 1, 0, true) + ' - ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 1, 100, 1, 0, true) + ' )';
+			} else {				
+				document.querySelector('#q_damage').innerText = 
+					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, critical_strike_chance, 1, 0, true) + ' ( ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 0, 1, 0, true) + ' - ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 100, 1, 0, true) + ' )';
+			}
 			document.querySelector('#w_damage').innerText = ' - ';
 			document.querySelector('#e_damage').innerText = 
 				calcSkillDamage(70 + document.querySelector('#e_level').selectedIndex * 50, 0.4, true);
@@ -756,10 +763,17 @@ function updateDamage() {
 				baseAttackDamage(0, 1, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level2').selectedIndex * 0.25, 0, 1, 0, false) + ' - ' + 
 				baseAttackDamage(0, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level2').selectedIndex * 0.25, 100, 1, 0, false) + ' )';
 		} else if (character2 == Yuki) {
-			document.querySelector('#q_damage2').innerText = 
-				baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, critical_strike_chance2, 1, 0, false) + ' ( ' + 
-				baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 0, 1, 0, false) + ' - ' + 
-				baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 100, 1, 0, false) + ' )';
+			if (weapon2.Type == 'DualSwords') {
+				document.querySelector('#base_attack_damage2').innerText = 
+					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 2, critical_strike_chance2, 2, 0, false) + ' ( ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 1, 0, 1, 0, false) + ' - ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 1, 100, 1, 0, false) + ' )';
+			} else {
+				document.querySelector('#q_damage2').innerText = 
+					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, critical_strike_chance2, 1, 0, false) + ' ( ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 0, 1, 0, false) + ' - ' + 
+					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 100, 1, 0, false) + ' )';
+			}
 			document.querySelector('#w_damage2').innerText = ' - ';
 			document.querySelector('#e_damage2').innerText = 
 				calcSkillDamage(70 + document.querySelector('#e_level2').selectedIndex * 50, 0.4, false);
