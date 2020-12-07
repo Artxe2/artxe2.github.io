@@ -70,6 +70,11 @@ function updateDisplay() {
 		document.querySelector('#extra_normal_attack_damage').innerText = 
 			(extra_normal_attack_damage).toFixed(2) + '| ' + (extra_normal_attack_damage_percent).toFixed(2) + '%';
 		skill_amplification = 
+			(character != Sissela ? 0 : 
+				(2 + document.querySelector('#t_level').selectedIndex * 2) * 
+				(document.querySelector('#stack').value < 10 ? 
+					0 : (document.querySelector('#stack').value > 89 ? 5 : document.querySelector('#stack').value / 20 + 0.5)) * 
+				(document.querySelector('#tr').checked ? 2 : 1)) + 
 			((weapon == undefined ? 0 : weapon.Skill_Amplification) + 
 			(chest == undefined ? 0 : chest.Skill_Amplification) + 
 			(head == undefined ? 0 : head.Skill_Amplification) + 
@@ -142,14 +147,16 @@ function updateDisplay() {
 		document.querySelector('#skill_damage_reduction').innerText = 
 			(skill_damage_reduction).toFixed(2) + '| ' + (skill_damage_reduction_percent).toFixed(2) + '%';
 		defense = 
-			character.Defense + character.Defense_Growth * document.querySelector('#level').selectedIndex + 
+			(character.Defense + character.Defense_Growth * document.querySelector('#level').selectedIndex + 
 			((weapon == undefined ? 0 : weapon.Defense) + 
 			(chest == undefined ? 0 : chest.Defense) + 
 			(head == undefined ? 0 : head.Defense) + 
 			(arm == undefined ? 0 : arm.Defense) + 
 			(leg == undefined ? 0 : leg.Defense) + 
 			(accessory == undefined ? 0 : accessory.Defense)) * 
-			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
+			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007)) * 
+			(character2 == undefined || character2 != Chiara ? 1 : 1 - 
+				(0.02 + document.querySelector('#t_level2').selectedIndex * 0.02) * document.querySelector('#stack2').value);
 		document.querySelector('#defense').innerText = (defense).toFixed(2);
 		max_hp = 
 			(character.Health + character.Health_Growth * document.querySelector('#level').selectedIndex + 
@@ -322,6 +329,11 @@ function updateDisplay2() {
 		document.querySelector('#extra_normal_attack_damage2').innerText = 
 			(extra_normal_attack_damage2).toFixed(2) + '| ' + (extra_normal_attack_damage_percent2).toFixed(2) + '%';
 		skill_amplification2 = 
+			(character != Sissela ? 0 : 
+				(2 + document.querySelector('#t_level2').selectedIndex * 2) * 
+				(document.querySelector('#stack2').value < 10 ? 
+					0 : (document.querySelector('#stack2').value > 89 ? 5 : document.querySelector('#stack2').value / 20 + 0.5)) * 
+				(document.querySelector('#tr2').checked ? 2 : 1)) + 
 			((weapon2 == undefined ? 0 : weapon2.Skill_Amplification) + 
 			(chest2 == undefined ? 0 : chest2.Skill_Amplification) + 
 			(head2 == undefined ? 0 : head2.Skill_Amplification) + 
@@ -394,14 +406,16 @@ function updateDisplay2() {
 		document.querySelector('#skill_damage_reduction2').innerText = 
 			(skill_damage_reduction2).toFixed(2) + '| ' + (skill_damage_reduction_percent2).toFixed(2) + '%';
 		defense2 = 
-			character2.Defense + character2.Defense_Growth * document.querySelector('#level2').selectedIndex + 
+			(character2.Defense + character2.Defense_Growth * document.querySelector('#level2').selectedIndex + 
 			((weapon2 == undefined ? 0 : weapon2.Defense) + 
 			(chest2 == undefined ? 0 : chest2.Defense) + 
 			(head2 == undefined ? 0 : head2.Defense) + 
 			(arm2 == undefined ? 0 : arm2.Defense) + 
 			(leg2 == undefined ? 0 : leg2.Defense) + 
 			(accessory2 == undefined ? 0 : accessory2.Defense)) * 
-			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
+			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007)) * 
+			(character == undefined || character != Chiara ? 1 : 1 - 
+				(0.02 + document.querySelector('#t_level').selectedIndex * 0.02) * document.querySelector('#stack').value);				
 		document.querySelector('#defense2').innerText = (defense2).toFixed(2);
 		max_hp2 = 
 			(character2.Health + character2.Health_Growth * document.querySelector('#level2').selectedIndex + 
