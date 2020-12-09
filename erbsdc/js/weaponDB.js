@@ -1063,7 +1063,7 @@ let axe = [
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 45
+		,Skill_Amplification: 42
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
@@ -2014,7 +2014,7 @@ let sniperRifle = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.07
+		,Move_Speed: -0.03
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 2.5
 		,Attack_Range: 0
@@ -2443,7 +2443,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2473,7 +2473,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2503,7 +2503,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2533,7 +2533,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2563,7 +2563,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2593,7 +2593,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2623,7 +2623,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2653,7 +2653,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2683,7 +2683,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2713,7 +2713,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2743,7 +2743,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2773,7 +2773,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2803,7 +2803,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 	,{
 		 Type: "Spear"
@@ -2833,7 +2833,7 @@ let spear = [
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 2.15
-		,Atk_Speed: 0.485
+		,Atk_Speed: 0.445
 	}
 ];
 let hammer = [
@@ -3050,7 +3050,7 @@ let hammer = [
 	,{
 		 Type: "Hammer"
 		,Name: "Evening_Star"
-		,Attack_Power: 145
+		,Attack_Power: 150
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -3352,7 +3352,7 @@ let bat = [
 	,{
 		 Type: "Bat"
 		,Name: "Spy_Umbrella"
-		,Attack_Power: 50
+		,Attack_Power: 60
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -3382,7 +3382,7 @@ let bat = [
 	,{
 		 Type: "Bat"
 		,Name: "Monkey_King_Bar"
-		,Attack_Power: 140
+		,Attack_Power: 150
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -3438,7 +3438,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3468,7 +3468,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3498,7 +3498,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3528,7 +3528,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3558,7 +3558,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3588,7 +3588,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3618,7 +3618,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3648,7 +3648,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3678,7 +3678,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3708,7 +3708,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3738,7 +3738,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3768,13 +3768,13 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
 		 Type: "Throws"
 		,Name: "David`s_Sling"
-		,Attack_Power: 75
+		,Attack_Power: 80
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -3798,7 +3798,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3828,7 +3828,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3858,7 +3858,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -3888,7 +3888,7 @@ let throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 5.8
 		,Atk_Speed: 0.51
 	}
 ];
@@ -5064,7 +5064,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5094,7 +5094,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5124,7 +5124,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5154,7 +5154,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5184,7 +5184,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 2.5
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5214,7 +5214,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5244,7 +5244,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5274,7 +5274,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5300,11 +5300,11 @@ let crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.05
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5333,8 +5333,8 @@ let crossbow = [
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 5
-		,Attack_Range: 1.2
-		,Base_Range: 0
+		,Attack_Range: 1
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5364,7 +5364,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 	,{
@@ -5394,7 +5394,7 @@ let crossbow = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 0
+		,Base_Range: 4.6
 		,Atk_Speed: 0.51
 	}
 ];
@@ -5752,7 +5752,7 @@ let glove = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
+		,Move_Speed: -0.05
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
@@ -5872,7 +5872,7 @@ let glove = [
 		,HP_Regen: 1
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
+		,Move_Speed: -0.05
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
@@ -6064,7 +6064,7 @@ let tonfa = [
 	,{
 		 Type: "Tonfa"
 		,Name: "Tactical_Tonfa"
-		,Attack_Power: 65
+		,Attack_Power: 70
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -6521,7 +6521,7 @@ let guitar = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 10
-		,Extra_Normal_Attack_Damage: 14
+		,Extra_Normal_Attack_Damage: 12
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0

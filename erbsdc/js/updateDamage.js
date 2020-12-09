@@ -168,14 +168,13 @@ function updateDamage() {
 				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' / h: ' + 
 				(12 + document.querySelector('#w_level').selectedIndex * 7 + attack_power * 0.1).toFixed(2);
 			document.querySelector('#e_damage').innerText = 
-				calcSkillDamage(10 + document.querySelector('#q_level').selectedIndex * 70, 
-					0.3 + document.querySelector('#q_level').selectedIndex * 0.1, true)
+				calcSkillDamage(10 + document.querySelector('#e_level').selectedIndex * 70, 
+					0.3 + document.querySelector('#e_level').selectedIndex * 0.1, true)
 			document.querySelector('#r_damage').innerText = 
-				calcSkillDamage(document.querySelector('#r_level').selectedIndex == 0 ? 300 : 
-					document.querySelector('#r_level').selectedIndex == 1 ? 500 : 800, 0.7, true) + ' _ dps: ' + 
+				calcSkillDamage(300 + document.querySelector('#r_level').selectedIndex * 200, 0.7, true) + ' _ dps: ' + 
 				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * 
 				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
-				(0.3 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
+				(0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
 			document.querySelector('#t_damage').innerText = 'AP increases: ' + 
 				(document.querySelector('#t_level').selectedIndex == 0 ? Math.round(attack_power * 0.03) + ' ~ ' + Math.round(attack_power * 0.08) : 
 				document.querySelector('#t_level').selectedIndex == 1 ? Math.round(attack_power * 0.08) + ' ~ ' + Math.round(attack_power * 0.2) : 
@@ -197,8 +196,9 @@ function updateDamage() {
 				(150 + document.querySelector('#t_level').selectedIndex * 50 + attack_power * 0.1);
 		} else if (character == Fiora) {
 			document.querySelector('#q_damage').innerText = 
-				calcSkillDamage(40 + document.querySelector('#q_level').selectedIndex * 40, 0.2, true) + ' - ' + 
-				calcSkillDamage(80 + document.querySelector('#q_level').selectedIndex * 80, 0.4, true);
+				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 60, 0.2, true) + ' - ' + 
+				calcSkillDamage((60 + document.querySelector('#q_level').selectedIndex * 60) * (110 + critical_strike_damage) / 100, 
+					0.2 * (110 + critical_strike_damage) / 100, true);
 			document.querySelector('#w_damage').innerText = 
 				baseAttackDamage(0, 0.8 + document.querySelector('#w_level').selectedIndex * 0.2, critical_strike_chance, 2, 0, true) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level').selectedIndex * 0.1, 0, 1, 0, true) + ', ' + 
@@ -206,7 +206,9 @@ function updateDamage() {
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level').selectedIndex * 0.1, 100, 1, 0, true) + ', ' + 
 				baseAttackDamage(0, 0.2 + document.querySelector('#w_level').selectedIndex * 0.1, 100, 1, 0, true) + ' )';
 			document.querySelector('#e_damage').innerText = 
-				calcSkillDamage(90 + document.querySelector('#e_level').selectedIndex * 40, 0.5, true);
+				calcSkillDamage(90 + document.querySelector('#e_level').selectedIndex * 40, 0.4, true) + ' - ' + 
+				calcSkillDamage((90 + document.querySelector('#e_level').selectedIndex * 40) * (110 + critical_strike_damage) / 100, 
+					0.4 * (110 + critical_strike_damage) / 100, true);
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(30 + document.querySelector('#r_level').selectedIndex * 5, 
 					0.06 + document.querySelector('#r_level').selectedIndex * 0.12, true) + ' _ dps: ' + 
@@ -318,18 +320,14 @@ function updateDamage() {
 				baseAttackDamage(0, 1.5 + document.querySelector('#t_level').selectedIndex * 0.25, critical_strike_chance, 2, 0, true) + ' ( ' + 
 				baseAttackDamage(0, 1, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level').selectedIndex * 0.25, 0, 1, 0, true) + ' - ' + 
 				baseAttackDamage(0, 1, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level').selectedIndex * 0.25, 100, 1, 0, true) + ' )';
-		} else if (character == Yuki) {
-			if (weapon.Type == 'DualSwords') {
-				document.querySelector('#q_damage').innerText = 
-					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 2, critical_strike_chance, 2, 0, true) + ' ( ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 0, 1, 0, true) + ', ' + baseAttackDamage(0, 1, 0, 1, 0, true) + ' - ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 100, 1, 0, true) + ', ' + baseAttackDamage(0, 1, 100, 1, 0, true) + ' )';
-			} else {				
-				document.querySelector('#q_damage').innerText = 
-					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, critical_strike_chance, 1, 0, true) + ' ( ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 0, 1, 0, true) + ' - ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level').selectedIndex * 25, 1, 100, 1, 0, true) + ' )';
-			}
+		} else if (character == Yuki) {		
+			document.querySelector('#q_damage').innerText = 
+				baseAttackDamage(20 + document.querySelector('#q_level').selectedIndex * 25, 
+					weapon.Type == 'DualSwords' ? 2 : 1, critical_strike_chance, 1, 0, true) + ' ( ' + 
+				baseAttackDamage(20 + document.querySelector('#q_level').selectedIndex * 25, 
+					weapon.Type == 'DualSwords' ? 2 : 1, 0, 1, 0, true) + ' - ' + 
+				baseAttackDamage(20 + document.querySelector('#q_level').selectedIndex * 25, 
+					weapon.Type == 'DualSwords' ? 2 : 1, 100, 1, 0, true) + ' )';
 			document.querySelector('#w_damage').innerText = ' - ';
 			document.querySelector('#e_damage').innerText = 
 				calcSkillDamage(70 + document.querySelector('#e_level').selectedIndex * 50, 0.4, true);
@@ -444,15 +442,15 @@ function updateDamage() {
 				calcSkillDamage(25 + document.querySelector('#t_level').selectedIndex * 35, 0.3, true);
 		} else if (character == Silvia) {
 			document.querySelector('#q_damage').innerText =  'd: ' + 
-				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 30, 0.4, true) + ' / h: ' + 
+				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 35, 0.4, true) + ' / h: ' + 
 				(40 + document.querySelector('#q_level').selectedIndex * 20 + attack_power * 0.3).toFixed(2) + ' / r: ' + 
 				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 42, 0.5, true);
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(40 + document.querySelector('#w_level').selectedIndex * 20, 0.3, true) + ' / r: ' + 
 				calcSkillDamage(90 + document.querySelector('#w_level').selectedIndex * 40, 0.6, true);
 			document.querySelector('#e_damage').innerText = 
-				calcSkillDamage(70 + document.querySelector('#e_level').selectedIndex * 15, 0.5, true) + ' ~ ' + 
-				calcSkillDamage(154 + document.querySelector('#e_level').selectedIndex * 33, 0.5, true) + ' / r: ' + 
+				calcSkillDamage(80 + document.querySelector('#e_level').selectedIndex * 20, 0.5, true) + ' ~ ' + 
+				calcSkillDamage(176 + document.querySelector('#e_level').selectedIndex * 44, 0.5, true) + ' / r: ' + 
 				calcSkillDamage(40 + document.querySelector('#e_level').selectedIndex * 25 + 
 				movement_speed * (1.2 + document.querySelector('#r_level').selectedIndex * 0.05) * 
 				(6 + document.querySelector('#e_level').selectedIndex * 4), 0.6, true);
@@ -612,14 +610,13 @@ function updateDamage() {
 				(100 + extra_normal_attack_damage_percent2 - (character == undefined ? 0 : normal_attack_damage_reduction_percent)) / 100).toFixed(2) + ' / h: ' + 
 				(12 + document.querySelector('#w_level2').selectedIndex * 7 + attack_power2 * 0.1).toFixed(2);
 			document.querySelector('#e_damage2').innerText = 
-				calcSkillDamage(10 + document.querySelector('#q_level2').selectedIndex * 70, 
-					0.3 + document.querySelector('#q_level2').selectedIndex * 0.1, false)
+				calcSkillDamage(10 + document.querySelector('#e_level2').selectedIndex * 70, 
+					0.3 + document.querySelector('#e_level2').selectedIndex * 0.1, false)
 			document.querySelector('#r_damage2').innerText = 
-				calcSkillDamage(document.querySelector('#r_level2').selectedIndex == 0 ? 300 : 
-					document.querySelector('#r_level2').selectedIndex == 1 ? 500 : 800, 0.7, false) + ' _ dps: ' + 
+				calcSkillDamage(300 + document.querySelector('#r_level2').selectedIndex * 200, 0.7, false) + ' _ dps: ' + 
 				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance2, 1, 0, false)) * 
 				(attack_speed2 + (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
-				(0.3 + document.querySelector('#r_level2').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
+				(0.2 + document.querySelector('#r_level2').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
 			document.querySelector('#t_damage2').innerText = 'AP increases: ' + 
 				(document.querySelector('#t_level2').selectedIndex == 0 ? Math.round(attack_power2 * 0.03) + ' ~ ' + Math.round(attack_power2 * 0.08) : 
 				document.querySelector('#t_level2').selectedIndex == 1 ? Math.round(attack_power2 * 0.08) + ' ~ ' + Math.round(attack_power2 * 0.2) : 
@@ -641,8 +638,9 @@ function updateDamage() {
 				(150 + document.querySelector('#t_level2').selectedIndex * 50 + attack_power2 * 0.1);
 		} else if (character2 == Fiora) {
 			document.querySelector('#q_damage2').innerText = 
-				calcSkillDamage(40 + document.querySelector('#q_level2').selectedIndex * 40, 0.2, false) + ' - ' + 
-				calcSkillDamage(80 + document.querySelector('#q_level2').selectedIndex * 80, 0.4, false);
+				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 60, 0.2, false) + ' - ' + 
+				calcSkillDamage((60 + document.querySelector('#q_level2').selectedIndex * 60) * (110 + critical_strike_damage2) / 100, 
+					0.2 * (110 + critical_strike_damage2) / 100, false);
 			document.querySelector('#w_damage2').innerText = 
 				baseAttackDamage(0, 0.8 + document.querySelector('#w_level2').selectedIndex * 0.2, critical_strike_chance2, 2, 0, false) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level2').selectedIndex * 0.1, 0, 1, 0, false) + ', ' + 
@@ -650,7 +648,9 @@ function updateDamage() {
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level2').selectedIndex * 0.1, 100, 1, 0, false) + ', ' + 
 				baseAttackDamage(0, 0.2 + document.querySelector('#w_level2').selectedIndex * 0.1, 100, 1, 0, false) + ' )';
 			document.querySelector('#e_damage2').innerText = 
-				calcSkillDamage(90 + document.querySelector('#e_level2').selectedIndex * 40, 0.5, false);
+				calcSkillDamage(90 + document.querySelector('#e_level2').selectedIndex * 40, 0.4, false) + ' - ' + 
+				calcSkillDamage((90 + document.querySelector('#e_level2').selectedIndex * 40) * (110 + critical_strike_damage2) / 100, 
+					0.4 * (110 + critical_strike_damage2) / 100, false);
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(30 + document.querySelector('#r_level2').selectedIndex * 5, 
 					0.06 + document.querySelector('#r_level2').selectedIndex * 0.12, false) + ' _ dps: ' + 
@@ -763,17 +763,13 @@ function updateDamage() {
 				baseAttackDamage(0, 1, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level2').selectedIndex * 0.25, 0, 1, 0, false) + ' - ' + 
 				baseAttackDamage(0, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 0.5 + document.querySelector('#t_level2').selectedIndex * 0.25, 100, 1, 0, false) + ' )';
 		} else if (character2 == Yuki) {
-			if (weapon2.Type == 'DualSwords') {
 				document.querySelector('#q_damage2').innerText = 
-					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 2, critical_strike_chance2, 2, 0, false) + ' ( ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 0, 1, 0, false) + ', ' + baseAttackDamage(0, 1, 0, 1, 0, false) + ' - ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 100, 1, 0, false) + ', ' + baseAttackDamage(0, 1, 100, 1, 0, false) + ' )';
-			} else {
-				document.querySelector('#q_damage2').innerText = 
-					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, critical_strike_chance2, 1, 0, false) + ' ( ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 0, 1, 0, false) + ' - ' + 
-					baseAttackDamage(30 + document.querySelector('#q_level2').selectedIndex * 25, 1, 100, 1, 0, false) + ' )';
-			}
+				baseAttackDamage(20 + document.querySelector('#q_level2').selectedIndex * 25, 
+					weapon2.Type == 'DualSwords' ? 2 : 1, critical_strike_chance2, 1, 0, false) + ' ( ' + 
+				baseAttackDamage(20 + document.querySelector('#q_level2').selectedIndex * 25, 
+					weapon2.Type == 'DualSwords' ? 2 : 1, 0, 1, 0, false) + ' - ' + 
+				baseAttackDamage(20 + document.querySelector('#q_level2').selectedIndex * 25, 
+					weapon2.Type == 'DualSwords' ? 2 : 1, 100, 1, 0, false) + ' )';
 			document.querySelector('#w_damage2').innerText = ' - ';
 			document.querySelector('#e_damage2').innerText = 
 				calcSkillDamage(70 + document.querySelector('#e_level2').selectedIndex * 50, 0.4, false);
@@ -888,15 +884,15 @@ function updateDamage() {
 				calcSkillDamage(25 + document.querySelector('#t_level2').selectedIndex * 35, 0.3, false);
 		} else if (character2 == Silvia) {
 			document.querySelector('#q_damage2').innerText =  'd: ' + 
-				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 30, 0.4, false) + ' / h: ' + 
+				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 35, 0.4, false) + ' / h: ' + 
 				(40 + document.querySelector('#q_level2').selectedIndex * 20 + attack_power2 * 0.3).toFixed(2) + ' / r: ' + 
 				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 42, 0.5, false);
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(40 + document.querySelector('#w_level2').selectedIndex * 20, 0.3, false) + ' / r: ' + 
 				calcSkillDamage(90 + document.querySelector('#w_level2').selectedIndex * 40, 0.6, false);
 			document.querySelector('#e_damage2').innerText = 
-				calcSkillDamage(70 + document.querySelector('#e_level2').selectedIndex * 15, 0.5, false) + ' ~ ' + 
-				calcSkillDamage(154 + document.querySelector('#e_level2').selectedIndex * 33, 0.5, false) + ' / r: ' + 
+				calcSkillDamage(80 + document.querySelector('#e_level2').selectedIndex * 20, 0.5, false) + ' ~ ' + 
+				calcSkillDamage(176 + document.querySelector('#e_level2').selectedIndex * 44, 0.5, false) + ' / r: ' + 
 				calcSkillDamage(40 + document.querySelector('#e_level2').selectedIndex * 25 + 
 				movement_speed2 * (1.2 + document.querySelector('#r_level2').selectedIndex * 0.05) * 
 				(6 + document.querySelector('#e_level2').selectedIndex * 4), 0.6, false);

@@ -168,7 +168,7 @@ function updateDisplay() {
 			(accessory == undefined ? 0 : accessory.Max_HP)) * 
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007) + 
 			(character != Xiukai ? 0 : parseInt(document.querySelector('#stack').value) * 8)) * 
-			(1.013 + document.querySelector('#health_mastery').selectedIndex * 0.013);
+			(1.012 + document.querySelector('#health_mastery').selectedIndex * 0.012);
 		document.querySelector('#max_hp').innerText = (max_hp).toFixed(2);
 		max_sp = 
 			(character.Stamina + character.Stamina_Growth * document.querySelector('#level').selectedIndex + 
@@ -179,7 +179,7 @@ function updateDisplay() {
 			(leg == undefined ? 0 : leg.Max_SP) + 
 			(accessory == undefined ? 0 : accessory.Max_SP)) * 
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007)) * 
-			(1 + document.querySelector('#meditation_mastery').selectedIndex * 0.04);
+			(1.017 + document.querySelector('#meditation_mastery').selectedIndex * 0.017);
 		document.querySelector('#max_sp').innerText = (max_sp).toFixed(2);
 		hp_regen = 
 			character.Health_Regen + character.Health_Regen_Growth * document.querySelector('#level').selectedIndex + 
@@ -208,7 +208,7 @@ function updateDisplay() {
 			(leg == undefined ? 0 : leg.Normal_Attack_Damage_Reduction) + 
 			(accessory == undefined ? 0 : accessory.Normal_Attack_Damage_Reduction)) * 
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
-		normal_attack_damage_reduction_percent = 1.3 + document.querySelector('#defense_mastery').selectedIndex * 1.3;
+		normal_attack_damage_reduction_percent = 1.2 + document.querySelector('#defense_mastery').selectedIndex * 1.2;
 		document.querySelector('#normal_attack_damage_reduction').innerText = 
 			(normal_attack_damage_reduction).toFixed(2) + '| ' + (normal_attack_damage_reduction_percent).toFixed(2) + '%';
 		movement_speed = 
@@ -427,7 +427,7 @@ function updateDisplay2() {
 			(accessory2 == undefined ? 0 : accessory2.Max_HP)) * 
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007) + 
 			(character2 != Xiukai ? 0 : parseInt(document.querySelector('#stack2').value) * 8)) * 
-			(1.013 + document.querySelector('#health_mastery2').selectedIndex * 0.013);
+			(1.012 + document.querySelector('#health_mastery2').selectedIndex * 0.012);
 		document.querySelector('#max_hp2').innerText = (max_hp2).toFixed(2);
 		max_sp2 = 
 			(character2.Stamina + character2.Stamina_Growth * document.querySelector('#level2').selectedIndex + 
@@ -438,7 +438,7 @@ function updateDisplay2() {
 			(leg2 == undefined ? 0 : leg2.Max_SP) + 
 			(accessory2 == undefined ? 0 : accessory2.Max_SP)) * 
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007)) * 
-			(1 + document.querySelector('#meditation_mastery2').selectedIndex * 0.04);
+			(1.017 + document.querySelector('#meditation_mastery2').selectedIndex * 0.017);
 		document.querySelector('#max_sp2').innerText = (max_sp2).toFixed(2);
 		hp_regen2 = 
 			character2.Health_Regen + character2.Health_Regen_Growth * document.querySelector('#level2').selectedIndex + 
@@ -467,7 +467,7 @@ function updateDisplay2() {
 			(leg2 == undefined ? 0 : leg2.Normal_Attack_Damage_Reduction) + 
 			(accessory2 == undefined ? 0 : accessory2.Normal_Attack_Damage_Reduction)) * 
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
-		normal_attack_damage_reduction_percent2 = 1.3 + document.querySelector('#defense_mastery2').selectedIndex * 1.3;
+		normal_attack_damage_reduction_percent2 = 1.2 + document.querySelector('#defense_mastery2').selectedIndex * 1.2;
 		document.querySelector('#normal_attack_damage_reduction2').innerText = 
 			(normal_attack_damage_reduction2).toFixed(2) + '| ' + (normal_attack_damage_reduction_percent2).toFixed(2) + '%';
 		movement_speed2 = 

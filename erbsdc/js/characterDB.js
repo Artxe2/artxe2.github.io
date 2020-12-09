@@ -59,7 +59,7 @@ let Magnus = {
 	 "Attack_Power": 32
 	,"Attack_Power_Growth": 1.5
 	,"Health": 600
-	,"Health_Growth": 100
+	,"Health_Growth": 91
 	,"Health_Regen": 1
 	,"Health_Regen_Growth": 0.05
 	,"Stamina": 410
@@ -91,7 +91,7 @@ let Zahir = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.45
 };
 let Nadine = {
 	 "Attack_Power": 32
@@ -110,7 +110,7 @@ let Nadine = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.4
 };
 let Hyunwoo = {
 	 "Attack_Power": 40
@@ -173,7 +173,7 @@ let Li_Dailin = {
 	 "Attack_Power": 33
 	,"Attack_Power_Growth": 1.9
 	,"Health": 550
-	,"Health_Growth": 92
+	,"Health_Growth": 89
 	,"Health_Regen": 1.1
 	,"Health_Regen_Growth": 0.07
 	,"Stamina": 420
@@ -209,7 +209,7 @@ let Yuki = {
 };
 let Hyejin = {
 	 "Attack_Power": 29
-	,"Attack_Power_Growth": 2.3
+	,"Attack_Power_Growth": 2.5
 	,"Health": 500
 	,"Health_Growth": 64
 	,"Health_Regen": 0.6
@@ -239,7 +239,7 @@ let Xiukai = {
 	,"Stamina_Regen_Growth": 0.01
 	,"Defense": 34
 	,"Defense_Growth": 1.7
-	,"Atk_Speed": 0.12
+	,"Atk_Speed": 0.16
 	,"Crit_Rate": 0
 	,"Move_Speed": 3.1
 	,"Sight_Range": 8
@@ -262,7 +262,7 @@ let Chiara = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3.2
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.4
 };
 let Sissela = {
 	 "Attack_Power": 23
@@ -276,7 +276,7 @@ let Sissela = {
 	,"Stamina_Regen": 1.1
 	,"Stamina_Regen_Growth": 0.02
 	,"Defense": 19
-	,"Defense_Growth": 1.5
+	,"Defense_Growth": 1.7
 	,"Atk_Speed": 0.12
 	,"Crit_Rate": 0
 	,"Move_Speed": 3
@@ -300,7 +300,7 @@ let Adriana = {
 	,"Crit_Rate": 0
 	,"Move_Speed": 3
 	,"Sight_Range": 8
-	,"Attack_Range": 0
+	,"Attack_Range": 0.4
 };
 let Shoichi = {
 	 "Attack_Power": 30
@@ -313,7 +313,7 @@ let Shoichi = {
 	,"Stamina_Growth": 13
 	,"Stamina_Regen": 1.6
 	,"Stamina_Regen_Growth": 0.04
-	,"Defense": 24
+	,"Defense": 27
 	,"Defense_Growth": 2.2
 	,"Atk_Speed": 0.12
 	,"Crit_Rate": 0
