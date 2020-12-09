@@ -174,7 +174,7 @@ function updateDamage() {
 				calcSkillDamage(300 + document.querySelector('#r_level').selectedIndex * 200, 0.7, true) + ' _ dps: ' + 
 				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * 
 				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
-				(0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
+				(0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
 			document.querySelector('#t_damage').innerText = 'AP increases: ' + 
 				(document.querySelector('#t_level').selectedIndex == 0 ? Math.round(attack_power * 0.03) + ' ~ ' + Math.round(attack_power * 0.08) : 
 				document.querySelector('#t_level').selectedIndex == 1 ? Math.round(attack_power * 0.08) + ' ~ ' + Math.round(attack_power * 0.2) : 
