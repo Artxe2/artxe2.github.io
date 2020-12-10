@@ -78,14 +78,20 @@ function updateDamage() {
 			document.querySelector('#d_damage').innerText = 
 				calcSkillDamage(0, document.querySelector('#weapon_mastery').selectedIndex > 12 ? 2.5 : 2, true);
 		} else if (weapon.Type == 'Axe') {
-			document.querySelector('#d_damage').innerText = 'AP increases: ' + 
-				Math.round(attack_power * 0.02) + ' ~ ' + Math.round(attack_power * 0.1) + ' / ' + 
-				Math.round(attack_power * 0.05) + ' ~ ' + Math.round(attack_power * 0.25) + ' - ' + 
-				Math.round(attack_power * 0.15) + ' ~ ' + Math.round(attack_power * 0.75);
+		
 		} else if (weapon.Type == 'DualSwords') {
-			document.querySelector('#d_damage').innerText = 
-				calcSkillDamage(0, document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.5 : 0.3, true) + ' x 6 x 2 ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(0, document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.5 : 0.3, true))) * 12) + ' )';
+			if (character == Jackie) {
+				document.querySelector('#d_damage').innerText = 
+					calcSkillDamage(0, document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.5 : 0.3, true) + ' - ' + 
+					calcSkillDamage(0, (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.6 : 0.4) + 
+						document.querySelector('#w_level').selectedIndex * 0.025, true) + ' x 6 x 2 ( ' + 
+					(Math.round(parseFloat(calcSkillDamage(0, (document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.6 : 0.4) + 
+						document.querySelector('#w_level').selectedIndex * 0.025, true))) * 12) + ' )';
+			} else {
+				document.querySelector('#d_damage').innerText = 
+					calcSkillDamage(0, document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.5 : 0.3, true) + ' x 6 x 2 ( ' + 
+					(Math.round(parseFloat(calcSkillDamage(0, document.querySelector('#weapon_mastery').selectedIndex > 12 ? 0.5 : 0.3, true))) * 12) + ' )';
+			}
 		} else if (weapon.Type == 'Pistol') {
 			document.querySelector('#d_damage').innerText = ' - ';
 		} else if (weapon.Type == 'AssaultRifle') {
@@ -156,29 +162,35 @@ function updateDamage() {
 		}
 		if (character == Jackie) {
 			document.querySelector('#q_damage').innerText = 
-				calcSkillDamage(20 + document.querySelector('#q_level').selectedIndex * 20, 0.45, true) + ', ' + 
-				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 20, 0.65, true) + ' + ' + 
+				calcSkillDamage(20 + document.querySelector('#q_level').selectedIndex * 20, 0.45, true) + ' - ' + 
+				calcSkillDamage(20 + document.querySelector('#q_level').selectedIndex * 20, 0.55 + 
+					document.querySelector('#w_level').selectedIndex * 0.025, true) + ', ' + 
+				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 20, 0.75 + 
+					document.querySelector('#w_level').selectedIndex * 0.025, true) + ' + ' + 
 				calcSkillDamage(80 + document.querySelector('#q_level').selectedIndex * 30, 0, true) + ' ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#q_level').selectedIndex * 20, 0.45, true))) + 
-				Math.round(parseFloat(calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 20, 0.65, true) )) + 
+				(Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#q_level').selectedIndex * 20, 0.55 + 
+					document.querySelector('#w_level').selectedIndex * 0.025, true))) + 
+				Math.round(parseFloat(calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 20, 0.75 + 
+					document.querySelector('#w_level').selectedIndex * 0.025, true) )) + 
 				Math.round(parseFloat(calcSkillDamage(80 + document.querySelector('#q_level').selectedIndex * 30, 0, true)))) + ' )';
-			document.querySelector('#w_damage').innerText = 'd: ' + 
-				((attack_power * (0.1 + document.querySelector('#w_level').selectedIndex * 0.1) * 
-				100 / (100 + (character2 == undefined ? 0 : defense2))) * 
-				(100 + extra_normal_attack_damage_percent - (character2 == undefined ? 0 : normal_attack_damage_reduction_percent2)) / 100).toFixed(2) + ' / h: ' + 
-				(12 + document.querySelector('#w_level').selectedIndex * 7 + attack_power * 0.1).toFixed(2);
+			document.querySelector('#w_damage').innerText = 'dps: ' + 
+				(weapon.Type != 'DualSwords' ? parseFloat(baseAttackDamage(0, 1.1 + document.querySelector('#w_level').selectedIndex * 0.025, 
+					critical_strike_chance, 1, 0, true)) * attack_speed : 
+					parseFloat(baseAttackDamage(0, 2.2 + document.querySelector('#w_level').selectedIndex * 0.05, 
+						critical_strike_chance, 2, 0, true)) * attack_speed).toFixed(2) + ' / hps: ' + 
+				((12 + document.querySelector('#w_level').selectedIndex * 7 + attack_power * 0.1) * (weapon.Type == 'DualSwords' ? attack_speed * 2 : attack_speed)).toFixed(2);
 			document.querySelector('#e_damage').innerText = 
 				calcSkillDamage(10 + document.querySelector('#e_level').selectedIndex * 70, 
-					0.3 + document.querySelector('#e_level').selectedIndex * 0.1, true)
+					0.3 + document.querySelector('#e_level').selectedIndex * 0.1, true) + ' - ' + 
+				calcSkillDamage(10 + document.querySelector('#e_level').selectedIndex * 70, 
+					0.4 + document.querySelector('#w_level').selectedIndex * 0.025 + 
+					document.querySelector('#e_level').selectedIndex * 0.1, true);
 			document.querySelector('#r_damage').innerText = 
-				calcSkillDamage(300 + document.querySelector('#r_level').selectedIndex * 200, 0.7, true) + ' _ dps: ' + 
-				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * 
+				calcSkillDamage(300 + document.querySelector('#r_level').selectedIndex * 200, 0.8 + 
+					document.querySelector('#w_level').selectedIndex * 0.025, true) + ' _ dps: ' + 
+				(parseFloat(baseAttackDamage(0, 1.1 + document.querySelector('#w_level').selectedIndex * 0.025, critical_strike_chance, 1, 0, true)) * 
 				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
 				(0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
-			document.querySelector('#t_damage').innerText = 'AP increases: ' + 
-				(document.querySelector('#t_level').selectedIndex == 0 ? Math.round(attack_power * 0.03) + ' ~ ' + Math.round(attack_power * 0.08) : 
-				document.querySelector('#t_level').selectedIndex == 1 ? Math.round(attack_power * 0.08) + ' ~ ' + Math.round(attack_power * 0.2) : 
-				Math.round(attack_power * 0.15) + ' ~ ' + Math.round(attack_power * 0.4));
 		} else if (character == Aya) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(0, 1, true) + ', ' + calcSkillDamage(20 + document.querySelector('#q_level').selectedIndex * 40, 0.5, true) + ' ( ' + 
@@ -438,7 +450,7 @@ function updateDamage() {
 				calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 25, 0.3, true) + ' ( ' + 
 				(Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 100, 0.3, true))) + 
 				Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 25, 0.3, true)))) + ' )';
-			document.querySelector('#t_damage').innerText = 
+			document.querySelector('#tt_damage').innerText = 
 				calcSkillDamage(25 + document.querySelector('#t_level').selectedIndex * 35, 0.3, true);
 		} else if (character == Silvia) {
 			document.querySelector('#q_damage').innerText =  'd: ' + 
@@ -465,9 +477,9 @@ function updateDamage() {
 		document.querySelector('#e_damage').innerText = '0';
 		document.querySelector('#r_damage').innerText = '0';
 		document.querySelector('#d_damage').innerText = '0';
-		if (character != Nadine && character != Xiukai && character != Chiara && character != Sissela && character != Silvia) {			
+		if ((weapon == undefined || weapon.Type != 'Axe') && character != Jackie && character != Nadine && character != Xiukai && character != Chiara && character != Sissela && character != Shoichi && character != Silvia) {			
 			document.querySelector('#t_damage').innerText = '0';
-		} else if (character == Sissela) {
+		} else if (character == Sissela || character != Shoichi) {
 			document.querySelector('#tt_damage').innerText = '0';
 		}
 	}
@@ -520,14 +532,20 @@ function updateDamage() {
 			document.querySelector('#d_damage2').innerText = 
 				calcSkillDamage(0, document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 2.5 : 2, false);
 		} else if (weapon2.Type == 'Axe') {
-			document.querySelector('#d_damage2').innerText = 'AP increases: ' + 
-				Math.round(attack_power2 * 0.02) + ' ~ ' + Math.round(attack_power2 * 0.1) + ' / ' + 
-				Math.round(attack_power2 * 0.05) + ' ~ ' + Math.round(attack_power2 * 0.25) + ' - ' + 
-				Math.round(attack_power2 * 0.15) + ' ~ ' + Math.round(attack_power2 * 0.75);
+		
 		} else if (weapon2.Type == 'DualSwords') {
-			document.querySelector('#d_damage2').innerText = 
-				calcSkillDamage(0, document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.5 : 0.3, false) + ' x 6 x 2 ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(0, document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.5 : 0.3, false))) * 12) + ' )';
+			if (character2 == Jackie) {
+				document.querySelector('#d_damage2').innerText = 
+					calcSkillDamage(0, document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.5 : 0.3, false) + ' - ' + 
+					calcSkillDamage(0, (document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.6 : 0.4) + 
+						document.querySelector('#w_level2').selectedIndex * 0.025, false) + ' x 6 x 2 ( ' + 
+					(Math.round(parseFloat(calcSkillDamage(0, (document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.6 : 0.4) + 
+						document.querySelector('#w_level2').selectedIndex * 0.025, false))) * 12) + ' )';
+			} else {
+				document.querySelector('#d_damage2').innerText = 
+					calcSkillDamage(0, document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.5 : 0.3, false) + ' x 6 x 2 ( ' + 
+					(Math.round(parseFloat(calcSkillDamage(0, document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 0.5 : 0.3, false))) * 12) + ' )';
+			}
 		} else if (weapon2.Type == 'Pistol') {
 			document.querySelector('#d_damage2').innerText = ' - ';
 		} else if (weapon2.Type == 'AssaultRifle') {
@@ -598,29 +616,35 @@ function updateDamage() {
 		}
 		if (character2 == Jackie) {
 			document.querySelector('#q_damage2').innerText = 
-				calcSkillDamage(20 + document.querySelector('#q_level2').selectedIndex * 20, 0.45, false) + ', ' + 
-				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 20, 0.65, false) + ' + ' + 
+				calcSkillDamage(20 + document.querySelector('#q_level2').selectedIndex * 20, 0.45, false) + ' - ' + 
+				calcSkillDamage(20 + document.querySelector('#q_level2').selectedIndex * 20, 0.55 + 
+					document.querySelector('#w_level2').selectedIndex * 0.025, false) + ', ' + 
+				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 20, 0.75 + 
+					document.querySelector('#w_level2').selectedIndex * 0.025, false) + ' + ' + 
 				calcSkillDamage(80 + document.querySelector('#q_level2').selectedIndex * 30, 0, false) + ' ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#q_level2').selectedIndex * 20, 0.45, false))) + 
-				Math.round(parseFloat(calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 20, 0.65, false) )) + 
+				(Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#q_level2').selectedIndex * 20, 0.55 + 
+					document.querySelector('#w_level2').selectedIndex * 0.025, false))) + 
+				Math.round(parseFloat(calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 20, 0.75 + 
+					document.querySelector('#w_level2').selectedIndex * 0.025, false) )) + 
 				Math.round(parseFloat(calcSkillDamage(80 + document.querySelector('#q_level2').selectedIndex * 30, 0, false)))) + ' )';
-			document.querySelector('#w_damage2').innerText = 'd: ' + 
-				((attack_power2 * (0.1 + document.querySelector('#w_level2').selectedIndex * 0.1) * 
-				100 / (100 + (character == undefined ? 0 : defense))) * 
-				(100 + extra_normal_attack_damage_percent2 - (character == undefined ? 0 : normal_attack_damage_reduction_percent)) / 100).toFixed(2) + ' / h: ' + 
-				(12 + document.querySelector('#w_level2').selectedIndex * 7 + attack_power2 * 0.1).toFixed(2);
+			document.querySelector('#w_damage2').innerText = 'dps: ' + 
+				(weapon2.Type != 'DualSwords' ? parseFloat(baseAttackDamage(0, 1.1 + document.querySelector('#w_level2').selectedIndex * 0.025, 
+					critical_strike_chance2, 1, 0, false)) * attack_speed2 : 
+					parseFloat(baseAttackDamage(0, 2.2 + document.querySelector('#w_level2').selectedIndex * 0.05, 
+						critical_strike_chance2, 2, 0, false)) * attack_speed2).toFixed(2) + ' / hps: ' + 
+				((12 + document.querySelector('#w_level2').selectedIndex * 7 + attack_power2 * 0.1) * (weapon2.Type == 'DualSwords' ? attack_speed2 * 2 : attack_speed2)).toFixed(2);
 			document.querySelector('#e_damage2').innerText = 
 				calcSkillDamage(10 + document.querySelector('#e_level2').selectedIndex * 70, 
-					0.3 + document.querySelector('#e_level2').selectedIndex * 0.1, false)
+					0.3 + document.querySelector('#e_level2').selectedIndex * 0.1, false) + ' - ' + 
+				calcSkillDamage(10 + document.querySelector('#e_level2').selectedIndex * 70, 
+					0.4 + document.querySelector('#w_level2').selectedIndex * 0.025 + 
+					document.querySelector('#e_level2').selectedIndex * 0.1, false)
 			document.querySelector('#r_damage2').innerText = 
-				calcSkillDamage(300 + document.querySelector('#r_level2').selectedIndex * 200, 0.7, false) + ' _ dps: ' + 
-				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance2, 1, 0, false)) * 
+				calcSkillDamage(300 + document.querySelector('#r_level2').selectedIndex * 200, 0.8 + 
+					document.querySelector('#w_level2').selectedIndex * 0.025, false) + ' _ dps: ' + 
+				(parseFloat(baseAttackDamage(0, 1.1 + document.querySelector('#w_level2').selectedIndex * 0.025, critical_strike_chance2, 1, 0, false)) * 
 				(attack_speed2 + (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
 				(0.2 + document.querySelector('#r_level2').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
-			document.querySelector('#t_damage2').innerText = 'AP increases: ' + 
-				(document.querySelector('#t_level2').selectedIndex == 0 ? Math.round(attack_power2 * 0.03) + ' ~ ' + Math.round(attack_power2 * 0.08) : 
-				document.querySelector('#t_level2').selectedIndex == 1 ? Math.round(attack_power2 * 0.08) + ' ~ ' + Math.round(attack_power2 * 0.2) : 
-				Math.round(attack_power2 * 0.15) + ' ~ ' + Math.round(attack_power2 * 0.4));
 		} else if (character2 == Aya) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(0, 1, false) + ', ' + calcSkillDamage(20 + document.querySelector('#q_level2').selectedIndex * 40, 0.5, false) + ' ( ' + 
@@ -880,7 +904,7 @@ function updateDamage() {
 				calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 25, 0.3, false) + ' ( ' + 
 				(Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 100, 0.3, false))) + 
 				Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 25, 0.3, false)))) + ' )';
-			document.querySelector('#t_damage2').innerText = 
+			document.querySelector('#tt_damage2').innerText = 
 				calcSkillDamage(25 + document.querySelector('#t_level2').selectedIndex * 35, 0.3, false);
 		} else if (character2 == Silvia) {
 			document.querySelector('#q_damage2').innerText =  'd: ' + 
@@ -907,9 +931,9 @@ function updateDamage() {
 		document.querySelector('#e_damage2').innerText = '0';
 		document.querySelector('#r_damage2').innerText = '0';
 		document.querySelector('#d_damage2').innerText = '0';
-		if (character2 != Nadine && character2 != Xiukai && character2 != Chiara && character2 != Sissela && character2 != Silvia) {			
+		if ((weapon2 == undefined || weapon2.Type != 'Axe') && character2 != Jackie && character2 != Nadine && character2 != Xiukai && character2 != Chiara && character2 != Sissela && character2 != Shoichi && character2 != Silvia) {			
 			document.querySelector('#t_damage2').innerText = '0';
-		} else if (character2 == Sissela) {
+		} else if (character2 == Sissela || character2 != Shoichi) {
 			document.querySelector('#tt_damage2').innerText = '0';
 		}
 	}

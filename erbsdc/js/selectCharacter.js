@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		if ('Jackie' == select) {
 			document.querySelector('#i_character').src = './character/Jackie.png';
 			character = Jackie;
+			document.querySelector('#t_damage').innerHTML = "<b> _ weak: </b><input id = 'tw' type = 'checkbox'><b> strong: </b><input id = 'ts' type = 'checkbox'>";
 			if (weapon != undefined) {
 				if (weapon.Type != 'Dagger' && 
 						weapon.Type != 'TwoHandedSword' && 
@@ -13,6 +14,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
 					document.querySelector('#weapon').innerHTML = '';
 				}
 			}
+			document.querySelector('#tw').addEventListener('change', (e) => {
+				updateDisplay();
+			});
+			document.querySelector('#ts').addEventListener('change', (e) => {
+				updateDisplay();
+			});
 		} else if ('Aya' == select) {
 			document.querySelector('#i_character').src = './character/Aya.png';
 			character = Aya;
@@ -175,7 +182,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			document.querySelector('#i_character').src = './character/Sissela.png';
 			character = Sissela;
 			document.querySelector('#t_damage').innerHTML = "<span id='tt_damage'>0</span><br>" + 
-				"<b>Lost Hp: </b><input id = 'stack' type = 'number' value = '0' style = 'width: 40px'><b>% _ R : <b>" + 
+				"Lost Hp: <input id = 'stack' type = 'number' value = '0' style = 'width: 40px'>% _ R : " + 
 				"<input id = 'tr' type = 'checkbox'>";
 			document.querySelector('#stack').addEventListener('change', (e) => {
 				let stack = document.querySelector('#stack');
@@ -208,6 +215,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Shoichi' == select) {
 			document.querySelector('#i_character').src = './character/Shoichi.png';
 			character = Shoichi;
+			document.querySelector('#t_damage').innerHTML = "<span id='tt_damage'>0</span> / <input id = 'stack' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				} else if (stack.value > 5) {
+					stack.value = 5;
+				}
+				updateDisplay();
+			});
 			if (weapon != undefined) {
 				if (weapon.Type != 'Dagger') {
 					weapon = null;
@@ -243,6 +260,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		if ('Jackie' == select) {
 			document.querySelector('#i_character2').src = './character/Jackie.png';
 			character2 = Jackie;
+			document.querySelector('#t_damage2').innerHTML = "<b> _ weak: </b><input id = 'tw2' type = 'checkbox'><b> strong: </b><input id = 'ts2' type = 'checkbox'>";
 			if (weapon2 != undefined) {
 				if (weapon2.Type != 'Dagger' && 
 						weapon2.Type != 'TwoHandedSword' && 
@@ -252,6 +270,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
 					document.querySelector('#weapon2').innerHTML = '';
 				}
 			}
+			document.querySelector('#tw2').addEventListener('change', (e) => {
+				updateDisplay2();
+			});
+			document.querySelector('#ts2').addEventListener('change', (e) => {
+				updateDisplay2();
+			});
 		} else if ('Aya' == select) {
 			document.querySelector('#i_character2').src = './character/Aya.png';
 			character2 = Aya;
@@ -414,7 +438,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			document.querySelector('#i_character2').src = './character/Sissela.png';
 			character2 = Sissela;
 			document.querySelector('#t_damage2').innerHTML = "<span id='tt_damage2'>0</span><br>" + 
-				"<b>Lost Hp: </b><input id = 'stack2' type = 'number' value = '0' style = 'width: 40px'><b>% _ R : <b>" + 
+				"Lost Hp: <input id = 'stack2' type = 'number' value = '0' style = 'width: 40px'>% _ R : " + 
 				"<input id = 'tr2' type = 'checkbox'>";
 			document.querySelector('#stack2').addEventListener('change', (e) => {
 				let stack = document.querySelector('#stack2');
@@ -447,6 +471,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		} else if ('Shoichi' == select) {
 			document.querySelector('#i_character2').src = './character/Shoichi.png';
 			character2 = Shoichi;
+			document.querySelector('#t_damage2').innerHTML = "<span id='tt_damage2'>0</span> / <input id = 'stack2' type = 'number' value = '0' style = 'width: 40px'><b>Stack</b>";
+			document.querySelector('#stack2').addEventListener('change', (e) => {
+				let stack = document.querySelector('#stack2');
+				if (stack.value == '' || stack.value < 0) {
+					stack.value = 0;
+				} else if (stack.value > 5) {
+					stack.value = 5;
+				}
+				updateDisplay2();
+			});
 			if (weapon2 != undefined) {
 				if (weapon2.Type != 'Dagger') {
 					weapon2 = null;

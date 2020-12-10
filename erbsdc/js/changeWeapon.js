@@ -14,6 +14,30 @@ function changeWeapon(type, index) {
 		weapon_mastery_attack_speed = 0;
 		weapon_mastery_extra_normal_attack_damage_percent = 4;
 		weapon_mastery_skill_amplification_percent = 2;
+		document.querySelector('#d_damage').innerHTML = "<input id = 'd_stack' type = 'number' value = '0' style = 'width: 40px'><b>Stack _ use: </b>" + 
+			"<input id = 'ds' type = 'checkbox'><br>" + 
+			"Lost Hp: <input id = 'lost' type = 'number' value = '0' style = 'width: 40px'>%";
+		document.querySelector('#d_stack').addEventListener('change', (e) => {
+			let stack = document.querySelector('#d_stack');
+			if (stack.value == '' || stack.value < 0) {
+				stack.value = 0;
+			} else if (stack.value > 5) {
+				stack.value = 5;
+			}
+			updateDisplay();
+		});
+		document.querySelector('#ds').addEventListener('change', (e) => {
+			updateDisplay();
+		});
+		document.querySelector('#lost').addEventListener('change', (e) => {
+			let stack = document.querySelector('#lost');
+			if (stack.value == '' || stack.value < 0) {
+				stack.value = 0;
+			} else if (stack.value > 100) {
+				stack.value = 100;
+			}
+			updateDisplay();
+		});
 	} else if (type == 'dualSwords') {				
 		weapon = dualSwords[index];
 		weapon_mastery_attack_speed = 1.4;
@@ -124,6 +148,30 @@ function changeWeapon2(type, index) {
 		weapon_mastery_attack_speed2 = 0;
 		weapon_mastery_extra_normal_attack_damage_percent2 = 4;
 		weapon_mastery_skill_amplification_percent2 = 2;
+		document.querySelector('#d_damage2').innerHTML = "<input id = 'd_stack2' type = 'number' value = '0' style = 'width: 40px'><b>Stack _ use: </b>" + 
+			"<input id = 'ds2' type = 'checkbox'><br>" + 
+			"Lost Hp: <input id = 'lost2' type = 'number' value = '0' style = 'width: 40px'>%"
+		document.querySelector('#d_stack2').addEventListener('change', (e) => {
+			let stack = document.querySelector('#d_stack2');
+			if (stack.value == '' || stack.value < 0) {
+				stack.value = 0;
+			} else if (stack.value > 5) {
+				stack.value = 5;
+			}
+			updateDisplay2();
+		});
+		document.querySelector('#ds2').addEventListener('change', (e) => {
+			updateDisplay2();
+		});
+		document.querySelector('#lost2').addEventListener('change', (e) => {
+			let stack = document.querySelector('#lost2');
+			if (stack.value == '' || stack.value < 0) {
+				stack.value = 0;
+			} else if (stack.value > 100) {
+				stack.value = 100;
+			}
+			updateDisplay2();
+		});
 	} else if (type == 'dualSwords') {				
 		weapon2 = dualSwords[index];
 		weapon_mastery_attack_speed2 = 1.4;

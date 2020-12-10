@@ -2,7 +2,8 @@ function updateDisplay() {
 	if (character == undefined) {
 		alert('select character plz...');
 	} else {
-		attack_power = character.Attack_Power + 
+		attack_power = 
+			(character.Attack_Power + 
 			character.Attack_Power_Growth * document.querySelector('#level').selectedIndex + 
 			((weapon == undefined ? 0 : weapon.Attack_Power) + 
 			(chest == undefined ? 0 : chest.Attack_Power) + 
@@ -10,9 +11,19 @@ function updateDisplay() {
 			(arm == undefined ? 0 : arm.Attack_Power) + 
 			(leg == undefined ? 0 : leg.Attack_Power) + 
 			(accessory == undefined ? 0 : accessory.Attack_Power)) * 
-			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
+			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007)) * 
+			((character != Jackie ? 1 : 1 + 
+				(document.querySelector('#tw').checked ? (document.querySelector('#t_level').selectedIndex == 0 ? 0.03 : 
+					document.querySelector('#t_level').selectedIndex == 1 ? 0.08 : 0.15) : 0) +
+				(document.querySelector('#ts').checked ? (document.querySelector('#t_level').selectedIndex == 0 ? 0.05 : 
+					document.querySelector('#t_level').selectedIndex == 1 ? 0.12 : 0.25) : 0)) + 
+				(weapon == undefined || weapon.Type != 'Axe' ? 0 : 
+					(document.querySelector('#ds').checked ? document.querySelector('#d_stack').value * 
+					(0.05 + document.querySelector('#lost').value * 0.001) : 
+						document.querySelector('#d_stack').value * 0.02)));
 		document.querySelector('#attack_power').innerText = (attack_power).toFixed(2);
-		attack_speed = (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
+		attack_speed = 
+			(character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
 			(100 + (weapon == undefined ? 0 : weapon_mastery_attack_speed + 
 			document.querySelector('#weapon_mastery').selectedIndex * 
 			weapon_mastery_attack_speed + 
@@ -33,7 +44,8 @@ function updateDisplay() {
 			(arm == undefined ? 0 : arm.Critical_Strike_Chance) + 
 			(leg == undefined ? 0 : leg.Critical_Strike_Chance) + 
 			(accessory == undefined ? 0 : accessory.Critical_Strike_Chance)) * 
-			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
+			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007) + 
+			(character != Shoichi ? 0 : document.querySelector('#stack').value * (3 + document.querySelector('#t_level').selectedIndex * 3));
 		if (critical_strike_chance > 100) {
 			critical_strike_chance = 100;
 		}
@@ -66,7 +78,9 @@ function updateDisplay() {
 			(1.007 + document.querySelector('#craft_mastery').selectedIndex * 0.007);
 		extra_normal_attack_damage_percent = weapon == undefined ? 0 : weapon_mastery_extra_normal_attack_damage_percent + 
 			document.querySelector('#weapon_mastery').selectedIndex * 
-			weapon_mastery_extra_normal_attack_damage_percent;
+			weapon_mastery_extra_normal_attack_damage_percent + 
+			(character != Shoichi || document.querySelector('#stack').value < 5 ? 0 : 
+				10 + document.querySelector('#t_level').selectedIndex * 5);
 		document.querySelector('#extra_normal_attack_damage').innerText = 
 			(extra_normal_attack_damage).toFixed(2) + '| ' + (extra_normal_attack_damage_percent).toFixed(2) + '%';
 		skill_amplification = 
@@ -261,7 +275,8 @@ function updateDisplay2() {
 	if (character2 == undefined) {
 		alert('select character2 plz...');
 	} else {
-		attack_power2 = character2.Attack_Power + 
+		attack_power2 = 
+			(character2.Attack_Power + 
 			character2.Attack_Power_Growth * document.querySelector('#level2').selectedIndex + 
 			((weapon2 == undefined ? 0 : weapon2.Attack_Power) + 
 			(chest2 == undefined ? 0 : chest2.Attack_Power) + 
@@ -269,9 +284,19 @@ function updateDisplay2() {
 			(arm2 == undefined ? 0 : arm2.Attack_Power) + 
 			(leg2 == undefined ? 0 : leg2.Attack_Power) + 
 			(accessory2 == undefined ? 0 : accessory2.Attack_Power)) * 
-			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
+			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007)) * 
+			((character2 != Jackie ? 1 : 1 + 
+				(document.querySelector('#tw2').checked ? (document.querySelector('#t_level2').selectedIndex == 0 ? 0.03 : 
+					document.querySelector('#t_level2').selectedIndex == 1 ? 0.08 : 0.15) : 0) +
+				(document.querySelector('#ts2').checked ? (document.querySelector('#t_level2').selectedIndex == 0 ? 0.05 : 
+					document.querySelector('#t_level2').selectedIndex == 1 ? 0.12 : 0.25) : 0)) + 
+				(weapon2 == undefined || weapon2.Type != 'Axe' ? 0 : 
+					(document.querySelector('#ds2').checked ? document.querySelector('#d_stack2').value * 
+					(0.05 + document.querySelector('#lost2').value * 0.001) : 
+						document.querySelector('#d_stack2').value * 0.02)));
 		document.querySelector('#attack_power2').innerText = (attack_power2).toFixed(2);
-		attack_speed2 = (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
+		attack_speed2 = 
+			(character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
 			(100 + (weapon2 == undefined ? 0 : weapon_mastery_attack_speed2 + 
 			document.querySelector('#weapon_mastery2').selectedIndex * 
 			weapon_mastery_attack_speed2 + 
@@ -292,7 +317,8 @@ function updateDisplay2() {
 			(arm2 == undefined ? 0 : arm2.Critical_Strike_Chance) + 
 			(leg2 == undefined ? 0 : leg2.Critical_Strike_Chance) + 
 			(accessory2 == undefined ? 0 : accessory2.Critical_Strike_Chance)) * 
-			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
+			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007) + 
+			(character2 != Shoichi ? 0 : document.querySelector('#stack2').value * (3 + document.querySelector('#t_level2').selectedIndex * 3));
 		if (critical_strike_chance2 > 100) {
 			critical_strike_chance2 = 100;
 		}
@@ -325,7 +351,9 @@ function updateDisplay2() {
 			(1.007 + document.querySelector('#craft_mastery2').selectedIndex * 0.007);
 		extra_normal_attack_damage_percent2 = weapon2 == undefined ? 0 : weapon_mastery_extra_normal_attack_damage_percent2 + 
 			document.querySelector('#weapon_mastery2').selectedIndex * 
-			weapon_mastery_extra_normal_attack_damage_percent2;
+			weapon_mastery_extra_normal_attack_damage_percent2 + 
+			(character2 != Shoichi || document.querySelector('#stack2').value < 5 ? 0 : 
+				10 + document.querySelector('#t_level2').selectedIndex * 5);
 		document.querySelector('#extra_normal_attack_damage2').innerText = 
 			(extra_normal_attack_damage2).toFixed(2) + '| ' + (extra_normal_attack_damage_percent2).toFixed(2) + '%';
 		skill_amplification2 = 
