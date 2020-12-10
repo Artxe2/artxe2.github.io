@@ -186,8 +186,12 @@ function updateDamage() {
 					0.4 + document.querySelector('#w_level').selectedIndex * 0.025 + 
 					document.querySelector('#e_level').selectedIndex * 0.1, true);
 			document.querySelector('#r_damage').innerText = 
+				calcSkillDamage(300 + document.querySelector('#r_level').selectedIndex * 200, 0.7, true) + ' - ' + 
 				calcSkillDamage(300 + document.querySelector('#r_level').selectedIndex * 200, 0.8 + 
 					document.querySelector('#w_level').selectedIndex * 0.025, true) + ' _ dps: ' + 
+				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance, 1, 0, true)) * 
+				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
+				(0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon.Type == 'DualSwords' ? 2 : 1)).toFixed(2) + ' - ' + 
 				(parseFloat(baseAttackDamage(0, 1.1 + document.querySelector('#w_level').selectedIndex * 0.025, critical_strike_chance, 1, 0, true)) * 
 				(attack_speed + (character.Atk_Speed + (weapon == undefined ? 0 : weapon.Atk_Speed)) * 
 				(0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * (weapon.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
@@ -640,8 +644,12 @@ function updateDamage() {
 					0.4 + document.querySelector('#w_level2').selectedIndex * 0.025 + 
 					document.querySelector('#e_level2').selectedIndex * 0.1, false)
 			document.querySelector('#r_damage2').innerText = 
+				calcSkillDamage(300 + document.querySelector('#r_level2').selectedIndex * 200, 0.7, false) + ' - ' + 
 				calcSkillDamage(300 + document.querySelector('#r_level2').selectedIndex * 200, 0.8 + 
 					document.querySelector('#w_level2').selectedIndex * 0.025, false) + ' _ dps: ' + 
+				(parseFloat(baseAttackDamage(0, 1, critical_strike_chance2, 1, 0, false)) * 
+				(attack_speed2 + (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
+				(0.2 + document.querySelector('#r_level2').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2) + ' - ' + 
 				(parseFloat(baseAttackDamage(0, 1.1 + document.querySelector('#w_level2').selectedIndex * 0.025, critical_strike_chance2, 1, 0, false)) * 
 				(attack_speed2 + (character2.Atk_Speed + (weapon2 == undefined ? 0 : weapon2.Atk_Speed)) * 
 				(0.2 + document.querySelector('#r_level2').selectedIndex * 0.05)) * (weapon2.Type == 'DualSwords' ? 2 : 1)).toFixed(2);
