@@ -53,6 +53,11 @@ function changeAccessory(type, index)  {
 	document.querySelector('#accessory').innerHTML = "<img title = '" + accessory.Name + "' src = './armors/" + accessory.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
+function closeItemList() {
+	document.querySelector('#s_itemList').innerHTML = '';
+	document.querySelector('#d_itemList').style.display = 'none';
+}
+
 function changeChest2(type, index) {
 	if (index == -1) {
 		chest2 = null;
@@ -107,4 +112,8 @@ function changeAccessory2(type, index)  {
 	accessory2 = accessorys[index];
 	document.querySelector('#accessory2').innerHTML = "<img title = '" + accessory2.Name + "' src = './armors/" + accessory2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
+}
+function closeItemList2() {
+	document.querySelector('#s_itemList2').innerHTML = '';
+	document.querySelector('#d_itemList2').style.display = 'none';
 }

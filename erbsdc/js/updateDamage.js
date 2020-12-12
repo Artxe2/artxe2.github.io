@@ -483,7 +483,7 @@ function updateDamage() {
 		document.querySelector('#d_damage').innerText = '0';
 		if ((weapon == undefined || weapon.Type != 'Axe') && character != Jackie && character != Nadine && character != Xiukai && character != Chiara && character != Sissela && character != Shoichi && character != Silvia) {			
 			document.querySelector('#t_damage').innerText = '0';
-		} else if (character == Sissela || character != Shoichi) {
+		} else if (character == Sissela || character == Shoichi) {
 			document.querySelector('#tt_damage').innerText = '0';
 		}
 	}
@@ -941,7 +941,7 @@ function updateDamage() {
 		document.querySelector('#d_damage2').innerText = '0';
 		if ((weapon2 == undefined || weapon2.Type != 'Axe') && character2 != Jackie && character2 != Nadine && character2 != Xiukai && character2 != Chiara && character2 != Sissela && character2 != Shoichi && character2 != Silvia) {			
 			document.querySelector('#t_damage2').innerText = '0';
-		} else if (character2 == Sissela || character2 != Shoichi) {
+		} else if (character2 == Sissela || character2 == Shoichi) {
 			document.querySelector('#tt_damage2').innerText = '0';
 		}
 	}
