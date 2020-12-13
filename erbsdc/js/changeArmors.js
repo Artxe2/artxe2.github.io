@@ -6,7 +6,7 @@ function changeChest(type, index) {
 		return;
 	}
 	chest = chests[index];
-	document.querySelector('#chest').innerHTML = "<img title = '" + chest.Name + "' src = './armors/" + chest.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#chest').innerHTML = "<img class = '" + chest.Rarity + "' title = '" + chest.Title + "' src = './armors/" + chest.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
 function changeHead(type, index)  {
@@ -17,7 +17,7 @@ function changeHead(type, index)  {
 		return;
 	}
 	head = heads[index];
-	document.querySelector('#head').innerHTML = "<img title = '" + head.Name + "' src = './armors/" + head.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#head').innerHTML = "<img class = '" + head.Rarity + "' title = '" + head.Title + "' src = './armors/" + head.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
 function changeArm(type, index)  {
@@ -28,7 +28,7 @@ function changeArm(type, index)  {
 		return;
 	}
 	arm = arms[index];
-	document.querySelector('#arm').innerHTML = "<img title = '" + arm.Name + "' src = './armors/" + arm.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#arm').innerHTML = "<img class = '" + arm.Rarity + "' title = '" + arm.Title + "' src = './armors/" + arm.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
 function changeLeg(type, index)  {
@@ -39,7 +39,7 @@ function changeLeg(type, index)  {
 		return;
 	}
 	leg = legs[index];
-	document.querySelector('#leg').innerHTML = "<img title = '" + leg.Name + "' src = './armors/" + leg.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#leg').innerHTML = "<img class = '" + leg.Rarity + "' title = '" + leg.Title + "' src = './armors/" + leg.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
 function changeAccessory(type, index)  {
@@ -50,7 +50,7 @@ function changeAccessory(type, index)  {
 		return;
 	}
 	accessory = accessorys[index];
-	document.querySelector('#accessory').innerHTML = "<img title = '" + accessory.Name + "' src = './armors/" + accessory.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#accessory').innerHTML = "<img class = '" + accessory.Rarity + "' title = '" + accessory.Title + "' src = './armors/" + accessory.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
 function closeItemList() {
@@ -66,7 +66,7 @@ function changeChest2(type, index) {
 		return;
 	}
 	chest2 = chests[index];
-	document.querySelector('#chest2').innerHTML = "<img title = '" + chest2.Name + "' src = './armors/" + chest2.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#chest2').innerHTML = "<img class = '" + chest2.Rarity + "' title = '" + chest2.Title + "' src = './armors/" + chest2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
 }
 function changeHead2(type, index)  {
@@ -77,7 +77,7 @@ function changeHead2(type, index)  {
 		return;
 	}
 	head2 = heads[index];
-	document.querySelector('#head2').innerHTML = "<img title = '" + head2.Name + "' src = './armors/" + head2.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#head2').innerHTML = "<img class = '" + head2.Rarity + "' title = '" + head2.Title + "' src = './armors/" + head2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
 }
 function changeArm2(type, index)  {
@@ -88,7 +88,7 @@ function changeArm2(type, index)  {
 		return;
 	}
 	arm2 = arms[index];
-	document.querySelector('#arm2').innerHTML = "<img title = '" + arm2.Name + "' src = './armors/" + arm2.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#arm2').innerHTML = "<img class = '" + arm2.Rarity + "' title = '" + arm2.Title + "' src = './armors/" + arm2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
 }
 function changeLeg2(type, index)  {
@@ -99,7 +99,7 @@ function changeLeg2(type, index)  {
 		return;
 	}
 	leg2 = legs[index];
-	document.querySelector('#leg2').innerHTML = "<img title = '" + leg2.Name + "' src = './armors/" + leg2.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#leg2').innerHTML = "<img class = '" + leg2.Rarity + "' title = '" + leg2.Title + "' src = './armors/" + leg2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
 }
 function changeAccessory2(type, index)  {
@@ -110,7 +110,7 @@ function changeAccessory2(type, index)  {
 		return;
 	}
 	accessory2 = accessorys[index];
-	document.querySelector('#accessory2').innerHTML = "<img title = '" + accessory2.Name + "' src = './armors/" + accessory2.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#accessory2').innerHTML = "<img class = '" + accessory2.Rarity + "' title = '" + accessory2.Title + "' src = './armors/" + accessory2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
 }
 function closeItemList2() {

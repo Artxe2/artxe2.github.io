@@ -28,6 +28,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Scissors\n\nAttack Power +5"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Dagger"
@@ -58,6 +60,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Fountain Pen\n\nAttack Power +5"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Dagger"
@@ -88,6 +92,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Kitchen Knife\n\nAttack Power +4\nMovement Speed +0.05"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Dagger"
@@ -118,6 +124,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Army Knife\n\nAttack Power +14\nMovement Speed +0.08"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Dagger"
@@ -148,6 +156,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Rose Knife\n\nAttack Power +20\nMovement Speed +0.1\nCooldown Reduction +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Dagger"
@@ -178,6 +188,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Carnwennan\n\nAttack Power +26\nHP Regen +1.5\nMovement Speed +0.1\nCooldown Reduction +10%\nExtra Normal Attack Damage +29"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Dagger"
@@ -208,6 +220,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Mount Slicer\n\nAttack Power +33\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Amplification +35"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Dagger"
@@ -238,6 +252,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Vibroblade\n\nAttack Power +53\nAttack Speed +30%\nMovement Speed +0.1"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Dagger"
@@ -268,6 +284,8 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
+		,Title: "Fragarach\n\nAttack Power +75\nMovement Speed +0.2"
+		,Rarity: "Legendary"
 	}
 ];
 let twoHandedSword = [
@@ -300,6 +318,9 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Rusty Sword\n\nAttack Power +11"
+		,Rarity: "Common"
+		
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -330,6 +351,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Shamshir\n\nAttack Power +27"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -360,6 +383,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Katana\n\nAttack Power +35"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -390,6 +415,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Masamune\n\nAttack Power +40\nAttack Speed +15%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -420,6 +447,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Muramasa\n\nAttack Power +50"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -450,6 +479,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Bastard Sword\n\nAttack Power +45\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -480,6 +511,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Jewel Sword\n\nAttack Power +35\nMax HP +200"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -510,6 +543,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -540,6 +575,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Plasma Sword\n\nAttack Power +75\nVision Range +3"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -570,6 +607,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Arondight\n\nAttack Power +50\nAttack Speed +25%\nExtra Normal Attack Damage +25"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -600,6 +639,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Excalibur\n\nAttack Power +60\nMax HP +400\nHP Regen +200%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -630,6 +671,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Monohoshizao\n\nAttack Power +70\nLife Steal +18%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -660,6 +703,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Hovud\n\nAttack Power +45\nMax HP +300\nCritical Strike Chance +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -690,6 +735,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Laevateinn\n\nAttack Power +75\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +20"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "TwoHandedSword"
@@ -720,6 +767,8 @@ let twoHandedSword = [
 		,Attack_Range: 0
 		,Base_Range: 1.5
 		,Atk_Speed: 0.56
+		,Title: "Dainsleif\n\nAttack Power +70\nLife Steal +20%"
+		,Rarity: "Legendary"
 	}
 ];
 let axe = [
@@ -752,6 +801,8 @@ let axe = [
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Pickaxe\n\nAttack Power +15"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Axe"
@@ -782,6 +833,8 @@ let axe = [
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Hatchet\n\nAttack Power +25"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Axe"
@@ -812,6 +865,9 @@ let axe = [
 		,Attack_Range: 0.2
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Chain Scythe\n\nAttack Power +50\nAttack Range +0.2"
+		,Rarity: "Uncommon"
+		
 	}
 	,{
 		 Type: "Axe"
@@ -842,6 +898,8 @@ let axe = [
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Battle Axe\n\nAttack Power +47"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Axe"
@@ -872,6 +930,8 @@ let axe = [
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Light Hatchet\n\nAttack Power +61\nMovement Speed +0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Axe"
@@ -902,6 +962,8 @@ let axe = [
 		,Attack_Range: 0.5
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Reaper`s Scythe\n\nAttack Power +80\nAttack Range +0.5"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Axe"
@@ -932,6 +994,8 @@ let axe = [
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Gigantic Axe\n\nAttack Power +110\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Axe"
@@ -962,6 +1026,8 @@ let axe = [
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Beam Axe\n\nAttack Power +137\nMovement Speed -0.1\nVision Range +4"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Axe"
@@ -992,6 +1058,8 @@ let axe = [
 		,Attack_Range: 0.5
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Santa Muerte\n\nAttack Power +100\nMax HP +450\nLife Steal +15%\nAttack Range +0.5"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Axe"
@@ -1022,6 +1090,8 @@ let axe = [
 		,Attack_Range: 1
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Scythe\n\nAttack Power +130\nAttack Range +1\nSkill Amplification +18%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Axe"
@@ -1052,6 +1122,8 @@ let axe = [
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.2\nCooldown Reduction +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Axe"
@@ -1082,6 +1154,8 @@ let axe = [
 		,Attack_Range: 0.5
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
+		,Title: "Harpe\n\nAttack Power +125\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +42\nHealing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 ];
 let dualSwords = [
@@ -1114,6 +1188,8 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
+		,Title: "Twin Sword\n\nAttack Power +14\nAttack Speed +10%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "DualSwords"
@@ -1144,6 +1220,8 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
+		,Title: "Florentine\n\nAttack Power +23\nAttack Speed +10%\nLife Steal +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "DualSwords"
@@ -1174,6 +1252,8 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
+		,Title: "Divine Dual Swords\n\nAttack Power +38\nAttack Speed +10%\nLife Steal +18%\nHealing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "DualSwords"
@@ -1204,6 +1284,8 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
+		,Title: "Starsteel Twin Swords\n\nAttack Power +55\nAttack Speed +50%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "DualSwords"
@@ -1234,6 +1316,8 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
+		,Title: "Dioscuri\n\nAttack Power +38\nAttack Speed +50%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "DualSwords"
@@ -1264,6 +1348,8 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
+		,Title: "Lloigor & Zahr\n\nAttack Power +30\nAttack Speed +20%\nSkill Amplification +36"
+		,Rarity: "Epic"
 	}
 ];
 let pistol = [
@@ -1296,6 +1382,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Walther PPK\n\nAttack Power +8\nMovement Speed +0.1"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Pistol"
@@ -1326,6 +1414,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Magnum-Python\n\nAttack Power +15\nAttack Speed +10%\nMovement Speed +0.1"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Pistol"
@@ -1356,6 +1446,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Beretta M92F\n\nAttack Power +23\nMovement Speed +0.1"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Pistol"
@@ -1386,6 +1478,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "FN57\n\nAttack Power +29\nMovement Speed +0.1\nVision Range +2.5"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Pistol"
@@ -1416,6 +1510,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Double Revolver SP\n\nAttack Power +40\nAttack Speed +10%\nMovement Speed +0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Pistol"
@@ -1446,6 +1542,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Magnum-Anaconda\n\nAttack Power +43\nAttack Speed +10%\nMovement Speed +0.1\nLife Steal +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Pistol"
@@ -1476,6 +1574,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Devil`s Marksman\n\nAttack Power +30\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +40"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Pistol"
@@ -1506,6 +1606,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Elegance\n\nAttack Power +90\nMovement Speed +0.2\nVision Range +5"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Pistol"
@@ -1536,6 +1638,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Electron Blaster\n\nAttack Power +65\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +28"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Pistol"
@@ -1566,6 +1670,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Magnum-Boa\n\nAttack Power +90\nAttack Speed +25%\nMovement Speed +0.1\nVision Range +3.5\nLife Steal +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Pistol"
@@ -1596,6 +1702,8 @@ let pistol = [
 		,Attack_Range: 0
 		,Base_Range: 4.2
 		,Atk_Speed: 0.505
+		,Title: "Kelte\n\nAttack Power +120\nMovement Speed +0.2"
+		,Rarity: "Legendary"
 	}
 ];
 let assaultRifle = [
@@ -1628,6 +1736,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "Fedorova\n\nAttack Power +11"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "AssaultRifle"
@@ -1658,6 +1768,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "STG-44\n\nAttack Power +18\nVision Range +1.5\nExtra Normal Attack Damage +2"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "AssaultRifle"
@@ -1688,6 +1800,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "AK-47\n\nAttack Power +29\nVision Range +1.5\nExtra Normal Attack Damage +2"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "AssaultRifle"
@@ -1718,6 +1832,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "M16A1\n\nAttack Power +25\nVision Range +1.5\nExtra Normal Attack Damage +4"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "AssaultRifle"
@@ -1748,6 +1864,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "Machine Gun\n\nAttack Power +20\nAttack Speed +10%\nVision Range +1.5\nExtra Normal Attack Damage +11"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "AssaultRifle"
@@ -1778,6 +1896,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "Gatling Gun\n\nAttack Power +50\nAttack Speed +15%\nVision Range +1.5\nExtra Normal Attack Damage +12"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "AssaultRifle"
@@ -1808,6 +1928,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "AK-12\n\nAttack Power +94\nVision Range +1.5\nCritical Strike Chance +25%\nExtra Normal Attack Damage +2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "AssaultRifle"
@@ -1838,6 +1960,8 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
+		,Title: "XCR\n\nAttack Power +60\nMax HP +420\nVision Range +1.5\nExtra Normal Attack Damage +10"
+		,Rarity: "Epic"
 	}
 ];
 let sniperRifle = [
@@ -1870,6 +1994,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Long Rifle\n\nAttack Power +34\nMovement Speed -0.1"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -1900,6 +2026,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Springfield\n\nAttack Power +50\nMovement Speed -0.1\nVision Range +1.5"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -1930,6 +2058,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Harpoon Gun\n\nAttack Power +64\nMovement Speed -0.1\nVision Range +2"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -1960,6 +2090,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Golden Rifle\n\nAttack Power +56\nMovement Speed -0.15\nVision Range +2.5\nSkill Amplification +18%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -1990,6 +2122,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Railgun\n\nAttack Power +78\nAttack Speed +20%\nMovement Speed -0.15\nVision Range +2"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -2020,6 +2154,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Tac-50\n\nAttack Power +140\nMovement Speed -0.03\nVision Range +2.5\nLife Steal +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -2050,6 +2186,8 @@ let sniperRifle = [
 		,Attack_Range: 1
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Intervention\n\nAttack Power +110\nVision Range +4.5\nAttack Range +1"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -2080,6 +2218,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "NTW-20\n\nAttack Power +95\nMovement Speed -0.1\nVision Range +2.5\nSkill Amplification +22%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -2110,6 +2250,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "Polaris\n\nAttack Power +135\nAttack Speed +40%\nMovement Speed -0.07\nVision Range +2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "SniperRifle"
@@ -2140,6 +2282,8 @@ let sniperRifle = [
 		,Attack_Range: 0
 		,Base_Range: 6.7
 		,Atk_Speed: 0.43
+		,Title: "The Deadly Ray\n\nAttack Power +95\nMovement Speed -0.1\nVision Range +2.5\nSkill Amplification +30%"
+		,Rarity: "Legendary"
 	}
 ];
 let rapier = [
@@ -2172,6 +2316,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Needle\n\nAttack Power +3\nCritical Damage +25%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Rapier"
@@ -2202,6 +2348,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Fencing Rapier\n\nAttack Power +16\nCritical Damage +25%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Rapier"
@@ -2232,6 +2380,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Apricot Sword\n\nAttack Power +21\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Rapier"
@@ -2262,6 +2412,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Sword of Justice\n\nAttack Power +30\nHP Regen +1.5\nSP Regen +200%\nCritical Damage +25%\nCooldown Reduction +12%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Rapier"
@@ -2292,6 +2444,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Durendal Mk2\n\nAttack Power +51\nVision Range +3\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Rapier"
@@ -2322,6 +2476,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +35%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Rapier"
@@ -2352,6 +2508,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Meteor Claymore\n\nAttack Power +75\nCritical Damage +30%\nCooldown Reduction +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Rapier"
@@ -2382,6 +2540,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Joyeuse\n\nAttack Power +75\nMovement Speed +0.2\nCritical Damage +30%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Rapier"
@@ -2412,6 +2572,8 @@ let rapier = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.615
+		,Title: "Mistilteinn\n\nAttack Power +30\nHP Regen +1.5\nSP Regen +200%\nCritical Damage +25%\nCooldown Reduction +12%\nSkill Amplification +17%"
+		,Rarity: "Legendary"
 	}
 ];
 let spear = [
@@ -2444,6 +2606,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Short Spear\n\nAttack Power +15"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Spear"
@@ -2474,6 +2638,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Bamboo Spear\n\nAttack Power +37"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Spear"
@@ -2504,6 +2670,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Bident\n\nAttack Power +52"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Spear"
@@ -2534,6 +2702,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Pike\n\nAttack Power +67\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Spear"
@@ -2564,6 +2734,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Halberd Axe\n\nAttack Power +90\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Spear"
@@ -2594,6 +2766,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Sharpened Spear\n\nAttack Power +40\nMovement Speed +0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Spear"
@@ -2624,6 +2798,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Gentian Silver Gun\n\nAttack Power +105\nMovement Speed +0.2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Spear"
@@ -2654,6 +2830,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Eighteen Foot Spear\n\nAttack Power +100\nMovement Speed +40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Spear"
@@ -2684,6 +2862,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Cosmic Bident\n\nAttack Power +150"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Spear"
@@ -2714,6 +2894,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Lance of Poseidon\n\nAttack Power +120\nMovement Speed -0.05"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Spear"
@@ -2744,6 +2926,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Fangtian Huaji\n\nAttack Power +88\nMovement Speed -0.1\nSkill Amplification +37\n Healing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Spear"
@@ -2774,6 +2958,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Dragon Guandao\n\nAttack Power +130\nMovement Speed -0.1"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Spear"
@@ -2804,6 +2990,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Blazing Lance\n\nAttack Power +110\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +30"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Spear"
@@ -2834,6 +3022,8 @@ let spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
+		,Title: "Spear of Longinus\n\nAttack Power +140\nLife Steal +20%"
+		,Rarity: "Legendary"
 	}
 ];
 let hammer = [
@@ -2866,6 +3056,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Hammer\n\nAttack Power +16"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Hammer"
@@ -2896,6 +3088,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Warhammer\n\nAttack Power +40"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Hammer"
@@ -2926,6 +3120,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Morning Star\n\nAttack Power +55"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Hammer"
@@ -2956,6 +3152,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Black Stag Hammer\n\nAttack Power +56"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Hammer"
@@ -2986,6 +3184,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +31"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Hammer"
@@ -3016,6 +3216,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Hammer of Dagda\n\nAttack Power +95\nHP Regen +250%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Hammer"
@@ -3046,6 +3248,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Hammer of Thor\n\nAttack Power +120\nAttack Speed +40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Hammer"
@@ -3076,6 +3280,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Evening Star\n\nAttack Power +150"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Hammer"
@@ -3106,6 +3312,8 @@ let hammer = [
 		,Attack_Range: 0
 		,Base_Range: 1.25
 		,Atk_Speed: 0.455
+		,Title: "Magic Stick\n\nAttack Power +65\nLife Steal +30%\nSkill Amplification +27%"
+		,Rarity: "Epic"
 	}
 ];
 let bat = [
@@ -3138,6 +3346,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Branch\n\nAttack Power +5"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Bat"
@@ -3168,6 +3378,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Short Rod\n\nAttack Power +15"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Bat"
@@ -3198,6 +3410,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Long Rod\n\nAttack Power +25"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Bat"
@@ -3228,6 +3442,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Goblin Bat\n\nAttack Power +30\nHealing Reduction (Normal Attacks) -40%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bat"
@@ -3258,6 +3474,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Umbrella\n\nAttack Power +30\nSkill Amplification +14"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bat"
@@ -3288,6 +3506,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Torch\n\nAttack Power +40\nHP Regen +0.8\nAttack Speed +10%\nMovement Speed +0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bat"
@@ -3318,6 +3538,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Statue of Soteria\n\nAttack Power +90\nHP Regen +1.2\nHP Regen +1.2\nSP Regen +60%\nAttack Speed +15%\nMovement Speed +0.15\nLife Steal +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bat"
@@ -3348,6 +3570,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Mallet\n\nAttack Power +80\nAttack Speed +50%\nHealing Reduction (Normal Attacks) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bat"
@@ -3378,6 +3602,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Spy Umbrella\n\nAttack Power +60\nSkill Amplification +25"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bat"
@@ -3408,6 +3634,8 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
+		,Title: "Monkey King Bar\n\nAttack Power +150"
+		,Rarity: "Legendary"
 	}
 ];
 let throws = [
@@ -3440,6 +3668,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Base Ball\n\nAttack Power +12"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Throws"
@@ -3470,6 +3700,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Iron Ball\n\nAttack Power +12"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Throws"
@@ -3500,6 +3732,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Grenade\n\nAttack Power +25\nExtra Normal Attack Damage +20"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Throws"
@@ -3530,6 +3764,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Molotov Cocktail\n\nAttack Power +22\nAttack Speed +15%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Throws"
@@ -3560,6 +3796,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Signed Ball\n\nAttack Power +30"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Throws"
@@ -3590,6 +3828,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Sling\n\nAttack Power +42"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Throws"
@@ -3620,6 +3860,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Flour Bomb\n\nAttack Power +58\nAttack Speed 15%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Throws"
@@ -3650,6 +3892,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Ball Lightning\n\nAttack Power +24\nAttack Speed +20%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Throws"
@@ -3680,6 +3924,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Flubber\n\nAttack Power +42"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Throws"
@@ -3710,6 +3956,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Spiky Bouncy Ball\n\nAttack Power +36\nHealing Reduction (Skills) -40%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Throws"
@@ -3740,6 +3988,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Incendiary Bomb\n\nAttack Power +70\nAttack Speed +50%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Throws"
@@ -3770,6 +4020,9 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Grenade of Antioch\n\nAttack Power +85\nExtra Normal Attack Damage +80"
+		,Rarity: "Epic"
+
 	}
 	,{
 		 Type: "Throws"
@@ -3800,6 +4053,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "David`s Sling\n\nAttack Power +80\nHP Regen +150%\nExtra Normal Attack Damage +30"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Throws"
@@ -3830,6 +4085,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Smoke Bomb\n\nAttack Power +90\nAttack Damage +40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Throws"
@@ -3860,6 +4117,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "High Explosive Grenade\n\nAttack Power +56\nExtra Normal Attack Damage +60"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Throws"
@@ -3890,6 +4149,8 @@ let throws = [
 		,Attack_Range: 0
 		,Base_Range: 5.8
 		,Atk_Speed: 0.51
+		,Title: "Ruthenium Marble\n\nAttack Power +80\nSkill Amplification +20%\nHealing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 ];
 let shuriken = [
@@ -3922,6 +4183,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Razor\n\nAttack Power +11"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Shuriken"
@@ -3952,6 +4215,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Playing Cards\n\nAttack Power +4\nCritical Strike Chance +5%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Shuriken"
@@ -3982,6 +4247,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Chalk\n\nAttack Power +12"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4012,6 +4279,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Dart\n\nAttack Power +16\nMovement Speed +0.1\nCritical Damage +20%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4042,6 +4311,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Vintage Cards\n\nAttack Power +15\nCritical Strike Chance +10%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4072,6 +4343,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Throwing Stars\n\nAttack Power +27"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4102,6 +4375,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Onyx Dagger\n\nAttack Power +17\nExtra Normal Attack Damage +10"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4132,6 +4407,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Charm\n\nAttack Power +40\nSkill Amplification +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4162,6 +4439,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Willow Leaf Spike\n\nAttack Power +17\nExtra Normal Attack Damage +20"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4192,6 +4471,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Chakram\n\nAttack Power +38"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4222,6 +4503,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Apricot Flower Tag\n\nAttack Power +14\nCooldown Reduction +10%\nExtra Normal Attack Damage +30"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4252,6 +4535,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Venom Dart\n\nAttack Power +55\nCritical Damage +20%\nSkill Amplification +15"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4282,6 +4567,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Dharma Chakram\n\nAttack Power +34\nSkill Amplification +15%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4312,6 +4599,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Plumbata\n\nAttack Power +48\nMovement Speed +0.1\nCritical Damage +25%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4342,6 +4631,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Cards of Tyranny\n\nAttack Power +49\nAttack Speed +30%\nCritical Strike Chance +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4372,6 +4663,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +12\nSkill Amplification +12%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4402,6 +4695,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Fuhma Shuriken\n\nAttack Power +44\nCooldown Reduction +15%\nExtra Normal Attack Damage +36"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4432,6 +4727,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Frost Venom Dart\n\nAttack Power +80\nCritical Damage +50%\nSkill Amplification +20"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4462,6 +4759,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +29\nSkill Amplification +24"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4492,6 +4791,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Flechette\n\nAttack Power +85\nMovement Speed +0.2\nCritical Damage +40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4522,6 +4823,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Wind and Fire Wheels\n\nAttack Power +55\nSkill Amplification +17%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4552,6 +4855,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Death Rune\n\nAttack Power +80\nSkill Amplification +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4582,6 +4887,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Sudarsana\n\nAttack Power +125"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Shuriken"
@@ -4612,6 +4919,8 @@ let shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
+		,Title: "Petal Torrent\n\nAttack Power +80\nCritical Damage +50%\nExtra Normal Attack Damage +130\nSkill Amplification +25"
+		,Rarity: "Legendary"
 	}
 ];
 let bow = [
@@ -4644,6 +4953,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Bow\n\nAttack Power +11"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Bow"
@@ -4674,6 +4985,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Wooden_Bow\n\nAttack Power +26"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Bow"
@@ -4704,6 +5017,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Longbow\n\nAttack Power +25"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Bow"
@@ -4734,6 +5049,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Composite Bow\n\nAttack Power +16\nHealing Reduction (Normal Attacks) -40%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bow"
@@ -4764,6 +5081,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Strong Bow\n\nAttack Power +26\nAttack Speed +15%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bow"
@@ -4794,6 +5113,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Stallion Bow\n\nAttack Power +20\nExtra Normal Attack Damage +25"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bow"
@@ -4824,6 +5145,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Mighty Bow\n\nAttack Power +20\nExtra Normal Attack Damage +11"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bow"
@@ -4854,6 +5177,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Pellet Bow\n\nAttack Power +55"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bow"
@@ -4884,6 +5209,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Scorchbow\n\nAttack Power +24\nSkill Amplification +18"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Bow"
@@ -4914,6 +5241,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Ancient Bolt\n\nAttack Power +55\nExtra Normal Attack Damage +40"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bow"
@@ -4944,6 +5273,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Golden-Ratio Bow\n\nAttack Power +68\nSkill Amplification +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bow"
@@ -4974,6 +5305,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Twinbow\n\nAttack Power +70\nAttack Speed +50%\nHealing Reduction (Normal Attacks) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bow"
@@ -5004,6 +5337,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nSkill Amplification +45\nHealing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bow"
@@ -5034,6 +5369,8 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
+		,Title: "Failnaught\n\nAttack Power +80\nAttack Speed +15%\nLife Steal +15%"
+		,Rarity: "Legendary"
 	}
 ];
 let crossbow = [
@@ -5066,6 +5403,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Short Crossbow\n\nAttack Power +12"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5096,6 +5435,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Long Crossbow\n\nAttack Power +30"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5126,6 +5467,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Crossbow\n\nAttack Power +30"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5156,10 +5499,12 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Power Crossbow\n\nAttack Power +42"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Crossbow"
-		,Name: "Sniper_Bow"
+		,Name: "Laser_Crossbow"
 		,Attack_Power: 30
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5186,6 +5531,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Laser Crossbow\n\nAttack Power +30\nVision Range +2.5"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5216,6 +5563,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Heavy Crossbow\n\nAttack Power +72\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5246,6 +5595,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Steel Bow\n\nAttack Power +60"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5276,6 +5627,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "The Legend of The General\n\nAttack Power +75\nHP Regen +2\nAttack Speed +50%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5306,6 +5659,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Ballista\n\nAttack Power +115\nAttack Speed -5%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5336,6 +5691,8 @@ let crossbow = [
 		,Attack_Range: 1
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Sniper Crossbow\n\nAttack Power +85\nVision Range +5\nAttack Range +1"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5366,6 +5723,8 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "The Golden Ghost\n\nAttack Power +70\nExtra Normal Attack Damage +37"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Crossbow"
@@ -5396,12 +5755,14 @@ let crossbow = [
 		,Attack_Range: 0
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
+		,Title: "Sharanga\n\nAttack Power +140"
+		,Rarity: "Legendary"
 	}
 ];
 let glove = [
 	{
 		 Type: "Glove"
-		,Name: "Knuckle"
+		,Name: "Brass_Knuckles"
 		,Attack_Power: 10
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5428,10 +5789,12 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Brass Knuckles\n\nAttack Power +10"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Glove"
-		,Name: "Cotton_Glove"
+		,Name: "Cotton_Gloves"
 		,Attack_Power: 7
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5458,10 +5821,12 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Cotton Gloves\n\nAttack Power +7"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Glove"
-		,Name: "Leather_Glove"
+		,Name: "Leather_Gloves"
 		,Attack_Power: 18
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5488,10 +5853,12 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Leather Gloves\n\nAttack Power +18"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Glove"
-		,Name: "Iron_Knuckle"
+		,Name: "Iron_Knuckles"
 		,Attack_Power: 20
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5518,6 +5885,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Iron Knuckles\n\nAttack Power +20"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Glove"
@@ -5548,10 +5917,12 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Gauntlet\n\nAttack Power +32\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Glove"
-		,Name: "Wing_Knuckle"
+		,Name: "Wing_Knuckles"
 		,Attack_Power: 20
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5578,6 +5949,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Wing Knuckles\n\nAttack Power +20\nMovement Speed +0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Glove"
@@ -5608,6 +5981,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Bone Gauntlet\n\nAttack Power +35\nDefense +13\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Glove"
@@ -5638,10 +6013,12 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Shatter Shell Gauntlet\n\nAttack Power +32\nMovement Speed -0.1\nExtra Normal Attack Damage +15"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Glove"
-		,Name: "Glass_Knuckle"
+		,Name: "Glass_Knuckles"
 		,Attack_Power: 28
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 10
@@ -5668,6 +6045,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Glass Knuckles\n\nAttack Power +28\nCritical Strike Chance +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Glove"
@@ -5698,6 +6077,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Phoenix Gloves\n\nAttack Power +27\nSkill Amplification +30"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Glove"
@@ -5728,6 +6109,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "One Inch Punch\n\nAttack Power +50\nDefense +25\nSP Regen +50%\nLife Steal +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Glove"
@@ -5758,10 +6141,12 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Divine Fist\n\nAttack Power +42\nMovement Speed -0.05\nExtra Normal Attack Damage +33"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Glove"
-		,Name: "Bloodwing_Knuckle"
+		,Name: "Bloodwing_Knuckles"
 		,Attack_Power: 53
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5788,6 +6173,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Bloodwing Knuckles\n\nAttack Power +53\nMax HP +300\nMovement Speed +0.1"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Glove"
@@ -5818,6 +6205,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Frost Petal Hand\n\nAttack Power +27\nCooldown Reduction +15%\nSkill Amplification +38"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Glove"
@@ -5848,6 +6237,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Buddha`s Palm\n\nAttack Power +33\nCooldown Reduction +10%\nSkill Amplification +18%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Glove"
@@ -5878,6 +6269,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Brasil Gauntlet\n\nAttack Power +48\nDefense +13\nHP Regen +1\nAttack Speed +30%\nMovement Speed -0.05"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Glove"
@@ -5908,10 +6301,12 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "White Claw Punch\n\nAttack Power +55\nCritical Strike Chance +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Glove"
-		,Name: "Imperial_Silk_Glove"
+		,Name: "Imperial_Silk_Gloves"
 		,Attack_Power: 85
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -5938,6 +6333,8 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
+		,Title: "Imperial Silk Gloves\n\nAttack Power +85\nMovement Speed +0.2"
+		,Rarity: "Epic"
 	}
 ];
 let tonfa = [
@@ -5970,10 +6367,12 @@ let tonfa = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.5
+		,Title: "Bamboo\n\nAttack Power +12"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Tonfa"
-		,Name: "Tonfa"
+		,Name: "Wooden_Tonfa"
 		,Attack_Power: 23
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -6000,6 +6399,8 @@ let tonfa = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.5
+		,Title: "Wooden Tonfa\n\nAttack Power +23\nDefense +8"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Tonfa"
@@ -6030,6 +6431,8 @@ let tonfa = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.5
+		,Title: "Police Baton\n\nAttack Power +35\nDefense +8"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Tonfa"
@@ -6060,6 +6463,8 @@ let tonfa = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.5
+		,Title: "Ryukyu Tonfa\n\nAttack Power +38\nDefense +18"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Tonfa"
@@ -6090,6 +6495,8 @@ let tonfa = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.5
+		,Title: "Tactical Tonfa\n\nAttack Power +70\nDefense +10\nLife Steal +25%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Tonfa"
@@ -6120,6 +6527,8 @@ let tonfa = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.5
+		,Title: "Mai Sok\n\nAttack Power +45\nDefense +20\nHP Regen +100%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Tonfa"
@@ -6150,6 +6559,8 @@ let tonfa = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.5
+		,Title: "Plasma Tonfa\n\nAttack Power +65\nDefense +18\nVision Range +2.5"
+		,Rarity: "Epic"
 	}
 ];
 let guitar = [
@@ -6182,6 +6593,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Starter Guitar\n\nAttack Power +5"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Guitar"
@@ -6212,6 +6625,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Golden Bridge\n\nAttack Power +8\nSkill Amplification +14%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Guitar"
@@ -6242,6 +6657,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Single Coil Pickup\n\nAttack Power +8\nAttack Speed +15%\nExtra Normal Attack Damage +2"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Guitar"
@@ -6272,6 +6689,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Ruby Special\n\nAttack Power +20\nMax HP +300\nAttack Speed +20%\nExtra Normal Attack Damage +2"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Guitar"
@@ -6302,6 +6721,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Humbucker Pickup\n\nAttack Power +25\nVision Range +3\nSkill Amplification +15%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Guitar"
@@ -6332,6 +6753,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "King-V\n\nAttack Power +13\nSkill Amplification +16%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Guitar"
@@ -6362,6 +6785,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Nocaster\n\nAttack Power +15\nAttack Speed +20%\nLife Steal +10%\nExtra Normal Attack Damage +15"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Guitar"
@@ -6392,6 +6817,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Superstrat\n\nAttack Power +19\nAttack Speed +15%\nExtra Normal Attack Damage +2"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Guitar"
@@ -6422,6 +6849,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Wild Horse\n\nAttack Power +9\nAttack Speed +25%\nExtra Normal Attack Damage +6"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Guitar"
@@ -6452,6 +6881,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Bohemian\n\nAttack Power +50\nMax HP +380\nAttack Speed +20%\nCritical Strike Chance +20%\nExtra Normal Attack Damage +2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Guitar"
@@ -6482,6 +6913,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Stairway to Heaven\n\nAttack Power +52\nHP Regen +200%\nVision Range +4\nSkill Amplification +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Guitar"
@@ -6512,6 +6945,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Purple Haze\n\nAttack Power +85\nSkill Amplification +22%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Guitar"
@@ -6542,6 +6977,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +10%\nExtra Normal Attack Damage +12"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Guitar"
@@ -6572,6 +7009,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Wonderful Tonight\n\nAttack Power +100\nAttack Speed +45%\nExtra Normal Attack Damage +2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Guitar"
@@ -6602,6 +7041,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "The Wall\n\nAttack Power +70\nAttack Speed +18%\nExtra Normal Attack Damage +2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Guitar"
@@ -6632,6 +7073,8 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
+		,Title: "Teen Spirit\n\nAttack Power +10\nAttack Speed +25%\nExtra Normal Attack Damage +20"
+		,Rarity: "Epic"
 	}
 ];
 let nunchaku = [
@@ -6664,6 +7107,8 @@ let nunchaku = [
 		,Attack_Range: 0
 		,Base_Range: 1.4
 		,Atk_Speed: 0.57
+		,Title: "Steel Chain\n\nAttack Power +11"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Nunchaku"
@@ -6694,6 +7139,8 @@ let nunchaku = [
 		,Attack_Range: 0
 		,Base_Range: 1.4
 		,Atk_Speed: 0.57
+		,Title: "Nunchaku\n\nAttack Power +27"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Nunchaku"
@@ -6724,6 +7171,8 @@ let nunchaku = [
 		,Attack_Range: 0
 		,Base_Range: 1.4
 		,Atk_Speed: 0.57
+		,Title: "Sharper\n\nAttack Power +19\nHealing Reduction (Skills) -40%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Nunchaku"
@@ -6754,6 +7203,8 @@ let nunchaku = [
 		,Attack_Range: 0
 		,Base_Range: 1.4
 		,Atk_Speed: 0.57
+		,Title: "Bleeder\n\nAttack Power +38"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Nunchaku"
@@ -6784,6 +7235,8 @@ let nunchaku = [
 		,Attack_Range: 0
 		,Base_Range: 1.4
 		,Atk_Speed: 0.57
+		,Title: "The Smiting Dragon\n\nAttack Power +50\nSkill Amplification +15\nHealing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Nunchaku"
@@ -6814,6 +7267,8 @@ let nunchaku = [
 		,Attack_Range: 0
 		,Base_Range: 1.4
 		,Atk_Speed: 0.57
+		,Title: "Vibro Nunchaku\n\nAttack Power +65\nAttack Speed +50%"
+		,Rarity: "Epic"
 	}
 ];
 let whip = [
@@ -6846,6 +7301,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Whip\n\nAttack Power +9"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Whip"
@@ -6876,6 +7333,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Rope Cuffs\n\nAttack Power +19"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Whip"
@@ -6906,6 +7365,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bullwhip\n\nAttack Power +19"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Whip"
@@ -6936,6 +7397,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Wind Whip\n\nAttack Power +25\nSkill Amplification +20"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Whip"
@@ -6966,6 +7429,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Thunder Whip\n\nAttack Power +55\nSkill Amplification +18%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Whip"
@@ -6996,6 +7461,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Lightning Whip\n\nAttack Power +41\nAttack Speed +20%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Whip"
@@ -7026,6 +7493,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Gleipnir\n\nAttack Power +54\nAttack Speed +30%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Whip"
@@ -7056,6 +7525,8 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Plasma Whip\n\nAttack Power +49\nAttack Speed +20%\nVision Range +2.3"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Whip"
@@ -7086,5 +7557,7 @@ let whip = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Whip of Nine Bloody Tails\n\nAttack Power +70\nLife Steal +20%\nSkill Amplification +40"
+		,Rarity: "Legendary"
 	}
 ];

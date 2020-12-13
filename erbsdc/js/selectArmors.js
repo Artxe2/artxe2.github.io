@@ -5,7 +5,7 @@ function selectChest() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < chests.length; i++) {
-			list += "<img title = '" + chests[i].Name + "' onclick = 'changeChest(\"chest\", " + i + ")' src = './armors/" + chests[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + chests[i].Rarity + "' title = '" + chests[i].Title + "' onclick = 'changeChest(\"chest\", " + i + ")' src = './armors/" + chests[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -23,7 +23,7 @@ function selectHead() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < heads.length; i++) {
-			list += "<img title = '" + heads[i].Name + "' onclick = 'changeHead(\"head\", " + i + ")' src = './armors/" + heads[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + heads[i].Rarity + "' title = '" + heads[i].Title + "' onclick = 'changeHead(\"head\", " + i + ")' src = './armors/" + heads[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -41,7 +41,7 @@ function selectArm() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < arms.length; i++) {
-			list += "<img title = '" + arms[i].Name + "' onclick = 'changeArm(\"arm\", " + i + ")' src = './armors/" + arms[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + arms[i].Rarity + "' title = '" + arms[i].Title + "' onclick = 'changeArm(\"arm\", " + i + ")' src = './armors/" + arms[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -59,7 +59,7 @@ function selectLeg() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < legs.length; i++) {
-			list += "<img title = '" + legs[i].Name + "' onclick = 'changeLeg(\"leg\", " + i + ")' src = './armors/" + legs[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + legs[i].Rarity + "' title = '" + legs[i].Title + "' onclick = 'changeLeg(\"leg\", " + i + ")' src = './armors/" + legs[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -77,7 +77,7 @@ function selectAccessory() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < accessorys.length; i++) {
-			list += "<img title = '" + accessorys[i].Name + "' onclick = 'changeAccessory(\"accessory\", " + i + ")' src = './armors/" + accessorys[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + accessorys[i].Rarity + "' title = '" + accessorys[i].Title + "' onclick = 'changeAccessory(\"accessory\", " + i + ")' src = './armors/" + accessorys[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -95,7 +95,7 @@ function selectChest2() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < chests.length; i++) {
-			list += "<img title = '" + chests[i].Name + "' onclick = 'changeChest2(\"chest\", " + i + ")' src = './armors/" + chests[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + chests[i].Rarity + "' title = '" + chests[i].Title + "' onclick = 'changeChest2(\"chest\", " + i + ")' src = './armors/" + chests[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -113,7 +113,7 @@ function selectHead2() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < heads.length; i++) {
-			list += "<img title = '" + heads[i].Name + "' onclick = 'changeHead2(\"head\", " + i + ")' src = './armors/" + heads[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + heads[i].Rarity + "' title = '" + heads[i].Title + "' onclick = 'changeHead2(\"head\", " + i + ")' src = './armors/" + heads[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -131,7 +131,7 @@ function selectArm2() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < arms.length; i++) {
-			list += "<img title = '" + arms[i].Name + "' onclick = 'changeArm2(\"arm\", " + i + ")' src = './armors/" + arms[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + arms[i].Rarity + "' title = '" + arms[i].Title + "' onclick = 'changeArm2(\"arm\", " + i + ")' src = './armors/" + arms[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -149,7 +149,7 @@ function selectLeg2() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < legs.length; i++) {
-			list += "<img title = '" + legs[i].Name + "' onclick = 'changeLeg2(\"leg\", " + i + ")' src = './armors/" + legs[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + legs[i].Rarity + "' title = '" + legs[i].Title + "' onclick = 'changeLeg2(\"leg\", " + i + ")' src = './armors/" + legs[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';
@@ -167,7 +167,7 @@ function selectAccessory2() {
 		let list = '';
 		let index = 0;
 		for (let i = 0; i < accessorys.length; i++) {
-			list += "<img title = '" + accessorys[i].Name + "' onclick = 'changeAccessory2(\"accessory\", " + i + ")' src = './armors/" + accessorys[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
+			list += "<img class = '" + accessorys[i].Rarity + "' title = '" + accessorys[i].Title + "' onclick = 'changeAccessory2(\"accessory\", " + i + ")' src = './armors/" + accessorys[i].Name + ".png' width = '128px' height = '71px' border = '1'>";
 			if (++index == 3) {
 				index = 0;
 				list += '<br>';

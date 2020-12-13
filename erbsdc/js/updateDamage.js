@@ -209,7 +209,7 @@ function updateDamage() {
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(200 + document.querySelector('#r_level').selectedIndex * 150, 0.7, true);
 			document.querySelector('#t_damage').innerText = 'shield: ' + 
-				(150 + document.querySelector('#t_level').selectedIndex * 50 + attack_power * 0.1);
+				(150 + document.querySelector('#t_level').selectedIndex * 50 + attack_power * 0.1).toFixed(2);
 		} else if (character == Fiora) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 60, 0.2, true) + ' - ' + 
@@ -308,9 +308,9 @@ function updateDamage() {
 		} else if (character == Isol) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(50 + document.querySelector('#q_level').selectedIndex * 25, 0.5, true) + ' + ' +  
-				calcSkillDamage(8 + document.querySelector('#q_level').selectedIndex * 4, 0.3, true) + ' x 0 ~ 4 ( ' + 
+				calcSkillDamage(8 + document.querySelector('#q_level').selectedIndex * 4, 0.3, true) + ' x 0 ~ 10 ( ' + 
 				(Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#q_level').selectedIndex * 25, 0.5, true))) + 
-				Math.round(parseFloat(calcSkillDamage(8 + document.querySelector('#q_level').selectedIndex * 4, 0.3, true))) * 4) + ' )';
+				Math.round(parseFloat(calcSkillDamage(8 + document.querySelector('#q_level').selectedIndex * 4, 0.3, true))) * 10) + ' )';
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(20 + document.querySelector('#w_level').selectedIndex * 10, 0.6, true) + ' x 4 ( ' + 
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#w_level').selectedIndex * 10, 0.6, true))) * 4 + ' )';
@@ -667,7 +667,7 @@ function updateDamage() {
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(200 + document.querySelector('#r_level2').selectedIndex * 150, 0.7, false);
 			document.querySelector('#t_damage2').innerText = 'shield: ' + 
-				(150 + document.querySelector('#t_level2').selectedIndex * 50 + attack_power2 * 0.1);
+				(150 + document.querySelector('#t_level2').selectedIndex * 50 + attack_power2 * 0.1).toFixed(2);
 		} else if (character2 == Fiora) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 60, 0.2, false) + ' - ' + 
@@ -766,9 +766,9 @@ function updateDamage() {
 		} else if (character2 == Isol) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(50 + document.querySelector('#q_level2').selectedIndex * 25, 0.5, false) + ' + ' +  
-				calcSkillDamage(8 + document.querySelector('#q_level2').selectedIndex * 4, 0.3, false) + ' x 0 ~ 4 ( ' + 
+				calcSkillDamage(8 + document.querySelector('#q_level2').selectedIndex * 4, 0.3, false) + ' x 0 ~ 10 ( ' + 
 				(Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#q_level2').selectedIndex * 25, 0.5, false))) + 
-				Math.round(parseFloat(calcSkillDamage(8 + document.querySelector('#q_level2').selectedIndex * 4, 0.3, false))) * 4) + ' )';
+				Math.round(parseFloat(calcSkillDamage(8 + document.querySelector('#q_level2').selectedIndex * 4, 0.3, false))) * 10) + ' )';
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(20 + document.querySelector('#w_level2').selectedIndex * 10, 0.6, false) + ' x 4 ( ' + 
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#w_level2').selectedIndex * 10, 0.6, false))) * 4 + ' )';

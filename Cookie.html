@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script type="text/javascript">
+    	
+    	function setCookie(name, value, days) {
+    		value = escape(value)
+    		if (days) {    			
+        		const exDate = new Date();
+        		exDate.setDate(exDate.getDate() + days);
+    			value += '; expires=' + exDate;
+    		}
+    		document.cookie = name + '=' + escape(value);
+    	}
+    	function getCookie(name) {
+    		console.log(document.cookie);
+    		let key, values = document.cookie + '; ';
+    		values = values.split('; ');
+    		for (let i = 0; i < values.length; i++) {
+    			io = values[i].indexOf('=');
+    			key = values[i].substr(0, values[i].indexOf('='));
+    			if (key == name) {
+    				value = unescape(values[i].substr(key.length + 1));
+    				value = value.substr(0, value.indexOf(';'));
+    				return value;
+    			}
+    		}
+    		return '';
+    	}
+		document.addEventListener('DOMContentLoaded', (e) => {
+			document.querySelector('#data').value = getCookie('data');
+        	document.querySelector('#data').addEventListener('keyup', (e) => {
+        		setCookie('data', e.target.value, 7);
+        	});
+    	});
+    </script>
+</head>
+<body>
+    <b>data: </b><input id='data'/>
+</body>
+</html>

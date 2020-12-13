@@ -28,6 +28,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Windbreaker\n\nMax HP +50\nNormal Attack Damage Reduction +3"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Chest"
@@ -58,10 +60,12 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Monk`s Robe\n\nDefense +5\nCooldown Reduction +5%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Chest"
-		,Name: "Full_Body_Swimsuit"
+		,Name: "Wetsuit"
 		,Attack_Power: 0
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
@@ -88,6 +92,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Wetsuit\n\nDefense +1\nSkill Damage Reduction +5%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Chest"
@@ -118,6 +124,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Fabric Armor\n\nDefense +11"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Chest"
@@ -148,6 +156,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Leather Armor\n\nDefense +22"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -178,6 +188,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Leather Jacket\n\nDefense +8\nMax HP +70\nNormal Attack Damage Reduction +6"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -208,6 +220,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Turtle Donok\n\nDefense +10\nCooldown Reduction +10%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -238,6 +252,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Military Suit\n\nMax HP +50\nNormal Attack Damage Reduction +10"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -268,6 +284,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Patched Robe\n\nDefense +5\nHP Regen +1\nCooldown Reduction +7%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -298,6 +316,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Dress\n\nAttack Power +8\nDefense +8\nSP Regen +100%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -328,6 +348,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bikini\n\nDefense +4\nSkill Damage Reduction +11%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -358,6 +380,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Diving Suit\n\nDefense +9\nSkill Damage Reduction +10%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Chest"
@@ -388,6 +412,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Rider Jacket\n\nDefense +11\nMax HP +70\nNormal Attack Damage Reduction +9"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -418,6 +444,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Chain Armor\n\nDefense +30"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -448,6 +476,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Normal Attack\n\nLife Steal +5\nNormal Attack Damage Reduction +12"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -478,6 +508,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Qipao\n\nAttack Power +10\nDefense +10\nSP Regen +150%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -508,6 +540,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Sheet Metal Armor\n\nDefense +38\nMax HP +100\nMovement Speed - 0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -538,6 +572,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Hanbok\n\nDefense +5\nHP Regen +1\nCooldown Reduction +15%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -568,6 +604,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bulletproof Vest\n\nDefense +10\nMax HP +130\nNormal Attack Damage Reduction +10"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -598,6 +636,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Sunset Armor\n\nDefense +28\nMax HP +450"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -628,6 +668,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Convert Agent Uniform\n\nDefense +23\nHP Regen +2.5\nCooldown Reduction +15%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Chest"
@@ -658,6 +700,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Optical Camouflage Suit\n\nAttack Power +10\nDefense +20\nCritical Strike Chance +22%\nSkill Damage Reduction +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -688,6 +732,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +11\nMovement speed while not in combat +0.3\nNormal Attack Damage Reduction +15\nHealing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -718,6 +764,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Mithril Armor\n\nDefense +65\nAttack Speed +12%\n Movement Speed +0.2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -748,6 +796,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Crusader Armor\n\nDefense +30\nHP Regen +200%\nMovement Speed - 0.1\nExtra Damage to Normal Attacks +20"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -778,6 +828,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Amazoness Armor\n\nDefense +28\nMax HP +120\nSkill Damage Reduction +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -808,6 +860,8 @@ let chests = [
 		,Attack_Range: 1
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Dragon Dobok\n\nAttack Power +11\nDefense +10\nSP Regen +150%\nCooldown Reduction +10%\nAttack Range +1"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -838,6 +892,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Commander`s Armor\n\nDefense +20\nSkill Damage Increase +16%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -868,6 +924,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Butler`s Suit\n\nAttack Power +30\nMovement Speed +0.1\nLife Steal +20%\nNormal Attack Damage Reduction +10"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -898,6 +956,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Battle Suit\n\nDefense +25\nMax HP +140\nNormal Attack Damage Reduction +12\nSkill Damage Reduction +12%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -928,6 +988,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "EPD Siot\n\nDefense +15\nMax HP +300\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +10"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Chest"
@@ -958,6 +1020,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Blazing Dress\n\nDefense +25\nHP Regen +2.5\nSP Regen +3\nSP Regen +75%\nExtra Normal Attack Damage +22"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Chest"
@@ -988,6 +1052,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Kabana\n\nDefense +36\nSkill Amplification +18%"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Chest"
@@ -1018,6 +1084,8 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Queen of Hearts\n\nDefense +45\nHP Regen +3\nCooldown Reduction +25%"
+		,Rarity: "Legendary"
 	}
 ];
 let heads = [
@@ -1050,6 +1118,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Hairband\n\nDefense +4\nMax SP +130"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Head"
@@ -1080,6 +1150,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Hat\n\nDefense +4\nCooldown Reduction +5%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Head"
@@ -1110,6 +1182,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bike Helmet\n\nMax HP +90"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Head"
@@ -1140,6 +1214,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Mask\n\nDefense +10\nMax SP +130\nMovement Speed +0.08"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Head"
@@ -1170,6 +1246,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Circlet\n\nDefense +14\nMax SP +270"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Head"
@@ -1200,6 +1278,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Beret\n\nDefense +5\nMax HP +50\nCooldown Reduction +13%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Head"
@@ -1230,6 +1310,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Chain Coif\n\nDefense +14\nCooldown Reduction +10%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Head"
@@ -1260,6 +1342,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Safety Helmet\n\nMax HP +210"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Head"
@@ -1290,6 +1374,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Ballistic Helmet\n\nDefense +10\nMax HP +90\nCooldown Reduction +13%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Head"
@@ -1320,6 +1406,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Fire Helmet\n\nMax HP +280"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Head"
@@ -1350,6 +1438,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Tiara\n\nDefense +14\nMax SP +460"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Head"
@@ -1380,6 +1470,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Crown\n\nDefense +16\nMax SP +360\nSkill Amplification +11%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Head"
@@ -1410,6 +1502,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Close Helm\n\nDefense +20\nMax SP +130\nMovement Speed +0.1\nCooldown Reduction +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Head"
@@ -1440,6 +1534,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Motorcycle Helmet\n\nAttack Power +10\nMax HP +300\nVision Range +2.5"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Head"
@@ -1470,6 +1566,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Crystal Tiara\n\nDefense +14\nMax SP +700\nCritical Strike Chance +22%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Head"
@@ -1500,6 +1598,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Mithril Helm\n\nDefense +38\nAttack Speed +12%\nMovement Speed +0.2\nCooldown Reduction +15%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Head"
@@ -1530,6 +1630,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Tactical OPS Helmet\n\nDefense +15\nMax HP +120\nAttack Speed +20%\nCooldown Reduction +15%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Head"
@@ -1560,6 +1662,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Helm of Banneret\n\nDefense +20\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Damage Reduction +11%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Head"
@@ -1590,6 +1694,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Chinese Opera Mask\n\nDefense +16\nMax SP +300\nMovement Speed +0.1\nLife Steal +22%\nMovement speed while not in combat +0.4"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Head"
@@ -1620,6 +1726,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Imperial Crown\n\nDefense +18\nMax HP +300\nMax SP +500\nSkill Amplification +10%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Head"
@@ -1650,6 +1758,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Imperial Burgonet\n\nDefense +10\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Amplification +14%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Head"
@@ -1680,6 +1790,8 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Laurel Wreath\n\nDefense +18\nMax SP +580\nHP Regen +1.5\nSP Regen +2\nExtra Normal Attack Damage +15"
+		,Rarity: "Legendary"
 	}
 ];
 let arms = [
@@ -1712,6 +1824,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Watch\n\nAttack Speed +10%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Arm"
@@ -1742,6 +1856,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bandage\n\nHP Regen +0.8"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Arm"
@@ -1772,6 +1888,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bracelet\n\nMax SP +220"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Arm"
@@ -1802,6 +1920,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Leather Shield\n\nAttack Power +10\nDefense +10"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Arm"
@@ -1832,6 +1952,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Squad Leader Armband\n\nHP Regen +1.5\nCritical Damage +15%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Arm"
@@ -1862,6 +1984,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bracer\n\nDefense +13\nHP Regen +1"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Arm"
@@ -1892,6 +2016,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Sheath\n\nAttack Power +18\nNormal Attack Damage Reduction +2"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Arm"
@@ -1922,6 +2048,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Golden Bracelet\n\nMax SP +220\nSkill Amplification +12%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Arm"
@@ -1952,6 +2080,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bazuband\n\nDefense +25\nNormal Attack Damage Reduction +8"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Arm"
@@ -1982,6 +2112,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Crimson Bracelet\n\nMax HP +200\nMax SP +250"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Arm"
@@ -2012,6 +2144,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Steel Shield\n\nAttack Power +23\nDefense +25\nMovement Speed -0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Arm"
@@ -2042,6 +2176,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Cube Watch\n\nDefense +27\nAttack Speed +50%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Arm"
@@ -2072,6 +2208,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Sword Stopper\n\nDefense +26\nNormal Attack Damage Reduction +11\nHealing Reduction (Normal Attacks) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Arm"
@@ -2102,6 +2240,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Mithril Shield\n\nAttack Power +30\nDefense +30\nAttack Speed +12%\nMovement Speed +0.1"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Arm"
@@ -2132,6 +2272,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Vital Sign Sensor\n\nDefense +15\nAttack Speed +30%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Arm"
@@ -2162,6 +2304,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +25\nHP Regen +1.5\nMovement Speed -0.1\nCritical Damage +20%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Arm"
@@ -2192,6 +2336,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Sword of Shah Jahan\n\nAttack Power +28\nMax HP +350\nNormal Attack Damage Reduction +2"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Arm"
@@ -2222,6 +2368,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Draupnir\n\nDefense +10\nMax HP +240\nHP Regen +1\n Skill Amplification +15%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Arm"
@@ -2252,6 +2400,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bracelet of Skadi\n\nMax HP +200\nMax SP +250\nHP Regen +2\nSP Regen +2\nSkill Amplification +20"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Arm"
@@ -2282,6 +2432,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Radar\n\nDefense +15\nAttack Speed +35%\nCritical Strike Chance +20%"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Arm"
@@ -2312,6 +2464,8 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Auto-arms\n\nAttack Power +40\nDefense +35\nHP Regen +1.5"
+		,Rarity: "Legendary"
 	}
 ];
 let legs = [
@@ -2344,6 +2498,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Slippers\n\nSP Regen +0.5\nMovement Speed +0.04"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Leg"
@@ -2374,6 +2530,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Running Shoes\n\nMovement Speed +0.08"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Leg"
@@ -2404,6 +2562,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Tights\n\nDefense +5\nMovement Speed +0.04"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Leg"
@@ -2434,6 +2594,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Knee Pads\n\nDefense +0.8\nMovement Speed +0.16"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Leg"
@@ -2464,6 +2626,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Chain Leggings\n\nDefense +10\nMovement Speed +0.14"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Leg"
@@ -2494,6 +2658,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "High Heels\n\nSP Regen +0.8\nMovement Speed +0.17"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Leg"
@@ -2524,6 +2690,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Heelys\n\nMovement Speed +0.12\nMovement speed while not in combat +0.2"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Leg"
@@ -2554,6 +2722,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Repaired Slippers\n\nSP Regen +0.5\nSP Regen +30%\nMovement Speed +0.16"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Leg"
@@ -2584,6 +2754,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Boots\n\nHP Regen +0.6\nAttack Speed +2%\nMovement Speed +0.22"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Leg"
@@ -2614,6 +2786,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Steel Knee Pads\n\nDefense +20\nMovement Speed +0.24"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Leg"
@@ -2644,6 +2818,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Straitjacket Sneakers\n\nSP Regen +0.7\nSP Regen +50%\nMovement Speed +0.35\nSkill Amplification +10"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Leg"
@@ -2674,6 +2850,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Maverick Runner\n\nAttack Speed +15%\nMovement Speed +0.25\nMovement Speed while not in combat +0.5"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Leg"
@@ -2704,6 +2882,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Combat Boots\n\nHP Regen +0.6\nAttack Speed +7%\nMovement Speed +0.27"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Leg"
@@ -2734,6 +2914,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Killer Heels\n\nAttack Power +5\nSP Regen +0.8\nMovement Speed +0.16\nCritical Strike Chance +10%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Leg"
@@ -2764,6 +2946,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +30%\nMovement Speed +0.4"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Leg"
@@ -2794,6 +2978,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Mithril Boots\n\nDefense +22\nAttack Speed +12%\nMovement Speed +0.45"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Leg"
@@ -2824,6 +3010,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Bucephalus\n\nAttack Power +5\nDefense +5\nSP Regen +1\nMovement Speed +0.33\nCriticall Strike Chance +17%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Leg"
@@ -2854,6 +3042,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "White Rhinos\n\nHP Regen +0.7\nAttack Speed +15%\nMovement Speed +0.35\nHealing Reduction (Normal Attacks) -40%"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Leg"
@@ -2884,6 +3074,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "EOD Boots\n\nDefense +23\nHP Regen +1\nMovement Speed +0.33"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Leg"
@@ -2914,6 +3106,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.4\nCritical Strike Chance +10%\nLife Steal +15%"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Leg"
@@ -2944,6 +3138,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Glacial Shoes\n\nHP Regen +2\nSP Regen +2\n SP Regen +60%\nMovement Speed +0.15\nMovement speed while not in combat +0.5\nSkill Amplification +15"
+		,Rarity: "Legendary"
 	}
 	,{
 		 Type: "Leg"
@@ -2974,6 +3170,8 @@ let legs = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Boots of Hermes\n\nDefense +40\nMovement Speed +0.4\nMovement speed while not in combat +0.2"
+		,Rarity: "Legendary"
 	}
 ];
 let accessorys = [
@@ -3006,6 +3204,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Feather\n\nMovement Speed +0.08"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3036,6 +3236,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Flower\n\nCooldown Reduction +9%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3066,6 +3268,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Ribbon\n\nLife Steal +5%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3096,6 +3300,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Fan\n\nSkill Amplification +11"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3126,6 +3332,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Buddhist Scripture\n\nSkill Amplification +7%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3156,6 +3364,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Box\n\nMax HP +90"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3186,6 +3396,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Holy Grail\n\nHP Regen +120%"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3216,6 +3428,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Cross\n\nExtra Normal Attack Damage +7"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3246,6 +3460,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Binoculars\n\nAttack Power +2\nVision Range +1.5"
+		,Rarity: "Common"
 	}
 	,{
 		 Type: "Accessory"
@@ -3276,6 +3492,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Gilded Quill Fan\n\nSkill Amplification +14\nHealing Reductions (Skills) -40%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3306,6 +3524,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Saint`s Relic\n\nHP Regen +150%\nExtra Normal Attack Damage +8"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3336,6 +3556,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Flower of Fate\n\nCritical Strike Chance +15%\nCooldown Reduction +10%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3366,6 +3588,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Glass Pieces\n\nCritical Strike Chance +13%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3396,6 +3620,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Doll\n\nSP Regen +100%\nLife Steal +11%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3426,6 +3652,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Sniper Scope\n\nAttack Power +6\nVision Range +4"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3456,6 +3684,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Buddha Sarira\n\nCooldown Reduction +10%\nSkill Amplification +7%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3486,6 +3716,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Quiver\n\nAttack Speed +22%"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3516,6 +3748,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Feather Duster\n\nAttack Power +9\nMovement Speed +0.1"
+		,Rarity: "Uncommon"
 	}
 	,{
 		 Type: "Accessory"
@@ -3546,6 +3780,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Powder of Life\n\nHP Regen +1.5\nSP Regen +1.5"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3576,6 +3812,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Uchiwa\n\nSP Regen +100%\nLife Steal +15%\nSkill Amplification +21"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3606,6 +3844,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Magazine\n\nMax HP +350\nNormal Attack Damage Reduction +6"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3636,6 +3876,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Moonlight Pendant\n\nAttack Power +20\nLife Steal +20%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3666,6 +3908,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Schrodinger`s Box\n\nMax HP +420\nSkill Amplification +7"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3696,6 +3940,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Veritas Lux Mea\n\nHP Regen +150%\nCooldown Reduction +10%\nExtra Normal Attack Damage +12\nSkill Amplification +8%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3726,6 +3972,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "White Crane Fan\n\nMovement Speed +0.1\nSkill Amplification +16\nHealing Reduction (Skills) -40%"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3756,6 +4004,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Laced Quiver\n\nAttack Power +10\nAttack Speed +25%\nMovement Speed +0.1"
+		,Rarity: "Rare"
 	}
 	,{
 		 Type: "Accessory"
@@ -3786,6 +4036,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Glacial Ice\n\nHP Regen +1.5\nSP Regen +1.5\n Skill Amplification +18"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Accessory"
@@ -3816,6 +4068,8 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "True Samadhi Fire\n\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +13"
+		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Accessory"
@@ -3846,5 +4100,7 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
+		,Title: "Emerald Tablet\n\nAttack Power +10\nDefense +10\nCritical Strike Chance +15%\nCooldown Reduction +10%"
+		,Rarity: "Legendary"
 	}
 ];
