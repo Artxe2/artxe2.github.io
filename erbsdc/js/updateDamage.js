@@ -307,10 +307,9 @@ function updateDamage() {
 			document.querySelector('#t_damage').innerText = ' - ';
 		} else if (character == Isol) {
 			document.querySelector('#q_damage').innerText = 
-				calcSkillDamage(50 + document.querySelector('#q_level').selectedIndex * 25, 0.5, true) + ' + ' +  
-				calcSkillDamage(8 + document.querySelector('#q_level').selectedIndex * 4, 0.3, true) + ' x 0 ~ 10 ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#q_level').selectedIndex * 25, 0.5, true))) + 
-				Math.round(parseFloat(calcSkillDamage(8 + document.querySelector('#q_level').selectedIndex * 4, 0.3, true))) * 10) + ' )';
+				calcSkillDamage(50 + document.querySelector('#q_level').selectedIndex * 25, 0.5, true) + ' ~ ' +  
+				calcSkillDamage(50 + document.querySelector('#q_level').selectedIndex * 25 + 
+					80 + document.querySelector('#q_level').selectedIndex * 40, 0.5 + 3, true);
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(20 + document.querySelector('#w_level').selectedIndex * 10, 0.6, true) + ' x 4 ( ' + 
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#w_level').selectedIndex * 10, 0.6, true))) * 4 + ' )';
@@ -765,10 +764,9 @@ function updateDamage() {
 			document.querySelector('#t_damage2').innerText = ' - ';
 		} else if (character2 == Isol) {
 			document.querySelector('#q_damage2').innerText = 
-				calcSkillDamage(50 + document.querySelector('#q_level2').selectedIndex * 25, 0.5, false) + ' + ' +  
-				calcSkillDamage(8 + document.querySelector('#q_level2').selectedIndex * 4, 0.3, false) + ' x 0 ~ 10 ( ' + 
-				(Math.round(parseFloat(calcSkillDamage(50 + document.querySelector('#q_level2').selectedIndex * 25, 0.5, false))) + 
-				Math.round(parseFloat(calcSkillDamage(8 + document.querySelector('#q_level2').selectedIndex * 4, 0.3, false))) * 10) + ' )';
+				calcSkillDamage(50 + document.querySelector('#q_level2').selectedIndex * 25, 0.5, false) + ' ~ ' +  
+				calcSkillDamage(50 + document.querySelector('#q_level2').selectedIndex * 25 + 
+					80 + document.querySelector('#q_level2').selectedIndex * 40, 0.5 + 3, false);
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(20 + document.querySelector('#w_level2').selectedIndex * 10, 0.6, false) + ' x 4 ( ' + 
 				Math.round(parseFloat(calcSkillDamage(20 + document.querySelector('#w_level2').selectedIndex * 10, 0.6, false))) * 4 + ' )';
