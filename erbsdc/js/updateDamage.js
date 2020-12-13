@@ -467,9 +467,15 @@ function updateDamage() {
 				calcSkillDamage(80 + document.querySelector('#e_level').selectedIndex * 20, 0.5, true) + ' ~ ' + 
 				calcSkillDamage(176 + document.querySelector('#e_level').selectedIndex * 44, 0.5, true) + ' / r: ' + 
 				calcSkillDamage(40 + document.querySelector('#e_level').selectedIndex * 25 + 
-				movement_speed * (1.2 + document.querySelector('#r_level').selectedIndex * 0.05) * 
-				(6 + document.querySelector('#e_level').selectedIndex * 4), 0.6, true);
-			document.querySelector('#r_damage').innerText = ' - ';
+					(movement_speed + (0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * 0.2 * 
+					(6 + document.querySelector('#e_level').selectedIndex * 4), 0.6, true) + ' ~ ' + 
+				calcSkillDamage(40 + document.querySelector('#e_level').selectedIndex * 25 + 
+					((movement_speed + (0.2 + document.querySelector('#r_level').selectedIndex * 0.05)) * 2 + out_of_combat_movement_speed) * 
+					(6 + document.querySelector('#e_level').selectedIndex * 4), 0.6, true);
+			document.querySelector('#r_damage').innerText = 
+				baseAttackDamage(0, 1.25 + document.querySelector('#r_level').selectedIndex * 0.25, critical_strike_chance, 1, 0, true) + 
+				' ( ' + baseAttackDamage(0, 1.25 + document.querySelector('#r_level').selectedIndex * 0.25, 0, 1, 0, true) + ' - ' + 
+				baseAttackDamage(0, 1.25 + document.querySelector('#r_level').selectedIndex * 0.25, 100, 1, 0, true) + ' )';
 		}
 	} else {
 		document.querySelector('#base_attack_damage').innerText = '0';
@@ -924,9 +930,15 @@ function updateDamage() {
 				calcSkillDamage(80 + document.querySelector('#e_level2').selectedIndex * 20, 0.5, false) + ' ~ ' + 
 				calcSkillDamage(176 + document.querySelector('#e_level2').selectedIndex * 44, 0.5, false) + ' / r: ' + 
 				calcSkillDamage(40 + document.querySelector('#e_level2').selectedIndex * 25 + 
-				movement_speed2 * (1.2 + document.querySelector('#r_level2').selectedIndex * 0.05) * 
-				(6 + document.querySelector('#e_level2').selectedIndex * 4), 0.6, false);
-			document.querySelector('#r_damage2').innerText = ' - ';
+					(movement_speed2 + (0.2 + document.querySelector('#r_level2').selectedIndex * 0.05)) * 0.2 * 
+					(6 + document.querySelector('#e_level2').selectedIndex * 4), 0.6, false) + ' ~ ' + 
+				calcSkillDamage(40 + document.querySelector('#e_level2').selectedIndex * 25 + 
+					((movement_speed2 + (0.2 + document.querySelector('#r_level2').selectedIndex * 0.05)) * 2 + out_of_combat_movement_speed2) * 
+					(6 + document.querySelector('#e_level2').selectedIndex * 4), 0.6, false);
+			document.querySelector('#r_damage2').innerText = 
+				baseAttackDamage(0, 1.25 + document.querySelector('#r_level2').selectedIndex * 0.25, critical_strike_chance2, 1, 0, false) + 
+				' ( ' + baseAttackDamage(0, 1.25 + document.querySelector('#r_level2').selectedIndex * 0.25, 0, 1, 0, false) + ' - ' + 
+				baseAttackDamage(0, 1.25 + document.querySelector('#r_level2').selectedIndex * 0.25, 100, 1, 0, false) + ' )';
 		}
 	} else {
 		document.querySelector('#base_attack_damage2').innerText = '0';
