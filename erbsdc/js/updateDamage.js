@@ -77,8 +77,8 @@ function updateDamage() {
 		} else if (weapon.Type == 'TwoHandedSword') {
 			document.querySelector('#d_damage').innerText = 
 				calcSkillDamage(0, document.querySelector('#weapon_mastery').selectedIndex > 12 ? 2.5 : 2, true);
-		} else if (weapon.Type == 'Axe') {
-		
+		// } else if (weapon.Type == 'Axe') {
+
 		} else if (weapon.Type == 'DualSwords') {
 			if (character == Jackie) {
 				document.querySelector('#d_damage').innerText = 
@@ -213,8 +213,8 @@ function updateDamage() {
 		} else if (character == Fiora) {
 			document.querySelector('#q_damage').innerText = 
 				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 60, 0.2, true) + ' - ' + 
-				calcSkillDamage((60 + document.querySelector('#q_level').selectedIndex * 60) * (110 + critical_strike_damage) / 100, 
-					0.2 * (110 + critical_strike_damage) / 100, true);
+				calcSkillDamage((60 + document.querySelector('#q_level').selectedIndex * 60) * (120 + critical_strike_damage) / 100, 
+					0.2 * (120 + critical_strike_damage) / 100, true);
 			document.querySelector('#w_damage').innerText = 
 				baseAttackDamage(0, 0.8 + document.querySelector('#w_level').selectedIndex * 0.2, critical_strike_chance, 2, 0, true) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level').selectedIndex * 0.1, 0, 1, 0, true) + ', ' + 
@@ -223,8 +223,8 @@ function updateDamage() {
 				baseAttackDamage(0, 0.2 + document.querySelector('#w_level').selectedIndex * 0.1, 100, 1, 0, true) + ' )';
 			document.querySelector('#e_damage').innerText = 
 				calcSkillDamage(90 + document.querySelector('#e_level').selectedIndex * 40, 0.4, true) + ' - ' + 
-				calcSkillDamage((90 + document.querySelector('#e_level').selectedIndex * 40) * (110 + critical_strike_damage) / 100, 
-					0.4 * (110 + critical_strike_damage) / 100, true);
+				calcSkillDamage((90 + document.querySelector('#e_level').selectedIndex * 40) * (120 + critical_strike_damage) / 100, 
+					0.4 * (120 + critical_strike_damage) / 100, true);
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(30 + document.querySelector('#r_level').selectedIndex * 5, 
 					0.06 + document.querySelector('#r_level').selectedIndex * 0.12, true) + ' _ dps: ' + 
@@ -248,7 +248,7 @@ function updateDamage() {
 				calcSkillDamage(40 + document.querySelector('#q_level').selectedIndex * 60, 0.5, true) + ' - ' + 
 				calcSkillDamage(75 + document.querySelector('#q_level').selectedIndex * 75, 0.5, true);
 			document.querySelector('#w_damage').innerText = 
-				calcSkillDamage(40 + document.querySelector('#w_level').selectedIndex * 20, 0.3, true);
+				calcSkillDamage(25 + document.querySelector('#w_level').selectedIndex * 25, 0.3, true);
 			document.querySelector('#e_damage').innerText = 
 				calcSkillDamage(80 + document.querySelector('#e_level').selectedIndex * 30, 0.5, true);
 			document.querySelector('#r_damage').innerText = 
@@ -396,7 +396,7 @@ function updateDamage() {
 				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 40, 0.6, true);
 			document.querySelector('#w_damage').innerText = 'd: ' + 
 				calcSkillDamage(80 + document.querySelector('#w_level').selectedIndex * 40, 0.6, true) + ' / s: ' + 
-				(100 + document.querySelector('#w_level').selectedIndex * 40 + attack_power * 0.6).toFixed(2);
+				(90 + document.querySelector('#w_level').selectedIndex * 35 + attack_power * 0.75).toFixed(2);
 			document.querySelector('#e_damage').innerText = 
 				calcSkillDamage(60 + document.querySelector('#e_level').selectedIndex * 20, 0.3, true) + ', ' + 
 				calcSkillDamage(70 + document.querySelector('#e_level').selectedIndex * 40, 0.7, true) + ' ( ' + 
@@ -447,7 +447,7 @@ function updateDamage() {
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(10 + document.querySelector('#w_level').selectedIndex * 30, 0.3, true)
 			document.querySelector('#e_damage').innerText = 
-				calcSkillDamage(40 + document.querySelector('#e_level').selectedIndex * 35, 0.3, true)
+				calcSkillDamage(20 + document.querySelector('#e_level').selectedIndex * 40, 0.3, true)
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 100, 0.3, true) + ', ' + 
 				calcSkillDamage(50 + document.querySelector('#r_level').selectedIndex * 25, 0.3, true) + ' ( ' + 
@@ -459,7 +459,7 @@ function updateDamage() {
 			document.querySelector('#q_damage').innerText =  'd: ' + 
 				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 35, 0.4, true) + ' / h: ' + 
 				(40 + document.querySelector('#q_level').selectedIndex * 20 + attack_power * 0.3).toFixed(2) + ' / r: ' + 
-				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 42, 0.5, true);
+				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 42, 0.7, true);
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(40 + document.querySelector('#w_level').selectedIndex * 20, 0.3, true) + ' / r: ' + 
 				calcSkillDamage(90 + document.querySelector('#w_level').selectedIndex * 40, 0.6, true);
@@ -540,7 +540,7 @@ function updateDamage() {
 		} else if (weapon2.Type == 'TwoHandedSword') {
 			document.querySelector('#d_damage2').innerText = 
 				calcSkillDamage(0, document.querySelector('#weapon_mastery2').selectedIndex > 12 ? 2.5 : 2, false);
-		} else if (weapon2.Type == 'Axe') {
+		// } else if (weapon2.Type == 'Axe') {
 		
 		} else if (weapon2.Type == 'DualSwords') {
 			if (character2 == Jackie) {
@@ -676,8 +676,8 @@ function updateDamage() {
 		} else if (character2 == Fiora) {
 			document.querySelector('#q_damage2').innerText = 
 				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 60, 0.2, false) + ' - ' + 
-				calcSkillDamage((60 + document.querySelector('#q_level2').selectedIndex * 60) * (110 + critical_strike_damage2) / 100, 
-					0.2 * (110 + critical_strike_damage2) / 100, false);
+				calcSkillDamage((60 + document.querySelector('#q_level2').selectedIndex * 60) * (120 + critical_strike_damage2) / 100, 
+					0.2 * (120 + critical_strike_damage2) / 100, false);
 			document.querySelector('#w_damage2').innerText = 
 				baseAttackDamage(0, 0.8 + document.querySelector('#w_level2').selectedIndex * 0.2, critical_strike_chance2, 2, 0, false) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level2').selectedIndex * 0.1, 0, 1, 0, false) + ', ' + 
@@ -686,8 +686,8 @@ function updateDamage() {
 				baseAttackDamage(0, 0.2 + document.querySelector('#w_level2').selectedIndex * 0.1, 100, 1, 0, false) + ' )';
 			document.querySelector('#e_damage2').innerText = 
 				calcSkillDamage(90 + document.querySelector('#e_level2').selectedIndex * 40, 0.4, false) + ' - ' + 
-				calcSkillDamage((90 + document.querySelector('#e_level2').selectedIndex * 40) * (110 + critical_strike_damage2) / 100, 
-					0.4 * (110 + critical_strike_damage2) / 100, false);
+				calcSkillDamage((90 + document.querySelector('#e_level2').selectedIndex * 40) * (120 + critical_strike_damage2) / 100, 
+					0.4 * (120 + critical_strike_damage2) / 100, false);
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(30 + document.querySelector('#r_level2').selectedIndex * 5, 
 					0.06 + document.querySelector('#r_level2').selectedIndex * 0.12, false) + ' _ dps: ' + 
@@ -711,7 +711,7 @@ function updateDamage() {
 				calcSkillDamage(40 + document.querySelector('#q_level2').selectedIndex * 60, 0.5, false) + ' - ' + 
 				calcSkillDamage(75 + document.querySelector('#q_level2').selectedIndex * 75, 0.5, false);
 			document.querySelector('#w_damage2').innerText = 
-				calcSkillDamage(40 + document.querySelector('#w_level2').selectedIndex * 20, 0.3, false);
+				calcSkillDamage(25 + document.querySelector('#w_level2').selectedIndex * 25, 0.3, false);
 			document.querySelector('#e_damage2').innerText = 
 				calcSkillDamage(80 + document.querySelector('#e_level2').selectedIndex * 30, 0.5, false);
 			document.querySelector('#r_damage2').innerText = 
@@ -859,7 +859,7 @@ function updateDamage() {
 				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 40, 0.6, false);
 			document.querySelector('#w_damage2').innerText = 'd: ' + 
 				calcSkillDamage(80 + document.querySelector('#w_level2').selectedIndex * 40, 0.6, false) + ' / s: ' + 
-				(100 + document.querySelector('#w_level2').selectedIndex * 40 + attack_power2 * 0.6).toFixed(2);
+				(90 + document.querySelector('#w_level2').selectedIndex * 35 + attack_power2 * 0.75).toFixed(2);
 			document.querySelector('#e_damage2').innerText = 
 				calcSkillDamage(60 + document.querySelector('#e_level2').selectedIndex * 20, 0.3, false) + ', ' + 
 				calcSkillDamage(70 + document.querySelector('#e_level2').selectedIndex * 40, 0.7, false) + ' ( ' + 
@@ -910,7 +910,7 @@ function updateDamage() {
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(10 + document.querySelector('#w_level2').selectedIndex * 30, 0.3, false)
 			document.querySelector('#e_damage2').innerText = 
-				calcSkillDamage(40 + document.querySelector('#e_level2').selectedIndex * 35, 0.3, false)
+				calcSkillDamage(20 + document.querySelector('#e_level2').selectedIndex * 40, 0.3, false)
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 100, 0.3, false) + ', ' + 
 				calcSkillDamage(50 + document.querySelector('#r_level2').selectedIndex * 25, 0.3, false) + ' ( ' + 
@@ -922,7 +922,7 @@ function updateDamage() {
 			document.querySelector('#q_damage2').innerText =  'd: ' + 
 				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 35, 0.4, false) + ' / h: ' + 
 				(40 + document.querySelector('#q_level2').selectedIndex * 20 + attack_power2 * 0.3).toFixed(2) + ' / r: ' + 
-				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 42, 0.5, false);
+				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 42, 0.7, false);
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(40 + document.querySelector('#w_level2').selectedIndex * 20, 0.3, false) + ' / r: ' + 
 				calcSkillDamage(90 + document.querySelector('#w_level2').selectedIndex * 40, 0.6, false);

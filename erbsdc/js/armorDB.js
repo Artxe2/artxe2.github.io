@@ -555,12 +555,12 @@ let chests = [
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 15
+		,Cooldown_Reduction: 8
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 5
+		,Defense: 12
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 1
@@ -572,7 +572,7 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Hanbok\n\nDefense +5\nHP Regen +1\nCooldown Reduction +15%"
+		,Title: "Hanbok\n\nDefense +12\nHP Regen +1\nCooldown Reduction +8%"
 		,Rarity: "Rare"
 	}
 	,{
@@ -727,12 +727,12 @@ let chests = [
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 15
 		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0.3
+		,Out_of_Combat_Movement_Speed: 0.2
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +11\nMovement speed while not in combat +0.3\nNormal Attack Damage Reduction +15\nHealing Reduction (Skills) -40%"
+		,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +11\nMovement speed while not in combat +0.2\nNormal Attack Damage Reduction +15\nHealing Reduction (Skills) -40%"
 		,Rarity: "Epic"
 	}
 	,{
@@ -775,7 +775,7 @@ let chests = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 20
+		,Extra_Normal_Attack_Damage: 15
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -790,13 +790,13 @@ let chests = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 200
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
+		,Move_Speed: -0.02
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Crusader Armor\n\nDefense +30\nHP Regen +200%\nMovement Speed - 0.1\nExtra Damage to Normal Attacks +20"
+		,Title: "Crusader Armor\n\nDefense +30\nHP Regen +200%\nMovement Speed - 0.02\nExtra Damage to Normal Attacks +15"
 		,Rarity: "Epic"
 	}
 	,{
@@ -999,7 +999,7 @@ let chests = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 22
+		,Extra_Normal_Attack_Damage: 18
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -1020,7 +1020,7 @@ let chests = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Blazing Dress\n\nDefense +25\nHP Regen +2.5\nSP Regen +3\nSP Regen +75%\nExtra Normal Attack Damage +22"
+		,Title: "Blazing Dress\n\nDefense +25\nHP Regen +2.5\nSP Regen +3\nSP Regen +75%\nExtra Normal Attack Damage +18"
 		,Rarity: "Legendary"
 	}
 	,{
@@ -1261,13 +1261,13 @@ let heads = [
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 13
+		,Cooldown_Reduction: 7
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 5
-		,Max_HP: 50
+		,Defense: 10
+		,Max_HP: 60
 		,Max_SP: 0
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
@@ -1278,7 +1278,7 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Beret\n\nDefense +5\nMax HP +50\nCooldown Reduction +13%"
+		,Title: "Beret\n\nDefense +10\nMax HP +60\nCooldown Reduction +7%"
 		,Rarity: "Uncommon"
 	}
 	,{
@@ -1357,12 +1357,12 @@ let heads = [
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 13
+		,Cooldown_Reduction: 8
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 10
+		,Defense: 15
 		,Max_HP: 90
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -1374,7 +1374,7 @@ let heads = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Ballistic Helmet\n\nDefense +10\nMax HP +90\nCooldown Reduction +13%"
+		,Title: "Ballistic Helmet\n\nDefense +15\nMax HP +90\nCooldown Reduction +8%"
 		,Rarity: "Rare"
 	}
 	,{
@@ -2325,7 +2325,7 @@ let arms = [
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
-		,Max_HP: 350
+		,Max_HP: 300
 		,Max_SP: 0
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
@@ -2336,7 +2336,7 @@ let arms = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Sword of Shah Jahan\n\nAttack Power +28\nMax HP +350\nNormal Attack Damage Reduction +2"
+		,Title: "Sword of Shah Jahan\n\nAttack Power +28\nMax HP +300\nNormal Attack Damage Reduction +2"
 		,Rarity: "Epic"
 	}
 	,{
@@ -3219,7 +3219,7 @@ let accessorys = [
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 9
+		,Cooldown_Reduction: 7
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
@@ -3236,7 +3236,7 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Flower\n\nCooldown Reduction +9%"
+		,Title: "Flower\n\nCooldown Reduction +7%"
 		,Rarity: "Common"
 	}
 	,{
@@ -3666,8 +3666,8 @@ let accessorys = [
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 7
-		,Cooldown_Reduction: 10
+		,Skill_Amplification_Percent: 8
+		,Cooldown_Reduction: 8
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
@@ -3684,7 +3684,7 @@ let accessorys = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Buddha Sarira\n\nCooldown Reduction +10%\nSkill Amplification +7%"
+		,Title: "Buddha Sarira\n\nCooldown Reduction +8%\nSkill Amplification +8%"
 		,Rarity: "Uncommon"
 	}
 	,{

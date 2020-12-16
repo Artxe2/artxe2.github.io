@@ -146,7 +146,7 @@ let Hart = {
 	,"Defense_Growth": 1.9
 	,"Atk_Speed": 0.12
 	,"Crit_Rate": 0
-	,"Move_Speed": 3.05
+	,"Move_Speed": 3
 	,"Sight_Range": 8
 	,"Attack_Range": 0.4
 };
@@ -228,7 +228,7 @@ let Hyejin = {
 };
 let Xiukai = {
 	 "Attack_Power": 40
-	,"Attack_Power_Growth": 1.8
+	,"Attack_Power_Growth": 2.2
 	,"Health": 530
 	,"Health_Growth": 80
 	,"Health_Regen": 1

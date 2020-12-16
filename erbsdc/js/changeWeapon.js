@@ -47,7 +47,7 @@ function changeWeapon(type, index) {
 		weapon = pistol[index];
 		weapon_mastery_attack_speed = 3;
 		weapon_mastery_extra_normal_attack_damage_percent = 4.5;
-		weapon_mastery_skill_amplification_percent = 1.9;
+		weapon_mastery_skill_amplification_percent = 2.1;
 	} else if (type == 'assaultRifle') {				
 		weapon = assaultRifle[index];
 		weapon_mastery_attack_speed = 4;
@@ -181,7 +181,7 @@ function changeWeapon2(type, index) {
 		weapon2 = pistol[index];
 		weapon_mastery_attack_speed2 = 3;
 		weapon_mastery_extra_normal_attack_damage_percent2 = 4.5;
-		weapon_mastery_skill_amplification_percent2 = 1.9;
+		weapon_mastery_skill_amplification_percent2 = 2.1;
 	} else if (type == 'assaultRifle') {				
 		weapon2 = assaultRifle[index];
 		weapon_mastery_attack_speed2 = 4;

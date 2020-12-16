@@ -162,7 +162,7 @@ let dagger = [
 	,{
 		 Type: "Dagger"
 		,Name: "Carnwennan"
-		,Attack_Power: 26
+		,Attack_Power: 30
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -188,7 +188,7 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
-		,Title: "Carnwennan\n\nAttack Power +26\nHP Regen +1.5\nMovement Speed +0.1\nCooldown Reduction +10%\nExtra Normal Attack Damage +29"
+		,Title: "Carnwennan\n\nAttack Power +30\nHP Regen +1.5\nMovement Speed +0.1\nCooldown Reduction +10%\nExtra Normal Attack Damage +29"
 		,Rarity: "Epic"
 	}
 	,{
@@ -226,7 +226,7 @@ let dagger = [
 	,{
 		 Type: "Dagger"
 		,Name: "Vibroblade"
-		,Attack_Power: 53
+		,Attack_Power: 57
 		,Attack_Speed: 30
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -252,7 +252,7 @@ let dagger = [
 		,Attack_Range: 0
 		,Base_Range: 1
 		,Atk_Speed: 0.58
-		,Title: "Vibroblade\n\nAttack Power +53\nAttack Speed +30%\nMovement Speed +0.1"
+		,Title: "Vibroblade\n\nAttack Power +57\nAttack Speed +30%\nMovement Speed +0.1"
 		,Rarity: "Epic"
 	}
 	,{
@@ -1135,7 +1135,7 @@ let axe = [
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 42
+		,Skill_Amplification: 38
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
@@ -1154,7 +1154,7 @@ let axe = [
 		,Attack_Range: 0.5
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
-		,Title: "Harpe\n\nAttack Power +125\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +42\nHealing Reduction (Skills) -40%"
+		,Title: "Harpe\n\nAttack Power +125\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +38\nHealing Reduction (Skills) -40%"
 		,Rarity: "Epic"
 	}
 ];
@@ -1226,7 +1226,7 @@ let dualSwords = [
 	,{
 		 Type: "DualSwords"
 		,Name: "Divine_Dual_Swords"
-		,Attack_Power: 38
+		,Attack_Power: 41
 		,Attack_Speed: 10
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -1252,7 +1252,7 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
-		,Title: "Divine Dual Swords\n\nAttack Power +38\nAttack Speed +10%\nLife Steal +18%\nHealing Reduction (Skills) -40%"
+		,Title: "Divine Dual Swords\n\nAttack Power +41\nAttack Speed +10%\nLife Steal +18%\nHealing Reduction (Skills) -40%"
 		,Rarity: "Epic"
 	}
 	,{
@@ -1290,7 +1290,7 @@ let dualSwords = [
 	,{
 		 Type: "DualSwords"
 		,Name: "Dioscuri"
-		,Attack_Power: 38
+		,Attack_Power: 40
 		,Attack_Speed: 50
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -1316,13 +1316,13 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
-		,Title: "Dioscuri\n\nAttack Power +38\nAttack Speed +50%"
+		,Title: "Dioscuri\n\nAttack Power +40\nAttack Speed +50%"
 		,Rarity: "Epic"
 	}
 	,{
 		 Type: "DualSwords"
 		,Name: "Lloigor_&_Zahr"
-		,Attack_Power: 30
+		,Attack_Power: 33
 		,Attack_Speed: 20
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -1348,7 +1348,7 @@ let dualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
-		,Title: "Lloigor & Zahr\n\nAttack Power +30\nAttack Speed +20%\nSkill Amplification +36"
+		,Title: "Lloigor & Zahr\n\nAttack Power +33\nAttack Speed +20%\nSkill Amplification +36"
 		,Rarity: "Epic"
 	}
 ];
@@ -1800,7 +1800,7 @@ let assaultRifle = [
 		,Attack_Range: 0
 		,Base_Range: 5
 		,Atk_Speed: 0.55
-		,Title: "AK-47\n\nAttack Power +29\nVision Range +1.5\nExtra Normal Attack Damage +2"
+		,Title: "AK-47\n\nAttack Power +29\nVision Range +1.5"
 		,Rarity: "Rare"
 	}
 	,{
@@ -1907,7 +1907,7 @@ let assaultRifle = [
 		,Critical_Strike_Chance: 25
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 2
+		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -3497,7 +3497,7 @@ let bat = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 0.8
+		,HP_Regen: 0.5
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0.1
@@ -3506,7 +3506,7 @@ let bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
-		,Title: "Torch\n\nAttack Power +40\nHP Regen +0.8\nAttack Speed +10%\nMovement Speed +0.1"
+		,Title: "Torch\n\nAttack Power +40\nHP Regen +0.5\nAttack Speed +10%\nMovement Speed +0.1"
 		,Rarity: "Rare"
 	}
 	,{
@@ -3529,16 +3529,16 @@ let bat = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 1.2
+		,HP_Regen: 0.6
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.15
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
-		,Title: "Statue of Soteria\n\nAttack Power +90\nHP Regen +1.2\nHP Regen +1.2\nSP Regen +60%\nAttack Speed +15%\nMovement Speed +0.15\nLife Steal +10%"
+		,Title: "Statue of Soteria\n\nAttack Power +90\nHP Regen +0.6\nHP Regen +1.2\nSP Regen +60%\nAttack Speed +15%\nMovement Speed +0.1\nLife Steal +10%"
 		,Rarity: "Epic"
 	}
 	,{
@@ -5318,7 +5318,7 @@ let bow = [
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 45
+		,Skill_Amplification: 41
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
@@ -5337,13 +5337,13 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
-		,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nSkill Amplification +45\nHealing Reduction (Skills) -40%"
+		,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nSkill Amplification +41\nHealing Reduction (Skills) -40%"
 		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Bow"
 		,Name: "Failnaught"
-		,Attack_Power: 80
+		,Attack_Power: 90
 		,Attack_Speed: 15
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -5369,7 +5369,7 @@ let bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
-		,Title: "Failnaught\n\nAttack Power +80\nAttack Speed +15%\nLife Steal +15%"
+		,Title: "Failnaught\n\nAttack Power +90\nAttack Speed +15%\nLife Steal +15%"
 		,Rarity: "Legendary"
 	}
 ];
@@ -5687,11 +5687,11 @@ let crossbow = [
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 5
+		,Vision_Range: 3.5
 		,Attack_Range: 1
 		,Base_Range: 4.6
 		,Atk_Speed: 0.51
-		,Title: "Sniper Crossbow\n\nAttack Power +85\nVision Range +5\nAttack Range +1"
+		,Title: "Sniper Crossbow\n\nAttack Power +85\nVision Range +3.5\nAttack Range +1"
 		,Rarity: "Epic"
 	}
 	,{
@@ -6162,7 +6162,7 @@ let glove = [
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
-		,Max_HP: 300
+		,Max_HP: 250
 		,Max_SP: 0
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
@@ -6173,7 +6173,7 @@ let glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
-		,Title: "Bloodwing Knuckles\n\nAttack Power +53\nMax HP +300\nMovement Speed +0.1"
+		,Title: "Bloodwing Knuckles\n\nAttack Power +53\nMax HP +250\nMovement Speed +0.1"
 		,Rarity: "Epic"
 	}
 	,{
@@ -6764,7 +6764,7 @@ let guitar = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 10
-		,Extra_Normal_Attack_Damage: 15
+		,Extra_Normal_Attack_Damage: 10
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -6785,7 +6785,7 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
-		,Title: "Nocaster\n\nAttack Power +15\nAttack Speed +20%\nLife Steal +10%\nExtra Normal Attack Damage +15"
+		,Title: "Nocaster\n\nAttack Power +15\nAttack Speed +20%\nLife Steal +10%\nExtra Normal Attack Damage +10"
 		,Rarity: "Rare"
 	}
 	,{
@@ -6927,7 +6927,7 @@ let guitar = [
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 22
+		,Skill_Amplification_Percent: 19
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
@@ -6945,7 +6945,7 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
-		,Title: "Purple Haze\n\nAttack Power +85\nSkill Amplification +22%"
+		,Title: "Purple Haze\n\nAttack Power +85\nSkill Amplification +19%"
 		,Rarity: "Epic"
 	}
 	,{
@@ -6956,7 +6956,7 @@ let guitar = [
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 10
-		,Extra_Normal_Attack_Damage: 12
+		,Extra_Normal_Attack_Damage: 11
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -6977,7 +6977,7 @@ let guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
-		,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +10%\nExtra Normal Attack Damage +12"
+		,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +10%\nExtra Normal Attack Damage +11"
 		,Rarity: "Epic"
 	}
 	,{
