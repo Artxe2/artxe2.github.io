@@ -36,7 +36,10 @@ class Target extends React.Component {
 					,width: this.state.size
             		,height: this.state.size
             		,borderRadius: parseInt(this.state.size / 2)
-			}} onClick={this.shot}></div>
+                }} 
+                onClick={this.shot}
+                onKeyup={this.shot}
+            ></div>
         );
     }
     shot = () => {
