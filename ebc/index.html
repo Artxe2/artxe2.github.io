@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Electricity Bill Calculator</title>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', (e) => {
+		document.querySelector('#month').addEventListener('change', (e) => {
+			const month = document.querySelector('#month');
+			if (month.value == '' || month.value < 1) {
+				month.value = 1;
+			} else if (month.value > 12) {
+				month.value = 12;
+			}
+		});
+		document.querySelector('#base').addEventListener('change', (e) => {
+			const base = document.querySelector('#base');
+			if (base.value == '' || base.value < 1) {
+				base.value = 1;
+			}
+		});
+		document.querySelector('#a').addEventListener('change', (e) => {
+			const a = document.querySelector('#a');
+			if (a.value == '' || a.value < 0) {
+				a.value = 0;
+			}
+		});
+		document.querySelector('#b').addEventListener('change', (e) => {
+			const n = document.querySelector('#b');
+			if (b.value == '' || b.value < 0) {
+				b.value = 0;
+			}
+		});
+		document.querySelector('#c').addEventListener('change', (e) => {
+			const c = document.querySelector('#c');
+			if (c.value == '' || c.value < 0) {
+				c.value = 0;
+			}
+		});
+		document.querySelector('#lagging').addEventListener('change', (e) => {
+			const lagging = document.querySelector('#lagging');
+			if (lagging.value == '' || lagging.value < 0) {
+				lagging.value = 0;
+			} else if (lagging.value > 100) {
+				lagging.value = 100;
+			}
+		});
+		document.querySelector('#leading').addEventListener('change', (e) => {
+			const leading = document.querySelector('#leading');
+			if (leading.value == '' || leading.value < 0) {
+				leading.value = 0;
+			} else if (leading.value > 100) {
+				leading.value = 100;
+			}
+		});
+	});
+	
+	const rateTable = {
+			주택용_저압 : '',
+			
+			주택용_고압 : '',
+			
+			일반용_갑_I : '',
+			
+			일반용_갑_II : '',
+			
+			일반용_을 : '',
+			
+			다가구주택 : '',
+			
+			교육용_갑 : '',
+			
+			교육용_을 : '',
+			
+			산업용_갑_I : {
+				저압전력 : {
+					base: 5550,
+    				table: [
+    					[81.0, 59.2, 79.3],
+    					[81.0, 59.2, 79.3],
+    					[81.0, 59.2, 79.3],
+    				]
+				},
+				고압A_선택_I : {
+					base: 6490,
+    				table: [
+    					[89.6, 65.9, 89.5],
+    					[89.6, 65.9, 89.5],
+    					[89.6, 65.9, 89.5],
+    				]
+				},
+				고압A_선택_II : {
+					base: 7470,
+    				table: [
+    					[84.8, 61.3, 83.0],
+    					[84.8, 61.3, 83.0],
+    					[84.8, 61.3, 83.0],
+    				]
+				},
+				고압B_선택_I : {
+					base: 6000,
+    				table: [
+    					[88.4, 64.8, 88.0],
+    					[88.4, 64.8, 88.0],
+    					[88.4, 64.8, 88.0],
+    				]
+				},
+				고압B_선택_II : {
+					base: 6900,
+    				table: [
+    					[83.7, 60.2, 81.9],
+    					[83.7, 60.2, 81.9],
+    					[83.7, 60.2, 81.9],
+    				]
+				},
+			},
+			
+			산업용_갑_II : {
+				고압A_선택_I : {
+					base: 6490,
+    				table: [
+    					[60.5, 60.5, 67.9],
+    					[86.3, 65.3, 84.8],
+    					[119.8, 84.5, 114.2],
+    				]
+				},
+				고압A_선택_II : {
+					base: 7470,
+    				table: [
+    					[55.6, 55.6, 63.0],
+    					[81.4, 60.4, 79.9],
+    					[114.9, 79.6, 109.3],
+    				]
+				},
+				고압B_선택_I : {
+					base: 6000,
+    				table: [
+    					[57.3, 57.3, 64.5],
+    					[84.9, 63.9, 82.5],
+    					[118.7, 82.7, 111.2],
+    				]
+				},
+				고압B_선택_II : {
+					base: 6900,
+    				table: [
+    					[52.8, 52.8, 60.0],
+    					[80.4, 59.4, 78.0],
+    					[114.2, 78.2, 106.7],
+    				]
+				},
+			},
+			
+			산업용_을 : '',
+			
+			임시_갑 : '',
+			
+			임시_을_300미만 : '',
+			
+			임시_을_300이상 : '',
+			
+			임시_을_시간대별 : '',
+			
+			가로등_을 : '',
+			
+			심야전력_갑 : '',
+			
+			농사용_갑 : '',
+			
+			농사용_을 : '',
+	}
+	
+	function getSeason(month) {
+		if (month >= 11 || month <= 2) {
+			//겨울
+			return 2;
+		} else if (month >= 6 || month <= 8) {
+			//여름
+			return 0;
+		} else {
+			//봄 가을
+			return 1;
+		}
+	}
+	
+	function getLoadAtSummer(month, time) {
+		if (time >= 23 || time < 9) {
+			return 0;
+		} else if (time >= 9 && time < 10 ||
+				time >= 12 && time < 13 ||
+				time >= 17 && time < 23) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+	
+	function getLoadAtSpringFall(month, time) {
+		if (time >= 23 || time < 9) {
+			return 0;
+		} else if (time >= 9 && time < 10 ||
+				time >= 12 && time < 13 ||
+				time >= 17 && time < 23) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+	
+	function getLoadAtWinter(month, time) {
+		if (time >= 23 || time < 9) {
+			return 0;
+		} else if (time >= 9 && time < 10 ||
+				time >= 12 && time < 17 ||
+				time >= 20 && time < 22) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+	
+	function calc(month, base, a, b, c, d, e) {
+		const option = rateTable.산업용_갑_I.고압A_선택_I;
+		const season = getSeason(month);
+		let result = (option.base * base) | 0;
+		result += (result * (90 - (d < 60 ? 60 : d > 95 ? 95 : d) + 95 - (e < 60 ? 60 : e > 95 ? 95 : e)) * 0.002) | 0;
+		result += (option.table[0][season] * a + 
+			option.table[1][season] * b + 
+			option.table[2][season] * c) | 0;
+		result += (result * 0.1 | 0) + (result / 10 * 0.037 | 0) * 10;
+		document.querySelector('#result').innerText = result;
+	}
+</script>
+</head>
+<body>
+<div>
+    월: <input id='month' type = 'number' value='1'><br>
+    기본: <input id='base' type = 'number' value='1'><br>
+    경부하: <input id='a' type = 'number' value='0'><br>
+    중간부하: <input id='b' type = 'number' value='0'><br>
+    최대부하: <input id='c' type = 'number' value='0'><br>
+    지상역률: <input id='lagging' type = 'number' value='90'><br>
+    진상역률: <input id='leading' type = 'number' value='95'><br>
+    <input type='button' onclick="calc(document.querySelector('#month').value, document.querySelector('#base').value, document.querySelector('#a').value, document.querySelector('#b').value, document.querySelector('#c').value, document.querySelector('#lagging').value, document.querySelector('#leading').value)" value='계산'>
+    <span id='result'></span>
+</div>
+</body>
+</html>
