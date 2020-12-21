@@ -54,24 +54,24 @@
 			}
 		});
 	});
-	
+
 	const rateTable = {
 			주택용_저압 : '',
-			
+
 			주택용_고압 : '',
-			
+
 			일반용_갑_I : '',
-			
+
 			일반용_갑_II : '',
-			
+
 			일반용_을 : '',
-			
+
 			다가구주택 : '',
-			
+
 			교육용_갑 : '',
-			
+
 			교육용_을 : '',
-			
+
 			산업용_갑_I : {
 				저압전력 : {
 					base: 5550,
@@ -114,7 +114,7 @@
     				]
 				},
 			},
-			
+
 			산업용_갑_II : {
 				고압A_선택_I : {
 					base: 6490,
@@ -149,26 +149,26 @@
     				]
 				},
 			},
-			
+
 			산업용_을 : '',
-			
+
 			임시_갑 : '',
-			
+
 			임시_을_300미만 : '',
-			
+
 			임시_을_300이상 : '',
-			
+
 			임시_을_시간대별 : '',
-			
+
 			가로등_을 : '',
-			
+
 			심야전력_갑 : '',
-			
+
 			농사용_갑 : '',
-			
+
 			농사용_을 : '',
 	}
-	
+
 	function getSeason(month) {
 		if (month >= 11 || month <= 2) {
 			//겨울
@@ -181,7 +181,7 @@
 			return 1;
 		}
 	}
-	
+
 	function getLoadAtSummer(month, time) {
 		if (time >= 23 || time < 9) {
 			return 0;
@@ -193,7 +193,7 @@
 			return 2;
 		}
 	}
-	
+
 	function getLoadAtSpringFall(month, time) {
 		if (time >= 23 || time < 9) {
 			return 0;
@@ -205,7 +205,7 @@
 			return 2;
 		}
 	}
-	
+
 	function getLoadAtWinter(month, time) {
 		if (time >= 23 || time < 9) {
 			return 0;
@@ -217,14 +217,16 @@
 			return 2;
 		}
 	}
-	
+
 	function calc(month, base, a, b, c, d, e) {
-		const option = rateTable.산업용_갑_I.고압A_선택_I;
+		const option =
+		document.querySelector('#select').value === '산업용_갑_I.고압A_선택_I' ? rateTable.산업용_갑_I.고압A_선택_I :
+		[];
 		const season = getSeason(month);
 		let result = (option.base * base) | 0;
 		result += (result * (90 - (d < 60 ? 60 : d > 95 ? 95 : d) + 95 - (e < 60 ? 60 : e > 95 ? 95 : e)) * 0.002) | 0;
-		result += (option.table[0][season] * a + 
-			option.table[1][season] * b + 
+		result += (option.table[0][season] * a +
+			option.table[1][season] * b +
 			option.table[2][season] * c) | 0;
 		result += (result * 0.1 | 0) + (result / 10 * 0.037 | 0) * 10;
 		document.querySelector('#result').innerText = result;
@@ -233,6 +235,9 @@
 </head>
 <body>
 <div>
+	<select id='select'>
+		<option>산업용_갑_I.고압A_선택_I</option>
+	</select>
     월: <input id='month' type = 'number' value='1'><br>
     기본: <input id='base' type = 'number' value='1'><br>
     경부하: <input id='a' type = 'number' value='0'><br>
