@@ -56,21 +56,330 @@
 	});
 
 	const rateTable = {
-			주택용_저압 : '',
+			// base: 기본요금,
+			// table: [
+			// 	경부하[여름, 봄가을, 겨울],
+			// 	중간부하[여름, 봄가을, 겨울],
+			//  과부하[여름, 봄가을, 겨울],
+			// ]
+			주택용_저압 : {
+				사용량_1 : {
+					base: 910,
+    				table: [
+    					[93.3, 93.3, 93.3],
+    					[93.3, 93.3, 93.3],
+    					[93.3, 93.3, 93.3],
+    				]
+				},
+				사용량_2 : {
+					base: 1600,
+    				table: [
+    					[187.9, 187.9, 187.9],
+    					[187.9, 187.9, 187.9],
+    					[187.9, 187.9, 187.9],
+    				]
+				},
+				사용량_3 : {
+					base: 7300,
+    				table: [
+    					[280.6, 280.6, 280.6],
+    					[280.6, 280.6, 280.6],
+    					[280.6, 280.6, 280.6],
+    				]
+				},
+				슈퍼유저 : {
+					base: 7300,
+    				table: [
+    					[709.5, 280.6, 280.6],
+    					[709.5, 280.6, 280.6],
+    					[709.5, 280.6, 280.6],
+    				]
+				},
+			},
 
-			주택용_고압 : '',
+			주택용_고압 : {
+				사용량_1 : {
+					base: 730,
+    				table: [
+    					[78.3, 78.3, 78.3],
+    					[78.3, 78.3, 78.3],
+    					[78.3, 78.3, 78.3],
+    				]
+				},
+				사용량_2 : {
+					base: 1260,
+    				table: [
+    					[147.3, 147.3, 147.3],
+    					[147.3, 147.3, 147.3],
+    					[147.3, 147.3, 147.3],
+    				]
+				},
+				사용량_3 : {
+					base: 6060,
+    				table: [
+    					[215.6, 215.6, 215.6],
+    					[215.6, 215.6, 215.6],
+    					[215.6, 215.6, 215.6],
+    				]
+				},
+				슈퍼유저 : {
+					base: 6060,
+    				table: [
+    					[574.6, 215.6, 215.6],
+    					[574.6, 215.6, 215.6],
+    					[574.6, 215.6, 215.6],
+    				]
+				},
+			},
 
-			일반용_갑_I : '',
+			일반용_갑_I : {
+				저압전력 : {
+					base: 6160,
+    				table: [
+    					[105.7, 65.2, 92.3],
+    					[105.7, 65.2, 92.3],
+    					[105.7, 65.2, 92.3],
+    				]
+				},
+				고압A_선택_I : {
+					base: 7170,
+    				table: [
+    					[115.9, 71.9, 103.6],
+    					[115.9, 71.9, 103.6],
+    					[115.9, 71.9, 103.6],
+    				]
+				},
+				고압A_선택_II : {
+					base: 8230,
+    				table: [
+    					[111.9, 67.6, 98.3],
+    					[111.9, 67.6, 98.3],
+    					[111.9, 67.6, 98.3],
+    				]
+				},
+				고압B_선택_I : {
+					base: 7170,
+    				table: [
+    					[113.8, 70.8, 100.6],
+    					[113.8, 70.8, 100.6],
+    					[113.8, 70.8, 100.6],
+    				]
+				},
+				고압B_선택_II : {
+					base: 8230,
+    				table: [
+    					[108.5, 65.5, 95.3],
+    					[108.5, 65.5, 95.3],
+    					[108.5, 65.5, 95.3],
+    				]
+				},
+			},
 
-			일반용_갑_II : '',
+			일반용_갑_II : {
+				고압A_선택_I : {
+					base: 7170,
+    				table: [
+    					[62.7, 62.7, 71.4],
+    					[113.9, 70.1, 101.8],
+    					[136.4, 81.4, 116.6],
+    				]
+				},
+				고압A_선택_II : {
+					base: 8230,
+    				table: [
+    					[57.4, 57.4, 66.1],
+    					[108.6, 64.8, 96.5],
+    					[131.1, 76.1, 111.3],
+    				]
+				},
+				고압B_선택_I : {
+					base: 7170,
+    				table: [
+    					[62.1, 62.1, 71.1],
+    					[110.7, 68.0, 98.4],
+    					[127.1, 73.4, 112.6],
+    				]
+				},
+				고압B_선택_II : {
+					base: 8230,
+    				table: [
+    					[56.8, 56.8, 65.8],
+    					[105.4, 62.7, 93.1],
+    					[121.8, 68.1, 107.3],
+    				]
+				},
+			},
 
-			일반용_을 : '',
+			일반용_을 : {
+				고압A_선택_I : {
+					base: 7220,
+    				table: [
+    					[61.6, 61.6, 68.6],
+    					[114.5, 84.1, 114.7],
+    					[196.6, 114.8, 172.2],
+    				]
+				},
+				고압A_선택_II : {
+					base: 8320,
+    				table: [
+    					[56.1, 56.1, 63.1],
+    					[109.0, 78.6, 109.2],
+    					[191.1, 109.3, 166.7],
+    				]
+				},
+				고압A_선택_III : {
+					base: 9810,
+    				table: [
+    					[55.2, 55.2, 62.5],
+    					[108.4, 77.3, 108.6],
+    					[178.7, 101.0, 155.5],
+    				]
+				},
+				고압B_선택_I : {
+					base: 6630,
+    				table: [
+    					[60.0, 60.0, 67.0],
+    					[112.3, 82.3, 112.3],
+    					[193.5, 112.6, 168.5],
+    				]
+				},
+				고압B_선택_II : {
+					base: 7380,
+    				table: [
+    					[56.2, 56.2, 63.2],
+    					[108.5, 78.5, 108.5],
+    					[189.7, 108.8, 164.7],
+    				]
+				},
+				고압B_선택_III : {
+					base: 8190,
+    				table: [
+    					[54.5, 54.5, 61.6],
+    					[106.8, 76.9, 106.8],
+    					[188.1, 107.2, 163.0],
+    				]
+				},
+				고압C_선택_I : {
+					base: 6590,
+    				table: [
+    					[59.5, 59.5, 66.4],
+    					[112.4, 82.4, 112.0],
+    					[193.3, 112.8, 168.6],
+    				]
+				},
+				고압C_선택_II : {
+					base: 7520,
+    				table: [
+    					[54.8, 54.8, 61.7],
+    					[107.7, 77.7, 107.3],
+    					[188.6, 108.1, 163.9],
+    				]
+				},
+				고압C_선택_III : {
+					base: 8090,
+    				table: [
+    					[53.7, 53.7, 60.6],
+    					[106.6, 76.6, 106.2],
+    					[187.5, 107.0, 162.8],
+    				]
+				},
+				전기자동차_저압 : {
+					base: 2390,
+    				table: [
+    					[57.6, 58.7, 80.7],
+    					[145.3, 70.5, 128.2],
+    					[232.5, 75.4, 190.8],
+    				]
+				},
+				전기자동차_고압 : {
+					base: 2580,
+    				table: [
+    					[52.5, 53.5, 69.9],
+    					[110.7, 64.3, 101.0],
+    					[163.7, 68.2, 138.8],
+    				]
+				},
+			},
 
 			다가구주택 : '',
 
-			교육용_갑 : '',
+			교육용_갑 : {
+				저압전력 : {
+					base: 5230,
+    				table: [
+    					[96.9, 59.7, 84.1],
+    					[96.9, 59.7, 84.1],
+    					[96.9, 59.7, 84.1],
+    				]
+				},
+				고압A_선택_I : {
+					base: 5550,
+    				table: [
+    					[96.6, 59.8, 82.6],
+    					[96.6, 59.8, 82.6],
+    					[96.6, 59.8, 82.6],
+    				]
+				},
+				고압A_선택_II : {
+					base: 6370,
+    				table: [
+    					[92.1, 55.4, 78.1],
+    					[92.1, 55.4, 78.1],
+    					[92.1, 55.4, 78.1],
+    				]
+				},
+				고압B_선택_I : {
+					base: 5550,
+    				table: [
+    					[95.9, 59.4, 81.8],
+    					[95.9, 59.4, 81.8],
+    					[95.9, 59.4, 81.8],
+    				]
+				},
+				고압B_선택_II : {
+					base: 6370,
+    				table: [
+    					[91.4, 54.9, 77.3],
+    					[91.4, 54.9, 77.3],
+    					[91.4, 54.9, 77.3],
+    				]
+				},
+			},
 
-			교육용_을 : '',
+			교육용_을 : {
+				고압A_선택_I : {
+					base: 6090,
+    				table: [
+    					[49.8, 49.8, 53.8],
+    					[94.5, 64.2, 93.0],
+    					[160.4, 84.70, 131.7],
+    				]
+				},
+				고압A_선택_II : {
+					base: 6980,
+    				table: [
+    					[45.3, 45.3, 49.3],
+    					[90.0, 59.7, 88.5],
+    					[155.9, 80.2, 127.2],
+    				]
+				},
+				고압B_선택_I : {
+					base: 6090,
+    				table: [
+    					[48.3, 48.3, 52.1],
+    					[91.8, 62.5, 90.1],
+    					[154.7, 82.3, 127.4],
+    				]
+				},
+				고압B_선택_II : {
+					base: 6980,
+    				table: [
+    					[43.8, 43.8, 47.6],
+    					[87.3, 58.0, 85.6],
+    					[150.2, 77.8, 122.9],
+    				]
+				},
+			},
 
 			산업용_갑_I : {
 				저압전력 : {
@@ -150,7 +459,80 @@
 				},
 			},
 
-			산업용_을 : '',
+			산업용_을 : {
+				고압A_선택_I : {
+					base: 7220,
+    				table: [
+    					[61.6, 61.6, 68.6],
+    					[114.5, 84.1, 114.7],
+    					[196.6, 114.8, 172.2],
+    				]
+				},
+				고압A_선택_II : {
+					base: 8320,
+    				table: [
+    					[56.1, 56.1, 63.1],
+    					[109.0, 78.6, 109.2],
+    					[191.1, 109.3, 166.7],
+    				]
+				},
+				고압A_선택_III : {
+					base: 9810,
+    				table: [
+    					[55.2, 55.2, 62.5],
+    					[108.4, 77.3, 108.6],
+    					[178.7, 101.0, 155.5],
+    				]
+				},
+				고압B_선택_I : {
+					base: 6630,
+    				table: [
+    					[60.0, 60.0, 67.0],
+    					[112.3, 82.3, 112.3],
+    					[193.5, 112.6, 168.5],
+    				]
+				},
+				고압B_선택_II : {
+					base: 7380,
+    				table: [
+    					[56.2, 56.2, 63.2],
+    					[108.5, 78.5, 108.5],
+    					[189.7, 108.8, 164.7],
+    				]
+				},
+				고압B_선택_III : {
+					base: 8190,
+    				table: [
+    					[54.5, 54.5, 61.6],
+    					[106.8, 76.9, 106.8],
+    					[188.1, 107.2, 163.0],
+    				]
+				},
+				고압C_선택_I : {
+					base: 6590,
+    				table: [
+    					[59.5, 59.5, 66.4],
+    					[112.4, 82.4, 112.0],
+    					[193.3, 112.8, 168.6],
+    				]
+				},
+				고압C_선택_II : {
+					base: 7520,
+    				table: [
+    					[54.8, 54.8, 61.7],
+    					[107.7, 77.7, 107.3],
+    					[188.6, 108.1, 163.9],
+    				]
+				},
+				고압C_선택_III : {
+					base: 8090,
+    				table: [
+    					[53.7, 53.7, 60.6],
+    					[106.6, 76.6, 106.2],
+    					[187.5, 107.0, 162.8],
+    				]
+				},
+			},
 
 			임시_갑 : '',
 
@@ -160,13 +542,71 @@
 
 			임시_을_시간대별 : '',
 
-			가로등_을 : '',
+			가로등 : {
+				갑 : {
+					//최저요금 1220
+					base: 0,
+    				table: [
+    					[37.5, 37.5, 37.5],
+    					[37.5, 37.5, 37.5],
+    					[37.5, 37.5, 37.5],
+    				]
+				},
+				을_I : {
+					base: 6290,
+    				table: [
+    					[85.9, 85.9, 85.9],
+    					[85.9, 85.9, 85.9],
+    					[85.9, 85.9, 85.9],
+    				]
+				},
+			},
 
-			심야전력_갑 : '',
+			심야전력 : {
+				갑 : {
+					base: 0,
+    				table: [
+    					[55.4, 55.4, 76.8],
+    					[55.4, 55.4, 76.8],
+    					[55.4, 55.4, 76.8],
+    				]
+				},
+				을_I : {
+					base: 0,
+    				table: [
+    					[45.2, 45.2, 62.3],
+    					[45.2, 45.2, 62.3],
+    					[45.2, 45.2, 62.3],
+    				]
+				},
+			},
 
-			농사용_갑 : '',
-
-			농사용_을 : '',
+			농사용 : {
+				갑 : {
+					base: 360,
+    				table: [
+    					[21.6, 21.6, 21.6],
+    					[21.6, 21.6, 21.6],
+    					[21.6, 21.6, 21.6],
+    				]
+				},
+				을_저압 : {
+					base: 1150,
+    				table: [
+    					[39.2, 39.2, 39.2],
+    					[39.2, 39.2, 39.2],
+    					[39.2, 39.2, 39.2],
+    				]
+				},
+				을_고압 : {
+					base: 1210,
+    				table: [
+    					[41.9, 39.9, 41.9],
+    					[41.9, 39.9, 41.9],
+    					[41.9, 39.9, 41.9],
+    				]
+				},
+			}
 	}
 
 	function getSeason(month) {
@@ -220,7 +660,64 @@
 
 	function calc(month, base, a, b, c, d, e) {
 		const option =
+		document.querySelector('#select').value === '주택용_저압.사용량_1' ? rateTable.주택용_저압.사용량_1 :
+		document.querySelector('#select').value === '주택용_저압.사용량_2' ? rateTable.주택용_저압.사용량_2 :
+		document.querySelector('#select').value === '주택용_저압.사용량_3' ? rateTable.주택용_저압.사용량_3 :
+		document.querySelector('#select').value === '주택용_저압.슈퍼유저' ? rateTable.주택용_저압.사용량_4 :
+		document.querySelector('#select').value === '주택용_고압.사용량_1' ? rateTable.주택용_고압.사용량_1 :
+		document.querySelector('#select').value === '주택용_고압.사용량_2' ? rateTable.주택용_고압.사용량_2 :
+		document.querySelector('#select').value === '주택용_고압.사용량_3' ? rateTable.주택용_고압.사용량_3 :
+		document.querySelector('#select').value === '주택용_고압.슈퍼유저' ? rateTable.주택용_고압.사용량_4 :
+
+		document.querySelector('#select').value === '일반용_갑_I.저압전력' ? rateTable.일반용_갑_I.저압전력 :
+        document.querySelector('#select').value === '일반용_갑_I.고압A_선택_I' ? rateTable.일반용_갑_I.고압A_선택_I :
+        document.querySelector('#select').value === '일반용_갑_I.고압A_선택_II' ? rateTable.일반용_갑_I.고압A_선택_II :
+        document.querySelector('#select').value === '일반용_갑_I.고압B_선택_I' ? rateTable.일반용_갑_I.고압B_선택_I :
+		document.querySelector('#select').value === '일반용_갑_I.고압B_선택_II' ? rateTable.일반용_갑_I.고압B_선택_II :
+        document.querySelector('#select').value === '일반용_갑_II.고압A_선택_I' ? rateTable.일반용_갑_II.고압A_선택_I :
+        document.querySelector('#select').value === '일반용_갑_II.고압A_선택_II' ? rateTable.일반용_갑_II.고압A_선택_II :
+        document.querySelector('#select').value === '일반용_갑_II.고압B_선택_I' ? rateTable.일반용_갑_II.고압B_선택_I :
+        document.querySelector('#select').value === '일반용_갑_II.고압B_선택_II' ? rateTable.일반용_갑_II.고압B_선택_II :
+        document.querySelector('#select').value === '일반용_갑_III.고압A_선택_I' ? rateTable.일반용_갑_III.고압A_선택_I :
+        document.querySelector('#select').value === '일반용_갑_III.고압A_선택_II' ? rateTable.일반용_갑_III.고압A_선택_II :
+        document.querySelector('#select').value === '일반용_갑_III.고압A_선택_III' ? rateTable.일반용_갑_III.고압A_선택_III :
+        document.querySelector('#select').value === '일반용_갑_III.고압B_선택_I' ? rateTable.일반용_갑_III.고압B_선택_I :
+        document.querySelector('#select').value === '일반용_갑_III.고압B_선택_II' ? rateTable.일반용_갑_III.고압B_선택_II :
+        document.querySelector('#select').value === '일반용_갑_III.고압B_선택_III' ? rateTable.일반용_갑_III.고압B_선택_III :
+        document.querySelector('#select').value === '일반용_갑_III.고압C_선택_I' ? rateTable.일반용_갑_III.고압C_선택_I :
+        document.querySelector('#select').value === '일반용_갑_III.고압C_선택_II' ? rateTable.일반용_갑_III.고압C_선택_II :
+        document.querySelector('#select').value === '일반용_갑_III.고압C_선택_III' ? rateTable.일반용_갑_III.고압C_선택_III :
+        document.querySelector('#select').value === '일반용_갑_III.전기자동차_저압' ? rateTable.일반용_갑_III.전기자동차_저압 :
+		document.querySelector('#select').value === '일반용_갑_III.전기자동차_고압' ? rateTable.일반용_갑_III.전기자동차_고압 :
+
+		document.querySelector('#select').value === '교육용_갑.저압전력' ? rateTable.교육용_갑.저압전력 :
+        document.querySelector('#select').value === '교육용_갑.고압A_선택_I' ? rateTable.교육용_갑.고압A_선택_I :
+        document.querySelector('#select').value === '교육용_갑.고압A_선택_II' ? rateTable.교육용_갑.고압A_선택_II :
+        document.querySelector('#select').value === '교육용_갑.고압B_선택_I' ? rateTable.교육용_갑.고압B_선택_I :
+		document.querySelector('#select').value === '교육용_갑.고압B_선택_II' ? rateTable.교육용_갑.고압B_선택_II :
+        document.querySelector('#select').value === '교육용_을.고압A_선택_I' ? rateTable.교육용_을.고압A_선택_I :
+        document.querySelector('#select').value === '교육용_을.고압A_선택_II' ? rateTable.교육용_을.고압A_선택_II :
+        document.querySelector('#select').value === '교육용_을.고압B_선택_I' ? rateTable.교육용_을.고압B_선택_I :
+        document.querySelector('#select').value === '교육용_을.고압B_선택_II' ? rateTable.교육용_을.고압B_선택_II :
+
+		document.querySelector('#select').value === '산업용_갑_I.저압전력' ? rateTable.산업용_갑_I.저압전력 :
 		document.querySelector('#select').value === '산업용_갑_I.고압A_선택_I' ? rateTable.산업용_갑_I.고압A_선택_I :
+		document.querySelector('#select').value === '산업용_갑_I.고압A_선택_II' ? rateTable.산업용_갑_I.고압A_선택_II :
+		document.querySelector('#select').value === '산업용_갑_I.고압B_선택_I' ? rateTable.산업용_갑_I.고압B_선택_I :
+		document.querySelector('#select').value === '산업용_갑_I.고압B_선택_II' ? rateTable.산업용_갑_I.고압B_선택_II :
+		document.querySelector('#select').value === '산업용_갑_II.고압A_선택_I' ? rateTable.산업용_갑_II.고압A_선택_I :
+        document.querySelector('#select').value === '산업용_갑_II.고압A_선택_II' ? rateTable.산업용_갑_II.고압A_선택_II :
+        document.querySelector('#select').value === '산업용_갑_II.고압B_선택_I' ? rateTable.산업용_갑_II.고압B_선택_I :
+        document.querySelector('#select').value === '산업용_갑_II.고압B_선택_II' ? rateTable.산업용_갑_II.고압B_선택_II :
+        document.querySelector('#select').value === '산업용_갑_III.고압A_선택_I' ? rateTable.산업용_갑_III.고압A_선택_I :
+        document.querySelector('#select').value === '산업용_갑_III.고압A_선택_II' ? rateTable.산업용_갑_III.고압A_선택_II :
+        document.querySelector('#select').value === '산업용_갑_III.고압A_선택_III' ? rateTable.산업용_갑_III.고압A_선택_III :
+        document.querySelector('#select').value === '산업용_갑_III.고압B_선택_I' ? rateTable.산업용_갑_III.고압B_선택_I :
+        document.querySelector('#select').value === '산업용_갑_III.고압B_선택_II' ? rateTable.산업용_갑_III.고압B_선택_II :
+        document.querySelector('#select').value === '산업용_갑_III.고압B_선택_III' ? rateTable.산업용_갑_III.고압B_선택_III :
+        document.querySelector('#select').value === '산업용_갑_III.고압C_선택_I' ? rateTable.산업용_갑_III.고압C_선택_I :
+        document.querySelector('#select').value === '산업용_갑_III.고압C_선택_II' ? rateTable.산업용_갑_III.고압C_선택_II :
+        document.querySelector('#select').value === '산업용_갑_III.고압C_선택_III' ? rateTable.산업용_갑_III.고압C_선택_III :
 		[];
 		const season = getSeason(month);
 		let result = (option.base * base) | 0;
@@ -236,8 +733,65 @@
 <body>
 <div>
 	<select id='select'>
+		<option>주택용_저압.사용량_1</option>
+		<option>주택용_저압.사용량_2</option>
+		<option>주택용_저압.사용량_3</option>
+		<option>주택용_저압.슈퍼유저</option>
+		<option>주택용_고압.사용량_1</option>
+		<option>주택용_고압.사용량_2</option>
+		<option>주택용_고압.사용량_3</option>
+		<option>주택용_고압.슈퍼유저</option>
+
+        <option>일반용_갑_I.저압전력</option>
+        <option>일반용_갑_I.고압A_선택_I</option>
+        <option>일반용_갑_I.고압A_선택_II</option>
+        <option>일반용_갑_I.고압B_선택_I</option>
+		<option>일반용_갑_I.고압B_선택_II</option>
+        <option>일반용_갑_II.고압A_선택_I</option>
+        <option>일반용_갑_II.고압A_선택_II</option>
+        <option>일반용_갑_II.고압B_선택_I</option>
+        <option>일반용_갑_II.고압B_선택_II</option>
+        <option>일반용_갑_III.고압A_선택_I</option>
+        <option>일반용_갑_III.고압A_선택_II</option>
+        <option>일반용_갑_III.고압A_선택_III</option>
+        <option>일반용_갑_III.고압B_선택_I</option>
+        <option>일반용_갑_III.고압B_선택_II</option>
+        <option>일반용_갑_III.고압B_선택_III</option>
+        <option>일반용_갑_III.고압C_선택_I</option>
+        <option>일반용_갑_III.고압C_선택_II</option>
+        <option>일반용_갑_III.고압C_선택_III</option>
+        <option>일반용_갑_III.전기자동차_저압</option>
+		<option>일반용_갑_III.전기자동차_고압</option>
+
+		<option>교육용_갑.저압전력</option>
+        <option>교육용_갑.고압A_선택_I</option>
+        <option>교육용_갑.고압A_선택_II</option>
+        <option>교육용_갑.고압B_선택_I</option>
+		<option>교육용_갑.고압B_선택_II</option>
+        <option>교육용_을.고압A_선택_I</option>
+        <option>교육용_을.고압A_선택_II</option>
+        <option>교육용_을.고압B_선택_I</option>
+        <option>교육용_을.고압B_선택_II</option>
+
+		<option>산업용_갑_I.저압전력</option>
 		<option>산업용_갑_I.고압A_선택_I</option>
-	</select>
+		<option>산업용_갑_I.고압A_선택_II</option>
+		<option>산업용_갑_I.고압B_선택_I</option>
+		<option>산업용_갑_I.고압B_선택_II</option>
+		<option>산업용_갑_II.고압A_선택_I</option>
+        <option>산업용_갑_II.고압A_선택_II</option>
+        <option>산업용_갑_II.고압B_선택_I</option>
+        <option>산업용_갑_II.고압B_선택_II</option>
+        <option>산업용_갑_III.고압A_선택_I</option>
+        <option>산업용_갑_III.고압A_선택_II</option>
+        <option>산업용_갑_III.고압A_선택_III</option>
+        <option>산업용_갑_III.고압B_선택_I</option>
+        <option>산업용_갑_III.고압B_선택_II</option>
+        <option>산업용_갑_III.고압B_선택_III</option>
+        <option>산업용_갑_III.고압C_선택_I</option>
+        <option>산업용_갑_III.고압C_선택_II</option>
+        <option>산업용_갑_III.고압C_선택_III</option>
+	</select><br/>
     월: <input id='month' type = 'number' value='1'><br>
     기본: <input id='base' type = 'number' value='1'><br>
     경부하: <input id='a' type = 'number' value='0'><br>
