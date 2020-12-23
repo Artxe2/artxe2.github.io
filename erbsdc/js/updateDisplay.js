@@ -85,7 +85,7 @@ function updateDisplay() {
 			(extra_normal_attack_damage).toFixed(2) + '| ' + (extra_normal_attack_damage_percent).toFixed(2) + '%';
 		skill_amplification = 
 			(character != Sissela ? 0 : 
-				(2 + document.querySelector('#t_level').selectedIndex * 2) * 
+				(2 + document.querySelector('#t_level').selectedIndex * 3) * 
 				(document.querySelector('#stack').value < 10 ? 
 					0 : (document.querySelector('#stack').value > 89 ? 5 : document.querySelector('#stack').value / 20 + 0.5)) * 
 				(document.querySelector('#tr').checked ? 2 : 1)) + 
@@ -358,7 +358,7 @@ function updateDisplay2() {
 			(extra_normal_attack_damage2).toFixed(2) + '| ' + (extra_normal_attack_damage_percent2).toFixed(2) + '%';
 		skill_amplification2 = 
 			(character2 != Sissela ? 0 : 
-				(2 + document.querySelector('#t_level2').selectedIndex * 2) * 
+				(2 + document.querySelector('#t_level2').selectedIndex * 3) * 
 				(document.querySelector('#stack2').value < 10 ? 
 					0 : (document.querySelector('#stack2').value > 89 ? 5 : document.querySelector('#stack2').value / 20 + 0.5)) * 
 				(document.querySelector('#tr2').checked ? 2 : 1)) + 

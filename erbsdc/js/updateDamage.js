@@ -209,12 +209,12 @@ function updateDamage() {
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(200 + document.querySelector('#r_level').selectedIndex * 150, 0.7, true);
 			document.querySelector('#t_damage').innerText = 'shield: ' + 
-				(150 + document.querySelector('#t_level').selectedIndex * 50 + attack_power * 0.1).toFixed(2);
+				(100 + document.querySelector('#t_level').selectedIndex * 50 + attack_power * 0.3).toFixed(2);
 		} else if (character == Fiora) {
 			document.querySelector('#q_damage').innerText = 
-				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 60, 0.2, true) + ' - ' + 
+				calcSkillDamage(60 + document.querySelector('#q_level').selectedIndex * 60, 0.25, true) + ' - ' + 
 				calcSkillDamage((60 + document.querySelector('#q_level').selectedIndex * 60) * (120 + critical_strike_damage) / 100, 
-					0.2 * (120 + critical_strike_damage) / 100, true);
+					0.25 * (120 + critical_strike_damage) / 100, true);
 			document.querySelector('#w_damage').innerText = 
 				baseAttackDamage(0, 0.8 + document.querySelector('#w_level').selectedIndex * 0.2, critical_strike_chance, 2, 0, true) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level').selectedIndex * 0.1, 0, 1, 0, true) + ', ' + 
@@ -282,8 +282,8 @@ function updateDamage() {
 				calcSkillDamage(defense, 0, true) + ' ~ ' + 
 				calcSkillDamage(defense + (character2 == undefined ? 0 : max_hp2 * (0.05 + document.querySelector('#e_level').selectedIndex * 0.03)), 0, true);
 			document.querySelector('#r_damage').innerText = 
-				calcSkillDamage(150 + document.querySelector('#r_level').selectedIndex * 75, 0.5, true) + ' ~ ' + 
-				calcSkillDamage(600 + document.querySelector('#r_level').selectedIndex * 300, 2, true);
+				calcSkillDamage(200 + document.querySelector('#r_level').selectedIndex * 100, 0.7, true) + ' ~ ' + 
+				calcSkillDamage(600 + document.querySelector('#r_level').selectedIndex * 300, 2.1, true);
 			document.querySelector('#t_damage').innerText = 'heal: ' + 
 				(max_hp * (0.07 + document.querySelector('#t_level').selectedIndex * 0.04)).toFixed(2);
 		} else if (character == Hart) {
@@ -416,7 +416,7 @@ function updateDamage() {
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(30 + document.querySelector('#w_level').selectedIndex * 60, 0.7, true);
 			document.querySelector('#e_damage').innerText = 'd: ' + 
-				calcSkillDamage(40 + document.querySelector('#e_level').selectedIndex * 40, 0.6, true) + ' / s: ' + 
+				calcSkillDamage(40 + document.querySelector('#e_level').selectedIndex * 50, 0.6, true) + ' / s: ' + 
 				(60 + document.querySelector('#e_level').selectedIndex * 50 + attack_power * 0.5).toFixed(2);
 			document.querySelector('#r_damage').innerText = 
 				calcSkillDamage(75 + document.querySelector('#r_level').selectedIndex * 62.5, 0.5, true) + ' - ' + 
@@ -443,7 +443,7 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage((4 + document.querySelector('#t_level').selectedIndex * 3) * 1.8, 0.27, true))) * 9;
 		} else if (character == Shoichi) {
 			document.querySelector('#q_damage').innerText = 
-				calcSkillDamage(30 + document.querySelector('#q_level').selectedIndex * 45, 0.45, true)
+				calcSkillDamage(10 + document.querySelector('#q_level').selectedIndex * 50, 0.45, true)
 			document.querySelector('#w_damage').innerText = 
 				calcSkillDamage(10 + document.querySelector('#w_level').selectedIndex * 30, 0.3, true)
 			document.querySelector('#e_damage').innerText = 
@@ -476,6 +476,21 @@ function updateDamage() {
 				baseAttackDamage(0, 1.25 + document.querySelector('#r_level').selectedIndex * 0.25, critical_strike_chance, 1, 0, true) + 
 				' ( ' + baseAttackDamage(0, 1.25 + document.querySelector('#r_level').selectedIndex * 0.25, 0, 1, 0, true) + ' - ' + 
 				baseAttackDamage(0, 1.25 + document.querySelector('#r_level').selectedIndex * 0.25, 100, 1, 0, true) + ' )';
+		} else if (character == Emma) {
+			document.querySelector('#q_damage').innerText = 
+				calcSkillDamage(40 + document.querySelector('#q_level').selectedIndex * 35, 0.45, true) + ' x 1 ~ 2 ( ' + 
+				(Math.round(parseFloat(calcSkillDamage(40 + document.querySelector('#q_level').selectedIndex * 35, 0.45, true))) * 2).toFixed(2) + ' )';
+			document.querySelector('#w_damage').innerText = 
+				calcSkillDamage(100 + document.querySelector('#w_level').selectedIndex * 50, 0.75, true);
+			document.querySelector('#e_damage').innerText = '-';
+			document.querySelector('#r_damage').innerText = 'q: ' + 
+				calcSkillDamage(150 + document.querySelector('#r_level').selectedIndex * 50, 0.45, true) + ' / w: ' + 
+				calcSkillDamage(200 + document.querySelector('#r_level').selectedIndex * 50, 0.75, true);
+			document.querySelector('#t_damage').innerText = 'd: ' + 
+				baseAttackDamage(max_sp * (0.02 + document.querySelector('#t_level').selectedIndex * 0.01), 1, critical_strike_chance, 1, 0, true) + 
+				' ( ' + baseAttackDamage(max_sp * (0.02 + document.querySelector('#t_level').selectedIndex * 0.01), 1, 0, 1, 0, true) + ' - ' + 
+				baseAttackDamage(max_sp * (0.02 + document.querySelector('#t_level').selectedIndex * 0.01), 1, 100, 1, 0, true) + ' ) / s: ' + 
+				(90 + document.querySelector('#t_level').selectedIndex * 30 + max_sp * (0.03 + document.querySelector('#t_level').selectedIndex * 0.03)).toFixed(2);
 		}
 	} else {
 		document.querySelector('#base_attack_damage').innerText = '0';
@@ -672,12 +687,12 @@ function updateDamage() {
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(200 + document.querySelector('#r_level2').selectedIndex * 150, 0.7, false);
 			document.querySelector('#t_damage2').innerText = 'shield: ' + 
-				(150 + document.querySelector('#t_level2').selectedIndex * 50 + attack_power2 * 0.1).toFixed(2);
+				(100 + document.querySelector('#t_level2').selectedIndex * 50 + attack_power2 * 0.3).toFixed(2);
 		} else if (character2 == Fiora) {
 			document.querySelector('#q_damage2').innerText = 
-				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 60, 0.2, false) + ' - ' + 
+				calcSkillDamage(60 + document.querySelector('#q_level2').selectedIndex * 60, 0.25, false) + ' - ' + 
 				calcSkillDamage((60 + document.querySelector('#q_level2').selectedIndex * 60) * (120 + critical_strike_damage2) / 100, 
-					0.2 * (120 + critical_strike_damage2) / 100, false);
+					0.25 * (120 + critical_strike_damage2) / 100, false);
 			document.querySelector('#w_damage2').innerText = 
 				baseAttackDamage(0, 0.8 + document.querySelector('#w_level2').selectedIndex * 0.2, critical_strike_chance2, 2, 0, false) + ' ( ' + 
 				baseAttackDamage(0, 0.6 + document.querySelector('#w_level2').selectedIndex * 0.1, 0, 1, 0, false) + ', ' + 
@@ -745,8 +760,8 @@ function updateDamage() {
 				calcSkillDamage(defense2, 0, false) + ' ~ ' + 
 				calcSkillDamage(defense2 + (character == undefined ? 0 : max_hp * (0.05 + document.querySelector('#e_level2').selectedIndex * 0.03)), 0, false);
 			document.querySelector('#r_damage2').innerText = 
-				calcSkillDamage(150 + document.querySelector('#r_level2').selectedIndex * 75, 0.5, false) + ' ~ ' + 
-				calcSkillDamage(600 + document.querySelector('#r_level2').selectedIndex * 300, 2, false);
+				calcSkillDamage(200 + document.querySelector('#r_level2').selectedIndex * 100, 0.7, false) + ' ~ ' + 
+				calcSkillDamage(600 + document.querySelector('#r_level2').selectedIndex * 300, 2.1, false);
 			document.querySelector('#t_damage2').innerText = 'heal: ' + 
 				(max_hp2 * (0.07 + document.querySelector('#t_level2').selectedIndex * 0.04)).toFixed(2);
 		} else if (character2 == Hart) {
@@ -879,7 +894,7 @@ function updateDamage() {
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(30 + document.querySelector('#w_level2').selectedIndex * 60, 0.7, false);
 			document.querySelector('#e_damage2').innerText = 'd: ' + 
-				calcSkillDamage(40 + document.querySelector('#e_level2').selectedIndex * 40, 0.6, false) + ' / s: ' + 
+				calcSkillDamage(40 + document.querySelector('#e_level2').selectedIndex * 50, 0.6, false) + ' / s: ' + 
 				(60 + document.querySelector('#e_level2').selectedIndex * 50 + attack_power2 * 0.5).toFixed(2);
 			document.querySelector('#r_damage2').innerText = 
 				calcSkillDamage(75 + document.querySelector('#r_level2').selectedIndex * 62.5, 0.5, false) + ' - ' + 
@@ -906,7 +921,7 @@ function updateDamage() {
 				Math.round(parseFloat(calcSkillDamage((4 + document.querySelector('#t_level2').selectedIndex * 3) * 1.8, 0.27, false))) * 9;
 		} else if (character2 == Shoichi) {
 			document.querySelector('#q_damage2').innerText = 
-				calcSkillDamage(30 + document.querySelector('#q_level2').selectedIndex * 45, 0.45, false)
+				calcSkillDamage(10 + document.querySelector('#q_level2').selectedIndex * 50, 0.45, false)
 			document.querySelector('#w_damage2').innerText = 
 				calcSkillDamage(10 + document.querySelector('#w_level2').selectedIndex * 30, 0.3, false)
 			document.querySelector('#e_damage2').innerText = 
@@ -939,6 +954,21 @@ function updateDamage() {
 				baseAttackDamage(0, 1.25 + document.querySelector('#r_level2').selectedIndex * 0.25, critical_strike_chance2, 1, 0, false) + 
 				' ( ' + baseAttackDamage(0, 1.25 + document.querySelector('#r_level2').selectedIndex * 0.25, 0, 1, 0, false) + ' - ' + 
 				baseAttackDamage(0, 1.25 + document.querySelector('#r_level2').selectedIndex * 0.25, 100, 1, 0, false) + ' )';
+		} else if (character2 == Emma) {
+			document.querySelector('#q_damage2').innerText = 
+				calcSkillDamage(40 + document.querySelector('#q_level2').selectedIndex * 35, 0.45, false) + ' x 1 ~ 2 ( ' + 
+				(Math.round(parseFloat(calcSkillDamage(40 + document.querySelector('#q_level2').selectedIndex * 35, 0.45, false))) * 2).toFixed(2) + ' )';
+			document.querySelector('#w_damage2').innerText = 
+				calcSkillDamage(100 + document.querySelector('#w_level').selectedIndex * 50, 0.75, false);
+			document.querySelector('#e_damage2').innerText = '-';
+			document.querySelector('#r_damage2').innerText = 'q: ' + 
+				calcSkillDamage(150 + document.querySelector('#r_level2').selectedIndex * 50, 0.45, false) + ' / w: ' + 
+				calcSkillDamage(200 + document.querySelector('#r_level2').selectedIndex * 50, 0.75, false);
+			document.querySelector('#t_damage2').innerText = 'd: ' + 
+				baseAttackDamage(max_sp2 * (0.02 + document.querySelector('#t_level2').selectedIndex * 0.01), 1, critical_strike_chance2, 1, 0, false) + 
+				' ( ' + baseAttackDamage(max_sp2 * (0.02 + document.querySelector('#t_level2').selectedIndex * 0.01), 1, 0, 1, 0, false) + ' - ' + 
+				baseAttackDamage(max_sp2 * (0.02 + document.querySelector('#t_level2').selectedIndex * 0.01), 1, 100, 1, 0, false) + ' ) / s: ' + 
+				(90 + document.querySelector('#t_level2').selectedIndex * 30 + max_sp2 * (0.03 + document.querySelector('#t_level2').selectedIndex * 0.03)).toFixed(2);
 		}
 	} else {
 		document.querySelector('#base_attack_damage2').innerText = '0';

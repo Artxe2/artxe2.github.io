@@ -129,7 +129,7 @@ function changeWeapon(type, index) {
 		updateDisplay();
 		return;
 	}
-	document.querySelector('#weapon').innerHTML = "<img class = '" + weapon.Rarity + "' title = '" + weapon.Title + "' src = './weapon/" + weapon.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#weapon').innerHTML = "<img class = '" + weapon.Rarity + "' title = '" + weapon.Title + "' src = './img/weapon/" + weapon.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay();
 }
 function changeWeapon2(type, index) {
@@ -263,6 +263,6 @@ function changeWeapon2(type, index) {
 		updateDisplay2();
 		return;
 	}
-	document.querySelector('#weapon2').innerHTML = "<img class = '" + weapon2.Rarity + "' title = '" + weapon2.Title + "' src = './weapon/" + weapon2.Name + ".png' width = '80px' height = '44px'>";
+	document.querySelector('#weapon2').innerHTML = "<img class = '" + weapon2.Rarity + "' title = '" + weapon2.Title + "' src = './img/weapon/" + weapon2.Name + ".png' width = '80px' height = '44px'>";
 	updateDisplay2();
 }
