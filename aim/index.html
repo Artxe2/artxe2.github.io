@@ -43,16 +43,16 @@ class Target extends React.Component {
         );
     }
     shot = () => {
-		let r, x, y;
-		try {
-			do {
-				r = Math.random() * 360;
-          		x = this.state.x + parseInt(this.state.distance * Math.cos(r * (Math.PI/180)));
-         		y = this.state.y + parseInt(this.state.distance * Math.sin(r * (Math.PI/180)));
-				console.log(x + ', ' + y);
-			} while (x < 0 || x > 960 - this.state.size || y < 0 || y > 540 - this.state.y);
-		} catch (e) {
-			console.log('error');
+		let r, x, y, c = 0;
+		do {
+			r = Math.random() * 360;
+          	x = this.state.x + parseInt(this.state.distance * Math.cos(r * (Math.PI/180)));
+         	y = this.state.y + parseInt(this.state.distance * Math.sin(r * (Math.PI/180)));
+			console.log(x + ', ' + y);
+		} while ((x < 0 || x > 960 - this.state.size || y < 0 || y > 540 - this.state.size) && c++ < 10);
+		if (c == 10) {
+			x = 480 - this.state.size / 2;
+			y = 540 - this.state.size / 2;
 		}
 		if (this.state.count == 10) {
           	this.setState({
