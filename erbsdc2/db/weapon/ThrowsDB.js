@@ -1,8 +1,8 @@
-const twoHandedSword = [
+const Throws = [
 	{
-		 Type: "TwoHandedSword"
-		,Name: "Rusty_Sword"
-		,Attack_Power: 11
+		 Type: "Throws"
+		,Name: "Base_Ball"
+		,Attack_Power: 12
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -26,16 +26,15 @@ const twoHandedSword = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Rusty Sword\n\nAttack Power +11"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Base Ball\n\nAttack Power +12"
 		,Rarity: "Common"
-		
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Shamshir"
-		,Attack_Power: 27
+		 Type: "Throws"
+		,Name: "Iron_Ball"
+		,Attack_Power: 12
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -59,47 +58,47 @@ const twoHandedSword = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Shamshir\n\nAttack Power +27"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Iron Ball\n\nAttack Power +12"
+		,Rarity: "Common"
+	}
+	,{
+		 Type: "Throws"
+		,Name: "Grenade"
+		,Attack_Power: 25
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 20
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Grenade\n\nAttack Power +25\nExtra Normal Attack Damage +20"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Katana"
-		,Attack_Power: 35
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Katana\n\nAttack Power +35"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "TwoHandedSword"
-		,Name: "Masamune"
-		,Attack_Power: 40
+		 Type: "Throws"
+		,Name: "Molotov_Cocktail"
+		,Attack_Power: 22
 		,Attack_Speed: 15
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -123,15 +122,15 @@ const twoHandedSword = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Masamune\n\nAttack Power +40\nAttack Speed +15%"
-		,Rarity: "Rare"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Molotov Cocktail\n\nAttack Power +22\nAttack Speed +15%"
+		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Muramasa"
-		,Attack_Power: 50
+		 Type: "Throws"
+		,Name: "Signed_Ball"
+		,Attack_Power: 30
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -155,111 +154,15 @@ const twoHandedSword = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Muramasa\n\nAttack Power +50"
-		,Rarity: "Rare"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Signed Ball\n\nAttack Power +30"
+		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Bastard_Sword"
-		,Attack_Power: 45
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Bastard Sword\n\nAttack Power +45\nMovement Speed -0.1"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "TwoHandedSword"
-		,Name: "Jewel_Sword"
-		,Attack_Power: 35
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 200
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Jewel Sword\n\nAttack Power +35\nMax HP +200"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "TwoHandedSword"
-		,Name: "Thuan_Thien"
-		,Attack_Power: 77
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 25
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25\nMovement Speed -0.1"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "TwoHandedSword"
-		,Name: "Plasma_Sword"
-		,Attack_Power: 75
+		 Type: "Throws"
+		,Name: "Sling"
+		,Attack_Power: 42
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -281,22 +184,22 @@ const twoHandedSword = [
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 3
+		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Plasma Sword\n\nAttack Power +75\nVision Range +3"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Sling\n\nAttack Power +42"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Arondight"
-		,Attack_Power: 50
-		,Attack_Speed: 25
+		 Type: "Throws"
+		,Name: "Flour_Bomb"
+		,Attack_Power: 58
+		,Attack_Speed: 15
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 25
+		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -315,15 +218,47 @@ const twoHandedSword = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Arondight\n\nAttack Power +50\nAttack Speed +25%\nExtra Normal Attack Damage +25"
-		,Rarity: "Epic"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Flour Bomb\n\nAttack Power +58\nAttack Speed 15%"
+		,Rarity: "Rare"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Excalibur"
-		,Attack_Power: 60
+		 Type: "Throws"
+		,Name: "Ball_Lightning"
+		,Attack_Power: 24
+		,Attack_Speed: 20
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Ball Lightning\n\nAttack Power +24\nAttack Speed +20%"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Throws"
+		,Name: "Flubber"
+		,Attack_Power: 42
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -338,28 +273,60 @@ const twoHandedSword = [
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
-		,Max_HP: 400
+		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
-		,HP_Regen_Percent: 200
+		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Excalibur\n\nAttack Power +60\nMax HP +400\nHP Regen +200%"
-		,Rarity: "Epic"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Flubber\n\nAttack Power +42"
+		,Rarity: "Rare"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Monohoshizao"
+		 Type: "Throws"
+		,Name: "Spiky_Bouncy_Ball"
+		,Attack_Power: 36
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Spiky Bouncy Ball\n\nAttack Power +36\nHealing Reduction (Skills) -40%"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Throws"
+		,Name: "Incendiary_Bomb"
 		,Attack_Power: 70
-		,Attack_Speed: 0
+		,Attack_Speed: 50
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
-		,Life_Steal: 18
+		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
@@ -379,20 +346,20 @@ const twoHandedSword = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Monohoshizao\n\nAttack Power +70\nLife Steal +18%"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Incendiary Bomb\n\nAttack Power +70\nAttack Speed +50%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Hovud"
-		,Attack_Power: 45
+		 Type: "Throws"
+		,Name: "Grenade_of_Antioch"
+		,Attack_Power: 85
 		,Attack_Speed: 0
-		,Critical_Strike_Chance: 20
+		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage: 80
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -402,7 +369,7 @@ const twoHandedSword = [
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
-		,Max_HP: 300
+		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
@@ -411,51 +378,52 @@ const twoHandedSword = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Hovud\n\nAttack Power +45\nMax HP +300\nCritical Strike Chance +20%"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Grenade of Antioch\n\nAttack Power +85\nExtra Normal Attack Damage +80"
 		,Rarity: "Epic"
+
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Laevateinn"
-		,Attack_Power: 75
+		 Type: "Throws"
+		,Name: "David`s_Sling"
+		,Attack_Power: 80
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 20
+		,Extra_Normal_Attack_Damage: 30
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
-		,SP_Regen: 1.5
+		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen:1.5
-		,HP_Regen_Percent: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 150
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Laevateinn\n\nAttack Power +75\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +20"
-		,Rarity: "Legendary"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "David`s Sling\n\nAttack Power +80\nHP Regen +150%\nExtra Normal Attack Damage +30"
+		,Rarity: "Epic"
 	}
 	,{
-		 Type: "TwoHandedSword"
-		,Name: "Dainsleif"
-		,Attack_Power: 70
-		,Attack_Speed: 0
+		 Type: "Throws"
+		,Name: "Smoke_Bomb"
+		,Attack_Power: 90
+		,Attack_Speed: 40
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
-		,Life_Steal: 20
+		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
@@ -468,16 +436,80 @@ const twoHandedSword = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen:0
+		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.5
-		,Atk_Speed: 0.56
-		,Title: "Dainsleif\n\nAttack Power +70\nLife Steal +20%"
-		,Rarity: "Legendary"
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Smoke Bomb\n\nAttack Power +90\nAttack Damage +40%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Throws"
+		,Name: "High_Explosive_Grenade"
+		,Attack_Power: 56
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 60
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "High Explosive Grenade\n\nAttack Power +56\nExtra Normal Attack Damage +60"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Throws"
+		,Name: "Ruthenium_Marble"
+		,Attack_Power: 80
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 20
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 5.8
+		,Atk_Speed: 0.51
+		,Title: "Ruthenium Marble\n\nAttack Power +80\nSkill Amplification +20%\nHealing Reduction (Skills) -40%"
+		,Rarity: "Epic"
 	}
 ];

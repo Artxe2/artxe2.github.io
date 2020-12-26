@@ -16,34 +16,54 @@ const Jackie = {
 	,Move_Speed: 3.1
 	,Sight_Range: 8
 	,Attack_Range: 0.4
-	,weapons: ['Dagger', 'TwoHandedSword', 'Axe', 'DualSwords']
-	,BASE_ATTACK: (selector, character, enemy) => {
+	,weapons: [Dagger, TwoHandedSword, Axe, DualSwords]
+	,correction: {
+		Dagger: [
+			[0, 0, 5],
+			[0, 2, 5]
+		],
+		TwoHandedSword: [
+			[0, 0, 0],
+			[3, 2, 5]
+		],
+		Axe: [
+			[0, 0, 0],
+			[0, 2, 5]
+		],
+		DualSwords: [
+			[0, 0, 0],
+			[0, 2, 5]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
 		return '';
 	}
-	,DPS: (selector, character, enemy) => {
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
 		return '';
 	}
-	,Q_Skill: (selector, character, enemy) => {
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
 		return '';
 	}
 	,Q_Option: ''
-	,W_Skill: (selector, character, enemy) => {
+	,W_Skill: (character, enemy) => {
 		return '';
 	}
 	,W_Option: ''
-	,E_Skill: (selector, character, enemy) => {
+	,E_Skill: (character, enemy) => {
 		return '';
 	}
 	,E_Option: ''
-	,R_Skill: (selector, character, enemy) => {
+	,R_Skill: (character, enemy) => {
 		return '';
 	}
 	,R_Option: ''
-	,D_Skill: (selector, character, enemy) => {
+	,D_Skill: (character, enemy) => {
 		return '';
 	}
 	,D_Option: ''
-	,T_Skill: (selector, character, enemy) => {
+	,T_Skill: (character, enemy) => {
 		return '';
 	}
 	,T_Option: ''
@@ -66,6 +86,53 @@ const Aya = {
 	,Move_Speed: 3.0
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Pistol, AssaultRifle, SniperRifle]
+	,correction: {
+		Pistol: [
+			[0, -15, -11],
+			[0, 0, 0]
+		],
+		AssultRifle: [
+			[0, -15, -13],
+			[0, 0, 0]
+		],
+		SniperRifle: [
+			[0, -15, -15],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Fiora = {
 	 Attack_Power: 37
@@ -85,6 +152,53 @@ const Fiora = {
 	,Move_Speed: 3.15
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [TwoHandedSword, Rapier, Spear]
+	,correction: {
+		TwoHandedSword: [
+			[0, -2, -3],
+			[0, 3, 6]
+		],
+		Rapier: [
+			[0, -2, -3],
+			[0, 3, 6]
+		],
+		Spear: [
+			[0, -2, -3],
+			[0, 3, 6]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Magnus = {
 	 Attack_Power: 32
@@ -104,6 +218,49 @@ const Magnus = {
 	,Move_Speed: 3.2
 	,Sight_Range: 8
 	,Attack_Range: 0.5
+	,weapons: [Hammer, Bat]
+	,correction: {
+		Hammer: [
+			[0, -5, -3],
+			[0, 0, 0]
+		],
+		Bat: [
+			[0, -3, -3],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Zahir = {
 	 Attack_Power: 25
@@ -123,6 +280,49 @@ const Zahir = {
 	,Move_Speed: 3
 	,Sight_Range: 8
 	,Attack_Range: 0.45
+	,weapons: [Throws, Shuriken]
+	,correction: {
+		Throws: [
+			[0, -10, -12],
+			[0, 0, 0]
+		],
+		Shuriken: [
+			[0, -10, -12],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Nadine = {
 	 Attack_Power: 32
@@ -142,6 +342,49 @@ const Nadine = {
 	,Move_Speed: 3
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Bow, Crossbow]
+	,correction: {
+		Bow: [
+			[0, -11, -17],
+			[0, 0, 0]
+		],
+		Crossbow: [
+			[0, -9, -17],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Hyunwoo = {
 	 Attack_Power: 40
@@ -161,6 +404,49 @@ const Hyunwoo = {
 	,Move_Speed: 3.15
 	,Sight_Range: 8
 	,Attack_Range: 0.45
+	,weapons: [Glove, Tonfa]
+	,correction: {
+		Glove: [
+			[0, -3, -3],
+			[0, -2, -5]
+		],
+		Tonfa: [
+			[0, -3, -3],
+			[0, -2, -5]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Hart = {
 	 Attack_Power: 22
@@ -180,6 +466,45 @@ const Hart = {
 	,Move_Speed: 3
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Guitar]
+	,correction: {
+		Guitar: [
+			[0, -3, -3],
+			[0, -2, -5]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Isol = {
 	 Attack_Power: 32
@@ -199,6 +524,49 @@ const Isol = {
 	,Move_Speed: 3.05
 	,Sight_Range: 8
 	,Attack_Range: 0.45
+	,weapons: [Pistol, AssaultRifle]
+	,correction: {
+		Glove: [
+			[0, -8, -18],
+			[0, 0, 0]
+		],
+		Tonfa: [
+			[0, -8, -18],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Li_Dailin = {
 	 Attack_Power: 33
@@ -218,6 +586,49 @@ const Li_Dailin = {
 	,Move_Speed: 3.1
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Glove, Nunchaku]
+	,correction: {
+		Glove: [
+			[0, 0, 0],
+			[0, 0, 0]
+		],
+		Nunchaku: [
+			[3, 3, 0],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Yuki = {
 	 Attack_Power: 32
@@ -237,6 +648,49 @@ const Yuki = {
 	,Move_Speed: 3.1
 	,Sight_Range: 8
 	,Attack_Range: 0.45
+	,weapons: [TwoHandedSword, DualSwords]
+	,correction: {
+		TwoHandedSword: [
+			[5, -3, -3],
+			[0, 0, 0]
+		],
+		DualSwords: [
+			[0, -8, -8],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Hyejin = {
 	 Attack_Power: 29
@@ -256,6 +710,49 @@ const Hyejin = {
 	,Move_Speed: 3
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Shuriken, Bow]
+	,correction: {
+		Shuriken: [
+			[5, -4, -10],
+			[-3, 0, 0]
+		],
+		Bow: [
+			[0, -10, -18],
+			[-3, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Xiukai = {
 	 Attack_Power: 40
@@ -275,6 +772,49 @@ const Xiukai = {
 	,Move_Speed: 3.1
 	,Sight_Range: 8
 	,Attack_Range: 0.48
+	,weapons: [Dagger, Spear]
+	,correction: {
+		Dagger: [
+			[0, -6, -7],
+			[0, 0, 0]
+		],
+		Spear: [
+			[0, -12, -12],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Chiara = {
 	 Attack_Power: 34
@@ -294,6 +834,45 @@ const Chiara = {
 	,Move_Speed: 3.2
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Rapier]
+	,correction: {
+		Rapier: [
+			[0, -5, -3],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Sissela = {
 	 Attack_Power: 23
@@ -313,6 +892,49 @@ const Sissela = {
 	,Move_Speed: 3
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Throws, Shuriken]
+	,correction: {
+		Throws: [
+			[0, -15, -18],
+			[0, 0, 0]
+		],
+		Shuriken: [
+			[0, -15, -18],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Adriana = {
 	 Attack_Power: 31
@@ -332,6 +954,45 @@ const Adriana = {
 	,Move_Speed: 3
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Throws]
+	,correction: {
+		Throws: [
+			[3, -9, -18],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Shoichi = {
 	 Attack_Power: 30
@@ -351,6 +1012,45 @@ const Shoichi = {
 	,Move_Speed: 3.1
 	,Sight_Range: 8
 	,Attack_Range: 0.43
+	,weapons: [Dagger]
+	,correction: {
+		Dagger: [
+			[0, -5, -6],
+			[0, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Silvia = {
 	 Attack_Power: 28
@@ -370,6 +1070,46 @@ const Silvia = {
 	,Move_Speed: 3
 	,Sight_Range: 8
 	,Attack_Range: 0.4
+	,weapons: [Pistol]
+	,correction: {
+		Pistol: [
+			[3, -9, -18],
+			[0, 0, 0],
+			[10, 0, 0]
+		]
+	}
+	,BASE_ATTACK: (character, enemy) => {
+		return '';
+	}
+	,BASE_ATTACK_Option: ''
+	,DPS: (character, enemy) => {
+		return '';
+	}
+	,DPS_Option: ''
+	,Q_Skill: (character, enemy) => {
+		return '';
+	}
+	,Q_Option: ''
+	,W_Skill: (character, enemy) => {
+		return '';
+	}
+	,W_Option: ''
+	,E_Skill: (character, enemy) => {
+		return '';
+	}
+	,E_Option: ''
+	,R_Skill: (character, enemy) => {
+		return '';
+	}
+	,R_Option: ''
+	,D_Skill: (character, enemy) => {
+		return '';
+	}
+	,D_Option: ''
+	,T_Skill: (character, enemy) => {
+		return '';
+	}
+	,T_Option: ''
 };
 const Emma = {
 	Attack_Power: 40
@@ -389,4 +1129,43 @@ const Emma = {
    ,Move_Speed: 3
    ,Sight_Range: 8
    ,Attack_Range: 0.4
+   ,weapons: [Shuriken]
+   ,correction: {
+	   Shuriken: [
+		   [0, -4, -8],
+		   [0, 0, 0]
+	   ]
+   }
+   ,BASE_ATTACK: (character, enemy) => {
+	   return '';
+   }
+   ,BASE_ATTACK_Option: ''
+   ,DPS: (character, enemy) => {
+	   return '';
+   }
+   ,DPS_Option: ''
+   ,Q_Skill: (character, enemy) => {
+	   return '';
+   }
+   ,Q_Option: ''
+   ,W_Skill: (character, enemy) => {
+	   return '';
+   }
+   ,W_Option: ''
+   ,E_Skill: (character, enemy) => {
+	   return '';
+   }
+   ,E_Option: ''
+   ,R_Skill: (character, enemy) => {
+	   return '';
+   }
+   ,R_Option: ''
+   ,D_Skill: (character, enemy) => {
+	   return '';
+   }
+   ,D_Option: ''
+   ,T_Skill: (character, enemy) => {
+	   return '';
+   }
+   ,T_Option: ''
 }

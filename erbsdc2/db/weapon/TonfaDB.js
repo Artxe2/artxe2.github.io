@@ -1,9 +1,9 @@
-const dualSwords = [
+const Tonfa = [
 	{
-		 Type: "DualSwords"
-		,Name: "Twin_Sword"
-		,Attack_Power: 14
-		,Attack_Speed: 10
+		 Type: "Tonfa"
+		,Name: "Bamboo"
+		,Attack_Power: 12
+		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -26,19 +26,51 @@ const dualSwords = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.05
-		,Atk_Speed: 0.47
-		,Title: "Twin Sword\n\nAttack Power +14\nAttack Speed +10%"
+		,Base_Range: 1
+		,Atk_Speed: 0.5
+		,Title: "Bamboo\n\nAttack Power +12"
+		,Rarity: "Common"
+	}
+	,{
+		 Type: "Tonfa"
+		,Name: "Wooden_Tonfa"
+		,Attack_Power: 23
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 8
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1
+		,Atk_Speed: 0.5
+		,Title: "Wooden Tonfa\n\nAttack Power +23\nDefense +8"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "DualSwords"
-		,Name: "Florentine"
-		,Attack_Power: 23
-		,Attack_Speed: 10
+		 Type: "Tonfa"
+		,Name: "Police_Baton"
+		,Attack_Power: 35
+		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
-		,Life_Steal: 10
+		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
@@ -48,7 +80,7 @@ const dualSwords = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 8
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -58,48 +90,16 @@ const dualSwords = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.05
-		,Atk_Speed: 0.47
-		,Title: "Florentine\n\nAttack Power +23\nAttack Speed +10%\nLife Steal +10%"
+		,Base_Range: 1
+		,Atk_Speed: 0.5
+		,Title: "Police Baton\n\nAttack Power +35\nDefense +8"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "DualSwords"
-		,Name: "Divine_Dual_Swords"
-		,Attack_Power: 41
-		,Attack_Speed: 10
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 18
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 1.05
-		,Atk_Speed: 0.47
-		,Title: "Divine Dual Swords\n\nAttack Power +41\nAttack Speed +10%\nLife Steal +18%\nHealing Reduction (Skills) -40%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "DualSwords"
-		,Name: "Starsteel_Twin_Swords"
-		,Attack_Power: 55
-		,Attack_Speed: 50
+		 Type: "Tonfa"
+		,Name: "Ryukyu_Tonfa"
+		,Attack_Power: 38
+		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -112,7 +112,7 @@ const dualSwords = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 18
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -122,16 +122,48 @@ const dualSwords = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.05
-		,Atk_Speed: 0.47
-		,Title: "Starsteel Twin Swords\n\nAttack Power +55\nAttack Speed +50%"
+		,Base_Range: 1
+		,Atk_Speed: 0.5
+		,Title: "Ryukyu Tonfa\n\nAttack Power +38\nDefense +18"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Tonfa"
+		,Name: "Tactical_Tonfa"
+		,Attack_Power: 70
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 25
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 10
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1
+		,Atk_Speed: 0.5
+		,Title: "Tactical Tonfa\n\nAttack Power +70\nDefense +10\nLife Steal +25%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "DualSwords"
-		,Name: "Dioscuri"
-		,Attack_Power: 40
-		,Attack_Speed: 50
+		 Type: "Tonfa"
+		,Name: "Mai_Sok"
+		,Attack_Power: 45
+		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -144,39 +176,39 @@ const dualSwords = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 20
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
-		,HP_Regen_Percent: 0
+		,HP_Regen_Percent: 100
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.05
-		,Atk_Speed: 0.47
-		,Title: "Dioscuri\n\nAttack Power +40\nAttack Speed +50%"
+		,Base_Range: 1
+		,Atk_Speed: 0.5
+		,Title: "Mai Sok\n\nAttack Power +45\nDefense +20\nHP Regen +100%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "DualSwords"
-		,Name: "Lloigor_&_Zahr"
-		,Attack_Power: 33
-		,Attack_Speed: 20
+		 Type: "Tonfa"
+		,Name: "Plasma_Tonfa"
+		,Attack_Power: 65
+		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 36
+		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 18
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -184,11 +216,11 @@ const dualSwords = [
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
+		,Vision_Range: 2.5
 		,Attack_Range: 0
-		,Base_Range: 1.05
-		,Atk_Speed: 0.47
-		,Title: "Lloigor & Zahr\n\nAttack Power +33\nAttack Speed +20%\nSkill Amplification +36"
+		,Base_Range: 1
+		,Atk_Speed: 0.5
+		,Title: "Plasma Tonfa\n\nAttack Power +65\nDefense +18\nVision Range +2.5"
 		,Rarity: "Epic"
 	}
 ];

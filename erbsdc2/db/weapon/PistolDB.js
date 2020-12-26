@@ -1,8 +1,8 @@
-const crossbow = [
+const Pistol = [
 	{
-		 Type: "Crossbow"
-		,Name: "Short_Crossbow"
-		,Attack_Power: 12
+		 Type: "Pistol"
+		,Name: "Walter_PPK"
+		,Attack_Power: 8
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -22,20 +22,20 @@ const crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Short Crossbow\n\nAttack Power +12"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Walther PPK\n\nAttack Power +8\nMovement Speed +0.1"
 		,Rarity: "Common"
 	}
 	,{
-		 Type: "Crossbow"
-		,Name: "Long_Crossbow"
-		,Attack_Power: 30
-		,Attack_Speed: 0
+		 Type: "Pistol"
+		,Name: "Magnum-Python"
+		,Attack_Power: 15
+		,Attack_Speed: 10
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -54,19 +54,19 @@ const crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Long Crossbow\n\nAttack Power +30"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Magnum-Python\n\nAttack Power +15\nAttack Speed +10%\nMovement Speed +0.1"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "Crossbow"
-		,Name: "Crossbow"
-		,Attack_Power: 30
+		 Type: "Pistol"
+		,Name: "Beretta_M92F"
+		,Attack_Power: 23
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -86,19 +86,19 @@ const crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Crossbow\n\nAttack Power +30"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Beretta M92F\n\nAttack Power +23\nMovement Speed +0.1"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "Crossbow"
-		,Name: "Power_Crossbow"
-		,Attack_Power: 42
+		 Type: "Pistol"
+		,Name: "FN57"
+		,Attack_Power: 29
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -118,51 +118,115 @@ const crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Power Crossbow\n\nAttack Power +42"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Crossbow"
-		,Name: "Laser_Crossbow"
-		,Attack_Power: 30
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 2.5
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Laser Crossbow\n\nAttack Power +30\nVision Range +2.5"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "FN57\n\nAttack Power +29\nMovement Speed +0.1\nVision Range +2.5"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Crossbow"
-		,Name: "Heavy_Crossbow"
-		,Attack_Power: 72
+		 Type: "Pistol"
+		,Name: "Double_Revolver_SP"
+		,Attack_Power: 40
+		,Attack_Speed: 10
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Double Revolver SP\n\nAttack Power +40\nAttack Speed +10%\nMovement Speed +0.1"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Pistol"
+		,Name: "Magnum-Anaconda"
+		,Attack_Power: 43
+		,Attack_Speed: 10
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 10
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Magnum-Anaconda\n\nAttack Power +43\nAttack Speed +10%\nMovement Speed +0.1\nLife Steal +10%"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Pistol"
+		,Name: "Devil`s_Marksman"
+		,Attack_Power: 30
+		,Attack_Speed: 10
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 40
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Devil`s Marksman\n\nAttack Power +30\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +40"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Pistol"
+		,Name: "Elegance"
+		,Attack_Power: 90
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -182,56 +246,24 @@ const crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
+		,Move_Speed: 0.2
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
+		,Vision_Range: 5
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Heavy Crossbow\n\nAttack Power +72\nMovement Speed -0.1"
-		,Rarity: "Rare"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Elegance\n\nAttack Power +90\nMovement Speed +0.2\nVision Range +5"
+		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Crossbow"
-		,Name: "Steel_Bow"
-		,Attack_Power: 60
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Steel Bow\n\nAttack Power +60"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Crossbow"
-		,Name: "The_Legend_of_the_General"
-		,Attack_Power: 75
+		 Type: "Pistol"
+		,Name: "Electron_Blaster"
+		,Attack_Power: 65
 		,Attack_Speed: 50
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage: 28
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -243,26 +275,26 @@ const crossbow = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 2
+		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "The Legend of The General\n\nAttack Power +75\nHP Regen +2\nAttack Speed +50%"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Electron Blaster\n\nAttack Power +65\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +28"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Crossbow"
-		,Name: "Ballista"
-		,Attack_Power: 115
-		,Attack_Speed: -5
+		 Type: "Pistol"
+		,Name: "Magnum-Boa"
+		,Attack_Power: 90
+		,Attack_Speed: 25
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
+		,Life_Steal: 20
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
@@ -278,83 +310,19 @@ const crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Ballista\n\nAttack Power +115\nAttack Speed -5%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Crossbow"
-		,Name: "Sniper_Crossbow"
-		,Attack_Power: 85
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 3.5
-		,Attack_Range: 1
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Sniper Crossbow\n\nAttack Power +85\nVision Range +3.5\nAttack Range +1"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Crossbow"
-		,Name: "The_Golden_Ghost"
-		,Attack_Power: 70
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 37
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "The Golden Ghost\n\nAttack Power +70\nExtra Normal Attack Damage +37"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Magnum-Boa\n\nAttack Power +90\nAttack Speed +25%\nMovement Speed +0.1\nVision Range +3.5\nLife Steal +20%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Crossbow"
-		,Name: "Sharanga"
-		,Attack_Power: 140
+		 Type: "Pistol"
+		,Name: "Kelte"
+		,Attack_Power: 120
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -374,13 +342,13 @@ const crossbow = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.2
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.6
-		,Atk_Speed: 0.51
-		,Title: "Sharanga\n\nAttack Power +140"
+		,Base_Range: 4.2
+		,Atk_Speed: 0.505
+		,Title: "Kelte\n\nAttack Power +120\nMovement Speed +0.2"
 		,Rarity: "Legendary"
 	}
 ];

@@ -1,8 +1,8 @@
-const spear = [
+const Crossbow = [
 	{
-		 Type: "Spear"
-		,Name: "Short_Spear"
-		,Attack_Power: 15
+		 Type: "Crossbow"
+		,Name: "Short_Crossbow"
+		,Attack_Power: 12
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -26,15 +26,15 @@ const spear = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Short Spear\n\nAttack Power +15"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Short Crossbow\n\nAttack Power +12"
 		,Rarity: "Common"
 	}
 	,{
-		 Type: "Spear"
-		,Name: "Bamboo_Spear"
-		,Attack_Power: 37
+		 Type: "Crossbow"
+		,Name: "Long_Crossbow"
+		,Attack_Power: 30
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -58,15 +58,15 @@ const spear = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Bamboo Spear\n\nAttack Power +37"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Long Crossbow\n\nAttack Power +30"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "Spear"
-		,Name: "Bident"
-		,Attack_Power: 52
+		 Type: "Crossbow"
+		,Name: "Crossbow"
+		,Attack_Power: 30
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -90,15 +90,79 @@ const spear = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Bident\n\nAttack Power +52"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Crossbow\n\nAttack Power +30"
+		,Rarity: "Uncommon"
+	}
+	,{
+		 Type: "Crossbow"
+		,Name: "Power_Crossbow"
+		,Attack_Power: 42
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Power Crossbow\n\nAttack Power +42"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Spear"
-		,Name: "Pike"
-		,Attack_Power: 67
+		 Type: "Crossbow"
+		,Name: "Laser_Crossbow"
+		,Attack_Power: 30
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 2.5
+		,Attack_Range: 0
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Laser Crossbow\n\nAttack Power +30\nVision Range +2.5"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Crossbow"
+		,Name: "Heavy_Crossbow"
+		,Attack_Power: 72
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -122,15 +186,15 @@ const spear = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Pike\n\nAttack Power +67\nMovement Speed -0.1"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Heavy Crossbow\n\nAttack Power +72\nMovement Speed -0.1"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Spear"
-		,Name: "Halberd_Axe"
-		,Attack_Power: 90
+		 Type: "Crossbow"
+		,Name: "Steel_Bow"
+		,Attack_Power: 60
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -150,20 +214,20 @@ const spear = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Halberd Axe\n\nAttack Power +90\nMovement Speed -0.1"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Steel Bow\n\nAttack Power +60"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Spear"
-		,Name: "Sharpened_Spear"
-		,Attack_Power: 40
-		,Attack_Speed: 0
+		 Type: "Crossbow"
+		,Name: "The_Legend_of_the_General"
+		,Attack_Power: 75
+		,Attack_Speed: 50
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -179,55 +243,23 @@ const spear = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 0
+		,HP_Regen: 2
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Sharpened Spear\n\nAttack Power +40\nMovement Speed +0.1"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Spear"
-		,Name: "Gentian_Silver_Gun"
-		,Attack_Power: 105
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.2
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Gentian Silver Gun\n\nAttack Power +105\nMovement Speed +0.2"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "The Legend of The General\n\nAttack Power +75\nHP Regen +2\nAttack Speed +50%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Spear"
-		,Name: "Eighteen_foot_spear"
-		,Attack_Power: 100
-		,Attack_Speed: 40
+		 Type: "Crossbow"
+		,Name: "Ballista"
+		,Attack_Power: 115
+		,Attack_Speed: -5
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -250,15 +282,79 @@ const spear = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Eighteen Foot Spear\n\nAttack Power +100\nMovement Speed +40%"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Ballista\n\nAttack Power +115\nAttack Speed -5%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Spear"
-		,Name: "Cosmic_Bident"
-		,Attack_Power: 150
+		 Type: "Crossbow"
+		,Name: "Sniper_Crossbow"
+		,Attack_Power: 85
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 3.5
+		,Attack_Range: 1
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Sniper Crossbow\n\nAttack Power +85\nVision Range +3.5\nAttack Range +1"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Crossbow"
+		,Name: "The_Golden_Ghost"
+		,Attack_Power: 70
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 37
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "The Golden Ghost\n\nAttack Power +70\nExtra Normal Attack Damage +37"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Crossbow"
+		,Name: "Sharanga"
+		,Attack_Power: 140
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -282,169 +378,9 @@ const spear = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Cosmic Bident\n\nAttack Power +150"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Spear"
-		,Name: "Lance_of_Poseidon"
-		,Attack_Power: 120
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.05
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Lance of Poseidon\n\nAttack Power +120\nMovement Speed -0.05"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Spear"
-		,Name: "Fangtian_Huaji"
-		,Attack_Power: 88
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 37
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Fangtian Huaji\n\nAttack Power +88\nMovement Speed -0.1\nSkill Amplification +37\n Healing Reduction (Skills) -40%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Spear"
-		,Name: "Dragon_Guandao"
-		,Attack_Power: 130
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: -0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Dragon Guandao\n\nAttack Power +130\nMovement Speed -0.1"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Spear"
-		,Name: "Blazing_Lance"
-		,Attack_Power: 110
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 30
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 1.5
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 1.5
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Blazing Lance\n\nAttack Power +110\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +30"
-		,Rarity: "Legendary"
-	}
-	,{
-		 Type: "Spear"
-		,Name: "Spear_of_Longinus"
-		,Attack_Power: 150
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 20
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 2.15
-		,Atk_Speed: 0.445
-		,Title: "Spear of Longinus\n\nAttack Power +140\nLife Steal +20%"
+		,Base_Range: 4.6
+		,Atk_Speed: 0.51
+		,Title: "Sharanga\n\nAttack Power +140"
 		,Rarity: "Legendary"
 	}
 ];

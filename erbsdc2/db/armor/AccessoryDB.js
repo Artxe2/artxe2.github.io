@@ -1,4 +1,4 @@
-const accessorys = [
+const Accessory = [
 	{
 		 Type: "Accessory"
 		,Name: "Feather"

@@ -1,8 +1,8 @@
-const pistol = [
+const TwoHandedSword = [
 	{
-		 Type: "Pistol"
-		,Name: "Walter_PPK"
-		,Attack_Power: 8
+		 Type: "TwoHandedSword"
+		,Name: "Rusty_Sword"
+		,Attack_Power: 11
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -22,51 +22,20 @@ const pistol = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Walther PPK\n\nAttack Power +8\nMovement Speed +0.1"
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Rusty Sword\n\nAttack Power +11"
 		,Rarity: "Common"
+		
 	}
 	,{
-		 Type: "Pistol"
-		,Name: "Magnum-Python"
-		,Attack_Power: 15
-		,Attack_Speed: 10
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Magnum-Python\n\nAttack Power +15\nAttack Speed +10%\nMovement Speed +0.1"
-		,Rarity: "Uncommon"
-	}
-	,{
-		 Type: "Pistol"
-		,Name: "Beretta_M92F"
-		,Attack_Power: 23
+		 Type: "TwoHandedSword"
+		,Name: "Shamshir"
+		,Attack_Power: 27
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -86,19 +55,19 @@ const pistol = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Beretta M92F\n\nAttack Power +23\nMovement Speed +0.1"
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Shamshir\n\nAttack Power +27"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "Pistol"
-		,Name: "FN57"
-		,Attack_Power: 29
+		 Type: "TwoHandedSword"
+		,Name: "Katana"
+		,Attack_Power: 35
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -118,20 +87,20 @@ const pistol = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 2.5
+		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "FN57\n\nAttack Power +29\nMovement Speed +0.1\nVision Range +2.5"
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Katana\n\nAttack Power +35"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Pistol"
-		,Name: "Double_Revolver_SP"
+		 Type: "TwoHandedSword"
+		,Name: "Masamune"
 		,Attack_Power: 40
-		,Attack_Speed: 10
+		,Attack_Speed: 15
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -150,83 +119,19 @@ const pistol = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Double Revolver SP\n\nAttack Power +40\nAttack Speed +10%\nMovement Speed +0.1"
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Masamune\n\nAttack Power +40\nAttack Speed +15%"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Pistol"
-		,Name: "Magnum-Anaconda"
-		,Attack_Power: 43
-		,Attack_Speed: 10
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 10
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Magnum-Anaconda\n\nAttack Power +43\nAttack Speed +10%\nMovement Speed +0.1\nLife Steal +10%"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Pistol"
-		,Name: "Devil`s_Marksman"
-		,Attack_Power: 30
-		,Attack_Speed: 10
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 40
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Devil`s Marksman\n\nAttack Power +30\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +40"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Pistol"
-		,Name: "Elegance"
-		,Attack_Power: 90
+		 Type: "TwoHandedSword"
+		,Name: "Muramasa"
+		,Attack_Power: 50
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -246,24 +151,24 @@ const pistol = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.2
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 5
+		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Elegance\n\nAttack Power +90\nMovement Speed +0.2\nVision Range +5"
-		,Rarity: "Epic"
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Muramasa\n\nAttack Power +50"
+		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Pistol"
-		,Name: "Electron_Blaster"
-		,Attack_Power: 65
-		,Attack_Speed: 50
+		 Type: "TwoHandedSword"
+		,Name: "Bastard_Sword"
+		,Attack_Power: 45
+		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 28
+		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -278,20 +183,276 @@ const pistol = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
+		,Move_Speed: -0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Electron Blaster\n\nAttack Power +65\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +28"
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Bastard Sword\n\nAttack Power +45\nMovement Speed -0.1"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Jewel_Sword"
+		,Attack_Power: 35
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 200
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Jewel Sword\n\nAttack Power +35\nMax HP +200"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Thuan_Thien"
+		,Attack_Power: 77
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 25
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: -0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25\nMovement Speed -0.1"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Plasma_Sword"
+		,Attack_Power: 75
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 3
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Plasma Sword\n\nAttack Power +75\nVision Range +3"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Arondight"
+		,Attack_Power: 50
+		,Attack_Speed: 25
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 25
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Arondight\n\nAttack Power +50\nAttack Speed +25%\nExtra Normal Attack Damage +25"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Pistol"
-		,Name: "Magnum-Boa"
-		,Attack_Power: 90
-		,Attack_Speed: 25
+		 Type: "TwoHandedSword"
+		,Name: "Excalibur"
+		,Attack_Power: 60
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 400
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 200
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Excalibur\n\nAttack Power +60\nMax HP +400\nHP Regen +200%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Monohoshizao"
+		,Attack_Power: 70
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 18
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Monohoshizao\n\nAttack Power +70\nLife Steal +18%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Hovud"
+		,Attack_Power: 45
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 20
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 300
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Hovud\n\nAttack Power +45\nMax HP +300\nCritical Strike Chance +20%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Laevateinn"
+		,Attack_Power: 75
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 20
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 1.5
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen:1.5
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Laevateinn\n\nAttack Power +75\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +20"
+		,Rarity: "Legendary"
+	}
+	,{
+		 Type: "TwoHandedSword"
+		,Name: "Dainsleif"
+		,Attack_Power: 70
+		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 20
@@ -307,48 +468,16 @@ const pistol = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 0
+		,HP_Regen:0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 3.5
-		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Magnum-Boa\n\nAttack Power +90\nAttack Speed +25%\nMovement Speed +0.1\nVision Range +3.5\nLife Steal +20%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Pistol"
-		,Name: "Kelte"
-		,Attack_Power: 120
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.2
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.2
-		,Atk_Speed: 0.505
-		,Title: "Kelte\n\nAttack Power +120\nMovement Speed +0.2"
+		,Base_Range: 1.5
+		,Atk_Speed: 0.56
+		,Title: "Dainsleif\n\nAttack Power +70\nLife Steal +20%"
 		,Rarity: "Legendary"
 	}
 ];

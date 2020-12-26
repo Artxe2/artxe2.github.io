@@ -1,8 +1,8 @@
-const throws = [
+const Spear = [
 	{
-		 Type: "Throws"
-		,Name: "Base_Ball"
-		,Attack_Power: 12
+		 Type: "Spear"
+		,Name: "Short_Spear"
+		,Attack_Power: 15
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -26,15 +26,15 @@ const throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Base Ball\n\nAttack Power +12"
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Short Spear\n\nAttack Power +15"
 		,Rarity: "Common"
 	}
 	,{
-		 Type: "Throws"
-		,Name: "Iron_Ball"
-		,Attack_Power: 12
+		 Type: "Spear"
+		,Name: "Bamboo_Spear"
+		,Attack_Power: 37
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -58,79 +58,15 @@ const throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Iron Ball\n\nAttack Power +12"
-		,Rarity: "Common"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Grenade"
-		,Attack_Power: 25
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 20
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Grenade\n\nAttack Power +25\nExtra Normal Attack Damage +20"
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Bamboo Spear\n\nAttack Power +37"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "Throws"
-		,Name: "Molotov_Cocktail"
-		,Attack_Power: 22
-		,Attack_Speed: 15
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Molotov Cocktail\n\nAttack Power +22\nAttack Speed +15%"
-		,Rarity: "Uncommon"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Signed_Ball"
-		,Attack_Power: 30
+		 Type: "Spear"
+		,Name: "Bident"
+		,Attack_Power: 52
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -154,111 +90,15 @@ const throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Signed Ball\n\nAttack Power +30"
-		,Rarity: "Uncommon"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Sling"
-		,Attack_Power: 42
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Sling\n\nAttack Power +42"
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Bident\n\nAttack Power +52"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Throws"
-		,Name: "Flour_Bomb"
-		,Attack_Power: 58
-		,Attack_Speed: 15
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Flour Bomb\n\nAttack Power +58\nAttack Speed 15%"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Ball_Lightning"
-		,Attack_Power: 24
-		,Attack_Speed: 20
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Ball Lightning\n\nAttack Power +24\nAttack Speed +20%"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Flubber"
-		,Attack_Power: 42
+		 Type: "Spear"
+		,Name: "Pike"
+		,Attack_Power: 67
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -278,148 +118,115 @@ const throws = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: -0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Flubber\n\nAttack Power +42"
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Pike\n\nAttack Power +67\nMovement Speed -0.1"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Throws"
-		,Name: "Spiky_Bouncy_Ball"
-		,Attack_Power: 36
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Spiky Bouncy Ball\n\nAttack Power +36\nHealing Reduction (Skills) -40%"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Incendiary_Bomb"
-		,Attack_Power: 70
-		,Attack_Speed: 50
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Incendiary Bomb\n\nAttack Power +70\nAttack Speed +50%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Grenade_of_Antioch"
-		,Attack_Power: 85
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 80
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Grenade of Antioch\n\nAttack Power +85\nExtra Normal Attack Damage +80"
-		,Rarity: "Epic"
-
-	}
-	,{
-		 Type: "Throws"
-		,Name: "David`s_Sling"
-		,Attack_Power: 80
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 30
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 150
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "David`s Sling\n\nAttack Power +80\nHP Regen +150%\nExtra Normal Attack Damage +30"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Throws"
-		,Name: "Smoke_Bomb"
+		 Type: "Spear"
+		,Name: "Halberd_Axe"
 		,Attack_Power: 90
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: -0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Halberd Axe\n\nAttack Power +90\nMovement Speed -0.1"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Spear"
+		,Name: "Sharpened_Spear"
+		,Attack_Power: 40
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Sharpened Spear\n\nAttack Power +40\nMovement Speed +0.1"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Spear"
+		,Name: "Gentian_Silver_Gun"
+		,Attack_Power: 105
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0.2
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Gentian Silver Gun\n\nAttack Power +105\nMovement Speed +0.2"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Spear"
+		,Name: "Eighteen_foot_spear"
+		,Attack_Power: 100
 		,Attack_Speed: 40
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -443,20 +250,20 @@ const throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Smoke Bomb\n\nAttack Power +90\nAttack Damage +40%"
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Eighteen Foot Spear\n\nAttack Power +100\nMovement Speed +40%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Throws"
-		,Name: "High_Explosive_Grenade"
-		,Attack_Power: 56
+		 Type: "Spear"
+		,Name: "Cosmic_Bident"
+		,Attack_Power: 150
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 60
+		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
@@ -475,15 +282,15 @@ const throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "High Explosive Grenade\n\nAttack Power +56\nExtra Normal Attack Damage +60"
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Cosmic Bident\n\nAttack Power +150"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Throws"
-		,Name: "Ruthenium_Marble"
-		,Attack_Power: 80
+		 Type: "Spear"
+		,Name: "Lance_of_Poseidon"
+		,Attack_Power: 120
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -491,7 +298,135 @@ const throws = [
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 20
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: -0.05
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Lance of Poseidon\n\nAttack Power +120\nMovement Speed -0.05"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Spear"
+		,Name: "Fangtian_Huaji"
+		,Attack_Power: 88
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 37
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: -0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Fangtian Huaji\n\nAttack Power +88\nMovement Speed -0.1\nSkill Amplification +37\n Healing Reduction (Skills) -40%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Spear"
+		,Name: "Dragon_Guandao"
+		,Attack_Power: 130
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: -0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Dragon Guandao\n\nAttack Power +130\nMovement Speed -0.1"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Spear"
+		,Name: "Blazing_Lance"
+		,Attack_Power: 110
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 30
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 1.5
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 1.5
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Blazing Lance\n\nAttack Power +110\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +30"
+		,Rarity: "Legendary"
+	}
+	,{
+		 Type: "Spear"
+		,Name: "Spear_of_Longinus"
+		,Attack_Power: 150
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 20
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
@@ -507,9 +442,9 @@ const throws = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 5.8
-		,Atk_Speed: 0.51
-		,Title: "Ruthenium Marble\n\nAttack Power +80\nSkill Amplification +20%\nHealing Reduction (Skills) -40%"
-		,Rarity: "Epic"
+		,Base_Range: 2.15
+		,Atk_Speed: 0.445
+		,Title: "Spear of Longinus\n\nAttack Power +140\nLife Steal +20%"
+		,Rarity: "Legendary"
 	}
 ];

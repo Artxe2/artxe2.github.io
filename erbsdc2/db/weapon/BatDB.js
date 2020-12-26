@@ -1,4 +1,4 @@
-const bat = [
+const Bat = [
 	{
 		 Type: "Bat"
 		,Name: "Branch"

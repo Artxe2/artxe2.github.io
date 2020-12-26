@@ -1,11 +1,11 @@
-const rapier = [
+const Dagger = [
 	{
-		 Type: "Rapier"
-		,Name: "Needle"
-		,Attack_Power: 3
+		 Type: "Dagger"
+		,Name: "Scissors"
+		,Attack_Power: 5
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 25
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
@@ -26,18 +26,18 @@ const rapier = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Needle\n\nAttack Power +3\nCritical Damage +25%"
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Scissors\n\nAttack Power +5"
 		,Rarity: "Common"
 	}
 	,{
-		 Type: "Rapier"
-		,Name: "Fencing_Rapier"
-		,Attack_Power: 16
+		 Type: "Dagger"
+		,Name: "Fountain_Pen"
+		,Attack_Power: 5
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 25
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
@@ -58,18 +58,82 @@ const rapier = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Fencing Rapier\n\nAttack Power +16\nCritical Damage +25%"
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Fountain Pen\n\nAttack Power +5"
+		,Rarity: "Common"
+	}
+	,{
+		 Type: "Dagger"
+		,Name: "Kitchen_Knife"
+		,Attack_Power: 4
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0.05
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Kitchen Knife\n\nAttack Power +4\nMovement Speed +0.05"
+		,Rarity: "Common"
+	}
+	,{
+		 Type: "Dagger"
+		,Name: "Army_Knife"
+		,Attack_Power: 14
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0.08
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Army Knife\n\nAttack Power +14\nMovement Speed +0.08"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "Rapier"
-		,Name: "Apricot_Sword"
-		,Attack_Power: 21
+		 Type: "Dagger"
+		,Name: "Rose_Knife"
+		,Attack_Power: 20
 		,Attack_Speed: 0
-		,Critical_Strike_Chance: 10
-		,Critical_Strike_Damage: 25
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
@@ -86,30 +150,30 @@ const rapier = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Apricot Sword\n\nAttack Power +21\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Rose Knife\n\nAttack Power +20\nMovement Speed +0.1\nCooldown Reduction +10%"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Rapier"
-		,Name: "Sword_of_Justice"
-		,Attack_Power: 30
+		 Type: "Dagger"
+		,Name: "Carnwennan"
+		,Attack_Power: 33
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 25
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage: 29
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 12
+		,Cooldown_Reduction: 10
 		,SP_Regen: 0
-		,SP_Regen_Percent: 200
+		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
@@ -118,26 +182,26 @@ const rapier = [
 		,HP_Regen: 1.5
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Sword of Justice\n\nAttack Power +30\nHP Regen +1.5\nSP Regen +200%\nCritical Damage +25%\nCooldown Reduction +12%"
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Carnwennan\n\nAttack Power +33\nHP Regen +1.5\nMovement Speed +0.1\nCooldown Reduction +10%\nExtra Normal Attack Damage +29"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Rapier"
-		,Name: "Durendal_mk2"
-		,Attack_Power: 51
+		 Type: "Dagger"
+		,Name: "Mount_Slicer"
+		,Attack_Power: 33
 		,Attack_Speed: 0
-		,Critical_Strike_Chance: 10
-		,Critical_Strike_Damage: 25
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
+		,Skill_Amplification: 35
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 10
 		,SP_Regen: 0
@@ -150,28 +214,28 @@ const rapier = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 3
+		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Durendal Mk2\n\nAttack Power +51\nVision Range +3\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Mount Slicer\n\nAttack Power +33\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Amplification +35"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Rapier"
-		,Name: "Volticletto"
-		,Attack_Power: 47
+		 Type: "Dagger"
+		,Name: "Vibroblade"
+		,Attack_Power: 57
 		,Attack_Speed: 35
-		,Critical_Strike_Chance: 10
-		,Critical_Strike_Damage: 25
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 10
+		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
@@ -182,54 +246,22 @@ const rapier = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: 0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +35%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Vibroblade\n\nAttack Power +57\nAttack Speed +35%\nMovement Speed +0.1"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Rapier"
-		,Name: "Meteor_Claymore"
+		 Type: "Dagger"
+		,Name: "Fragarach"
 		,Attack_Power: 75
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 30
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 10
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Meteor Claymore\n\nAttack Power +75\nCritical Damage +30%\nCooldown Reduction +10%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Rapier"
-		,Name: "Joyeuse"
-		,Attack_Power: 75
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 30
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
@@ -250,41 +282,9 @@ const rapier = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Joyeuse\n\nAttack Power +75\nMovement Speed +0.2\nCritical Damage +30%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Rapier"
-		,Name: "Mistilteinn"
-		,Attack_Power: 30
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 25
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 15
-		,Cooldown_Reduction: 12
-		,SP_Regen: 0
-		,SP_Regen_Percent: 200
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 1.5
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 1.2
-		,Atk_Speed: 0.615
-		,Title: "Mistilteinn\n\nAttack Power +30\nHP Regen +1.5\nSP Regen +200%\nCritical Damage +25%\nCooldown Reduction +12%\nSkill Amplification +15%"
+		,Base_Range: 1
+		,Atk_Speed: 0.58
+		,Title: "Fragarach\n\nAttack Power +75\nMovement Speed +0.2"
 		,Rarity: "Legendary"
 	}
 ];

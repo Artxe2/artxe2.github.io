@@ -1,4 +1,4 @@
-const chests = [
+const Chest = [
 	{
 		 Type: "Chest"
 		,Name: "Windbreaker"

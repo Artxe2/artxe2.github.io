@@ -1,9 +1,9 @@
-const shuriken = [
+const Arm = [
 	{
-		 Type: "Shuriken"
-		,Name: "Razor"
-		,Attack_Power: 11
-		,Attack_Speed: 0
+		 Type: "Arm"
+		,Name: "Watch"
+		,Attack_Power: 0
+		,Attack_Speed: 10
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -26,47 +26,15 @@ const shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Razor\n\nAttack Power +11"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Watch\n\nAttack Speed +10%"
 		,Rarity: "Common"
 	}
 	,{
-		 Type: "Shuriken"
-		,Name: "Playing_Cards"
-		,Attack_Power: 4
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 5
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Playing Cards\n\nAttack Power +4\nCritical Strike Chance +5%"
-		,Rarity: "Common"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Chalk"
-		,Attack_Power: 12
+		 Type: "Arm"
+		,Name: "Bandage"
+		,Attack_Power: 0
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -83,24 +51,24 @@ const shuriken = [
 		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 0
+		,HP_Regen: 0.8
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Chalk\n\nAttack Power +12"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Bandage\n\nHP Regen +0.8"
 		,Rarity: "Common"
 	}
 	,{
-		 Type: "Shuriken"
-		,Name: "Dart"
-		,Attack_Power: 16
+		 Type: "Arm"
+		,Name: "Bracelet"
+		,Attack_Power: 0
 		,Attack_Speed: 0
-		,Critical_Strike_Chance: 20
+		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
@@ -113,6 +81,390 @@ const shuriken = [
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 220
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Bracelet\n\nMax SP +220"
+		,Rarity: "Common"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Leather_Shield"
+		,Attack_Power: 10
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 10
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Leather Shield\n\nAttack Power +10\nDefense +10"
+		,Rarity: "Uncommon"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Squad_Leader_Armband"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 15
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 1.5
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Squad Leader Armband\n\nHP Regen +1.5\nCritical Damage +15%"
+		,Rarity: "Uncommon"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Bracer"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 13
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 1
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Bracer\n\nDefense +13\nHP Regen +1"
+		,Rarity: "Uncommon"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Sheath"
+		,Attack_Power: 18
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 2
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Sheath\n\nAttack Power +18\nNormal Attack Damage Reduction +2"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Golden_Bracelet"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 12
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 220
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Golden Bracelet\n\nMax SP +220\nSkill Amplification +12%"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Bazuband"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 25
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 8
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Bazuband\n\nDefense +25\nNormal Attack Damage Reduction +8"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Crimson_Bracelet"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 200
+		,Max_SP: 250
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Crimson Bracelet\n\nMax HP +200\nMax SP +250"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Steel_Shield"
+		,Attack_Power: 23
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 25
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: -0.1
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Steel Shield\n\nAttack Power +23\nDefense +25\nMovement Speed -0.1"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Cube_Watch"
+		,Attack_Power: 0
+		,Attack_Speed: 50
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 27
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Cube Watch\n\nDefense +27\nAttack Speed +50%"
+		,Rarity: "Rare"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Sword_Stopper"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 28
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 11
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Sword Stopper\n\nDefense +28\nNormal Attack Damage Reduction +11\nHealing Reduction (Normal Attacks) -40%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Draupnir"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 15
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 10
+		,Max_HP: 0
+		,Max_SP: 240
+		,HP_Regen: 1
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Draupnir\n\nDefense +10\nMax HP +240\nHP Regen +1\n Skill Amplification +15%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Mithril_Shield"
+		,Attack_Power: 30
+		,Attack_Speed: 12
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 30
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -122,48 +474,16 @@ const shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Dart\n\nAttack Power +16\nMovement Speed +0.1\nCritical Damage +20%"
-		,Rarity: "Uncommon"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Mithril Shield\n\nAttack Power +30\nDefense +30\nAttack Speed +12%\nMovement Speed +0.1"
+		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Shuriken"
-		,Name: "Vintage_Card"
-		,Attack_Power: 15
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 10
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Vintage Cards\n\nAttack Power +15\nCritical Strike Chance +10%"
-		,Rarity: "Uncommon"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Throwing_Stars"
-		,Attack_Power: 27
-		,Attack_Speed: 0
+		 Type: "Arm"
+		,Name: "Vital_Sign_Sensor"
+		,Attack_Power: 0
+		,Attack_Speed: 30
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -176,7 +496,7 @@ const shuriken = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 15
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -186,207 +506,47 @@ const shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Throwing Stars\n\nAttack Power +27"
-		,Rarity: "Uncommon"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Vital Sign Sensor\n\nDefense +15\nAttack Speed +30%"
+		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Shuriken"
-		,Name: "Onyx_Dagger"
-		,Attack_Power: 17
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 10
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Onyx Dagger\n\nAttack Power +17\nExtra Normal Attack Damage +10"
-		,Rarity: "Uncommon"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Charm"
-		,Attack_Power: 40
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 10
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Charm\n\nAttack Power +40\nSkill Amplification +10%"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Willow_Leaf_Spike"
-		,Attack_Power: 17
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 20
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Willow Leaf Spike\n\nAttack Power +17\nExtra Normal Attack Damage +20"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Chakram"
-		,Attack_Power: 38
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Chakram\n\nAttack Power +38"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Apricot_Flower_Tag"
-		,Attack_Power: 14
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 30
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 10
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Apricot Flower Tag\n\nAttack Power +14\nCooldown Reduction +10%\nExtra Normal Attack Damage +30"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Venom_Dart"
-		,Attack_Power: 55
+		 Type: "Arm"
+		,Name: "Creed_of_the_Knight"
+		,Attack_Power: 30
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 20
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 15
+		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 25
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 0
+		,HP_Regen: 1.5
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
+		,Move_Speed: -0.1
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Venom Dart\n\nAttack Power +55\nCritical Damage +20%\nSkill Amplification +15"
-		,Rarity: "Rare"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +25\nHP Regen +1.5\nMovement Speed -0.1\nCritical Damage +20%"
+		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Shuriken"
-		,Name: "Dharma_Chakram"
-		,Attack_Power: 34
+		 Type: "Arm"
+		,Name: "Sword_of_Shah_Jahan"
+		,Attack_Power: 28
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -394,38 +554,6 @@ const shuriken = [
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 15
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Dharma Chakram\n\nAttack Power +34\nSkill Amplification +15%"
-		,Rarity: "Rare"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Plumbata"
-		,Attack_Power: 48
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 25
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
@@ -433,25 +561,57 @@ const shuriken = [
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
 		,Defense: 0
-		,Max_HP: 0
+		,Max_HP: 300
 		,Max_SP: 0
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.1
+		,Normal_Attack_Damage_Reduction: 2
+		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Plumbata\n\nAttack Power +48\nMovement Speed +0.1\nCritical Damage +25%"
-		,Rarity: "Rare"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Sword of Shah Jahan\n\nAttack Power +28\nMax HP +300\nNormal Attack Damage Reduction +2"
+		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Shuriken"
-		,Name: "Cards_of_Tyranny"
-		,Attack_Power: 49
-		,Attack_Speed: 30
+		 Type: "Arm"
+		,Name: "Bracelet_of_Skadi"
+		,Attack_Power: 0
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 20
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 2
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 200
+		,Max_SP: 250
+		,HP_Regen: 2
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Bracelet of Skadi\n\nMax HP +200\nMax SP +250\nHP Regen +2\nSP Regen +2\nSkill Amplification +20"
+		,Rarity: "Legendary"
+	}
+	,{
+		 Type: "Arm"
+		,Name: "Radar"
+		,Attack_Power: 0
+		,Attack_Speed: 35
 		,Critical_Strike_Chance: 20
 		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
@@ -464,7 +624,7 @@ const shuriken = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 15
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -474,297 +634,41 @@ const shuriken = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Cards of Tyranny\n\nAttack Power +49\nAttack Speed +30%\nCritical Strike Chance +20%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Mystic_Jade_Charm"
-		,Attack_Power: 60
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 12
-		,Skill_Amplification_Percent: 15
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +12\nSkill Amplification +15%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Fuhma_Shuriken"
-		,Attack_Power: 44
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 36
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 15
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Fuhma Shuriken\n\nAttack Power +44\nCooldown Reduction +15%\nExtra Normal Attack Damage +36"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Frost_Venom_Dart"
-		,Attack_Power: 80
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 50
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 20
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Frost Venom Dart\n\nAttack Power +80\nCritical Damage +50%\nSkill Amplification +20"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Azure_Dagger"
-		,Attack_Power: 20
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 29
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 24
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +29\nSkill Amplification +24"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Flechette"
-		,Attack_Power: 85
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 40
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.2
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Flechette\n\nAttack Power +85\nMovement Speed +0.2\nCritical Damage +40%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Wind_and_Fire_Wheels"
-		,Attack_Power: 55
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 20
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Wind and Fire Wheels\n\nAttack Power +55\nSkill Amplification +20%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Death_Rune"
-		,Attack_Power: 80
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 23
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Death Rune\n\nAttack Power +80\nSkill Amplification +23%"
-		,Rarity: "Epic"
-	}
-	,{
-		 Type: "Shuriken"
-		,Name: "Sudarsana"
-		,Attack_Power: 125
-		,Attack_Speed: 0
-		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 0
-		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
-		,Cooldown_Reduction: 0
-		,SP_Regen: 0
-		,SP_Regen_Percent: 0
-		,Skill_Damage_Reduction: 0
-		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
-		,Max_HP: 0
-		,Max_SP: 0
-		,HP_Regen: 0
-		,HP_Regen_Percent: 0
-		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0
-		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 0
-		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Sudarsana\n\nAttack Power +125"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Radar\n\nDefense +15\nAttack Speed +35%\nCritical Strike Chance +20%"
 		,Rarity: "Legendary"
 	}
 	,{
-		 Type: "Shuriken"
-		,Name: "Petal_Torrent"
-		,Attack_Power: 80
+		 Type: "Arm"
+		,Name: "Auto-arms"
+		,Attack_Power:40
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
-		,Critical_Strike_Damage: 50
+		,Critical_Strike_Damage: 0
 		,Life_Steal: 0
-		,Extra_Normal_Attack_Damage: 130
+		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 25
+		,Skill_Amplification: 0
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 0
+		,Defense: 35
 		,Max_HP: 0
 		,Max_SP: 0
-		,HP_Regen: 0
+		,HP_Regen: 1.5
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 4.4
-		,Atk_Speed: 0.55
-		,Title: "Petal Torrent\n\nAttack Power +80\nCritical Damage +50%\nExtra Normal Attack Damage +130\nSkill Amplification +25"
+		,Base_Range: 0
+		,Atk_Speed: 0
+		,Title: "Auto-arms\n\nAttack Power +40\nDefense +35\nHP Regen +1.5"
 		,Rarity: "Legendary"
 	}
 ];

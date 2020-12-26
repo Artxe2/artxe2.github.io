@@ -1,4 +1,4 @@
-const legs = [
+const Leg = [
 	{
 		 Type: "Leg"
 		,Name: "Slippers"

@@ -1,8 +1,8 @@
-const tonfa = [
+const Hammer = [
 	{
-		 Type: "Tonfa"
-		,Name: "Bamboo"
-		,Attack_Power: 12
+		 Type: "Hammer"
+		,Name: "Hammer"
+		,Attack_Power: 16
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -26,15 +26,15 @@ const tonfa = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1
-		,Atk_Speed: 0.5
-		,Title: "Bamboo\n\nAttack Power +12"
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Hammer\n\nAttack Power +16"
 		,Rarity: "Common"
 	}
 	,{
-		 Type: "Tonfa"
-		,Name: "Wooden_Tonfa"
-		,Attack_Power: 23
+		 Type: "Hammer"
+		,Name: "Warhammer"
+		,Attack_Power: 40
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -48,7 +48,7 @@ const tonfa = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 8
+		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -58,15 +58,15 @@ const tonfa = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1
-		,Atk_Speed: 0.5
-		,Title: "Wooden Tonfa\n\nAttack Power +23\nDefense +8"
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Warhammer\n\nAttack Power +40"
 		,Rarity: "Uncommon"
 	}
 	,{
-		 Type: "Tonfa"
-		,Name: "Police_Baton"
-		,Attack_Power: 35
+		 Type: "Hammer"
+		,Name: "Morning_Star"
+		,Attack_Power: 55
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -80,7 +80,7 @@ const tonfa = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 8
+		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -90,15 +90,15 @@ const tonfa = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1
-		,Atk_Speed: 0.5
-		,Title: "Police Baton\n\nAttack Power +35\nDefense +8"
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Morning Star\n\nAttack Power +55"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Tonfa"
-		,Name: "Ryukyu_Tonfa"
-		,Attack_Power: 38
+		 Type: "Hammer"
+		,Name: "Black_Stag_Hammer"
+		,Attack_Power: 56
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -112,7 +112,7 @@ const tonfa = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 18
+		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -122,29 +122,29 @@ const tonfa = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1
-		,Atk_Speed: 0.5
-		,Title: "Ryukyu Tonfa\n\nAttack Power +38\nDefense +18"
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Black Stag Hammer\n\nAttack Power +56"
 		,Rarity: "Rare"
 	}
 	,{
-		 Type: "Tonfa"
-		,Name: "Tactical_Tonfa"
-		,Attack_Power: 70
+		 Type: "Hammer"
+		,Name: "Fang_Mace"
+		,Attack_Power: 55
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
-		,Life_Steal: 25
+		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 0
+		,Skill_Amplification: 31
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 10
+		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -154,15 +154,15 @@ const tonfa = [
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1
-		,Atk_Speed: 0.5
-		,Title: "Tactical Tonfa\n\nAttack Power +70\nDefense +10\nLife Steal +25%"
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +31"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Tonfa"
-		,Name: "Mai_Sok"
-		,Attack_Power: 45
+		 Type: "Hammer"
+		,Name: "Hammer_of_Dagda"
+		,Attack_Power: 95
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -176,39 +176,103 @@ const tonfa = [
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 20
+		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
-		,HP_Regen_Percent: 100
+		,HP_Regen_Percent: 250
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1
-		,Atk_Speed: 0.5
-		,Title: "Mai Sok\n\nAttack Power +45\nDefense +20\nHP Regen +100%"
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Hammer of Dagda\n\nAttack Power +95\nHP Regen +250%"
 		,Rarity: "Epic"
 	}
 	,{
-		 Type: "Tonfa"
-		,Name: "Plasma_Tonfa"
+		 Type: "Hammer"
+		,Name: "Hammer_of_Thor"
+		,Attack_Power: 120
+		,Attack_Speed: 40
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Hammer of Thor\n\nAttack Power +120\nAttack Speed +40%"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Hammer"
+		,Name: "Evening_Star"
+		,Attack_Power: 150
+		,Attack_Speed: 0
+		,Critical_Strike_Chance: 0
+		,Critical_Strike_Damage: 0
+		,Life_Steal: 0
+		,Extra_Normal_Attack_Damage: 0
+		,Extra_Normal_Attack_Damage_Percent: 0
+		,Skill_Amplification: 0
+		,Skill_Amplification_Percent: 0
+		,Cooldown_Reduction: 0
+		,SP_Regen: 0
+		,SP_Regen_Percent: 0
+		,Skill_Damage_Reduction: 0
+		,Skill_Damage_Reduction_Percent: 0
+		,Defense: 0
+		,Max_HP: 0
+		,Max_SP: 0
+		,HP_Regen: 0
+		,HP_Regen_Percent: 0
+		,Normal_Attack_Damage_Reduction: 0
+		,Move_Speed: 0
+		,Out_of_Combat_Movement_Speed: 0
+		,Vision_Range: 0
+		,Attack_Range: 0
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Evening Star\n\nAttack Power +150"
+		,Rarity: "Epic"
+	}
+	,{
+		 Type: "Hammer"
+		,Name: "Magic_Stick"
 		,Attack_Power: 65
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
-		,Life_Steal: 0
+		,Life_Steal: 30
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 0
+		,Skill_Amplification_Percent: 27
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
 		,Skill_Damage_Reduction: 0
 		,Skill_Damage_Reduction_Percent: 0
-		,Defense: 18
+		,Defense: 0
 		,Max_HP: 0
 		,Max_SP: 0
 		,HP_Regen: 0
@@ -216,11 +280,11 @@ const tonfa = [
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 2.5
+		,Vision_Range: 0
 		,Attack_Range: 0
-		,Base_Range: 1
-		,Atk_Speed: 0.5
-		,Title: "Plasma Tonfa\n\nAttack Power +65\nDefense +18\nVision Range +2.5"
+		,Base_Range: 1.25
+		,Atk_Speed: 0.455
+		,Title: "Magic Stick\n\nAttack Power +65\nLife Steal +30%\nSkill Amplification +27%"
 		,Rarity: "Epic"
 	}
 ];
