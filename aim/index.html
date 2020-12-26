@@ -51,8 +51,8 @@ class Target extends React.Component {
 			console.log(x + ', ' + y);
 		} while ((x < 0 || x > 960 - this.state.size || y < 0 || y > 540 - this.state.size) && c++ < 10);
 		if (c == 10) {
-			x = 480 - this.state.size / 2;
-			y = 540 - this.state.size / 2;
+			x = 480 + this.state.size / 2;
+			y = 270 + this.state.size / 2;
 		}
 		if (this.state.count == 10) {
           	this.setState({
