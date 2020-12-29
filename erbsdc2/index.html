@@ -2,7 +2,7 @@
 <html lang='ko'>
 <head>
 	<meta charset="UTF-8">
-	<title>Eternal Return: Black Survival Damage Calculator 0.22.0</title>
+	<title>Eternal Return: Black Survival Damage Calculator 0.22.1</title>
 	<style type="text/css">
         .subject {
             white-space: nowrap;
@@ -60,7 +60,10 @@
         }
 		.close_button {
 			float: right; 
-			cursor: pointer
+			cursor: pointer;
+		}
+		.stack {
+			width: 40px;
 		}
 	</style>
 	<script type="text/javascript" src='./db/armor/AccessoryDB.js'></script>
@@ -95,19 +98,27 @@
 		const characters = [];
 		document.addEventListener('DOMContentLoaded', (e) => {
 			characters.push(
-				new Character(characters.length, document.querySelector('#character' + characters.length))
+				new Character(characters.length, document.querySelector('#character' + characters.length), document.querySelector('#mode'))
 			);
 			characters.push(
-				new Character(characters.length, document.querySelector('#character' + characters.length))
+				new Character(characters.length, document.querySelector('#character' + characters.length), document.querySelector('#mode'))
 			);
 			characters[0].setEnemy(characters[1]);
 			characters[1].setEnemy(characters[0]);
 		});
+		function updateDisplay() {
+			for (let i = 0; i < characters.length; i++) {
+				characters[i].calcStat();
+			}
+			for (let i = 0; i < characters.length; i++) {
+				characters[i].updateDisplay();
+			}
+		}
 	</script>
 </head>
 <body>
 	<h3 class='subject'>
-        Eternal Return: Black Survival Damage Calculator 0.22.0
+        Eternal Return: Black Survival Damage Calculator 0.22.1
     </h3>
 	<div id='character0'>
         <div class='item_list'>
@@ -502,7 +513,7 @@
     
 	<h4>
 		- - - - - - - - - - VS
-		<select id='mod'>
+		<select id='mode' onchange='updateDisplay()'>
 			<option selected>SOLO</option>
 			<option>DUO</option>
 			<option>SQUAD</option>

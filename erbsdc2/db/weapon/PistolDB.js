@@ -30,6 +30,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Walther PPK\n\nAttack Power +8\nMovement Speed +0.1"
 		,Rarity: "Common"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -62,6 +63,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Magnum-Python\n\nAttack Power +15\nAttack Speed +10%\nMovement Speed +0.1"
 		,Rarity: "Uncommon"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -94,6 +96,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Beretta M92F\n\nAttack Power +23\nMovement Speed +0.1"
 		,Rarity: "Uncommon"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -126,6 +129,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "FN57\n\nAttack Power +29\nMovement Speed +0.1\nVision Range +2.5"
 		,Rarity: "Rare"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -158,6 +162,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Double Revolver SP\n\nAttack Power +40\nAttack Speed +10%\nMovement Speed +0.1"
 		,Rarity: "Rare"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -190,6 +195,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Magnum-Anaconda\n\nAttack Power +43\nAttack Speed +10%\nMovement Speed +0.1\nLife Steal +10%"
 		,Rarity: "Rare"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -222,6 +228,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Devil`s Marksman\n\nAttack Power +30\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +40"
 		,Rarity: "Epic"
+		,Ammo: 7
 	}
 	,{
 		 Type: "Pistol"
@@ -254,6 +261,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Elegance\n\nAttack Power +90\nMovement Speed +0.2\nVision Range +5"
 		,Rarity: "Epic"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -286,6 +294,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Electron Blaster\n\nAttack Power +65\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +28"
 		,Rarity: "Epic"
+		,Ammo: 10
 	}
 	,{
 		 Type: "Pistol"
@@ -318,6 +327,7 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Magnum-Boa\n\nAttack Power +90\nAttack Speed +25%\nMovement Speed +0.1\nVision Range +3.5\nLife Steal +20%"
 		,Rarity: "Epic"
+		,Ammo: 6
 	}
 	,{
 		 Type: "Pistol"
@@ -350,5 +360,6 @@ const Pistol = [
 		,Atk_Speed: 0.505
 		,Title: "Kelte\n\nAttack Power +120\nMovement Speed +0.2"
 		,Rarity: "Legendary"
+		,Ammo: 10
 	}
 ];

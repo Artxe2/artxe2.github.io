@@ -1,3 +1,33 @@
+function calcAttackSpeed(character, bunusAS) {
+	return character.attack_speed + (character.base_attack_speed * bunusAS | 0) / 100;
+} 
+
+function baseAttackDamage(character, enemy, base, coe, cri, onhit) {
+	return (((base + character.attack_power * coe) * (1 + cri / 100 * (1 + character.critical_strike_damage / 100)) / (1 + (!enemy.defense ? 0 : enemy.defense / 100)) + 
+			(character.extra_normal_attack_damage - (!enemy.normal_attack_damage_reduction ? 0 : enemy.normal_attack_damage_reduction)) * onhit) * 
+			(1 + (character.extra_normal_attack_damage_percent - (!enemy.normal_attack_damage_reduction_percent ? 0 : enemy.normal_attack_damage_reduction_percent)) / 100)) * 
+			(1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) * 
+			(1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) | 0;
+}
+
+function calcSkillDamage(character, enemy, base, coe, onhit) {	
+	return (((base + character.attack_power * coe) / (1 + (!enemy.defense ? 0 : enemy.defense / 100)) + 
+			(character.skill_amplification - (!enemy.skill_damage_reduction ? 0 : enemy.skill_damage_reduction)) * onhit) * 
+			(1 + (character.skill_amplification_percent - (!enemy.skill_damage_reduction_percent ? 0 : enemy.skill_damage_reduction_percent)) / 100)) * 
+			(1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) * 
+			(1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) | 0;
+}
+
+function fixLimitNum(target, max) {
+	const value = target.value;
+	if (value === '' || value < 0) {
+		target.value = 0;
+	} else if (value > max) {
+		target.value = max;
+	}
+	updateDisplay();
+}
+
 const Jackie = {
 	 Attack_Power: 37
 	,Attack_Power_Growth: 2.7
@@ -35,38 +65,113 @@ const Jackie = {
 			[0, 2, 5]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
-		return '';
+	,Base_Attack: (character, enemy) => {
+		if (character.weapon) {
+			const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+			const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+			if (character.weapon.Type === 'DualSwords') {
+				return damage * 2 + ' ( ' +  min + ', ' + min + ' - ' + max + ', ' + max + ' )';
+			}
+			return damage + ' ( ' +  min + ' - ' + max + ' ) ';
+		}
+		return '-';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = (baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * character.attack_speed * 100 | 0) / 100;
+			const life = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) * character.attack_speed * 100 | 0) / 100;
+			if (character.weapon.Type === 'DualSwords') {
+				return damage * 2 + '<b> __h/s: </b>' + life * 2;
+			}
+			return damage + '<b> __h/s: </b>' + life;
+		}
+		return '-';
 	}
 	,DPS_Option: ''
 	,Q_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const min1 = calcSkillDamage(character, enemy, 20 + character.Q_LEVEL.selectedIndex * 20, 0.45, 1);
+			const min2 = calcSkillDamage(character, enemy, 30 + character.Q_LEVEL.selectedIndex * 20, 0.65, 1);
+			const min3 = calcSkillDamage(character, enemy, 16 + character.Q_LEVEL.selectedIndex * 6, 0, 0) * 5;
+			const max1 = calcSkillDamage(character, enemy, 20 + character.Q_LEVEL.selectedIndex * 20, 0.45 + 0.1 + character.W_LEVEL.selectedIndex * 0.025, 1);
+			const max2 = calcSkillDamage(character, enemy, 30 + character.Q_LEVEL.selectedIndex * 20, 0.65 + 0.1 + character.W_LEVEL.selectedIndex * 0.025, 1);
+			return min1 + min2 + min3 + ' - ' + (max1 + max2 + min3) + 
+				' ( ' + min1 + ', ' + min2 + ', ' + min3 + ' - ' + max1 + ', ' + max2 + ', ' + min3 + ' )';
+		}
+		return '-';
 	}
 	,Q_Option: ''
 	,W_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = (baseAttackDamage(character, enemy, 0, 1 + 0.1 + character.W_LEVEL.selectedIndex * 0.025, character.critical_strike_chance, 1) * character.attack_speed * 100 | 0) / 100;
+			const life = (((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) + ((12 + character.W_LEVEL.selectedIndex * 7 + character.attack_power * 0.1) | 0)) * character.attack_speed * 100 | 0) / 100;
+			if (character.weapon.Type === 'DualSwords') {
+				return '<b>_d/s: </b>' + damage * 2 + '<b> __h/s: </b>' + life * 2;
+			}
+			return '<b>_d/s: </b>' + damage + '<b> __h/s: </b>' + life;
+		}
+		return '-';
 	}
 	,W_Option: ''
 	,E_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const min = calcSkillDamage(character, enemy, 10 + character.E_LEVEL.selectedIndex * 60, 0.3 + character.E_LEVEL.selectedIndex * 0.1, 1);
+			const max = calcSkillDamage(character, enemy, 10 + character.E_LEVEL.selectedIndex * 60, 0.3 + character.E_LEVEL.selectedIndex * 0.1 + 0.1 + character.W_LEVEL.selectedIndex * 0.025, 1);
+			return min + ' - ' + max;
+		}
+		return '-';
 	}
 	,E_Option: ''
 	,R_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const min1 = calcSkillDamage(character, enemy, 300 + character.R_LEVEL.selectedIndex * 200, 1, 1);
+			const min2 = (baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * calcAttackSpeed(character, 20 + character.R_LEVEL.selectedIndex * 5) * 100 | 0) / 100;
+			const min3 = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) * calcAttackSpeed(character, 20 + character.R_LEVEL.selectedIndex * 5) * 100 | 0) / 100;
+			const max1 = calcSkillDamage(character, enemy, 300 + character.R_LEVEL.selectedIndex * 200, 1 + 0.1 + character.W_LEVEL.selectedIndex * 0.025, 1);
+			const max2 = (baseAttackDamage(character, enemy, 0, 1 + 0.1 + character.W_LEVEL.selectedIndex * 0.025, character.critical_strike_chance, 1) * calcAttackSpeed(character, 20 + character.R_LEVEL.selectedIndex * 5) * 100 | 0) / 100;
+			const max3 = (((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) + ((12 + character.W_LEVEL.selectedIndex * 7 + character.attack_power * 0.1) | 0)) * calcAttackSpeed(character, 20 + character.R_LEVEL.selectedIndex * 5) * 100 | 0) / 100;
+			if (character.weapon.Type === 'DualSwords') {
+				return min1 + ' - ' + max1 + '<b> __d/s: </b>' + min2 * 2 + ' - ' + max2 * 2 + '<b> __h/s: </b>' + min3 * 2 + ' - ' + max3 * 2;
+			}
+			return min1 + ' - ' + max1 + '<b> __d/s: </b>' + min2 + ' - ' + max2 + '<b> __h/s: </b>' + min3 + ' - ' + max3;
+		}
+		return '-';
 	}
 	,R_Option: ''
 	,D_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const type = character.weapon.Type;
+			if (type === 'Axe') {
+				return '';
+			}
+			if (character.WEAPON_MASTERY.selectedIndex > 5) {
+				if (type === 'Dagger') {
+					const damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+					return damage + ' - ' + ((damage + (!enemy.max_hp ? 0 : enemy.max_hp / 10)) | 0);
+				}
+				if (type === 'TwoHandedSword') {
+					return calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 2 : 2.5, 1);
+				}
+				if (type === 'DualSwords') {
+					const min = calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 0.3 : 0.5, 1);
+					const max = calcSkillDamage(character, enemy, 0, (character.WEAPON_MASTERY.selectedIndex < 13 ? 0.3 : 0.5) + 0.1 + character.W_LEVEL.selectedIndex * 0.025, 1);
+					return min * 12 + ' - ' + (max * 12) + ' ( ' + min + ' x 12 - ' + max + ' x 12 )';
+				}
+			}
+		}
+		return '-';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {
+		return !character.weapon || character.weapon.Type !== 'Axe' ? '' : 
+			"<input type='number' class='stack axe_d_s' value='0' onchange='fixLimitNum(this, 5)'><b>Stack _use</b><input type='checkbox' class='axe_d_u' onchange='updateDisplay()'><br>" + 
+			"_LostHP: <input type='number' class='stack lost_hp' value='0' onchange='fixLimitNum(this, 100)'><b>%</b>"; 
+	}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
-	,T_Option: ''
+	,T_Option: "<b>_weak</b><input type='checkbox' class='jackie_t_w' onchange='updateDisplay()'><b> _strong</b><input type='checkbox' class='jackie_t_s' onchange='updateDisplay()'>"
 };
 const Aya = {
 	 Attack_Power: 28
@@ -92,7 +197,7 @@ const Aya = {
 			[0, -15, -11],
 			[0, 0, 0]
 		],
-		AssultRifle: [
+		AssaultRifle: [
 			[0, -15, -13],
 			[0, 0, 0]
 		],
@@ -101,36 +206,113 @@ const Aya = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
-		return '';
+	,Base_Attack: (character, enemy) => {
+		if (character.weapon) {
+			if (character.weapon.Type === 'AssaultRifle') {
+				const damage1 = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1);
+				const damage2 = baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
+				const min1 = baseAttackDamage(character, enemy, 0, 0.32, 0, 1);
+				const min2 = baseAttackDamage(character, enemy, 0, 0.48, 0, 1);
+				const max1 = baseAttackDamage(character, enemy, 0, 0.32, 100, 1);
+				const max2 = baseAttackDamage(character, enemy, 0, 0.48, 100, 1);
+				return damage1 * 2 + damage2 + ' ( ' + min1 + ', ' + min1 + ', ' + min2 + ' - ' + max1 + ', ' + max1 + ', ' + max2 + ' )';
+			}
+			const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+			const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+			return damage + ' ( ' +  min + ' - ' + max + ' )';
+		}
+		return '-';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			let as, shot;
+			if (character.weapon.Type === 'AssaultRifle') {
+				as = 10 / (9.5 / character.attack_speed + 2);
+				shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+					baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
+			} else {
+				as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2);
+				shot = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			}
+			const damage1 = (shot * as * 100 | 0) / 100;
+			const damage2 = (shot * character.attack_speed * 100 | 0) / 100;
+			const life1 = ((shot * (character.life_steal / 100) | 0) * as * 100 | 0) / 100;
+			const life2 = ((shot * (character.life_steal / 100) | 0) * character.attack_speed * 100 | 0) / 100;
+			return damage1 + ' - ' + damage2 + '<b> __h/s: </b>' + life1 + ' - ' + life2;
+		}
+		return '-';
 	}
 	,DPS_Option: ''
 	,Q_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage1 = calcSkillDamage(character, enemy, 0, 1, 1);
+			const damage2 = calcSkillDamage(character, enemy, 20 + character.Q_LEVEL.selectedIndex * 40, 0.5, 1);
+			return damage1 + damage2 + ' ( ' + damage1 + ', ' + damage2 + ' )';
+		}
+		return '-';
 	}
 	,Q_Option: ''
 	,W_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = calcSkillDamage(character, enemy, 22 + character.W_LEVEL.selectedIndex * 22, 0.25 + character.W_LEVEL.selectedIndex * 0.05, 1);
+			return damage * 10 + ' ( ' + damage + ' x 10 )';
+		}
+		return '-';
 	}
 	,W_Option: ''
 	,E_Skill: (character, enemy) => {
-		return '';
+		return '-';
 	}
 	,E_Option: ''
 	,R_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 200 + character.R_LEVEL.selectedIndex * 150, 0.7, 1);
+		}
+		return '-';
 	}
 	,R_Option: ''
 	,D_Skill: (character, enemy) => {
+		if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
+			const type = character.weapon.Type;
+			if (type === 'Pistol') {
+				return '-';
+			}
+			if (type === 'AssaultRifle') {
+				const as2 = calcAttackSpeed(character, character.WEAPON_MASTERY.selectedIndex < 13 ? 40 : 60);
+				const as1 = 10 / (9.5 / as2 + 2);
+				const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+					baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
+				const damage1 = (shot * as1 * 100 | 0) / 100;
+				const damage2 = (shot * as2 * 100 | 0) / 100;
+				const life1 = ((shot * (character.life_steal / 100) | 0) * as1 * 100 | 0) / 100;
+				const life2 = ((shot * (character.life_steal / 100) | 0) * as2 * 100 | 0) / 100;
+				const shield = 100 + character.T_LEVEL.selectedIndex * 50 + character.attack_power * 0.3 | 0;
+				return '<b>_d/s: </b>' + damage1 + ' - ' + damage2 + '<b> __h/s: </b>' + life1 + ' - ' + life2 + 
+					'<b> __s/s: </b>' + (shield * (1 + as1 * 6) / 0.3 | 0) / 100 + ' - ' + (shield * (1 + as2 * 6) / 0.3 | 0) / 100
+			}
+			if (type === 'SniperRifle') {
+				return calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 2.5 : 3, 1);
+			}
+		}
+		return '-';
+	}
+	,D_Option: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
 	,T_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const shield = 100 + character.T_LEVEL.selectedIndex * 50 + character.attack_power * 0.3 | 0;
+			let as;
+			if (character.weapon.Type === 'AssaultRifle') {
+				as = 10 / (9.5 / character.attack_speed + 2) * 6;
+			} else {
+				as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2) * 2;
+			}
+			return '<b>_s: </b>' + shield + '<b> __s/s: </b>' + (shield * (1 + as) / 0.3 | 0) / 100;
+		}
+		return '-';
 	}
 	,T_Option: ''
 };
@@ -167,36 +349,84 @@ const Fiora = {
 			[0, 3, 6]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
-		return '';
+	,Base_Attack: (character, enemy) => {
+		if (character.weapon) {
+			const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+			const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+			return damage + ' ( ' +  min + ' - ' + max + ' ) ';
+		}
+		return '-';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = (baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * character.attack_speed * 100 | 0) / 100;
+			const life = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) * character.attack_speed * 100 | 0) / 100;
+			return damage + '<b> __h/s: </b>' + life;
+		}
+		return '-';
 	}
 	,DPS_Option: ''
 	,Q_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const min = calcSkillDamage(character, enemy, 60 + character.Q_LEVEL.selectedIndex * 60, 0.25, 1);
+			const max = calcSkillDamage(character, enemy, (60 + character.Q_LEVEL.selectedIndex * 60) * (1.2 +character.critical_strike_damage / 100), 0.25 * (1.2 + character.critical_strike_damage / 100), 1);
+			return min + ' - ' + max;
+		}
+		return '-';
 	}
 	,Q_Option: ''
 	,W_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage1 = baseAttackDamage(character, enemy, 0, 0.6 + character.W_LEVEL.selectedIndex * 0.1, character.critical_strike_chance, 1);
+			const damage2 = baseAttackDamage(character, enemy, 0, 0.2 + character.W_LEVEL.selectedIndex * 0.1, character.critical_strike_chance, 1);
+			const min1 = baseAttackDamage(character, enemy, 0, 0.6 + character.W_LEVEL.selectedIndex * 0.1, 0, 1);
+			const min2 = baseAttackDamage(character, enemy, 0, 0.2 + character.W_LEVEL.selectedIndex * 0.1, 0, 1);
+			const max1 = baseAttackDamage(character, enemy, 0, 0.6 + character.W_LEVEL.selectedIndex * 0.1, 100, 1);
+			const max2 = baseAttackDamage(character, enemy, 0, 0.2 + character.W_LEVEL.selectedIndex * 0.1, 100, 1);
+			return damage1 + damage2 + ' ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + ' ) ';
+		}
+		return '-';
 	}
 	,W_Option: ''
 	,E_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const min = calcSkillDamage(character, enemy, 90 + character.Q_LEVEL.selectedIndex * 40, 0.4, 1);
+			const max = calcSkillDamage(character, enemy, (90 + character.Q_LEVEL.selectedIndex * 40) * (1.2 +character.critical_strike_damage / 100), 0.4 * (1.2 + character.critical_strike_damage / 100), 1);
+			return min + ' - ' + max;
+		}
+		return '-';
 	}
 	,E_Option: ''
 	,R_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 30 + character.R_LEVEL.selectedIndex * 5, 0.06 + character.R_LEVEL.selectedIndex * 0.12, 1);
+		}
+		return '-';
 	}
 	,R_Option: ''
 	,D_Skill: (character, enemy) => {
+		if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
+			const type = character.weapon.Type;
+			if (type === 'TwoHandedSword') {
+				return calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 2 : 2.5, 1);
+			}
+			if (type === 'Rapier') {
+				return calcSkillDamage(character, enemy, 0, (2 + character.critical_strike_damage / 100), 1);
+			}
+			if (type === 'Spear') {
+				const damage = calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 1.5, 1);
+				return damage * 2 + ' ( ' + damage + ', ' + damage + ' )';
+			}
+		}
+		return '-';
+	}
+	,D_Option: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
 	,T_Skill: (character, enemy) => {
-		return '';
+		return '-';
 	}
 	,T_Option: ''
 };
@@ -229,38 +459,74 @@ const Magnus = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
-		return '';
+	,Base_Attack: (character, enemy) => {
+		if (character.weapon) {
+			const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+			const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+			return damage + ' ( ' +  min + ' - ' + max + ' ) ';
+		}
+		return '-';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = (baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * character.attack_speed * 100 | 0) / 100;
+			const life = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) * character.attack_speed * 100 | 0) / 100;
+			return damage + '<b> __h/s: </b>' + life;
+		}
+		return '-';
 	}
 	,DPS_Option: ''
 	,Q_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 40 + character.Q_LEVEL.selectedIndex * 60, 0.6, 1);
+		}
+		return '-';
 	}
 	,Q_Option: ''
 	,W_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = calcSkillDamage(character, enemy, (1.5 + character.W_LEVEL.selectedIndex * 0.5 | 0) * 10 + character.defense * 0.3, 0.3, 1);
+			return damage * (6 + character.W_LEVEL.selectedIndex * 0.5 | 0) + ' ( ' + damage + ' x ' + (6 + character.W_LEVEL.selectedIndex * 0.5 | 0) + ' )';
+		}
+		return '-';
 	}
 	,W_Option: ''
 	,E_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 60 + character.E_LEVEL.selectedIndex * 55, 0.4, 1);
+		}
+		return '-';
 	}
 	,E_Option: ''
 	,R_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 200 + character.R_LEVEL.selectedIndex * 200, 2, 1);
+		}
+		return '-';
 	}
 	,R_Option: ''
 	,D_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
+			const type = character.weapon.Type;
+			if (type === 'Hammer') {
+				return calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 150 : 300, character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 2, 1);
+			}
+			if (type === 'Bat') {
+				return calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 2 : 3, 1);
+			}
+		}
+		return '-';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {
+		return !character.weapon || character.weapon.Type !== 'Hammer' ? '' : 
+			"<b> __use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>"; 
+	}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
-	,T_Option: ''
+	,T_Option: "_LostHP: <input type='number' class='stack magnus_t' value='0' onchange='fixLimitNum(this, 999)'><b>%</b>"
 };
 const Zahir = {
 	 Attack_Power: 25
@@ -291,36 +557,77 @@ const Zahir = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
-		return '';
+	,Base_Attack: (character, enemy) => {
+		if (character.weapon) {
+			const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+			const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+			return damage + ' ( ' +  min + ' - ' + max + ' ) ';
+		}
+		return '-';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = (baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * character.attack_speed * 100 | 0) / 100;
+			const life = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) * character.attack_speed * 100 | 0) / 100;
+			return damage + '<b> __h/s: </b>' + life;
+		}
+		return '-';
 	}
 	,DPS_Option: ''
 	,Q_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const min = calcSkillDamage(character, enemy, 40 + character.Q_LEVEL.selectedIndex * 60, 0.5, 1);
+			const max = calcSkillDamage(character, enemy, 75 + character.Q_LEVEL.selectedIndex * 75, 0.5, 1);
+			return min + ' - ' + max;
+		}
+		return '-';
 	}
 	,Q_Option: ''
 	,W_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 25 + character.W_LEVEL.selectedIndex * 25, 0.3, 1);
+		}
+		return '-';
 	}
 	,W_Option: ''
 	,E_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 80 + character.E_LEVEL.selectedIndex * 30, 0.5, 1);
+		}
+		return '-';
 	}
 	,E_Option: ''
 	,R_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = calcSkillDamage(character, enemy, 60 + character.R_LEVEL.selectedIndex * 90, 0.5, 1);
+			const add = calcSkillDamage(character, enemy, 30 + character.R_LEVEL.selectedIndex * 45, 0.5, 1);
+			return damage + add * 4 + ' ( ' + damage + ' + ' + add + ' x 4 )';
+		}
+		return '-';
 	}
 	,R_Option: ''
 	,D_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
+			const type = character.weapon.Type;
+			if (type === 'Throws') {
+				return '-';
+			}
+			if (type === 'Shuriken') {
+				const damage = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 110 : 180, 0.3, 1);
+				const add = calcSkillDamage(character, enemy, (character.WEAPON_MASTERY.selectedIndex < 13 ? 110 : 180) * 0.3, 0.3 * 0.3, 1);
+				return damage + add * 11 + ' ( ' + damage + ' + ' + add + ' x 11 )';
+			}
+		}
+		return '-';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 10 + character.T_LEVEL.selectedIndex * 25, 0.3, 1);
+		}
+		return '-';
 	}
 	,T_Option: ''
 };
@@ -353,38 +660,78 @@ const Nadine = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
-		return '';
+	,Base_Attack: (character, enemy) => {
+		if (character.weapon) {
+			const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+			const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+			return damage + ' ( ' +  min + ' - ' + max + ' ) ';
+		}
+		return '-';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = (baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * character.attack_speed * 100 | 0) / 100;
+			const life = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) * character.attack_speed * 100 | 0) / 100;
+			return damage + '<b> __h/s: </b>' + life;
+		}
+		return '-';
 	}
 	,DPS_Option: ''
 	,Q_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const stack = parseInt(character.DIV.querySelector('.nadine_t').value);
+			const min = calcSkillDamage(character, enemy, 70 + character.Q_LEVEL.selectedIndex * 45 + stack, 0.6, 1);
+			const max = calcSkillDamage(character, enemy, 140 + character.Q_LEVEL.selectedIndex * 90 + stack, 1.2, 1);
+			return min + ' - ' + max;
+		}
+		return '-';
 	}
 	,Q_Option: ''
 	,W_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage1 = calcSkillDamage(character, enemy, 100 + character.W_LEVEL.selectedIndex * 70, 0.6, 1);
+			const damage2 = calcSkillDamage(character, enemy, 100 + character.W_LEVEL.selectedIndex * 40, 0.6, 1);
+			return damage1 * 2 + damage2 + ' ( ' + damage1 + ', ' + damage1 + ', ' + damage2 + ' )';
+		}
+		return '-';
 	}
 	,W_Option: ''
 	,E_Skill: (character, enemy) => {
 		return '';
 	}
-	,E_Option: ''
+	,E_Option: "<b>_use</b><input type='checkbox' class='nadine_e' onchange='updateDisplay()'>"
 	,R_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const stack = parseInt(character.DIV.querySelector('.nadine_t').value);
+			const damage = calcSkillDamage(character, enemy, 50 + character.R_LEVEL.selectedIndex * 50 + stack, 0.5, 1);
+			const dps = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) + damage / 3) * character.attack_speed * 100 | 0) / 100;
+			return damage + '<b> __d/s: </b>' + dps;
+		}
+		return '-';
 	}
 	,R_Option: ''
 	,D_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
+			const type = character.weapon.Type;
+			if (type === 'Bow') {
+				const min = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 150 : 250, 1, 1);
+				const max = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 300 : 500, 2, 1);
+				return min + ' - ' + max;
+			}
+			if (type === 'Crossbow') {
+				const damage = calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 0.6 : 1, 1);
+				return damage * 2 + ' ( ' + damage + ', ' + damage + ' )';
+			}
+		}
+		return '-';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
-	,T_Option: ''
+	,T_Option: "<input type='number' class='stack nadine_t' value='0' onchange='fixLimitNum(this, 999)'><b>Stack"
 };
 const Hyunwoo = {
 	 Attack_Power: 40
@@ -415,22 +762,36 @@ const Hyunwoo = {
 			[0, -2, -5]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
-		return '';
+	,Base_Attack: (character, enemy) => {
+		if (character.weapon) {
+			const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+			const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+			const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+			return damage + ' ( ' +  min + ' - ' + max + ' ) ';
+		}
+		return '-';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			const damage = (baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * character.attack_speed * 100 | 0) / 100;
+			const life = ((baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1) * (character.life_steal / 100) | 0) * character.attack_speed * 100 | 0) / 100;
+			return damage + '<b> __h/s: </b>' + life;
+		}
+		return '-';
 	}
 	,DPS_Option: ''
 	,Q_Skill: (character, enemy) => {
-		return '';
+		if (character.weapon) {
+			return calcSkillDamage(character, enemy, 100 + character.Q_LEVEL.selectedIndex * 50, 0.4, 1);
+		}
+		return '-';
 	}
 	,Q_Option: ''
 	,W_Skill: (character, enemy) => {
 		return '';
 	}
-	,W_Option: ''
+	,W_Option: "<b>_use</b><input type='checkbox' class='hyunwoo_w' onchange='updateDisplay()'>"
 	,E_Skill: (character, enemy) => {
 		return '';
 	}
@@ -442,7 +803,7 @@ const Hyunwoo = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -473,10 +834,10 @@ const Hart = {
 			[0, -2, -5]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -500,7 +861,7 @@ const Hart = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -535,10 +896,10 @@ const Isol = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -562,7 +923,7 @@ const Isol = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -597,10 +958,10 @@ const Li_Dailin = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -624,7 +985,7 @@ const Li_Dailin = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -659,10 +1020,10 @@ const Yuki = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -686,7 +1047,7 @@ const Yuki = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -721,10 +1082,10 @@ const Hyejin = {
 			[-3, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -748,7 +1109,7 @@ const Hyejin = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -783,10 +1144,10 @@ const Xiukai = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -810,7 +1171,7 @@ const Xiukai = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -841,10 +1202,10 @@ const Chiara = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -868,7 +1229,7 @@ const Chiara = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -903,10 +1264,10 @@ const Sissela = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -930,7 +1291,7 @@ const Sissela = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -961,10 +1322,10 @@ const Adriana = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -988,7 +1349,7 @@ const Adriana = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -1019,10 +1380,10 @@ const Shoichi = {
 			[0, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -1046,7 +1407,7 @@ const Shoichi = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -1078,10 +1439,10 @@ const Silvia = {
 			[10, 0, 0]
 		]
 	}
-	,BASE_ATTACK: (character, enemy) => {
+	,Base_Attack: (character, enemy) => {
 		return '';
 	}
-	,BASE_ATTACK_Option: ''
+	,Base_Attack_Option: ''
 	,DPS: (character, enemy) => {
 		return '';
 	}
@@ -1105,7 +1466,7 @@ const Silvia = {
 	,D_Skill: (character, enemy) => {
 		return '';
 	}
-	,D_Option: ''
+	,D_Option: (character, enemy) => {return '';}
 	,T_Skill: (character, enemy) => {
 		return '';
 	}
@@ -1136,10 +1497,10 @@ const Emma = {
 		   [0, 0, 0]
 	   ]
    }
-   ,BASE_ATTACK: (character, enemy) => {
+   ,Base_Attack: (character, enemy) => {
 	   return '';
    }
-   ,BASE_ATTACK_Option: ''
+   ,Base_Attack_Option: ''
    ,DPS: (character, enemy) => {
 	   return '';
    }
@@ -1163,7 +1524,7 @@ const Emma = {
    ,D_Skill: (character, enemy) => {
 	   return '';
    }
-   ,D_Option: ''
+   ,D_Option: (character, enemy) => {return '';}
    ,T_Skill: (character, enemy) => {
 	   return '';
    }
