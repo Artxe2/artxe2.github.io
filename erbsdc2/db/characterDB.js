@@ -959,11 +959,13 @@ const Hart = {
 	,W_Skill: (character, enemy) => {
 		return '';
 	}
-	,W_Option:  "<b> __up</b><input type='checkbox' class='hart_w' onchange='hartUp(1, 0)'/><input type='checkbox' class='hart_ww' onchange='hartUp(1, 1)'/>"
+	,W_Option:  "<b> __up</b><input type='checkbox' class='hart_w' onchange='hartUp(1, 0)'/><input type='checkbox' class='hart_ww' onchange='hartUp(1, 1)'/>" + 
+		"<b> _use</b><input type='checkbox' class='hart_w_u' onchange='updateDisplay()'>"
 	,E_Skill: (character, enemy) => {
 		return '';
 	}
-	,E_Option:  "<b> __up</b><input type='checkbox' class='hart_e' onchange='hartUp(2, 0)'/><input type='checkbox' class='hart_ee' onchange='hartUp(2, 1)'/>"
+	,E_Option:  "<b> __up</b><input type='checkbox' class='hart_e' onchange='hartUp(2, 0)'/><input type='checkbox' class='hart_ee' onchange='hartUp(2, 1)'/>" + 
+		"_ <input type='number' class='stack hart_e_s' value='0' onchange='fixLimitNum(this, 3)'><b>Stack"
 	,R_Skill: (character, enemy) => {
 		if (character.weapon) {
 			const heal = 30 + character.R_LEVEL.selectedIndex * 10 + (character.max_hp * (0.02 + character.R_LEVEL.selectedIndex * 0.01) | 0);
