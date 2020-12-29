@@ -549,10 +549,11 @@ class Character {
             const magnus_t = this.DIV.querySelector('.magnus_t');
             const hammer_d = this.enemy.DIV.querySelector('.hammer_d');
             const hyunwoo_w = this.DIV.querySelector('.hyunwoo_w');
-            const hyunwoo_e = this.DIV.querySelector('.hyunwoo_e');
-            const defense_percent = 1 + (magnus_t ? magnus_t.value * (0.002 + this.T_LEVEL.selectedIndex * 0.0015) : 0)
-                + (hyunwoo_w && hyunwoo_w.checked ? 0.1 : 0);
-            const defense_minus = 1 - (hammer_d && hammer_d.checked && this.enemy.WEAPON_MASTERY.selectedIndex ? this.enemy.WEAPON_MASTERY.selectedIndex < 13 ? 0.25 : 0.4 : 0);
+            const hyunwoo_e = this.enemy.DIV.querySelector('.hyunwoo_e');
+            const defense_percent = 1 + (magnus_t ? magnus_t.value * (0.002 + this.T_LEVEL.selectedIndex * 0.0015) : 0) + 
+                (hyunwoo_w && hyunwoo_w.checked ? 0.1 : 0);
+            const defense_minus = 1 - (hammer_d && hammer_d.checked && this.enemy.WEAPON_MASTERY.selectedIndex > 5? this.enemy.WEAPON_MASTERY.selectedIndex < 13 ? 0.25 : 0.4 : 0) - 
+                (hyunwoo_e && hyunwoo_e.checked ? 0.07 + this.enemy.E_LEVEL.selectedIndex * 0.02 : 0);
             const defense_bonus = (hyunwoo_w && hyunwoo_w.checked ? 4 + this.W_LEVEL.selectedIndex * 14 : 0);
             this.defense = 
                 ((this.character.Defense + this.character.Defense_Growth * this.LEVEL.selectedIndex + 
@@ -668,6 +669,69 @@ class Character {
                 (!this.accessory ? 0 : this.accessory.Attack_Range)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 100 | 0) / 100;
             this.ATTACK_RANGE.innerText = this.attack_range;
+        } else {
+            this.attack_power = '';
+            this.ATTACK_POWER.innerText = '';
+
+            this.attack_speed = '';		
+            this.ATTACK_SPEED.innerText = '';
+
+            this.critical_strike_chance = '';
+            this.CRITICAL_STRIKE_CHANCE.innerText = this.critical_strike_chance;
+
+            this.critical_strike_damage = '';
+            this.CRITICAL_STRIKE_DAMAGE.innerText = '%';
+
+            this.life_steal = '';
+            this.LIFE_STEAL.innerText = '%';
+
+            this.extra_normal_attack_damage = '';
+            this.extra_normal_attack_damage_percent = '';
+            this.EXTRA_NORMAL_ATTACK_DAMAGE.innerText = '| %';
+                
+            this.skill_amplification = '';
+            this.skill_amplification_percent = '';
+            this.SKILL_AMPLIFICATION.innerText = '| %';
+
+            this.cooldown_reduction = '';
+            this.COOLDOWN_REDUCTION.innerText = this.cooldown_reduction + '%';
+
+            this.sp_regen = '';
+            this.sp_regen_percent = '';
+            this.SP_REGEN.innerText = '| %';
+
+            this.skill_damage_reduction = '';
+            this.skill_damage_reduction_percent = '';
+            this.SKILL_DAMAGE_REDUCTION.innerText = '| %';
+
+            this.defense = '';
+            this.DEFENSE.innerText = '';
+
+            this.max_hp = '';
+            this.MAX_HP.innerText = '';
+
+            this.max_sp = '';
+            this.MAX_SP.innerText = '';
+
+            this.hp_regen = '';
+            this.hp_regen_percent = '';
+            this.HP_REGEN.innerText = '| %';
+
+            this.normal_attack_damage_reduction = '';
+            this.normal_attack_damage_reduction_percent = '';
+            this.NORMAL_ATTACK_DAMAGE_REDUCTION.innerText = '| %';
+
+            this.movement_speed = '';
+            this.MOVEMENT_SPEED.innerText = '';
+
+            this.out_of_combat_movement_speed = '';
+            this.OUT_OF_COMBAT_MOVEMENT_SPEED.innerText = '';
+
+            this.vision_range = '';
+            this.VISION_RANGE.innerText = '';
+
+            this.attack_range = '';
+            this.ATTACK_RANGE.innerText = '';
         }
     }
 }
