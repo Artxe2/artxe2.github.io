@@ -609,14 +609,14 @@ class Character {
             this.MAX_SP.innerText = this.max_sp;
 
             this.hp_regen = 
-                (this.character.Health_Regen + this.character.Health_Regen_Growth * this.LEVEL.selectedIndex + 
+                ((this.character.Health_Regen + this.character.Health_Regen_Growth * this.LEVEL.selectedIndex + 
                 ((!this.weapon ? 0 : this.weapon.HP_Regen) + 
                 (!this.chest ? 0 : this.chest.HP_Regen) + 
                 (!this.head ? 0 : this.head.HP_Regen) + 
                 (!this.arm ? 0 : this.arm.HP_Regen) + 
                 (!this.leg ? 0 : this.leg.HP_Regen) + 
                 (!this.accessory ? 0 : this.accessory.HP_Regen)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 10 | 0) / 10;
             this.hp_regen_percent = 
                 (((!this.weapon ? 0 : this.weapon.HP_Regen_Percent) + 
                 (!this.chest ? 0 : this.chest.HP_Regen_Percent) + 
