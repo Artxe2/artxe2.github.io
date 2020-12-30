@@ -329,7 +329,7 @@ const Spear = [
 		,Life_Steal: 0
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
-		,Skill_Amplification: 37
+		,Skill_Amplification: 34
 		,Skill_Amplification_Percent: 0
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
@@ -348,7 +348,7 @@ const Spear = [
 		,Attack_Range: 0
 		,Base_Range: 2.15
 		,Atk_Speed: 0.445
-		,Title: "Fangtian Huaji\n\nAttack Power +88\nMovement Speed -0.1\nSkill Amplification +37\n Healing Reduction (Skills) -40%"
+		,Title: "Fangtian Huaji\n\nAttack Power +88\nMovement Speed -0.1\nSkill Amplification +34\n Healing Reduction (Skills) -40%"
 		,Rarity: "Epic"
 	}
 	,{

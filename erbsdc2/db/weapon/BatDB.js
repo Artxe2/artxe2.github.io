@@ -258,7 +258,7 @@ const Bat = [
 	,{
 		 Type: "Bat"
 		,Name: "Spy_Umbrella"
-		,Attack_Power: 60
+		,Attack_Power: 65
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -284,7 +284,7 @@ const Bat = [
 		,Attack_Range: 0
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
-		,Title: "Spy Umbrella\n\nAttack Power +60\nSkill Amplification +25"
+		,Title: "Spy Umbrella\n\nAttack Power +65\nSkill Amplification +25"
 		,Rarity: "Epic"
 	}
 	,{
@@ -313,10 +313,10 @@ const Bat = [
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
-		,Attack_Range: 0
+		,Attack_Range: 1
 		,Base_Range: 1.2
 		,Atk_Speed: 0.56
-		,Title: "Monkey King Bar\n\nAttack Power +150"
+		,Title: "Monkey King Bar\n\nAttack Power +150\nAttack Range +1"
 		,Rarity: "Legendary"
 	}
 ];

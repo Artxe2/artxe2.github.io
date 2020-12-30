@@ -440,11 +440,11 @@ const Head = [
 		,Normal_Attack_Damage_Reduction: 0
 		,Move_Speed: 0
 		,Out_of_Combat_Movement_Speed: 0
-		,Vision_Range: 2.5
+		,Vision_Range: 1.5
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Motorcycle Helmet\n\nAttack Power +10\nMax HP +300\nVision Range +2.5"
+		,Title: "Motorcycle Helmet\n\nAttack Power +10\nMax HP +300\nVision Range +1.5"
 		,Rarity: "Rare"
 	}
 	,{

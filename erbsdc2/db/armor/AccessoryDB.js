@@ -778,7 +778,7 @@ const Accessory = [
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 15
+		,Skill_Amplification_Percent: 18
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
@@ -796,7 +796,7 @@ const Accessory = [
 		,Attack_Range: 0
 		,Base_Range: 0
 		,Atk_Speed: 0
-		,Title: "Revenge of Goujian\n\nAttack Power +10\nSkill Amplification +15%"
+		,Title: "Revenge of Goujian\n\nAttack Power +10\nSkill Amplification +18%"
 		,Rarity: "Rare"
 	}
 	,{

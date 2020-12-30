@@ -392,9 +392,11 @@ class Character {
             const jackie_t_s = this.DIV.querySelector('.jackie_t_s');
             const axe_d_s = this.DIV.querySelector('.axe_d_s');
             const axe_d_u = this.DIV.querySelector('.axe_d_u');
+            var hart_w_u = this.DIV.querySelector('.hart_w_u');
             const attack_power_percent = 1 + (jackie_t_w ? (jackie_t_w.checked ? jackie_w[this.T_LEVEL.selectedIndex] : 0) + 
                 (jackie_t_s.checked ? jackie_s[this.T_LEVEL.selectedIndex] : 0) : 0) + 
-                (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.lost_hp').value * 0.001 : 0.02) : 0);
+                (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.lost_hp').value * 0.001 : 0.02) : 0) + 
+                (hart_w_u && hart_w_u.checked ? 0.12 + this.W_LEVEL.selectedIndex * 0.07 : 0);
             this.attack_power = 
                 (this.character.Attack_Power + 
                 this.character.Attack_Power_Growth * this.LEVEL.selectedIndex + 
@@ -410,9 +412,12 @@ class Character {
             this.base_attack_speed = this.character.Atk_Speed + (!this.weapon ? 0 : this.weapon.Atk_Speed);
 
             const nadine_e = this.DIV.querySelector('.nadine_e');
+            const lida_w = this.DIV.querySelector('.lida_w');
+            const attack_speed_bonus = (nadine_e ? (10 + this.E_LEVEL.selectedIndex * 5) * (nadine_e.checked ? 2 : 1) : 0) + 
+                (lida_w && lida_w.checked ? 10 + this.T_LEVEL.selectedIndex * 15 : 0);
             this.attack_speed = 
                 (((this.base_attack_speed) * 
-                (100 + (nadine_e ? (10 + this.E_LEVEL.selectedIndex * 5) * (nadine_e.checked ? 2 : 1) : 0) + 
+                (100 + attack_speed_bonus + 
                 (!this.weapon ? 0 : this.weapon_mastery_attack_speed + 
                 this.WEAPON_MASTERY.selectedIndex * this.weapon_mastery_attack_speed) + 
                 ((!this.weapon ? 0 : this.weapon.Attack_Speed) + 
@@ -471,6 +476,10 @@ class Character {
             this.EXTRA_NORMAL_ATTACK_DAMAGE.innerText = 
                 this.extra_normal_attack_damage + '| ' + this.extra_normal_attack_damage_percent + '%';
                 
+            const hart_e = this.DIV.querySelector('.hart_e');
+            const hart_ee = this.DIV.querySelector('.hart_ee');
+            const hart_e_s = this.DIV.querySelector('.hart_e_s');
+            this.skill_amplification_percent_bonus = (hart_e ? hart_e_s.value * (hart_ee.checked ? 25 : hart_e.checked ? 15 : 0) : 0);
             this.skill_amplification = 
                 (((!this.weapon ? 0 : this.weapon.Skill_Amplification) + 
                 (!this.chest ? 0 : this.chest.Skill_Amplification) + 
@@ -488,7 +497,8 @@ class Character {
                 (!this.arm ? 0 : this.arm.Skill_Amplification_Percent) + 
                 (!this.leg ? 0 : this.leg.Skill_Amplification_Percent) + 
                 (!this.accessory ? 0 : this.accessory.Skill_Amplification_Percent)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) + 
+                this.skill_amplification_percent_bonus | 0;
             this.SKILL_AMPLIFICATION.innerText = 
                 this.skill_amplification + '| ' + this.skill_amplification_percent + '%';
 
@@ -550,10 +560,17 @@ class Character {
             const hammer_d = this.enemy.DIV.querySelector('.hammer_d');
             const hyunwoo_w = this.DIV.querySelector('.hyunwoo_w');
             const hyunwoo_e = this.enemy.DIV.querySelector('.hyunwoo_e');
+            hart_w_u = this.enemy.DIV.querySelector('.hart_w_u');
+            const hart_w = this.enemy.DIV.querySelector('.hart_w');
+            const hart_ww = this.enemy.DIV.querySelector('.hart_ww');
+            const isol_t = this.enemy.DIV.querySelector('.isol_t');
+            const yuki_w = this.DIV.querySelector('.yuki_w');
             const defense_percent = 1 + (magnus_t ? magnus_t.value * (0.002 + this.T_LEVEL.selectedIndex * 0.0015) : 0) + 
-                (hyunwoo_w && hyunwoo_w.checked ? 0.1 : 0);
+                (hyunwoo_w && hyunwoo_w.checked ? 0.1 : 0) + (yuki_w && yuki_w.checked ? 0.5 : 0);
             const defense_minus = 1 - (hammer_d && hammer_d.checked && this.enemy.WEAPON_MASTERY.selectedIndex > 5? this.enemy.WEAPON_MASTERY.selectedIndex < 13 ? 0.25 : 0.4 : 0) - 
-                (hyunwoo_e && hyunwoo_e.checked ? 0.07 + this.enemy.E_LEVEL.selectedIndex * 0.02 : 0);
+                (hyunwoo_e && hyunwoo_e.checked ? 0.07 + this.enemy.E_LEVEL.selectedIndex * 0.02 : 0) - 
+                (hart_w_u && hart_w_u.checked ? hart_ww.checked ? 0.3 : hart_w.checked ? 0.15 : 0 : 0) - 
+                (isol_t && isol_t.checked ? 0.05 + this.enemy.T_LEVEL.selectedIndex * 0.1 : 0);
             const defense_bonus = (hyunwoo_w && hyunwoo_w.checked ? 4 + this.W_LEVEL.selectedIndex * 14 : 0);
             this.defense = 
                 ((this.character.Defense + this.character.Defense_Growth * this.LEVEL.selectedIndex + 

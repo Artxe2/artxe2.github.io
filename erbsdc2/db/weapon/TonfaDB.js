@@ -162,7 +162,7 @@ const Tonfa = [
 	,{
 		 Type: "Tonfa"
 		,Name: "Mai_Sok"
-		,Attack_Power: 45
+		,Attack_Power: 50
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0

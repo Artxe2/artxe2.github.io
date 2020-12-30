@@ -514,7 +514,7 @@ const Shuriken = [
 	,{
 		 Type: "Shuriken"
 		,Name: "Fuhma_Shuriken"
-		,Attack_Power: 44
+		,Attack_Power: 48
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -540,7 +540,7 @@ const Shuriken = [
 		,Attack_Range: 0
 		,Base_Range: 4.4
 		,Atk_Speed: 0.55
-		,Title: "Fuhma Shuriken\n\nAttack Power +44\nCooldown Reduction +15%\nExtra Normal Attack Damage +36"
+		,Title: "Fuhma Shuriken\n\nAttack Power +48\nCooldown Reduction +15%\nExtra Normal Attack Damage +36"
 		,Rarity: "Epic"
 	}
 	,{

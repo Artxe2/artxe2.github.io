@@ -343,19 +343,19 @@ const Axe = [
 		,HP_Regen: 0
 		,HP_Regen_Percent: 0
 		,Normal_Attack_Damage_Reduction: 0
-		,Move_Speed: 0.2
+		,Move_Speed: 0.15
 		,Out_of_Combat_Movement_Speed: 0
 		,Vision_Range: 0
 		,Attack_Range: 0
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
-		,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.2\nCooldown Reduction +10%"
+		,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.15\nCooldown Reduction +10%"
 		,Rarity: "Epic"
 	}
 	,{
 		 Type: "Axe"
 		,Name: "Harpe"
-		,Attack_Power: 115
+		,Attack_Power: 105
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -381,7 +381,7 @@ const Axe = [
 		,Attack_Range: 0.5
 		,Base_Range: 1.15
 		,Atk_Speed: 0.455
-		,Title: "Harpe\n\nAttack Power +115\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +38\nHealing Reduction (Skills) -40%"
+		,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +38\nHealing Reduction (Skills) -40%"
 		,Rarity: "Epic"
 	}
 ];

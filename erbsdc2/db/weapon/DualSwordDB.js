@@ -66,7 +66,7 @@ const DualSwords = [
 	,{
 		 Type: "DualSwords"
 		,Name: "Divine_Dual_Swords"
-		,Attack_Power: 41
+		,Attack_Power: 44
 		,Attack_Speed: 10
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -92,7 +92,7 @@ const DualSwords = [
 		,Attack_Range: 0
 		,Base_Range: 1.05
 		,Atk_Speed: 0.47
-		,Title: "Divine Dual Swords\n\nAttack Power +41\nAttack Speed +10%\nLife Steal +18%\nHealing Reduction (Skills) -40%"
+		,Title: "Divine Dual Swords\n\nAttack Power +44\nAttack Speed +10%\nLife Steal +18%\nHealing Reduction (Skills) -40%"
 		,Rarity: "Epic"
 	}
 	,{

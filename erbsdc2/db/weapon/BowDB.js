@@ -418,7 +418,7 @@ const Bow = [
 	,{
 		 Type: "Bow"
 		,Name: "Failnaught"
-		,Attack_Power: 90
+		,Attack_Power: 100
 		,Attack_Speed: 15
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -444,7 +444,7 @@ const Bow = [
 		,Attack_Range: 0
 		,Base_Range: 5.85
 		,Atk_Speed: 0.65
-		,Title: "Failnaught\n\nAttack Power +90\nAttack Speed +15%\nLife Steal +15%"
+		,Title: "Failnaught\n\nAttack Power +100\nAttack Speed +15%\nLife Steal +15%"
 		,Rarity: "Legendary"
 	}
 ];

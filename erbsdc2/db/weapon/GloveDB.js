@@ -354,7 +354,7 @@ const Glove = [
 	,{
 		 Type: "Glove"
 		,Name: "Divine_Fist"
-		,Attack_Power: 42
+		,Attack_Power: 46
 		,Attack_Speed: 0
 		,Critical_Strike_Chance: 0
 		,Critical_Strike_Damage: 0
@@ -380,7 +380,7 @@ const Glove = [
 		,Attack_Range: 0
 		,Base_Range: 0.85
 		,Atk_Speed: 0.63
-		,Title: "Divine Fist\n\nAttack Power +42\nMovement Speed -0.05\nExtra Normal Attack Damage +33"
+		,Title: "Divine Fist\n\nAttack Power +46\nMovement Speed -0.05\nExtra Normal Attack Damage +33"
 		,Rarity: "Epic"
 	}
 	,{

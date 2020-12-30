@@ -362,7 +362,7 @@ const Guitar = [
 		,Extra_Normal_Attack_Damage: 0
 		,Extra_Normal_Attack_Damage_Percent: 0
 		,Skill_Amplification: 0
-		,Skill_Amplification_Percent: 19
+		,Skill_Amplification_Percent: 21
 		,Cooldown_Reduction: 0
 		,SP_Regen: 0
 		,SP_Regen_Percent: 0
@@ -380,7 +380,7 @@ const Guitar = [
 		,Attack_Range: 0
 		,Base_Range: 3.85
 		,Atk_Speed: 0.43
-		,Title: "Purple Haze\n\nAttack Power +85\nSkill Amplification +19%"
+		,Title: "Purple Haze\n\nAttack Power +85\nSkill Amplification +21%"
 		,Rarity: "Epic"
 	}
 	,{
