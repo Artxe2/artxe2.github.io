@@ -695,7 +695,7 @@
 		if (month >= 11 || month <= 2) {
 			//겨울
 			return 2;
-		} else if (month >= 6 || month <= 8) {
+		} else if (month >= 6 && month <= 8) {
 			//여름
 			return 0;
 		} else {
@@ -817,6 +817,7 @@
 			use > 200 ? rateTable.주택용_저압.사용량_2 :
 			rateTable.주택용_저압.사용량_1;
 		const after = rateTable.주택용_저압.계시별;
+		console.log(season + ': ' + after.table[0][season] + ', ' + after.table[1][season]);
 		let be = before.base;
 		be += (be * (90 - (d < 60 ? 60 : d > 95 ? 95 : d) + 95 - (e < 60 ? 60 : e > 95 ? 95 : e)) * 0.002) | 0;
 		be += (before.table[0][season] + 0.3) * use | 0;
