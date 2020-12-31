@@ -8,9 +8,9 @@
 		document.querySelector('#month').addEventListener('change', (e) => {
 			const month = document.querySelector('#month');
 			if (month.value == '' || month.value < 1) {
-				month.value = 1;
-			} else if (month.value > 12) {
 				month.value = 12;
+			} else if (month.value > 12) {
+				month.value = 1;
 			}
 		});
 		document.querySelector('#base').addEventListener('change', (e) => {
@@ -53,6 +53,81 @@
 				leading.value = 100;
 			}
 		});
+		
+		
+		document.querySelector('#month2').addEventListener('change', (e) => {
+			const month = e.target;
+			if (month.value == '' || month.value < 1) {
+				month.value = 12;
+			} else if (month.value > 12) {
+				month.value = 1;
+			}
+			compare(
+					document.querySelector('#month2').value, 
+					document.querySelector('#use').value, 
+					document.querySelector('#coe').value, 
+					document.querySelector('#lagging2').value, 
+					document.querySelector('#leading2').value
+			);
+		});
+		document.querySelector('#use').addEventListener('change', (e) => {
+			const use = e.target;
+			if (use.value == '' || use.value < 0) {
+				use.value = 0;
+			}
+			compare(
+					document.querySelector('#month2').value, 
+					document.querySelector('#use').value, 
+					document.querySelector('#coe').value, 
+					document.querySelector('#lagging2').value, 
+					document.querySelector('#leading2').value
+			);
+		});
+		document.querySelector('#coe').addEventListener('change', (e) => {
+			const coe = e.target;
+			if (coe.value == '' || coe.value < 0) {
+				coe.value = 0;
+			} else if (coe.value > 100) {
+				coe.value = 100;
+			}
+			compare(
+					document.querySelector('#month2').value, 
+					document.querySelector('#use').value, 
+					document.querySelector('#coe').value, 
+					document.querySelector('#lagging2').value, 
+					document.querySelector('#leading2').value
+			);
+		});
+		document.querySelector('#lagging2').addEventListener('change', (e) => {
+			const lagging = e.target;
+			if (lagging.value == '' || lagging.value < 0) {
+				lagging.value = 0;
+			} else if (lagging.value > 100) {
+				lagging.value = 100;
+			}
+			compare(
+					document.querySelector('#month2').value, 
+					document.querySelector('#use').value, 
+					document.querySelector('#coe').value, 
+					document.querySelector('#lagging2').value, 
+					document.querySelector('#leading2').value
+			);
+		});
+		document.querySelector('#leading2').addEventListener('change', (e) => {
+			const leading = e.target;
+			if (leading.value == '' || leading.value < 0) {
+				leading.value = 0;
+			} else if (leading.value > 100) {
+				leading.value = 100;
+			}
+			compare(
+					document.querySelector('#month2').value, 
+					document.querySelector('#use').value, 
+					document.querySelector('#coe').value, 
+					document.querySelector('#lagging2').value, 
+					document.querySelector('#leading2').value
+			);
+		});
 	});
 
 	const rateTable = {
@@ -63,6 +138,13 @@
 			//  과부하[여름, 봄가을, 겨울],
 			// ]
 			주택용_저압 : {
+				계시별 : {
+					base: 4310,
+    				table: [
+    					[107, 94.1, 107],
+    					[188.8, 140.7, 188.8],
+    				]
+				},
 				사용량_1 : {
 					base: 910,
     				table: [
@@ -728,6 +810,27 @@
 		result += (result * 0.1 | 0) + (result / 10 * 0.037 | 0) * 10;
 		document.querySelector('#result').innerText = result;
 	}
+	function compare(month, use, coe, d, e) {
+		const season = getSeason(month);
+		const before = 
+			use > 400 ? rateTable.주택용_저압.사용량_3 : 
+			use > 200 ? rateTable.주택용_저압.사용량_2 :
+			rateTable.주택용_저압.사용량_1;
+		const after = rateTable.주택용_저압.계시별;
+		let be = before.base;
+		be += (be * (90 - (d < 60 ? 60 : d > 95 ? 95 : d) + 95 - (e < 60 ? 60 : e > 95 ? 95 : e)) * 0.002) | 0;
+		be += (before.table[0][season] + 0.3) * use | 0;
+		be += (be * 0.1 | 0) + (be / 10 * 0.037 | 0) * 10;
+		document.querySelector('#before').innerText = be;
+		let af = after.base;
+		af += (af * (90 - (d < 60 ? 60 : d > 95 ? 95 : d) + 95 - (e < 60 ? 60 : e > 95 ? 95 : e)) * 0.002) | 0;
+		af += ((after.table[0][season] + 5.3) * use * ((100 - coe) / 100)) | 0;
+		if (coe > 0) {			
+			af += ((after.table[1][season] + 5.3) * use * (coe / 100)) | 0;
+		}
+		af += (af * 0.1 | 0) + (af / 10 * 0.037 | 0) * 10;
+		document.querySelector('#after').innerText = af;
+	}
 </script>
 </head>
 <body>
@@ -801,6 +904,18 @@
     진상역률: <input id='leading' type = 'number' value='95'><br>
     <input type='button' onclick="calc(document.querySelector('#month').value, document.querySelector('#base').value, document.querySelector('#a').value, document.querySelector('#b').value, document.querySelector('#c').value, document.querySelector('#lagging').value, document.querySelector('#leading').value)" value='계산'>
     <span id='result'></span>
+    <br/>
+    <br/>
+    <div width='100%' style="border-bottom: solid black 2px">
+    </div>
+    월: <input id='month2' type = 'number' value='1'><br>
+    사용량: <input id='use' type = 'number' value='1'><br>
+    수요시간비율: <input id='coe' type = 'number' value='0'>%<br>
+    지상역률: <input id='lagging2' type = 'number' value='90'><br>
+    진상역률: <input id='leading2' type = 'number' value='95'><br>
+    <input type='button' onclick="compare(document.querySelector('#month2').value, document.querySelector('#use').value, document.querySelector('#coe').value, document.querySelector('#lagging2').value, document.querySelector('#leading2').value)" value='계산'>
+    <br/>누진제: <span id='before'></span>
+   <br/> 계시별: <span id='after'></span>
 </div>
 </body>
 </html>
