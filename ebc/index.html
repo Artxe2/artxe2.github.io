@@ -54,7 +54,13 @@
 			}
 		});
 		
-		
+		compare(
+				document.querySelector('#month2').value, 
+				document.querySelector('#use').value, 
+				document.querySelector('#coe').value, 
+				document.querySelector('#lagging2').value, 
+				document.querySelector('#leading2').value
+		);
 		document.querySelector('#month2').addEventListener('change', (e) => {
 			const month = e.target;
 			if (month.value == '' || month.value < 1) {
@@ -914,7 +920,7 @@
     수요시간비율: <input id='coe' type = 'number' value='0'>%<br>
     지상역률: <input id='lagging2' type = 'number' value='90'><br>
     진상역률: <input id='leading2' type = 'number' value='95'><br>
-    <input type='button' onclick="compare(document.querySelector('#month2').value, document.querySelector('#use').value, document.querySelector('#coe').value, document.querySelector('#lagging2').value, document.querySelector('#leading2').value)" value='계산'>
+    <br/>
     <br/>누진제: <span id='before'></span>
    <br/> 계시별: <span id='after'></span>
 </div>
