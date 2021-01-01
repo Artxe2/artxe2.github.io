@@ -155,15 +155,11 @@
 					base: 910,
     				table: [
     					[93.3, 93.3, 93.3],
-    					[93.3, 93.3, 93.3],
-    					[93.3, 93.3, 93.3],
     				]
 				},
 				사용량_2 : {
 					base: 1600,
     				table: [
-    					[187.9, 187.9, 187.9],
-    					[187.9, 187.9, 187.9],
     					[187.9, 187.9, 187.9],
     				]
 				},
@@ -171,15 +167,11 @@
 					base: 7300,
     				table: [
     					[280.6, 280.6, 280.6],
-    					[280.6, 280.6, 280.6],
-    					[280.6, 280.6, 280.6],
     				]
 				},
 				슈퍼유저 : {
 					base: 7300,
     				table: [
-    					[709.5, 280.6, 280.6],
-    					[709.5, 280.6, 280.6],
     					[709.5, 280.6, 280.6],
     				]
 				},
@@ -190,15 +182,11 @@
 					base: 730,
     				table: [
     					[78.3, 78.3, 78.3],
-    					[78.3, 78.3, 78.3],
-    					[78.3, 78.3, 78.3],
     				]
 				},
 				사용량_2 : {
 					base: 1260,
     				table: [
-    					[147.3, 147.3, 147.3],
-    					[147.3, 147.3, 147.3],
     					[147.3, 147.3, 147.3],
     				]
 				},
@@ -206,15 +194,11 @@
 					base: 6060,
     				table: [
     					[215.6, 215.6, 215.6],
-    					[215.6, 215.6, 215.6],
-    					[215.6, 215.6, 215.6],
     				]
 				},
 				슈퍼유저 : {
 					base: 6060,
     				table: [
-    					[574.6, 215.6, 215.6],
-    					[574.6, 215.6, 215.6],
     					[574.6, 215.6, 215.6],
     				]
 				},
@@ -696,6 +680,13 @@
 				},
 			}
 	}
+	
+	function isSeason(month) {
+		if (month >= 11 || month <= 2 || month >= 6 && month <= 8) {
+			return true
+		}
+		return false;
+	}
 
 	function getSeason(month) {
 		if (month >= 11 || month <= 2) {
@@ -748,15 +739,6 @@
 
 	function calc(month, base, a, b, c, d, e) {
 		const option =
-		document.querySelector('#select').value === '주택용_저압.사용량_1' ? rateTable.주택용_저압.사용량_1 :
-		document.querySelector('#select').value === '주택용_저압.사용량_2' ? rateTable.주택용_저압.사용량_2 :
-		document.querySelector('#select').value === '주택용_저압.사용량_3' ? rateTable.주택용_저압.사용량_3 :
-		document.querySelector('#select').value === '주택용_저압.슈퍼유저' ? rateTable.주택용_저압.사용량_4 :
-		document.querySelector('#select').value === '주택용_고압.사용량_1' ? rateTable.주택용_고압.사용량_1 :
-		document.querySelector('#select').value === '주택용_고압.사용량_2' ? rateTable.주택용_고압.사용량_2 :
-		document.querySelector('#select').value === '주택용_고압.사용량_3' ? rateTable.주택용_고압.사용량_3 :
-		document.querySelector('#select').value === '주택용_고압.슈퍼유저' ? rateTable.주택용_고압.사용량_4 :
-
 		document.querySelector('#select').value === '일반용_갑_I.저압전력' ? rateTable.일반용_갑_I.저압전력 :
         document.querySelector('#select').value === '일반용_갑_I.고압A_선택_I' ? rateTable.일반용_갑_I.고압A_선택_I :
         document.querySelector('#select').value === '일반용_갑_I.고압A_선택_II' ? rateTable.일반용_갑_I.고압A_선택_II :
@@ -813,45 +795,47 @@
 		result += (option.table[0][season] * a +
 			option.table[1][season] * b +
 			option.table[2][season] * c) | 0;
-		result += (result * 0.1 | 0) + (result / 10 * 0.037 | 0) * 10;
-		document.querySelector('#result').innerText = result;
+		result += Math.round(result * 0.1) + (result / 10 * 0.037 | 0) * 10;
+		document.querySelector('#result').innerText = (result / 10 | 0) * 10;
 	}
 	function compare(month, use, coe, d, e) {
 		const season = getSeason(month);
-		const before = 
-			use > 400 ? rateTable.주택용_저압.사용량_3 : 
-			use > 200 ? rateTable.주택용_저압.사용량_2 :
-			rateTable.주택용_저압.사용량_1;
-		const after = rateTable.주택용_저압.계시별;
-		console.log(season + ': ' + after.table[0][season] + ', ' + after.table[1][season]);
-		let be = before.base;
+			
+		let be = 
+			season === 0 &&use > 1000 ? rateTable.주택용_저압.슈퍼유저.base : 
+			use > 400 ? rateTable.주택용_저압.사용량_3.base : 
+			use > 200 ? rateTable.주택용_저압.사용량_2.base :
+			rateTable.주택용_저압.사용량_1.base;
 		be += (be * (90 - (d < 60 ? 60 : d > 95 ? 95 : d) + 95 - (e < 60 ? 60 : e > 95 ? 95 : e)) * 0.002) | 0;
-		be += (before.table[0][season] + 0.3) * use | 0;
-		be += (be * 0.1 | 0) + (be / 10 * 0.037 | 0) * 10;
-		document.querySelector('#before').innerText = be;
+		const used = [
+			use > 200 ? 200 : parseInt(use),
+			use > 400 ? 200 : (use > 200 ? use - 200 : 0),
+			season === 0 && use > 1000 ? 600 : (use > 400 ? use - 400 : 0),
+			season === 0 && use > 1000 ? use - 1000 : 0,
+		];
+		console.log(used);
+		be += used[0] * rateTable.주택용_저압.사용량_1.table[0][season] + 
+			used[1] * rateTable.주택용_저압.사용량_2.table[0][season] + 
+			used[2] * rateTable.주택용_저압.사용량_3.table[0][season] + 
+			used[3] * rateTable.주택용_저압.슈퍼유저.table[0][season] | 0;
+		be += Math.round(be * 0.1) + (be / 10 * 0.037 | 0) * 10;
+		document.querySelector('#before').innerText = (be / 10 | 0) * 10;
+		
+		const after = rateTable.주택용_저압.계시별;
 		let af = after.base;
 		af += (af * (90 - (d < 60 ? 60 : d > 95 ? 95 : d) + 95 - (e < 60 ? 60 : e > 95 ? 95 : e)) * 0.002) | 0;
 		af += ((after.table[0][season] + 5.3) * use * ((100 - coe) / 100)) | 0;
 		if (coe > 0) {			
 			af += ((after.table[1][season] + 5.3) * use * (coe / 100)) | 0;
 		}
-		af += (af * 0.1 | 0) + (af / 10 * 0.037 | 0) * 10;
-		document.querySelector('#after').innerText = af;
+		af += Math.round(af * 0.1) + (af / 10 * 0.037 | 0) * 10;
+		document.querySelector('#after').innerText = (af/ 10 | 0) * 10;
 	}
 </script>
 </head>
 <body>
 <div>
 	<select id='select'>
-		<option>주택용_저압.사용량_1</option>
-		<option>주택용_저압.사용량_2</option>
-		<option>주택용_저압.사용량_3</option>
-		<option>주택용_저압.슈퍼유저</option>
-		<option>주택용_고압.사용량_1</option>
-		<option>주택용_고압.사용량_2</option>
-		<option>주택용_고압.사용량_3</option>
-		<option>주택용_고압.슈퍼유저</option>
-
         <option>일반용_갑_I.저압전력</option>
         <option>일반용_갑_I.고압A_선택_I</option>
         <option>일반용_갑_I.고압A_선택_II</option>

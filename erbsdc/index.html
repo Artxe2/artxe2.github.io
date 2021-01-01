@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
-	<meta charset="UTF-8">
-	<title>Eternal Return: Black Survival Damage Calculator 0.22.0</title>
-	<style type="text/css">
-		#mastery select, .stat, #mastery2 select, #d_qm_setting select {
-			float: right;
-		}
-		#mastery p, #mastery2 p, #d_qm_setting p {
-			text-align: left;
-			margin: 5px;
-		}
-		.label {
-			margin: 5px;
-		}
+    <meta charset="UTF-8">
+    <title>Eternal Return: Black Survival Damage Calculator 0.22.5</title>
+    <style type="text/css">
+        #d_qm_setting select {
+            float: right;
+        }
+        #d_qm_setting p {
+            text-align: left;
+            margin: 5px;
+        }
+    
+        @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+        body {
+              font-family: "Noto Sans KR", sans-serif;
+        }
+        .subject {
+            white-space: nowrap;
+        }
+        table {
+            display: inline-table;
+        }
+        table img {
+            display: block;
+        }
+        .margin {
+            height: 238px;
+        }
+        .damage_display {
+            display: inline-block;
+        }
+        .character_image {
+            width: 150px;
+            height: 234px; 
+        }
+        .equip_image {
+            width: 80px;
+            height: 48px;
+        }
+        .mastery select, .stat {
+            float: right;
+        }
+        .mastery p {
+            text-align: left;
+            margin: 5px;
+        }
+        .label {
+            margin: 5px;
+        }
+        .item_list {
+            background-color: #CCCCCC;
+            position: absolute;
+            display: none;
+            white-space: nowrap;
+        }
         .Common {
             background-color: #999999;
         }
@@ -32,69 +73,90 @@
         .Legendary {
             background-color: #eabf3f;
         }
-		.closeButton {
-			float: right; 
-			cursor: pointer
-		}
-	</style>
-	<script type="text/javascript" src='./db/armor/accessoryDB.js'></script>
-	<script type="text/javascript" src='./db/armor/armDB.js'></script>
-	<script type="text/javascript" src='./db/armor/chestDB.js'></script>
-	<script type="text/javascript" src='./db/armor/headDB.js'></script>
-	<script type="text/javascript" src='./db/armor/legDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/assaultRifleDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/axeDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/batDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/bowDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/crossbowDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/daggerDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/dualSwordDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/gloveDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/guitarDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/hammerDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/nunchakuDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/pistolDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/rapierDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/shurikenDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/sniperRifleDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/spearDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/throwsDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/tonfaDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/twoHandedSwordDB.js'></script>
-	<script type="text/javascript" src='./db/weapon/whipDB.js'></script>
-	<script type="text/javascript" src='./db/characterDB.js'></script>
-	<script type="text/javascript" src='./js/statVariable.js'></script>
-	<script type="text/javascript" src='./js/selectCharacter.js'></script>
-	<script type="text/javascript" src='./js/selectWeapon.js'></script>
-	<script type="text/javascript" src='./js/changeWeapon.js'></script>
-	<script type="text/javascript" src='./js/selectArmors.js'></script>
-	<script type="text/javascript" src='./js/changeArmors.js'></script>
-	<script type="text/javascript" src='./js/updateDisplay.js'></script>
-	<script type="text/javascript" src='./js/updateDamage.js'></script>
-	<script type="text/javascript" src='./js/quickMastery.js'></script>
-	<script type="text/javascript" src='./class/Character.js'></script>
-	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', (e) => {
-			const chara = new Character(document.querySelector('#character'), document.querySelector('#level'), document.querySelector('#weapon_mastery'),
-					document.querySelector('#hunt_mastery'), document.querySelector('#craft_mastery'), document.querySelector('#search_mastery'), document.querySelector('#move_mastery'),
-					document.querySelector('#health_mastery'), document.querySelector('#defense_mastery'), document.querySelector('#meditation_mastery'), document.querySelector('#trap_mastery'),
-					document.querySelector('#q_level'), document.querySelector('#w_level'), document.querySelector('#e_level'), document.querySelector('#r_level'), document.querySelector('#t_level'));
-			chara.setCharacter(Jackie);
-			console.log(chara.character);
-		});
-	</script>
+        .close_button {
+            float: right; 
+            cursor: pointer;
+        }
+        .stack {
+            width: 40px;
+        }
+        .damage {
+            color: red;
+            font-size: 18px;
+        }
+        .heal {
+            color: green;
+            font-size: 16px;
+        }
+        .shield {
+            color: dodgerblue;
+            font-size: 16px;
+        }
+    </style>
+    <script type="text/javascript" src='./db/armor/AccessoryDB.js'></script>
+    <script type="text/javascript" src='./db/armor/ArmDB.js'></script>
+    <script type="text/javascript" src='./db/armor/ChestDB.js'></script>
+    <script type="text/javascript" src='./db/armor/HeadDB.js'></script>
+    <script type="text/javascript" src='./db/armor/LegDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/AssaultRifleDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/AxeDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/BatDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/BowDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/CrossbowDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/DaggerDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/DualSwordDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/GloveDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/GuitarDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/HammerDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/NunchakuDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/PistolDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/RapierDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/ShurikenDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/SniperRifleDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/SpearDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/ThrowsDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/TonfaDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/TwoHandedSwordDB.js'></script>
+    <script type="text/javascript" src='./db/weapon/WhipDB.js'></script>
+    <script type="text/javascript" src='./db/WeaponInfo.js'></script>
+    <script type="text/javascript" src='./db/character/JackieDB.js'></script>
+    <script type="text/javascript" src='./db/character/AyaDB.js'></script>
+    <script type="text/javascript" src='./db/character/FioraDB.js'></script>
+    <script type="text/javascript" src='./db/character/MagnusDB.js'></script>
+    <script type="text/javascript" src='./db/character/ZahirDB.js'></script>
+    <script type="text/javascript" src='./db/character/NadineDB.js'></script>
+    <script type="text/javascript" src='./db/character/HyunwooDB.js'></script>
+    <script type="text/javascript" src='./db/character/HartDB.js'></script>
+    <script type="text/javascript" src='./db/character/IsolDB.js'></script>
+    <script type="text/javascript" src='./db/character/Li_DailinDB.js'></script>
+    <script type="text/javascript" src='./db/character/YukiDB.js'></script>
+    <script type="text/javascript" src='./db/character/HyejinDB.js'></script>
+    <script type="text/javascript" src='./db/character/XiukaiDB.js'></script>
+    <script type="text/javascript" src='./db/character/ChiaraDB.js'></script>
+    <script type="text/javascript" src='./db/character/SisselaDB.js'></script>
+    <script type="text/javascript" src='./db/character/AdrianaDB.js'></script>
+    <script type="text/javascript" src='./db/character/ShoichiDB.js'></script>
+    <script type="text/javascript" src='./db/character/SilviaDB.js'></script>
+    <script type="text/javascript" src='./db/character/EmmaDB.js'></script>
+    <script type="text/javascript" src='./db/FoodDB.js'></script>
+    <script type="text/javascript" src='./class/Character.js'></script>
+    <script type="text/javascript" src='./js/scripts.js'></script>
+
+    <script type="text/javascript" src = './js/quickMastery.js'></script>
 </head>
 <body>
-	<h3>
-        Eternal Return: Black Survival Damage Calculator 0.22.0&nbsp;&nbsp;&nbsp;&nbsp;
+    <h3 class='subject'>
+        Eternal Return: Black Survival Damage Calculator 0.22.5&nbsp;&nbsp;&nbsp;&nbsp;
         <button onclick='quickMastery()'>quick mastery</button>&nbsp;
         <button onclick='settingQm()'>setting</button>
     </h3>
-    <div id='d_qm_setting' style='width:160px; background-color: #CCCCCC; position: absolute; display: none; margin-left: 720px; margin-top: -40px'>
-        <span class='closeButton'onclick='closeQmSetting()'>(X)</span><br>
+
+
+    <div id = 'd_qm_setting' style = 'width:160px; background-color: #CCCCCC; position: absolute; display: none; margin-left: 720px; margin-top: -40px'>
+        <span onclick = 'closeQmSetting()' style = 'float: right; cursor: pointer'>(X)</span><br>
         <p>
             Character
-            <select id='c_level'>
+            <select id = 'c_level'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -120,7 +182,7 @@
         <br>
         <p>
             Weapon
-            <select id='c_weapon_mastery'>
+            <select id = 'c_weapon_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -146,7 +208,7 @@
         <br>
         <p>
             Hunt
-            <select id='c_hunt_mastery'>
+            <select id = 'c_hunt_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -171,7 +233,7 @@
         </p>
         <p>
             Craft
-            <select id='c_craft_mastery'>
+            <select id = 'c_craft_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -196,7 +258,7 @@
         </p>
         <p>
             Search
-            <select id='c_search_mastery'>
+            <select id = 'c_search_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -221,7 +283,7 @@
         </p>
         <p>
             Move
-            <select id='c_move_mastery'>
+            <select id = 'c_move_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -247,7 +309,7 @@
         <br>
         <p>
             Health
-            <select id='c_health_mastery'>
+            <select id = 'c_health_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -272,7 +334,7 @@
         </p>
         <p>
             Defense
-            <select id='c_defense_mastery'>
+            <select id = 'c_defense_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -297,7 +359,7 @@
         </p>
         <p>
             Meditation
-            <select id='c_meditation_mastery'>
+            <select id = 'c_meditation_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -322,7 +384,7 @@
         </p>
         <p>
             Trap
-            <select id='c_trap_mastery'>
+            <select id = 'c_trap_mastery'>
                 <option>Lv 01</option>
                 <option>Lv 02</option>
                 <option>Lv 03</option>
@@ -346,782 +408,801 @@
             </select>
         </p>
     </div>
-	<div id='d_itemList' style='background-color: #CCCCCC; position: absolute; display: none'>
-		<span onclick='closeItemList()' style='float: right; cursor: pointer'>(X)</span><br>
-		<span id='s_itemList'></span>
-	</div>
-	<div>
-		<table border='1' style='display: inline-table;'>
-			<tr>
-				<td rowspan='4'>
-					<img id='i_character' style='width: 160px; height: 320px; float: left'>
-				</td>
-				<td id='weapon' onclick='selectWeapon()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='chest' onclick='selectChest()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='head' onclick='selectHead()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='arm' onclick='selectArm()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='leg' onclick='selectLeg()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='accessory' onclick='selectAccessory()' style='width: 80px; height: 48px;'>
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2' rowspan='3'>
-					<div id='mastery'>
-						<p>
-							Weapon
-							<select id='weapon_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<br>
-						<p>
-							Hunt
-							<select id='hunt_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Craft
-							<select id='craft_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Search
-							<select id='search_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Move
-							<select id='move_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<br>
-						<p>
-							Health
-							<select id='health_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Defense
-							<select id='defense_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Meditation
-							<select id='meditation_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Trap
-							<select id='trap_mastery'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-					</div>
-				</td>
-				<td colspan='2' rowspan='3' style='vertical-align: top'>
-					<br>
-					<span class=label title='Attack Power'> 깡공: <span class='stat' id='attack_power'></span></span><br>
-					<span class=label title='Attack Speed'> 공속: <span class='stat' id='attack_speed'>%</span></span><br>
-					<span class=label title='Critical Strike Chance'> 치확: <span class='stat' id='critical_strike_chance'>%</span></span><br>
-					<span class=label title='Critical Strike Damage'> 치뎀: <span class='stat' id='critical_strike_damage'>%</span></span><br>
-					<span class=label title='Life Steal'> 흡혈: <span class='stat' id='life_steal'>%</span></span><br>
-					<span class=label title='Extra Normal Attack Damage'> 기추: <span class='stat' id='extra_normal_attack_damage'>| %</span></span><br>
-					<span class=label title='Skill Amplification'> 스증: <span class='stat' id='skill_amplification'>| %</span></span><br>
-					<span class=label title='Cooldown Reduction'> 쿨감: <span class='stat' id='cooldown_reduction'>%</span></span><br>
-					<span class=label title='SP Regen'> 마젠: <span class='stat' id='sp_regen'>| %</span></span><br>
-					<span class=label title='Skill Damage Reduction'> 스감: <span class='stat' id='skill_damage_reduction'>| %</span></span><br>
-				</td>
-				<td colspan='2' rowspan='3' style='vertical-align: top'>
-					<br>
-					<span class=label title='Defense'> 방어: <span class='stat' id='defense'></span></span><br>
-					<span class=label title='Max HP'> 체력: <span class='stat' id='max_hp'></span></span><br>
-					<span class=label title='Max SP'> 마나: <span class='stat' id='max_sp'></span></span><br>
-					<span class=label title='HP Regen'> 체젠: <span class='stat' id='hp_regen'>| %</span></span><br>
-					<span class=label title='Normal Attack Damage Reduction'> 기감 : <span class='stat' id='normal_attack_damage_reduction'>| %</span></span><br>
-					<span class=label title='Movement Speed'> 이속 : <span class='stat' id='movement_speed'></span></span><br>
-					<span class=label title='Out of Combat Movement Speed'> 비속 : <span class='stat' id='out_of_combat_movement_speed'></span></span><br>
-					<span class=label title='Vision Range'> 시야 : <span class='stat' id='vision_range'></span></span><br>
-					<span class=label title='Attack Range'> 사거리 : <span class='stat' id='attack_range'></span></span><br>
-				</td>
-			</tr>
-			<tr></tr>
-			<tr></tr>
-			<tr>
-				<td>
-					<select id='character' style='width: 150px;'>
-						<option selected disabled hidden='true'>select character</option>
-						<option>Jackie</option>
-						<option>Aya</option>
-						<option>Fiora</option>
-						<option>Magnus</option>
-						<option>Zahir</option>
-						<option>Nadine</option>
-						<option>Hyunwoo</option>
-						<option>Hart</option>
-						<option>Isol</option>
-						<option>Li Dailin</option>
-						<option>Yuki</option>
-						<option>Hyejin</option>
-						<option>Xiukai</option>
-						<option>Chiara</option>
-						<option>Sissela</option>
-						<option>Adriana</option>
-						<option>Shoichi</option>
-						<option>Silvia</option>
-						<option>Emma</option>
-					</select>
-				</td>
-				<td>
-					<select id='level' style='width: 80px;'>
-						<option>Lv 01</option>
-						<option>Lv 02</option>
-						<option>Lv 03</option>
-						<option>Lv 04</option>
-						<option>Lv 05</option>
-						<option>Lv 06</option>
-						<option>Lv 07</option>
-						<option>Lv 08</option>
-						<option>Lv 09</option>
-						<option>Lv 10</option>
-						<option>Lv 11</option>
-						<option>Lv 12</option>
-						<option>Lv 13</option>
-						<option>Lv 14</option>
-						<option>Lv 15</option>
-						<option>Lv 16</option>
-						<option>Lv 17</option>
-						<option>Lv 18</option>
-						<option>Lv 19</option>
-						<option>Lv 20</option>
-					</select>
-				</td>
-				<td>
-					<select id='q_level' style='width: 80px;'>
-						<option>Q lv 1</option>
-						<option>Q lv 2</option>
-						<option>Q lv 3</option>
-						<option>Q lv 4</option>
-						<option>Q lv 5</option>
-					</select>
-				</td>
-				<td>
-					<select id='w_level' style='width: 80px;'>
-						<option>W lv 1</option>
-						<option>W lv 2</option>
-						<option>W lv 3</option>
-						<option>W lv 4</option>
-						<option>W lv 5</option>
-					</select>
-				</td>
-				<td>
-					<select id='e_level' style='width: 80px;'>
-						<option>E lv 1</option>
-						<option>E lv 2</option>
-						<option>E lv 3</option>
-						<option>E lv 4</option>
-						<option>E lv 5</option>
-					</select>
-				</td>
-				<td>
-					<select id='r_level' style='width: 80px;'>
-						<option>R lv 1</option>
-						<option>R lv 2</option>
-						<option>R lv 3</option>
-					</select>
-				</td>
-				<td>
-					<select id='t_level' style='width: 80px;'>
-						<option>T lv 1</option>
-						<option>T lv 2</option>
-						<option>T lv 3</option>
-					</select>
-				</td>
-			</tr>
-		</table>
-		<div style='display: inline-block;'>
-			<h4>← Character 1</h4>
-			<b>A : </b><span id='base_attack_damage'></span><br>
-			<b>DPS : </b><span id='dps'></span><br>
-			<b>LifeSteal / s : </b><span id='lsps'></span><br>
-			<b>Q : </b><span id='q_damage'></span><br>
-			<b>W : </b><span id='w_damage'></span><br>
-			<b>E : </b><span id='e_damage'></span><br>
-			<b>R : </b><span id='r_damage'></span><br>
-			<b>D : </b><span id='d_damage'></span><br>
-			<b>T : </b><span id='t_damage'></span><br>
-		</div>
-	</div>
-	<h4> - - - - - - - - - - VS</h4>
-	<div id='d_itemList2' style='background-color: #CCCCCC; position: absolute; display: none'>
-		<span onclick='closeItemList2()' style='float: right; cursor: pointer'>(X)</span><br>
-		<span id='s_itemList2'></span>
-	</div>
-	<div>
-		<table border='1' style='display: inline-table;'>
-			<tr>
-				<td rowspan='4'>
-					<img id='i_character2' style='width: 160px; height: 320px; float: left'>
-				</td>
-				<td id='weapon2' onclick='selectWeapon2()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='chest2' onclick='selectChest2()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='head2' onclick='selectHead2()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='arm2' onclick='selectArm2()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='leg2' onclick='selectLeg2()' style='width: 80px; height: 48px;'>
-				</td>
-				<td id='accessory2' onclick='selectAccessory2()' style='width: 80px; height: 48px;'>
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2' rowspan='3'>
-					<div id='mastery2'>
-						<p>
-							Weapon
-							<select id='weapon_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<br>
-						<p>
-							Hunt
-							<select id='hunt_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Craft
-							<select id='craft_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Search
-							<select id='search_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Move
-							<select id='move_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<br>
-						<p>
-							Health
-							<select id='health_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Defense
-							<select id='defense_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Meditation
-							<select id='meditation_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-						<p>
-							Trap
-							<select id='trap_mastery2'>
-								<option>Lv 01</option>
-								<option>Lv 02</option>
-								<option>Lv 03</option>
-								<option>Lv 04</option>
-								<option>Lv 05</option>
-								<option>Lv 06</option>
-								<option>Lv 07</option>
-								<option>Lv 08</option>
-								<option>Lv 09</option>
-								<option>Lv 10</option>
-								<option>Lv 11</option>
-								<option>Lv 12</option>
-								<option>Lv 13</option>
-								<option>Lv 14</option>
-								<option>Lv 15</option>
-								<option>Lv 16</option>
-								<option>Lv 17</option>
-								<option>Lv 18</option>
-								<option>Lv 19</option>
-								<option>Lv 20</option>
-							</select>
-						</p>
-					</div>
-				</td>
-				<td colspan='2' rowspan='3' style='vertical-align: top'>
-					<br>
-					<span class=label title='Attack Power'> 깡공: <span class='stat' id='attack_power2'></span></span><br>
-					<span class=label title='Attack Speed'> 공속: <span class='stat' id='attack_speed2'>%</span></span><br>
-					<span class=label title='Critical Strike Chance'> 치확: <span class='stat' id='critical_strike_chance2'>%</span></span><br>
-					<span class=label title='Critical Strike Damage'> 치뎀: <span class='stat' id='critical_strike_damage2'>%</span></span><br>
-					<span class=label title='Life Steal'> 흡혈: <span class='stat' id='life_steal2'>%</span></span><br>
-					<span class=label title='Extra Normal Attack Damage'> 기추: <span class='stat' id='extra_normal_attack_damage2'>| %</span></span><br>
-					<span class=label title='Skill Amplification'> 스증: <span class='stat' id='skill_amplification2'>| %</span></span><br>
-					<span class=label title='Cooldown Reduction'> 쿨감: <span class='stat' id='cooldown_reduction2'>%</span></span><br>
-					<span class=label title='SP Regen'> 마젠: <span class='stat' id='sp_regen2'>| %</span></span><br>
-					<span class=label title='Skill Damage Reduction'> 스감: <span class='stat' id='skill_damage_reduction2'>| %</span></span><br>
-				</td>
-				<td colspan='2' rowspan='3' style='vertical-align: top'>
-					<br>
-					<span class=label title='Defense'> 방어: <span class='stat' id='defense2'></span></span><br>
-					<span class=label title='Max HP'> 체력: <span class='stat' id='max_hp2'></span></span><br>
-					<span class=label title='Max SP'> 마나: <span class='stat' id='max_sp2'></span></span><br>
-					<span class=label title='HP Regen'> 체젠: <span class='stat' id='hp_regen2'>| %</span></span><br>
-					<span class=label title='Normal Attack Damage Reduction'> 기감 : <span class='stat' id='normal_attack_damage_reduction2'>| %</span></span><br>
-					<span class=label title='Movement Speed'> 이속 : <span class='stat' id='movement_speed2'></span></span><br>
-					<span class=label title='Out of Combat Movement Speed'> 비속 : <span class='stat' id='out_of_combat_movement_speed2'></span></span><br>
-					<span class=label title='Vision Range'> 시야 : <span class='stat' id='vision_range2'></span></span><br>
-					<span class=label title='Attack Range'> 사거리 : <span class='stat' id='attack_range2'></span></span><br>
-				</td>
-			</tr>
-			<tr></tr>
-			<tr></tr>
-			<tr>
-				<td>
-					<select id='character2' style='width: 150px;'>
-						<option selected disabled hidden='true'>select character</option>
-						<option>Jackie</option>
-						<option>Aya</option>
-						<option>Fiora</option>
-						<option>Magnus</option>
-						<option>Zahir</option>
-						<option>Nadine</option>
-						<option>Hyunwoo</option>
-						<option>Hart</option>
-						<option>Isol</option>
-						<option>Li Dailin</option>
-						<option>Yuki</option>
-						<option>Hyejin</option>
-						<option>Xiukai</option>
-						<option>Chiara</option>
-						<option>Sissela</option>
-						<option>Adriana</option>
-						<option>Shoichi</option>
-						<option>Silvia</option>
-						<option>Emma</option>
-					</select>
-				</td>
-				<td>
-					<select id='level2' style='width: 80px;'>
-						<option>Lv 01</option>
-						<option>Lv 02</option>
-						<option>Lv 03</option>
-						<option>Lv 04</option>
-						<option>Lv 05</option>
-						<option>Lv 06</option>
-						<option>Lv 07</option>
-						<option>Lv 08</option>
-						<option>Lv 09</option>
-						<option>Lv 10</option>
-						<option>Lv 11</option>
-						<option>Lv 12</option>
-						<option>Lv 13</option>
-						<option>Lv 14</option>
-						<option>Lv 15</option>
-						<option>Lv 16</option>
-						<option>Lv 17</option>
-						<option>Lv 18</option>
-						<option>Lv 19</option>
-						<option>Lv 20</option>
-					</select>
-				</td>
-				<td>
-					<select id='q_level2' style='width: 80px;'>
-						<option>Q lv 1</option>
-						<option>Q lv 2</option>
-						<option>Q lv 3</option>
-						<option>Q lv 4</option>
-						<option>Q lv 5</option>
-					</select>
-				</td>
-				<td>
-					<select id='w_level2' style='width: 80px;'>
-						<option>W lv 1</option>
-						<option>W lv 2</option>
-						<option>W lv 3</option>
-						<option>W lv 4</option>
-						<option>W lv 5</option>
-					</select>
-				</td>
-				<td>
-					<select id='e_level2' style='width: 80px;'>
-						<option>E lv 1</option>
-						<option>E lv 2</option>
-						<option>E lv 3</option>
-						<option>E lv 4</option>
-						<option>E lv 5</option>
-					</select>
-				</td>
-				<td>
-					<select id='r_level2' style='width: 80px;'>
-						<option>R lv 1</option>
-						<option>R lv 2</option>
-						<option>R lv 3</option>
-					</select>
-				</td>
-				<td>
-					<select id='t_level2' style='width: 80px;'>
-						<option>T lv 1</option>
-						<option>T lv 2</option>
-						<option>T lv 3</option>
-					</select>
-				</td>
-			</tr>
-		</table>
-		<div style='display: inline-block;'>
-			<h4>← Character 2</h4>
-			<b>A : </b><span id='base_attack_damage2'></span><br>
-			<b>DPS : </b><span id='dps2'></span><br>
-			<b>LifeSteal / s : </b><span id='lsps2'></span><br>
-			<b>Q : </b><span id='q_damage2'></span><br>
-			<b>W : </b><span id='w_damage2'></span><br>
-			<b>E : </b><span id='e_damage2'></span><br>
-			<b>R : </b><span id='r_damage2'></span><br>
-			<b>D : </b><span id='d_damage2'></span><br>
-			<b>T : </b><span id='t_damage2'></span><br>
-		</div>
-	</div>
+    
+    
+    <div id='character0'>
+        <div class='item_list'>
+            <span class='close_button'><b>(X)</b></span><br>
+            <span class='item_view'></span>
+        </div>
+        <table  border='1'>
+            <tr>
+                <td rowspan='4' class='i_character'>
+                    <div class='margin'></div>
+                </td>
+                <td class='weapon equip_image'>
+                </td>
+                <td class='chest equip_image'>
+                </td>
+                <td class='head equip_image'>
+                </td>
+                <td class='arm equip_image'>
+                </td>
+                <td class='leg equip_image'>
+                </td>
+                <td class='accessory equip_image'>
+                </td>
+                <td class='food equip_image'>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2' rowspan='3'>
+                    <div class='mastery'>
+                        <p>
+                            Weapon
+                            <select class='weapon_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option> 
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <br>
+                        <p>
+                            Hunt
+                            <select class='hunt_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Craft
+                            <select class='craft_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Search
+                            <select class='search_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Move
+                            <select class='move_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <br>
+                        <p>
+                            Health
+                            <select class='health_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Defense
+                            <select class='defense_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Meditation
+                            <select class='meditation_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Trap
+                            <select class='trap_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                    </div>
+                </td>
+                <td colspan='2' rowspan='3' style='vertical-align: top'>
+                    <br>
+                    <span class='label' title='Attack Power'> 깡공: <span class='stat attack_power'></span></span><br>
+                    <span class='label' title='Attack Speed'> 공속: <span class='stat attack_speed'></span></span><br>
+                    <span class='label' title='Critical Strike Chance'> 치확: <span class='stat critical_strike_chance'>%</span></span><br>
+                    <span class='label' title='Critical Strike Damage'> 치뎀: <span class='stat critical_strike_damage'>%</span></span><br>
+                    <span class='label' title='Life Steal'> 흡혈: <span class='stat life_steal'>%</span></span><br>
+                    <span class='label' title='Extra Normal Attack Damage'> 기추: <span class='stat extra_normal_attack_damage'>| %</span></span><br>
+                    <span class='label' title='Skill Amplification'> 스증: <span class='stat skill_amplification'>| %</span></span><br>
+                    <span class='label' title='Cooldown Reduction'> 쿨감: <span class='stat cooldown_reduction'>%</span></span><br>
+                    <span class='label' title='SP Regen'> 마젠: <span class='stat sp_regen'>| %</span></span><br>
+                    <span class='label' title='Skill Damage Reduction'> 스감: <span class='stat skill_damage_reduction'>| %</span></span><br>
+                </td>
+                <td colspan='2' rowspan='3' style='vertical-align: top'>
+                    <br>
+                    <span class='label' title='Defense'> 방어: <span class='stat defense'></span></span><br>
+                    <span class='label' title='Max HP'> 체력: <span class='stat max_hp'></span></span><br>
+                    <span class='label' title='Max SP'> 마나: <span class='stat max_sp'></span></span><br>
+                    <span class='label' title='HP Regen'> 체젠: <span class='stat hp_regen'>| %</span></span><br>
+                    <span class='label' title='Normal Attack Damage Reduction'> 기감 : <span class='stat normal_attack_damage_reduction'>| %</span></span><br>
+                    <span class='label' title='Movement Speed'> 이속 : <span class='stat movement_speed'></span></span><br>
+                    <span class='label' title='Out of Combat Movement Speed'> 비속 : <span class='stat out_of_combat_movement_speed'></span></span><br>
+                    <span class='label' title='Vision Range'> 시야 : <span class='stat vision_range'></span></span><br>
+                    <span class='label' title='Attack Range'> 사거리 : <span class='stat attack_range'></span></span><br>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <select class='character' style='width: 150px;'>
+                        <option selected disabled hidden='true'>select character</option>
+                        <option>Jackie</option>
+                        <option>Aya</option>
+                        <option>Fiora</option>
+                        <option>Magnus</option>
+                        <option>Zahir</option>
+                        <option>Nadine</option>
+                        <option>Hyunwoo</option>
+                        <option>Hart</option>
+                        <option>Isol</option>
+                        <option>Li_Dailin</option>
+                        <option>Yuki</option>
+                        <option>Hyejin</option>
+                        <option>Xiukai</option>
+                        <option>Chiara</option>
+                        <option>Sissela</option>
+                        <option>Adriana</option>
+                        <option>Shoichi</option>
+                        <option>Silvia</option>
+                        <option>Emma</option>
+                        <option></option>
+                    </select>
+                </td>
+                <td>
+                    <select class='level' style='width: 80px;'>
+                        <option>Lv 01</option>
+                        <option>Lv 02</option>
+                        <option>Lv 03</option>
+                        <option>Lv 04</option>
+                        <option>Lv 05</option>
+                        <option>Lv 06</option>
+                        <option>Lv 07</option>
+                        <option>Lv 08</option>
+                        <option>Lv 09</option>
+                        <option>Lv 10</option>
+                        <option>Lv 11</option>
+                        <option>Lv 12</option>
+                        <option>Lv 13</option>
+                        <option>Lv 14</option>
+                        <option>Lv 15</option>
+                        <option>Lv 16</option>
+                        <option>Lv 17</option>
+                        <option>Lv 18</option>
+                        <option>Lv 19</option>
+                        <option>Lv 20</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='q_level' style='width: 80px;'>
+                        <option>Q lv 1</option>
+                        <option>Q lv 2</option>
+                        <option>Q lv 3</option>
+                        <option>Q lv 4</option>
+                        <option>Q lv 5</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='w_level' style='width: 80px;'>
+                        <option>W lv 1</option>
+                        <option>W lv 2</option>
+                        <option>W lv 3</option>
+                        <option>W lv 4</option>
+                        <option>W lv 5</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='e_level' style='width: 80px;'>
+                        <option>E lv 1</option>
+                        <option>E lv 2</option>
+                        <option>E lv 3</option>
+                        <option>E lv 4</option>
+                        <option>E lv 5</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='r_level' style='width: 80px;'>
+                        <option>R lv 1</option>
+                        <option>R lv 2</option>
+                        <option>R lv 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='t_level' style='width: 80px;'>
+                        <option>T lv 1</option>
+                        <option>T lv 2</option>
+                        <option>T lv 3</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class='damage_display'>
+            <h4>← Character 0</h4>
+            <b>A : </b><span class='base_attack_damage'></span><span class='base_attack_option'></span><br>
+            <b>DPS : </b><span class='dps_damage'></span><span class='dps_option'></span><br>
+            <b>HPS : </b><span class='hps_damage'></span><br>
+            <b>Q : </b><span class='q_damage'></span><span class='q_option'></span><br>
+            <b>W : </b><span class='w_damage'></span><span class='w_option'></span><br>
+            <b>E : </b><span class='e_damage'></span><span class='e_option'></span><br>
+            <b>R : </b><span class='r_damage'></span><span class='r_option'></span><br>
+            <b>D : </b><span class='d_damage'></span><span class='d_option'></span><br>
+            <b>T : </b><span class='t_damage'></span><span class='t_option'></span><br>
+        </div>
+    </div>
+    
+    <h4>
+        - - - - - - - - - - VS
+        <select id='mode' onchange='updateDisplay()'>
+            <option selected>SOLO</option>
+            <option>DUO</option>
+            <option>SQUAD</option>
+        </select>
+    </h4>
+    
+    <div id='character1'>
+        <div class='item_list'>
+            <span class='close_button'><b>(X)</b></span><br>
+            <span class='item_view'></span>
+        </div>
+        <table  border='1'>
+            <tr>
+                <td rowspan='4' class='i_character'>
+                    <div class='margin'></div>
+                </td>
+                <td class='weapon equip_image'>
+                </td>
+                <td class='chest equip_image'>
+                </td>
+                <td class='head equip_image'>
+                </td>
+                <td class='arm equip_image'>
+                </td>
+                <td class='leg equip_image'>
+                </td>
+                <td class='accessory equip_image'>
+                </td>
+                <td class='food equip_image'>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2' rowspan='3'>
+                    <div class='mastery'>
+                        <p>
+                            Weapon
+                            <select class='weapon_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option> 
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <br>
+                        <p>
+                            Hunt
+                            <select class='hunt_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Craft
+                            <select class='craft_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Search
+                            <select class='search_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Move
+                            <select class='move_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <br>
+                        <p>
+                            Health
+                            <select class='health_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Defense
+                            <select class='defense_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Meditation
+                            <select class='meditation_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                        <p>
+                            Trap
+                            <select class='trap_mastery'>
+                                <option>Lv 01</option>
+                                <option>Lv 02</option>
+                                <option>Lv 03</option>
+                                <option>Lv 04</option>
+                                <option>Lv 05</option>
+                                <option>Lv 06</option>
+                                <option>Lv 07</option>
+                                <option>Lv 08</option>
+                                <option>Lv 09</option>
+                                <option>Lv 10</option>
+                                <option>Lv 11</option>
+                                <option>Lv 12</option>
+                                <option>Lv 13</option>
+                                <option>Lv 14</option>
+                                <option>Lv 15</option>
+                                <option>Lv 16</option>
+                                <option>Lv 17</option>
+                                <option>Lv 18</option>
+                                <option>Lv 19</option>
+                                <option>Lv 20</option>
+                            </select>
+                        </p>
+                    </div>
+                </td>
+                <td colspan='2' rowspan='3' style='vertical-align: top'>
+                    <br>
+                    <span class='label' title='Attack Power'> 깡공: <span class='stat attack_power'></span></span><br>
+                    <span class='label' title='Attack Speed'> 공속: <span class='stat attack_speed'></span></span><br>
+                    <span class='label' title='Critical Strike Chance'> 치확: <span class='stat critical_strike_chance'>%</span></span><br>
+                    <span class='label' title='Critical Strike Damage'> 치뎀: <span class='stat critical_strike_damage'>%</span></span><br>
+                    <span class='label' title='Life Steal'> 흡혈: <span class='stat life_steal'>%</span></span><br>
+                    <span class='label' title='Extra Normal Attack Damage'> 기추: <span class='stat extra_normal_attack_damage'>| %</span></span><br>
+                    <span class='label' title='Skill Amplification'> 스증: <span class='stat skill_amplification'>| %</span></span><br>
+                    <span class='label' title='Cooldown Reduction'> 쿨감: <span class='stat cooldown_reduction'>%</span></span><br>
+                    <span class='label' title='SP Regen'> 마젠: <span class='stat sp_regen'>| %</span></span><br>
+                    <span class='label' title='Skill Damage Reduction'> 스감: <span class='stat skill_damage_reduction'>| %</span></span><br>
+                </td>
+                <td colspan='2' rowspan='3' style='vertical-align: top'>
+                    <br>
+                    <span class='label' title='Defense'> 방어: <span class='stat defense'></span></span><br>
+                    <span class='label' title='Max HP'> 체력: <span class='stat max_hp'></span></span><br>
+                    <span class='label' title='Max SP'> 마나: <span class='stat max_sp'></span></span><br>
+                    <span class='label' title='HP Regen'> 체젠: <span class='stat hp_regen'>| %</span></span><br>
+                    <span class='label' title='Normal Attack Damage Reduction'> 기감 : <span class='stat normal_attack_damage_reduction'>| %</span></span><br>
+                    <span class='label' title='Movement Speed'> 이속 : <span class='stat movement_speed'></span></span><br>
+                    <span class='label' title='Out of Combat Movement Speed'> 비속 : <span class='stat out_of_combat_movement_speed'></span></span><br>
+                    <span class='label' title='Vision Range'> 시야 : <span class='stat vision_range'></span></span><br>
+                    <span class='label' title='Attack Range'> 사거리 : <span class='stat attack_range'></span></span><br>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <select class='character' style='width: 150px;'>
+                        <option selected disabled hidden='true'>select character</option>
+                        <option>Jackie</option>
+                        <option>Aya</option>
+                        <option>Fiora</option>
+                        <option>Magnus</option>
+                        <option>Zahir</option>
+                        <option>Nadine</option>
+                        <option>Hyunwoo</option>
+                        <option>Hart</option>
+                        <option>Isol</option>
+                        <option>Li_Dailin</option>
+                        <option>Yuki</option>
+                        <option>Hyejin</option>
+                        <option>Xiukai</option>
+                        <option>Chiara</option>
+                        <option>Sissela</option>
+                        <option>Adriana</option>
+                        <option>Shoichi</option>
+                        <option>Silvia</option>
+                        <option>Emma</option>
+                        <option></option>
+                    </select>
+                </td>
+                <td>
+                    <select class='level' style='width: 80px;'>
+                        <option>Lv 01</option>
+                        <option>Lv 02</option>
+                        <option>Lv 03</option>
+                        <option>Lv 04</option>
+                        <option>Lv 05</option>
+                        <option>Lv 06</option>
+                        <option>Lv 07</option>
+                        <option>Lv 08</option>
+                        <option>Lv 09</option>
+                        <option>Lv 10</option>
+                        <option>Lv 11</option>
+                        <option>Lv 12</option>
+                        <option>Lv 13</option>
+                        <option>Lv 14</option>
+                        <option>Lv 15</option>
+                        <option>Lv 16</option>
+                        <option>Lv 17</option>
+                        <option>Lv 18</option>
+                        <option>Lv 19</option>
+                        <option>Lv 20</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='q_level' style='width: 80px;'>
+                        <option>Q lv 1</option>
+                        <option>Q lv 2</option>
+                        <option>Q lv 3</option>
+                        <option>Q lv 4</option>
+                        <option>Q lv 5</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='w_level' style='width: 80px;'>
+                        <option>W lv 1</option>
+                        <option>W lv 2</option>
+                        <option>W lv 3</option>
+                        <option>W lv 4</option>
+                        <option>W lv 5</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='e_level' style='width: 80px;'>
+                        <option>E lv 1</option>
+                        <option>E lv 2</option>
+                        <option>E lv 3</option>
+                        <option>E lv 4</option>
+                        <option>E lv 5</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='r_level' style='width: 80px;'>
+                        <option>R lv 1</option>
+                        <option>R lv 2</option>
+                        <option>R lv 3</option>
+                    </select>
+                </td>
+                <td>
+                    <select class='t_level' style='width: 80px;'>
+                        <option>T lv 1</option>
+                        <option>T lv 2</option>
+                        <option>T lv 3</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <div class='damage_display'>
+            <h4>← Character 1</h4>
+            <b>A : </b><span class='base_attack_damage'></span><span class='base_attack_option'></span><br>
+            <b>DPS : </b><span class='dps_damage'></span><span class='dps_option'></span><br>
+            <b>HPS : </b><span class='hps_damage'></span><br>
+            <b>Q : </b><span class='q_damage'></span><span class='q_option'></span><br>
+            <b>W : </b><span class='w_damage'></span><span class='w_option'></span><br>
+            <b>E : </b><span class='e_damage'></span><span class='e_option'></span><br>
+            <b>R : </b><span class='r_damage'></span><span class='r_option'></span><br>
+            <b>D : </b><span class='d_damage'></span><span class='d_option'></span><br>
+            <b>T : </b><span class='t_damage'></span><span class='t_option'></span><br>
+        </div>
+    </div>
+    <br/>
+    <h3>업데이트 이후 에러 발생시 Shift + F5키를 누르세요.</h3>
 </body>
 </html>
