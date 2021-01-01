@@ -35,7 +35,7 @@ const Silvia = {
     }
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
-        if (character.weapon) {
+        if (character.weapon && !character.DIV.querySelector('.silvia_r').checked) {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = Math.round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
