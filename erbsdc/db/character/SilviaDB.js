@@ -35,11 +35,15 @@ const Silvia = {
     }
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
-        if (character.weapon && !character.DIV.querySelector('.silvia_r').checked) {
-            const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const damage = Math.round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+        if (character.weapon) {
+            const as = 10 / (9.5 / character.attack_speed + 2);
+            const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+                baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
+            const damage1 = Math.round(shot * as * 100) / 100;
+            const damage2 = Math.round(shot * character.attack_speed * 100) / 100;
+            const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
+            const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
+            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
         }
         return '-';
     }
