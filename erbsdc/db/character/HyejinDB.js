@@ -94,7 +94,7 @@ const Hyejin = {
             if (type === 'Shuriken') {
                 const damage = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 110 : 180, 0.3, 1);
                 const add = calcSkillDamage(character, enemy, (character.WEAPON_MASTERY.selectedIndex < 13 ? 110 : 180) * 0.3, 0.3 * 0.3, 1);
-                return "<b class='damage'>" + (damage + add * 11) + '</b> ( ' + damage + ', ' + add + ' x 11 )';
+                return "<b class='damage'>" + damage + ' ~ ' + (damage + add * 11) + '</b> ( ' + damage + ', ' + add + ' x 11 )';
             }
             if (type === 'Bow') {
                 const min = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 150 : 250, 1, 1);
