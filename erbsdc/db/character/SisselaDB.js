@@ -118,7 +118,7 @@ const Sissela = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const bonus = calcSkillDamage(character, enemy, 18 + character.LEVEL.selectedIndex, 0.2, 1);
+            const bonus = calcSkillDamage(character, enemy, 18 + character.LEVEL.selectedIndex * 10, 0.2, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + ' ) ';
