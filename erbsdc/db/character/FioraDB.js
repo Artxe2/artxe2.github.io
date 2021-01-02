@@ -87,7 +87,7 @@ const Fiora = {
             const max2 = baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
             if (character.DIV.querySelector('.fiora_r').checked) {
                 const bonus = calcSkillDamage(character, enemy, 30 + r * 5, 0.06 + r, 1);
-                return "<b class='damage'>" + damage1 + damage2 + bonus * 2 + '</b> ( ' +  min1 + ', ' + min2 + ', ' + bonus + ' - ' + max1 + ', ' + max2 + ', ' + bonus + ' ) ';
+                return "<b class='damage'>" + (damage1 + damage2 + bonus * 2) + '</b> ( ' +  min1 + ', ' + min2 + ', ' + bonus + ' - ' + max1 + ', ' + max2 + ', ' + bonus + ' ) ';
             }
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + ' ) ';
         }
