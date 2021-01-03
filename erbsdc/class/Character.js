@@ -460,12 +460,14 @@ class Character {
 
             const jackie_r = this.DIV.querySelector('.jackie_r');
             const nadine_e = this.DIV.querySelector('.nadine_e');
+            const nadine_r = this.enemy.DIV.querySelector('.nadine_r');
             const lida_w = this.DIV.querySelector('.lida_w');
             const silvia_t = this.DIV.querySelector('.silvia_t');
             const attack_speed_bonus = (jackie_r && jackie_r.checked ? 20 + this.R_LEVEL.selectedIndex * 5 : 0) + 
                 (nadine_e ? (10 + this.E_LEVEL.selectedIndex * 5) * (nadine_e.checked ? 2 : 1) : 0) + 
                 (lida_w && lida_w.checked ? 10 + this.T_LEVEL.selectedIndex * 15 : 0) + 
                 (silvia_t ? silvia_t.value * (1 + this.T_LEVEL.selectedIndex * 1) : 0);
+            const attack_speed_minus = 1 - (nadine_r && nadine_r.checked ? 0.35 : 0);
             this.attack_speed = 
                 (((this.base_attack_speed) * 
                 (100 + attack_speed_bonus + 
@@ -477,7 +479,7 @@ class Character {
                 (!this.arm ? 0 : this.arm.Attack_Speed) + 
                 (!this.leg ? 0 : this.leg.Attack_Speed) + 
                 (!this.accessory ? 0 : this.accessory.Attack_Speed)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus))) | 0) / 100;			
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus))) * attack_speed_minus | 0) / 100;			
             this.ATTACK_SPEED.innerText = this.attack_speed;
 
             const shoichi_t = this.DIV.querySelector('.shoichi_t');
@@ -717,6 +719,7 @@ class Character {
                     (chiara_t && chiara_t.value == 4 ? 0.04 + this.T_LEVEL.selectedIndex * 0.02 : 0) + 
                     (silvia_r && silvia_r.checked ? 0.7 : 0);
             const move_bonus = (silvia_r && silvia_r.checked ? 0.2 + this.R_LEVEL.selectedIndex * 0.05 : 0);
+            const move_minus = 1 - (nadine_r && nadine_r.checked ? 0.35 : 0);
             this.movement_speed = 
             Math.round((this.character.Move_Speed + move_bonus + 
                 0.01 + this.MOVE_MASTERY.selectedIndex * 0.01 + 
@@ -726,7 +729,7 @@ class Character {
                 (!this.arm ? 0 : this.arm.Move_Speed) + 
                 (!this.leg ? 0 : this.leg.Move_Speed) + 
                 (!this.accessory ? 0 : this.accessory.Move_Speed)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 100 * move_percent) / 100;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 100 * move_percent * move_minus) / 100;
             if (this.movement_speed > 7) {
                 this.movement_speed = 7;
             }
@@ -740,7 +743,7 @@ class Character {
                 (!this.arm ? 0 : this.arm.Out_of_Combat_Movement_Speed) + 
                 (!this.leg ? 0 : this.leg.Out_of_Combat_Movement_Speed) + 
                 (!this.accessory ? 0 : this.accessory.Out_of_Combat_Movement_Speed)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 100 * move_percent) / 100;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 100 * move_percent * move_minus) / 100;
             if (this.movement_speed + this.out_of_combat_movement_speed > 7) {
                 this.out_of_combat_movement_speed = 7 - this.movement_speed;
             }
