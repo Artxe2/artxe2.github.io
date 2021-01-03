@@ -101,7 +101,8 @@ const Xiukai = {
             const type = character.weapon.Type;
             if (type === 'Dagger') {
                 const damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                return "<b class='damage'>" + damage + ' ~ ' + ((damage + (enemy.max_hp ? enemy.max_hp / 10 : 0)) | 0) + '</b>';
+                const heal = calcHeal((damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) * (character.life_steal / 100), 1, enemy);
+                return "<b class='damage'>" + damage + ' ~ ' + (damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
             }
             if (type === 'Spear') {
                 const damage = calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 1.5, 1);
@@ -117,4 +118,31 @@ const Xiukai = {
         return '';
     }
     ,T_Option: "<input type='number' class='stack xiukai_t' value='0' onchange='fixLimitNum(this, 999)'><b>Stack"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Dagger' ? '단검' : 
+            weapon === 'Spear' ? '창' : 
+            '';
+        const skill = 
+            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' : 
+            weapon === 'Spear' ? '"합산 데미지" ( "1타 데미지", "2타 데미지" )' : 
+            '';
+        return '쇼우 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "스킬 데미지" __cost: "체력소모"\n' + 
+            'W: "최소 데미지" - "최대 데미지" __cost: "체력소모"\n' + 
+            'E: "최소 데미지" - "최대 데미지" __cost: "체력소모"\n' + 
+            'R: "합산 데미지" ( "틱당 데미지" x "타수" ) __cost: "체력소모" _use "스킬 사용"\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "스택"\n';
+    }
 };

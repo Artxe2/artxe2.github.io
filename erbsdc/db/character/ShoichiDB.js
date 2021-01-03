@@ -99,7 +99,8 @@ const Shoichi = {
             const type = character.weapon.Type;
             if (type === 'Dagger') {
                 const damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                return "<b class='damage'>" + damage + ' ~ ' + ((damage + (enemy.max_hp ? enemy.max_hp / 10 : 0)) | 0) + '</b>';
+                const heal = calcHeal((damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) * (character.life_steal / 100), 1, enemy);
+                return "<b class='damage'>" + damage + ' ~ ' + (damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
             }
         }
         return '-';
@@ -114,4 +115,29 @@ const Shoichi = {
         return '-';
     }
     ,T_Option: "_ <input type='number' class='stack shoichi_t' value='0' onchange='fixLimitNum(this, 5)'><b>Stack</b>"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Dagger' ? '단검' : 
+            '';
+        const skill = 
+            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' : 
+            '';
+        return '쇼이치 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "스킬 데미지"\n' + 
+            'W: "스킬 데미지"\n' + 
+            'E: "스킬 데미지"\n' + 
+            'R: "합산 데미지" ( "1타 데미지", "2타 데미지", "패시브 데미지" x "타수", "W 데미지" )\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "스킬 데미지"_ "스택"\n';
+    }
 };

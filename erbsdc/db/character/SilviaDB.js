@@ -35,7 +35,7 @@ const Silvia = {
     }
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
-        if (character.weapon) {
+        if (character.weapon && !character.DIV.querySelector('.silvia_r').checked) {
             const as = 10 / (9.5 / character.attack_speed + 2);
             const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
                 baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
@@ -109,7 +109,7 @@ const Silvia = {
             }
             return '-';
         }
-        return '-';
+        return '';
     }
     ,R_Option: "<b> _use</b><input type='checkbox' class='silvia_r' onchange='updateDisplay()'>"
     ,D_Skill: (character, enemy) => {
@@ -128,4 +128,41 @@ const Silvia = {
         return '';
     }
     ,T_Option: "<input type='number' class='stack silvia_t' value='0' onchange='fixLimitNum(this, 15)'><b>Stack"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Pistol' ? '권총' : 
+            '';
+        const skill = 
+            weapon === 'Pistol' ? '"데미지 없음"' : 
+            '';
+        if (character.DIV.querySelector('.silvia_r').checked) {
+            return '실비아 ( ' + type + ' )\n' + 
+                'A: "평타 불가"\n' + 
+                'DPS: "평타 불가"\n' + 
+                'HPS: "초당 회복량"\n' + 
+                'Q: "스킬 데미지"\n' + 
+                'W: "스킬 데미지"\n' + 
+                'E: "최소 데미지" ~ "최대 데미지"\n' + 
+                'R: "평균 데미지" ( "평타 데미지" - "치명타 데미지" ) _use "스킬 사용"\n' + 
+                'D: ' + skill + '\n' + 
+                'T: "스택"\n';
+        }
+        return '실비아 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "스킬 데미지" __h: "회복량"\n' + 
+            'W: "스킬 데미지"\n' + 
+            'E: "최소 데미지" ~ "최대 데미지"\n' + 
+            'R: _use "스킬 사용"\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "스택"\n';
+    }
 };

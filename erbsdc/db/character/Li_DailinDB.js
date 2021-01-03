@@ -71,7 +71,7 @@ const Li_Dailin = {
         }
         return '-';
     }
-    ,W_Option: "<b> _use</b><input type='checkbox' class='lida_w' onchange='updateDisplay()'>"
+    ,W_Option: "<b> __use</b><input type='checkbox' class='lida_w' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
         if (character.weapon) {
             return "<b class='damage'>" + calcSkillDamage(character, enemy, 80 + character.E_LEVEL.selectedIndex * 55, 0.5, 1) + '</b>';
@@ -84,8 +84,8 @@ const Li_Dailin = {
             const r = character.R_LEVEL.selectedIndex;
             const min = calcSkillDamage(character, enemy, 40 + r * 30, 0.2, 1);
             const max = calcSkillDamage(character, enemy, 120 + r * 90, 0.6, 1);
-            const over = calcSkillDamage(character, enemy, 132 + r * 99, 0.66, 1);
-            return min * 4 + " - <b class='damage'>" + max * 4 + '</b> / ' + over * 4 + ' ( [ ' + min + ' x 4 ] - [ ' + max + ' x 4 ] / [ ' + over + ' x 4 ] )';
+            const over = calcSkillDamage(character, enemy, 131.4 + r * 98.55, 0.657, 1);
+            return "<b class='damage'>" + min * 4 + ' ~ ' + max * 4 + '</b> / ' + over * 4 + ' ( [ ' + min + ' x 4 ] - [ ' + max + ' x 4 ] / [ ' + over + ' x 4 ] )';
         }
         return '-';
     }
@@ -99,7 +99,7 @@ const Li_Dailin = {
                 const damage = gloveAttackDamage(character, enemy, coe, character.critical_strike_chance, bonus);
                 const min = gloveAttackDamage(character, enemy, coe, 0, bonus);
                 const max = gloveAttackDamage(character, enemy, coe, 100, bonus);
-                const over = gloveAttackDamage(character, enemy, coe * 1.1, 100, bonus);
+                const over = gloveAttackDamage(character, enemy, coe * 1.095, 100, bonus);
                 const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
                 return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' / ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
@@ -130,4 +130,31 @@ const Li_Dailin = {
         return '-';
     }
     ,T_Option: ''
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Glove' ? '글러브' : 
+            weapon === 'Nunchaku' ? '쌍절곤' : 
+            '';
+        const skill = 
+            weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" / "최대 강화 데미지" ) __h: "평균 흡혈량"' : 
+            weapon === 'Nunchaku' ? '"최소 데미지" ~ "최대 데미지"' : 
+            '';
+        return '리 다이린 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "합산 강화 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" - "1타 강화", "2타 강화", "3타 강화" )\n' + 
+            'W: _d/s: "만취 초당 데미지" __h/s: "만취 초당 흡혈량" __use "스킬 사용"\n' + 
+            'E: "스킬 데미지"\n' + 
+            'R: "최소 합산 데미지" ~ "최대 합산 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] - [ "최대 데미지" x "타수" ] / [ "최대 강화 데미지" x "타수" ] )\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" / "1타 최대 강화", "2타 최대 강화" )\n';
+    }
 };

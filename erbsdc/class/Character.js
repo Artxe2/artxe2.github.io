@@ -16,6 +16,9 @@ class Character {
     constructor(index, DIV, MODE) {
         this.index = index;
         this. DIV = DIV;
+
+        this.HELP = DIV.querySelector('.help');
+
         this.WEAPON = DIV.querySelector('.weapon');
         this.CHEST = DIV.querySelector('.chest');
         this.HEAD = DIV.querySelector('.head');
@@ -86,6 +89,14 @@ class Character {
         this.T_OPTION = DIV.querySelector('.t_option');
 
         this.MODE = MODE;
+
+        this.HELP.addEventListener('click', (e) => {
+            if (!this.character) {
+                alert('select character plz');
+            } else {
+                alert(this.character.Help(this));
+            }
+        });
 
         this.WEAPON.addEventListener('click', (e) => {
         	if (!this.character) {

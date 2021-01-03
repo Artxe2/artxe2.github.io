@@ -92,9 +92,8 @@ const Hyunwoo = {
                 const damage = gloveAttackDamage(character, enemy, coe, character.critical_strike_chance, bonus);
                 const min = gloveAttackDamage(character, enemy, coe, 0, bonus);
                 const max = gloveAttackDamage(character, enemy, coe, 100, bonus);
-                const over = gloveAttackDamage(character, enemy, coe * 1.1, 100, bonus);
                 const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' / ' + over + ' )<b> __h: </b>' + life;
+                return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
                 return "<b class='damage'>" + (character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 70) + '%</b>';
@@ -112,4 +111,31 @@ const Hyunwoo = {
         return '-';
     }
     ,T_Option: ''
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Glove' ? '글러브' : 
+            weapon === 'Tonfa' ? '톤파' : 
+            '';
+        const skill = 
+            weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" ) __h: "평균 흡혈량"' : 
+            weapon === 'Tonfa' ? '"반사 데미지"' : 
+            '';
+        return '현우 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "스킬 데미지"\n' + 
+            'W: _use "스킬 사용"\n' + 
+            'E: "합산 데미지" ( "최소 데미지" ~ "최대 데미지", "벽꿍 데미지" )\n' + 
+            'R: "최소 데미지" ~ "최대 데미지"\n' + 
+            'D: ' + skill + '\n' + 
+            'T: _h: "회복량"\n';
+    }
 };

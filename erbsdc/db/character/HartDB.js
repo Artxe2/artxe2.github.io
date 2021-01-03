@@ -81,7 +81,7 @@ const Hart = {
     ,W_Skill: (character, enemy) => {
         return '';
     }
-    ,W_Option:  "<b> __up</b><input type='checkbox' class='hart_w' onchange='hartUp(1, 0)'/><input type='checkbox' class='hart_ww' onchange='hartUp(1, 1)'/>" + 
+    ,W_Option:  "<b> _up</b><input type='checkbox' class='hart_w' onchange='hartUp(1, 0)'/><input type='checkbox' class='hart_ww' onchange='hartUp(1, 1)'/>" + 
         "<b> _use</b><input type='checkbox' class='hart_w_u' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
         if (character.weapon) {
@@ -108,7 +108,7 @@ const Hart = {
                 (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy);
             const heal = calcHeal(30 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy);
             const total = Math.round((heal + regen) * 5 * 100) / 100
-            return "<b> _h: </b><b class='heal'>" + total + "</b> ( [<b class='heal'>" + heal + '</b>, ' + regen + '] x 5s )';
+            return "<b> _h: </b><b class='heal'>" + total + "</b> ( [ <b class='heal'>" + heal + '</b>, ' + regen + ' ] x 5s )';
         }
         return '-';
     }
@@ -128,5 +128,54 @@ const Hart = {
     ,T_Skill: (character, enemy) => {
         return '';
     }
-    ,T_Option: "<b> __up</b><input type='checkbox' class='hart_t' onchange='hartUp(4, 0)'/><input type='checkbox' class='hart_tt' onchange='hartUp(4, 1)'/>"
+    ,T_Option: "<b> _up</b><input type='checkbox' class='hart_t' onchange='hartUp(4, 0)'/><input type='checkbox' class='hart_tt' onchange='hartUp(4, 1)'/>"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Guitar' ? '기타' : 
+            '';
+        const skill = 
+            weapon === 'Guitar' ? '"스킬 데미지"' : 
+            '';
+        if (character.DIV.querySelector('.hart_tt').checked) {
+            return '하트 ( ' + type + ' )\n' + 
+                'A: "평균 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" - "1타 치명타", "2타 치명타", "3타 치명타" )\n' + 
+                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+                'HPS: "초당 회복량"\n' + 
+                'Q: "최소 데미지" ~ "최대 데미지" __up "스킬 강화"\n' + 
+                'W: "데미지 없음" _up "스킬 강화"\n' + 
+                'E: "합산 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" ) __up "스킬 강화"\n' + 
+                'R: _h: "총 회복량(체젠 및 음식 효과 포함)" ( ["초당 회복량", "초당 체젠"]) __up "스킬 강화"\n' + 
+                'D: ' + skill + '\n' + 
+                'T: "데미지 없음" _up "스킬 강화"\n';
+        }
+        if (character.DIV.querySelector('.hart_t').checked) {
+            return '하트 ( ' + type + ' )\n' + 
+                'A: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" )\n' + 
+                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+                'HPS: "초당 회복량"\n' + 
+                'Q: "최소 데미지" ~ "최대 데미지" __up "스킬 강화"\n' + 
+                'W: "데미지 없음" _up "스킬 강화"\n' + 
+                'E: "합산 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" ) __up "스킬 강화"\n' + 
+                'R: _h: "총 회복량(체젠 및 음식 효과 포함)" ( ["초당 회복량", "초당 체젠"]) __up "스킬 강화"\n' + 
+                'D: ' + skill + '\n' + 
+                'T: "데미지 없음" _up "스킬 강화"\n';
+        }
+        return '하트 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "최소 데미지" ~ "최대 데미지" __up "스킬 강화"\n' + 
+            'W: _up "스킬 강화"\n' + 
+            'E: "합산 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" ) __up "스킬 강화"\n' + 
+            'R: _h: "총 회복량(체젠 및 음식 효과 포함)" ( ["초당 회복량", "초당 체젠"]) __up "스킬 강화"\n' + 
+            'D: ' + skill + '\n' + 
+            'T: _up "스킬 강화"\n';
+    }
 };

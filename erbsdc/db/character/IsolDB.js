@@ -77,7 +77,7 @@ const Isol = {
             const min = calcSkillDamage(character, enemy, 50 + q * 25, 0.5, 1);
             const max = calcSkillDamage(character, enemy, 50 + q * 25 + 
                 (8 + q * 4) * stack, 0.5 + stack * 0.3, 1);
-            return min + " - <b class='damage'>" +  + max + '</b>';
+            return min + " ~ <b class='damage'>" +  + max + '</b>';
         }
         return '-';
     }
@@ -128,4 +128,31 @@ const Isol = {
         return '';
     }
     ,T_Option: "<b> _use</b><input type='checkbox' class='isol_t' onchange='updateDisplay()'>"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Pistol' ? '권총' : 
+            weapon === 'AssaultRifle' ? '돌격소총' :
+            '';
+        const skill = 
+            weapon === 'Pistol' ? '"데미지 없음"' : 
+            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" __h/s: "초당 흡혈량" - "장전 배제 흡혈량"' : 
+            '';
+        return '아이솔 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "최소 데미지" ~ "최대 데미지" "강화 스택"\n' + 
+            'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' + 
+            'E: "데미지 없음"\n' + 
+            'R: "트랩 데미지"\n' + 
+            'D: ' + skill + '\n' + 
+            'T: _use "트랩 사용"\n';
+    }
 };

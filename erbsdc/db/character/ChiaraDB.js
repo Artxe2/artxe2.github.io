@@ -100,4 +100,29 @@ const Chiara = {
         return '';
     }
     ,T_Option: "<input type='number' class='stack chiara_t' value='0' onchange='fixLimitNum(this, 4)'><b>Stack"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Rapier' ? '레이피어' : 
+            '';
+        const skill = 
+            weapon === 'Rapier' ? '"스킬 데미지"' : 
+            '';
+        return '키아라 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "스킬 데미지"\n' + 
+            'W: "스킬 데미지" __s: 쉴드량\n' + 
+            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
+            'R: "합산 데미지" ( "초당 데미지" x "타수", "징벌 데미지" ) __h/s: "초당 흡혈량" _use "스킬 사용"\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "패시브 스택"\n';
+    }
 };

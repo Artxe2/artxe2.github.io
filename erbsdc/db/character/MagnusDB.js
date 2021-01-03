@@ -101,4 +101,31 @@ const Magnus = {
         return '';
     }
     ,T_Option: "_LostHP: <input type='number' class='stack magnus_t' value='0' onchange='fixLimitNum(this, 100)'><b>%</b>"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Hammer' ? '망치' : 
+            weapon === 'Bat' ? '방망이' : 
+            '';
+        const skill = 
+            weapon === 'Hammer' ? '"스킬 데미지" _use "스킬 사용"' : 
+            weapon === 'Bat' ? '"스킬 데미지"' : 
+            '';
+        return '매그너스 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "스킬 데미지"\n' + 
+            'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' + 
+            'E: "스킬 데미지"\n' + 
+            'R: "스킬 데미지"\n' + 
+            'D: ' + skill + '\n' + 
+            'T: _"잃은 체력"\n';
+    }
 };

@@ -115,4 +115,31 @@ const Zahir = {
         return '-';
     }
     ,T_Option: ''
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Throws' ? '투척' : 
+            weapon === 'Shuriken' ? '암기' : 
+            '';
+        const skill = 
+            weapon === 'Throws' ? '"데미지 없음"' : 
+            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' : 
+            '';
+        return '자히르 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "최소 데미지" - "합산 데미지" ( "강화 데미지", "패시브 데미지" )\n' + 
+            'W: "스킬 데미지" - "합산 데미지" ( "스킬 데미지", "패시브 데미지" )\n' + 
+            'E: "스킬 데미지" - "합산 데미지" ( "스킬 데미지", "패시브 데미지" )\n' + 
+            'R: "합산 데미지" - "강화 데미지" ( "1타 데미지", "패시브 데미지", "추가 데미지" x "타수" )\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "스킬 데미지"\n';
+    }
 };

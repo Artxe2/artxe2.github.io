@@ -145,9 +145,9 @@ const Jackie = {
                         heal = calcHeal((damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) * (character.life_steal / 100) + 12 + w * 7 + character.attack_power * 0.1, 1, enemy);
                     } else {
                         damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                        heal = calcHeal((damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) * (character.life_steal / 100));
+                        heal = calcHeal((damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) * (character.life_steal / 100), 1, enemy);
                     }
-                    return "<b class='damage'>" + damage + ' ~ ' + (damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) + "<b> __h: </b><b class='heal'>" + heal + '</b>';
+                    return "<b class='damage'>" + damage + ' ~ ' + (damage + (enemy.max_hp ? enemy.max_hp / 10 : 0) | 0) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
                 }
                 if (type === 'TwoHandedSword') {
                     if (character.DIV.querySelector('.jackie_w').checked) {
@@ -183,4 +183,55 @@ const Jackie = {
         return '';
     }
     ,T_Option: "<b> _weak</b><input type='checkbox' class='jackie_t_w' onchange='updateDisplay()'><b> _strong</b><input type='checkbox' class='jackie_t_s' onchange='updateDisplay()'>"
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Dagger' ? '단검' : 
+            weapon === 'TwoHandedSword' ? '양손검' :
+            weapon === 'DualSwords' ? '쌍검' :
+            weapon === 'Axe' ? '도끼' :
+            '';
+        let skill;
+        if (character.DIV.querySelector('.jackie_w').checked) {
+            skill = 
+                weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"'  : 
+                weapon === 'TwoHandedSword' ? '"스킬 데미지" __h: "흡혈량"' : 
+                weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" ) __h: "흡혈량"' : 
+                weapon === 'Axe' ? '"스택" _use "스킬사용" _"잃은 체력"' : 
+                '';
+            return '재키 ( ' + type + ' )\n' + 
+                'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+                'HPS: "초당 회복량"\n' + 
+                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지", "출혈 데미지" ) __h: "흡혈량"\n' + 
+                'W: _use "스킬 사용"\n' + 
+                'E: "스킬 데미지" __h: "흡혈량"\n' + 
+                'R: "스킬 데미지" __use "스킬 사용"\n' + 
+                'D: ' + skill + '\n' + 
+                'T: _weak "닭, 멧돼지, 늑대" _strong "곰, 생존자, 위클라인"\n';
+        } else {
+            skill = 
+                weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"'  : 
+                weapon === 'TwoHandedSword' ? '"스킬 데미지"' : 
+                weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" )' : 
+                weapon === 'Axe' ? '"스택" _use "스킬사용" _"잃은 체력"' : 
+                '';
+            return '재키 ( ' + type + ' )\n' + 
+                'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+                'HPS: "초당 회복량"\n' + 
+                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지", "출혈 데미지" )\n' + 
+                'W: _use "스킬 사용"\n' + 
+                'E: "스킬 데미지"\n' + 
+                'R: "스킬 데미지" __use "스킬 사용"\n' + 
+                'D: ' + skill + '\n' + 
+                'T: _weak "닭, 멧돼지, 늑대" _strong "곰, 생존자, 위클라인"\n';
+        }
+    }
 };

@@ -115,4 +115,31 @@ const Yuki = {
         return '-';
     }
     ,T_Option: ''
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'TwoHandedSword' ? '양손검' :
+            weapon === 'DualSwords' ? '쌍검' :
+            '';
+        const skill = 
+            weapon === 'TwoHandedSword' ? '"스킬 데미지"' : 
+            weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" )' : 
+            '';
+        return '유키 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'W: _use "스킬 사용"\n' + 
+            'E: "스킬 데미지"\n' + 
+            'R: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "추가 데미지" ( "스킬 데미지" x "장전 수" )\n';
+    }
 };

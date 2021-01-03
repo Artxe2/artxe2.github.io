@@ -103,4 +103,29 @@ const Adriana = {
         return '-';
     }
     ,T_Option: ''
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Throws' ? '투척' : 
+            '';
+        const skill = 
+            weapon === 'Throws' ? '"데미지 없음"' : 
+            '';
+        return '아드리아나 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "틱당 데미지" ~ "풀히트 데미지" ( "틱당 데미지" x "타수" )\n' + 
+            'W: "데미지 없음"\n' + 
+            'E: "틱당 데미지" ~ "풀히트 데미지" ( "1틱", "2틱", "3틱", "4틱" )\n' + 
+            'R: "1발당 데미지" ~ "3 회 사용 시 데미지" ( "1발당 데미지" x "장전 수" )\n' + 
+            'D: ' + skill + '\n' + 
+            'T: _d/s: "최초 초당 데미지" ~ "최대중첩 시 초당 데미지"\n';
+    }
 };

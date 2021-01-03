@@ -111,4 +111,31 @@ const Hyejin = {
         return '-';
     }
     ,T_Option: ''
+    ,Help: (character) => {
+        if (!character.character) {
+            return 'select character plz';
+        }
+        if (!character.weapon) {
+            return 'select weapon plz';
+        }
+        const weapon = character.weapon.Type;
+        const type = 
+            weapon === 'Shuriken' ? '암기' : 
+            weapon === 'Bow' ? '보우' : 
+            '';
+        const skill = 
+            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' : 
+            weapon === 'Bow' ? '"최소 데미지" - "최대 데미지"' : 
+            '';
+        return '혜진 ( ' + type + ' )\n' + 
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
+            'HPS: "초당 회복량"\n' + 
+            'Q: "스킬 데미지"\n' + 
+            'W: "최소 데미지" ~ "최대 데미지"\n' + 
+            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
+            'R: "합산 데미지" ( "폭발 데미지", "구체 데미지" x "타수" )\n' + 
+            'D: ' + skill + '\n' + 
+            'T: "데미지 없음"\n';
+    }
 };
