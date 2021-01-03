@@ -97,9 +97,7 @@ const Hyunwoo = {
                 return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' / ' + over + ' )<b> __h: </b>' + life;
             }
             if (type === 'Tonfa') {
-                const percent = calcSkillDamage(character, enemy, (character.WEAPON_MASTERY.selectedIndex < 13 ? 5000 : 7000) | 0, 0, 0) / 100;
-                const bonus = calcSkillDamage(character, enemy, 0, 0, 1);
-                return "<b class='damage'>" + percent + "%</b><b> + </b><b class='damage'>" + bonus + '</b>';
+                return "<b class='damage'>" + (character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 70) + '%</b>';
             }
         }
         return '-';
