@@ -220,7 +220,7 @@ const AssaultRifle = [
         ,Attack_Range: 0
         ,Base_Range: 5
         ,Atk_Speed: 0.55
-        ,Title: "AK-12\n\nAttack Power +94\nVision Range +1.5\nCritical Strike Chance +20%\nExtra Normal Attack Damage +2"
+        ,Title: "AK-12\n\nAttack Power +94\nVision Range +1.5\nCritical Strike Chance +20%"
         ,Rarity: "Epic"
     }
     ,{
