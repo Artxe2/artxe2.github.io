@@ -476,7 +476,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Normal Attack\n\nLife Steal +5\nNormal Attack Damage Reduction +12"
+        ,Title: "Suit\n\nLife Steal +5\nNormal Attack Damage Reduction +12"
         ,Rarity: "Rare"
     }
     ,{

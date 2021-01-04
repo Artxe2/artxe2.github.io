@@ -17,6 +17,7 @@ class Character {
         this.index = index;
         this. DIV = DIV;
 
+        this.INFO = DIV.querySelector('.info');
         this.HELP = DIV.querySelector('.help');
 
         this.WEAPON = DIV.querySelector('.weapon');
@@ -90,11 +91,27 @@ class Character {
 
         this.MODE = MODE;
 
+        this.INFO.addEventListener('click', (e) => {
+            if (!this.character) {
+                alert('select character plz');
+            } else {
+                this.ITEM_LIST.querySelector('.item_view').innerHTML = '<b>' + 
+                    (this.CHARACTER.value + '\n- - -\n' + 
+                    (this.weapon ? this.weapon.Title + '\n- - -\n' : '') + 
+                    (this.chest ? this.chest.Title + '\n- - -\n' : '') + 
+                    (this.head ? this.head.Title + '\n- - -\n' : '') + 
+                    (this.arm ? this.arm.Title + '\n- - -\n' : '') + 
+                    (this.leg ? this.leg.Title + '\n- - -\n' : '') + 
+                    (this.accessory ? this.accessory.Title : '')).replaceAll(/\n/g, '<br/>') + '</b>';
+				this.ITEM_LIST.style.display = 'block';
+            }
+        });
         this.HELP.addEventListener('click', (e) => {
             if (!this.character) {
                 alert('select character plz');
             } else {
-                alert(this.character.Help(this));
+                this.ITEM_LIST.querySelector('.item_view').innerHTML = '<b>' + this.character.Help(this).replaceAll(/\n/g, '<br/>') + '</b>';
+				this.ITEM_LIST.style.display = 'block';
             }
         });
 
