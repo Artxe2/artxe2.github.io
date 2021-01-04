@@ -61,7 +61,7 @@ const Zahir = {
         }
         return '-';
     }
-    ,Q_Option: ''
+    ,Q_Option: "<input type='number' class='stack zahir_q' value='0' onchange='fixLimitNum(this, 7)'><b>Stack"
     ,W_Skill: (character, enemy) => {
         if (character.weapon) {
             const damage = calcSkillDamage(character, enemy, 25 + character.W_LEVEL.selectedIndex * 25, 0.3, 1);

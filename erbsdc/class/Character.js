@@ -630,6 +630,7 @@ class Character {
 
             const magnus_t = this.DIV.querySelector('.magnus_t');
             const hammer_d = this.enemy.DIV.querySelector('.hammer_d');
+            const zahir_q = this.enemy.DIV.querySelector('.zahir_q');
             const hyunwoo_w = this.DIV.querySelector('.hyunwoo_w');
             const hyunwoo_e = this.enemy.DIV.querySelector('.hyunwoo_e');
             hart_w_u = this.enemy.DIV.querySelector('.hart_w_u');
@@ -643,6 +644,7 @@ class Character {
             const defense_percent = 1 + (magnus_t ? magnus_t.value * (0.002 + this.T_LEVEL.selectedIndex * 0.0015) : 0) + 
                 (hyunwoo_w && hyunwoo_w.checked ? 0.1 : 0) + (yuki_w && yuki_w.checked ? 0.5 : 0);
             const defense_minus = 1 - (hammer_d && hammer_d.checked && this.enemy.WEAPON_MASTERY.selectedIndex > 5? this.enemy.WEAPON_MASTERY.selectedIndex < 13 ? 0.25 : 0.4 : 0) - 
+                (zahir_q ? 0.1 * zahir_q.value : 0) -
                 (hyunwoo_e && hyunwoo_e.checked ? 0.07 + this.enemy.E_LEVEL.selectedIndex * 0.02 : 0) - 
                 (hart_w_u && hart_w_u.checked ? hart_ww.checked ? 0.3 : hart_w.checked ? 0.15 : 0 : 0) - 
                 (isol_t && isol_t.checked ? 0.05 + this.enemy.T_LEVEL.selectedIndex * 0.1 : 0) - 
