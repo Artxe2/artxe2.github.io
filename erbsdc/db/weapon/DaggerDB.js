@@ -194,14 +194,14 @@ const Dagger = [
     ,{
          Type: "Dagger"
         ,Name: "Mount_Slicer"
-        ,Attack_Power: 38
+        ,Attack_Power: 33
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
-        ,Skill_Amplification: 30
+        ,Skill_Amplification: 38
         ,Skill_Amplification_Percent: 0
         ,Cooldown_Reduction: 10
         ,SP_Regen: 0
