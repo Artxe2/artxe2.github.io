@@ -194,14 +194,14 @@ const Dagger = [
     ,{
          Type: "Dagger"
         ,Name: "Mount_Slicer"
-        ,Attack_Power: 33
+        ,Attack_Power: 38
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
-        ,Skill_Amplification: 35
+        ,Skill_Amplification: 30
         ,Skill_Amplification_Percent: 0
         ,Cooldown_Reduction: 10
         ,SP_Regen: 0
@@ -220,7 +220,7 @@ const Dagger = [
         ,Attack_Range: 0
         ,Base_Range: 1
         ,Atk_Speed: 0.58
-        ,Title: "Mount Slicer\n\nAttack Power +33\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Amplification +35"
+        ,Title: "Mount Slicer\n\nAttack Power +38\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Amplification +30"
         ,Rarity: "Epic"
     }
     ,{
@@ -258,7 +258,7 @@ const Dagger = [
     ,{
          Type: "Dagger"
         ,Name: "Fragarach"
-        ,Attack_Power: 75
+        ,Attack_Power: 90
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -284,7 +284,7 @@ const Dagger = [
         ,Attack_Range: 0
         ,Base_Range: 1
         ,Atk_Speed: 0.58
-        ,Title: "Fragarach\n\nAttack Power +75\nMovement Speed +0.2"
+        ,Title: "Fragarach\n\nAttack Power +90\nMovement Speed +0.2"
         ,Rarity: "Legendary"
     }
 ];

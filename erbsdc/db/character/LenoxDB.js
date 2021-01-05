@@ -1,4 +1,4 @@
-const Hyunwoo = {
+const Lenox = {
      Attack_Power: 40
     ,Attack_Power_Growth: 3.1
     ,Health: 500
@@ -16,16 +16,12 @@ const Hyunwoo = {
     ,Move_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.45
-    ,weapons: [Glove, Tonfa]
+    ,weapons: [Whip]
     ,correction: {
-        Glove: [
-            [0, 0, -3],
-            [0, -2, -5]
+        Whip: [
+            [0, 0, 0],
+            [0, 0, 0]
         ],
-        Tonfa: [
-            [0, -3, -3],
-            [0, -2, -5]
-        ]
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
@@ -53,32 +49,38 @@ const Hyunwoo = {
     }
     ,Q_Skill: (character, enemy) => {
         if (character.weapon) {
-            return "<b class='damage'>" + calcSkillDamage(character, enemy, 100 + character.Q_LEVEL.selectedIndex * 50, 0.4, 1) + '</b>';
+            const q = character.Q_LEVEL.selectedIndex;
+            const min = calcSkillDamage(character, enemy, 40 + q * 30, 0.3, 1);
+            const max = calcSkillDamage(character, enemy, 40 + q * 30 + character.max_hp * (0.06 + q * 0.005), 0.3, 1);
+            return "<b class='damage'>" + min + ' - ' + max  + '</b>';
         }
         return '-';
     }
     ,Q_Option: ''
     ,W_Skill: (character, enemy) => {
-        return '';
-    }
-    ,W_Option: "<b> _use</b><input type='checkbox' class='hyunwoo_w' onchange='updateDisplay()'>"
-    ,E_Skill: (character, enemy) => {
         if (character.weapon) {
-            const e = character.E_LEVEL.selectedIndex;
-            const min = calcSkillDamage(character, enemy, character.defense, 0, 1);
-            const max = calcSkillDamage(character, enemy, (enemy.max_hp ? enemy.max_hp * (0.05 + e * 0.03) : 0) + character.defense, 0, 1);
-            const bonus = calcSkillDamage(character, enemy, 60 + e * 35, 0, 1);
-            return "<b class='damage'>" + (max + bonus) + '</b> ( ' + min + ' ~ ' + max + ', ' + bonus + ' )';
+            const w = character.W_LEVEL.selectedIndex;
+            const damage1 = calcSkillDamage(character, enemy, 30 + w * 10, 0.3, 1);
+            const damage2 = calcSkillDamage(character, enemy, 40 + w * 35, 0.6, 1);
+            return "<b class='damage'>" + damage1 + ' - ' + (damage1 + damage2)  + '</b> ( ' + damage1 + ', ' + damage2 + ' )';
         }
         return '-';
     }
-    ,E_Option: "<b> __use</b><input type='checkbox' class='hyunwoo_e' onchange='updateDisplay()'>"
+    ,W_Option: ''
+    ,E_Skill: (character, enemy) => {
+        if (character.weapon) {
+            return "<b class='damage'>" + calcSkillDamage(character, enemy, 60 + character.E_LEVEL.selectedIndex * 50, 0.3, 1) + '</b>';
+        }
+        return '-';
+    }
+    ,E_Option: ''
     ,R_Skill: (character, enemy) => {
         if (character.weapon) {
-            const r = character.R_LEVEL.selectedIndex;
-            const min = calcSkillDamage(character, enemy, 200 + r * 100, 0.7, 1);
-            const max = calcSkillDamage(character, enemy, 600 + r * 300, 2.1, 1);
-            return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
+            const r = character.R_LEVEL.selectedIndex
+            const damage = calcSkillDamage(character, enemy, 75 + r * 75, 0.8, 1);
+            const add = 10 + r * 5;
+            const hit = enemy.movement_speed ? enemy.movement_speed * (4 + r) | 0 : 0;
+            return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * 2 * hit) + '</b> ( ' + damage + ' x 2, [' + add + ' x 2] x ' + hit + ' )';
         }
         return '-';
     }
@@ -86,27 +88,18 @@ const Hyunwoo = {
     ,D_Skill: (character, enemy) => {
         if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
             const type = character.weapon.Type;
-            if (type === 'Glove') {
-                const coe = character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 2;
-                const bonus = character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100;
-                const damage = gloveAttackDamage(character, enemy, coe, character.critical_strike_chance, bonus);
-                const min = gloveAttackDamage(character, enemy, coe, 0, bonus);
-                const max = gloveAttackDamage(character, enemy, coe, 100, bonus);
-                const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> __h: </b><b class='heal'>" + life + '</b>';
-            }
-            if (type === 'Tonfa') {
-                return "<b class='damage'>" + (character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 70) + '%</b>';
+            if (type === 'Whip') {
+                return "<b class='damage'>" + calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 100 + character.defense : 150, 0.3, 1) + '</b>';
             }
         }
-        return '-';
+        return '- ';
     }
     ,D_Option: (character, enemy) => {
         return '';
     }
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
-            return "<b> _h: </b><b class='heal'>" + calcHeal(character.max_hp * (0.07 + character.T_LEVEL.selectedIndex * 0.04), 1, enemy) + '</b>';
+            return "<b> _s: </b><b class='shield'>" + (character.max_hp * 0.1 | 0) + '</b>';
         }
         return '-';
     }
@@ -120,22 +113,20 @@ const Hyunwoo = {
         }
         const weapon = character.weapon.Type;
         const type = 
-            weapon === 'Glove' ? '글러브' : 
-            weapon === 'Tonfa' ? '톤파' : 
+            weapon === 'Whip' ? '채찍' : 
             '';
         const skill = 
-            weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" ) __h: "평균 흡혈량"' : 
-            weapon === 'Tonfa' ? '"반사 데미지"' : 
+            weapon === 'Whip' ? '"스킬 데미지"' : 
             '';
-        return '현우 ( ' + type + ' )\n' + 
+        return '레녹스 ( ' + type + ' )\n' + 
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
             'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
             'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지"\n' + 
-            'W: _use "스킬 사용"\n' + 
-            'E: "합산 데미지" ( "최소 데미지" ~ "최대 데미지", "벽꿍 데미지" )\n' + 
-            'R: "최소 데미지" ~ "최대 데미지"\n' + 
+            'Q: "최소 데미지" - "최대 데미지"\n' + 
+            'W: "1타 데미지" - "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
+            'E: "스킬 데미지"\n' + 
+            'R: "합산 데미지" - "출혈 데미지" ( "스킬 데미지" x 2,  "틱당 데미지" x "타수" )\n' + 
             'D: ' + skill + '\n' + 
-            'T: _h: "회복량"\n';
+            'T: _s: "쉴드량"\n';
     }
 };

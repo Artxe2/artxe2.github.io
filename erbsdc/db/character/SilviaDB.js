@@ -63,7 +63,7 @@ const Silvia = {
             if (character.MODE.selectedIndex == 0) {
                 heal = calcHeal((40 + q * 20 + character.attack_power * 0.3) * 1.1, 1, enemy);
             } else {
-                heal = calcHeal(40 + q * 20 + character.attack_power * 0.3, 1, enemy);
+                heal = calcHeal((40 + q * 20 + character.attack_power * 0.3) * 0.95, 1, enemy);
             }
             return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
         }

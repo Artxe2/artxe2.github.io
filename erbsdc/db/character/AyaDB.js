@@ -23,7 +23,7 @@ const Aya = {
             [0, 0, 0]
         ],
         AssaultRifle: [
-            [0, -15, -13],
+            [0, -12, -13],
             [0, 0, 0]
         ],
         SniperRifle: [

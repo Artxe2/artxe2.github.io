@@ -1,6 +1,6 @@
 const Yuki = {
      Attack_Power: 32
-    ,Attack_Power_Growth: 2.2
+    ,Attack_Power_Growth: 2.6
     ,Health: 550
     ,Health_Growth: 81
     ,Health_Regen: 0.7
@@ -19,12 +19,12 @@ const Yuki = {
     ,weapons: [TwoHandedSword, DualSwords]
     ,correction: {
         TwoHandedSword: [
-            [0, -8, -8],
+            [0, -8, -10],
             [0, 0, 0]
         ],
         DualSwords: [
             [9, 1, 1],
-            [0, 0, 0]
+            [-3, -3, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {

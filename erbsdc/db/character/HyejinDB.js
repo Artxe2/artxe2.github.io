@@ -19,12 +19,12 @@ const Hyejin = {
     ,weapons: [Shuriken, Bow]
     ,correction: {
         Shuriken: [
-            [8, 0, -6],
-            [-3, 0, 0]
+            [10, 2, -4],
+            [-6, -3, -3]
         ],
         Bow: [
             [0, -10, -18],
-            [-3, 0, 0]
+            [-6, -3, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {

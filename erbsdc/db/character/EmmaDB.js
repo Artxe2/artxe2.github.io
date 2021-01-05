@@ -8,7 +8,7 @@ const Emma = {
     ,Stamina: 430
     ,Stamina_Growth: 18
     ,Stamina_Regen: 1.1
-    ,Stamina_Regen_Growth: 0.02
+    ,Stamina_Regen_Growth: 0.06
     ,Defense: 28
     ,Defense_Growth: 1.6
     ,Atk_Speed: 0.12
@@ -50,8 +50,8 @@ const Emma = {
     ,Q_Skill: (character, enemy) => {
         if (character.weapon) {
             const q = character.Q_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 40 + q * 20, 0.3, 1);
-            const heal = calcHeal((70 + q * 10) * (0.08 + character.E_LEVEL.selectedIndex * 0.03), 1, enemy);
+            const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
+            const heal = calcHeal((60 + q * 10) * (0.08 + character.E_LEVEL.selectedIndex * 0.03), 1, enemy);
             return "<b class='damage'>" + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> __h: </b><b class='heal'>" + heal + '</b>';
         }
         return '-';
@@ -61,7 +61,7 @@ const Emma = {
         if (character.weapon) {
             const w = character.W_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 100 + w * 50, 0.75, 1);
-            const heal = calcHeal((70 + w * 10) * (0.08 + character.E_LEVEL.selectedIndex * 0.03), 1, enemy);
+            const heal = calcHeal((60 + w * 10) * (0.08 + character.E_LEVEL.selectedIndex * 0.03), 1, enemy);
             return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
         }
         return '-';

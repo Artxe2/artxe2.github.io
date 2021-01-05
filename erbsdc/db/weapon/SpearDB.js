@@ -316,7 +316,7 @@ const Spear = [
         ,Attack_Range: 0
         ,Base_Range: 2.15
         ,Atk_Speed: 0.445
-        ,Title: "Lance of Poseidon\n\nAttack Power +120\nMovement Speed -0.05"
+        ,Title: "Lance of Poseidon\n\nAttack Power +120"
         ,Rarity: "Epic"
     }
     ,{
@@ -329,7 +329,7 @@ const Spear = [
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
-        ,Skill_Amplification: 34
+        ,Skill_Amplification: 31
         ,Skill_Amplification_Percent: 0
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
@@ -348,7 +348,7 @@ const Spear = [
         ,Attack_Range: 0
         ,Base_Range: 2.15
         ,Atk_Speed: 0.445
-        ,Title: "Fangtian Huaji\n\nAttack Power +88\nMovement Speed -0.1\nSkill Amplification +34\n Healing Reduction (Skills) -40%"
+        ,Title: "Fangtian Huaji\n\nAttack Power +88\nMovement Speed -0.1\nSkill Amplification +31\n Healing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -374,13 +374,13 @@ const Spear = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.05
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 2.15
         ,Atk_Speed: 0.445
-        ,Title: "Dragon Guandao\n\nAttack Power +130\nMovement Speed -0.1"
+        ,Title: "Dragon Guandao\n\nAttack Power +130\nMovement Speed -0.05"
         ,Rarity: "Epic"
     }
     ,{

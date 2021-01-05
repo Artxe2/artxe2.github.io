@@ -322,7 +322,7 @@ const Guitar = [
     ,{
          Type: "Guitar"
         ,Name: "Stairway_to_Heaven"
-        ,Attack_Power: 52
+        ,Attack_Power: 56
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -348,7 +348,7 @@ const Guitar = [
         ,Attack_Range: 0
         ,Base_Range: 3.85
         ,Atk_Speed: 0.43
-        ,Title: "Stairway to Heaven\n\nAttack Power +52\nHP Regen +200%\nVision Range +4\nSkill Amplification +20%"
+        ,Title: "Stairway to Heaven\n\nAttack Power +56\nHP Regen +200%\nVision Range +4\nSkill Amplification +20%"
         ,Rarity: "Epic"
     }
     ,{
@@ -419,7 +419,7 @@ const Guitar = [
          Type: "Guitar"
         ,Name: "Wonderful_Tonight"
         ,Attack_Power: 100
-        ,Attack_Speed: 45
+        ,Attack_Speed: 18
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
@@ -444,7 +444,7 @@ const Guitar = [
         ,Attack_Range: 0
         ,Base_Range: 3.85
         ,Atk_Speed: 0.43
-        ,Title: "Wonderful Tonight\n\nAttack Power +100\nAttack Speed +45%\nExtra Normal Attack Damage +2"
+        ,Title: "Wonderful Tonight\n\nAttack Power +100\nAttack Speed +18%\nExtra Normal Attack Damage +2"
         ,Rarity: "Epic"
     }
     ,{

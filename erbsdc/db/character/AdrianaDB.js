@@ -1,6 +1,6 @@
 const Adriana = {
      Attack_Power: 31
-    ,Attack_Power_Growth: 2.4
+    ,Attack_Power_Growth: 2.7
     ,Health: 530
     ,Health_Growth: 65
     ,Health_Regen: 0.5
@@ -64,10 +64,11 @@ const Adriana = {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
             const damage1 = calcSkillDamage(character, enemy, 4 + t * 3, 0.15, 1);
-            const damage2 = calcSkillDamage(character, enemy, (4 + t * 3) * 1.2, 0.15 * 1.2, 1);
-            const damage3 = calcSkillDamage(character, enemy, (4 + t * 3) * 1.4, 0.15 * 1.4, 1);
-            const damage4 = calcSkillDamage(character, enemy, (4 + t * 3) * 1.6, 0.15 * 1.6, 1);
-            return "<b class='damage'>" + damage1 + ' ~ ' + (damage1 + damage2 + damage3 + damage4) + '</b> ( ' + damage1 + ', ' + damage2 + ', ' + damage3 + ', ' + damage4 + ' )';
+            let damage2 = damage1;
+            for (let i = 1; i < 9; i++) {
+                damage2 += calcSkillDamage(character, enemy, (4 + t * 3) * (1 + i * 0.2), 0.15 * 1.2, 1);
+            }
+            return "<b class='damage'>" + damage1 + ' ~ ' + damage2 + '</b> ( ' + damage1 + ' x 9 )';
         }
         return '-';
     }
@@ -123,7 +124,7 @@ const Adriana = {
             'HPS: "초당 회복량"\n' + 
             'Q: "틱당 데미지" ~ "풀히트 데미지" ( "틱당 데미지" x "타수" )\n' + 
             'W: "데미지 없음"\n' + 
-            'E: "틱당 데미지" ~ "풀히트 데미지" ( "1틱", "2틱", "3틱", "4틱" )\n' + 
+            'E: "틱당 데미지" ~ "풀히트 데미지" ( "최소 데미지" x "타수" )\n' + 
             'R: "1발당 데미지" ~ "3 회 사용 시 데미지" ( "1발당 데미지" x "장전 수" )\n' + 
             'D: ' + skill + '\n' + 
             'T: _d/s: "최초 초당 데미지" ~ "최대중첩 시 초당 데미지"\n';

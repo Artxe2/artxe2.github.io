@@ -725,14 +725,14 @@ const Chest = [
         ,Max_SP: 0
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
-        ,Normal_Attack_Damage_Reduction: 15
+        ,Normal_Attack_Damage_Reduction: 11
         ,Move_Speed: 0
         ,Out_of_Combat_Movement_Speed: 0.15
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +11\nMovement speed while not in combat +0.15\nNormal Attack Damage Reduction +15\nHealing Reduction (Skills) -40%"
+        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +11\nMovement speed while not in combat +0.15\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -874,7 +874,7 @@ const Chest = [
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
         ,Skill_Amplification: 0
-        ,Skill_Amplification_Percent: 16
+        ,Skill_Amplification_Percent: 18
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
         ,SP_Regen_Percent: 0
@@ -892,7 +892,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Commander`s Armor\n\nDefense +20\nSkill Damage Increase +16%"
+        ,Title: "Commander`s Armor\n\nDefense +20\nSkill Damage Increase +18%"
         ,Rarity: "Epic"
     }
     ,{
@@ -1034,7 +1034,7 @@ const Chest = [
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
         ,Skill_Amplification: 0
-        ,Skill_Amplification_Percent: 18
+        ,Skill_Amplification_Percent: 20
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
         ,SP_Regen_Percent: 0
@@ -1052,7 +1052,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Kabana\n\nDefense +36\nSkill Amplification +18%"
+        ,Title: "Kabana\n\nDefense +36\nSkill Amplification +20%"
         ,Rarity: "Legendary"
     }
     ,{

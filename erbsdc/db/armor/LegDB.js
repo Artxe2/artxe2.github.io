@@ -451,7 +451,7 @@ const Leg = [
          Type: "Leg"
         ,Name: "Feather_Boots"
         ,Attack_Power: 0
-        ,Attack_Speed: 30
+        ,Attack_Speed: 35
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
@@ -476,7 +476,7 @@ const Leg = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +30%\nMovement Speed +0.4"
+        ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +35%\nMovement Speed +0.4"
         ,Rarity: "Epic"
     }
     ,{

@@ -130,7 +130,7 @@ const Tonfa = [
     ,{
          Type: "Tonfa"
         ,Name: "Tactical_Tonfa"
-        ,Attack_Power: 70
+        ,Attack_Power: 74
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -156,13 +156,13 @@ const Tonfa = [
         ,Attack_Range: 0
         ,Base_Range: 1
         ,Atk_Speed: 0.5
-        ,Title: "Tactical Tonfa\n\nAttack Power +70\nDefense +10\nLife Steal +25%"
+        ,Title: "Tactical Tonfa\n\nAttack Power +74\nDefense +10\nLife Steal +25%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Tonfa"
         ,Name: "Mai_Sok"
-        ,Attack_Power: 50
+        ,Attack_Power: 54
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -188,7 +188,7 @@ const Tonfa = [
         ,Attack_Range: 0
         ,Base_Range: 1
         ,Atk_Speed: 0.5
-        ,Title: "Mai Sok\n\nAttack Power +45\nDefense +20\nHP Regen +100%"
+        ,Title: "Mai Sok\n\nAttack Power +54\nDefense +20\nHP Regen +100%"
         ,Rarity: "Epic"
     }
     ,{

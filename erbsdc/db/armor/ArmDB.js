@@ -336,19 +336,19 @@ const Arm = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 25
+        ,Defense: 20
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.05
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Steel Shield\n\nAttack Power +23\nDefense +25\nMovement Speed -0.1"
+        ,Title: "Steel Shield\n\nAttack Power +23\nDefense +20\nMovement Speed -0.05"
         ,Rarity: "Rare"
     }
     ,{
@@ -400,7 +400,7 @@ const Arm = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 28
+        ,Defense: 32
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 0
@@ -412,7 +412,7 @@ const Arm = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Sword Stopper\n\nDefense +28\nNormal Attack Damage Reduction +11\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Sword Stopper\n\nDefense +32\nNormal Attack Damage Reduction +11\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -528,25 +528,25 @@ const Arm = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 25
+        ,Defense: 20
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 1.5
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.05
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +25\nHP Regen +1.5\nMovement Speed -0.1\nCritical Damage +20%"
+        ,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +20\nHP Regen +1.5\nMovement Speed -0.05\nCritical Damage +20%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Arm"
         ,Name: "Sword_of_Shah_Jahan"
-        ,Attack_Power: 28
+        ,Attack_Power: 25
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -572,7 +572,7 @@ const Arm = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Sword of Shah Jahan\n\nAttack Power +28\nMax HP +300\nNormal Attack Damage Reduction +2"
+        ,Title: "Sword of Shah Jahan\n\nAttack Power +25\nMax HP +300\nNormal Attack Damage Reduction +2"
         ,Rarity: "Epic"
     }
     ,{
@@ -611,7 +611,7 @@ const Arm = [
          Type: "Arm"
         ,Name: "Radar"
         ,Attack_Power: 0
-        ,Attack_Speed: 35
+        ,Attack_Speed: 40
         ,Critical_Strike_Chance: 20
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
@@ -636,7 +636,7 @@ const Arm = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Radar\n\nDefense +15\nAttack Speed +35%\nCritical Strike Chance +20%"
+        ,Title: "Radar\n\nDefense +15\nAttack Speed +40%\nCritical Strike Chance +20%"
         ,Rarity: "Legendary"
     }
     ,{

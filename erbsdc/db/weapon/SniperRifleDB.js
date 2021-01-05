@@ -22,13 +22,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: 0
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Long Rifle\n\nAttack Power +34\nMovement Speed -0.1"
+        ,Title: "Long Rifle\n\nAttack Power +34"
         ,Rarity: "Common"
         ,Ammo: 1
     }
@@ -55,13 +55,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.07
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 1.5
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Springfield\n\nAttack Power +50\nMovement Speed -0.1\nVision Range +1.5"
+        ,Title: "Springfield\n\nAttack Power +50\nMovement Speed -0.07\nVision Range +1.5"
         ,Rarity: "Uncommon"
         ,Ammo: 1
     }
@@ -88,13 +88,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.07
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 2
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Harpoon Gun\n\nAttack Power +64\nMovement Speed -0.1\nVision Range +2"
+        ,Title: "Harpoon Gun\n\nAttack Power +64\nMovement Speed -0.07\nVision Range +2"
         ,Rarity: "Rare"
         ,Ammo: 2
     }
@@ -121,13 +121,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.15
+        ,Move_Speed: -0.07
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 2.5
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Golden Rifle\n\nAttack Power +56\nMovement Speed -0.15\nVision Range +2.5\nSkill Amplification +18%"
+        ,Title: "Golden Rifle\n\nAttack Power +56\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +18%"
         ,Rarity: "Rare"
         ,Ammo: 1
     }
@@ -154,13 +154,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.15
+        ,Move_Speed: -0.03
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 2
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Railgun\n\nAttack Power +78\nAttack Speed +20%\nMovement Speed -0.15\nVision Range +2"
+        ,Title: "Railgun\n\nAttack Power +78\nAttack Speed +20%\nMovement Speed -0.03\nVision Range +2"
         ,Rarity: "Rare"
         ,Ammo: 3
     }
@@ -187,20 +187,20 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.03
+        ,Move_Speed: 0
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 2.5
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Tac-50\n\nAttack Power +140\nMovement Speed -0.03\nVision Range +2.5\nLife Steal +20%"
+        ,Title: "Tac-50\n\nAttack Power +140\nVision Range +2.5\nLife Steal +20%"
         ,Rarity: "Epic"
         ,Ammo: 2
     }
     ,{
          Type: "SniperRifle"
         ,Name: "Intervention"
-        ,Attack_Power: 110
+        ,Attack_Power: 115
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -226,7 +226,7 @@ const SniperRifle = [
         ,Attack_Range: 1
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Intervention\n\nAttack Power +110\nVision Range +4.5\nAttack Range +1"
+        ,Title: "Intervention\n\nAttack Power +115\nVision Range +4.5\nAttack Range +1"
         ,Rarity: "Epic"
         ,Ammo: 2
     }
@@ -253,13 +253,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.07
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 2.5
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "NTW-20\n\nAttack Power +95\nMovement Speed -0.1\nVision Range +2.5\nSkill Amplification +22%"
+        ,Title: "NTW-20\n\nAttack Power +95\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +22%"
         ,Rarity: "Epic"
         ,Ammo: 1
     }
@@ -286,13 +286,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.07
+        ,Move_Speed: -0.03
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 2
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "Polaris\n\nAttack Power +135\nAttack Speed +40%\nMovement Speed -0.07\nVision Range +2"
+        ,Title: "Polaris\n\nAttack Power +135\nAttack Speed +40%\nMovement Speed -0.03\nVision Range +2"
         ,Rarity: "Epic"
         ,Ammo: 3
     }
@@ -319,13 +319,13 @@ const SniperRifle = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.07
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 2.5
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "The Deadly Ray\n\nAttack Power +95\nMovement Speed -0.1\nVision Range +2.5\nSkill Amplification +30%"
+        ,Title: "The Deadly Ray\n\nAttack Power +95\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +30%"
         ,Rarity: "Legendary"
         ,Ammo: 1
     }

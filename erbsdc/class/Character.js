@@ -668,7 +668,7 @@ class Character {
                 (xiukai_r && xiukai_r.checked ? 0.1 + this.enemy.R_LEVEL.selectedIndex * 0.05 : 0) - 
                 (chiara_t ? chiara_t.value * (0.02 + this.enemy.T_LEVEL.selectedIndex * 0.02) : 0);
             const defense_bonus = (hyunwoo_w && hyunwoo_w.checked ? 4 + this.W_LEVEL.selectedIndex * 14 : 0) + 
-                (silvia_r && silvia_r.checked ? 10 + this.R_LEVEL.selectedIndex * 7 : 0)
+                (silvia_r && silvia_r.checked ? 2 + this.R_LEVEL.selectedIndex * 14 : 0)
             this.defense = 
                 ((this.character.Defense + this.character.Defense_Growth * this.LEVEL.selectedIndex + 
                 ((!this.weapon ? 0 : this.weapon.Defense) + 

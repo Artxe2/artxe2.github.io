@@ -183,13 +183,13 @@ const TwoHandedSword = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.05
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 1.5
         ,Atk_Speed: 0.56
-        ,Title: "Bastard Sword\n\nAttack Power +45\nMovement Speed -0.1"
+        ,Title: "Bastard Sword\n\nAttack Power +45\nMovement Speed -0.05"
         ,Rarity: "Rare"
     }
     ,{
@@ -247,13 +247,13 @@ const TwoHandedSword = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: -0.1
+        ,Move_Speed: -0.05
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 1.5
         ,Atk_Speed: 0.56
-        ,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25\nMovement Speed -0.1"
+        ,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25\nMovement Speed -0.05"
         ,Rarity: "Rare"
     }
     ,{
@@ -355,7 +355,7 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Monohoshizao"
-        ,Attack_Power: 70
+        ,Attack_Power: 74
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -381,7 +381,7 @@ const TwoHandedSword = [
         ,Attack_Range: 0
         ,Base_Range: 1.5
         ,Atk_Speed: 0.56
-        ,Title: "Monohoshizao\n\nAttack Power +70\nLife Steal +18%"
+        ,Title: "Monohoshizao\n\nAttack Power +74\nLife Steal +18%"
         ,Rarity: "Epic"
     }
     ,{
@@ -451,7 +451,7 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Dainsleif"
-        ,Attack_Power: 70
+        ,Attack_Power: 80
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -477,7 +477,7 @@ const TwoHandedSword = [
         ,Attack_Range: 0
         ,Base_Range: 1.5
         ,Atk_Speed: 0.56
-        ,Title: "Dainsleif\n\nAttack Power +70\nLife Steal +20%"
+        ,Title: "Dainsleif\n\nAttack Power +80\nLife Steal +20%"
         ,Rarity: "Legendary"
     }
 ];

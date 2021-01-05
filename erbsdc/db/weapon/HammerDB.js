@@ -180,7 +180,7 @@ const Hammer = [
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 0
-        ,HP_Regen_Percent: 250
+        ,HP_Regen_Percent: 150
         ,Normal_Attack_Damage_Reduction: 0
         ,Move_Speed: 0
         ,Out_of_Combat_Movement_Speed: 0
@@ -188,7 +188,7 @@ const Hammer = [
         ,Attack_Range: 0
         ,Base_Range: 1.25
         ,Atk_Speed: 0.455
-        ,Title: "Hammer of Dagda\n\nAttack Power +95\nHP Regen +250%"
+        ,Title: "Hammer of Dagda\n\nAttack Power +95\nHP Regen +150%\nExtra Normal Attack Damage +20"
         ,Rarity: "Epic"
     }
     ,{

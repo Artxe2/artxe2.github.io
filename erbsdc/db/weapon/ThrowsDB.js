@@ -387,7 +387,7 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "David`s_Sling"
-        ,Attack_Power: 80
+        ,Attack_Power: 75
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -413,7 +413,7 @@ const Throws = [
         ,Attack_Range: 0
         ,Base_Range: 5.8
         ,Atk_Speed: 0.51
-        ,Title: "David`s Sling\n\nAttack Power +80\nHP Regen +150%\nExtra Normal Attack Damage +30"
+        ,Title: "David`s Sling\n\nAttack Power +75\nHP Regen +150%\nExtra Normal Attack Damage +30"
         ,Rarity: "Epic"
     }
     ,{

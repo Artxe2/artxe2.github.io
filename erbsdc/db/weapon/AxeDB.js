@@ -362,7 +362,7 @@ const Axe = [
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
-        ,Skill_Amplification: 38
+        ,Skill_Amplification: 33
         ,Skill_Amplification_Percent: 0
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
@@ -381,7 +381,7 @@ const Axe = [
         ,Attack_Range: 0.5
         ,Base_Range: 1.15
         ,Atk_Speed: 0.455
-        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +38\nHealing Reduction (Skills) -40%"
+        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +33\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
 ];
