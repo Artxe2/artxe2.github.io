@@ -66,7 +66,7 @@ const Adriana = {
             const damage1 = calcSkillDamage(character, enemy, 4 + t * 3, 0.15, 1);
             let damage2 = damage1;
             for (let i = 1; i < 9; i++) {
-                damage2 += calcSkillDamage(character, enemy, (4 + t * 3) * (1 + i * 0.2), 0.15 * 1.2, 1);
+                damage2 += calcSkillDamage(character, enemy, (4 + t * 3) * (1 + i * 0.2), 0.15 * (1 + i * 0.2), 1);
             }
             return "<b class='damage'>" + damage1 + ' ~ ' + damage2 + '</b> ( ' + damage1 + ' x 9 )';
         }
