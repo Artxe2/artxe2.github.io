@@ -497,7 +497,7 @@ class Character {
                 (silvia_t ? silvia_t.value * (1 + this.T_LEVEL.selectedIndex * 1) : 0);
             const attack_speed_minus = 1 - (nadine_r && nadine_r.checked ? 0.35 : 0);
             this.attack_speed = 
-                (((this.base_attack_speed) * 
+                Math.round(((this.base_attack_speed) * 
                 (100 + attack_speed_bonus + 
                 (!this.weapon ? 0 : this.weapon_mastery_attack_speed + 
                 this.WEAPON_MASTERY.selectedIndex * this.weapon_mastery_attack_speed) + 
@@ -507,42 +507,42 @@ class Character {
                 (!this.arm ? 0 : this.arm.Attack_Speed) + 
                 (!this.leg ? 0 : this.leg.Attack_Speed) + 
                 (!this.accessory ? 0 : this.accessory.Attack_Speed)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus))) * attack_speed_minus | 0) / 100;			
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus))) * attack_speed_minus) / 100;			
             this.ATTACK_SPEED.innerText = this.attack_speed;
 
             const shoichi_t = this.DIV.querySelector('.shoichi_t');
             const cri_bonus = (shoichi_t ? shoichi_t.value * (3 + this.T_LEVEL.selectedIndex * 3) : 0);
             this.critical_strike_chance = 
-                (((!this.weapon ? 0 : this.weapon.Critical_Strike_Chance) + 
+                Math.round(((!this.weapon ? 0 : this.weapon.Critical_Strike_Chance) + 
                 (!this.chest ? 0 : this.chest.Critical_Strike_Chance) + 
                 (!this.head ? 0 : this.head.Critical_Strike_Chance) + 
                 (!this.arm ? 0 : this.arm.Critical_Strike_Chance) + 
                 (!this.leg ? 0 : this.leg.Critical_Strike_Chance) + 
                 (!this.accessory ? 0 : this.accessory.Critical_Strike_Chance)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) + cri_bonus | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) + cri_bonus;
             if (this.critical_strike_chance > 100) {
                 this.critical_strike_chance = 100;
             }
             this.CRITICAL_STRIKE_CHANCE.innerText = this.critical_strike_chance + '%';
 
             this.critical_strike_damage = 
-                (((!this.weapon ? 0 : this.weapon.Critical_Strike_Damage) + 
+                Math.round(((!this.weapon ? 0 : this.weapon.Critical_Strike_Damage) + 
                 (!this.chest ? 0 : this.chest.Critical_Strike_Damage) + 
                 (!this.head ? 0 : this.head.Critical_Strike_Damage) + 
                 (!this.arm ? 0 : this.arm.Critical_Strike_Damage) + 
                 (!this.leg ? 0 : this.leg.Critical_Strike_Damage) + 
                 (!this.accessory ? 0 : this.accessory.Critical_Strike_Damage)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus));
             this.CRITICAL_STRIKE_DAMAGE.innerText = this.critical_strike_damage + '%';
 
             this.life_steal = 
-                (((!this.weapon ? 0 : this.weapon.Life_Steal) + 
+                Math.round(((!this.weapon ? 0 : this.weapon.Life_Steal) + 
                 (!this.chest ? 0 : this.chest.Life_Steal) + 
                 (!this.head ? 0 : this.head.Life_Steal) + 
                 (!this.arm ? 0 : this.arm.Life_Steal) + 
                 (!this.leg ? 0 : this.leg.Life_Steal) + 
                 (!this.accessory ? 0 : this.accessory.Life_Steal)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus));
             this.LIFE_STEAL.innerText = this.life_steal + '%';
 
             this.extra_normal_attack_damage = 
@@ -554,8 +554,8 @@ class Character {
                 (!this.accessory ? 0 : this.accessory.Extra_Normal_Attack_Damage)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
             this.extra_normal_attack_damage_percent = 
-                (this.weapon == null ? 0 : this.weapon_mastery_extra_normal_attack_damage_percent + 
-                this.WEAPON_MASTERY.selectedIndex * this.weapon_mastery_extra_normal_attack_damage_percent) | 0;
+                Math.round(this.weapon == null ? 0 : this.weapon_mastery_extra_normal_attack_damage_percent + 
+                this.WEAPON_MASTERY.selectedIndex * this.weapon_mastery_extra_normal_attack_damage_percent);
             this.EXTRA_NORMAL_ATTACK_DAMAGE.innerText = 
                 this.extra_normal_attack_damage + '| ' + this.extra_normal_attack_damage_percent + '%';
                 
@@ -569,7 +569,7 @@ class Character {
                 (silvia_t && silvia_t.value == 15 ? 15 : 0);
             const skill_amplification_percent_bonus = (hart_e ? hart_e_s.value * (hart_ee.checked ? 25 : hart_e.checked ? 15 : 0) : 0);
             this.skill_amplification = 
-            Math.round((((!this.weapon ? 0 : this.weapon.Skill_Amplification) + 
+                Math.round((((!this.weapon ? 0 : this.weapon.Skill_Amplification) + 
                 (!this.chest ? 0 : this.chest.Skill_Amplification) + 
                 (!this.head ? 0 : this.head.Skill_Amplification) + 
                 (!this.arm ? 0 : this.arm.Skill_Amplification) + 
@@ -578,7 +578,7 @@ class Character {
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus) + 
                 skill_amplification_bonus) * 10) / 10;
             this.skill_amplification_percent = 
-                ((!this.weapon ? 0 : this.weapon_mastery_skill_amplification_percent + 
+                Math.round((!this.weapon ? 0 : this.weapon_mastery_skill_amplification_percent + 
                 this.WEAPON_MASTERY.selectedIndex * this.weapon_mastery_skill_amplification_percent) + 
                 ((!this.weapon ? 0 : this.weapon.Skill_Amplification_Percent) + 
                 (!this.chest ? 0 : this.chest.Skill_Amplification_Percent) + 
@@ -587,18 +587,18 @@ class Character {
                 (!this.leg ? 0 : this.leg.Skill_Amplification_Percent) + 
                 (!this.accessory ? 0 : this.accessory.Skill_Amplification_Percent)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) + 
-                skill_amplification_percent_bonus | 0;
+                skill_amplification_percent_bonus;
             this.SKILL_AMPLIFICATION.innerText = 
                 this.skill_amplification + '| ' + this.skill_amplification_percent + '%';
 
             this.cooldown_reduction = 
-                (((!this.weapon ? 0 : this.weapon.Cooldown_Reduction) + 
+                Math.round(((!this.weapon ? 0 : this.weapon.Cooldown_Reduction) + 
                 (!this.chest ? 0 : this.chest.Cooldown_Reduction) + 
                 (!this.head ? 0 : this.head.Cooldown_Reduction) + 
                 (!this.arm ? 0 : this.arm.Cooldown_Reduction) + 
                 (!this.leg ? 0 : this.leg.Cooldown_Reduction) + 
                 (!this.accessory ? 0 : this.accessory.Cooldown_Reduction)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus));
             if (this.cooldown_reduction > 40) {
                 this.cooldown_reduction = 40;
             }
@@ -615,13 +615,13 @@ class Character {
                 (!this.accessory ? 0 : this.accessory.SP_Regen)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 10) / 10;
             this.sp_regen_percent = 
-                (((!this.weapon ? 0 : this.weapon.SP_Regen_Percent) + 
+                Math.round(((!this.weapon ? 0 : this.weapon.SP_Regen_Percent) + 
                 (!this.chest ? 0 : this.chest.SP_Regen_Percent) + 
                 (!this.head ? 0 : this.head.SP_Regen_Percent) + 
                 (!this.arm ? 0 : this.arm.SP_Regen_Percent) + 
                 (!this.leg ? 0 : this.leg.SP_Regen_Percent) + 
                 (!this.accessory ? 0 : this.accessory.SP_Regen_Percent)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus));
             this.SP_REGEN.innerText = 
                 this.sp_regen + '| ' + this.sp_regen_percent + '%';
 
@@ -634,14 +634,14 @@ class Character {
                 (!this.accessory ? 0 : this.accessory.Skill_Damage_Reduction)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
             this.skill_damage_reduction_percent = 
-                (1 + this.DEFENSE_MASTERY.selectedIndex * 1 + 
+                Math.round(1 + this.DEFENSE_MASTERY.selectedIndex * 1 + 
                 ((!this.weapon ? 0 : this.weapon.Skill_Damage_Reduction_Percent) + 
                 (!this.chest ? 0 : this.chest.Skill_Damage_Reduction_Percent) + 
                 (!this.head ? 0 : this.head.Skill_Damage_Reduction_Percent) + 
                 (!this.arm ? 0 : this.arm.Skill_Damage_Reduction_Percent) + 
                 (!this.leg ? 0 : this.leg.Skill_Damage_Reduction_Percent) + 
                 (!this.accessory ? 0 : this.accessory.Skill_Damage_Reduction_Percent)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus));
             this.SKILL_DAMAGE_REDUCTION.innerText = 
                 this.skill_damage_reduction + '| ' + this.skill_damage_reduction_percent + '%';
 
@@ -719,13 +719,13 @@ class Character {
                 (!this.accessory ? 0 : this.accessory.HP_Regen)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 10) / 10;
             this.hp_regen_percent = 
-                (((!this.weapon ? 0 : this.weapon.HP_Regen_Percent) + 
+                Math.round(((!this.weapon ? 0 : this.weapon.HP_Regen_Percent) + 
                 (!this.chest ? 0 : this.chest.HP_Regen_Percent) + 
                 (!this.head ? 0 : this.head.HP_Regen_Percent) + 
                 (!this.arm ? 0 : this.arm.HP_Regen_Percent) + 
                 (!this.leg ? 0 : this.leg.HP_Regen_Percent) + 
                 (!this.accessory ? 0 : this.accessory.HP_Regen_Percent)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus));
             this.HP_REGEN.innerText = 
                 this.hp_regen + '| ' + this.hp_regen_percent + '%';
 
@@ -738,7 +738,7 @@ class Character {
                 (!this.accessory ? 0 : this.accessory.Normal_Attack_Damage_Reduction)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) | 0;
             this.normal_attack_damage_reduction_percent = 
-                (1.2 + this.DEFENSE_MASTERY.selectedIndex * 1.2) | 0;
+                Math.round(1.2 + this.DEFENSE_MASTERY.selectedIndex * 1.2);
             this.NORMAL_ATTACK_DAMAGE_REDUCTION.innerText = 
                 this.normal_attack_damage_reduction + '| ' + this.normal_attack_damage_reduction_percent + '%';
 
@@ -751,7 +751,7 @@ class Character {
             const move_bonus = (silvia_r && silvia_r.checked ? 0.2 + this.R_LEVEL.selectedIndex * 0.05 : 0);
             const move_minus = 1 - (nadine_r && nadine_r.checked ? 0.35 : 0);
             this.movement_speed = 
-            Math.round((this.character.Move_Speed + move_bonus + 
+                ((this.character.Move_Speed + move_bonus + 
                 0.01 + this.MOVE_MASTERY.selectedIndex * 0.01 + 
                 ((!this.weapon ? 0 : this.weapon.Move_Speed) + 
                 (!this.chest ? 0 : this.chest.Move_Speed) + 
@@ -759,21 +759,21 @@ class Character {
                 (!this.arm ? 0 : this.arm.Move_Speed) + 
                 (!this.leg ? 0 : this.leg.Move_Speed) + 
                 (!this.accessory ? 0 : this.accessory.Move_Speed)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 100 * move_percent * move_minus) / 100;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * move_percent * move_minus);
             if (this.movement_speed > 7) {
                 this.movement_speed = 7;
             }
-            this.MOVEMENT_SPEED.innerText = this.movement_speed;
+            this.MOVEMENT_SPEED.innerText = Math.round(this.movement_speed * 100) / 100;
 
             this.out_of_combat_movement_speed = 
-            Math.round((0.02 + this.MOVE_MASTERY.selectedIndex * 0.02 + 
+                ((0.02 + this.MOVE_MASTERY.selectedIndex * 0.02 + 
                 ((!this.weapon ? 0 : this.weapon.Out_of_Combat_Movement_Speed) + 
                 (!this.chest ? 0 : this.chest.Out_of_Combat_Movement_Speed) + 
                 (!this.head ? 0 : this.head.Out_of_Combat_Movement_Speed) + 
                 (!this.arm ? 0 : this.arm.Out_of_Combat_Movement_Speed) + 
                 (!this.leg ? 0 : this.leg.Out_of_Combat_Movement_Speed) + 
                 (!this.accessory ? 0 : this.accessory.Out_of_Combat_Movement_Speed)) * 
-                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 100 * move_percent * move_minus) / 100;
+                (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * move_percent * move_minus);
             if (this.movement_speed + this.out_of_combat_movement_speed > 7) {
                 this.out_of_combat_movement_speed = 7 - this.movement_speed;
             }
