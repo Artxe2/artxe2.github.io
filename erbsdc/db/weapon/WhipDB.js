@@ -195,13 +195,13 @@ const Whip = [
          Type: "Whip"
         ,Name: "Gleipnir"
         ,Attack_Power: 58
-        ,Attack_Speed: 35
+        ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
-        ,Skill_Amplification: 0
+        ,Skill_Amplification: 35
         ,Skill_Amplification_Percent: 0
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
@@ -220,7 +220,7 @@ const Whip = [
         ,Attack_Range: 0
         ,Base_Range: 2.35
         ,Atk_Speed: 0.55
-        ,Title: "Gleipnir\n\nAttack Power +58\nAttack Speed +35%"
+        ,Title: "Gleipnir\n\nAttack Power +58\nSkill Amplification +35"
         ,Rarity: "Epic"
     }
     ,{
