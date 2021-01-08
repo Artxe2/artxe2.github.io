@@ -95,7 +95,7 @@ const Jackie = {
             } else {
                 damage1 = calcSkillDamage(character, enemy, 20 + q * 20, 0.45, 1);
                 damage2 = calcSkillDamage(character, enemy, 30 + q * 20, 0.65, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 5 ] + ' )';
+                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + ' x 5 ] )';
             }
         }
         return '-';
