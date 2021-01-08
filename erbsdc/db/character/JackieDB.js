@@ -85,17 +85,17 @@ const Jackie = {
         if (character.weapon) {
             const q = character.Q_LEVEL.selectedIndex;
             const w = character.W_LEVEL.selectedIndex;
-            const damage3 = calcSkillDamage(character, enemy, 16 + q * 6, 0, 0) * 5;
+            const damage3 = 16 + q * 6;
             let damage1, damage2;
             if (character.DIV.querySelector('.jackie_w').checked) {
                 const heal = calcHeal(12 + w * 7 + character.attack_power * 0.1, 2, enemy);
                 damage1 = calcSkillDamage(character, enemy, 20 + q * 20, 0.45 + 0.1 + w * 0.025, 1);
                 damage2 = calcSkillDamage(character, enemy, 30 + q * 20, 0.65 + 0.1 + w * 0.025, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + damage3) + '</b> ( ' + damage1 + ', ' + damage2 + ', ' + damage3 + " ) <b> __h: </b><b class='heal'>" + heal + '</b>';
+                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 5 ] ) <b> __h: </b><b class='heal'>" + heal + '</b>';
             } else {
                 damage1 = calcSkillDamage(character, enemy, 20 + q * 20, 0.45, 1);
                 damage2 = calcSkillDamage(character, enemy, 30 + q * 20, 0.65, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + damage3) + '</b> ( ' + damage1 + ', ' + damage2 + ', ' + damage3 + ' )';
+                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + ' x 5 ] )';
             }
         }
         return '-';
@@ -226,7 +226,7 @@ const Jackie = {
                 'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
                 'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
                 'HPS: "초당 회복량"\n' + 
-                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지", "출혈 데미지" )\n' + 
+                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지", [ "출혈 데미지" x "타수" ] )\n' + 
                 'W: _use "스킬 사용"\n' + 
                 'E: "스킬 데미지"\n' + 
                 'R: "스킬 데미지" __use "스킬 사용"\n' + 
