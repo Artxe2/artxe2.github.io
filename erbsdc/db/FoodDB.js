@@ -51,8 +51,8 @@ const Food = [
     ,{
         Type: "Food"
         ,Name: "Choco_Pie_Box_xiu"
-        ,HP_Regen: 953
-        ,Title: "Choco Pie Box xiu\n\nHP Regen +953"
+        ,HP_Regen: 952
+        ,Title: "Choco Pie Box xiu\n\nHP Regen +952"
         ,Rarity: "Rare"
     }
     ,{
