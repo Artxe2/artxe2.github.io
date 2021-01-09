@@ -83,7 +83,25 @@ const Li_Dailin = {
         if (character.weapon) {
             const r = character.R_LEVEL.selectedIndex;
             const min = calcSkillDamage(character, enemy, 40 + r * 30, 0.2, 1);
-            const max = calcSkillDamage(character, enemy, 120 + r * 90, 0.6, 1);
+            let max;
+            if (enemy.max_hp) {
+                const hp = enemy.max_hp;
+                const heal = calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + 
+                    (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character);
+                let start = 0, mid, end = Math.ceil(hp * 0.77), coe;
+                while (start < end) {
+                    mid = (start + end + 1) / 2;
+                    coe = 2 * (mid * 100.0 / hp > 77 ? 77 : mid * 100.0 / hp) / 77 + 1;
+                    max = calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1);
+                    if (max * 4 + mid > hp + heal) {
+                        end = mid - 1;
+                    } else {
+                        start = mid;
+                    }
+                }
+            } else {
+                max = calcSkillDamage(character, enemy, 120 + r * 90, 0.6, 1);
+            }
             const over = calcSkillDamage(character, enemy, 131.4 + r * 98.55, 0.657, 1);
             return "<b class='damage'>" + min * 4 + ' ~ ' + max * 4 + '</b> / ' + over * 4 + ' ( [ ' + min + ' x 4 ] - [ ' + max + ' x 4 ] / [ ' + over + ' x 4 ] )';
         }
@@ -101,7 +119,7 @@ const Li_Dailin = {
                 const max = gloveAttackDamage(character, enemy, coe, 100, bonus);
                 const over = gloveAttackDamage(character, enemy, coe * 1.095, 100, bonus);
                 const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' / ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
+                return "<b class='damage'>" + damage + '</b> ( ' +  min + " - <b class='damage'>" + max + '</b> / ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Nunchaku') {
                 const min = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 125 : 250, 0.5, 1);
@@ -153,7 +171,7 @@ const Li_Dailin = {
             'Q: "합산 강화 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" - "1타 강화", "2타 강화", "3타 강화" )\n' + 
             'W: _d/s: "만취 초당 데미지" __h/s: "만취 초당 흡혈량" __use "스킬 사용"\n' + 
             'E: "스킬 데미지"\n' + 
-            'R: "최소 합산 데미지" ~ "최대 합산 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] - [ "최대 데미지" x "타수" ] / [ "최대 강화 데미지" x "타수" ] )\n' + 
+            'R: "최소 합산 데미지" ~ "최대 막타 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] - [ "최대 데미지" x "타수" ] / [ "최대 강화 데미지" x "타수" ] )\n' + 
             'D: ' + skill + '\n' + 
             'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" / "1타 최대 강화", "2타 최대 강화" )\n';
     }
