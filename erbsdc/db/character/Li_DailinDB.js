@@ -83,7 +83,7 @@ const Li_Dailin = {
         if (character.weapon) {
             const r = character.R_LEVEL.selectedIndex;
             const min = calcSkillDamage(character, enemy, 40 + r * 30, 0.2, 1);
-            let max;
+            let max, over;
             if (enemy.max_hp) {
                 const hp = enemy.max_hp;
                 const heal = calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + 
@@ -99,10 +99,22 @@ const Li_Dailin = {
                         start = mid;
                     }
                 }
+                start = 0;
+                end = Math.ceil(hp * 0.77);
+                while (start < end) {
+                    mid = (start + end + 1) / 2;
+                    coe = 2 * (mid * 100.0 / hp > 77 ? 77 : mid * 100.0 / hp) / 77 + 1;
+                    over = calcSkillDamage(character, enemy, (40 + r * 30) * coe * 1.19, 0.2 * coe * 1.19, 1);
+                    if (max * 4 + mid > hp + heal) {
+                        end = mid - 1;
+                    } else {
+                        start = mid;
+                    }
+                }
             } else {
                 max = calcSkillDamage(character, enemy, 120 + r * 90, 0.6, 1);
+                over = calcSkillDamage(character, enemy, 120 + r * 90 * 1.19, 0.6 * 1.19, 1);
             }
-            const over = calcSkillDamage(character, enemy, 131.4 + r * 98.55, 0.657, 1);
             return "<b class='damage'>" + min * 4 + ' ~ ' + max * 4 + '</b> / ' + over * 4 + ' ( [ ' + min + ' x 4 ] - [ ' + max + ' x 4 ] / [ ' + over + ' x 4 ] )';
         }
         return '-';
@@ -124,7 +136,7 @@ const Li_Dailin = {
                 const damage = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1) + bonus;
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                 const max = baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;
-                const over = baseAttackDamage(character, enemy, 0, (1 + coe) * 1.095, 100, 1) + bonus;
+                const over = baseAttackDamage(character, enemy, 0, (1 + coe) * 1.19, 100, 1) + bonus;
                 const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
                 return "<b class='damage'>" + damage + '</b> ( ' +  min + " - <b class='damage'>" + max + '</b> / ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
