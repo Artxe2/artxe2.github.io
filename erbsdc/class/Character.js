@@ -10,6 +10,15 @@ class Character {
             this.R_DAMAGE.innerHTML = this.character.R_Skill(this, this.enemy);
             this.D_DAMAGE.innerHTML = this.character.D_Skill(this, this.enemy);
             this.T_DAMAGE.innerHTML = this.character.T_Skill(this, this.enemy);
+            this.CHAR.innerHTML = this.CHARACTER.value;
+            if (this.enemy.character) {
+                this.ENEMY.innerHTML = ' vs ' + this.enemy.CHARACTER.value;
+            } else {
+                this.ENEMY.innerHTML = '';
+            }
+        } else {
+            this.CHAR.innerHTML = 'select character';
+            this.ENEMY.innerHTML = '';
         }
     }
     
@@ -88,6 +97,9 @@ class Character {
         this.D_OPTION = DIV.querySelector('.d_option');
         this.T_DAMAGE = DIV.querySelector('.t_damage');
         this.T_OPTION = DIV.querySelector('.t_option');
+
+        this.CHAR = DIV.querySelector('.char');
+        this.ENEMY = DIV.querySelector('.enemy');
 
         this.MODE = MODE;
 

@@ -107,6 +107,9 @@
             color: dodgerblue;
             font-size: 16px;
         }
+        .char {
+            font-size: 20px;
+        }
     </style>
     <script type="text/javascript" src='./db/armor/AccessoryDB.js'></script>
     <script type="text/javascript" src='./db/armor/ArmDB.js'></script>
@@ -810,7 +813,7 @@
             </tr>
         </table>
         <div class='damage_display'>
-            <h4>← Character 0</h4>
+            <h4><span class='char'>select character</span><span class='enemy'></span></h4>
             <b>A : </b><span class='base_attack_damage'></span><span class='base_attack_option'></span><br>
             <b>DPS : </b><span class='dps_damage'></span><span class='dps_option'></span><br>
             <b>HPS : </b><span class='hps_damage'></span><br>
@@ -824,7 +827,7 @@
     </div>
     
     <h4>
-        - - - - - - - - - - VS
+        - - - - - - - - - - Select Mode: 
         <select id='mode' onchange='updateDisplay()'>
             <option selected>SOLO</option>
             <option>DUO</option>
@@ -1216,7 +1219,7 @@
             </tr>
         </table>
         <div class='damage_display'>
-            <h4>← Character 1</h4>
+            <h4><span class='char'>select character</span><span class='enemy'></span></h4>
             <b>A : </b><span class='base_attack_damage'></span><span class='base_attack_option'></span><br>
             <b>DPS : </b><span class='dps_damage'></span><span class='dps_option'></span><br>
             <b>HPS : </b><span class='hps_damage'></span><br>
