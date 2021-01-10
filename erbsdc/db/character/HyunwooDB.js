@@ -89,11 +89,11 @@ const Hyunwoo = {
             if (type === 'Glove') {
                 const coe = character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 2;
                 const bonus = character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100;
-                const damage = gloveAttackDamage(character, enemy, coe, character.critical_strike_chance, bonus);
-                const min = gloveAttackDamage(character, enemy, coe, 0, bonus);
-                const max = gloveAttackDamage(character, enemy, coe, 100, bonus);
+                const damage = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1) + bonus;
+                const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
+                const max = baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;
                 const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> __h: </b><b class='heal'>" + life + '</b>';
+                return "<b class='damage'>" + damage + '</b> ( ' +  min + " - <b class='damage'>" + max + "</b> )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
                 return "<b class='damage'>" + (character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 70) + '%</b>';

@@ -34,14 +34,6 @@ function calcAttackSpeed(character, bonusAs) {
     return character.attack_speed + (character.base_attack_speed * bonusAs | 0) / 100;
 } 
 
-function gloveAttackDamage(character, enemy, coe, cri, bonus) {
-    return (((character.attack_power * coe * (1 + cri / 100 * (1 + character.critical_strike_damage / 100)) + 
-        character.extra_normal_attack_damage - (!enemy.normal_attack_damage_reduction ? 0 : enemy.normal_attack_damage_reduction)) * 
-        (1 + (character.extra_normal_attack_damage_percent - (!enemy.normal_attack_damage_reduction_percent ? 0 : enemy.normal_attack_damage_reduction_percent)) / 100)) * 
-        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) * 
-        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) | 0) + bonus;
-}
-
 function hartUp(s, x) {
     const skill = [
         ['.hart_q', '.hart_qq'],
