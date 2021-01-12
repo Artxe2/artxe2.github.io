@@ -89,7 +89,7 @@ const Xiukai = {
         if (character.weapon) {
             const r = character.R_LEVEL.selectedIndex;
             const stack = parseInt(character.DIV.querySelector('.xiukai_t').value);
-            const damage = calcSkillDamage(character, enemy, 30 + r * 50 + stack, 0.5, 1);
+            const damage = calcSkillDamage(character, enemy, 20 + r * 45 + stack, 0.5, 1);
             const cost = 100 + r * 20;
             return "<b class='damage'>" + damage * 6 + '</b> ( ' + damage + " x 6 ) <b> __cost: </b><b class='heal'>-" + cost + '</b>';
         }
