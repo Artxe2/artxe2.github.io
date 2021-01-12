@@ -22,6 +22,6 @@ const WeaponInfo = {
     ,Glove:             [3.6, 2.5, 2.0]
     ,Tonfa:             [1.8, 3.8, 3.2]
     ,Guitar:            [1.5, 1.5, 2.5]
-    ,Nunchaku:          [1.5, 3.5, 3.3]
+    ,Nunchaku:          [1.5, 3.5, 3.5]
     ,Whip:              [1.8, 3.0, 2.0]
 }
