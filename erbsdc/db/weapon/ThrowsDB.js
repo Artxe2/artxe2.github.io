@@ -290,7 +290,7 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Spiky_Bouncy_Ball"
-        ,Attack_Power: 36
+        ,Attack_Power: 42
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -316,7 +316,7 @@ const Throws = [
         ,Attack_Range: 0
         ,Base_Range: 5.8
         ,Atk_Speed: 0.51
-        ,Title: "Spiky Bouncy Ball\n\nAttack Power +36\nHealing Reduction (Skills) -40%"
+        ,Title: "Spiky Bouncy Ball\n\nAttack Power +42\nHealing Reduction (Skills) -40%"
         ,Rarity: "Rare"
     }
     ,{
