@@ -98,7 +98,7 @@ const Yuki = {
             if (character.DIV.querySelector('.yuki_t').checked) {
                 const damage = calcSkillDamage(character, enemy, 70 + character.E_LEVEL.selectedIndex * 50, 0.4, 1);
                 const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
-                return "<b class='damage'>" + (damage + bonus) + ' ( ' + damage + ', ' + bonus + ' )</b>';
+                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' + damage + ', ' + bonus + ' )';
             }
             return "<b class='damage'>" + calcSkillDamage(character, enemy, 70 + character.E_LEVEL.selectedIndex * 50, 0.4, 1) + '</b>';
         }
