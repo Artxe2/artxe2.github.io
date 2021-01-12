@@ -343,13 +343,13 @@ const Axe = [
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: 0.15
+        ,Move_Speed: 0.1
         ,Out_of_Combat_Movement_Speed: 0
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 1.15
         ,Atk_Speed: 0.455
-        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.15\nCooldown Reduction +10%"
+        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.1\nCooldown Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{
