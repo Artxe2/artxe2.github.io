@@ -98,7 +98,7 @@ const Bow = [
     ,{
          Type: "Bow"
         ,Name: "Composite_Bow"
-        ,Attack_Power: 16
+        ,Attack_Power: 25
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -124,7 +124,7 @@ const Bow = [
         ,Attack_Range: 0
         ,Base_Range: 5.85
         ,Atk_Speed: 0.65
-        ,Title: "Composite Bow\n\nAttack Power +16\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Composite Bow\n\nAttack Power +25\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Rare"
     }
     ,{
@@ -194,7 +194,7 @@ const Bow = [
     ,{
          Type: "Bow"
         ,Name: "Mighty_Bow"
-        ,Attack_Power: 20
+        ,Attack_Power: 25
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -220,7 +220,7 @@ const Bow = [
         ,Attack_Range: 0
         ,Base_Range: 5.85
         ,Atk_Speed: 0.65
-        ,Title: "Mighty Bow\n\nAttack Power +20\nExtra Normal Attack Damage +11"
+        ,Title: "Mighty Bow\n\nAttack Power +25\nExtra Normal Attack Damage +11"
         ,Rarity: "Rare"
     }
     ,{
@@ -258,7 +258,7 @@ const Bow = [
     ,{
          Type: "Bow"
         ,Name: "Scorchbow"
-        ,Attack_Power: 24
+        ,Attack_Power: 25
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -284,7 +284,7 @@ const Bow = [
         ,Attack_Range: 0
         ,Base_Range: 5.85
         ,Atk_Speed: 0.65
-        ,Title: "Scorchbow\n\nAttack Power +24\nSkill Amplification +18"
+        ,Title: "Scorchbow\n\nAttack Power +25\nSkill Amplification +18"
         ,Rarity: "Rare"
     }
     ,{

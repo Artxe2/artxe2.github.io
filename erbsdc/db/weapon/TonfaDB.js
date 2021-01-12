@@ -162,7 +162,7 @@ const Tonfa = [
     ,{
          Type: "Tonfa"
         ,Name: "Mai_Sok"
-        ,Attack_Power: 54
+        ,Attack_Power: 58
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -188,7 +188,7 @@ const Tonfa = [
         ,Attack_Range: 0
         ,Base_Range: 1
         ,Atk_Speed: 0.5
-        ,Title: "Mai Sok\n\nAttack Power +54\nDefense +20\nHP Regen +100%"
+        ,Title: "Mai Sok\n\nAttack Power +58\nDefense +20\nHP Regen +100%"
         ,Rarity: "Epic"
     }
     ,{

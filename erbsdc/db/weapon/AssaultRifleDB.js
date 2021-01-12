@@ -241,7 +241,7 @@ const AssaultRifle = [
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
         ,Defense: 0
-        ,Max_HP: 350
+        ,Max_HP: 250
         ,Max_SP: 0
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
@@ -252,7 +252,7 @@ const AssaultRifle = [
         ,Attack_Range: 0
         ,Base_Range: 5
         ,Atk_Speed: 0.55
-        ,Title: "XCR\n\nAttack Power +63\nMax HP +350\nVision Range +1.5\nExtra Normal Attack Damage +10"
+        ,Title: "XCR\n\nAttack Power +63\nMax HP +250\nVision Range +1.5\nExtra Normal Attack Damage +10"
         ,Rarity: "Epic"
     }
 ];

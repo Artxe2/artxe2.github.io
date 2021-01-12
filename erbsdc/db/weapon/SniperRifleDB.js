@@ -241,7 +241,7 @@ const SniperRifle = [
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
         ,Skill_Amplification: 0
-        ,Skill_Amplification_Percent: 22
+        ,Skill_Amplification_Percent: 24
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
         ,SP_Regen_Percent: 0
@@ -259,7 +259,7 @@ const SniperRifle = [
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "NTW-20\n\nAttack Power +95\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +22%"
+        ,Title: "NTW-20\n\nAttack Power +95\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +24%"
         ,Rarity: "Epic"
         ,Ammo: 1
     }
@@ -307,7 +307,7 @@ const SniperRifle = [
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
         ,Skill_Amplification: 0
-        ,Skill_Amplification_Percent: 30
+        ,Skill_Amplification_Percent: 33
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
         ,SP_Regen_Percent: 0
@@ -325,7 +325,7 @@ const SniperRifle = [
         ,Attack_Range: 0
         ,Base_Range: 6.7
         ,Atk_Speed: 0.43
-        ,Title: "The Deadly Ray\n\nAttack Power +95\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +30%"
+        ,Title: "The Deadly Ray\n\nAttack Power +95\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +33%"
         ,Rarity: "Legendary"
         ,Ammo: 1
     }

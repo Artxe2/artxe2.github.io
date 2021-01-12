@@ -484,7 +484,7 @@ const Head = [
         ,Name: "Crystal_Tiara"
         ,Attack_Power: 0
         ,Attack_Speed: 0
-        ,Critical_Strike_Chance: 22
+        ,Critical_Strike_Chance: 20
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
@@ -508,7 +508,7 @@ const Head = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Crystal Tiara\n\nDefense +14\nMax SP +700\nCritical Strike Chance +22%"
+        ,Title: "Crystal Tiara\n\nDefense +14\nMax SP +700\nCritical Strike Chance +20%"
         ,Rarity: "Epic"
     }
     ,{
@@ -560,7 +560,7 @@ const Head = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 11
-        ,Defense: 20
+        ,Defense: 24
         ,Max_HP: 0
         ,Max_SP: 200
         ,HP_Regen: 0
@@ -572,7 +572,7 @@ const Head = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Helm of Banneret\n\nDefense +20\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Damage Reduction +11%"
+        ,Title: "Helm of Banneret\n\nDefense +24\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Damage Reduction +11%"
         ,Rarity: "Epic"
     }
     ,{

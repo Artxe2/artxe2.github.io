@@ -516,7 +516,7 @@ const Leg = [
         ,Name: "Bucephalus"
         ,Attack_Power: 5
         ,Attack_Speed: 0
-        ,Critical_Strike_Chance: 17
+        ,Critical_Strike_Chance: 15
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
@@ -540,7 +540,7 @@ const Leg = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Bucephalus\n\nAttack Power +5\nDefense +5\nSP Regen +1\nMovement Speed +0.33\nCriticall Strike Chance +17%"
+        ,Title: "Bucephalus\n\nAttack Power +5\nDefense +5\nSP Regen +1\nMovement Speed +0.33\nCriticall Strike Chance +15%"
         ,Rarity: "Epic"
     }
     ,{
@@ -592,7 +592,7 @@ const Leg = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 23
+        ,Defense: 26
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 1
@@ -604,7 +604,7 @@ const Leg = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "EOD Boots\n\nDefense +23\nHP Regen +1\nMovement Speed +0.33"
+        ,Title: "EOD Boots\n\nDefense +26\nHP Regen +1\nMovement Speed +0.33"
         ,Rarity: "Legendary"
     }
     ,{
@@ -630,13 +630,13 @@ const Leg = [
         ,HP_Regen: 2
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 0
-        ,Move_Speed: 0.15
-        ,Out_of_Combat_Movement_Speed: 0.5
+        ,Move_Speed: 0.25
+        ,Out_of_Combat_Movement_Speed: 0.4
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Glacial Shoes\n\nHP Regen +2\nSP Regen +2\n SP Regen +60%\nMovement Speed +0.15\nMovement speed while not in combat +0.5\nSkill Amplification +15"
+        ,Title: "Glacial Shoes\n\nHP Regen +2\nSP Regen +2\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.4\nSkill Amplification +15"
         ,Rarity: "Legendary"
     }
     ,{

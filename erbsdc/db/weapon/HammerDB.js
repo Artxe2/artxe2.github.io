@@ -130,14 +130,14 @@ const Hammer = [
     ,{
          Type: "Hammer"
         ,Name: "Fang_Mace"
-        ,Attack_Power: 55
+        ,Attack_Power: 65
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
-        ,Skill_Amplification: 31
+        ,Skill_Amplification: 25
         ,Skill_Amplification_Percent: 0
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
@@ -156,7 +156,7 @@ const Hammer = [
         ,Attack_Range: 0
         ,Base_Range: 1.25
         ,Atk_Speed: 0.455
-        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +31"
+        ,Title: "Fang Mace\n\nAttack Power +65\nSkill Amplification +25"
         ,Rarity: "Epic"
     }
     ,{

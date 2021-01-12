@@ -200,7 +200,7 @@ const Pistol = [
     ,{
          Type: "Pistol"
         ,Name: "Devil`s_Marksman"
-        ,Attack_Power: 30
+        ,Attack_Power: 35
         ,Attack_Speed: 10
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -226,7 +226,7 @@ const Pistol = [
         ,Attack_Range: 0
         ,Base_Range: 4.2
         ,Atk_Speed: 0.505
-        ,Title: "Devil`s Marksman\n\nAttack Power +30\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +40"
+        ,Title: "Devil`s Marksman\n\nAttack Power +35\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +40"
         ,Rarity: "Epic"
         ,Ammo: 7
     }

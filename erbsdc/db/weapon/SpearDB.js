@@ -130,7 +130,7 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Halberd_Axe"
-        ,Attack_Power: 90
+        ,Attack_Power: 85
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -156,7 +156,7 @@ const Spear = [
         ,Attack_Range: 0
         ,Base_Range: 2.15
         ,Atk_Speed: 0.445
-        ,Title: "Halberd Axe\n\nAttack Power +90\nMovement Speed -0.1"
+        ,Title: "Halberd Axe\n\nAttack Power +85\nMovement Speed -0.1"
         ,Rarity: "Rare"
     }
     ,{

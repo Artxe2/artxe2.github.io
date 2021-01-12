@@ -400,7 +400,7 @@ const Arm = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 32
+        ,Defense: 36
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 0
@@ -412,7 +412,7 @@ const Arm = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Sword Stopper\n\nDefense +32\nNormal Attack Damage Reduction +11\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Sword Stopper\n\nDefense +36\nNormal Attack Damage Reduction +11\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -426,7 +426,7 @@ const Arm = [
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
         ,Skill_Amplification: 0
-        ,Skill_Amplification_Percent: 15
+        ,Skill_Amplification_Percent: 17
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
         ,SP_Regen_Percent: 0
@@ -444,7 +444,7 @@ const Arm = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Draupnir\n\nDefense +10\nMax HP +240\nHP Regen +1\n Skill Amplification +15%"
+        ,Title: "Draupnir\n\nDefense +10\nMax HP +240\nHP Regen +1\n Skill Amplification +17%"
         ,Rarity: "Epic"
     }
     ,{
@@ -612,7 +612,7 @@ const Arm = [
         ,Name: "Radar"
         ,Attack_Power: 0
         ,Attack_Speed: 40
-        ,Critical_Strike_Chance: 20
+        ,Critical_Strike_Chance: 24
         ,Critical_Strike_Damage: 0
         ,Life_Steal: 0
         ,Extra_Normal_Attack_Damage: 0
@@ -636,7 +636,7 @@ const Arm = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Radar\n\nDefense +15\nAttack Speed +40%\nCritical Strike Chance +20%"
+        ,Title: "Radar\n\nDefense +15\nAttack Speed +40%\nCritical Strike Chance +24%"
         ,Rarity: "Legendary"
     }
     ,{

@@ -742,7 +742,7 @@ class Character {
                 (!this.leg ? 0 : this.leg.Max_HP) + 
                 (!this.accessory ? 0 : this.accessory.Max_HP)) * 
                 (1 + craftBonus + this.CRAFT_MASTERY.selectedIndex * craftBonus)) * 
-                (1.012 + this.HEALTH_MASTERY.selectedIndex * 0.012)) | 0;
+                (1.01 + this.HEALTH_MASTERY.selectedIndex * 0.01)) | 0;
             this.MAX_HP.innerText = this.max_hp;
 
             this.max_sp = 

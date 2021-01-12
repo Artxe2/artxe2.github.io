@@ -19,7 +19,7 @@ const Fiora = {
     ,weapons: [TwoHandedSword, Rapier, Spear]
     ,correction: {
         TwoHandedSword: [
-            [0, -2, -3],
+            [0, 0, -3],
             [0, 3, 6]
         ],
         Rapier: [

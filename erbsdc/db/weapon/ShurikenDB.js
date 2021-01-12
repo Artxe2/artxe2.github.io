@@ -322,7 +322,7 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Apricot_Flower_Tag"
-        ,Attack_Power: 14
+        ,Attack_Power: 17
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -348,7 +348,7 @@ const Shuriken = [
         ,Attack_Range: 0
         ,Base_Range: 4.4
         ,Atk_Speed: 0.55
-        ,Title: "Apricot Flower Tag\n\nAttack Power +14\nCooldown Reduction +10%\nExtra Normal Attack Damage +30"
+        ,Title: "Apricot Flower Tag\n\nAttack Power +17\nCooldown Reduction +10%\nExtra Normal Attack Damage +30"
         ,Rarity: "Rare"
     }
     ,{
@@ -386,7 +386,7 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Dharma_Chakram"
-        ,Attack_Power: 34
+        ,Attack_Power: 38
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
@@ -412,7 +412,7 @@ const Shuriken = [
         ,Attack_Range: 0
         ,Base_Range: 4.4
         ,Atk_Speed: 0.55
-        ,Title: "Dharma Chakram\n\nAttack Power +34\nSkill Amplification +15%"
+        ,Title: "Dharma Chakram\n\nAttack Power +38\nSkill Amplification +15%"
         ,Rarity: "Rare"
     }
     ,{

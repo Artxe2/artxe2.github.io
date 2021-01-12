@@ -2,7 +2,7 @@ const Li_Dailin = {
      Attack_Power: 33
     ,Attack_Power_Growth: 1.9
     ,Health: 550
-    ,Health_Growth: 89
+    ,Health_Growth: 84
     ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.07
     ,Stamina: 420
@@ -23,7 +23,7 @@ const Li_Dailin = {
             [0, 0, 0]
         ],
         Nunchaku: [
-            [3, 3, 0],
+            [3, 3, 3],
             [0, 0, 0]
         ]
     }
@@ -141,7 +141,7 @@ const Li_Dailin = {
                 return "<b class='damage'>" + damage + '</b> ( ' +  min + " - <b class='damage'>" + max + '</b> / ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Nunchaku') {
-                const min = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 125 : 250, 0.5, 1);
+                const min = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 150 : 300, 0.5, 1);
                 const max = calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 300 : 600, 1.5, 1);
                 return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
             }
