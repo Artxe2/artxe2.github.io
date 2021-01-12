@@ -66,7 +66,7 @@ const Nunchaku = [
     ,{
          Type: "Nunchaku"
         ,Name: "Sharper"
-        ,Attack_Power: 19
+        ,Attack_Power: 27
         ,Attack_Speed: 0
         ,Critical_Strike_Chance: 0
         ,Critical_Strike_Damage: 0
