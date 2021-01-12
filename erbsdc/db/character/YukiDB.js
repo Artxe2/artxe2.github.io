@@ -95,6 +95,11 @@ const Yuki = {
     ,W_Option: "<b> _use</b><input type='checkbox' class='yuki_w' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
         if (character.weapon) {
+            if (character.DIV.querySelector('.yuki_t').checked) {
+                const damage = calcSkillDamage(character, enemy, 70 + character.E_LEVEL.selectedIndex * 50, 0.4, 1);
+                const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+                return "<b class='damage'>" + (damage + bonus) + ' ( ' + damage + ', ' + bonus + ' )</b>';
+            }
             return "<b class='damage'>" + calcSkillDamage(character, enemy, 70 + character.E_LEVEL.selectedIndex * 50, 0.4, 1) + '</b>';
         }
         return '-';
@@ -105,6 +110,10 @@ const Yuki = {
             const r = character.R_LEVEL.selectedIndex;
             const damage1 = calcSkillDamage(character, enemy, 250 + r * 125, 1.5, 1);
             const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.15 + r * 0.05) : 0);
+            if (character.DIV.querySelector('.yuki_t').checked) {
+                const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+                return "<b class='damage'>" + (damage1 + bonus + damage2 + bonus) + '</b> ( ' + damage1 + ', ' + bonus + ', ' + damage2 + ', ' + bonus + ' )';
+            }
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + ' )';
         }
         return '-';
