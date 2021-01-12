@@ -28,7 +28,7 @@ const Aya = {
         ],
         SniperRifle: [
             [0, -15, -15],
-            [-3, -3, -3]
+            [-3, 0, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {
