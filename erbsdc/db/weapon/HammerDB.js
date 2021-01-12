@@ -156,7 +156,7 @@ const Hammer = [
         ,Attack_Range: 0
         ,Base_Range: 1.25
         ,Atk_Speed: 0.455
-        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +31"
+        ,Title: "Fang Mace\n\nAttack Power +65\nSkill Amplification +25"
         ,Rarity: "Epic"
     }
     ,{
