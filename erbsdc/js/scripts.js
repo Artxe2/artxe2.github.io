@@ -26,6 +26,12 @@ function calcSkillDamage(character, enemy, base, coe, onhit) {
         (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) | 0;
 }
 
+function calcTrueDamage(character, enemy, damage) {
+    return damage * 
+        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) * 
+        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) | 0;
+}
+
 function calcHeal(heal, ps, enemy) {
     return Math.round(heal * (enemy.heal_reduction ? 0.6 : 1) * ps * 100) / 100;
 }

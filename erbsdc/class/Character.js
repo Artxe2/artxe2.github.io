@@ -1,4 +1,7 @@
 class Character {
+    calcTrapDamage() {
+        return this.trap ? "<b class='damage'>" + (this.trap.Trap_Damage * (1.04 + this.TRAP_MASTERY.selectedIndex * 0.04) | 0) + '</b>' : '-';
+    }
     updateDisplay() {
         if (this.character) {
             this.BASE_ATTACK_DAMAGE.innerHTML = this.character.Base_Attack(this, this.enemy);
@@ -10,6 +13,7 @@ class Character {
             this.R_DAMAGE.innerHTML = this.character.R_Skill(this, this.enemy);
             this.D_DAMAGE.innerHTML = this.character.D_Skill(this, this.enemy);
             this.T_DAMAGE.innerHTML = this.character.T_Skill(this, this.enemy);
+            this.TRAP_DAMAGE.innerHTML = this.calcTrapDamage();
             this.CHAR.innerHTML = this.CHARACTER.value;
             if (this.enemy.character) {
                 this.ENEMY.innerHTML = ' vs ' + this.enemy.CHARACTER.value;
@@ -36,6 +40,7 @@ class Character {
         this.LEG = DIV.querySelector('.leg');
         this.ACCESSORY = DIV.querySelector('.accessory');
         this.FOOD = DIV.querySelector('.food');
+        this.TRAP = DIV.querySelector('.trap');
 
         this.I_CHARACTER = DIV.querySelector('.i_character');
         this.CHARACTER = DIV.querySelector('.character');
@@ -97,6 +102,7 @@ class Character {
         this.D_OPTION = DIV.querySelector('.d_option');
         this.T_DAMAGE = DIV.querySelector('.t_damage');
         this.T_OPTION = DIV.querySelector('.t_option');
+        this.TRAP_DAMAGE = DIV.querySelector('.trap_damage');
 
         this.CHAR = DIV.querySelector('.char');
         this.ENEMY = DIV.querySelector('.enemy');
@@ -251,7 +257,25 @@ class Character {
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove accessory' onclick='characters[" + this.index + "].removeFood()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove trap' onclick='characters[" + this.index + "].removeFood()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
+				this.ITEM_LIST.style.display = 'block';
+            }
+        });
+        this.TRAP.addEventListener('click', (e) => {
+        	if (!this.character) {
+                alert('select character plz');
+            } else {	
+                let list = '';
+                let br = 0;
+                for (let i = 0; i < Trap.length; i++) {
+                    list += "<img class='" + Trap[i].Rarity + "' title='" + Trap[i].Title + "' onclick='characters[" + this.index + "].setTrap(" + i + ")' src='./img/traps/" + Trap[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    if (++br == 3) {
+                        br = 0;
+                        list += '<br>';
+                    }
+                }
+                list += "<img title='remove trap' onclick='characters[" + this.index + "].removeTrap()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -451,6 +475,18 @@ class Character {
     removeFood() {
         this.food = null;
         this.FOOD.innerHTML = '';
+        this.ITEM_LIST.style.display = 'none';
+        updateDisplay();
+    }
+    setTrap(i) {
+        this.trap = Trap[i];
+        this.TRAP.innerHTML = "<img class = '" + this.trap.Rarity + "' title = '" + this.trap.Title + "' src = './img/traps/" + this.trap.Name + ".png' width = '80px' height = '44px'>";
+        this.ITEM_LIST.style.display = 'none';
+        updateDisplay();
+    }
+    removeTrap() {
+        this.trap = null;
+        this.TRAP.innerHTML = '';
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }

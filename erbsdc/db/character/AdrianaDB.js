@@ -50,7 +50,7 @@ const Adriana = {
     ,Q_Skill: (character, enemy) => {
         if (character.weapon) {
             const q = character.Q_LEVEL.selectedIndex;
-            const damage = 12 + q * 3 + character.attack_power * (0.1 + q * 0.05) | 0;
+            const damage = calcTrueDamage(character, enemy, 12 + q * 3 + character.attack_power * (0.1 + q * 0.05));
             return "<b class='damage'>" + damage + ' ~ ' + damage * 9 + '</b> ( ' + damage + ' x 9 )';
         }
         return '-';

@@ -85,7 +85,7 @@ const Jackie = {
         if (character.weapon) {
             const q = character.Q_LEVEL.selectedIndex;
             const w = character.W_LEVEL.selectedIndex;
-            const damage3 = 16 + q * 6;
+            const damage3 = calcTrueDamage(character, enemy, 16 + q * 6);
             let damage1, damage2;
             if (character.DIV.querySelector('.jackie_w').checked) {
                 const heal = calcHeal(12 + w * 7 + character.attack_power * 0.1, 2, enemy);

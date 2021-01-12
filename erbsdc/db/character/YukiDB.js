@@ -33,7 +33,15 @@ const Yuki = {
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             if (character.weapon.Type === 'DualSwords') {
+                if (character.DIV.querySelector('.yuki_t').checked) {
+                    const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+                    return "<b class='damage'>" + (damage + damage + bonus + bonus) + '</b> ( ' +  min + ', ' + bonus + ', ' + min + ', ' + bonus + ' - ' + max + ', ' + bonus + ', ' + max + ', ' + bonus + ' )';
+                }
                 return "<b class='damage'>" + (damage + damage) + '</b> ( ' +  min + ', ' + min + ' - ' + max + ', ' + max + ' )';
+            }
+            if (character.DIV.querySelector('.yuki_t').checked) {
+                const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + ' )';
             }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
         }
@@ -43,11 +51,18 @@ const Yuki = {
     ,DPS: (character, enemy) => {
         if (character.weapon) {
             let ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+            let bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+            let damage;
             if (character.weapon.Type === 'DualSwords') {
                 ba += ba;
+                bonus += bonus;
             }
-            const damage = Math.round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            if (character.DIV.querySelector('.yuki_t').checked) {
+                damage= Math.round((ba + bonus) * character.attack_speed * 100) / 100;
+            } else {
+                damage= Math.round(ba * character.attack_speed * 100) / 100;
+            }
             return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
@@ -65,6 +80,10 @@ const Yuki = {
             const min = baseAttackDamage(character, enemy, base, coe, 0, 1);
             const max = baseAttackDamage(character, enemy, base, coe, 100, 1);
             const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
+            if (character.DIV.querySelector('.yuki_t').checked) {
+                const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + " )<b> __h: </b><b class='heal'>" + life + '</b>';
+            }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> __h: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
@@ -85,7 +104,7 @@ const Yuki = {
         if (character.weapon) {
             const r = character.R_LEVEL.selectedIndex;
             const damage1 = calcSkillDamage(character, enemy, 250 + r * 125, 1.5, 1);
-            const damage2 = (enemy.max_hp ? enemy.max_hp * (0.15 + r * 0.05) : 0) | 0;
+            const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.15 + r * 0.05) : 0);
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + ' )';
         }
         return '-';
@@ -109,12 +128,12 @@ const Yuki = {
     }
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
-            const damage = 15 + 15 * character.T_LEVEL.selectedIndex;
-            return damage * 4 + " ( <b class='damage'>" + damage + '</b> x 4 )';
+            const damage = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+            return "<b class='damage'>" + damage + '</b>';
         }
         return '-';
     }
-    ,T_Option: ''
+    ,T_Option: "<b> _use</b><input type='checkbox' class='yuki_t' onchange='updateDisplay()'>"
     ,Help: (character) => {
         if (!character.character) {
             return 'select character plz';

@@ -78,7 +78,7 @@ const Lenox = {
         if (character.weapon) {
             const r = character.R_LEVEL.selectedIndex
             const damage = calcSkillDamage(character, enemy, 75 + r * 75, 0.8, 1);
-            const add = 10 + r * 5;
+            const add = calcTrueDamage(character, enemy, 10 + r * 5);
             const hit = enemy.movement_speed ? enemy.movement_speed * (4 + r) | 0 : 0;
             return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * 2 * hit) + '</b> ( ' + damage + ' x 2, [' + add + ' x 2] x ' + hit + ' )';
         }

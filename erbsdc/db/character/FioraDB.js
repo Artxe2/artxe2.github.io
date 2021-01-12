@@ -80,7 +80,6 @@ const Fiora = {
     ,W_Skill: (character, enemy) => {
         if (character.weapon) {
             const w = character.W_LEVEL.selectedIndex;
-            const r = character.R_LEVEL.selectedIndex;
             const damage1 = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, character.critical_strike_chance, 1);
             const damage2 = baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, character.critical_strike_chance, 1);
             const min1 = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 0, 1);
@@ -88,6 +87,7 @@ const Fiora = {
             const max1 = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 100, 1);
             const max2 = baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
             if (character.DIV.querySelector('.fiora_r').checked) {
+                const r = character.R_LEVEL.selectedIndex;
                 const bonus = calcSkillDamage(character, enemy, 30 + r * 5, 0.06 + r * 0.12, 1);
                 return "<b class='damage'>" + (damage1 + damage2 + bonus * 2) + '</b> ( ' +  min1 + ', ' + min2 + ', ' + bonus + ' - ' + max1 + ', ' + max2 + ', ' + bonus + ' ) ';
             }
