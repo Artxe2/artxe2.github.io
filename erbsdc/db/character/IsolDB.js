@@ -84,7 +84,7 @@ const Isol = {
     ,Q_Option: "<span> </span><input type='number' class='stack isol_q' value='0' onchange='fixLimitNum(this, 10)'><b>Stack</b>"
     ,W_Skill: (character, enemy) => {
         if (character.weapon) {
-            const damage = calcSkillDamage(character, enemy, 20 + character.W_LEVEL.selectedIndex * 10, 0.5, 1);
+            const damage = calcSkillDamage(character, enemy, 18 + character.W_LEVEL.selectedIndex * 9, 0.5, 1);
             return "<b class='damage'>" + damage * 4 + '</b> ( ' + damage + ' x 4 )';
         }
         return '-';
