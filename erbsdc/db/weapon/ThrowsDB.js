@@ -491,7 +491,7 @@ const Throws = [
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
         ,Skill_Amplification: 0
-        ,Skill_Amplification_Percent: 20
+        ,Skill_Amplification_Percent: 22
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
         ,SP_Regen_Percent: 0
@@ -509,7 +509,7 @@ const Throws = [
         ,Attack_Range: 0
         ,Base_Range: 5.8
         ,Atk_Speed: 0.51
-        ,Title: "Ruthenium Marble\n\nAttack Power +80\nSkill Amplification +20%\nHealing Reduction (Skills) -40%"
+        ,Title: "Ruthenium Marble\n\nAttack Power +80\nSkill Amplification +22%\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
 ];
