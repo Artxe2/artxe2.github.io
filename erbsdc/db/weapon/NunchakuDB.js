@@ -92,7 +92,7 @@ const Nunchaku = [
         ,Attack_Range: 0
         ,Base_Range: 1.4
         ,Atk_Speed: 0.57
-        ,Title: "Sharper\n\nAttack Power +19\nHealing Reduction (Skills) -40%"
+        ,Title: "Sharper\n\nAttack Power +27\nHealing Reduction (Skills) -40%"
         ,Rarity: "Rare"
     }
     ,{
