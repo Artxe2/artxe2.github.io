@@ -19,7 +19,7 @@ const Magnus = {
     ,weapons: [Hammer, Bat]
     ,correction: {
         Hammer: [
-            [0, -5, -3],
+            [0, -5, -5],
             [0, 0, 0]
         ],
         Bat: [
