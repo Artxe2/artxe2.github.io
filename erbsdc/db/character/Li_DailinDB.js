@@ -124,15 +124,8 @@ const Li_Dailin = {
         if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
             const type = character.weapon.Type;
             if (type === 'Glove') {
-                // const coe = character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 2;
-                // const bonus = character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100;
-                // const damage = gloveAttackDamage(character, enemy, coe, character.critical_strike_chance, bonus);
-                // const min = gloveAttackDamage(character, enemy, coe, 0, bonus);
-                // const max = gloveAttackDamage(character, enemy, coe, 100, bonus);
-                // const over = gloveAttackDamage(character, enemy, coe * 1.095, 100, bonus);
-                // const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
                 const coe = character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 2;
-                const bonus = character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100;
+                const bonus = calcTrueDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100);
                 const damage = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1) + bonus;
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                 const max = baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;

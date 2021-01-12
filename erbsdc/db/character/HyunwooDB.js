@@ -88,7 +88,7 @@ const Hyunwoo = {
             const type = character.weapon.Type;
             if (type === 'Glove') {
                 const coe = character.WEAPON_MASTERY.selectedIndex < 13 ? 1 : 2;
-                const bonus = character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100;
+                const bonus = calcTrueDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100);
                 const damage = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1) + bonus;
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                 const max = baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;
