@@ -2,7 +2,7 @@ const Li_Dailin = {
      Attack_Power: 33
     ,Attack_Power_Growth: 1.9
     ,Health: 550
-    ,Health_Growth: 89
+    ,Health_Growth: 84
     ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.07
     ,Stamina: 420
@@ -23,7 +23,7 @@ const Li_Dailin = {
             [0, 0, 0]
         ],
         Nunchaku: [
-            [3, 3, 0],
+            [3, 3, 3],
             [0, 0, 0]
         ]
     }
