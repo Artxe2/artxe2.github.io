@@ -636,7 +636,7 @@ const Leg = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Glacial Shoes\n\nHP Regen +2\nSP Regen +2\n SP Regen +60%\nMovement Speed +0.15\nMovement speed while not in combat +0.5\nSkill Amplification +15"
+        ,Title: "Glacial Shoes\n\nHP Regen +2\nSP Regen +2\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.4\nSkill Amplification +15"
         ,Rarity: "Legendary"
     }
     ,{
