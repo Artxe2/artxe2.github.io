@@ -849,7 +849,7 @@ const Accessory = [
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
         ,Defense: 0
-        ,Max_HP: 420
+        ,Max_HP: 380
         ,Max_SP: 0
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
@@ -860,7 +860,7 @@ const Accessory = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Schrodinger`s Box\n\nMax HP +420\nSkill Amplification +7"
+        ,Title: "Schrodinger`s Box\n\nMax HP +380\nSkill Amplification +7"
         ,Rarity: "Rare"
     }
     ,{
