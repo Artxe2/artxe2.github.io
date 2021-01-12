@@ -625,7 +625,7 @@ const Chest = [
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
         ,Defense: 28
-        ,Max_HP: 450
+        ,Max_HP: 400
         ,Max_SP: 0
         ,HP_Regen: 0
         ,HP_Regen_Percent: 0
@@ -636,7 +636,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Sunset Armor\n\nDefense +28\nMax HP +450"
+        ,Title: "Sunset Armor\n\nDefense +28\nMax HP +400"
         ,Rarity: "Rare"
     }
     ,{
@@ -727,12 +727,12 @@ const Chest = [
         ,HP_Regen_Percent: 0
         ,Normal_Attack_Damage_Reduction: 11
         ,Move_Speed: 0
-        ,Out_of_Combat_Movement_Speed: 0.15
+        ,Out_of_Combat_Movement_Speed: 0.1
         ,Vision_Range: 0
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +11\nMovement speed while not in combat +0.15\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
+        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +11\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -784,11 +784,11 @@ const Chest = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 30
+        ,Defense: 38
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 0
-        ,HP_Regen_Percent: 200
+        ,HP_Regen_Percent: 150
         ,Normal_Attack_Damage_Reduction: 0
         ,Move_Speed: -0.02
         ,Out_of_Combat_Movement_Speed: 0
@@ -796,7 +796,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Crusader Armor\n\nDefense +30\nHP Regen +200%\nMovement Speed - 0.02\nExtra Damage to Normal Attacks +15"
+        ,Title: "Crusader Armor\n\nDefense +38\nHP Regen +150%\nMovement Speed - 0.02\nExtra Damage to Normal Attacks +15"
         ,Rarity: "Epic"
     }
     ,{
@@ -976,7 +976,7 @@ const Chest = [
         ,SP_Regen_Percent: 0
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 15
+        ,Defense: 20
         ,Max_HP: 300
         ,Max_SP: 0
         ,HP_Regen: 1
@@ -988,7 +988,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "EPD Siot\n\nDefense +15\nMax HP +300\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +12"
+        ,Title: "EPD Siot\n\nDefense +20\nMax HP +300\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +12"
         ,Rarity: "Epic"
     }
     ,{
@@ -1008,7 +1008,7 @@ const Chest = [
         ,SP_Regen_Percent: 75
         ,Skill_Damage_Reduction: 0
         ,Skill_Damage_Reduction_Percent: 0
-        ,Defense: 25
+        ,Defense: 30
         ,Max_HP: 0
         ,Max_SP: 0
         ,HP_Regen: 2.5
@@ -1020,7 +1020,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Blazing Dress\n\nDefense +25\nHP Regen +2.5\nSP Regen +3\nSP Regen +75%\nExtra Normal Attack Damage +18"
+        ,Title: "Blazing Dress\n\nDefense +30\nHP Regen +2.5\nSP Regen +3\nSP Regen +75%\nExtra Normal Attack Damage +18"
         ,Rarity: "Legendary"
     }
     ,{
@@ -1034,7 +1034,7 @@ const Chest = [
         ,Extra_Normal_Attack_Damage: 0
         ,Extra_Normal_Attack_Damage_Percent: 0
         ,Skill_Amplification: 0
-        ,Skill_Amplification_Percent: 20
+        ,Skill_Amplification_Percent: 22
         ,Cooldown_Reduction: 0
         ,SP_Regen: 0
         ,SP_Regen_Percent: 0
@@ -1052,7 +1052,7 @@ const Chest = [
         ,Attack_Range: 0
         ,Base_Range: 0
         ,Atk_Speed: 0
-        ,Title: "Kabana\n\nDefense +36\nSkill Amplification +20%"
+        ,Title: "Kabana\n\nDefense +36\nSkill Amplification +22%"
         ,Rarity: "Legendary"
     }
     ,{
