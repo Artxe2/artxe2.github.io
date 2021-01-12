@@ -20,7 +20,7 @@ const Hyejin = {
     ,correction: {
         Shuriken: [
             [10, 2, -4],
-            [-6, -3, -3]
+            [-10, -7, -7]
         ],
         Bow: [
             [0, -10, -18],
