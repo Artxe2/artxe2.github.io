@@ -1,5 +1,5 @@
 const Lenox = {
-     Attack_Power: 40
+     Attack_Power: 36
     ,Attack_Power_Growth: 2.8
     ,Health: 550
     ,Health_Growth: 75
@@ -50,8 +50,8 @@ const Lenox = {
     ,Q_Skill: (character, enemy) => {
         if (character.weapon) {
             const q = character.Q_LEVEL.selectedIndex;
-            const min = calcSkillDamage(character, enemy, 40 + q * 30, 0.3, 1);
-            const max = calcSkillDamage(character, enemy, 40 + q * 30 + character.max_hp * (0.06 + q * 0.005), 0.3, 1);
+            const min = calcSkillDamage(character, enemy, 30 + q * 30, 0.3, 1);
+            const max = calcSkillDamage(character, enemy, 30 + q * 30 + character.max_hp * (0.05 + q * 0.005), 0.3, 1);
             return "<b class='damage'>" + min + ' - ' + max  + '</b>';
         }
         return '-';
@@ -69,7 +69,7 @@ const Lenox = {
     ,W_Option: ''
     ,E_Skill: (character, enemy) => {
         if (character.weapon) {
-            return "<b class='damage'>" + calcSkillDamage(character, enemy, 60 + character.E_LEVEL.selectedIndex * 50, 0.3, 1) + '</b>';
+            return "<b class='damage'>" + calcSkillDamage(character, enemy, 20 + character.E_LEVEL.selectedIndex * 60, 0.3, 1) + '</b>';
         }
         return '-';
     }
@@ -77,9 +77,9 @@ const Lenox = {
     ,R_Skill: (character, enemy) => {
         if (character.weapon) {
             const r = character.R_LEVEL.selectedIndex
-            const damage = calcSkillDamage(character, enemy, 75 + r * 75, 0.8, 1);
+            const damage = calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1);
             const add = 10 + r * 5;
-            const hit = enemy.movement_speed ? enemy.movement_speed * (4 + r) | 0 : 0;
+            const hit = enemy.movement_speed ? enemy.movement_speed * (3 + r) | 0 : 0;
             return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * 2 * hit) + '</b> ( ' + damage + ' x 2, [' + add + ' x 2] x ' + hit + ' )';
         }
         return '-';
