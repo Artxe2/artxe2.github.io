@@ -198,14 +198,14 @@ const Li_Dailin = {
                 if (c === 'a') {
                     if (liquid) {
                         liquid = false;
-                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + liquid * 0.002), 0, 1);
+                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1);
                     } else {
                         damage += baseAttackDamage(character, enemy, 0, 1, 0, 1);
                     }
                 } else if (c === 'A') {
                     if (liquid) {
                         liquid = false;
-                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + liquid * 0.002), 100, 1);
+                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1);
                     } else {
                         damage += baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     }
@@ -243,13 +243,18 @@ const Li_Dailin = {
                     if (bac >= 40) {
                         if (liquid) {
                             liquid = false;
-                            damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe * (1 + liquid * 0.002), 0.2 * coe * (1 + liquid * 0.002), 1) * 4;
+                            damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe * (1 + bac * 0.002), 0.2 * coe * (1 + bac * 0.002), 1) * 4;
                         } else {
                             damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1) * 4;
                         }
                         bac -= 40;
                     } else {
-                        damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1) * 2;
+                        if (liquid) {
+                            liquid = false;
+                            damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe * (1 + bac * 0.002), 0.2 * coe * (1 + bac * 0.002), 1) * 2;
+                        } else {
+                            damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1) * 2;
+                        }
                     }
                 } else if (c === 'd') {
                     if (character.WEAPON_MASTERY.selectedIndex > 5) {
@@ -258,7 +263,7 @@ const Li_Dailin = {
                             const bonus = calcTrueDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100);
                             if (liquid) {
                                 liquid = false;
-                                damage += baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + liquid * 0.002), 0, 1) + bonus;
+                                damage += baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
                             } else {
                                 damage += baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                             }
@@ -273,7 +278,7 @@ const Li_Dailin = {
                             const bonus = calcTrueDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 50 : 100);
                             if (liquid) {
                                 liquid = false;
-                                damage += baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + liquid * 0.002), 100, 1) + bonus;
+                                damage += baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 100, 1) + bonus;
                             } else {
                                 damage += baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;
                             }
