@@ -113,6 +113,9 @@
         .char {
             font-size: 20px;
         }
+        .combo_option {
+            width: 100px;
+        }
     </style>
     <script type="text/javascript" src='./db/armor/AccessoryDB.js'></script>
     <script type="text/javascript" src='./db/armor/ArmDB.js'></script>
@@ -831,22 +834,24 @@
             <b>E : </b><span class='e_damage'></span><span class='e_option'></span><br>
             <b>R : </b><span class='r_damage'></span><span class='r_option'></span><br>
             <b>D : </b><span class='d_damage'></span><span class='d_option'></span><br>
-            <b>T : </b><span class='t_damage'></span><span class='t_option'></span><br><br>
-            <b>Trap : </b><span class='trap_damage'></span>
+            <b>T : </b><span class='t_damage'></span><span class='t_option'></span><br>
+            <b>Trap : </b><span class='trap_damage'></span><br>
+            <b>Combo : </b><input class='combo_option'><br>
+            <b>ㄴDamage : </b><span class='combo_damage'></span>
         </div>
     </div>
     
-    <div>
-        <div style='height: 8px;'></div>
-        <h4>
-            - - - - - - - - - - Select Mode: 
-            <select id='mode' onchange='updateDisplay()'>
-                <option selected>SOLO</option>
-                <option>DUO</option>
-                <option>SQUAD</option>
-            </select>
-        </h4>
-    </div>
+    <br>
+    <div style='height: 8px;'></div>
+    <b>
+        - - - - - - - - - - Select Mode: 
+        <select id='mode' onchange='updateDisplay()'>
+            <option selected>SOLO</option>
+            <option>DUO</option>
+            <option>SQUAD</option>
+        </select>
+    </b>
+    <div style='height: 12px;'></div>
     
     <div id='character1'>
         <div class='item_list'>
@@ -1246,8 +1251,10 @@
             <b>E : </b><span class='e_damage'></span><span class='e_option'></span><br>
             <b>R : </b><span class='r_damage'></span><span class='r_option'></span><br>
             <b>D : </b><span class='d_damage'></span><span class='d_option'></span><br>
-            <b>T : </b><span class='t_damage'></span><span class='t_option'></span><br><br>
-            <b>Trap : </b><span class='trap_damage'></span>
+            <b>T : </b><span class='t_damage'></span><span class='t_option'></span><br>
+            <b>Trap : </b><span class='trap_damage'></span><br>
+            <b>Combo : </b><input class='combo_option'><br>
+            <b>ㄴDamage : </b><span class='combo_damage'></span>
         </div>
     </div>
     <br/>

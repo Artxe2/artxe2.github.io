@@ -14,6 +14,11 @@ class Character {
             this.D_DAMAGE.innerHTML = this.character.D_Skill(this, this.enemy);
             this.T_DAMAGE.innerHTML = this.character.T_Skill(this, this.enemy);
             this.TRAP_DAMAGE.innerHTML = this.calcTrapDamage();
+            
+            if (this.character.COMBO) {
+                this.COMBO_DAMAGE.innerHTML = this.character.COMBO(this, this.enemy);
+            }
+            
             this.CHAR.innerHTML = this.CHARACTER.value;
             if (this.enemy.character) {
                 this.ENEMY.innerHTML = ' vs ' + this.enemy.CHARACTER.value;
@@ -21,6 +26,19 @@ class Character {
                 this.ENEMY.innerHTML = '';
             }
         } else {
+            this.BASE_ATTACK_DAMAGE.innerHTML = '';
+            this.DPS_DAMAGE.innerHTML = '';
+            this.HPS_DAMAGE.innerHTML = '';
+            this.Q_DAMAGE.innerHTML = '';
+            this.W_DAMAGE.innerHTML = '';
+            this.E_DAMAGE.innerHTML = '';
+            this.R_DAMAGE.innerHTML = '';
+            this.D_DAMAGE.innerHTML = '';
+            this.T_DAMAGE.innerHTML = '';
+            this.TRAP_DAMAGE.innerHTML = '';
+
+            this.COMBO_DAMAGE.innerHTML = '';
+
             this.CHAR.innerHTML = 'select character';
             this.ENEMY.innerHTML = '';
         }
@@ -103,6 +121,9 @@ class Character {
         this.T_DAMAGE = DIV.querySelector('.t_damage');
         this.T_OPTION = DIV.querySelector('.t_option');
         this.TRAP_DAMAGE = DIV.querySelector('.trap_damage');
+
+        this.COMBO_DAMAGE = DIV.querySelector('.combo_damage');
+        this.COMBO_OPTION = DIV.querySelector('.combo_option');
 
         this.CHAR = DIV.querySelector('.char');
         this.ENEMY = DIV.querySelector('.enemy');
@@ -376,6 +397,9 @@ class Character {
             updateDisplay();
         });
         this.T_LEVEL.addEventListener('change', (e) => {
+            updateDisplay();
+        });
+        this.COMBO_OPTION.addEventListener('change', (e) => {
             updateDisplay();
         });
 
