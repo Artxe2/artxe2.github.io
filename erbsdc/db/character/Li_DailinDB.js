@@ -239,7 +239,7 @@ const Li_Dailin = {
                     damage += calcSkillDamage(character, enemy, 80 + character.E_LEVEL.selectedIndex * 55, 0.5, 1)
                 } else if (c === 'r' || c === 'R') {
                     const r = character.R_LEVEL.selectedIndex;
-                    const coe = enemy.max_hp ? 2 * (damage * 100.0 / hp > 77 ? 77 : damage * 100.0 / hp) / 77 + 1 : 3;
+                    const coe = enemy.max_hp ? 2 * (damage * 100.0 / enemy.max_hp > 77 ? 77 : damage * 100.0 / enemy.max_hp) / 77 + 1 : 3;
                     if (bac >= 40) {
                         if (liquid) {
                             liquid = false;
@@ -299,7 +299,7 @@ const Li_Dailin = {
                     }
                 }
             }
-            return "<b class='damage'>" + damage + '</b><b> _ : ' + (enemy.max_hp ? (damage / max_hp * 10000 | 0) / 100 : '-') + '%</b>';
+            return "<b class='damage'>" + damage + '</b><b> _ : ' + (enemy.max_hp ? (damage / enemy.max_hp * 10000 | 0) / 100 : '-') + '%</b>';
         }
         return '-';
     }
