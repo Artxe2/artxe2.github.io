@@ -17,6 +17,8 @@ class Character {
             
             if (this.character.COMBO) {
                 this.COMBO_DAMAGE.innerHTML = this.character.COMBO(this, this.enemy);
+            } else {
+                this.COMBO_DAMAGE.innerHTML = '';
             }
             
             this.CHAR.innerHTML = this.CHARACTER.value;
