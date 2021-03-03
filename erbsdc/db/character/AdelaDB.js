@@ -266,7 +266,7 @@ const Adela = {
             }
         };
     }
-    ,COMBO_Option: 'qweadaar'
+    ,COMBO_Option: 'qweaqdaaqr'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
