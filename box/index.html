@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', e => {
+            const item = {
+                가위: 7,
+                쇠사슬: 6,
+                바늘: 6,
+                전신수영복: 7,
+                팔찌: 6,
+                운동화: 7,
+                쌍안경: 6,
+                고무: 7,
+                라이터: 8,
+                마패: 7,
+                접착제: 7,
+                마늘: 6,
+                망치: 10,
+                생라면: 6,
+                꿀: 5,
+                십자가: 7
+            };
+            const box = new Array(28);
+            for (let i = 0; i < box.length; i++) {
+                if (i % 4 === 0) {
+                    box[i] = new Array(3);
+                } else if (i % 6 === 0) {
+                    box[i] = new Array(5);
+                } else {
+                    box[i] = new Array(4)
+                }
+            }
+            let count= 0;
+            for (const b of box) {
+                count += b.length;
+            }
+            let length = item[key].length;
+            let quotient = count / length;
+            let i = 0;
+            let start = 0;
+            let end = Math.round(quotient);
+            while (Object.keys(item).length > 0) {
+                const key = Object.keys(item)[0];
+                i = round(Math.random(end - start) + 1);
+                for (const it of item) {
+                    for (let x in it) {
+                        if (!x) {
+                            i--;
+                            if (!i) {
+                                it[x] = key;
+                                count--;
+                            }
+                        }
+                    }
+                }
+                delete item[key];
+            }
+            document.querySelector('#root').innerHTML = 
+                box + 
+                '<h1>' + count + '</h1>';
+        });
+    </script>
+</head>
+<body>
+    <div id='root'></div>
+</body>
+</html>
