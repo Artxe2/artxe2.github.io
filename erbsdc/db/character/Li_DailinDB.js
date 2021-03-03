@@ -1,3 +1,4 @@
+'use strict';
 const Li_Dailin = {
      Attack_Power: 33
     ,Attack_Power_Growth: 2.2
@@ -9,7 +10,7 @@ const Li_Dailin = {
     ,Stamina_Growth: 16
     ,Stamina_Regen: 0.2
     ,Stamina_Regen_Growth: 0.01
-    ,Defense: 20
+    ,Defense: 24
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.07
     ,Movement_Speed: 3.1
@@ -53,7 +54,7 @@ const Li_Dailin = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const min = calcSkillDamage(character, enemy, 20 + q * 20, 0.5, 1);
+            const min = calcSkillDamage(character, enemy, 25 + q * 20, 0.6, 1);
             const max = calcSkillDamage(character, enemy, 28 + q * 28, 0.7, 1);
             const cool = 10000 / ((12 - q * 0.5) * (100 - character.cooldown_reduction) + 100);
             return "<b class='damage'>" + max * 3 + '</b> ( ' + min + ' x 3 - ' + max + " x 3 )<b> __sd/s: </b><b class='damage'>" + round((max * 3) * cool) / 100 + '</b>';
@@ -130,7 +131,7 @@ const Li_Dailin = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'Glove') {
-                const coe = wm < 13 ? 1 : 2;
+                const coe = wm < 13 ? 1.2 : 2.2;
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                 // const damage = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1) + bonus;
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
@@ -197,50 +198,58 @@ const Li_Dailin = {
             'D: ' + skill + '\n' + 
             'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" / "1타 최대 강화", "2타 최대 강화" )\n';
     }
-    ,COMBO: (character, enemy) => {
+    ,COMBO_VARS: '{\"bac\":0,\"liquid\":0,\"bqqac\":0,\"wq\":0}'
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
+        const q = character.Q_LEVEL.selectedIndex - 1;
+        const w = character.W_LEVEL.selectedIndex - 1;
+        const e = character.E_LEVEL.selectedIndex - 1;
+        const r = character.R_LEVEL.selectedIndex - 1;
+        const t = character.T_LEVEL.selectedIndex;
+        const wm = character.WEAPON_MASTERY.selectedIndex;
+        const et = enemy.T_LEVEL.selectedIndex;
+        let damage = 0;
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+            (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
+        let shield = 0, c, ba;
+        let bac = data.vars.bac, liquid = data.vars.liquid, qq = data.vars.qq, wq = data.vars.wq;
         if (character.weapon) {
             const type = character.weapon.Type;
-            const q = character.Q_LEVEL.selectedIndex - 1;
-            const w = character.W_LEVEL.selectedIndex - 1;
-            const e = character.E_LEVEL.selectedIndex - 1;
-            const r = character.R_LEVEL.selectedIndex - 1;
-            const t = character.T_LEVEL.selectedIndex;
-            const wm = character.WEAPON_MASTERY.selectedIndex;
-            const ew = enemy.W_LEVEL.selectedIndex - 1;
-            const et = enemy.T_LEVEL.selectedIndex;
-            const time = character.DIV.querySelector('.combo_time').value;
-            let damage = 0, life = 0, heal = 0, shield = 0, c;
-            let bac = 0, liquid = 0, qq = 0, wq = 0;
-            const combo = character.COMBO_OPTION.value;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
+                if (enemy.defense) {
+                    if (enemy.character === Magnus) {
+                        let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                        if (lost < 0) {
+                            lost = 0;
+                        }
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                    } else {
+                        enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                    }
+                }
                 if (c === 'a') {
                     if (liquid > 1) {
                         liquid = liquid === 2 ? 1 : 0;
-                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1);
-                        life += calcHeal(
-                            baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1)
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
                         liquid = 0;
-                        damage += baseAttackDamage(character, enemy, 0, 1, 0, 1);
-                        life += calcHeal(
-                            baseAttackDamage(character, enemy, 0, 1, 0, 1)
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'A') {
                     if (liquid > 1) {
                         liquid = liquid === 2 ? 1 : 0;
-                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1);
-                        life += calcHeal(
-                            baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1)
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
                         liquid = 0;
-                        damage += baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                        life += calcHeal(
-                            baseAttackDamage(character, enemy, 0, 1, 100, 1)
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
@@ -249,7 +258,7 @@ const Li_Dailin = {
                         }
                         if (qq > 0) {
                             qq--;
-                            damage += calcSkillDamage(character, enemy, 20 + q * 20, 0.5, 1);
+                            damage += calcSkillDamage(character, enemy, 25 + q * 20, 0.6, 1);
                         } else if (wq > 0) {
                             wq--;
                             damage += calcSkillDamage(character, enemy, 28 + q * 28, 0.7, 1);
@@ -259,7 +268,7 @@ const Li_Dailin = {
                             bac -= 40;
                         } else {
                             qq = 2;
-                            damage += calcSkillDamage(character, enemy, 20 + q * 20, 0.5, 1);
+                            damage += calcSkillDamage(character, enemy, 25 + q * 20, 0.6, 1);
                         }
                     }
                 } else if (c === 'w' || c === 'W') {
@@ -287,24 +296,28 @@ const Li_Dailin = {
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        let lost = enemy.max_hp ? damage - heal - shield : 0;
+                        let lost = enemy.max_hp ? floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp) : 0;
                         if (lost < 0) {
                             lost = 0;
                         }
-                        const coe = enemy.max_hp ? 2 * (lost * 100.0 / enemy.max_hp > 75 ? 75 : lost * 100.0 / enemy.max_hp) / 75 + 1 : 3;
+                        const coe = enemy.max_hp ? 2 * (lost > 75 ? 75 : lost) / 75 + 1 : 3;
+                        const hit = bac >= 40 ? 4 : 2;
+                        for (let j = 0; j < hit; j++) {
+                            if (liquid > 1) {
+                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe * (1 + bac * 0.002), 0.2 * coe * (1 + bac * 0.002), 1);
+                            } else {
+                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1);
+                            }
+                            if (enemy.character === Magnus) {
+                                lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                if (lost < 0) {
+                                    lost = 0;
+                                }
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            }
+                        }
                         if (bac >= 40) {
-                            if (liquid > 1) {
-                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe * (1 + bac * 0.002), 0.2 * coe * (1 + bac * 0.002), 1) * 4;
-                            } else {
-                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1) * 4;
-                            }
                             bac -= 40;
-                        } else {
-                            if (liquid > 1) {
-                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe * (1 + bac * 0.002), 0.2 * coe * (1 + bac * 0.002), 1) * 2;
-                            } else {
-                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1) * 2;
-                            }
                         }
                         liquid = 0;
                     }
@@ -314,15 +327,13 @@ const Li_Dailin = {
                             const coe = wm < 13 ? 1.2 : 2.2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             if (liquid) {
-                                damage += baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
-                                life += calcHeal(
-                                    (baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus)
-                                 * (character.life_steal / 100), 1, enemy);
+                                ba = baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
+                                damage += ba;
+                                heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                             } else {
-                                damage += baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                                life += calcHeal(
-                                    (baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus)
-                                 * (character.life_steal / 100), 1, enemy);
+                                ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
+                                damage += ba;
+                                heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                             }
                         	liquid = 0;
                         } else if (type === 'Nunchaku') {
@@ -339,15 +350,13 @@ const Li_Dailin = {
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             if (liquid) {
                                 liquid = 0;
-                                damage += baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
-                                life += calcHeal(
-                                    (baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus)
-                                 * (character.life_steal / 100), 1, enemy);
+                                ba = baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
+                                damage += ba;
+                                heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                             } else {
-                                damage += baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                                life += calcHeal(
-                                    (baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus)
-                                 * (character.life_steal / 100), 1, enemy);
+                                ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
+                                damage += ba;
+                                heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                             }
                         } else if (type === 'Nunchaku') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 300 : 600, 1.5, 1);
@@ -356,102 +365,76 @@ const Li_Dailin = {
                 } else if (c === 't') {
                     if (liquid) {
                         liquid = 0;
-                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1) + 
-                            baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 0, 1);
-                        life += calcHeal(
-                            (baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1) + 
-                                baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 0, 1))
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }
+                        ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 0, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
-                        damage += baseAttackDamage(character, enemy, 0, 1, 0, 1) + 
-                            baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 0, 1);
-                        life += calcHeal(
-                            (baseAttackDamage(character, enemy, 0, 1, 0, 1) + 
-                                baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 0, 1))
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }
+                        ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 0, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'T') {
                     if (liquid) {
                         liquid = 0;
-                        damage += baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1) + 
-                            baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 100, 1);
-                        life += calcHeal(
-                            (baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1) + 
-                                baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 100, 1))
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }
+                        ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 100, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
-                        damage += baseAttackDamage(character, enemy, 0, 1, 100, 1) + 
-                            baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 100, 1);
-                        life += calcHeal(
-                            (baseAttackDamage(character, enemy, 0, 1, 100, 1) + 
-                                baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 100, 1))
-                         * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }
+                        ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 100, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
                 }
-                if (enemy.character) {
-                    if (enemy.character === Aya) {
-                        const cool = 30 * (100 - enemy.cooldown_reduction) / 100;
-                        let as;
-                        if (enemy.weapon) {
-                            if (enemy.weapon.Type === 'AssaultRifle') {
-                                as = 10 / (9.5 / enemy.attack_speed + 2) * 6 + 1;
-                            } else {
-                                as = enemy.weapon.Ammo / ((enemy.weapon.Ammo - 1) / enemy.attack_speed + 2) * 2 + 1;
-                            }
-                        } else {
-                            as = 1;
-                        }
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 50 + enemy.attack_power * 0.3);
-                        }
-                    } else if (enemy.character === Cathy) {
-                        const cool = (20 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        const as = enemy.attack_speed * enemy.critical_strike_chance / 100 + 1;
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(110 + et * 55 + enemy.attack_power * 0.4);
-                        }
-                    } else if (enemy.character === Chiara && ew >= 0) {
-                        const cool = (16 - ew * 1) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(90 + ew * 35 + enemy.attack_power * 0.6);
-                        }
-                    } else if (enemy.character === Emma) {
-                        const cool = (15 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 25 + enemy.max_sp * (0.03 + et * 0.03));
-                        }
-                    } else if (enemy.character === Lenox) {
-                        const cool = (20 - et * 4) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(enemy.max_hp * 0.1);
-                        }
-                    } else if (enemy.character === Sissela) {
-                        let  lost = damage > heal ? floor(100 - (enemy.max_hp - damage + heal) / enemy.max_hp * 100) : 0;
-                        if (lost > 100) {
-                            lost = 100;
-                        }
-                        heal += calcHeal(lost < 10 ? 0 : 
-                            (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (enemy.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy)
-                         * time / combo.length;
-                    }
-                    heal += calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character) * time / combo.length;
-                }
             }
-            const percent = (enemy.max_hp ? floor((damage - heal - shield) / enemy.max_hp  * 100, 2) : '-');
-            const healPercent = floor(life / character.max_hp * 100, 2);
-            if (shield) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + "</b><b class='damage'> - </b><b class='shield'>" + shield + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            if (heal) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            return "<b class='damage'>" + damage + "</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
         }
-        return '-';
+        return { 
+            hp: data.hp - damage,
+            damage: damage,
+            heal: heal,
+            shield: shield,
+            vars: {
+                bac: bac, 
+                liquid: liquid, 
+                qq: qq, 
+                wq: wq
+            }
+        };
     }
     ,COMBO_Option: 'wwqaDetwrt'
     ,COMBO_Help: (character) => {

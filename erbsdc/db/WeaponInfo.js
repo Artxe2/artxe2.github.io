@@ -1,3 +1,4 @@
+'use strict';
 const WeaponInfo = {
     /*[
         weapon_mastery_attack_speed
@@ -7,10 +8,10 @@ const WeaponInfo = {
         weapon_attack_speed
     ]*/
      Dagger:            [2.7, 5.0, 1.5, 1.00, 0.580]
-    ,TwoHandedSword:    [3.3, 5.0, 1.5, 1.50, 0.560]
+    ,TwoHandedSword:    [3.3, 5.0, 1.5, 1.60, 0.560]
     ,Axe:               [0.0, 4.0, 2.0, 1.15, 0.455]
-    ,DualSwords:        [2.0, 2.8, 0.8, 1.05, 0.470]
-    ,Pistol:            [3.3, 4.5, 2.4, 4.20, 0.505]
+    ,DualSwords:        [2.0, 2.8, 0.8, 1.10, 0.470]
+    ,Pistol:            [3.3, 4.5, 2.1, 4.20, 0.505]
     ,AssaultRifle:      [4.0, 1.5, 2.0, 5.00, 0.550]
     ,SniperRifle:       [0.0, 4.8, 2.0, 6.70, 0.430]
     ,Rapier:            [2.9, 4.2, 2.0, 1.20, 0.615]
@@ -20,7 +21,7 @@ const WeaponInfo = {
     ,Throws:            [0.9, 5.0, 2.0, 5.80, 0.510]
     ,Shuriken:          [2.0, 4.0, 1.8, 4.40, 0.550]
     ,Bow:               [2.4, 3.0, 2.0, 5.85, 0.650]
-    ,Crossbow:          [2.0, 5.0, 1.8, 4.60, 0.510]
+    ,Crossbow:          [2.2, 5.0, 1.8, 4.60, 0.510]
     ,Glove:             [3.6, 2.5, 1.6, 0.85, 0.630]
     ,Tonfa:             [1.8, 3.8, 3.7, 1.00, 0.500]
     ,Guitar:            [1.5, 1.5, 2.5, 3.85, 0.430]

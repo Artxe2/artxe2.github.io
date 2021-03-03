@@ -1,3 +1,4 @@
+'use strict';
 const Accessory = [
     {
          Type: "Accessory"
@@ -75,8 +76,8 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Flower_of_Fate"
         ,Critical_Strike_Chance: 15
-        ,Cooldown_Reduction: 10
-        ,Title: "Flower of Fate\n\nCritical Strike Chance +15%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 8
+        ,Title: "Flower of Fate\n\nCritical Strike Chance +15%\nCooldown Reduction +8%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -176,9 +177,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Magazine"
-        ,Max_HP: 350
+        ,Max_HP: 330
         ,Normal_Attack_Damage_Reduction: 6
-        ,Title: "Magazine\n\nMax HP +350\nNormal Attack Damage Reduction +6"
+        ,Title: "Magazine\n\nMax HP +330\nNormal Attack Damage Reduction +6"
         ,Rarity: "Rare"
     }
     ,{
@@ -218,9 +219,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Schrodinger`s_Box"
-        ,Max_HP: 380
+        ,Max_HP: 360
         ,Skill_Amplification: 7
-        ,Title: "Schrodinger`s Box\n\nMax HP +380\nSkill Amplification +7"
+        ,Title: "Schrodinger`s Box\n\nMax HP +360\nSkill Amplification +7"
         ,Rarity: "Rare"
     }
     ,{
@@ -249,6 +250,16 @@ const Accessory = [
         ,SP_Regen: 1.5
         ,Extra_Normal_Attack_Damage: 13
         ,Title: "True Samadhi Fire\n\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +13"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Accessory"
+        ,Name: "Lunar_Embrace"
+        ,Defense: 14
+        ,SP_Regen_Percent: 200
+        ,Vision_Range: 1.5
+        ,Skill_Damage_Reduction: 18
+        ,Title: "Lunar Embrace\n\nDefense +14\nSP Regen +200%\nVision Range +1.5\nSkill Damage Reduction +18"
         ,Rarity: "Epic"
     }
     ,{

@@ -1,3 +1,4 @@
+'use strict';
 const Hart = {
      Attack_Power: 22
     ,Attack_Power_Growth: 3
@@ -9,7 +10,7 @@ const Hart = {
     ,Stamina_Growth: 16
     ,Stamina_Regen: 1.7
     ,Stamina_Regen_Growth: 0.04
-    ,Defense: 20
+    ,Defense: 22
     ,Defense_Growth: 1.9
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3
@@ -88,7 +89,7 @@ const Hart = {
         if (character.weapon && e >= 0) {
 
             const skill_amplification_percent = character.skill_amplification_percent;
-            character.skill_amplification_percent = character.calc_skill_amplification_percent;
+            character.skill_amplification_percent = round(character.pure_skill_amplification_percent);
 
             const sap = character.DIV.querySelector('.hart_ee').checked ? 25 : character.DIV.querySelector('.hart_e').checked ? 18 : 0;
             character.skill_amplification_percent += sap;
@@ -184,67 +185,109 @@ const Hart = {
             'D: ' + skill + '\n' + 
             'T: _up "스킬 강화"\n';
     }
-    ,COMBO: (character, enemy) => {
+    ,COMBO_VARS: '{\"ww\":[],\"ee\":[]}'
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
+        const q = character.Q_LEVEL.selectedIndex - 1;
+        const w = character.W_LEVEL.selectedIndex - 1;
+        const e = character.E_LEVEL.selectedIndex - 1;
+        const wm = character.WEAPON_MASTERY.selectedIndex;
+        const et = enemy.T_LEVEL.selectedIndex;
+        let damage = 0;
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+            (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
+        let shield = 0, c, ba;
+        const sap = character.DIV.querySelector('.hart_ee').checked ? 25 : character.DIV.querySelector('.hart_e').checked ? 18 : 0;
+        let ww = data.vars.ww, ee = data.vars.ee;
         if (character.weapon) {
             const type = character.weapon.Type;
-            const q = character.Q_LEVEL.selectedIndex - 1;
-            const w = character.W_LEVEL.selectedIndex - 1;
-            const e = character.E_LEVEL.selectedIndex - 1;
-            const wm = character.WEAPON_MASTERY.selectedIndex;
-            const ew = enemy.W_LEVEL.selectedIndex - 1;
-            const et = enemy.T_LEVEL.selectedIndex;
-            const time = character.DIV.querySelector('.combo_time').value;
-            let damage = 0, life = 0, heal = 0, shield = 0, c;
-            const sap = character.DIV.querySelector('.hart_ee').checked ? 25 : character.DIV.querySelector('.hart_e').checked ? 18 : 0;
-            let ww = false, stack = 0;
-
             const hart_w = character.DIV.querySelector('.hart_w');
             const hart_ww = character.DIV.querySelector('.hart_ww');
-            const attack_power = character.attack_power;
-            character.attack_power = floor(character.calc_attack_power);
-            const skill_amplification_percent = character.skill_amplification_percent;
-            character.skill_amplification_percent = round(character.calc_skill_amplification_percent);
-            let enemy_defense;
-            if (enemy.calc_defense) {
-                enemy_defense = enemy.defense;
-                enemy.defense = floor(enemy.calc_defense);
-            }
-
-            const combo = character.COMBO_OPTION.value;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
+                character.attack_power = floor(character.pure_attack_power * (1 + (ww[index] ? 0.12 + w * 0.07 : 0)));
+                character.skill_amplification_percent = 
+                    round(character.pure_skill_amplification_percent + (ee[index] ? ee[index] * sap : 0));
+                if (enemy.defense) {
+                    if (enemy.character === Magnus) {
+                        let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                        if (lost < 0) {
+                            lost = 0;
+                        }
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                    } else {
+                        enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                    }
+                }
                 if (c === 'a') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 0, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 0, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                     if (character.DIV.querySelector('.hart_t').checked) {
-                        damage += baseAttackDamage(character, enemy, 0, 0.15, 0, 1);
-                        life += calcHeal(
-                            baseAttackDamage(character, enemy, 0, 0.15, 0, 1)
-                         * (character.life_steal / 100), 1, enemy);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }
+                        ba += baseAttackDamage(character, enemy, 0, 0.15, 0, 1);
                         if (character.DIV.querySelector('.hart_tt').checked) {
-                            damage += baseAttackDamage(character, enemy, 0, 0.15, 0, 1);
-                            life += calcHeal(
-                                baseAttackDamage(character, enemy, 0, 0.15, 0, 1)
-                             * (character.life_steal / 100), 1, enemy);
+                            if (enemy.character === Magnus) {
+                                let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                if (lost < 0) {
+                                    lost = 0;
+                                }
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            }
+                            ba += baseAttackDamage(character, enemy, 0, 0.15, 0, 1);
+                        }
+                    }
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+
+                    if (ww[index] && ww[index] === 1) {
+                        for (let x = index; ww[x]; x++) {
+                            ww[x] = 2;
+                        }
+                        const dm = hart_ww.checked ? -0.35 : hart_w.checked ? -0.25 : 0;
+                        if (dm) {
+                            for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
+                                defense_minus[x] = dm;
+                            }
                         }
                     }
                 } else if (c === 'A') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 100, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     if (character.DIV.querySelector('.hart_t').checked) {
-                        damage += baseAttackDamage(character, enemy, 0, 0.15, 100, 1);
-                        life += calcHeal(
-                            baseAttackDamage(character, enemy, 0, 0.15, 100, 1)
-                         * (character.life_steal / 100), 1, enemy);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }
+                        ba += baseAttackDamage(character, enemy, 0, 0.15, 100, 1);
                         if (character.DIV.querySelector('.hart_tt').checked) {
-                            damage += baseAttackDamage(character, enemy, 0, 0.15, 100, 1);
-                            life += calcHeal(
-                                baseAttackDamage(character, enemy, 0, 0.15, 100, 1)
-                             * (character.life_steal / 100), 1, enemy);
+                            if (enemy.character === Magnus) {
+                                let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                if (lost < 0) {
+                                    lost = 0;
+                                }
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            }
+                            ba += baseAttackDamage(character, enemy, 0, 0.15, 100, 1);
+                        }
+                    }
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    
+                    if (ww[index] && ww[index] === 1) {
+                        for (let x = index; ww[x]; x++) {
+                            ww[x] = 2;
+                        }
+                        const dm = hart_ww.checked ? -0.35 : hart_w.checked ? -0.25 : 0;
+                        if (dm) {
+                            for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
+                                defense_minus[x] = dm;
+                            }
                         }
                     }
                 } else if (c === 'q') {
@@ -257,23 +300,25 @@ const Hart = {
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        if (ww) {
-                            character.attack_power = floor(character.calc_attack_power);
-                            enemy.defense = floor(enemy.calc_defense);
-                        } else {
-                            character.attack_power = floor(character.calc_attack_power * (1 + 0.12 + w * 0.07));
-                            if (enemy.defense) {
-                                enemy.defense = floor(enemy.calc_defense * (1 - (hart_ww.checked ? 0.35 : hart_w.checked ? 0.25 : 0)));
-                            }
+                        for (let x = index; x <= index + 14; x++) {
+                            ww[x] = 1;
                         }
-                        ww = !ww;
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
-                        if (stack < 3) {
-                            stack++;
-                            character.skill_amplification_percent = round(character.calc_skill_amplification_percent + stack * sap);
+                        if (ee[index] && ee[index] < 3) {
+                            ee[index]++;
+                            for (let x = index + 1; x < index + 10; x++) {
+                                ee[x] = ee[index];
+                            }
+                        } else {
+                            ee[index] = 1;
+                            for (let x = index + 1; x < index + 10; x++) {
+                                ee[x] = ee[index];
+                            }
                         }
+                        character.skill_amplification_percent = 
+                            round(character.pure_skill_amplification_percent + (ee[index] ? ee[index] * sap : 0));
                         damage += calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
                     }
                 } else if (c === 'd' || c === 'D') {
@@ -287,73 +332,18 @@ const Hart = {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
                 }
-                if (enemy.character) {
-                    if (enemy.character === Aya) {
-                        const cool = 30 * (100 - enemy.cooldown_reduction) / 100;
-                        let as;
-                        if (enemy.weapon) {
-                            if (enemy.weapon.Type === 'AssaultRifle') {
-                                as = 10 / (9.5 / enemy.attack_speed + 2) * 6 + 1;
-                            } else {
-                                as = enemy.weapon.Ammo / ((enemy.weapon.Ammo - 1) / enemy.attack_speed + 2) * 2 + 1;
-                            }
-                        } else {
-                            as = 1;
-                        }
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 50 + enemy.attack_power * 0.3);
-                        }
-                    } else if (enemy.character === Cathy) {
-                        const cool = (20 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        const as = enemy.attack_speed * enemy.critical_strike_chance / 100 + 1;
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(110 + et * 55 + enemy.attack_power * 0.4);
-                        }
-                    } else if (enemy.character === Chiara && ew >= 0) {
-                        const cool = (16 - ew * 1) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(90 + ew * 35 + enemy.attack_power * 0.6);
-                        }
-                    } else if (enemy.character === Emma) {
-                        const cool = (15 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 25 + enemy.max_sp * (0.03 + et * 0.03));
-                        }
-                    } else if (enemy.character === Lenox) {
-                        const cool = (20 - et * 4) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(enemy.max_hp * 0.1);
-                        }
-                    } else if (enemy.character === Sissela) {
-                        let  lost = damage > heal ? floor(100 - (enemy.max_hp - damage + heal) / enemy.max_hp * 100) : 0;
-                        if (lost > 100) {
-                            lost = 100;
-                        }
-                        heal += calcHeal(lost < 10 ? 0 : 
-                            (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (enemy.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy)
-                         * time / combo.length;
-                    }
-                    heal += calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character) * time / combo.length;
-                }
             }
-
-            character.attack_power = attack_power;
-            character.skill_amplification_percent = skill_amplification_percent;
-            if (enemy_defense) {
-                enemy.defense = enemy_defense;
-            }
-
-            const percent = (enemy.max_hp ? floor((damage - heal - shield) / enemy.max_hp  * 100, 2) : '-');
-            const healPercent = floor(life / character.max_hp * 100, 2);
-            if (shield) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + "</b><b class='damage'> - </b><b class='shield'>" + shield + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            if (heal) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            return "<b class='damage'>" + damage + "</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
         }
-        return '-';
+        return { 
+            hp: data.hp - damage,
+            damage: damage,
+            heal: heal,
+            shield: shield,
+            vars: {
+                ww: ww,
+                ee: ee
+            }
+        };
     }
     ,COMBO_Option: 'wAdeaeaeadQa'
     ,COMBO_Help: (character) => {
@@ -371,7 +361,7 @@ const Hart = {
             'A: 치명타 데미지\n' +
             'q: Q스킬 즉발 데미지\n' + 
             'Q: Q스킬 최대 데미지\n' + 
-            'w & W: W스킬 On / Off\n' +  
+            'w & W: W스킬 On\n' +  
             'e & E: E스킬 데미지\n' + 
             'r & R: 데미지 없음\n' + 
             't & T: 데미지 없음\n' + 

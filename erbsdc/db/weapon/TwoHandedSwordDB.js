@@ -81,10 +81,10 @@ const TwoHandedSword = [
          Type: "TwoHandedSword"
         ,Name: "Excalibur"
         ,Attack_Power: 60
-        ,Attack_Speed: 10
         ,Max_HP: 360
         ,HP_Regen_Percent: 200
-        ,Title: "Excalibur\n\nAttack Power +60\nAttack Speed +10%\nMax HP +360\nHP Regen +200%"
+        ,Attack_Speed: 10
+        ,Title: "Excalibur\n\nAttack Power +60\nMax HP +360\nHP Regen +200%\nAttack Speed +10%"
         ,Rarity: "Epic"
     }
     ,{
@@ -110,8 +110,9 @@ const TwoHandedSword = [
         ,Attack_Power: 78
         ,HP_Regen:2.0
         ,SP_Regen: 2.0
+        ,Attack_Speed: 8
         ,Extra_Normal_Attack_Damage: 20
-        ,Title: "Laevateinn\n\nAttack Power +78\nHP Regen +2.0\nSP Regen +2.0\nExtra Normal Attack Damage +20"
+        ,Title: "Laevateinn\n\nAttack Power +78\nHP Regen +2.0\nSP Regen +2.0\nAttack Speed +8%\nExtra Normal Attack Damage +20"
         ,Rarity: "Legendary"
     }
     ,{

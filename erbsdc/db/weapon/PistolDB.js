@@ -63,8 +63,8 @@ const Pistol = [
         ,Attack_Power: 35
         ,Attack_Speed: 10
         ,Movement_Speed: 0.1
-        ,Skill_Amplification: 42
-        ,Title: "Devil`s Marksman\n\nAttack Power +35\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +42"
+        ,Skill_Amplification: 38
+        ,Title: "Devil`s Marksman\n\nAttack Power +35\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +38"
         ,Rarity: "Epic"
         ,Ammo: 7
     }
@@ -84,8 +84,8 @@ const Pistol = [
         ,Attack_Power: 61
         ,Attack_Speed: 50
         ,Movement_Speed: 0.1
-        ,Extra_Normal_Attack_Damage: 28
-        ,Title: "Electron Blaster\n\nAttack Power +61\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +28"
+        ,Extra_Normal_Attack_Damage: 25
+        ,Title: "Electron Blaster\n\nAttack Power +61\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +25"
         ,Rarity: "Epic"
         ,Ammo: 10
     }

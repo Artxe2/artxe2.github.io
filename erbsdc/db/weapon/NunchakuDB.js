@@ -31,8 +31,8 @@ const Nunchaku = [
          Type: "Nunchaku"
         ,Name: "The_Smiting_Dragon"
         ,Attack_Power: 50
-        ,Skill_Amplification: 17
-        ,Title: "The Smiting Dragon\n\nAttack Power +50\nSkill Amplification +17\nHealing Reduction (Skills) -40%"
+        ,Skill_Amplification: 20
+        ,Title: "The Smiting Dragon\n\nAttack Power +50\nSkill Amplification +20\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{

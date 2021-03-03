@@ -1,3 +1,4 @@
+'use strict';
 const Cathy = {
      Attack_Power: 26
     ,Attack_Power_Growth: 2.8
@@ -18,7 +19,7 @@ const Cathy = {
     ,weapons: [Dagger]
     ,correction: {
         Dagger: [
-            [0, -2, -4],
+            [0, -5, -8],
             [0, 0, 0],
             [0, 0, 0]
         ]
@@ -50,9 +51,9 @@ const Cathy = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const crid = (1.5 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
-            const min = calcSkillDamage(character, enemy, 20 + q * 30, 0.6, 1);
-            const max = calcSkillDamage(character, enemy, (20 + q * 30) * crid, 0.6 * crid, 1);
+            const crid = (1.3 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
+            const min = calcSkillDamage(character, enemy, 20 + q * 30, 0.4, 1);
+            const max = calcSkillDamage(character, enemy, (20 + q * 30) * crid, 0.4 * crid, 1);
             const cool = 10000 / ((12 - q * 0.5) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + ' - ' + max  + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
@@ -130,10 +131,10 @@ const Cathy = {
             const t = character.T_LEVEL.selectedIndex;
             const max = character.DIV.querySelector('.cathy_t').checked;
             const damage = calcTrueDamage(character, enemy, character.attack_power * 0.2 + (max ? character.max_hp * 0.01 : 0));
-            const shield = floor(110 + t * 55 + character.attack_power * 0.4);
+            const shield = floor(100 + t * 55 + character.attack_power * 0.3);
             const cool = (20 - t * 2) * (100 - character.cooldown_reduction) / 100;
             const as = character.attack_speed * character.critical_strike_chance / 100;
-            return "<b class='damage'>" + damage * (max ? 5 : 3) + "</b> ( <b class='damage'>" + damage + '</b> x ' + (max ? 5 : 3) + ")<b> __s: </b><b class='shield'>" + shield + "</b><b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
+            return "<b class='damage'>" + damage * (max ? 4 : 3) + "</b> ( <b class='damage'>" + damage + '</b> x ' + (max ? 4 : 3) + ")<b> __s: </b><b class='shield'>" + shield + "</b><b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
         }
         return '-';
     }
@@ -163,106 +164,153 @@ const Cathy = {
             'D: ' + skill + '\n' + 
             'T: "합산 데미지" ( "틱당 데미지" x "타수" ) _s: "쉴드량" __s/s: "초당 쉴드량" _full "최대스택"\n';
     }
-    ,COMBO: (character, enemy) => {
+    ,COMBO_VARS: '{\"bleeding\":[]}'
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
+        const q = character.Q_LEVEL.selectedIndex - 1;
+        const w = character.W_LEVEL.selectedIndex - 1;
+        const e = character.W_LEVEL.selectedIndex - 1;
+        const r = character.R_LEVEL.selectedIndex - 1;
+        const t = character.T_LEVEL.selectedIndex;
+        const wm = character.WEAPON_MASTERY.selectedIndex;
+        const et = enemy.T_LEVEL.selectedIndex;
+        let damage = 0;
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+            (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
+        let shield = 0, c, ba;
+        const bleeding = data.vars.bleeding;
+        
+        const cool = (20 - t * 2) * (100 - character.cooldown_reduction) / 100;
+        const as = character.attack_speed * character.critical_strike_chance / 100 + 1 + 
+        (12 - q * 0.5) * (100 - character.cooldown_reduction) / 100;
+        if (index === 0 || floor(as * index / 2 / cool) > floor(as * (index - 1) / 2 / cool)) {
+            shield += floor(100 + t * 50 + character.attack_power * 0.3);
+        }
+        
         if (character.weapon) {
             const type = character.weapon.Type;
-            const q = character.Q_LEVEL.selectedIndex - 1;
-            const w = character.W_LEVEL.selectedIndex - 1;
-            const e = character.W_LEVEL.selectedIndex - 1;
-            const r = character.R_LEVEL.selectedIndex - 1;
-            const t = character.T_LEVEL.selectedIndex;
-            const wm = character.WEAPON_MASTERY.selectedIndex;
-            const ew = enemy.W_LEVEL.selectedIndex - 1;
-            const et = enemy.T_LEVEL.selectedIndex;
-            const time = character.DIV.querySelector('.combo_time').value;
-            let damage = 0, life = 0, heal = 0, shield = 0, c;
-            let x, tt = false, crid;
             const tra = calcTrueDamage(character, enemy, character.attack_power * 0.2);
             const ftra = calcTrueDamage(character, enemy, character.attack_power * 0.2 + character.max_hp * 0.01);
-            const bleeding = new Array(time).fill(0);
-
-            const critical_damage = character.critical_damage;
-            character.critical_damage = calcEquip(character, 'critical_damage');
-
-            const combo = character.COMBO_OPTION.value;
+            let crid;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
+                if (enemy.defense) {
+                    if (enemy.character === Magnus) {
+                        let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                        if (lost < 0) {
+                            lost = 0;
+                        }
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                    } else {
+                        enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                    }
+                }
                 if (c === 'a') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 0, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 0, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    console.log('ba: ', ba, ', ', baseAttackDamage(character, enemy, 0, 1, 0, 1));
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
 
-                    x = floor(time * i / combo.length);
-                    if (bleeding[x] >= 4) {
-                        if (bleeding[x] < 5) {
-                            for (let j = x; j < time && j < x + 5; j++) {
-                                bleeding[j] = 5;
+                    if (bleeding[index]) {
+                        if (bleeding[index] >= 3) {
+                            if (bleeding[index] < 4) {
+                                for (let x = index; x < index + 8; x++) {
+                                    bleeding[x] = 4;
+                                }
+                            }
+                        } else {
+                            bleeding[index]++;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
                             }
                         }
                     } else {
-                        bleeding[x]++;
-                        for (let j = x + 1; j < time && j < x + 3; j++) {
-                            bleeding[j] = bleeding[x];
+                        bleeding[index] = 1;
+                        for (let x = index + 1; x < index + 6; x++) {
+                            bleeding[x] = bleeding[index];
                         }
                     }
                 } else if (c === 'A') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 100, 1)
-                     * (character.life_steal / 100), 1, enemy);
-
-                    x = floor(time * i / combo.length);
-                    if (bleeding[x] === 5 && !tt) {
-                        tt = true;
+                    if (bleeding[index] === 5) {
                         character.critical_damage += 10 + t * 15;
+                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                        character.critical_damage -= 10 + t * 15;
+                    } else {
+                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     }
-                    if (bleeding[x] >= 4) {
-                        if (bleeding[x] < 5) {
-                            for (let j = x; j < time && j < x + 5; j++) {
-                                bleeding[j] = 5;
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+
+                    if (bleeding[index]) {
+                        if (bleeding[index] >= 3) {
+                            if (bleeding[index] < 4) {
+                                for (let x = index; x < index + 8; x++) {
+                                    bleeding[x] = 4;
+                                }
+                            }
+                        } else {
+                            bleeding[index]++;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
                             }
                         }
                     } else {
-                        bleeding[x]++;
-                        for (let j = x + 1; j < time && j < x + 3; j++) {
-                            bleeding[j] = bleeding[x];
+                        bleeding[index] = 1;
+                        for (let x = index + 1; x < index + 6; x++) {
+                            bleeding[x] = bleeding[index];
                         }
                     }
                 } else if (c === 'q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 20 + q * 30, 0.6, 1);
+                        damage += calcSkillDamage(character, enemy, 20 + q * 30, 0.4, 1);
 
-                        x = floor(time * i / combo.length);
-                        if (bleeding[x] >= 3) {
-                            if (bleeding[x] < 5) {
-                                for (let j = x; j < time && j < x + 5; j++) {
-                                    bleeding[j] = 5;
+                        if (bleeding[index]) {
+                            if (bleeding[index] >= 2) {
+                                if (bleeding[index] < 4) {
+                                    for (let x = index; x < index + 8; x++) {
+                                        bleeding[x] = 4;
+                                    }
+                                }
+                            } else {
+                                bleeding[index] += 2;
+                                for (let x = index + 1; x < index + 6; x++) {
+                                    bleeding[x] = bleeding[index];
                                 }
                             }
                         } else {
-                            bleeding[x] += 2;
-                            for (let j = x + 1; j < time && j < x + 3; j++) {
-                                bleeding[j] = bleeding[x];
+                            bleeding[index] = 2;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
                             }
                         }
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
-                        crid = (1.3 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
-                        damage += calcSkillDamage(character, enemy, (20 + q * 30) * crid, 0.6 * crid, 1);
+                        if (bleeding[index] === 5) {
+                            character.critical_damage += 10 + t * 15;
+                            crid = (1.3 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
+                            character.critical_damage -= 10 + t * 15;
+                        } else {
+                            crid = (1.3 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
+                        }
+                        damage += calcSkillDamage(character, enemy, (20 + q * 30) * crid, 0.4 * crid, 1);
 
-                        x = floor(time * i / combo.length);
-                        if (bleeding[x] >= 3) {
-                            if (bleeding[x] < 5) {
-                                for (let j = x; j < time && j < x + 5; j++) {
-                                    bleeding[j] = 5;
+                        if (bleeding[index]) {
+                            if (bleeding[index] >= 2) {
+                                if (bleeding[index] < 4) {
+                                    for (let x = index; x < index + 8; x++) {
+                                        bleeding[x] = 4;
+                                    }
+                                }
+                            } else {
+                                bleeding[index] += 2;
+                                for (let x = index + 1; x < index + 6; x++) {
+                                    bleeding[x] = bleeding[index];
                                 }
                             }
                         } else {
-                            bleeding[x] += 2;
-                            for (let j = x + 1; j < time && j < x + 3; j++) {
-                                bleeding[j] = bleeding[x];
+                            bleeding[index] = 2;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
                             }
                         }
                     }
@@ -270,17 +318,23 @@ const Cathy = {
                     if (w >= 0) {
                         damage += calcSkillDamage(character, enemy, 70 + w * 35, 0.5, 1);
 
-                        x = floor(time * i / combo.length);
-                        if (bleeding[x] >= 3) {
-                            if (bleeding[x] < 5) {
-                                for (let j = x; j < time && j < x + 5; j++) {
-                                    bleeding[j] = 5;
+                        if (bleeding[index]) {
+                            if (bleeding[index] >= 2) {
+                                if (bleeding[index] < 4) {
+                                    for (let x = index; x < index + 8; x++) {
+                                        bleeding[x] = 4;
+                                    }
+                                }
+                            } else {
+                                bleeding[index] += 2;
+                                for (let x = index + 1; x < index + 6; x++) {
+                                    bleeding[x] = bleeding[index];
                                 }
                             }
                         } else {
-                            bleeding[x] += 2;
-                            for (let j = x + 1; j < time && j < x + 3; j++) {
-                                bleeding[j] = bleeding[x];
+                            bleeding[index] = 2;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
                             }
                         }
                     }
@@ -288,36 +342,55 @@ const Cathy = {
                     if (e >= 0) {
                         damage += calcSkillDamage(character, enemy, 30 + e * 10, 0.3, 1);
 
-                        x = floor(time * i / combo.length);
-                        if (bleeding[x] >= 3) {
-                            if (bleeding[x] < 5) {
-                                for (let j = x; j < time && j < x + 5; j++) {
-                                    bleeding[j] = 5;
+                        if (bleeding[index]) {
+                            if (bleeding[index] >= 2) {
+                                if (bleeding[index] < 4) {
+                                    for (let x = index; x < index + 8; x++) {
+                                        bleeding[x] = 4;
+                                    }
+                                }
+                            } else {
+                                bleeding[index] += 2;
+                                for (let x = index + 1; x < index + 6; x++) {
+                                    bleeding[x] = bleeding[index];
                                 }
                             }
                         } else {
-                            bleeding[x] += 2;
-                            for (let j = x + 1; j < time && j < x + 3; j++) {
-                                bleeding[j] = bleeding[x];
+                            bleeding[index] = 2;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
                             }
                         }
                     }
                 } else if (c === 'E') {
                     if (e >= 0) {
-                        damage += calcSkillDamage(character, enemy, 30 + e * 10, 0.3, 1) + 
-                            calcSkillDamage(character, enemy, 10 + e * 10, 0.2, 1);
+                        damage += calcSkillDamage(character, enemy, 30 + e * 10, 0.3, 1);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }
+                        damage += calcSkillDamage(character, enemy, 10 + e * 10, 0.2, 1);
 
-                        x = floor(time * i / combo.length);
-                        if (bleeding[x] >= 3) {
-                            if (bleeding[x] < 5) {
-                                for (let j = x; j < time && j < x + 5; j++) {
-                                    bleeding[j] = 5;
+                        if (bleeding[index]) {
+                            if (bleeding[index] >= 2) {
+                                if (bleeding[index] < 4) {
+                                    for (let x = index; x < index + 8; x++) {
+                                        bleeding[x] = 4;
+                                    }
+                                }
+                            } else {
+                                bleeding[index] += 2;
+                                for (let x = index + 1; x < index + 6; x++) {
+                                    bleeding[x] = bleeding[index];
                                 }
                             }
                         } else {
-                            bleeding[x] += 2;
-                            for (let j = x + 1; j < time && j < x + 3; j++) {
-                                bleeding[j] = bleeding[x];
+                            bleeding[index] = 2;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
                             }
                         }
                     }
@@ -330,35 +403,44 @@ const Cathy = {
                         const coe = enemy.max_hp ? (lost * 100.0 / enemy.max_hp > 70 ? 70 : lost * 100.0 / enemy.max_hp) / 70 + 1 : 2;
                         damage += calcSkillDamage(character, enemy, (120 + r * 80) * coe, 0.6 * coe, 1);
 
-                        x = floor(time * i / combo.length);
-                        for (let j = x; j < time && j < x + 5; j++) {
-                            bleeding[j] = 5;
+                        for (let x = index; x < index + 8; x++) {
+                            bleeding[x] = 4;
                         }
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Dagger') {
-                            let currHp = enemy.max_hp ? enemy.max_hp - damage + heal + shield : 0;
+                            let currHp = enemy.max_hp ? data.hp - damage + heal + shield : 0;
                             if (currHp > enemy.max_hp) {
                                 currHp = enemy.max_hp;
                             }
-                            damage += floor(baseAttackDamage(character, enemy, 0, 1, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
-
-                            x = floor(time * i / combo.length);
-                            if (bleeding[x] === 5 && !tt) {
-                                tt = true;
+                            if (bleeding[index] === 5) {
                                 character.critical_damage += 10 + t * 15;
+                                ba = floor(baseAttackDamage(character, enemy, 0, 1, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                                character.critical_damage -= 10 + t * 15;
+                            } else {
+                                ba = floor(baseAttackDamage(character, enemy, 0, 1, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
                             }
-                            if (bleeding[x] >= 4) {
-                                if (bleeding[x] < 5) {
-                                    for (let j = x; j < time && j < x + 5; j++) {
-                                        bleeding[j] = 5;
+                            damage += ba;
+                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+
+                            if (bleeding[index]) {
+                                if (bleeding[index] >= 4) {
+                                    if (bleeding[index] < 5) {
+                                        for (let x = index; x < index + 10; x++) {
+                                            bleeding[x] = 5;
+                                        }
+                                    }
+                                } else {
+                                    bleeding[index]++;
+                                    for (let x = index + 1; x < index + 6; x++) {
+                                        bleeding[x] = bleeding[index];
                                     }
                                 }
                             } else {
-                                bleeding[x]++;
-                                for (let j = x + 1; j < time && j < x + 3; j++) {
-                                    bleeding[j] = bleeding[x];
+                                bleeding[index] = 1;
+                                for (let x = index + 1; x < index + 6; x++) {
+                                    bleeding[x] = bleeding[index];
                                 }
                             }
                         }
@@ -368,73 +450,18 @@ const Cathy = {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
                 }
-
-                if (enemy.character) {
-                    if (enemy.character === Aya) {
-                        const cool = 30 * (100 - enemy.cooldown_reduction) / 100;
-                        let as;
-                        if (enemy.weapon) {
-                            if (enemy.weapon.Type === 'AssaultRifle') {
-                                as = 10 / (9.5 / enemy.attack_speed + 2) * 6 + 1;
-                            } else {
-                                as = enemy.weapon.Ammo / ((enemy.weapon.Ammo - 1) / enemy.attack_speed + 2) * 2 + 1;
-                            }
-                        } else {
-                            as = 1;
-                        }
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 50 + enemy.attack_power * 0.3);
-                        }
-                    } else if (enemy.character === Cathy) {
-                        const cool = (20 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        const as = enemy.attack_speed * enemy.critical_strike_chance / 100 + 1;
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(110 + et * 55 + enemy.attack_power * 0.4);
-                        }
-                    } else if (enemy.character === Chiara && ew >= 0) {
-                        const cool = (16 - ew * 1) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(90 + ew * 35 + enemy.attack_power * 0.6);
-                        }
-                    } else if (enemy.character === Emma) {
-                        const cool = (15 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 25 + enemy.max_sp * (0.03 + et * 0.03));
-                        }
-                    } else if (enemy.character === Lenox) {
-                        const cool = (20 - et * 4) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(enemy.max_hp * 0.1);
-                        }
-                    } else if (enemy.character === Sissela) {
-                        let  lost = damage > heal ? floor(100 - (enemy.max_hp - damage + heal) / enemy.max_hp * 100) : 0;
-                        if (lost > 100) {
-                            lost = 100;
-                        }
-                        heal += calcHeal(lost < 10 ? 0 : 
-                            (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (enemy.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy)
-                         * time / combo.length;
-                    }
-                    heal += calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character) * time / combo.length;
-                }
             }
-            for (let i = 0; i < time; i++) {
-                damage += bleeding[i] ? bleeding[i] === 5 ? ftra : tra : 0;
-            }
-
-            character.critical_damage = critical_damage;
-
-            const percent = (enemy.max_hp ? floor((damage - heal - shield) / enemy.max_hp  * 100, 2) : '-');
-            const healPercent = floor(life / character.max_hp * 100, 2);
-            if (shield) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + "</b><b class='damage'> - </b><b class='shield'>" + shield + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            if (heal) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            return "<b class='damage'>" + damage + "</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
+            damage += index % 2 === 0 && bleeding[index] ? bleeding[index] === 5 ? ftra : tra : 0;
         }
-        return '-';
+        return { 
+            hp: data.hp - damage,
+            damage: damage,
+            heal: heal,
+            shield: shield,
+            vars: {
+                bleeding: bleeding
+            }
+        };
     }
     ,COMBO_Option: 'dqeAaqAawr'
     ,COMBO_Help: (character) => {

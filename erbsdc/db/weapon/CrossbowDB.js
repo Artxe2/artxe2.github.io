@@ -80,9 +80,9 @@ const Crossbow = [
     ,{
          Type: "Crossbow"
         ,Name: "The_Golden_Ghost"
-        ,Attack_Power: 70
+        ,Attack_Power: 66
         ,Extra_Normal_Attack_Damage: 37
-        ,Title: "The Golden Ghost\n\nAttack Power +70\nExtra Normal Attack Damage +37"
+        ,Title: "The Golden Ghost\n\nAttack Power +66\nExtra Normal Attack Damage +37"
         ,Rarity: "Epic"
     }
     ,{

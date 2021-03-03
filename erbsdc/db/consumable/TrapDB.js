@@ -1,3 +1,4 @@
+'use strict';
 const Trap = [
 	{
         Type: "Trap"
@@ -16,8 +17,8 @@ const Trap = [
 	,{
         Type: "Trap"
         ,Name: "Double_Guillotine"
-        ,Trap_Damage: 340
-        ,Title: "Double Guillotine\n\nTrap Damage +340"
+        ,Trap_Damage: 300
+        ,Title: "Double Guillotine\n\nTrap Damage +300"
         ,Rarity: "Epic"
     }
 	,{

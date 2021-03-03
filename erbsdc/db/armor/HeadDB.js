@@ -1,3 +1,4 @@
+'use strict';
 const Head = [
     {
          Type: "Head"
@@ -59,8 +60,8 @@ const Head = [
         ,Name: "Chain_Coif"
         ,Defense: 14
         ,Critical_Damage_Reduction: 4
-        ,Cooldown_Reduction: 10
-        ,Title: "Chain Coif\n\nDefense +14\nCritical Damage Reduction +4%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 6
+        ,Title: "Chain Coif\n\nDefense +14\nCritical Damage Reduction +4%\nCooldown Reduction +6%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -115,8 +116,8 @@ const Head = [
         ,Max_SP: 130
         ,Movement_Speed: 0.1
         ,Critical_Damage_Reduction: 7
-        ,Cooldown_Reduction: 10
-        ,Title: "Close Helm\n\nDefense +20\nMax SP +130\nMovement Speed +0.1\nCritical Damage Reduction +7%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 7
+        ,Title: "Close Helm\n\nDefense +20\nMax SP +130\nMovement Speed +0.1\nCritical Damage Reduction +7%\nCooldown Reduction +7%"
         ,Rarity: "Rare"
     }
     ,{
@@ -155,10 +156,10 @@ const Head = [
         ,Name: "Tactical_OPS_Helmet"
         ,Defense: 15
         ,Max_HP: 120
-        ,Attack_Speed: 23
+        ,Attack_Speed: 25
         ,Critical_Damage_Reduction: 10
-        ,Cooldown_Reduction: 15
-        ,Title: "Tactical OPS Helmet\n\nDefense +15\nMax HP +120\nAttack Speed +23%\nCritical Damage Reduction +10%\nCooldown Reduction +15%"
+        ,Cooldown_Reduction: 12
+        ,Title: "Tactical OPS Helmet\n\nDefense +15\nMax HP +120\nAttack Speed +25%\nCritical Damage Reduction +10%\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{
@@ -191,9 +192,9 @@ const Head = [
         ,Max_SP: 200
         ,Movement_Speed: 0.1
         ,Critical_Damage_Reduction: 10
-        ,Cooldown_Reduction: 10
+        ,Cooldown_Reduction: 8
         ,Skill_Amplification_Percent: 18
-        ,Title: "Imperial Burgonet\n\nDefense +10\nMax SP +200\nMovement Speed +0.1\nCritical Damage Reduction +10%\nCooldown Reduction +10%\nSkill Amplification +18%"
+        ,Title: "Imperial Burgonet\n\nDefense +10\nMax SP +200\nMovement Speed +0.1\nCritical Damage Reduction +10%\nCooldown Reduction +8%\nSkill Amplification +18%"
         ,Rarity: "Epic"
     }
     ,{

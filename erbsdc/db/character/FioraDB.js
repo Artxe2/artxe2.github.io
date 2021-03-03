@@ -1,5 +1,6 @@
+'use strict';
 const Fiora = {
-     Attack_Power: 33
+     Attack_Power: 31
     ,Attack_Power_Growth: 3.4
     ,Health: 550
     ,Health_Growth: 87
@@ -37,7 +38,7 @@ const Fiora = {
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             if (character.DIV.querySelector('.fiora_r').checked && r >= 0) {
-                const bonus = calcSkillDamage(character, enemy, 25 + r * 10, 0.06 + r * 0.12, 1);
+                const bonus = calcSkillDamage(character, enemy, 20 + r * 15, 0.04 + r * 0.14, 1);
                 return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + ' ) ';
             }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
@@ -52,7 +53,7 @@ const Fiora = {
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
             let damage;
             if (character.DIV.querySelector('.fiora_r').checked && r >= 0) {
-                const bonus = calcSkillDamage(character, enemy, 25 + r * 10, 0.06 + r * 0.12, 1);
+                const bonus = calcSkillDamage(character, enemy, 20 + r * 15, 0.04 + r * 0.14, 1);
                 damage = round((ba + bonus) * character.attack_speed * 100) / 100;
             } else {
                 damage = round(ba * character.attack_speed * 100) / 100;
@@ -90,7 +91,7 @@ const Fiora = {
             const max2 = baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
             const cool = 10000 / ((20 - w * 3) * (100 - character.cooldown_reduction));
             if (character.DIV.querySelector('.fiora_r').checked && r >= 0) {
-                const bonus = calcSkillDamage(character, enemy, 25 + r * 10, 0.06 + r * 0.12, 1);
+                const bonus = calcSkillDamage(character, enemy, 20 + r * 15, 0.04 + r * 0.14, 1);
                 return "<b class='damage'>" + (damage1 + damage2 + bonus * 2) + '</b> ( ' +  min1 + ', ' + min2 + ', ' + bonus + ' - ' + max1 + ', ' + max2 + ', ' + bonus + " ) <b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2 + bonus * 2) * cool) / 100 + '</b>';
             }
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + " ) <b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
@@ -113,7 +114,7 @@ const Fiora = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage = calcSkillDamage(character, enemy, 25 + r * 10, 0.06 + r * 0.12, 1);
+            const damage = calcSkillDamage(character, enemy, 20 + r * 15, 0.04 + r * 0.14, 1);
             return "<b class='damage'>" + damage + '</b>';
         }
         return '-';
@@ -129,7 +130,7 @@ const Fiora = {
             if (type === 'Rapier') {
                 const damage = calcSkillDamage(character, enemy, 0, 
                     2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
-                const cool = 10000 / ((wm < 13 ? 20 : 12) * (100 - character.cooldown_reduction));
+                const cool = 10000 / ((wm < 13 ? 30 : 18) * (100 - character.cooldown_reduction));
                 return "<b class='damage'>" + damage + "</b><b> __d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
             if (type === 'Spear') {
@@ -187,30 +188,42 @@ const Fiora = {
             'D: ' + skill + '\n' + 
             'T: "데미지 없음"\n';
     }
-    ,COMBO: (character, enemy) => {
+    ,COMBO_VARS: '{\"f\":0,\"rr\":false}'
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
+        const q = character.Q_LEVEL.selectedIndex - 1;
+        const w = character.W_LEVEL.selectedIndex - 1;
+        const e = character.E_LEVEL.selectedIndex - 1;
+        const r = character.R_LEVEL.selectedIndex - 1;
+        const t = character.T_LEVEL.selectedIndex;
+        const wm = character.WEAPON_MASTERY.selectedIndex;
+        const et = enemy.T_LEVEL.selectedIndex;
+        let damage = 0;
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+            (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
+        let shield = 0, c, ba;
+        let f = data.vars.f, rr = data.vars.rr;
         if (character.weapon) {
             const type = character.weapon.Type;
-            const q = character.Q_LEVEL.selectedIndex - 1;
-            const w = character.W_LEVEL.selectedIndex - 1;
-            const e = character.E_LEVEL.selectedIndex - 1;
-            const r = character.R_LEVEL.selectedIndex - 1;
-            const t = character.T_LEVEL.selectedIndex;
-            const wm = character.WEAPON_MASTERY.selectedIndex;
-            const ew = enemy.W_LEVEL.selectedIndex - 1;
-            const et = enemy.T_LEVEL.selectedIndex;
-            const time = character.DIV.querySelector('.combo_time').value;
-            let damage = 0, life = 0, heal = 0, shield = 0, c;
-            let f = 0, rr = false, crid = (1.2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
-            const bonus = calcSkillDamage(character, enemy, 25 + r * 10, 0.06 + r * 0.12, 1);
-            const combo = character.COMBO_OPTION.value;
+            const crid = (1.2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
+            const bonus = calcSkillDamage(character, enemy, 20 + r * 15, 0.04 + r * 0.14, 1);
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
+                if (enemy.defense) {
+                    if (enemy.character === Magnus) {
+                        let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                        if (lost < 0) {
+                            lost = 0;
+                        }
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                    } else {
+                        enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                    }
+                }
                 if (c === 'a') {
                     f++;
-                    damage += baseAttackDamage(character, enemy, 0, 1, 0, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 0, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
                         if (rr) {
                             damage += bonus;
@@ -218,10 +231,9 @@ const Fiora = {
                     }
                 } else if (c === 'A') {
                     f++;
-                    damage += baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 100, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
                         if (rr) {
                             damage += bonus;
@@ -238,11 +250,17 @@ const Fiora = {
                 } else if (c === 'w') {
                     if (w >= 0) {
                         f += 2;
-                        damage += baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 0, 1) + 
-                            baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 0, 1);
-                        life += calcHeal(
-                            (baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 0, 1) + baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 0, 1))
-                            * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 0, 1);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        }  
+                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 0, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         if (r >= 0) {
                             if (rr) {
                                 damage += bonus * 2;
@@ -252,11 +270,17 @@ const Fiora = {
                 } else if (c === 'W') {
                     if (w >= 0) {
                         f += 2;
-                        damage += baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 100, 1) + 
-                            baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
-                        life += calcHeal(
-                            (baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 100, 1) + baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1))
-                            * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 100, 1);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        } 
+                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         if (r >= 0) {
                             if (rr) {
                                 damage += bonus * 2;
@@ -295,66 +319,18 @@ const Fiora = {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
                 }
-                if (enemy.character) {
-                    if (enemy.character === Aya) {
-                        const cool = 30 * (100 - enemy.cooldown_reduction) / 100;
-                        let as;
-                        if (enemy.weapon) {
-                            if (enemy.weapon.Type === 'AssaultRifle') {
-                                as = 10 / (9.5 / enemy.attack_speed + 2) * 6 + 1;
-                            } else {
-                                as = enemy.weapon.Ammo / ((enemy.weapon.Ammo - 1) / enemy.attack_speed + 2) * 2 + 1;
-                            }
-                        } else {
-                            as = 1;
-                        }
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 50 + enemy.attack_power * 0.3);
-                        }
-                    } else if (enemy.character === Cathy) {
-                        const cool = (20 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        const as = enemy.attack_speed * enemy.critical_strike_chance / 100 + 1;
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(110 + et * 55 + enemy.attack_power * 0.4);
-                        }
-                    } else if (enemy.character === Chiara && ew >= 0) {
-                        const cool = (16 - ew * 1) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(90 + ew * 35 + enemy.attack_power * 0.6);
-                        }
-                    } else if (enemy.character === Emma) {
-                        const cool = (15 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 25 + enemy.max_sp * (0.03 + et * 0.03));
-                        }
-                    } else if (enemy.character === Lenox) {
-                        const cool = (20 - et * 4) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(enemy.max_hp * 0.1);
-                        }
-                    } else if (enemy.character === Sissela) {
-                        let  lost = damage > heal ? floor(100 - (enemy.max_hp - damage + heal) / enemy.max_hp * 100) : 0;
-                        if (lost > 100) {
-                            lost = 100;
-                        }
-                        heal += calcHeal(lost < 10 ? 0 : 
-                            (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (enemy.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy)
-                         * time / combo.length;
-                    }
-                    heal += calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character) * time / combo.length;
-                }
             }
-            const percent = (enemy.max_hp ? floor((damage - heal - shield) / enemy.max_hp  * 100, 2) : '-');
-            const healPercent = floor(life / character.max_hp * 100, 2);
-            if (shield) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + "</b><b class='damage'> - </b><b class='shield'>" + shield + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            if (heal) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            return "<b class='damage'>" + damage + "</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
         }
-        return '-';
+        return { 
+            hp: data.hp - damage,
+            damage: damage,
+            heal: heal,
+            shield: shield,
+            vars: {
+                f: f,
+                rr: rr
+            }
+        };
     }
     ,COMBO_Option: 'rDaWaqeAaWq'
     ,COMBO_Help: (character) => {

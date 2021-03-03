@@ -165,52 +165,65 @@ const Sissela = {
             'D: ' + skill + '\n' + 
             'T: "패시브 데미지" ( "평타 데미지", "추가 데미지" - "치명타 데미지", "추가 데미지" ) _"잃은 체력"\n';
     }
-    ,COMBO: (character, enemy) => {
+    ,COMBO_VARS: '{\"rr\":0}'
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus, currHp) => {
+        const q = character.Q_LEVEL.selectedIndex - 1;
+        const w = character.W_LEVEL.selectedIndex - 1;
+        const e = character.E_LEVEL.selectedIndex - 1;
+        const r = character.R_LEVEL.selectedIndex - 1;
+        const t = character.T_LEVEL.selectedIndex;
+        const wm = character.WEAPON_MASTERY.selectedIndex;
+        const et = enemy.T_LEVEL.selectedIndex;
+        let damage = 0;
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+            (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
+        let lost = floor((character.max_hp - (currHp + heal)) * 100.0 / character.max_hp);
+        let shield = 0, c, ba;
+        let rr = data.vars.rr;
+        heal += calcHeal(lost < 10 ? 0 : 
+            (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (rr ? 2 : 1), 0.5, enemy);
         if (character.weapon) {
             const type = character.weapon.Type;
-            const q = character.Q_LEVEL.selectedIndex - 1;
-            const w = character.W_LEVEL.selectedIndex - 1;
-            const e = character.E_LEVEL.selectedIndex - 1;
-            const r = character.R_LEVEL.selectedIndex - 1;
-            const t = character.T_LEVEL.selectedIndex;
-            const wm = character.WEAPON_MASTERY.selectedIndex;
-            const ew = enemy.W_LEVEL.selectedIndex - 1;
-            const et = enemy.T_LEVEL.selectedIndex;
-            const time = character.DIV.querySelector('.combo_time').value;
-            let damage = 0, life = 0, heal = 0, shield = 0, c;
-
-            const sissela_t = character.DIV.querySelector('.sissela_t');
-            const skill_amplification = character.skill_amplification;
-            character.skill_amplification = round(character.calc_skill_amplification + 
-                (2 + t * 3) * (sissela_t.value < 10 ? 0 : (sissela_t.value >= 90 ? 5 : sissela_t.value / 20 + 0.5)), 1);
-
-            const combo = character.COMBO_OPTION.value;
+            if (rr) {
+                rr--;
+            }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
+                character.skill_amplification = round(character.pure_skill_amplification + 
+                    (2 + t * 3) * (lost < 10 ? 0 : (lost >= 90 ? 5 : lost / 20 + 0.5)) * (rr ? 2 : 1), 1);
+                if (enemy.defense) {
+                    if (enemy.character === Magnus) {
+                        lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                        if (lost < 0) {
+                            lost = 0;
+                        }
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                    } else {
+                        enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                    }
+                }
                 if (c === 'a') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 0, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 0, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 100, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 60 + q * 30, 0.5, 1);
-                        life -= 50 + q * 10;
+                        heal -= 50 + q * 10;
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 40 + q * 20, 0.3, 1) + calcSkillDamage(character, enemy, 60 + q * 30, 0.5, 1);
-                        life -= 50 + q * 10;
+                        heal -= 50 + q * 10;
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
                         damage += calcSkillDamage(character, enemy, 30 + w * 60, 0.7, 1);
-                        life -= 60 + w * 20;
+                        heal -= 60 + w * 20;
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
@@ -218,10 +231,17 @@ const Sissela = {
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        const bonus = character.DIV.querySelector('.sissela_t').value * 2;
+                        const bonus = lost * 2;
                         damage += calcSkillDamage(character, enemy, 150 + r * 125 + bonus, 1, 1);
-                        character.skill_amplification = round(character.calc_skill_amplification + 
-                            (2 + t * 3) * (sissela_t.value < 10 ? 0 : (sissela_t.value >= 90 ? 5 : sissela_t.value / 20 + 0.5)) * 2, 1);
+                        let self = calcSkillDamage(character, character, 150 + r * 125 + bonus, 1, 1);
+                        if (currHp + heal - self < 100) {
+                            self = currHp + heal - 100;
+                            if (self < 0) {
+                                self = 0;
+                            }
+                        }
+                        heal -= self;
+                        rr = 11;
                     }
                 } else if (c === 'd') {
                     if (wm > 5) {
@@ -236,85 +256,31 @@ const Sissela = {
                         }
                     }
                 } else if (c === 't') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 0, 1) + 
-                        calcSkillDamage(character, enemy, 28 + character.LEVEL.selectedIndex * 10, 0.2, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 0, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    damage += calcSkillDamage(character, enemy, 28 + character.LEVEL.selectedIndex * 10, 0.2, 1);
                 } else if (c === 'T') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 100, 1) + 
-                        calcSkillDamage(character, enemy, 28 + character.LEVEL.selectedIndex * 10, 0.2, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 100, 1)
-                     * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    damage += calcSkillDamage(character, enemy, 28 + character.LEVEL.selectedIndex * 10, 0.2, 1);
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
                 }
-                if (enemy.character) {
-                    if (enemy.character === Aya) {
-                        const cool = 30 * (100 - enemy.cooldown_reduction) / 100;
-                        let as;
-                        if (enemy.weapon) {
-                            if (enemy.weapon.Type === 'AssaultRifle') {
-                                as = 10 / (9.5 / enemy.attack_speed + 2) * 6 + 1;
-                            } else {
-                                as = enemy.weapon.Ammo / ((enemy.weapon.Ammo - 1) / enemy.attack_speed + 2) * 2 + 1;
-                            }
-                        } else {
-                            as = 1;
-                        }
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 50 + enemy.attack_power * 0.3);
-                        }
-                    } else if (enemy.character === Cathy) {
-                        const cool = (20 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        const as = enemy.attack_speed * enemy.critical_strike_chance / 100 + 1;
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(110 + et * 55 + enemy.attack_power * 0.4);
-                        }
-                    } else if (enemy.character === Chiara && ew >= 0) {
-                        const cool = (16 - ew * 1) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(90 + ew * 35 + enemy.attack_power * 0.6);
-                        }
-                    } else if (enemy.character === Emma) {
-                        const cool = (15 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 25 + enemy.max_sp * (0.03 + et * 0.03));
-                        }
-                    } else if (enemy.character === Lenox) {
-                        const cool = (20 - et * 4) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(enemy.max_hp * 0.1);
-                        }
-                    } else if (enemy.character === Sissela) {
-                        let  lost = damage > heal ? floor(100 - (enemy.max_hp - damage + heal) / enemy.max_hp * 100) : 0;
-                        if (lost > 100) {
-                            lost = 100;
-                        }
-                        heal += calcHeal(lost < 10 ? 0 : 
-                            (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (enemy.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy)
-                         * time / combo.length;
-                    }
-                    heal += calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character) * time / combo.length;
-                }
             }
-
-            character.skill_amplification = skill_amplification;
-
-            const percent = (enemy.max_hp ? floor((damage - heal - shield) / enemy.max_hp  * 100, 2) : '-');
-            const healPercent = floor(life / character.max_hp * 100, 2);
-            if (shield) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + "</b><b class='damage'> - </b><b class='shield'>" + shield + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            if (heal) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            return "<b class='damage'>" + damage + "</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
         }
-        return '-';
+        return { 
+            hp: data.hp - damage,
+            damage: damage,
+            heal: heal,
+            shield: shield,
+            vars: {
+                rr: rr
+            }
+        };
     }
     ,COMBO_Option: 'tQrqeDdddawtQa'
     ,COMBO_Help: (character) => {

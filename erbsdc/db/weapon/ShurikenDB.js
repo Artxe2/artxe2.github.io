@@ -125,9 +125,9 @@ const Shuriken = [
          Type: "Shuriken"
         ,Name: "Mystic_Jade_Charm"
         ,Attack_Power: 60
-        ,Skill_Amplification: 12
+        ,Skill_Amplification: 10
         ,Skill_Amplification_Percent: 15
-        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +12\nSkill Amplification +15%"
+        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +10\nSkill Amplification +15%"
         ,Rarity: "Epic"
     }
     ,{
@@ -170,9 +170,9 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Wind_and_Fire_Wheels"
-        ,Attack_Power: 55
+        ,Attack_Power: 51
         ,Skill_Amplification_Percent: 23
-        ,Title: "Wind and Fire Wheels\n\nAttack Power +55\nSkill Amplification +23%"
+        ,Title: "Wind and Fire Wheels\n\nAttack Power +51\nSkill Amplification +23%"
         ,Rarity: "Epic"
     }
     ,{

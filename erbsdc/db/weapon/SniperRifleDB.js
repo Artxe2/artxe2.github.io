@@ -83,13 +83,13 @@ const SniperRifle = [
     ,{
          Type: "SniperRifle"
         ,Name: "Polaris"
-        ,Attack_Power: 117
+        ,Attack_Power: 110
         ,Attack_Speed: 35
         ,Movement_Speed: -0.03
         ,Vision_Range: 2
-        ,Title: "Polaris\n\nAttack Power +117\nAttack Speed +35%\nMovement Speed -0.03\nVision Range +2"
+        ,Title: "Polaris\n\nAttack Power +110\nAttack Speed +35%\nMovement Speed -0.03\nVision Range +2"
         ,Rarity: "Epic"
-        ,Ammo: 3
+        ,Ammo: 4
     }
     ,{
          Type: "SniperRifle"
@@ -100,6 +100,6 @@ const SniperRifle = [
         ,Skill_Amplification_Percent: 33
         ,Title: "The Deadly Ray\n\nAttack Power +100\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +33%"
         ,Rarity: "Legendary"
-        ,Ammo: 1
+        ,Ammo: 2
     }
 ];

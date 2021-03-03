@@ -1,3 +1,4 @@
+'use strict';
 const Leg = [
     {
          Type: "Leg"
@@ -158,6 +159,15 @@ const Leg = [
     }
     ,{
          Type: "Leg"
+        ,Name: "Tachyon_Brace"
+        ,Defense: 15
+        ,Movement_Speed: 0.38
+        ,Cooldown_Reduction: 10
+        ,Title: "Tachyon Brace\n\nDefense +15\nMovement Speed +0.38\nCooldown Reduction +10%"
+        ,Rarity: "Epic"
+   }
+    ,{
+         Type: "Leg"
         ,Name: "EOD_Boots"
         ,Defense: 26
         ,HP_Regen: 1
@@ -181,10 +191,10 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Boots_of_Hermes"
-        ,Defense: 40
+        ,Defense: 35
         ,Movement_Speed: 0.4
         ,Movement_speed_while_not_in_combat: 0.2
-        ,Title: "Boots of Hermes\n\nDefense +40\nMovement Speed +0.4\nMovement speed while not in combat +0.2"
+        ,Title: "Boots of Hermes\n\nDefense +35\nMovement Speed +0.4\nMovement speed while not in combat +0.2"
         ,Rarity: "Legendary"
     }
     ,{

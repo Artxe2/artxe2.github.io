@@ -47,12 +47,12 @@ const Bat = [
     ,{
          Type: "Bat"
         ,Name: "Statue_of_Soteria"
-        ,Attack_Power: 82
+        ,Attack_Power: 78
         ,HP_Regen: 0.6
         ,SP_Regen_Percent: 60
         ,Attack_Speed: 15
         ,Life_Steal: 12
-        ,Title: "Statue of Soteria\n\nAttack Power +82\nHP Regen +0.6\nSP Regen +60%\nAttack Speed +15%\nLife Steal +12%"
+        ,Title: "Statue of Soteria\n\nAttack Power +78\nHP Regen +0.6\nSP Regen +60%\nAttack Speed +15%\nLife Steal +12%"
         ,Rarity: "Epic"
     }
     ,{
@@ -67,16 +67,17 @@ const Bat = [
          Type: "Bat"
         ,Name: "Spy_Umbrella"
         ,Attack_Power: 65
+        ,SP_Regen: 0.8
         ,Skill_Amplification: 28
-        ,Title: "Spy Umbrella\n\nAttack Power +65\nSkill Amplification +28"
+        ,Title: "Spy Umbrella\n\nAttack Power +65\nSP Regen +0.8\nSkill Amplification +28"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Bat"
         ,Name: "Monkey_King_Bar"
-        ,Attack_Power: 150
+        ,Attack_Power: 145
         ,Attack_Range: 1
-        ,Title: "Monkey King Bar\n\nAttack Power +150\nAttack Range +1"
+        ,Title: "Monkey King Bar\n\nAttack Power +145\nAttack Range +1"
         ,Rarity: "Legendary"
     }
 ];

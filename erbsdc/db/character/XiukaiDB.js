@@ -54,7 +54,7 @@ const Xiukai = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 70 + q * 40, 0.5, 1);
-            const cost = 30 + q * 15;
+            const cost = 25 + q * 10;
             const cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction) + 26);
             return "<b class='damage'>" + damage + "</b><b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
 
@@ -65,10 +65,11 @@ const Xiukai = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage = calcSkillDamage(character, enemy, 60 + w * 40 + character.max_hp * (0.02 + w * 0.005), 0.6, 1);
-            const cost = 30 + w * 15;
+            const min = calcSkillDamage(character, enemy, 10 + w * 45, 0.6, 1);
+            const max = calcSkillDamage(character, enemy, 10 + w * 45 + character.max_hp * (0.015 + w * 0.01), 0.6, 1);
+            const cost = 25 + w * 10;
             const cool = 10000 / ((16 - w * 2) * (100 - character.cooldown_reduction) + 34);
-            return "<b class='damage'>" + damage + "</b><b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return min + " - <b class='damage'>" + max + "</b><b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>'
         }
         return '-';
     }
@@ -78,7 +79,7 @@ const Xiukai = {
         if (character.weapon && e >= 0) {
             const min = calcSkillDamage(character, enemy, 80 + e * 30 + character.max_hp * 0.03 - floor(0.3 * e) * 10, 0.5, 1);
             const max = calcSkillDamage(character, enemy, 80 + e * 30 + character.max_hp * 0.06 - floor(0.3 * e) * 10, 0.5, 1);
-            const cost = 30 + e * 15;
+            const cost = 25 + e * 10;
             const cool = 10000 / ((18 - e * 2) * (100 - character.cooldown_reduction));
             return min + " - <b class='damage'>" + max + "</b><b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
@@ -140,56 +141,64 @@ const Xiukai = {
             'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
             'HPS: "초당 회복량"\n' + 
             'Q: "스킬 데미지" __cost: "체력소모"\n' + 
-            'W: "스킬 데미지" __cost: "체력소모"\n' + 
+            'W: "최소 데미지" - "최대 데미지" __cost: "체력소모"\n' + 
             'E: "최소 데미지" - "최대 데미지" __cost: "체력소모"\n' + 
             'R: "합산 데미지" ( "틱당 데미지" x "타수" ) __cost: "체력소모" _use "스킬 사용"\n' + 
             'D: ' + skill + '\n' + 
             'T: "스택"\n';
     }
-    ,COMBO: (character, enemy) => {
+    ,COMBO_VARS: '{\"cc\":false}'
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
+        const q = character.Q_LEVEL.selectedIndex - 1;
+        const w = character.W_LEVEL.selectedIndex - 1;
+        const e = character.E_LEVEL.selectedIndex - 1;
+        const r = character.R_LEVEL.selectedIndex - 1;
+        const wm = character.WEAPON_MASTERY.selectedIndex;
+        const et = enemy.T_LEVEL.selectedIndex;
+        let damage = 0;
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+            (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
+        let shield = 0, c, ba;
+        let cc = data.vars.cc;
         if (character.weapon) {
             const type = character.weapon.Type;
-            const q = character.Q_LEVEL.selectedIndex - 1;
-            const w = character.W_LEVEL.selectedIndex - 1;
-            const e = character.E_LEVEL.selectedIndex - 1;
-            const r = character.R_LEVEL.selectedIndex - 1;
-            const wm = character.WEAPON_MASTERY.selectedIndex;
-            const et = enemy.T_LEVEL.selectedIndex;
-            const time = character.DIV.querySelector('.combo_time').value;
-            let damage = 0, life = 0, heal = 0, shield = 0, c;
             const stack = parseInt(character.DIV.querySelector('.xiukai_t').value);
-            let cc = false, rr = false;
-
-            let enemy_defense;
-            if (enemy.calc_defense) {
-                enemy_defense = enemy.defense;
-                enemy.defense = floor(enemy.calc_defense);
-            }
-
-            const combo = character.COMBO_OPTION.value;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
+                if (enemy.defense) {
+                    if (enemy.character === Magnus) {
+                        let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                        if (lost < 0) {
+                            lost = 0;
+                        }
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                    } else {
+                        enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                    }
+                }
                 if (c === 'a') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 0, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 0, 1)
-                        * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
-                    damage += baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                    life += calcHeal(
-                        baseAttackDamage(character, enemy, 0, 1, 100, 1)
-                        * (character.life_steal / 100), 1, enemy);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 70 + q * 40, 0.5, 1);
                         cc = true;
-                        life -= 30 + q * 15;
+                        heal -= 25 + q * 10;
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 60 + w * 40 + character.max_hp * (0.02 + w * 0.005), 0.6, 1);
+                        if (cc) {
+                            damage += calcSkillDamage(character, enemy, 10 + w * 45 + character.max_hp * (0.015 + w * 0.01), 0.6, 1);
+                        } else {
+                            damage += calcSkillDamage(character, enemy, 10 + w * 45, 0.6, 1);
+                        }
                         cc = true;
-                        life -= 30 + w * 15;
+                        heal -= 25 + w * 10;
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
@@ -199,25 +208,33 @@ const Xiukai = {
                             damage += calcSkillDamage(character, enemy, 80 + e * 30 + character.max_hp * 0.03 - floor(0.3 * e) * 10, 0.5, 1);
                         }
                         cc = true;
-                        life -= 30 + e * 15;
+                        heal -= 25 + e * 10;
                     }
-                } else if (c === 'r') {
+                } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        if (cc & !rr) {
-                            rr = true;
-                            enemy.defense = floor(enemy.calc_defense * (1 - (0.1 + r * 0.05)));
+                        if (cc) {
+                            const dm = -0.1 + -r * 0.05;
+                            for (let x = index; x <= index + 6 && x < defense_minus.length; x++) {
+                                defense_minus[x] = dm;
+                            }
                         }
-                        damage += calcSkillDamage(character, enemy, 20 + r * 45 + stack * 0.9, 0.5, 1) * 3;
-                        life -= 100 + r * 20;
-                    }
-                } else if (c === 'R') {
-                    if (r >= 0) {
-                        if (cc & !rr) {
-                            rr = true;
-                            enemy.defense = floor(enemy.calc_defense * (1 - (0.1 + r * 0.05)));
+                        const hit = c === 'r' ? 3 : 6;
+                        for (let j = 0; j < hit; j++) {
+                            damage += calcSkillDamage(character, enemy, 20 + r * 45 + stack * 0.9, 0.5, 1);
+                            if (enemy.defense) {
+                                if (enemy.character === Magnus) {
+                                    let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                    if (lost < 0) {
+                                        lost = 0;
+                                    }
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                                } else {
+                                    enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                                }
+                            }
                         }
-                        damage += calcSkillDamage(character, enemy, 20 + r * 45 + stack * 0.9, 0.5, 1) * 6;
-                        life -= 100 + r * 20;
+                        defense_minus[index] = 0;
+                        heal -= 100 + r * 20;
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
@@ -226,11 +243,19 @@ const Xiukai = {
                             if (currHp > enemy.max_hp) {
                                 currHp = enemy.max_hp;
                             }
-                            damage += floor(baseAttackDamage(character, enemy, 0, 1, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                            ba = floor(baseAttackDamage(character, enemy, 0, 1, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                            damage += ba;
+                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         } else if (type === 'Spear') {
-                            if (c === 'd') {
-                                damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1);
-                            } else {
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1);
+                            if (c === 'D') {
+                                if (enemy.character === Magnus) {
+                                    let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                    if (lost < 0) {
+                                        lost = 0;
+                                    }
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                                }
                                 damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1) * 2;
                             }
                             cc = true;
@@ -241,71 +266,17 @@ const Xiukai = {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
                 }
-                if (enemy.character) {
-                    if (enemy.character === Aya) {
-                        const cool = 30 * (100 - enemy.cooldown_reduction) / 100;
-                        let as;
-                        if (enemy.weapon) {
-                            if (enemy.weapon.Type === 'AssaultRifle') {
-                                as = 10 / (9.5 / enemy.attack_speed + 2) * 6 + 1;
-                            } else {
-                                as = enemy.weapon.Ammo / ((enemy.weapon.Ammo - 1) / enemy.attack_speed + 2) * 2 + 1;
-                            }
-                        } else {
-                            as = 1;
-                        }
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 50 + enemy.attack_power * 0.3);
-                        }
-                    } else if (enemy.character === Cathy) {
-                        const cool = (20 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        const as = enemy.attack_speed * enemy.critical_strike_chance / 100 + 1;
-                        if (i === 0 || floor(as * (time * i / combo.length) / cool) > floor(as * (time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(110 + et * 55 + enemy.attack_power * 0.4);
-                        }
-                    } else if (enemy.character === Chiara && ew >= 0) {
-                        const cool = (16 - ew * 1) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(90 + ew * 35 + enemy.attack_power * 0.6);
-                        }
-                    } else if (enemy.character === Emma) {
-                        const cool = (15 - et * 2) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(100 + et * 25 + enemy.max_sp * (0.03 + et * 0.03));
-                        }
-                    } else if (enemy.character === Lenox) {
-                        const cool = (20 - et * 4) * (100 - enemy.cooldown_reduction) / 100;
-                        if (i === 0 || floor((time * i / combo.length) / cool) > floor((time * (i - 1) / combo.length) / cool)) {
-                            shield += floor(enemy.max_hp * 0.1);
-                        }
-                    } else if (enemy.character === Sissela) {
-                        let  lost = damage > heal ? floor(100 - (enemy.max_hp - damage + heal) / enemy.max_hp * 100) : 0;
-                        if (lost > 100) {
-                            lost = 100;
-                        }
-                        heal += calcHeal(lost < 10 ? 0 : 
-                            (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (enemy.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy)
-                        * time / combo.length;
-                    }
-                    heal += calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character) * time / combo.length;
-                }
             }
-
-            if (enemy_defense) {
-                enemy.defense = enemy_defense;
-            }
-
-            const percent = (enemy.max_hp ? floor((damage - heal - shield) / enemy.max_hp  * 100, 2) : '-');
-            const healPercent = floor(life / character.max_hp * 100, 2);
-            if (shield) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + "</b><b class='damage'> - </b><b class='shield'>" + shield + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            if (heal) {
-                return "<b class='damage'>" + damage + " - </b><b class='heal'>" + round(heal, 1) + '</b><b> _ : ' + (percent < 0 ? 0 : percent) + "%</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
-            }
-            return "<b class='damage'>" + damage + "</b><b> __heal: </b><b class='heal'>" + round(life, 1) + '</b><b> _ : ' + healPercent + '%</b>';
         }
-        return '-';
+        return { 
+            hp: data.hp - damage,
+            damage: damage,
+            heal: heal,
+            shield: shield,
+            vars: {
+                cc: cc
+            }
+        };
     }
     ,COMBO_Option: 'dqewRq'
     ,COMBO_Help: (character) => {

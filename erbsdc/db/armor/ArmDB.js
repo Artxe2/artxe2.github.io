@@ -1,3 +1,4 @@
+'use strict';
 const Arm = [
     {
          Type: "Arm"
@@ -105,9 +106,9 @@ const Arm = [
          Type: "Arm"
         ,Name: "Sword_Stopper"
         ,Defense: 30
-        ,Critical_Damage_Reduction: 10
-        ,Normal_Attack_Damage_Reduction: 11
-        ,Title: "Sword Stopper\n\nDefense +30\nCritical Damage Reduction + 10%\nNormal Attack Damage Reduction +11\nHealing Reduction (Normal Attacks) -40%"
+        ,Critical_Damage_Reduction: 8
+        ,Normal_Attack_Damage_Reduction: 8
+        ,Title: "Sword Stopper\n\nDefense +30\nCritical Damage Reduction + 8%\nNormal Attack Damage Reduction +8\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
     ,{

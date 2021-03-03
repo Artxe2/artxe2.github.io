@@ -1,3 +1,4 @@
+'use strict';
 const Chest = [
     {
          Type: "Chest"
@@ -178,10 +179,10 @@ const Chest = [
          Type: "Chest"
         ,Name: "Optical_Camouflage_Suit"
         ,Attack_Power: 10
-        ,Defense: 20
+        ,Defense: 15
         ,Critical_Strike_Chance: 22
         ,Skill_Damage_Reduction_Percent: 10
-        ,Title: "Optical Camouflage Suit\n\nAttack Power +10\nDefense +20\nCritical Strike Chance +22%\nSkill Damage Reduction +10%"
+        ,Title: "Optical Camouflage Suit\n\nAttack Power +10\nDefense +15\nCritical Strike Chance +22%\nSkill Damage Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{
@@ -197,11 +198,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Mithril_Armor"
-        ,Defense: 63
+        ,Defense: 65
         ,Attack_Speed: 12
         ,Movement_Speed: 0.2
-        ,Skill_Damage_Reduction: 13
-        ,Title: "Mithril Armor\n\nDefense +63\nAttack Speed +12%\n Movement Speed +0.2\nSkill Damage Reduction +13"
+        ,Skill_Damage_Reduction: 10
+        ,Title: "Mithril Armor\n\nDefense +65\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +10"
         ,Rarity: "Epic"
     }
     ,{
@@ -237,9 +238,9 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Commander`s_Armor"
-        ,Defense: 20
+        ,Defense: 24
         ,Skill_Amplification_Percent: 18
-        ,Title: "Commander`s Armor\n\nDefense +20\nSkill Damage Increase +18%"
+        ,Title: "Commander`s Armor\n\nDefense +24\nSkill Damage Increase +18%"
         ,Rarity: "Epic"
     }
     ,{
@@ -266,11 +267,11 @@ const Chest = [
          Type: "Chest"
         ,Name: "EOD_Suit"
         ,Defense: 20
-        ,Max_HP: 300
+        ,Max_HP: 270
         ,HP_Regen: 1
         ,Cooldown_Reduction: 10
-        ,Normal_Attack_Damage_Reduction: 12
-        ,Title: "EPD Siot\n\nDefense +20\nMax HP +300\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +12"
+        ,Normal_Attack_Damage_Reduction: 8
+        ,Title: "EPD Siot\n\nDefense +20\nMax HP +270\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +8"
         ,Rarity: "Epic"
     }
     ,{

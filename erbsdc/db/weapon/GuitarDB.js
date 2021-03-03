@@ -113,9 +113,9 @@ const Guitar = [
         ,Name: "Satisfaction"
         ,Attack_Power: 30
         ,Attack_Speed: 30
-        ,Life_Steal: 10
+        ,Life_Steal: 15
         ,Extra_Normal_Attack_Damage: 11
-        ,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +10%\nExtra Normal Attack Damage +11"
+        ,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +15%\nExtra Normal Attack Damage +11"
         ,Rarity: "Epic"
     }
     ,{
@@ -139,11 +139,11 @@ const Guitar = [
     ,{
          Type: "Guitar"
         ,Name: "Teen_Spirit"
-        ,Attack_Power: 10
+        ,Attack_Power: 18
         ,Attack_Speed: 35
         ,Attack_Range: 1
         ,Extra_Normal_Attack_Damage: 20
-        ,Title: "Teen Spirit\n\nAttack Power +10\nAttack Speed +35%\nAttack Range +1\nExtra Normal Attack Damage +20"
+        ,Title: "Teen Spirit\n\nAttack Power +18\nAttack Speed +35%\nAttack Range +1\nExtra Normal Attack Damage +20"
         ,Rarity: "Epic"
     }
 ];

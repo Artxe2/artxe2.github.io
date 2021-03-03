@@ -1,3 +1,4 @@
+'use strict';
 const characters = [];
 document.addEventListener('DOMContentLoaded', (e) => {
     characters.push(
@@ -26,8 +27,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
             setCookie('preset' + i, JSON.stringify(basePreset[i]), 7);
         }
     }
-    characters[0].setPreset(JSON.parse(decodeURIComponent(getCookie('preset0'))));
-    characters[1].setPreset(JSON.parse(decodeURIComponent(getCookie('preset0'))));
+    const last = getCookie('lastPreset');
+    characters[0].PRESET.selectedIndex = last;
+    characters[1].PRESET.selectedIndex = last;
+    characters[0].setPreset(JSON.parse(decodeURIComponent(getCookie('preset' + last))));
+    characters[1].setPreset(JSON.parse(decodeURIComponent(getCookie('preset' + last))));
 });
 
 function baseAttackDamage(character, enemy, base, coe, cri, onhit) {
@@ -40,7 +44,7 @@ function baseAttackDamage(character, enemy, base, coe, cri, onhit) {
 
 function calcAttackSpeed(character, bonusAs) {
     return character.attack_speed + (character.base_attack_speed * bonusAs + 0.0001 | 0) / 100;
-} 
+}
 
 function calcEquip(character, name, n) {
     let coe = 1.007 + character.CRAFT_MASTERY.selectedIndex * 0.007;
@@ -93,7 +97,12 @@ function fixLimitNum(target, max) {
     updateDisplay();
 }
 
-function comboTime(value) {
+function comboTime(value, change) {
+    if (change && 
+        (characters[0].character && characters[0].COMBO_TIME.value > value || 
+            characters[1].character && characters[1].COMBO_TIME.value > value)) {
+        return;
+    }
     if (value === '' || value < 0) {
         value = 0;
     } else if (value > 60) {
@@ -226,6 +235,134 @@ function round6(n, d) {
     return n + 0.0001 | 0;
 }
 
+function simulateCombo() {
+    const c0 = characters[0];
+    const c1 = characters[1];
+    let d0;
+    let d1;
+    const length = c0.COMBO_TIME.value > 0 ? c0.COMBO_TIME.value * 2 : 1;
+    const comboStr0 = new Array(length);
+    const defense_bonus0 = new Array(length).fill(0);
+    const defense_percent0 = new Array(length).fill(0);
+    const defense_minus0 = new Array(length).fill(0);
+    const comboStr1 = new Array(length);
+    const defense_bonus1 = new Array(length).fill(0);
+    const defense_percent1 = new Array(length).fill(0);
+    const defense_minus1 = new Array(length).fill(0);
+    const combo0 = c0.COMBO_OPTION.value;
+    const combo1 = c1.COMBO_OPTION.value;
+    const data0 = { 
+        hp: c1.max_hp ? c1.max_hp : 0,
+        damage: 0,
+        heal: 0,
+        shield: 0,
+        vars: c0.character ? JSON.parse(c0.character.COMBO_VARS) : {}
+    };
+    const data1 = { 
+        hp: c0.max_hp ? c0.max_hp : 0,
+        damage: 0,
+        heal: 0,
+        shield: 0,
+        vars: c1.character ? JSON.parse(c1.character.COMBO_VARS) : {}
+    };
+    for (let i = 0, i0 = 0, i1 = 0; i < length; i++) {
+        comboStr0[i] = '';
+        if (c0.character && combo0) {
+            while (floor(i0 * length / combo0.length) < i + 1) {
+                comboStr0[i] += combo0.charAt(i0++);
+            }
+        }
+        comboStr1[i] = '';
+        if (c1.character && combo1) {
+            while (floor(i1 * length / combo1.length) < i + 1) {
+                comboStr1[i] += combo1.charAt(i1++);
+            }
+        }
+    }
+    
+
+    const attack_power0 = floor(c0.attack_power);
+    c0.attack_power = floor(c0.pure_attack_power);
+    // const critical_strike_chance0 = c0.critical_strike_chance;
+    // c0.critical_strike_chance = c0.pure_critical_strike_chance;
+    const critical_damage0 = c0.critical_damage;
+    c0.critical_damage = c0.pure_critical_damage;
+    const skill_amplification0 = round(c0.skill_amplification, 1);
+    c0.skill_amplification = round(c0.pure_skill_amplification, 1);
+    const skill_amplification_percent0 = round(c0.skill_amplification_percent);
+    c0.skill_amplification_percent = round(c0.pure_skill_amplification_percent);
+    const defense0 = floor(c0.defense);
+    c0.defense = floor(c0.pure_defense);
+
+    const attack_power1 = floor(c1.attack_power);
+    c1.attack_power = floor(c1.pure_attack_power);
+    // const critical_strike_chance1 = c1.critical_strike_chance;
+    // c1.critical_strike_chance = c1.pure_critical_strike_chance;
+    const critical_damage1 = c1.critical_damage;
+    c1.critical_damage = c1.pure_critical_damage;
+    const skill_amplification1 = round(c1.skill_amplification, 1);
+    c1.skill_amplification = round(c1.pure_skill_amplification, 1);
+    const skill_amplification_percent1 = round(c1.skill_amplification_percent);
+    c1.skill_amplification_percent = round(c1.pure_skill_amplification_percent);
+    const defense1 = floor(c1.defense);
+    c1.defense = floor(c1.pure_defense);
+
+
+    for (let i = 0; i < comboStr0.length; i++) {
+        if (c0.character) {
+            d0 = c0.character.COMBO(c0, c1, data0, comboStr0[i], i, defense_bonus0, defense_percent0, defense_bonus1, defense_percent1, defense_minus1, data1.hp);
+            data0.damage += d0.damage;
+            data0.heal += d0.heal;
+            data0.shield += d0.shield;
+            data0.vars = d0.vars;
+        }
+        if (c1.character) {
+            d1 = c1.character.COMBO(c1, c0, data1, comboStr1[i], i, defense_bonus1, defense_percent1, defense_bonus0, defense_percent0, defense_minus0, data0.hp);
+            data1.damage += d1.damage;
+            data1.heal += d1.heal;
+            data1.shield += d1.shield;
+            data1.vars = d1.vars;
+            if (c0.character) {
+                data0.hp = d0.hp + d1.heal + d1.shield;
+                data1.hp = d1.hp + d0.heal + d0.shield;
+            }
+        }
+        if (c0.character === Sissela && !c1.character) {
+            data1.hp += d0.heal;
+        }
+        if (c1.character === Sissela && !c0.character) {
+            data0.hp += d1.heal;
+        }
+    }
+    if (c0.character && c1.character) {
+        if (c1.max_hp && data0.hp > c1.max_hp) {
+            data0.hp = c1.max_hp;
+        }
+        if (c0.max_hp && data1.hp > c0.max_hp) {
+            data1.hp = c0.max_hp;
+        }
+    }
+    const percent0 = (c0.weapon && c1.max_hp ? floor((c1.max_hp - data0.hp) / c1.max_hp * 100, 2) : 0);
+    const percent1 = (c1.weapon && c0.max_hp ? floor((c0.max_hp - data1.hp) / c0.max_hp * 100, 2) : 0);
+    c0.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data0.damage + (data1.heal ? " - </b><b class='heal'>" + round(data1.heal, 1) : '') + (data1.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data1.shield : '') + (c1.character ? "</b><b> _ : </b><b class='damage'>" + percent0 + '</b><b>%</b>' : '');
+    c1.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data1.damage + (data0.heal ? " - </b><b class='heal'>" + round(data0.heal, 1) : '') + (data0.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data0.shield : '') + (c0.character ? "</b><b> _ : </b><b class='damage'>" + percent1 + '</b><b>%</b>' : '');
+
+
+    c0.attack_power = attack_power0;
+    // c0.critical_strike_chance = critical_strike_chance0;
+    c0.critical_damage = critical_damage0;
+    c0.skill_amplification = skill_amplification0;
+    c0.skill_amplification_percent = skill_amplification_percent0;
+    c0.defense = defense0;
+
+    c1.attack_power = attack_power1;
+    // c1.critical_strike_chance = critical_strike_chance1;
+    c1.critical_damage = critical_damage1;
+    c1.skill_amplification = skill_amplification1;
+    c1.skill_amplification_percent = skill_amplification_percent1;
+    c1.defense = defense1;
+}
+
 function updateDisplay() {
     for (let i = 0; i < characters.length; i++) {
         characters[i].calcStat();
@@ -233,6 +370,7 @@ function updateDisplay() {
     for (let i = 0; i < characters.length; i++) {
         characters[i].updateDisplay();
     }
+    simulateCombo();
 }
 
 function setCookie(name, value, days) {

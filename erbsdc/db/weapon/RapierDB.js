@@ -21,8 +21,8 @@ const Rapier = [
         ,Attack_Power: 21
         ,Critical_Strike_Chance: 10
         ,Critical_Damage: 25
-        ,Cooldown_Reduction: 10
-        ,Title: "Apricot Sword\n\nAttack Power +21\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 8
+        ,Title: "Apricot Sword\n\nAttack Power +21\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +8%"
         ,Rarity: "Rare"
     }
     ,{
@@ -44,9 +44,9 @@ const Rapier = [
         ,Vision_Range: 3
         ,Critical_Strike_Chance: 10
         ,Critical_Damage: 30
-        ,Cooldown_Reduction: 10
+        ,Cooldown_Reduction: 8
         ,Life_Steal: 8
-        ,Title: "Durendal Mk2\n\nAttack Power +55\nVision Range +3\nCritical Strike Chance +10%\nCritical Damage +30%\nCooldown Reduction +10%\nLife Steal +8%"
+        ,Title: "Durendal Mk2\n\nAttack Power +55\nVision Range +3\nCritical Strike Chance +10%\nCritical Damage +30%\nCooldown Reduction +8%\nLife Steal +8%"
         ,Rarity: "Epic"
     }
     ,{
@@ -56,8 +56,8 @@ const Rapier = [
         ,Attack_Speed: 35
         ,Critical_Strike_Chance: 10
         ,Critical_Damage: 25
-        ,Cooldown_Reduction: 10
-        ,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +35%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 8
+        ,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +35%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +8%"
         ,Rarity: "Epic"
     }
     ,{
@@ -73,11 +73,11 @@ const Rapier = [
     ,{
          Type: "Rapier"
         ,Name: "Joyeuse"
-        ,Attack_Power: 75
+        ,Attack_Power: 71
         ,Attack_Speed: 12
         ,Movement_Speed: 0.2
         ,Critical_Damage: 30
-        ,Title: "Joyeuse\n\nAttack Power +75\nAttack Speed +12%\nMovement Speed +0.2\nCritical Damage +30%"
+        ,Title: "Joyeuse\n\nAttack Power +71\nAttack Speed +12%\nMovement Speed +0.2\nCritical Damage +30%"
         ,Rarity: "Epic"
     }
     ,{
