@@ -85,7 +85,7 @@ const Adela = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const min = calcSkillDamage(character, enemy, 150 + r * 50, 0.6, 1);
-            const max = calcSkillDamage(character, enemy, 150 + r * 50 + (enemy.max_hp ? enemy.max_hp * 0.24 : 0), 0.6, 1);
+            const max = calcSkillDamage(character, enemy, 150 + r * 50 + (enemy.max_hp ? enemy.max_hp * 0.18 : 0), 0.6, 1);
             return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
         }
         return '-';
@@ -139,7 +139,7 @@ const Adela = {
             'D: ' + skill + '\n' + 
             'T: "스킬 데미지"\n';
     }
-    ,COMBO_VARS: '{\"qq\":0,\"qw\":false,\"qe\":false,\"ww\":0,\"ee\":0}'
+    ,COMBO_VARS: '{\"qq\":0,\"qw\":false,\"qe\":false,\"ww\":0,\"ee\":0,\"rr\":false}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -151,7 +151,7 @@ const Adela = {
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let qq = data.vars.qq, qw = data.vars.qw, qe = data.vars.qe, ww = data.vars.ww, ee = data.vars.ee;
+        let qq = data.vars.qq, qw = data.vars.qw, qe = data.vars.qe, ww = data.vars.ww, ee = data.vars.ee, rr = data.vars.rr;
         if (character.weapon) {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
@@ -181,6 +181,8 @@ const Adela = {
                             qq++;
                         }
                         if (qq === 4) {
+                            rr = true;
+                            qq = 0;
                             damage += calcSkillDamage(character, enemy, 50 + q * 40, 0.5, 1);
                         } else {
                             damage += calcSkillDamage(character, enemy, 30 + q * 40, 0.4, 1);
@@ -225,7 +227,9 @@ const Adela = {
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
                         let ea = 0;
-                        if (qq <= 4) {
+                        if (rr) {
+                            ea += 4;
+                        } else if (qq <= 4) {
                             ea += qq;
                         } else {
                             ea += 4;
@@ -236,7 +240,7 @@ const Adela = {
                         if (ee) {
                             ea++;
                         }
-                        damage += calcSkillDamage(character, enemy, 80 + r * 50 + (enemy.max_hp ? enemy.max_hp * 0.03 * ea : 0), 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 150 + r * 50 + (enemy.max_hp ? enemy.max_hp * 0.03 * ea : 0), 0.6, 1);
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
@@ -262,7 +266,8 @@ const Adela = {
                 qw: qw,
                 qe: qe,
                 ww: ww,
-                ee: ee
+                ee: ee,
+                rr: rr
             }
         };
     }
