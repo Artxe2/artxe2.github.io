@@ -266,12 +266,12 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "EOD_Suit"
-        ,Defense: 20
+        ,Defense: 25
         ,Max_HP: 270
         ,HP_Regen: 1
         ,Cooldown_Reduction: 10
         ,Normal_Attack_Damage_Reduction: 8
-        ,Title: "EPD Siot\n\nDefense +20\nMax HP +270\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +8"
+        ,Title: "EPD Siot\n\nDefense +25\nMax HP +270\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +8"
         ,Rarity: "Epic"
     }
     ,{
