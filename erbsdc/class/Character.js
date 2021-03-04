@@ -571,7 +571,6 @@ class Character {
     }
 
     setPreset(preset) {
-        console.log('setPreset: ' + preset);
         this.LEVEL.selectedIndex = preset[0];
         this.WEAPON_MASTERY.selectedIndex = preset[1];
 

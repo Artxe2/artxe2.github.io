@@ -85,9 +85,9 @@ const Cathy = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const min = calcSkillDamage(character, enemy, 120 + r * 80, 0.6, 1);
-            const minHeal = calcHeal((200 + character.attack_power * 0.4) * 
+            const minHeal = calcHeal((120 + r * 80 + character.attack_power * 0.4) * 
                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
-            const maxHeal = calcHeal((300 + character.attack_power * 0.6) * 
+            const maxHeal = calcHeal((180 + r * 120 + character.attack_power * 0.6) * 
                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
             let max;
             if (enemy.max_hp) {
@@ -165,7 +165,7 @@ const Cathy = {
             'T: "합산 데미지" ( "틱당 데미지" x "타수" ) _s: "쉴드량" __s/s: "초당 쉴드량" _full "최대스택"\n';
     }
     ,COMBO_VARS: '{\"bleeding\":[]}'
-    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus, myHp) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
         const e = character.W_LEVEL.selectedIndex - 1;
@@ -181,7 +181,7 @@ const Cathy = {
         
         const cool = (20 - t * 2) * (100 - character.cooldown_reduction) / 100;
         const as = character.attack_speed * character.critical_strike_chance / 100 + 1 + 
-        (12 - q * 0.5) * (100 - character.cooldown_reduction) / 100;
+            (1 / (12 - q * 0.5) * (100 - character.cooldown_reduction) / 100);
         if (index === 0 || floor(as * index / 2 / cool) > floor(as * (index - 1) / 2 / cool)) {
             shield += floor(100 + t * 50 + character.attack_power * 0.3);
         }
@@ -206,7 +206,6 @@ const Cathy = {
                 }
                 if (c === 'a') {
                     ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
-                    console.log('ba: ', ba, ', ', baseAttackDamage(character, enemy, 0, 1, 0, 1));
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
 
@@ -402,6 +401,14 @@ const Cathy = {
                         }
                         const coe = enemy.max_hp ? (lost * 100.0 / enemy.max_hp > 70 ? 70 : lost * 100.0 / enemy.max_hp) / 70 + 1 : 2;
                         damage += calcSkillDamage(character, enemy, (120 + r * 80) * coe, 0.6 * coe, 1);
+                        lost = floor((character.max_hp - (myHp + heal)) * 100.0 / character.max_hp);
+                        if (lost < 80) {
+                            heal += calcHeal((120 + r * 80 + character.attack_power * 0.4) * 
+                                (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
+                        } else {
+                            heal = calcHeal((180 + r * 120 + character.attack_power * 0.6) * 
+                                (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
+                        }
 
                         for (let x = index; x < index + 8; x++) {
                             bleeding[x] = 4;

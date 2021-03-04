@@ -166,7 +166,7 @@ const Sissela = {
             'T: "패시브 데미지" ( "평타 데미지", "추가 데미지" - "치명타 데미지", "추가 데미지" ) _"잃은 체력"\n';
     }
     ,COMBO_VARS: '{\"rr\":0}'
-    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus, currHp) => {
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus, myHp) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
         const e = character.E_LEVEL.selectedIndex - 1;
@@ -177,7 +177,7 @@ const Sissela = {
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
-        let lost = floor((character.max_hp - (currHp + heal)) * 100.0 / character.max_hp);
+        let lost = floor((character.max_hp - (myHp + heal)) * 100.0 / character.max_hp);
         let shield = 0, c, ba;
         let rr = data.vars.rr;
         heal += calcHeal(lost < 10 ? 0 : 
@@ -234,8 +234,8 @@ const Sissela = {
                         const bonus = lost * 2;
                         damage += calcSkillDamage(character, enemy, 150 + r * 125 + bonus, 1, 1);
                         let self = calcSkillDamage(character, character, 150 + r * 125 + bonus, 1, 1);
-                        if (currHp + heal - self < 100) {
-                            self = currHp + heal - 100;
+                        if (myHp + heal - self < 100) {
+                            self = myHp + heal - 100;
                             if (self < 0) {
                                 self = 0;
                             }
