@@ -243,6 +243,10 @@ const Isol = {
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (qq) {
+                            const dm = -0.05 - t * 0.1;
+                            for (let x = index + 1; x <= index + 6 && x < defense_minus.length; x++) {
+                                defense_minus[x] = dm;
+                            }
                             damage += calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * (qq - 1), 0.5 + (qq - 1) * 0.3, 1);
                             qq = 0;
                         } else {

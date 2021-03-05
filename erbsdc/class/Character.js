@@ -603,7 +603,7 @@ class Character {
         this.weapon_attack_range = WeaponInfo[this.weapon.Type][3];
         this.weapon_attack_speed = WeaponInfo[this.weapon.Type][4];
         
-        this.WEAPON.innerHTML = "<img class = '" + this.weapon.Rarity + "' title = '" + this.weapon.Title + "' src = './img/weapon/" + this.weapon.Name + ".png' width = '80px' height = '44px'>";
+        this.WEAPON.innerHTML = "<img class = '" + this.weapon.Rarity + "' title = '" + this.weapon.Title + "' src = './img/weapon/" + this.weapon.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         this.D_OPTION.innerHTML = this.character.D_Option(this, this.enemy);
         updateDisplay();
@@ -622,7 +622,7 @@ class Character {
     }
     setChest(i) {
         this.chest = Chest[i];
-        this.CHEST.innerHTML = "<img class = '" + this.chest.Rarity + "' title = '" + this.chest.Title + "' src = './img/armors/" + this.chest.Name + ".png' width = '80px' height = '44px'>";
+        this.CHEST.innerHTML = "<img class = '" + this.chest.Rarity + "' title = '" + this.chest.Title + "' src = './img/armors/" + this.chest.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -634,7 +634,7 @@ class Character {
     }
     setHead(i) {
         this.head = Head[i];
-        this.HEAD.innerHTML = "<img class = '" + this.head.Rarity + "' title = '" + this.head.Title + "' src = './img/armors/" + this.head.Name + ".png' width = '80px' height = '44px'>";
+        this.HEAD.innerHTML = "<img class = '" + this.head.Rarity + "' title = '" + this.head.Title + "' src = './img/armors/" + this.head.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -646,7 +646,7 @@ class Character {
     }
     setArm(i) {
         this.arm = Arm[i];
-        this.ARM.innerHTML = "<img class = '" + this.arm.Rarity + "' title = '" + this.arm.Title + "' src = './img/armors/" + this.arm.Name + ".png' width = '80px' height = '44px'>";
+        this.ARM.innerHTML = "<img class = '" + this.arm.Rarity + "' title = '" + this.arm.Title + "' src = './img/armors/" + this.arm.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -658,7 +658,7 @@ class Character {
     }
     setLeg(i) {
         this.leg = Leg[i];
-        this.LEG.innerHTML = "<img class = '" + this.leg.Rarity + "' title = '" + this.leg.Title + "' src = './img/armors/" + this.leg.Name + ".png' width = '80px' height = '44px'>";
+        this.LEG.innerHTML = "<img class = '" + this.leg.Rarity + "' title = '" + this.leg.Title + "' src = './img/armors/" + this.leg.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -670,7 +670,7 @@ class Character {
     }
     setAccessory(i) {
         this.accessory = Accessory[i];
-        this.ACCESSORY.innerHTML = "<img class = '" + this.accessory.Rarity + "' title = '" + this.accessory.Title + "' src = './img/armors/" + this.accessory.Name + ".png' width = '80px' height = '44px'>";
+        this.ACCESSORY.innerHTML = "<img class = '" + this.accessory.Rarity + "' title = '" + this.accessory.Title + "' src = './img/armors/" + this.accessory.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -682,7 +682,7 @@ class Character {
     }
     setFood(i) {
         this.food = Food[i];
-        this.FOOD.innerHTML = "<img class = '" + this.food.Rarity + "' title = '" + this.food.Title + "' src = './img/foods/" + this.food.Name + ".png' width = '80px' height = '44px'>";
+        this.FOOD.innerHTML = "<img class = '" + this.food.Rarity + "' title = '" + this.food.Title + "' src = './img/foods/" + this.food.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -694,7 +694,7 @@ class Character {
     }
     setTrap(i) {
         this.trap = Trap[i];
-        this.TRAP.innerHTML = "<img class = '" + this.trap.Rarity + "' title = '" + this.trap.Title + "' src = './img/traps/" + this.trap.Name + ".png' width = '80px' height = '44px'>";
+        this.TRAP.innerHTML = "<img class = '" + this.trap.Rarity + "' title = '" + this.trap.Title + "' src = './img/traps/" + this.trap.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }

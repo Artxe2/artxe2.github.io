@@ -436,7 +436,7 @@ const Li_Dailin = {
             }
         };
     }
-    ,COMBO_Option: 'wwqaDetwrt'
+    ,COMBO_Option: 'wwetdwartqt'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
