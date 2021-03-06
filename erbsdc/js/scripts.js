@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
             setCookie('preset' + i, JSON.stringify(basePreset[i]), 7);
         }
     }
-    const last = getCookie('lastPreset');
+    let  last = getCookie('lastPreset');
+    if (!last) {
+        last = basePreset[i];
+    }
     characters[0].PRESET.selectedIndex = last;
     characters[1].PRESET.selectedIndex = last;
     characters[0].setPreset(JSON.parse(decodeURIComponent(getCookie('preset' + last))));
