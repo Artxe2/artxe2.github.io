@@ -848,7 +848,7 @@ class Character {
             this.skill_damage_reduction = 
                 calcEquip(this, 'Skill_Damage_Reduction');
             this.skill_damage_reduction_percent = 
-                round((1 + wm) * 1 + 
+                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1 + 
                     calcEquip(this, 'Skill_Damage_Reduction_Percent'));
             this.SKILL_DAMAGE_REDUCTION.innerText = 
                 this.skill_damage_reduction + '| ' + this.skill_damage_reduction_percent + '%';
