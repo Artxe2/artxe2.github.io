@@ -4,62 +4,168 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <script>
-        document.addEventListener('DOMContentLoaded', e => {
-            const item = {
-                가위: 7,
-                쇠사슬: 6,
-                바늘: 6,
-                전신수영복: 7,
-                팔찌: 6,
-                운동화: 7,
-                쌍안경: 6,
-                고무: 7,
-                라이터: 8,
-                마패: 7,
-                접착제: 7,
-                마늘: 6,
-                망치: 10,
-                생라면: 6,
-                꿀: 5,
-                십자가: 7
-            };
-            const length = 28;
-            let ea = 0;
-            const box = new Array(length);
+        const item = {
+            가위: 7,
+            쇠사슬: 6,
+            바늘: 6,
+            전신수영복: 7,
+            팔찌: 6,
+            운동화: 7,
+            쌍안경: 6,
+            고무: 7,
+            라이터: 8,
+            마패: 7,
+            접착제: 7,
+            마늘: 6,
+            망치: 10,
+            생라면: 6,
+            꿀: 5,
+            십자가: 7
+        };
+        const length = 28;
+        const box = new Array(length);
+        const size = new Array(length);
+        let ea = 0;
+        let reduplication = 0;
+
+        init = () => {
             for (let i = 0; i < length; i++) {
+                box[i] = [];
                 if (i % 4 === 0) {
-                    box[i] = new Array(3);
+                    size[i] = 3;
                     ea += 3;
-                } else if (i % 6 === 0) {
-                    box[i] = new Array(5);
+                } else if (i % 6 === 0 || i === length - 1) {
+                    size[i] = 5;
                     ea += 5;
-                } else {
-                    box[i] = new Array(4);
+                } else  {
+                    size[i] = 4;
                     ea += 4;
                 }
             }
-
-            const keys = Object.keys(item);
-            for (let i = 0, j; i < keys; i++) {
-                const range = length / keys[i].length;
+        }
+        
+        randomBox = (render) => {
+            const keys = shuffle(Object.keys(item));
+            let len = keys.length
+            let count = 0;
+            for (let i = 0; i < length; i++) {
+                box[i] = [];
+            }
+            for (let i = 0, j; i < len; i++) {
+                key = keys[i];
+                const range = length / item[key];
                 let start;
-                let end = -1;
-                for (j = 1; j <= length; j++) {
-                    start = end + 1;
-                    end = Math.ceil(range * k);
-                    console.log(item[i], start, end);
+                let end = 0;
+                let random;
+                for (j = 1; j <= item[key]; j++) {
+                    start = end;
+                    end = Math.ceil(range * j);
+                    random = Math.floor(Math.random() * (end - start) + start);
+                    box[random].push(key);
                 }
             }
 
+            let it;
+            let offset;
+            let target;
+            let temp = [];
+            let curr;
+            for (let i = 0, j; i < length - 1; i++) {
+                curr = box[i];
+                while (curr.length < size[i]) {
+                    offset = 1;
+                    while ((target = box[i + offset]).length === 0) {
+                        offset++;
+                    }
+                    curr.push(target.pop());
+                }
+                while (curr.length > size[i]) {
+                    box[i + 1].push(curr.pop());
+                }
+            }
+            checkReduplication();
+            if (render) {
+                box.map(c => count += c.length);    
+                document.querySelector('#root').innerHTML = 
+                    box.map(c => c.length) + '</br>' + size + 
+                    '<h1>' + count + ' / ' + ea + '</h1>' +
+                    '<pre>' + JSON.stringify(box, null, 2) + '</pre>'; 
+            }
+        }
 
+        checkReduplication = () => {
+            let i;
+            let length;
+            let check = false;
+            box.some((c, y) => c.some((t, x) => {
+                length = c.length;
+                for (i = x + 1; i < length; i++) {
+                    if (t === c[i]) {
+                        removeReduplication(y, x);
+                        check = true;
+                        return true;
+                    }
+                }
+            }));
+            if (check) {
+                checkReduplication();
+            }
+        }
 
-            document.querySelector('#root').innerHTML = 
-                box + 
-                '<h1>' + count + '</h1>';
+        removeReduplication = (y, x) => {
+            const curr = box[y];
+            const it = curr.splice(x, 1)[0] + ' swap';
+            let i;
+            let length;
+            box.some((c, z) => {
+                if (!c.includes(it)) {
+                    length = c.length;
+                    for (i = 0; i < length; i++) {
+                        if (!curr.includes(c[i]) && y != z) {
+                            curr.push(c.splice(i, 1)[0] + ' swap');
+                            c.push(it);
+                            return true;
+                        }
+                    }
+                }
+            });
+            reduplication++;
+        }
+
+        function shuffle(array) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+
+        document.addEventListener('DOMContentLoaded', e => {
+            init();
+            const start = new Date();
+            for (let i = 0; i < 10000; i++) {
+                randomBox(false);
+            }
+            const end = new Date();
+            randomBox(true);
+            sw.innerHTML = end.getTime() - start.getTime() + 'ms per 10000 repetitions</br>' + 
+                'reduplication: ' + reduplication + '</br></br>';
         });
     </script>
 </head>
 <body>
+    <div id='sw'></div>
     <div id='root'></div>
 </body>
 </html>
