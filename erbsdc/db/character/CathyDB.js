@@ -2,7 +2,7 @@
 const Cathy = {
      Attack_Power: 26
     ,Attack_Power_Growth: 2.8
-    ,Health: 550
+    ,Health: 530
     ,Health_Growth: 87
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.06
