@@ -317,6 +317,10 @@ const Yuki = {
                         } else if (type === 'DualSwords') {
                             for (let j = 0; j < 6; j++) {
                                 damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.3 : 0.5, 1);
+                                if (tt) {
+                                    tt--;
+                                    damage += bonus;
+                                }
                                 if (enemy.character === Magnus) {
                                     let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                     if (lost < 0) {
