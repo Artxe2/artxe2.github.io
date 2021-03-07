@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
     let  last = getCookie('lastPreset');
     if (!last) {
-        last = basePreset[i];
+        last = basePreset[0];
     }
     characters[0].PRESET.selectedIndex = last;
     characters[1].PRESET.selectedIndex = last;
