@@ -24,8 +24,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Fan"
-        ,Skill_Amplification: 11
-        ,Title: "Fan\n\nSkill Amplification +11"
+        ,Skill_Amplification: 8
+        ,Title: "Fan\n\nSkill Amplification +8"
         ,Rarity: "Common"
     }
     ,{
@@ -129,8 +129,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Gilded_Quill_Fan"
-        ,Skill_Amplification: 12
-        ,Title: "Gilded Quill Fan\n\nSkill Amplification +12\nHealing Reductions (Skills) -40%"
+        ,Skill_Amplification: 10
+        ,Title: "Gilded Quill Fan\n\nSkill Amplification +10\nHealing Reductions (Skills) -40%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -168,10 +168,10 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Uchiwa"
-        ,SP_Regen_Percent: 100
-        ,Life_Steal: 15
+        ,SP_Regen_Percent: 80
+        ,Life_Steal: 17
         ,Skill_Amplification: 21
-        ,Title: "Uchiwa\n\nSP Regen +100%\nLife Steal +15%\nSkill Amplification +21"
+        ,Title: "Uchiwa\n\nSP Regen +80%\nLife Steal +17%\nSkill Amplification +21"
         ,Rarity: "Rare"
     }
     ,{
@@ -256,10 +256,10 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Lunar_Embrace"
         ,Defense: 14
-        ,SP_Regen_Percent: 200
+        ,SP_Regen_Percent: 160
         ,Vision_Range: 1.5
         ,Skill_Damage_Reduction: 18
-        ,Title: "Lunar Embrace\n\nDefense +14\nSP Regen +200%\nVision Range +1.5\nSkill Damage Reduction +18"
+        ,Title: "Lunar Embrace\n\nDefense +14\nSP Regen +160%\nVision Range +1.5\nSkill Damage Reduction +18"
         ,Rarity: "Epic"
     }
     ,{

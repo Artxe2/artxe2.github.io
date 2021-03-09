@@ -105,9 +105,9 @@ const Bow = [
          Type: "Bow"
         ,Name: "Failnaught"
         ,Attack_Power: 100
-        ,Attack_Speed: 20
+        ,Attack_Speed: 15
         ,Life_Steal: 15
-        ,Title: "Failnaught\n\nAttack Power +100\nAttack Speed +20%\nLife Steal +15%"
+        ,Title: "Failnaught\n\nAttack Power +100\nAttack Speed +15%\nLife Steal +15%"
         ,Rarity: "Legendary"
     }
 ];

@@ -44,14 +44,14 @@ const Emma = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const e = character.E_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
+            const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
             const heal = calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / (5.5 * (100 - character.cooldown_reduction) + 13);
             return "<b class='damage'>" + damage + ' - ' + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * 2 * cool) / 100 + '</b>';
@@ -129,21 +129,21 @@ const Emma = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Shuriken' ? '암기' : 
+        const type =
+            weapon === 'Shuriken' ? '암기' :
             '';
-        const skill = 
-            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' : 
+        const skill =
+            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' :
             '';
-        return '엠마 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지" - "합산 데미지" ( "1발당 데미지" x "타수" ) __h: "회복량"\n' + 
-            'W: "스킬 데미지" _h: "회복량"\n' + 
-            'E: _h: "회복량"\n' + 
-            'R: "비둘기 데미지" / "모자 데미지" - "2회 사용시 데미지" ( "스킬 데미지" x "타수" ) __h: "회복량"\n' + 
-            'D: ' + skill + '\n' + 
+        return '엠마 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지" - "합산 데미지" ( "1발당 데미지" x "타수" ) __h: "회복량"\n' +
+            'W: "스킬 데미지" _h: "회복량"\n' +
+            'E: _h: "회복량"\n' +
+            'R: "비둘기 데미지" / "모자 데미지" - "2회 사용시 데미지" ( "스킬 데미지" x "타수" ) __h: "회복량"\n' +
+            'D: ' + skill + '\n' +
             'T: "패시브 데미지" ( "평타 데미지", "추가 데미지" - "치명타 데미지", "추가 데미지" ) __s: "쉴드량"\n';
     }
     ,COMBO_VARS: '{}'
@@ -156,7 +156,7 @@ const Emma = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
 
@@ -190,12 +190,12 @@ const Emma = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
                         heal += calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -203,7 +203,7 @@ const Emma = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
                         }
-                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
                         heal += calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'w' || c === 'W') {
@@ -254,7 +254,7 @@ const Emma = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -271,20 +271,20 @@ const Emma = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' : 
+        const d =
+            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q: Q스킬 데미지\n' + 
-            'Q: Q스킬 2히트 데미지\n' + 
-            'w & W: W스킬 데미지\n' + 
-            'e & E: 데미지 없음\n' + 
-            'r: R스킬 비둘기 데미지\n' + 
-            'R: R스킬 모자 데미지\n' + 
-            't: 패시브 데미지\n' + 
-            'T: 패시브 치명타 데미지\n' + 
-            d + 
+            'q: Q스킬 데미지\n' +
+            'Q: Q스킬 2히트 데미지\n' +
+            'w & W: W스킬 데미지\n' +
+            'e & E: 데미지 없음\n' +
+            'r: R스킬 비둘기 데미지\n' +
+            'R: R스킬 모자 데미지\n' +
+            't: 패시브 데미지\n' +
+            'T: 패시브 치명타 데미지\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 }

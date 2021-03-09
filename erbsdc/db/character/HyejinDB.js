@@ -20,10 +20,10 @@ const Hyejin = {
     ,correction: {
         Shuriken: [
             [8, 5, 0],
-            [-6, -7, -7]
+            [-6, -3, -7]
         ],
         Bow: [
-            [0, -13, -18],
+            [0, -16, -18],
             [0, 0, 0]
         ]
     }
@@ -48,7 +48,7 @@ const Hyejin = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -76,8 +76,8 @@ const Hyejin = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 45 + e * 25, 0.3, 1);
-            const damage2 = calcSkillDamage(character, enemy, 50 + e * 30, 0.6, 1);
-            const cool = 10000 / ((19 - e * 2) * (100 - character.cooldown_reduction) + 50);
+            const damage2 = calcSkillDamage(character, enemy, 50 + e * 30, 0.7, 1);
+            const cool = 10000 / ((18 - e * 2) * (100 - character.cooldown_reduction) + 50);
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
@@ -125,23 +125,23 @@ const Hyejin = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Shuriken' ? '암기' : 
-            weapon === 'Bow' ? '보우' : 
+        const type =
+            weapon === 'Shuriken' ? '암기' :
+            weapon === 'Bow' ? '보우' :
             '';
-        const skill = 
-            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' : 
-            weapon === 'Bow' ? '"최소 데미지" - "최대 데미지"' : 
+        const skill =
+            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' :
+            weapon === 'Bow' ? '"최소 데미지" - "최대 데미지"' :
             '';
-        return '혜진 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지"\n' + 
-            'W: "최소 데미지" ~ "최대 데미지"\n' + 
-            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
-            'R: "합산 데미지" ( "폭발 데미지", "구체 데미지" x "타수" )\n' + 
-            'D: ' + skill + '\n' + 
+        return '혜진 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지"\n' +
+            'W: "최소 데미지" ~ "최대 데미지"\n' +
+            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
+            'R: "합산 데미지" ( "폭발 데미지", "구체 데미지" x "타수" )\n' +
+            'D: ' + skill + '\n' +
             'T: "데미지 없음"\n';
     }
     ,COMBO_VARS: '{\"ee\":false}'
@@ -153,7 +153,7 @@ const Hyejin = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let ee = data.vars.ee;
@@ -196,7 +196,7 @@ const Hyejin = {
                     if (e >= 0) {
                         if (ee) {
                             ee = false;
-                            damage += calcSkillDamage(character, enemy, 50 + e * 30, 0.6, 1);
+                            damage += calcSkillDamage(character, enemy, 50 + e * 30, 0.7, 1);
                         } else {
                             ee = true;
                             damage += calcSkillDamage(character, enemy, 45 + e * 25, 0.3, 1);
@@ -233,7 +233,7 @@ const Hyejin = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -252,20 +252,20 @@ const Hyejin = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' : 
-            weapon === 'Bow' ? 'd: 무스 외곽 데미지\n' + 'D: 무스 중앙 데미지\n' : 
+        const d =
+            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' :
+            weapon === 'Bow' ? 'd: 무스 외곽 데미지\n' + 'D: 무스 중앙 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' + 
-            'w: W스킬 즉발 데미지\n' +  
-            'w: W스킬 최대 데미지\n' +  
-            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지\n' + 
-            'r: R스킬 구체 데미지\n' + 
-            'R: R스킬 폭발 데미지\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 데미지\n' +
+            'w: W스킬 즉발 데미지\n' +
+            'w: W스킬 최대 데미지\n' +
+            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지\n' +
+            'r: R스킬 구체 데미지\n' +
+            'R: R스킬 폭발 데미지\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

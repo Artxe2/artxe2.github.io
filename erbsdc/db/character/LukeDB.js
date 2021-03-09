@@ -9,7 +9,7 @@ const Luke = {
     ,Stamina_Growth: 15
     ,Stamina_Regen: 1.9
     ,Stamina_Regen_Growth: 0.06
-    ,Defense: 28
+    ,Defense: 30
     ,Defense_Growth: 2.3
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.15
@@ -55,7 +55,7 @@ const Luke = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -89,8 +89,8 @@ const Luke = {
         }
         return '-';
     }
-    ,W_Option:  "<b> __up</b><input type='checkbox' class='luke_w' onchange='lukeUp(1)'/> _ " + 
-        "<input type='number' class='stack luke_w_s' value='0' onchange='fixLimitNum(this, 5)'><b>Stack _use</b>" + 
+    ,W_Option:  "<b> __up</b><input type='checkbox' class='luke_w' onchange='lukeUp(1)'/> _ " +
+        "<input type='number' class='stack luke_w_s' value='0' onchange='fixLimitNum(this, 5)'><b>Stack _use</b>" +
         "<input type='checkbox' class='luke_w_u' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
@@ -160,33 +160,33 @@ const Luke = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Bat' ? '방망이' : 
+        const type =
+            weapon === 'Bat' ? '방망이' :
             '';
-        const skill = 
-            weapon === 'Bat' ? '"스킬 데미지"' : 
+        const skill =
+            weapon === 'Bat' ? '"스킬 데미지"' :
             '';
         if (character.DIV.querySelector('.luke_w_u').checked) {
-            return '루크 ( ' + type + ' )\n' + 
-                'A: "평균 데미지" ( "평타 데미지", "강박증 데미지" - "치명타 데미지", "강박증 데미지" )\n' + 
-                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-                'HPS: "초당 회복량"\n' + 
-                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __h: "흡혈량" __up "스킬 강화"\n' + 
-                'W: "스킬 데미지" __up "스킬 강화" _ "스택" _use "스킬사용"\n' + 
-                'E: "스킬 데미지" __up "스킬 강화"\n' + 
-                'R: "최소 데미지" ~ "최대 막타 데미지" __up "스킬 강화"\n' + 
-                'D: ' + skill + '\n' + 
+            return '루크 ( ' + type + ' )\n' +
+                'A: "평균 데미지" ( "평타 데미지", "강박증 데미지" - "치명타 데미지", "강박증 데미지" )\n' +
+                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+                'HPS: "초당 회복량"\n' +
+                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __h: "흡혈량" __up "스킬 강화"\n' +
+                'W: "스킬 데미지" __up "스킬 강화" _ "스택" _use "스킬사용"\n' +
+                'E: "스킬 데미지" __up "스킬 강화"\n' +
+                'R: "최소 데미지" ~ "최대 막타 데미지" __up "스킬 강화"\n' +
+                'D: ' + skill + '\n' +
                 'T: _h: "회복량" _ "스택"\n';
         }
-        return '루크 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __h: "흡혈량" __up "스킬 강화"\n' + 
-            'W: "스킬 데미지" __up "스킬 강화" _ "스택" _use "스킬사용"\n' + 
-            'E: "스킬 데미지" __up "스킬 강화"\n' + 
-            'R: "최소 데미지" ~ "최대 막타 데미지" __up "스킬 강화"\n' + 
-            'D: ' + skill + '\n' + 
+        return '루크 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __h: "흡혈량" __up "스킬 강화"\n' +
+            'W: "스킬 데미지" __up "스킬 강화" _ "스택" _use "스킬사용"\n' +
+            'E: "스킬 데미지" __up "스킬 강화"\n' +
+            'R: "최소 데미지" ~ "최대 막타 데미지" __up "스킬 강화"\n' +
+            'D: ' + skill + '\n' +
             'T: _h: "회복량" _ "스택"\n';
     }
     ,COMBO_VARS: '{\"qq\":false,\"ww\":0}'
@@ -198,7 +198,7 @@ const Luke = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let qq = data.vars.qq, ww = data.vars.ww;
@@ -283,7 +283,7 @@ const Luke = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -303,17 +303,17 @@ const Luke = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Bat' ? 'd & D: D스킬 데미지\n' : 
+        const d =
+            weapon === 'Bat' ? 'd & D: D스킬 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 1타 데미지, 재사용시 2타 데미지 ( 쉴드 브레이크 적용 x )\n' + 
-            'w & W: W스킬 On\n' +  
-            'e & E: E스킬 데미지\n' + 
-            'r & R: R스킬 데미지( 잃은 체력 비례 Max 75% ? )\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 1타 데미지, 재사용시 2타 데미지 ( 쉴드 브레이크 적용 x )\n' +
+            'w & W: W스킬 On\n' +
+            'e & E: E스킬 데미지\n' +
+            'r & R: R스킬 데미지( 잃은 체력 비례 Max 75% ? )\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

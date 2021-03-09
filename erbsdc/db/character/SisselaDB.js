@@ -49,9 +49,9 @@ const Sissela = {
     ,HPS: (character, enemy) => {
         const t = character.T_LEVEL.selectedIndex;
         const lost = character.DIV.querySelector('.sissela_t').value;
-        const passive = calcHeal(lost < 10 ? 0 : 
+        const passive = calcHeal(lost < 10 ? 0 :
             (lost >= 90 ? 26 + t * 10 : 2 + t * 2 + (3 + t) * ((lost / 10 | 0) - 1)) * (character.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy);
-        const total = round((passive + (calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        const total = round((passive + (calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy))) * 100) / 100;
         return "<b class='heal'>" + total + '</b>';
     }
@@ -72,7 +72,7 @@ const Sissela = {
         if (character.weapon && w >= 0) {
             const damage = calcSkillDamage(character, enemy, 30 + w * 60, 0.7, 1);
             const cost = 60 + w * 20;
-            const cool = 10000 / ((21 - w * 2) * (100 - character.cooldown_reduction) + 150);
+            const cool = 10000 / ((19.5 - w * 1.5) * (100 - character.cooldown_reduction) + 150);
             return "<b class='damage'>" + damage + "</b><b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -95,7 +95,7 @@ const Sissela = {
 
             const sissela_t = character.DIV.querySelector('.sissela_t');
             const skill_amplification = character.skill_amplification;
-            character.skill_amplification = round(character.calc_skill_amplification + 
+            character.skill_amplification = round(character.calc_skill_amplification +
                 (2 + character.T_LEVEL.selectedIndex * 3) * (sissela_t.value < 10 ? 0 : (sissela_t.value >= 90 ? 5 : sissela_t.value / 20 + 0.5)), 1);
 
             const bonus = character.DIV.querySelector('.sissela_t').value * 2;
@@ -146,23 +146,23 @@ const Sissela = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Throws' ? '투척' : 
-            weapon === 'Shuriken' ? '암기' : 
+        const type =
+            weapon === 'Throws' ? '투척' :
+            weapon === 'Shuriken' ? '암기' :
             '';
-        const skill = 
-            weapon === 'Throws' ? '"데미지 없음"' : 
-            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' : 
+        const skill =
+            weapon === 'Throws' ? '"데미지 없음"' :
+            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' :
             '';
-        return '시셀라 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __cost: "체력소모"\n' + 
-            'W: "스킬 데미지" __cost: "체력소모"\n' + 
-            'E: "스킬 데미지" __s: "쉴드량"\n' + 
-            'R: "최소 데미지" - "최대 데미지" _use "스킬 사용"\n' + 
-            'D: ' + skill + '\n' + 
+        return '시셀라 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __cost: "체력소모"\n' +
+            'W: "스킬 데미지" __cost: "체력소모"\n' +
+            'E: "스킬 데미지" __s: "쉴드량"\n' +
+            'R: "최소 데미지" - "최대 데미지" _use "스킬 사용"\n' +
+            'D: ' + skill + '\n' +
             'T: "패시브 데미지" ( "평타 데미지", "추가 데미지" - "치명타 데미지", "추가 데미지" ) _"잃은 체력"\n';
     }
     ,COMBO_VARS: '{\"rr\":0}'
@@ -175,12 +175,12 @@ const Sissela = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let lost = floor((character.max_hp - (myHp + heal)) * 100.0 / character.max_hp);
         let shield = 0, c, ba;
         let rr = data.vars.rr;
-        heal += calcHeal(lost < 10 ? 0 : 
+        heal += calcHeal(lost < 10 ? 0 :
             (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (rr ? 2 : 1), 0.5, enemy);
         if (character.weapon) {
             const type = character.weapon.Type;
@@ -189,7 +189,7 @@ const Sissela = {
             }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
-                character.skill_amplification = round(character.pure_skill_amplification + 
+                character.skill_amplification = round(character.pure_skill_amplification +
                     (2 + t * 3) * (lost < 10 ? 0 : (lost >= 90 ? 5 : lost / 20 + 0.5)) * (rr ? 2 : 1), 1);
                 if (enemy.defense) {
                     if (enemy.character === Magnus) {
@@ -272,7 +272,7 @@ const Sissela = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -291,19 +291,19 @@ const Sissela = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Throws' ? 'd & D: 데미지 없음\n' : 
-            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' : 
+        const d =
+            weapon === 'Throws' ? 'd & D: 데미지 없음\n' :
+            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q: Q스킬 2타 데미지\n' + 
-            'Q: Q스킬 최대 데미지\n' + 
-            'w & W: W스킬 데미지\n' +  
-            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지\n' + 
-            'r & R: R스킬 데미지\n' + 
-            't & T: 패시브 데미지\n' + 
-            d + 
+            'q: Q스킬 2타 데미지\n' +
+            'Q: Q스킬 최대 데미지\n' +
+            'w & W: W스킬 데미지\n' +
+            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지\n' +
+            'r & R: R스킬 데미지\n' +
+            't & T: 패시브 데미지\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

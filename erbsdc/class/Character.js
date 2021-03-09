@@ -3,7 +3,7 @@ class Character {
     calcTrapDamage() {
         return this.trap ? "<b class='damage'>" + floor(this.trap.Trap_Damage * (1.04 + this.TRAP_MASTERY.selectedIndex * 0.04)) + '</b>' : '-';
     }
-    
+
     updateDisplay() {
         if (this.character) {
             this.BASE_ATTACK_DAMAGE.innerHTML = this.character.Base_Attack(this, this.enemy);
@@ -39,7 +39,7 @@ class Character {
             this.ENEMY.innerHTML = '';
         }
     }
-    
+
     constructor(index, DIV, MODE) {
         this.index = index;
         this. DIV = DIV;
@@ -68,7 +68,7 @@ class Character {
         this.MOVE_MASTERY = DIV.querySelector('.move_mastery');
         this.HEALTH_MASTERY = DIV.querySelector('.health_mastery');
         this.DEFENSE_MASTERY = DIV.querySelector('.defense_mastery');
-        this.MEDITATION_MASTERY = DIV.querySelector('.meditation_mastery'); 
+        this.MEDITATION_MASTERY = DIV.querySelector('.meditation_mastery');
         this.TRAP_MASTERY = DIV.querySelector('.trap_mastery');
 
         this.Q_LEVEL = DIV.querySelector('.q_level');
@@ -90,7 +90,7 @@ class Character {
         this.COOLDOWN_REDUCTION = DIV.querySelector('.cooldown_reduction');
         this.SP_REGEN = DIV.querySelector('.sp_regen');
         this.SKILL_DAMAGE_REDUCTION = DIV.querySelector('.skill_damage_reduction');
-        
+
         this.DEFENSE = DIV.querySelector('.defense');
         this.MAX_HP = DIV.querySelector('.max_hp');
         this.MAX_SP = DIV.querySelector('.max_sp');
@@ -138,13 +138,13 @@ class Character {
             if (!this.character) {
                 alert('select character plz');
             } else {
-                this.ITEM_LIST.querySelector('.item_view').innerHTML = '<b>' + 
-                    (this.CHARACTER.value + '\n- - -\n' + 
-                    (this.weapon ? this.weapon.Title + '\n- - -\n' : '') + 
-                    (this.chest ? this.chest.Title + '\n- - -\n' : '') + 
-                    (this.head ? this.head.Title + '\n- - -\n' : '') + 
-                    (this.arm ? this.arm.Title + '\n- - -\n' : '') + 
-                    (this.leg ? this.leg.Title + '\n- - -\n' : '') + 
+                this.ITEM_LIST.querySelector('.item_view').innerHTML = '<b>' +
+                    (this.CHARACTER.value + '\n- - -\n' +
+                    (this.weapon ? this.weapon.Title + '\n- - -\n' : '') +
+                    (this.chest ? this.chest.Title + '\n- - -\n' : '') +
+                    (this.head ? this.head.Title + '\n- - -\n' : '') +
+                    (this.arm ? this.arm.Title + '\n- - -\n' : '') +
+                    (this.leg ? this.leg.Title + '\n- - -\n' : '') +
                     (this.accessory ? this.accessory.Title : '')).replaceAll(/\n/g, '<br/>') + '</b>';
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -281,7 +281,7 @@ class Character {
         this.FOOD.addEventListener('click', (e) => {
         	if (!this.character) {
                 alert('select character plz');
-            } else {	
+            } else {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Food.length; i++) {
@@ -299,7 +299,7 @@ class Character {
         this.TRAP.addEventListener('click', (e) => {
         	if (!this.character) {
                 alert('select character plz');
-            } else {	
+            } else {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Trap.length; i++) {
@@ -382,10 +382,10 @@ class Character {
             while (this.T_LEVEL.selectedIndex > floor(level / 4)) {
                 this.T_LEVEL.selectedIndex--;
             }
-            let skills = this.Q_LEVEL.selectedIndex + 
-                this.W_LEVEL.selectedIndex + 
-                this.E_LEVEL.selectedIndex + 
-                this.R_LEVEL.selectedIndex + 
+            let skills = this.Q_LEVEL.selectedIndex +
+                this.W_LEVEL.selectedIndex +
+                this.E_LEVEL.selectedIndex +
+                this.R_LEVEL.selectedIndex +
                 this.T_LEVEL.selectedIndex - 1;
             while (skills-- > level) {
                 if (this.W_LEVEL.selectedIndex > 1) {
@@ -443,10 +443,10 @@ class Character {
         });
         this.Q_LEVEL.addEventListener('change', (e) => {
             const level = this.LEVEL.selectedIndex
-            let skills = this.Q_LEVEL.selectedIndex + 
-                this.W_LEVEL.selectedIndex + 
-                this.E_LEVEL.selectedIndex + 
-                this.R_LEVEL.selectedIndex + 
+            let skills = this.Q_LEVEL.selectedIndex +
+                this.W_LEVEL.selectedIndex +
+                this.E_LEVEL.selectedIndex +
+                this.R_LEVEL.selectedIndex +
                 this.T_LEVEL.selectedIndex - 1;
             while (skills-- > level) {
                 e.target.selectedIndex--;
@@ -459,10 +459,10 @@ class Character {
         });
         this.W_LEVEL.addEventListener('change', (e) => {
             const level = this.LEVEL.selectedIndex
-            let skills = this.Q_LEVEL.selectedIndex + 
-                this.W_LEVEL.selectedIndex + 
-                this.E_LEVEL.selectedIndex + 
-                this.R_LEVEL.selectedIndex + 
+            let skills = this.Q_LEVEL.selectedIndex +
+                this.W_LEVEL.selectedIndex +
+                this.E_LEVEL.selectedIndex +
+                this.R_LEVEL.selectedIndex +
                 this.T_LEVEL.selectedIndex - 1;
             while (skills-- > level) {
                 e.target.selectedIndex--;
@@ -475,10 +475,10 @@ class Character {
         });
         this.E_LEVEL.addEventListener('change', (e) => {
             const level = this.LEVEL.selectedIndex
-            let skills = this.Q_LEVEL.selectedIndex + 
-                this.W_LEVEL.selectedIndex + 
-                this.E_LEVEL.selectedIndex + 
-                this.R_LEVEL.selectedIndex + 
+            let skills = this.Q_LEVEL.selectedIndex +
+                this.W_LEVEL.selectedIndex +
+                this.E_LEVEL.selectedIndex +
+                this.R_LEVEL.selectedIndex +
                 this.T_LEVEL.selectedIndex - 1;
             while (skills-- > level) {
                 e.target.selectedIndex--;
@@ -491,10 +491,10 @@ class Character {
         });
         this.R_LEVEL.addEventListener('change', (e) => {
             const level = this.LEVEL.selectedIndex
-            let skills = this.Q_LEVEL.selectedIndex + 
-                this.W_LEVEL.selectedIndex + 
-                this.E_LEVEL.selectedIndex + 
-                this.R_LEVEL.selectedIndex + 
+            let skills = this.Q_LEVEL.selectedIndex +
+                this.W_LEVEL.selectedIndex +
+                this.E_LEVEL.selectedIndex +
+                this.R_LEVEL.selectedIndex +
                 this.T_LEVEL.selectedIndex - 1;
             while (skills-- > level) {
                 e.target.selectedIndex--;
@@ -507,10 +507,10 @@ class Character {
         });
         this.T_LEVEL.addEventListener('change', (e) => {
             const level = this.LEVEL.selectedIndex
-            let skills = this.Q_LEVEL.selectedIndex + 
-                this.W_LEVEL.selectedIndex + 
-                this.E_LEVEL.selectedIndex + 
-                this.R_LEVEL.selectedIndex + 
+            let skills = this.Q_LEVEL.selectedIndex +
+                this.W_LEVEL.selectedIndex +
+                this.E_LEVEL.selectedIndex +
+                this.R_LEVEL.selectedIndex +
                 this.T_LEVEL.selectedIndex - 1;
             while (skills-- > level) {
                 e.target.selectedIndex--;
@@ -532,7 +532,7 @@ class Character {
             this.ITEM_LIST.querySelector('.item_view').innerHTML = '';
             this.ITEM_LIST.style.display = 'none';
         });
-        
+
         this.PRESET.addEventListener('change', (e) => {
             const preset = decodeURIComponent(getCookie('preset' + e.target.selectedIndex));
             setCookie('lastPreset', e.target.selectedIndex, 7);
@@ -555,12 +555,12 @@ class Character {
                 this.CRAFT_MASTERY.selectedIndex,
                 this.SEARCH_MASTERY.selectedIndex,
                 this.MOVE_MASTERY.selectedIndex,
-                
+
                 this.HEALTH_MASTERY.selectedIndex,
                 this.DEFENSE_MASTERY.selectedIndex,
                 this.MEDITATION_MASTERY.selectedIndex,
                 this.TRAP_MASTERY.selectedIndex,
-                
+
                 this.Q_LEVEL.selectedIndex,
                 this.W_LEVEL.selectedIndex,
                 this.E_LEVEL.selectedIndex,
@@ -578,12 +578,12 @@ class Character {
         this.CRAFT_MASTERY.selectedIndex = preset[3];
         this.SEARCH_MASTERY.selectedIndex = preset[4];
         this.MOVE_MASTERY.selectedIndex = preset[5];
-        
+
         this.HEALTH_MASTERY.selectedIndex = preset[6];
         this.DEFENSE_MASTERY.selectedIndex = preset[7];
         this.MEDITATION_MASTERY.selectedIndex = preset[8];
         this.TRAP_MASTERY.selectedIndex = preset[9];
-        
+
         this.Q_LEVEL.selectedIndex = preset[10];
         this.W_LEVEL.selectedIndex = preset[11];
         this.E_LEVEL.selectedIndex = preset[12];
@@ -602,7 +602,7 @@ class Character {
         this.weapon_mastery_skill_amplification_percent = WeaponInfo[this.weapon.Type][2];
         this.weapon_attack_range = WeaponInfo[this.weapon.Type][3];
         this.weapon_attack_speed = WeaponInfo[this.weapon.Type][4];
-        
+
         this.WEAPON.innerHTML = "<img class = '" + this.weapon.Rarity + "' title = '" + this.weapon.Title + "' src = './img/weapon/" + this.weapon.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         this.D_OPTION.innerHTML = this.character.D_Option(this, this.enemy);
@@ -719,10 +719,10 @@ class Character {
             const et = this.enemy.T_LEVEL.selectedIndex;
             const ewm = this.enemy.WEAPON_MASTERY.selectedIndex;
 
-            this.heal_reduction = 
+            this.heal_reduction =
                 this.weapon && (
-                    this.weapon.Name === 'Dainsleif' || 
-                    this.weapon.Name === 'Harpe' || 
+                    this.weapon.Name === 'Dainsleif' ||
+                    this.weapon.Name === 'Harpe' ||
                     this.weapon.Name === 'Divine_Dual_Swords' ||
                     this.weapon.Name === 'Fangtian_Huaji' ||
                     this.weapon.Name === 'Goblin_Bat' || this.weapon.Name === 'Mallet' ||
@@ -743,17 +743,17 @@ class Character {
             const lida_w = this.DIV.querySelector('.lida_w');
             const silvia_t = this.DIV.querySelector('.silvia_t');
             const luke_w_u = this.DIV.querySelector('.luke_w_u');
-            const attack_speed_bonus = 
-                (jackie_r && jackie_r.checked && r >= 0 ? 20 + r * 5 : 0) + 
-                (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) + 
-                (lida_w && lida_w.checked && w >= 0 ? 20 + t * 10 : 0) + 
-                (silvia_t ? silvia_t.value * (1 + t * 1) : 0) + 
+            const attack_speed_bonus =
+                (jackie_r && jackie_r.checked && r >= 0 ? 20 + r * 5 : 0) +
+                (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) +
+                (lida_w && lida_w.checked && w >= 0 ? 20 + t * 10 : 0) +
+                (silvia_t ? silvia_t.value * (1 + t * 1) : 0) +
                 (luke_w_u && luke_w_u.checked && w >= 0 ? this.DIV.querySelector('.luke_w_s').value * 10 : 0);
-            const attack_speed_percent = 
-                attack_speed_bonus + calcEquip(this, 'Attack_Speed') + 
+            const attack_speed_percent =
+                attack_speed_bonus + calcEquip(this, 'Attack_Speed') +
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_attack_speed);
-            this.attack_speed = this.character === Adela ? this.character.Atk_Speed : 
-                round((this.character.Atk_Speed + this.weapon_attack_speed) * 
+            this.attack_speed = this.character === Adela ? this.character.Atk_Speed :
+                round((this.character.Atk_Speed + this.weapon_attack_speed) *
                     (100 + attack_speed_percent)) / 100;
             this.ATTACK_SPEED.innerText = this.attack_speed;
 
@@ -764,26 +764,26 @@ class Character {
             const axe_d_s = this.DIV.querySelector('.axe_d_s');
             const axe_d_u = this.DIV.querySelector('.axe_d_u');
             var hart_w_u = this.DIV.querySelector('.hart_w_u');
-            const attack_power_percent = 1 + 
-                (jackie_t_w ? (jackie_t_w.checked ? jackie_tw[ t ] : 0) + 
-                (jackie_t_s.checked ? jackie_ts[ t ] : 0) : 0) + 
-                (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.axe_d_hp').value * 0.001 : 0.015) : 0) + 
+            const attack_power_percent = 1 +
+                (jackie_t_w ? (jackie_t_w.checked ? jackie_tw[ t ] : 0) +
+                (jackie_t_s.checked ? jackie_ts[ t ] : 0) : 0) +
+                (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.axe_d_hp').value * 0.001 : 0.015) : 0) +
                 (hart_w_u && hart_w_u.checked && w >= 0 ? 0.12 + w * 0.07 : 0);
-            const attack_power_bonus = (this.character === Adela ? floor(attack_speed_percent * 0.66) * 0.4 : 0)
-            this.attack_power = 
-                floor((this.character.Attack_Power + this.character.Attack_Power_Growth * level + 
+            const attack_power_bonus = (this.character === Adela ? floor(attack_speed_percent * 0.66) * (0.2 + t * 0.2) : 0)
+            this.attack_power =
+                floor((this.character.Attack_Power + this.character.Attack_Power_Growth * level +
                     calcEquip(this, 'Attack_Power', 2) + attack_power_bonus
                     ) * attack_power_percent);
             this.ATTACK_POWER.innerText = this.attack_power;
-            this.pure_attack_power = 
-                this.character.Attack_Power + this.character.Attack_Power_Growth * level + 
+            this.pure_attack_power =
+                this.character.Attack_Power + this.character.Attack_Power_Growth * level +
                 calcEquip(this, 'Attack_Power', 2) + attack_power_bonus;
 
             const shoichi_t = this.DIV.querySelector('.shoichi_t');
-            const cri_bonus = 
-                (shoichi_t ? shoichi_t.value * (5 + t * 2) : 0) + 
+            const cri_bonus =
+                (shoichi_t ? shoichi_t.value * (5 + t * 2) : 0) +
                 (this.character === Adela ? 4 + t * 4 : 0);
-            this.critical_strike_chance = 
+            this.critical_strike_chance =
                 calcEquip(this, 'Critical_Strike_Chance') + cri_bonus;
                 if (this.critical_strike_chance > 100) {
                     this.critical_strike_chance = 100;
@@ -793,41 +793,41 @@ class Character {
 
             const cathy_t = this.DIV.querySelector('.cathy_t');
             const critical_damage_bonus = (cathy_t && cathy_t.checked ? 10 + t * 15 : 0);
-            this.critical_damage = 
+            this.critical_damage =
                 calcEquip(this, 'Critical_Damage') + critical_damage_bonus;
             this.CRITICAL_DAMAGE.innerText = this.critical_damage + '%';
             this.pure_critical_damage = calcEquip(this, 'Critical_Damage');
 
-            this.life_steal = 
+            this.life_steal =
                 calcEquip(this, 'Life_Steal');
             this.LIFE_STEAL.innerText = this.life_steal + '%';
 
             this.extra_normal_attack_damage = calcEquip(this, 'Extra_Normal_Attack_Damage');
-            this.extra_normal_attack_damage_percent = 
+            this.extra_normal_attack_damage_percent =
                 this.weapon == null ? 0 : round((1 + wm) * this.weapon_mastery_extra_normal_attack_damage_percent);
-            this.EXTRA_NORMAL_ATTACK_DAMAGE.innerText = 
+            this.EXTRA_NORMAL_ATTACK_DAMAGE.innerText =
                 this.extra_normal_attack_damage + '| ' + this.extra_normal_attack_damage_percent + '%';
-                
+
             const hart_e = this.DIV.querySelector('.hart_e');
             const hart_ee = this.DIV.querySelector('.hart_ee');
             const hart_e_s = this.DIV.querySelector('.hart_e_s');
             const sissela_t = this.DIV.querySelector('.sissela_t');
-            const skill_amplification_bonus = 
-                (sissela_t ? (2 + t * 3) * 
-                    (sissela_t.value < 10 ? 0 : (sissela_t.value >= 90 ? 5 : sissela_t.value / 20 + 0.5)) * 
+            const skill_amplification_bonus =
+                (sissela_t ? (2 + t * 3) *
+                    (sissela_t.value < 10 ? 0 : (sissela_t.value >= 90 ? 5 : sissela_t.value / 20 + 0.5)) *
                     (this.DIV.querySelector('.sissela_r').checked ? 2 : 1) : 0);
             const skill_amplification_percent_bonus = (hart_e && e >= 0 ? hart_e_s.value * (hart_ee.checked ? 25 : hart_e.checked ? 18 : 0) : 0);
-            this.skill_amplification = 
+            this.skill_amplification =
                 round(calcEquip(this, 'Skill_Amplification', 2) + skill_amplification_bonus, 1);
-            this.skill_amplification_percent = 
-                round((!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) + 
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t && silvia_t.value == 15 ? 15 : 0) + 
+            this.skill_amplification_percent =
+                round((!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t && silvia_t.value == 15 ? 15 : 0) +
                     skill_amplification_percent_bonus);
-            this.SKILL_AMPLIFICATION.innerText = 
+            this.SKILL_AMPLIFICATION.innerText =
                 this.skill_amplification + '| ' + this.skill_amplification_percent + '%';
             this.pure_skill_amplification = calcEquip(this, 'Skill_Amplification', 2);
-            this.pure_skill_amplification_percent = 
-                (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) + 
+            this.pure_skill_amplification_percent =
+                (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
                     calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t && silvia_t.value == 15 ? 15 : 0);
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
@@ -836,21 +836,21 @@ class Character {
             }
             this.COOLDOWN_REDUCTION.innerText = this.cooldown_reduction + '%';
 
-            this.sp_regen = 
-                round(this.character.Stamina_Regen + this.character.Stamina_Regen_Growth * level + 
+            this.sp_regen =
+                round(this.character.Stamina_Regen + this.character.Stamina_Regen_Growth * level +
                     calcEquip(this, 'SP_Regen', 2), 1);
-            
-            this.sp_regen_percent = 
+
+            this.sp_regen_percent =
                 calcEquip(this, 'SP_Regen_Percent');
-            this.SP_REGEN.innerText = 
+            this.SP_REGEN.innerText =
                 this.sp_regen + '| ' + this.sp_regen_percent + '%';
 
-            this.skill_damage_reduction = 
+            this.skill_damage_reduction =
                 calcEquip(this, 'Skill_Damage_Reduction');
-            this.skill_damage_reduction_percent = 
-                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1 + 
+            this.skill_damage_reduction_percent =
+                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1 +
                     calcEquip(this, 'Skill_Damage_Reduction_Percent'));
-            this.SKILL_DAMAGE_REDUCTION.innerText = 
+            this.SKILL_DAMAGE_REDUCTION.innerText =
                 this.skill_damage_reduction + '| ' + this.skill_damage_reduction_percent + '%';
 
             const magnus_t = this.DIV.querySelector('.magnus_t');
@@ -866,93 +866,93 @@ class Character {
             const xiukai_r = this.enemy.DIV.querySelector('.xiukai_r');
             var chiara_t = this.enemy.DIV.querySelector('.chiara_t');
             const silvia_r = this.DIV.querySelector('.silvia_r');
-            const defense_percent = 1 + 
-                (magnus_t ? magnus_t.value * (0.002 + t * 0.0015) : 0) + 
+            const defense_percent = 1 +
+                (magnus_t ? magnus_t.value * (0.002 + t * 0.0015) : 0) +
                 (yuki_w && w >= 0 && yuki_w.checked ? 0.5 : 0);
-            const defense_minus = 1 - 
-                (hammer_d && hammer_d.checked && ewm > 5? ewm < 13 ? 0.2 : 0.35 : 0) - 
+            const defense_minus = 1 -
+                (hammer_d && hammer_d.checked && ewm > 5? ewm < 13 ? 0.2 : 0.35 : 0) -
                 (zahir_q ? 0.1 * zahir_q.value : 0) -
-                (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.07 + ee * 0.02 : 0) - 
-                (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.35 : hart_w.checked ? 0.25 : 0 : 0) - 
-                (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) - 
-                (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) - 
+                (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.07 + ee * 0.02 : 0) -
+                (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.35 : hart_w.checked ? 0.25 : 0 : 0) -
+                (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) -
+                (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) -
                 (chiara_t ? chiara_t.value * (0.02 + et * 0.02) : 0);
-            const defense_bonus = (hyunwoo_w && hyunwoo_w.checked ? 9 + w * 14 + this.defense * 0.1 : 0) + 
+            const defense_bonus = (hyunwoo_w && hyunwoo_w.checked ? 6 + w * 14 + this.defense * 0.1 : 0) +
                 (silvia_r && r >= 0 && silvia_r.checked ? 2 + er * 14 : 0)
-            this.defense = 
-                floor((this.character.Defense + this.character.Defense_Growth * level + 
+            this.defense =
+                floor((this.character.Defense + this.character.Defense_Growth * level +
                     calcEquip(this, 'Defense', 2) + defense_bonus) * defense_percent * defense_minus);
             this.DEFENSE.innerText = this.defense;
-            this.pure_defense = 
-                this.character.Defense + this.character.Defense_Growth * level + 
+            this.pure_defense =
+                this.character.Defense + this.character.Defense_Growth * level +
                     calcEquip(this, 'Defense', 2);
 
             const xiukai_t = this.DIV.querySelector('.xiukai_t');
             const chiara_r = this.DIV.querySelector('.chiara_r');
-            const hp_bonus = 
-                (xiukai_t ? xiukai_t.value * 7 : 0) + 
+            const hp_bonus =
+                (xiukai_t ? xiukai_t.value * 7 : 0) +
                 (chiara_r && chiara_r.checked ? 100 + r * 100 : 0);
-            this.max_hp = 
-                floor((this.character.Health + this.character.Health_Growth * level + hp_bonus + 
+            this.max_hp =
+                floor((this.character.Health + this.character.Health_Growth * level + hp_bonus +
                     calcEquip(this, 'Max_HP', 2)) * (1 + (1 + this.HEALTH_MASTERY.selectedIndex) * 0.01));
             this.MAX_HP.innerText = this.max_hp;
 
-            this.max_sp = 
-                floor((this.character.Stamina + this.character.Stamina_Growth * level + 
+            this.max_sp =
+                floor((this.character.Stamina + this.character.Stamina_Growth * level +
                     calcEquip(this, 'Max_SP', 2)) * (1 + (1 + this.MEDITATION_MASTERY.selectedIndex) * 0.017));
             this.MAX_SP.innerText = this.max_sp;
 
-            this.hp_regen = 
-                round(this.character.Health_Regen + this.character.Health_Regen_Growth * level + 
+            this.hp_regen =
+                round(this.character.Health_Regen + this.character.Health_Regen_Growth * level +
                     calcEquip(this, 'HP_Regen', 2), 1);
 
-            this.hp_regen_percent = 
+            this.hp_regen_percent =
                 calcEquip(this, 'HP_Regen_Percent');
-            this.HP_REGEN.innerText = 
+            this.HP_REGEN.innerText =
                 this.hp_regen + '| ' + this.hp_regen_percent + '%';
 
-            this.normal_attack_damage_reduction = 
+            this.normal_attack_damage_reduction =
                 calcEquip(this, 'Normal_Attack_Damage_Reduction');
-            this.normal_attack_damage_reduction_percent = 
+            this.normal_attack_damage_reduction_percent =
                 round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1.2);
-            this.NORMAL_ATTACK_DAMAGE_REDUCTION.innerText = 
+            this.NORMAL_ATTACK_DAMAGE_REDUCTION.innerText =
                 this.normal_attack_damage_reduction + '| ' + this.normal_attack_damage_reduction_percent + '%';
 
             const jackie_w = this.DIV.querySelector('.jackie_w');
             chiara_t = this.DIV.querySelector('.chiara_t');
-            const move_percent = 1 + 
-                (jackie_w && jackie_w.checked ? 0.06 + w * 0.03 : 0) + 
-                (chiara_t && chiara_t.value == 4 ? 0.04 + t * 0.02 : 0) + 
+            const move_percent = 1 +
+                (jackie_w && jackie_w.checked ? 0.06 + w * 0.03 : 0) +
+                (chiara_t && chiara_t.value == 4 ? 0.04 + t * 0.02 : 0) +
                 (silvia_r && silvia_r.checked ? 0.7 : 0);
-            const move_bonus = 
-                (silvia_r && silvia_r.checked ? 0.15 + r * 0.15 : 0);
-            this.movement_speed = 
-                (this.character.Movement_Speed + move_bonus + 
-                    (1 + this.MOVE_MASTERY.selectedIndex) * 0.01 + 
+            const move_bonus =
+                (silvia_r && silvia_r.checked ? 0.25 + r * 0.1 : 0);
+            this.movement_speed =
+                (this.character.Movement_Speed + move_bonus +
+                    (1 + this.MOVE_MASTERY.selectedIndex) * 0.01 +
                     calcEquip(this, 'Movement_Speed', 2)) * move_percent;
                 if (this.movement_speed > 7) {
                     this.movement_speed = 7;
                 }
             this.MOVEMENT_SPEED.innerText = round(this.movement_speed, 2);
 
-            this.movement_speed_while_not_in_combat = 
-                ((1 + this.MOVE_MASTERY.selectedIndex) * 0.02 + 
+            this.movement_speed_while_not_in_combat =
+                ((1 + this.MOVE_MASTERY.selectedIndex) * 0.02 +
                     calcEquip(this, 'Movement_speed_while_not_in_combat', 2)) * move_percent;
                 if (this.movement_speed + this.movement_speed_while_not_in_combat > 7) {
                     this.movement_speed_while_not_in_combat = 7 - this.movement_speed;
                 }
             this.MOVEMENT_SPEED_WHILE_NOT_IN_COMBAT.innerText = round(this.movement_speed + this.movement_speed_while_not_in_combat, 2);
 
-            this.vision_range = 
-                round(this.character.Sight_Range + 0.1 + 
-                    this.SEARCH_MASTERY.selectedIndex * 0.1 + 
+            this.vision_range =
+                round(this.character.Sight_Range + 0.1 +
+                    this.SEARCH_MASTERY.selectedIndex * 0.1 +
                     calcEquip(this, 'Vision_Range', 2), 2);
             this.VISION_RANGE.innerText = this.vision_range;
 
-            const attack_range_bonus = 
+            const attack_range_bonus =
                 (chiara_r && chiara_r.checked ? 3.65 : 0);
-            this.attack_range = 
-                round(this.character.Attack_Range + this.weapon_attack_range + 
+            this.attack_range =
+                round(this.character.Attack_Range + this.weapon_attack_range +
                     attack_range_bonus + calcEquip(this, 'Attack_Range', 2), 2);
             this.ATTACK_RANGE.innerText = this.attack_range;
         } else {
@@ -962,7 +962,7 @@ class Character {
             this.ATTACK_POWER.innerText = '';
             this.pure_attack_power = '';
 
-            this.attack_speed = '';		
+            this.attack_speed = '';
             this.ATTACK_SPEED.innerText = '';
 
             this.critical_strike_chance = '';
@@ -979,7 +979,7 @@ class Character {
             this.extra_normal_attack_damage = '';
             this.extra_normal_attack_damage_percent = '';
             this.EXTRA_NORMAL_ATTACK_DAMAGE.innerText = '| %';
-                
+
             this.skill_amplification = '';
             this.skill_amplification_percent = '';
             this.SKILL_AMPLIFICATION.innerText = '| %';

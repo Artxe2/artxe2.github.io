@@ -114,10 +114,10 @@ const Head = [
         ,Name: "Close_Helm"
         ,Defense: 20
         ,Max_SP: 130
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.08
         ,Critical_Damage_Reduction: 7
         ,Cooldown_Reduction: 7
-        ,Title: "Close Helm\n\nDefense +20\nMax SP +130\nMovement Speed +0.1\nCritical Damage Reduction +7%\nCooldown Reduction +7%"
+        ,Title: "Close Helm\n\nDefense +20\nMax SP +130\nMovement Speed +0.08\nCritical Damage Reduction +7%\nCooldown Reduction +7%"
         ,Rarity: "Rare"
     }
     ,{
@@ -188,13 +188,13 @@ const Head = [
     ,{
          Type: "Head"
         ,Name: "Imperial_Burgonet"
-        ,Defense: 10
+        ,Defense: 8
         ,Max_SP: 200
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.08
         ,Critical_Damage_Reduction: 10
         ,Cooldown_Reduction: 8
         ,Skill_Amplification_Percent: 18
-        ,Title: "Imperial Burgonet\n\nDefense +10\nMax SP +200\nMovement Speed +0.1\nCritical Damage Reduction +10%\nCooldown Reduction +8%\nSkill Amplification +18%"
+        ,Title: "Imperial Burgonet\n\nDefense +8\nMax SP +200\nMovement Speed +0.08\nCritical Damage Reduction +10%\nCooldown Reduction +8%\nSkill Amplification +18%"
         ,Rarity: "Epic"
     }
     ,{

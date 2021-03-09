@@ -1,7 +1,7 @@
 'use strict';
 const Isol = {
-     Attack_Power: 30
-    ,Attack_Power_Growth: 2.6
+     Attack_Power: 27
+    ,Attack_Power_Growth: 2.9
     ,Health: 500
     ,Health_Growth: 60
     ,Health_Regen: 0.5
@@ -51,7 +51,7 @@ const Isol = {
             let as, shot;
             if (character.weapon.Type === 'AssaultRifle') {
                 as = 10 / (9.5 / character.attack_speed + 2);
-                shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+                shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
                     baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
             } else {
                 as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2);
@@ -67,7 +67,7 @@ const Isol = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -116,7 +116,7 @@ const Isol = {
             if (type === 'AssaultRifle') {
                 const as2 = calcAttackSpeed(character, wm < 13 ? 40 : 60);
                 const as1 = 10 / (9.5 / as2 + 2);
-                const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+                const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
                     baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
                 const damage1 = round(shot * as1 * 100) / 100;
                 const damage2 = round(shot * as2 * 100) / 100;
@@ -142,23 +142,23 @@ const Isol = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Pistol' ? '권총' : 
+        const type =
+            weapon === 'Pistol' ? '권총' :
             weapon === 'AssaultRifle' ? '돌격소총' :
             '';
-        const skill = 
-            weapon === 'Pistol' ? '"데미지 없음"' : 
-            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" __h/s: "초당 흡혈량" - "장전 배제 흡혈량"' : 
+        const skill =
+            weapon === 'Pistol' ? '"데미지 없음"' :
+            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" __h/s: "초당 흡혈량" - "장전 배제 흡혈량"' :
             '';
-        return '아이솔 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "최소 데미지" ~ "최대 데미지" "강화 스택"\n' + 
-            'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' + 
-            'E: "데미지 없음"\n' + 
-            'R: "트랩 데미지"\n' + 
-            'D: ' + skill + '\n' + 
+        return '아이솔 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "최소 데미지" ~ "최대 데미지" "강화 스택"\n' +
+            'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' +
+            'E: "데미지 없음"\n' +
+            'R: "트랩 데미지"\n' +
+            'D: ' + skill + '\n' +
             'T: _use "트랩 사용"\n';
     }
     ,COMBO_VARS: '{\"qq\":0}'
@@ -169,7 +169,7 @@ const Isol = {
         const t = character.T_LEVEL.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
         (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let qq = data.vars.qq;
@@ -288,7 +288,7 @@ const Isol = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -307,17 +307,17 @@ const Isol = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' : 
+        const d =
+            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' :
             weapon === 'AssaultRifle' ? 'd & D: 데미지 없음\n' :
             '';
-        return 'a: 기본공격 데미지, Q 1스택\n' + 
+        return 'a: 기본공격 데미지, Q 1스택\n' +
             'A: 치명타 데미지, Q 1스택\n' +
-            'q & Q: Q스킬 부착, 재사용시 Q스킬 폭발\n' + 
-            'w & W: W스킬 데미지, Q 4스택\n' + 
-            'e & E: 데미지 없음\n' + 
-            'r & R: R스킬 데미지\n' + 
-            d + 
+            'q & Q: Q스킬 부착, 재사용시 Q스킬 폭발\n' +
+            'w & W: W스킬 데미지, Q 4스택\n' +
+            'e & E: 데미지 없음\n' +
+            'r & R: R스킬 데미지\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

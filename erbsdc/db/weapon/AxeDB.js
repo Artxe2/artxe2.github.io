@@ -20,7 +20,7 @@ const Axe = [
         ,Attack_Range: 0.2
         ,Title: "Chain Scythe\n\nAttack Power +50\nAttack Range +0.2"
         ,Rarity: "Uncommon"
-        
+
     }
     ,{
          Type: "Axe"
@@ -65,19 +65,19 @@ const Axe = [
          Type: "Axe"
         ,Name: "Santa_Muerte"
         ,Attack_Power: 100
-        ,Max_HP: 410
+        ,Max_HP: 380
         ,Life_Steal: 15
         ,Attack_Range: 0.5
-        ,Title: "Santa Muerte\n\nAttack Power +100\nMax HP +410\nLife Steal +15%\nAttack Range +0.5"
+        ,Title: "Santa Muerte\n\nAttack Power +100\nMax HP +380\nLife Steal +15%\nAttack Range +0.5"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Axe"
         ,Name: "Scythe"
-        ,Attack_Power: 120
+        ,Attack_Power: 115
         ,Attack_Range: 1
         ,Skill_Amplification_Percent: 20
-        ,Title: "Scythe\n\nAttack Power +120\nAttack Range +1\nSkill Amplification +20%"
+        ,Title: "Scythe\n\nAttack Power +115\nAttack Range +1\nSkill Amplification +20%"
         ,Rarity: "Epic"
     }
     ,{

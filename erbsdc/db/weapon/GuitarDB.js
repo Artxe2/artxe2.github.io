@@ -92,18 +92,18 @@ const Guitar = [
     ,{
          Type: "Guitar"
         ,Name: "Stairway_to_Heaven"
-        ,Attack_Power: 61
+        ,Attack_Power: 66
         ,HP_Regen_Percent: 200
-        ,Vision_Range: 4
-        ,Cooldown_Reduction: 10
+        ,Vision_Range: 3
+        ,Cooldown_Reduction: 8
         ,Skill_Amplification_Percent: 20
-        ,Title: "Stairway to Heaven\n\nAttack Power +61\nHP Regen +200%\nVision Range +4\nCooldown Reduction +10%\nSkill Amplification +20%"
+        ,Title: "Stairway to Heaven\n\nAttack Power +66\nHP Regen +200%\nVision Range +3\nCooldown Reduction +8%\nSkill Amplification +20%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Guitar"
         ,Name: "Purple_Haze"
-        ,Attack_Power: 89
+        ,Attack_Power: 85
         ,Skill_Amplification_Percent: 21
         ,Title: "Purple Haze\n\nAttack Power +85\nSkill Amplification +21%"
         ,Rarity: "Epic"

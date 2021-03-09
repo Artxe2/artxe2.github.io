@@ -33,8 +33,8 @@ const Whip = [
          Type: "Whip"
         ,Name: "Thunder_Whip"
         ,Attack_Power: 30
-        ,Skill_Amplification_Percent: 20
-        ,Title: "Thunder Whip\n\nAttack Power +30\nSkill Amplification +20%"
+        ,Skill_Amplification_Percent: 24
+        ,Title: "Thunder Whip\n\nAttack Power +30\nSkill Amplification +24%"
         ,Rarity: "Rare"
     }
     ,{

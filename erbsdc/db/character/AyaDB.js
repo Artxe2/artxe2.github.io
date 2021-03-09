@@ -55,7 +55,7 @@ const Aya = {
             let as, shot;
             if (character.weapon.Type === 'AssaultRifle') {
                 as = 10 / (9.5 / character.attack_speed + 2);
-                shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+                shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
                     baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
             } else {
                 as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2);
@@ -71,7 +71,7 @@ const Aya = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -120,7 +120,7 @@ const Aya = {
                 const t = character.T_LEVEL.selectedIndex;
                 const as2 = calcAttackSpeed(character, wm < 13 ? 40 : 60);
                 const as1 = 10 / (9.5 / as2 + 2);
-                const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+                const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
                     baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
                 const damage1 = round(shot * as1 * 100) / 100;
                 const damage2 = round(shot * as2 * 100) / 100;
@@ -128,11 +128,11 @@ const Aya = {
                 const life2 = calcHeal(shot * (character.life_steal / 100), as2, enemy);
                 const cool = 30 * (100 - character.cooldown_reduction) / 100;
                 const shield = floor(100 + t * 50 + character.attack_power * 0.3);
-                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 + 
+                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
                     "<b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 6) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 6) / cool, 2);
             }
             if (type === 'SniperRifle') {
-                const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 2.8, 1);
+                const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 3, 1);
                 return "<b class='damage'>" + damage + ' ~ ' + damage * 3 + '</b> ( ' + damage + ' x 3 )';
             }
         }
@@ -165,25 +165,25 @@ const Aya = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Pistol' ? '권총' : 
-            weapon === 'AssaultRifle' ? '돌격소총' : 
-            weapon === 'SniperRifle' ? '저격총' : 
+        const type =
+            weapon === 'Pistol' ? '권총' :
+            weapon === 'AssaultRifle' ? '돌격소총' :
+            weapon === 'SniperRifle' ? '저격총' :
             '';
-        const skill = 
-            weapon === 'Pistol' ? '"데미지 없음"' : 
-            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" __h/s: "초당 흡혈량" - "장전 배제 흡혈량" __s/s: "초당 쉴드량" - "장전 배제 쉴드량"' : 
-            weapon === 'SniperRifle' ? '"1발당 데미지"' : 
+        const skill =
+            weapon === 'Pistol' ? '"데미지 없음"' :
+            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" __h/s: "초당 흡혈량" - "장전 배제 흡혈량" __s/s: "초당 쉴드량" - "장전 배제 쉴드량"' :
+            weapon === 'SniperRifle' ? '"1발당 데미지"' :
             '';
-        return '아야 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
-            'W: "합산 데미지" ( "1발당 데미지" x "타수" )\n' + 
-            'E: "데미지 없음"\n' + 
-            'R: "최소 데미지" ~ "최대 데미지"\n' + 
-            'D: ' + skill + '\n' + 
+        return '아야 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
+            'W: "합산 데미지" ( "1발당 데미지" x "타수" )\n' +
+            'E: "데미지 없음"\n' +
+            'R: "최소 데미지" ~ "최대 데미지"\n' +
+            'D: ' + skill + '\n' +
             'T: _s: "쉴드량" __s/s: "초당 쉴드량"\n';
     }
     ,COMBO_VARS: '{}'
@@ -195,10 +195,10 @@ const Aya = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        
+
         const cool = 30 * (100 - character.cooldown_reduction) / 100;
         let as;
         if (character.weapon) {
@@ -213,7 +213,7 @@ const Aya = {
         if (index === 0 || floor(as * index / 2 / cool) > floor(as * (index - 1) / 2 / cool)) {
             shield += floor(100 + t * 50 + character.attack_power * 0.3);
         }
-        
+
         if (character.weapon) {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
@@ -312,7 +312,7 @@ const Aya = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'SniperRifle') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 2.8, 1);
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 3, 1);
                         }
                     }
                 } else if (c === 'p' || c === 'P') {
@@ -322,7 +322,7 @@ const Aya = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -339,21 +339,21 @@ const Aya = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' : 
-            weapon === 'AssaultRifle' ? 'd & D: 데미지 없음\n' : 
-            weapon === 'SniperRifle' ? 'd & D: 무스 1회 데미지\n' : 
+        const d =
+            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' :
+            weapon === 'AssaultRifle' ? 'd & D: 데미지 없음\n' :
+            weapon === 'SniperRifle' ? 'd & D: 무스 1회 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' + 
-            'w: W스킬 1.5초간 데미지\n' + 
-            'W: W스킬 3초간 데미지\n' + 
-            'e & E: 데미지 없음\n' + 
-            'r: R스킬 즉발 데미지\n' + 
-            'R: R스킬 최대 데미지\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 데미지\n' +
+            'w: W스킬 1.5초간 데미지\n' +
+            'W: W스킬 3초간 데미지\n' +
+            'e & E: 데미지 없음\n' +
+            'r: R스킬 즉발 데미지\n' +
+            'R: R스킬 최대 데미지\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

@@ -10,7 +10,7 @@ const Yuki = {
     ,Stamina_Regen: 2.2
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 26
-    ,Defense_Growth: 2
+    ,Defense_Growth: 2.3
     ,Atk_Speed: 0.06
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
@@ -18,11 +18,11 @@ const Yuki = {
     ,weapons: [TwoHandedSword, DualSwords]
     ,correction: {
         TwoHandedSword: [
-            [0, -8, -10],
+            [0, -8, -12],
             [0, 2, 0]
         ],
         DualSwords: [
-            [3, 1, 1],
+            [3, 0, 0],
             [-3, -3, -3]
         ]
     }
@@ -68,14 +68,14 @@ const Yuki = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const t = character.T_LEVEL.selectedIndex;
-            const base = 20 + q * 25;
+            const base = 20 + q * 30;
             const coe = character.weapon.Type === 'DualSwords' ? 2 : 1;
             const damage = baseAttackDamage(character, enemy, base, coe, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, base, coe, 0, 1);
@@ -98,7 +98,7 @@ const Yuki = {
             if (e >= 0) {
                 const t = character.T_LEVEL.selectedIndex;
                 const damage = calcSkillDamage(character, enemy, 65 + e * 55, 0.4, 1);
-                const cool = (600 + w * 50) / ((16 - e * 1) * (100 - character.cooldown_reduction) - 300) * 
+                const cool = (600 + w * 50) / ((16 - e * 1) * (100 - character.cooldown_reduction) - 300) *
                     10000 / ((18 - w * 2) * (100 - character.cooldown_reduction));
                 if (character.DIV.querySelector('.yuki_t').checked) {
                     const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
@@ -174,23 +174,23 @@ const Yuki = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
+        const type =
             weapon === 'TwoHandedSword' ? '양손검' :
             weapon === 'DualSwords' ? '쌍검' :
             '';
-        const skill = 
-            weapon === 'TwoHandedSword' ? '"스킬 데미지"' : 
-            weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" )' : 
+        const skill =
+            weapon === 'TwoHandedSword' ? '"스킬 데미지"' :
+            weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" )' :
             '';
-        return '유키 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'W: _use "스킬 사용"\n' + 
-            'E: "스킬 데미지"\n' + 
-            'R: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
-            'D: ' + skill + '\n' + 
+        return '유키 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'W: _use "스킬 사용"\n' +
+            'E: "스킬 데미지"\n' +
+            'R: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
+            'D: ' + skill + '\n' +
             'T: "추가 데미지" ( "스킬 데미지" x "장전 수" )\n';
     }
     ,COMBO_VARS: '{\"tt\":4}'
@@ -203,13 +203,13 @@ const Yuki = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
             let shield = 0, c, ba;
         let tt = data.vars.tt;
         if (character.weapon) {
             const type = character.weapon.Type;
-            const base = 20 + q * 25;
+            const base = 20 + q * 30;
             const coe = character.weapon.Type === 'DualSwords' ? 2 : 1;
             const bonus = calcTrueDamage(character, enemy, 15 + 15 * t);
             for (let i = 0; i < combo.length; i++) {
@@ -303,7 +303,7 @@ const Yuki = {
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 250 + r * 125, 1.5, 1) + 
+                        damage += calcSkillDamage(character, enemy, 250 + r * 125, 1.5, 1) +
                             calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.15 + r * 0.05) : 0);
                         if (tt) {
                             tt--;
@@ -327,7 +327,7 @@ const Yuki = {
                                         lost = 0;
                                     }
                                     enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
-                                } 
+                                }
                             }
                         }
                     }
@@ -338,7 +338,7 @@ const Yuki = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -357,19 +357,19 @@ const Yuki = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
+        const d =
             weapon === 'TwoHandedSword' ? 'd & D: 무스 데미지\n' :
             weapon === 'DualSwords' ? 'd & D: 무스 6회 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q: Q스킬 데미지\n' + 
-            'Q: Q스킬 치명타 데미지\n' + 
-            'w & W: 패시브 4회 충전\n' +  
-            'e & E: E스킬 데미지\n' + 
-            'r & R: R스킬 데미지\n' + 
-            't && T: 데미지 없음\n' + 
-            d + 
+            'q: Q스킬 데미지\n' +
+            'Q: Q스킬 치명타 데미지\n' +
+            'w & W: 패시브 4회 충전\n' +
+            'e & E: E스킬 데미지\n' +
+            'r & R: R스킬 데미지\n' +
+            't && T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

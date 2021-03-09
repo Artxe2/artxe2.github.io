@@ -84,10 +84,10 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Maverick_Runner"
-        ,Attack_Speed: 15
+        ,Attack_Speed: 10
         ,Movement_Speed: 0.2
-        ,Movement_speed_while_not_in_combat: 0.5
-        ,Title: "Maverick Runner\n\nAttack Speed +15%\nMovement Speed +0.2\nMovement Speed while not in combat +0.5"
+        ,Movement_speed_while_not_in_combat: 0.45
+        ,Title: "Maverick Runner\n\nAttack Speed +10%\nMovement Speed +0.2\nMovement Speed while not in combat +0.45"
         ,Rarity: "Rare"
     }
     ,{

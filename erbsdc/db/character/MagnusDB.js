@@ -11,7 +11,7 @@ const Magnus = {
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 25
     ,Defense_Growth: 1.5
-    ,Atk_Speed: 0.12
+    ,Atk_Speed: 0.14
     ,Movement_Speed: 3.2
     ,Sight_Range: 8
     ,Attack_Range: 0.5
@@ -47,7 +47,7 @@ const Magnus = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -102,8 +102,8 @@ const Magnus = {
         return '-';
     }
     ,D_Option: (character, enemy) => {
-        return !character.weapon || character.weapon.Type !== 'Hammer' ? '' : 
-            "<b> __use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>"; 
+        return !character.weapon || character.weapon.Type !== 'Hammer' ? '' :
+            "<b> __use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
     }
     ,T_Skill: (character, enemy) => {
         return '';
@@ -117,23 +117,23 @@ const Magnus = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Hammer' ? '망치' : 
-            weapon === 'Bat' ? '방망이' : 
+        const type =
+            weapon === 'Hammer' ? '망치' :
+            weapon === 'Bat' ? '방망이' :
             '';
-        const skill = 
-            weapon === 'Hammer' ? '"스킬 데미지" _use "스킬 사용"' : 
-            weapon === 'Bat' ? '"스킬 데미지"' : 
+        const skill =
+            weapon === 'Hammer' ? '"스킬 데미지" _use "스킬 사용"' :
+            weapon === 'Bat' ? '"스킬 데미지"' :
             '';
-        return '매그너스 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지"\n' + 
-            'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' + 
-            'E: "스킬 데미지"\n' + 
-            'R: "스킬 데미지"\n' + 
-            'D: ' + skill + '\n' + 
+        return '매그너스 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지"\n' +
+            'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' +
+            'E: "스킬 데미지"\n' +
+            'R: "스킬 데미지"\n' +
+            'D: ' + skill + '\n' +
             'T: _"잃은 체력"\n';
     }
     ,COMBO_VARS: '{}'
@@ -146,7 +146,7 @@ const Magnus = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         if (character.weapon) {
@@ -219,7 +219,7 @@ const Magnus = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -236,18 +236,18 @@ const Magnus = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Hammer' ? 'd & D: 무스 데미지\n' : 
-            weapon === 'Bat' ? 'd & D: 무스 데미지\n' : 
+        const d =
+            weapon === 'Hammer' ? 'd & D: 무스 데미지\n' :
+            weapon === 'Bat' ? 'd & D: 무스 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' + 
-            'w & W: W스킬 데미지\n' +  
-            'e & E: E스킬 데미지\n' + 
-            'r & R: R스킬 데미지\n' + 
-            't && T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 데미지\n' +
+            'w & W: W스킬 데미지\n' +
+            'e & E: E스킬 데미지\n' +
+            'r & R: R스킬 데미지\n' +
+            't && T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

@@ -47,7 +47,7 @@ const Zahir = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -58,7 +58,7 @@ const Zahir = {
             const min = calcSkillDamage(character, enemy, 40 + q * 60, 0.5, 1);
             const max = calcSkillDamage(character, enemy, 75 + q * 75, 0.5, 1);
             const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
-            const ww = w >= 0 ? calcSkillDamage(character, enemy, 25 + w * 25, 0.3, 1) : 0;
+            const ww = w >= 0 ? calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1) : 0;
             const cool = 10000 / ((8 - q * 0.5) * (100 - character.cooldown_reduction) + 20);
             return "<b class='damage'>" + min + ' - ' + (max + bonus)  + '</b> ( ' + max + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round(((min + max) / 2 + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
         }
@@ -69,7 +69,7 @@ const Zahir = {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 25 + w * 25, 0.3, 1);
+            const damage = calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1);
             const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
             return "<b class='damage'>" + damage + ' - ' + (damage + bonus)  + '</b> ( ' + damage + ', ' + bonus + ' )';
         }
@@ -83,7 +83,7 @@ const Zahir = {
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 80 + e * 30, 0.5, 1);
             const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
-            const ww = w >= 0 ? calcSkillDamage(character, enemy, 25 + w * 25, 0.3, 1) : 0;
+            const ww = w >= 0 ? calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1) : 0;
             const cool = 10000 / ((20 - e * 2) * (100 - character.cooldown_reduction) + 17);
             return "<b class='damage'>" + damage + ' - ' + (damage + bonus)  + '</b> ( ' + damage + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
         }
@@ -135,23 +135,23 @@ const Zahir = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Throws' ? '투척' : 
-            weapon === 'Shuriken' ? '암기' : 
+        const type =
+            weapon === 'Throws' ? '투척' :
+            weapon === 'Shuriken' ? '암기' :
             '';
-        const skill = 
-            weapon === 'Throws' ? '"데미지 없음"' : 
-            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' : 
+        const skill =
+            weapon === 'Throws' ? '"데미지 없음"' :
+            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' :
             '';
-        return '자히르 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "최소 데미지" - "합산 데미지" ( "강화 데미지", "패시브 데미지" ) _ "처치 수 차이"\n' + 
-            'W: "스킬 데미지" - "합산 데미지" ( "스킬 데미지", "패시브 데미지" )\n' + 
-            'E: "스킬 데미지" - "합산 데미지" ( "스킬 데미지", "패시브 데미지" )\n' + 
-            'R: "합산 데미지" - "강화 데미지" ( "1타 데미지", "패시브 데미지", "추가 데미지" x "타수" )\n' + 
-            'D: ' + skill + '\n' + 
+        return '자히르 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "최소 데미지" - "합산 데미지" ( "강화 데미지", "패시브 데미지" ) _ "처치 수 차이"\n' +
+            'W: "스킬 데미지" - "합산 데미지" ( "스킬 데미지", "패시브 데미지" )\n' +
+            'E: "스킬 데미지" - "합산 데미지" ( "스킬 데미지", "패시브 데미지" )\n' +
+            'R: "합산 데미지" - "강화 데미지" ( "1타 데미지", "패시브 데미지", "추가 데미지" x "타수" )\n' +
+            'D: ' + skill + '\n' +
             'T: "스킬 데미지"\n';
     }
     ,COMBO_VARS: '{\"tt\":false}'
@@ -164,7 +164,7 @@ const Zahir = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let tt = data.vars.tt;
@@ -204,7 +204,7 @@ const Zahir = {
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 25 + w * 25, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1);
                         if (tt) {
                             tt = false;
                             damage += bonus;
@@ -255,7 +255,7 @@ const Zahir = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -274,19 +274,19 @@ const Zahir = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Throws' ? 'd & D: 데미지 없음\n' : 
-            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' : 
+        const d =
+            weapon === 'Throws' ? 'd & D: 데미지 없음\n' :
+            weapon === 'Shuriken' ? 'd: 무스 추가타 데미지\n' + 'D: 무스 첫타 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지, 패시브 발동\n' + 
-            'w & W: W스킬 데미지, 패시브 발동\n' +  
-            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지, 패시브 발동\n' + 
-            'r: R스킬 추가타 데미지\n' + 
-            'R: R스킬 첫타 데미지, 패시브 발동\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 데미지, 패시브 발동\n' +
+            'w & W: W스킬 데미지, 패시브 발동\n' +
+            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지, 패시브 발동\n' +
+            'r: R스킬 추가타 데미지\n' +
+            'R: R스킬 첫타 데미지, 패시브 발동\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

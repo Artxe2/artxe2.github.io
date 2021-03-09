@@ -85,12 +85,12 @@ const Rapier = [
         ,Name: "Mistilteinn"
         ,Attack_Power: 33
         ,HP_Regen: 1.5
-        ,SP_Regen_Percent: 200
+        ,SP_Regen_Percent: 160
         ,Vision_Range: 1
         ,Critical_Damage: 25
         ,Cooldown_Reduction: 12
         ,Skill_Amplification_Percent: 15
-        ,Title: "Mistilteinn\n\nAttack Power +33\nHP Regen +1.5\nSP Regen +200%\nVision Range +1\nCritical Damage +25%\nCooldown Reduction +12%\nSkill Amplification +15%"
+        ,Title: "Mistilteinn\n\nAttack Power +33\nHP Regen +1.5\nSP Regen +160%\nVision Range +1\nCritical Damage +25%\nCooldown Reduction +12%\nSkill Amplification +15%"
         ,Rarity: "Legendary"
     }
 ];

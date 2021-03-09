@@ -22,7 +22,7 @@ const Nadine = {
             [0, 0, 0]
         ],
         Crossbow: [
-            [0, -9, -17],
+            [0, -9, -13],
             [0, 0, -3]
         ]
     }
@@ -53,7 +53,7 @@ const Nadine = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -103,7 +103,7 @@ const Nadine = {
             }
             if (type === 'Crossbow') {
                 const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1);
-                return "<b class='damage'>" + damage * 10 + '</b> ( ' + damage + ' x 9, ' + damage + ' )';
+                return "<b class='damage'>" + damage * 2 + '</b> ( ' + damage + ', ' + damage + ' )';
             }
         }
         return '-';
@@ -123,23 +123,23 @@ const Nadine = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Bow' ? '활' : 
-            weapon === 'Crossbow' ? '석궁' : 
+        const type =
+            weapon === 'Bow' ? '활' :
+            weapon === 'Crossbow' ? '석궁' :
             '';
-        const skill = 
-            weapon === 'Bow' ? '"최소 데미지" - "최대 데미지"' : 
-            weapon === 'Crossbow' ? '"합산 데미지" ( "산탄 데미지" x "타수", "벽꿍 데미지" )' : 
+        const skill =
+            weapon === 'Bow' ? '"최소 데미지" - "최대 데미지"' :
+            weapon === 'Crossbow' ? '"합산 데미지" ( "스킬 데미지", "벽꿍 데미지" )' :
             '';
-        return '나딘 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "최소 데미지" ~ "최대 데미지"\n' + 
-            'W: "합산 데미지" ( "1타 데미지", "2타 데미지", "덫 데미지" )\n' + 
-            'E: _use "스킬 사용"\n' + 
-            'R: "스킬 데미지" _use "스킬 사용"\n' + 
-            'D: ' + skill + '\n' + 
+        return '나딘 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "최소 데미지" ~ "최대 데미지"\n' +
+            'W: "합산 데미지" ( "1타 데미지", "2타 데미지", "덫 데미지" )\n' +
+            'E: _use "스킬 사용"\n' +
+            'R: "스킬 데미지" _use "스킬 사용"\n' +
+            'D: ' + skill + '\n' +
             'T: "스택"\n';
     }
     ,COMBO_VARS: '{\"rr\":0,\"rt\":0}'
@@ -150,7 +150,7 @@ const Nadine = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let rr = data.vars.rr, rt = data.vars.rt;
@@ -223,7 +223,7 @@ const Nadine = {
                         if (type === 'Bow') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 150 : 250, 1, 1);
                         } else if (type === 'Crossbow') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1) * 5;
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1);
                         }
                     }
                 } else if (c === 'D') {
@@ -231,7 +231,7 @@ const Nadine = {
                         if (type === 'Bow') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 300 : 500, 2, 1);
                         } else if (type === 'Crossbow') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1) * 10;
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1) * 2;
                         }
                     }
                 } else if (c === 'p' || c === 'P') {
@@ -241,7 +241,7 @@ const Nadine = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -261,20 +261,20 @@ const Nadine = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Bow' ? 'd: 무스 외곽 데미지\n' + 'D: 무스 중앙 데미지\n' : 
-            weapon === 'Crossbow' ? 'd: 무스 데미지 x 5\n' + 'D: 무스 데미지 x 10\n' : 
+        const d =
+            weapon === 'Bow' ? 'd: 무스 외곽 데미지\n' + 'D: 무스 중앙 데미지\n' :
+            weapon === 'Crossbow' ? 'd: 무스 데미지 x 5\n' + 'D: 무스 데미지 x 10\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q: Q스킬 즉발 데미지\n' + 
-            'Q: Q스킬 최대 데미지\n' + 
-            'w: W스킬 설치 데미지\n' +  
-            'W: W스킬 덫 데미지\n' +  
-            'e & E: 데미지 없음\n' + 
-            'r & R: R스킬 On / Off\n' + 
-            't && T: 데미지 없음\n' + 
-            d + 
+            'q: Q스킬 즉발 데미지\n' +
+            'Q: Q스킬 최대 데미지\n' +
+            'w: W스킬 설치 데미지\n' +
+            'W: W스킬 덫 데미지\n' +
+            'e & E: 데미지 없음\n' +
+            'r & R: R스킬 On / Off\n' +
+            't && T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

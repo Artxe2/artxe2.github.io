@@ -19,7 +19,7 @@ const Adriana = {
     ,weapons: [Throws]
     ,correction: {
         Throws: [
-            [3, -11, -18],
+            [0, -11, -18],
             [0, 0, 0]
         ]
     }
@@ -44,7 +44,7 @@ const Adriana = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -117,21 +117,21 @@ const Adriana = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Throws' ? '투척' : 
+        const type =
+            weapon === 'Throws' ? '투척' :
             '';
-        const skill = 
-            weapon === 'Throws' ? '"데미지 없음"' : 
+        const skill =
+            weapon === 'Throws' ? '"데미지 없음"' :
             '';
-        return '아드리아나 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "틱당 데미지" ~ "풀히트 데미지" ( "틱당 데미지" x "타수" )\n' + 
-            'W: "데미지 없음"\n' + 
-            'E: "틱당 데미지" ~ "풀히트 데미지" ( "최소 데미지" x "타수" )\n' + 
-            'R: "1발당 데미지" - "3 회 사용 시 데미지" ( "1발당 데미지" x "장전 수" )\n' + 
-            'D: ' + skill + '\n' + 
+        return '아드리아나 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "틱당 데미지" ~ "풀히트 데미지" ( "틱당 데미지" x "타수" )\n' +
+            'W: "데미지 없음"\n' +
+            'E: "틱당 데미지" ~ "풀히트 데미지" ( "최소 데미지" x "타수" )\n' +
+            'R: "1발당 데미지" - "3 회 사용 시 데미지" ( "1발당 데미지" x "장전 수" )\n' +
+            'D: ' + skill + '\n' +
             'T: _d/s: "최초 초당 데미지" ~ "최대중첩 시 초당 데미지"\n';
     }
     ,COMBO_VARS: '{\"ww\":0,\"f\":false,\"td\":0,\"tt\":0}'
@@ -143,7 +143,7 @@ const Adriana = {
         const t = character.T_LEVEL.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let ww = data.vars.ww, f = data.vars.f, td = data.vars.td, tt = data.vars.tt;
@@ -384,7 +384,7 @@ const Adriana = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -406,22 +406,22 @@ const Adriana = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Throws' ? 'd & D: 데미지 없음\n' : 
+        const d =
+            weapon === 'Throws' ? 'd & D: 데미지 없음\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q: Q스킬을 1초간 히트시켰을 시 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;패시브 스택이 초기화되며 w가 깔려있을 경우 1초간 패시브 데미지\n' + 
-            'Q: Q스킬을 2초간 히트시켰을 시 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;W가 깔려있을 경우 1초간 패시브 데미지\n' + 
-            'w: 다음 5회 스킬에 패시브 데미지 추가,\n&nbsp;&nbsp;&nbsp;&nbsp;R 또는 E스킬 이후에 사용시 패시브 스택이 초기화되며 1초간 패시브 데미지\n' + 
-            'W: 다음 5회 스킬에 패시브 데미지 추가,\n&nbsp;&nbsp;&nbsp;&nbsp;R 또는 E스킬 이후에 사용시 1초간 패시브 데미지\n' + 
-            'e: 패시브 스택이 초기화되며 1초간 패시브 데미지\n' + 
-            'E: 1초간 패시브 데미지\n' + 
-            'r: R스킬 데미지, 패시브 스택이 초기화되며 1회 패시브 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;W가 깔려있을 경우 1초간 패시브 데미지\n' + 
-            'R: 1초간 패시브 데미지, 1회 패시브 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;W가 깔려있을 경우 1초간 패시브 데미지\n' + 
-            't: 패시브 스택이 초기화되며 1초간 패시브 데미지\n' + 
-            'T: 1초간 패시브 데미지\n' + 
-            d + 
+            'q: Q스킬을 1초간 히트시켰을 시 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;패시브 스택이 초기화되며 w가 깔려있을 경우 1초간 패시브 데미지\n' +
+            'Q: Q스킬을 2초간 히트시켰을 시 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;W가 깔려있을 경우 1초간 패시브 데미지\n' +
+            'w: 다음 5회 스킬에 패시브 데미지 추가,\n&nbsp;&nbsp;&nbsp;&nbsp;R 또는 E스킬 이후에 사용시 패시브 스택이 초기화되며 1초간 패시브 데미지\n' +
+            'W: 다음 5회 스킬에 패시브 데미지 추가,\n&nbsp;&nbsp;&nbsp;&nbsp;R 또는 E스킬 이후에 사용시 1초간 패시브 데미지\n' +
+            'e: 패시브 스택이 초기화되며 1초간 패시브 데미지\n' +
+            'E: 1초간 패시브 데미지\n' +
+            'r: R스킬 데미지, 패시브 스택이 초기화되며 1회 패시브 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;W가 깔려있을 경우 1초간 패시브 데미지\n' +
+            'R: 1초간 패시브 데미지, 1회 패시브 데미지,\n&nbsp;&nbsp;&nbsp;&nbsp;W가 깔려있을 경우 1초간 패시브 데미지\n' +
+            't: 패시브 스택이 초기화되며 1초간 패시브 데미지\n' +
+            'T: 1초간 패시브 데미지\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

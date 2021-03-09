@@ -85,9 +85,8 @@ const SniperRifle = [
         ,Name: "Polaris"
         ,Attack_Power: 110
         ,Attack_Speed: 35
-        ,Movement_Speed: -0.03
         ,Vision_Range: 2
-        ,Title: "Polaris\n\nAttack Power +110\nAttack Speed +35%\nMovement Speed -0.03\nVision Range +2"
+        ,Title: "Polaris\n\nAttack Power +110\nAttack Speed +35%\nVision Range +2"
         ,Rarity: "Epic"
         ,Ammo: 4
     }

@@ -23,7 +23,7 @@ const Hyunwoo = {
             [0, -2, -5]
         ],
         Tonfa: [
-            [0, -3, -3],
+            [0, -5, -7],
             [0, -2, -5]
         ]
     }
@@ -48,7 +48,7 @@ const Hyunwoo = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -127,24 +127,24 @@ const Hyunwoo = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Glove' ? '글러브' : 
-            weapon === 'Tonfa' ? '톤파' : 
+        const type =
+            weapon === 'Glove' ? '글러브' :
+            weapon === 'Tonfa' ? '톤파' :
             '';
-        const skill = 
-            // weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" ) __h: "평균 흡혈량"' : 
-            weapon === 'Glove' ? '"스킬 데미지"  __h: "평균 흡혈량"' : 
-            weapon === 'Tonfa' ? '"반사 데미지"' : 
+        const skill =
+            // weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" ) __h: "평균 흡혈량"' :
+            weapon === 'Glove' ? '"스킬 데미지"  __h: "평균 흡혈량"' :
+            weapon === 'Tonfa' ? '"반사 데미지"' :
             '';
-        return '현우 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지"\n' + 
-            'W: _use "스킬 사용"\n' + 
-            'E: "합산 데미지" ( "최소 데미지" ~ "최대 데미지", "벽꿍 데미지" )\n' + 
-            'R: "최소 데미지" ~ "최대 데미지"\n' + 
-            'D: ' + skill + '\n' + 
+        return '현우 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지"\n' +
+            'W: _use "스킬 사용"\n' +
+            'E: "합산 데미지" ( "최소 데미지" ~ "최대 데미지", "벽꿍 데미지" )\n' +
+            'R: "최소 데미지" ~ "최대 데미지"\n' +
+            'D: ' + skill + '\n' +
             'T: _h: "회복량"\n';
     }
     ,COMBO_VARS: '{\"tt\":70}'
@@ -157,7 +157,7 @@ const Hyunwoo = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let tt = data.vars.tt;
@@ -203,7 +203,7 @@ const Hyunwoo = {
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        const db = 9 + w * 14 + character.defense * 0.1;
+                        const db = 6 + w * 14 + character.defense * 0.1;
                         for (let x = index; x <= index + 5 && x < de_bonus.length; x++) {
                             de_bonus[x] = db;
                         }
@@ -294,7 +294,7 @@ const Hyunwoo = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -313,21 +313,21 @@ const Hyunwoo = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            // weapon === 'Glove' ? 'd: 무스 데미지\n' + 'D: 무스 치명타 데미지\n' : 
-            weapon === 'Glove' ? 'd & D: 무스 데미지\n' : 
-            weapon === 'Tonfa' ? 'd & D: 데미지 없음\n' : 
+        const d =
+            // weapon === 'Glove' ? 'd: 무스 데미지\n' + 'D: 무스 치명타 데미지\n' :
+            weapon === 'Glove' ? 'd & D: 무스 데미지\n' :
+            weapon === 'Tonfa' ? 'd & D: 데미지 없음\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' + 
-            'w & W: 다음 E스킬 방어력 증가\n' + 
-            'e: E스킬 데미지(현재 체력 비례)\n' + 
-            'E: E스킬 벽꿍 데미지(현재 체력 비례)\n' + 
-            'r: R스킬 즉발 데미지\n' + 
-            'R: R스킬 최대 데미지\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 데미지\n' +
+            'w & W: 다음 E스킬 방어력 증가\n' +
+            'e: E스킬 데미지(현재 체력 비례)\n' +
+            'E: E스킬 벽꿍 데미지(현재 체력 비례)\n' +
+            'r: R스킬 즉발 데미지\n' +
+            'R: R스킬 최대 데미지\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

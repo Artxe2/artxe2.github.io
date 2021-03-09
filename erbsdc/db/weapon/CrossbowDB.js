@@ -89,7 +89,8 @@ const Crossbow = [
          Type: "Crossbow"
         ,Name: "Sharanga"
         ,Attack_Power: 140
-        ,Title: "Sharanga\n\nAttack Power +140"
+        ,Vision_Range: 1.5
+        ,Title: "Sharanga\n\nAttack Power +140\nVision Range +1.5"
         ,Rarity: "Legendary"
     }
 ];

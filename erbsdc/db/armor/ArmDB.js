@@ -145,9 +145,9 @@ const Arm = [
         ,Attack_Power: 30
         ,Defense: 20
         ,HP_Regen: 1.5
-        ,Movement_Speed: -0.05
+        ,Movement_Speed: -0.03
         ,Critical_Damage: 25
-        ,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +20\nHP Regen +1.5\nMovement Speed -0.05\nCritical Damage +25%"
+        ,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +20\nHP Regen +1.5\nMovement Speed -0.03\nCritical Damage +25%"
         ,Rarity: "Epic"
     }
     ,{

@@ -8,7 +8,7 @@ const Chiara = {
     ,Health_Regen_Growth: 0.02
     ,Stamina: 410
     ,Stamina_Growth: 13
-    ,Stamina_Regen: 1.8
+    ,Stamina_Regen: 2.1
     ,Stamina_Regen_Growth: 0.03
     ,Defense: 27
     ,Defense_Growth: 1.5
@@ -44,7 +44,7 @@ const Chiara = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -95,7 +95,7 @@ const Chiara = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'Rapier') {
-                const damage = calcSkillDamage(character, enemy, 0, 
+                const damage = calcSkillDamage(character, enemy, 0,
                     2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                 const cool = 10000 / ((wm < 13 ? 30 : 18) * (100 - character.cooldown_reduction));
                 return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -118,21 +118,21 @@ const Chiara = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Rapier' ? '레이피어' : 
+        const type =
+            weapon === 'Rapier' ? '레이피어' :
             '';
-        const skill = 
-            weapon === 'Rapier' ? '"스킬 데미지"' : 
+        const skill =
+            weapon === 'Rapier' ? '"스킬 데미지"' :
             '';
-        return '키아라 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지"\n' + 
-            'W: "스킬 데미지" __s: 쉴드량\n' + 
-            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
-            'R: "합산 데미지" ( "초당 데미지" x "타수", "징벌 데미지" ) __h/s: "초당 흡혈량" _use "스킬 사용"\n' + 
-            'D: ' + skill + '\n' + 
+        return '키아라 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지"\n' +
+            'W: "스킬 데미지" __s: 쉴드량\n' +
+            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
+            'R: "합산 데미지" ( "초당 데미지" x "타수", "징벌 데미지" ) __h/s: "초당 흡혈량" _use "스킬 사용"\n' +
+            'D: ' + skill + '\n' +
             'T: "패시브 스택"\n';
     }
     ,COMBO_VARS: '{\"stack\":0,\"rr\":false}'
@@ -145,7 +145,7 @@ const Chiara = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let stack = data.vars.stack, rr = data.vars.rr;
@@ -155,7 +155,7 @@ const Chiara = {
             shield += floor(90 + w * 35 + character.attack_power * 0.6);
         }
 
-        if (character.weapon) { 
+        if (character.weapon) {
             const type = character.weapon.Type;
             let dm;
             for (let i = 0; i < combo.length; i++) {
@@ -293,7 +293,7 @@ const Chiara = {
                             for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
                             }
-                            damage += calcSkillDamage(character, enemy, 0, 
+                            damage += calcSkillDamage(character, enemy, 0,
                                 2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                         }
                     }
@@ -304,7 +304,7 @@ const Chiara = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -324,19 +324,19 @@ const Chiara = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Rapier' ? 'd & D: 무스 데미지, 패시브 1스택\n' : 
+        const d =
+            weapon === 'Rapier' ? 'd & D: 무스 데미지, 패시브 1스택\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지, 패시브 1스택\n' + 
-            'w & W: W스킬 데미지, 패시브 1스택\n' + 
-            'e: E스킬 데미지, 패시브 1스택\n' + 
-            'E: E스킬 연결 및 속박 데미지, 패시브 2스택\n' + 
-            'r: R스킬 초당 데미지 3회, 패시브 3스택\n' + 
-            'R: R스킬 심판 데미지, 패시브 1스택\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 데미지, 패시브 1스택\n' +
+            'w & W: W스킬 데미지, 패시브 1스택\n' +
+            'e: E스킬 데미지, 패시브 1스택\n' +
+            'E: E스킬 연결 및 속박 데미지, 패시브 2스택\n' +
+            'r: R스킬 초당 데미지 3회, 패시브 3스택\n' +
+            'R: R스킬 심판 데미지, 패시브 1스택\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

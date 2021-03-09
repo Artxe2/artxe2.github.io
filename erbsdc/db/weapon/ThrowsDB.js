@@ -76,10 +76,10 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Incendiary_Bomb"
-        ,Attack_Power: 70
+        ,Attack_Power: 66
         ,Attack_Speed: 60
         ,Cooldown_Reduction: 10
-        ,Title: "Incendiary Bomb\n\nAttack Power +70\nAttack Speed +60%\nCooldown Reduction +10%"
+        ,Title: "Incendiary Bomb\n\nAttack Power +66\nAttack Speed +60%\nCooldown Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{
@@ -103,9 +103,9 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Smoke_Bomb"
-        ,Attack_Power: 90
+        ,Attack_Power: 85
         ,Attack_Speed: 40
-        ,Title: "Smoke Bomb\n\nAttack Power +90\nAttack Damage +40%"
+        ,Title: "Smoke Bomb\n\nAttack Power +85\nAttack Damage +40%"
         ,Rarity: "Epic"
     }
     ,{

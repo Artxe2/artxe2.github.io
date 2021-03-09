@@ -23,7 +23,7 @@ const Li_Dailin = {
             [0, 0, 0]
         ],
         Nunchaku: [
-            [0, 3, 3],
+            [0, 0, 0],
             [0, 0, 0]
         ]
     }
@@ -48,7 +48,7 @@ const Li_Dailin = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -69,7 +69,7 @@ const Li_Dailin = {
             const damage1 = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage2 = baseAttackDamage(character, enemy, 0, 0.5 + t * 0.25, character.critical_strike_chance, 1);
             const dps = round((damage1 + damage2) * character.attack_speed * 100) / 100;
-            const life = calcHeal((damage1 + damage2) * (character.life_steal / 100), character.attack_speed, enemy);	
+            const life = calcHeal((damage1 + damage2) * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b> _d/s: </b><b class='damage'>" + dps + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
@@ -92,7 +92,7 @@ const Li_Dailin = {
             let max, over;
             if (enemy.max_hp) {
                 const hp = enemy.max_hp;
-                const heal = calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 + 
+                const heal = calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 +
                     (enemy.food ? enemy.food.HP_Regen / 30 : 0), 2, character);
                 let start = 0, mid, end = floor(hp * 0.75) + 1, coe;
                 while (start < end) {
@@ -178,24 +178,24 @@ const Li_Dailin = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Glove' ? '글러브' : 
-            weapon === 'Nunchaku' ? '쌍절곤' : 
+        const type =
+            weapon === 'Glove' ? '글러브' :
+            weapon === 'Nunchaku' ? '쌍절곤' :
             '';
-        const skill = 
-            // weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" / "최대 강화 데미지" ) __h: "평균 흡혈량"' : 
-            weapon === 'Glove' ? '"스킬 데미지" ( "스킬 데미지" ~ "최대 강화 데미지" ) __h: "스킬 흡혈량"' : 
-            weapon === 'Nunchaku' ? '"최소 데미지" ~ "최대 데미지"' : 
+        const skill =
+            // weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" / "최대 강화 데미지" ) __h: "평균 흡혈량"' :
+            weapon === 'Glove' ? '"스킬 데미지" ( "스킬 데미지" ~ "최대 강화 데미지" ) __h: "스킬 흡혈량"' :
+            weapon === 'Nunchaku' ? '"최소 데미지" ~ "최대 데미지"' :
             '';
-        return '리 다이린 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "합산 강화 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" - "1타 강화", "2타 강화", "3타 강화" )\n' + 
-            'W: _d/s: "만취 초당 데미지" __h/s: "만취 초당 흡혈량" __use "스킬 사용"\n' + 
-            'E: "스킬 데미지"\n' + 
-            'R: "최소 합산 데미지" ~ "최대 막타 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] ~ [ "최대 데미지" x "타수" ] / [ "최대 강화 데미지" x "타수" ] )\n' + 
-            'D: ' + skill + '\n' + 
+        return '리 다이린 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "합산 강화 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" - "1타 강화", "2타 강화", "3타 강화" )\n' +
+            'W: _d/s: "만취 초당 데미지" __h/s: "만취 초당 흡혈량" __use "스킬 사용"\n' +
+            'E: "스킬 데미지"\n' +
+            'R: "최소 합산 데미지" ~ "최대 막타 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] ~ [ "최대 데미지" x "타수" ] / [ "최대 강화 데미지" x "타수" ] )\n' +
+            'D: ' + skill + '\n' +
             'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" / "1타 최대 강화", "2타 최대 강화" )\n';
     }
     ,COMBO_VARS: '{\"bac\":0,\"liquid\":0,\"bqqac\":0,\"wq\":0}'
@@ -208,7 +208,7 @@ const Li_Dailin = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let bac = data.vars.bac, liquid = data.vars.liquid, qq = data.vars.qq, wq = data.vars.wq;
@@ -423,15 +423,15 @@ const Li_Dailin = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
             shield: shield,
             vars: {
-                bac: bac, 
-                liquid: liquid, 
-                qq: qq, 
+                bac: bac,
+                liquid: liquid,
+                qq: qq,
                 wq: wq
             }
         };
@@ -445,20 +445,20 @@ const Li_Dailin = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            // weapon === 'Glove' ? 'd: 무스 데미지\n' + 'D: 무스 치명타 데미지\n' : 
-            weapon === 'Glove' ? 'd & D: 무스 데미지\n' : 
-            weapon === 'Nunchaku' ? 'd: 무스 즉발 데미지\n' + 'D: 무스 최대 데미지\n' : 
+        const d =
+            // weapon === 'Glove' ? 'd: 무스 데미지\n' + 'D: 무스 치명타 데미지\n' :
+            weapon === 'Glove' ? 'd & D: 무스 데미지\n' :
+            weapon === 'Nunchaku' ? 'd: 무스 즉발 데미지\n' + 'D: 무스 최대 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 1회 데미지\n' + 
-            'w & W: W스킬 사용(최대 게이지 95)\n' +  
-            'e & E: E스킬 데미지\n' + 
-            'r & R: R스킬 데미지( 잃은 체력 비례 Max 75% )\n' + 
-            't: 패시브 데미지\n' + 
-            'T: 패시브 치명타 데미지\n' + 
-            d + 
+            'q & Q: Q스킬 1회 데미지\n' +
+            'w & W: W스킬 사용(최대 게이지 95)\n' +
+            'e & E: E스킬 데미지\n' +
+            'r & R: R스킬 데미지( 잃은 체력 비례 Max 75% )\n' +
+            't: 패시브 데미지\n' +
+            'T: 패시브 치명타 데미지\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

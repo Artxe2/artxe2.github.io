@@ -9,7 +9,7 @@ const Silvia = {
     ,Stamina_Growth: 22
     ,Stamina_Regen: 2.1
     ,Stamina_Regen_Growth: 0.06
-    ,Defense: 20
+    ,Defense: 24
     ,Defense_Growth: 1.2
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3
@@ -18,9 +18,9 @@ const Silvia = {
     ,weapons: [Pistol]
     ,correction: {
         Pistol: [
-            [0, -10, -14],
+            [0, -8, -10],
             [0, 0, 0],
-            [0, -15, -15]
+            [0, -10, -10]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -36,7 +36,7 @@ const Silvia = {
     ,DPS: (character, enemy) => {
         if (character.weapon && !character.DIV.querySelector('.silvia_r').checked) {
             const as = 10 / (9.5 / character.attack_speed + 2);
-            const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+            const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
                 baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
             const damage1 = round(shot * as * 100) / 100;
             const damage2 = round(shot * character.attack_speed * 100) / 100;
@@ -48,7 +48,7 @@ const Silvia = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -61,7 +61,7 @@ const Silvia = {
                 return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
             damage = calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
-            let heal = calcHeal((40 + q * 20 + character.attack_power * 0.5) * 
+            let heal = calcHeal((40 + q * 20 + character.attack_power * 0.5) *
                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
             cool = 10000 / ((7.5 - q * 0.75) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -79,7 +79,7 @@ const Silvia = {
                 return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
             damage = calcSkillDamage(character, enemy, 40 + w * 20, 0.3, 1);
-            cool = 10000 / ((18 - w * 1) * (100 - character.cooldown_reduction));
+            cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -143,33 +143,33 @@ const Silvia = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Pistol' ? '권총' : 
+        const type =
+            weapon === 'Pistol' ? '권총' :
             '';
-        const skill = 
-            weapon === 'Pistol' ? '"데미지 없음"' : 
+        const skill =
+            weapon === 'Pistol' ? '"데미지 없음"' :
             '';
         if (character.DIV.querySelector('.silvia_r').checked) {
-            return '실비아 ( ' + type + ' )\n' + 
-                'A: "평타 불가"\n' + 
-                'DPS: "평타 불가"\n' + 
-                'HPS: "초당 회복량"\n' + 
-                'Q: "스킬 데미지"\n' + 
-                'W: "스킬 데미지"\n' + 
-                'E: "최소 데미지" ~ "최대 데미지"\n' + 
-                'R: "평균 데미지" ( "평타 데미지" - "치명타 데미지" ) _use "스킬 사용"\n' + 
-                'D: ' + skill + '\n' + 
+            return '실비아 ( ' + type + ' )\n' +
+                'A: "평타 불가"\n' +
+                'DPS: "평타 불가"\n' +
+                'HPS: "초당 회복량"\n' +
+                'Q: "스킬 데미지"\n' +
+                'W: "스킬 데미지"\n' +
+                'E: "최소 데미지" ~ "최대 데미지"\n' +
+                'R: "평균 데미지" ( "평타 데미지" - "치명타 데미지" ) _use "스킬 사용"\n' +
+                'D: ' + skill + '\n' +
                 'T: "스택"\n';
         }
-        return '실비아 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지" __h: "회복량"\n' + 
-            'W: "스킬 데미지"\n' + 
-            'E: "최소 데미지" ~ "최대 데미지"\n' + 
-            'R: _use "스킬 사용"\n' + 
-            'D: ' + skill + '\n' + 
+        return '실비아 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지" __h: "회복량"\n' +
+            'W: "스킬 데미지"\n' +
+            'E: "최소 데미지" ~ "최대 데미지"\n' +
+            'R: _use "스킬 사용"\n' +
+            'D: ' + skill + '\n' +
             'T: "스택"\n';
     }
     ,COMBO_VARS: '{\"rr\":1}'
@@ -180,7 +180,7 @@ const Silvia = {
         const r = character.R_LEVEL.selectedIndex - 1;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let rr = data.vars.rr;
@@ -269,7 +269,7 @@ const Silvia = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -288,18 +288,18 @@ const Silvia = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' : 
+        const d =
+            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' :
             '';
-        return 'a: 기본공격 데미지 (오토바이 탑승시 데미지 없음)\n' + 
+        return 'a: 기본공격 데미지 (오토바이 탑승시 데미지 없음)\n' +
             'A: 치명타 데미지 (오토바이 탑승시 데미지 없음)\n' +
-            'q & Q: Q스킬 데미지\n' + 
-            'w & W: W스킬 데미지\n' +  
-            'e: E스킬 최소 데미지\n' + 
-            'E: E스킬 최대 데미지\n' + 
-            'r & R: R스킬 On / Off\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q & Q: Q스킬 데미지\n' +
+            'w & W: W스킬 데미지\n' +
+            'e: E스킬 최소 데미지\n' +
+            'E: E스킬 최대 데미지\n' +
+            'r & R: R스킬 On / Off\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

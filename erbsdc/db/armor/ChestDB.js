@@ -189,10 +189,10 @@ const Chest = [
          Type: "Chest"
         ,Name: "Rocker`s_Jacket"
         ,Attack_Power: 30
-        ,Defense: 14
+        ,Defense: 18
         ,Movement_speed_while_not_in_combat: 0.1
         ,Normal_Attack_Damage_Reduction: 11
-        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +14\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
+        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +18\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{

@@ -95,9 +95,9 @@ const Pistol = [
         ,Attack_Power: 95
         ,Attack_Speed: 25
         ,Movement_Speed: 0.15
-        ,Vision_Range: 3.5
+        ,Vision_Range: 2.5
         ,Life_Steal: 20
-        ,Title: "Magnum-Boa\n\nAttack Power +95\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +3.5\nLife Steal +20%"
+        ,Title: "Magnum-Boa\n\nAttack Power +95\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +2.5\nLife Steal +20%"
         ,Rarity: "Epic"
         ,Ammo: 6
     }
