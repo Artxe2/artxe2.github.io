@@ -118,7 +118,7 @@ const Arm = [
         ,Max_SP: 240
         ,HP_Regen: 1
         ,Skill_Amplification_Percent: 17
-        ,Title: "Draupnir\n\nDefense +10\nMax HP +240\nHP Regen +1\nSkill Amplification +17%"
+        ,Title: "Draupnir\n\nDefense +10\nMax SP +240\nHP Regen +1\nSkill Amplification +17%"
         ,Rarity: "Epic"
     }
     ,{
