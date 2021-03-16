@@ -3,14 +3,14 @@ const Li_Dailin = {
      Attack_Power: 33
     ,Attack_Power_Growth: 2.2
     ,Health: 550
-    ,Health_Growth: 84
+    ,Health_Growth: 82
     ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.07
     ,Stamina: 420
     ,Stamina_Growth: 16
     ,Stamina_Regen: 0.2
     ,Stamina_Regen_Growth: 0.01
-    ,Defense: 24
+    ,Defense: 22
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.07
     ,Movement_Speed: 3.1
@@ -24,7 +24,7 @@ const Li_Dailin = {
         ],
         Nunchaku: [
             [0, 0, 0],
-            [0, 0, 0]
+            [0, 3, 3]
         ]
     }
     ,Base_Attack: (character, enemy) => {

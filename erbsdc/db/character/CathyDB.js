@@ -11,7 +11,7 @@ const Cathy = {
     ,Stamina_Regen: 2.2
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 25
-    ,Defense_Growth: 2.2
+    ,Defense_Growth: 2.0
     ,Atk_Speed: 0.22
     ,Movement_Speed: 3.15
     ,Sight_Range: 8
@@ -45,7 +45,7 @@ const Cathy = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -85,9 +85,9 @@ const Cathy = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const min = calcSkillDamage(character, enemy, 120 + r * 80, 0.6, 1);
-            const minHeal = calcHeal((120 + r * 80 + character.attack_power * 0.4) * 
+            const minHeal = calcHeal((120 + r * 80 + character.attack_power * 0.4) *
                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
-            const maxHeal = calcHeal((180 + r * 120 + character.attack_power * 0.6) * 
+            const maxHeal = calcHeal((180 + r * 120 + character.attack_power * 0.6) *
                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
             let max;
             if (enemy.max_hp) {
@@ -147,21 +147,21 @@ const Cathy = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Dagger' ? '단검' : 
+        const type =
+            weapon === 'Dagger' ? '단검' :
             '';
-        const skill = 
-            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' : 
+        const skill =
+            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' :
             '';
-        return '캐시 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "최소 데미지" - "최대 데미지"\n' + 
-            'W: "스킬 데미지"\n' + 
-            'E: "합산데미지" ( "1타 데미지", "2타 데미지" )\n' + 
-            'R: "최소 데미지" ~ "최대 막타 데미지"\n' + 
-            'D: ' + skill + '\n' + 
+        return '캐시 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "최소 데미지" - "최대 데미지"\n' +
+            'W: "스킬 데미지"\n' +
+            'E: "합산데미지" ( "1타 데미지", "2타 데미지" )\n' +
+            'R: "최소 데미지" ~ "최대 막타 데미지"\n' +
+            'D: ' + skill + '\n' +
             'T: "합산 데미지" ( "틱당 데미지" x "타수" ) _s: "쉴드량" __s/s: "초당 쉴드량" _full "최대스택"\n';
     }
     ,COMBO_VARS: '{\"bleeding\":[]}'
@@ -174,18 +174,18 @@ const Cathy = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         const bleeding = data.vars.bleeding;
-        
+
         const cool = (20 - t * 2) * (100 - character.cooldown_reduction) / 100;
-        const as = character.attack_speed * character.critical_strike_chance / 100 + 1 + 
+        const as = character.attack_speed * character.critical_strike_chance / 100 + 1 +
             (1 / (12 - q * 0.5) * (100 - character.cooldown_reduction) / 100);
         if (index === 0 || floor(as * index / 2 / cool) > floor(as * (index - 1) / 2 / cool)) {
             shield += floor(100 + t * 50 + character.attack_power * 0.3);
         }
-        
+
         if (character.weapon) {
             const type = character.weapon.Type;
             const tra = calcTrueDamage(character, enemy, character.attack_power * 0.2);
@@ -403,10 +403,10 @@ const Cathy = {
                         damage += calcSkillDamage(character, enemy, (120 + r * 80) * coe, 0.6 * coe, 1);
                         lost = floor((character.max_hp - (myHp + heal)) * 100.0 / character.max_hp);
                         if (lost < 80) {
-                            heal += calcHeal((120 + r * 80 + character.attack_power * 0.4) * 
+                            heal += calcHeal((120 + r * 80 + character.attack_power * 0.4) *
                                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
                         } else {
-                            heal = calcHeal((180 + r * 120 + character.attack_power * 0.6) * 
+                            heal = calcHeal((180 + r * 120 + character.attack_power * 0.6) *
                                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
                         }
 
@@ -460,7 +460,7 @@ const Cathy = {
             }
             damage += index % 2 === 0 && bleeding[index] ? bleeding[index] === 5 ? ftra : tra : 0;
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -479,21 +479,21 @@ const Cathy = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' : 
-            weapon === 'AssaultRifle' ? 'd & D: 데미지 없음\n' : 
-            weapon === 'SniperRifle' ? 'd & D: 무스 1회 데미지\n' : 
+        const d =
+            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' :
+            weapon === 'AssaultRifle' ? 'd & D: 데미지 없음\n' :
+            weapon === 'SniperRifle' ? 'd & D: 무스 1회 데미지\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q: Q스킬 돌진 데미지\n' + 
-            'Q: Q스킬 근접 데미지\n' + 
-            'w & W: W스킬 데미지\n' +  
-            'e: E스킬 데미지\n' + 
-            'E: E스킬 벽꿍 데미지\n' + 
-            'r & R: R스킬 데미지( 잃은 체력 비례 Max 75% )\n' + 
-            't & T: 데미지 없음\n' + 
-            d + 
+            'q: Q스킬 돌진 데미지\n' +
+            'Q: Q스킬 근접 데미지\n' +
+            'w & W: W스킬 데미지\n' +
+            'e: E스킬 데미지\n' +
+            'E: E스킬 벽꿍 데미지\n' +
+            'r & R: R스킬 데미지( 잃은 체력 비례 Max 75% )\n' +
+            't & T: 데미지 없음\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

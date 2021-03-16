@@ -98,7 +98,7 @@ const Silvia = {
             }
             min = calcSkillDamage(character, enemy, 80 + e * 20, 0.5, 1);
             max = calcSkillDamage(character, enemy, 154 + e * 33, 1.32, 1);
-            cool = 10000 / ((17 - e * 2) * (100 - character.cooldown_reduction));
+            cool = 10000 / ((13 - e * 1) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
@@ -241,7 +241,7 @@ const Silvia = {
                         if (rr) {
                             damage += calcSkillDamage(character, enemy, 80 + e * 20, 0.5, 1);
                         } else {
-                            const move = character.movement_speed + character.movement_speed_while_not_in_combat;
+                            const move = character.pure_movement_speed + 0.3 + r * 0.075;
                             damage += calcSkillDamage(character, enemy, 40 + e * 25 + move / 17 * 2 * (6 + e * 4), 0.6, 1);
                         }
                     }
@@ -250,7 +250,7 @@ const Silvia = {
                         if (rr) {
                             damage += calcSkillDamage(character, enemy, 154 + e * 33, 1.32, 1);
                         } else {
-                            const move = character.movement_speed + character.movement_speed_while_not_in_combat;
+                            const move = character.pure_movement_speed + 0.3 + r * 0.075 + character.movement_speed_while_not_in_combat;
                             damage += calcSkillDamage(character, enemy, 40 + e * 25 + move * (6 + e * 4), 0.6, 1);
                         }
                     }

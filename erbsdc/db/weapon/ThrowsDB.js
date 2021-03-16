@@ -85,9 +85,9 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Grenade_of_Antioch"
-        ,Attack_Power: 80
+        ,Attack_Power: 77
         ,Extra_Normal_Attack_Damage: 85
-        ,Title: "Grenade of Antioch\n\nAttack Power +80\nExtra Normal Attack Damage +85"
+        ,Title: "Grenade of Antioch\n\nAttack Power +77\nExtra Normal Attack Damage +85"
         ,Rarity: "Epic"
 
     }
@@ -119,9 +119,9 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Ruthenium_Marble"
-        ,Attack_Power: 80
+        ,Attack_Power: 76
         ,Skill_Amplification_Percent: 28
-        ,Title: "Ruthenium Marble\n\nAttack Power +80\nSkill Amplification +28%\nHealing Reduction (Skills) -40%"
+        ,Title: "Ruthenium Marble\n\nAttack Power +76\nSkill Amplification +28%\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
 ];

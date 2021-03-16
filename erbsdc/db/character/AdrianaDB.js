@@ -19,7 +19,7 @@ const Adriana = {
     ,weapons: [Throws]
     ,correction: {
         Throws: [
-            [0, -11, -18],
+            [0, -14, -18],
             [0, 0, 0]
         ]
     }

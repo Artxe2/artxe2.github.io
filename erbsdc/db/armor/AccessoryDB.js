@@ -24,8 +24,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Fan"
-        ,Skill_Amplification: 8
-        ,Title: "Fan\n\nSkill Amplification +8"
+        ,Skill_Amplification: 6
+        ,Title: "Fan\n\nSkill Amplification +6"
         ,Rarity: "Common"
     }
     ,{
@@ -90,9 +90,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Doll"
-        ,SP_Regen_Percent: 100
+        ,SP_Regen_Percent: 80
         ,Life_Steal: 12
-        ,Title: "Doll\n\nSP Regen +100%\nLife Steal +12%"
+        ,Title: "Doll\n\nSP Regen +80%\nLife Steal +12%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -129,8 +129,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Gilded_Quill_Fan"
-        ,Skill_Amplification: 10
-        ,Title: "Gilded Quill Fan\n\nSkill Amplification +10\nHealing Reductions (Skills) -40%"
+        ,Skill_Amplification: 7
+        ,Title: "Gilded Quill Fan\n\nSkill Amplification +7\nHealing Reductions (Skills) -40%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -212,8 +212,9 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Moonlight_Pendant"
         ,Attack_Power: 20
+        ,Vision_Range: 1
         ,Life_Steal: 20
-        ,Title: "Moonlight Pendant\n\nAttack Power +20\nLife Steal +20%"
+        ,Title: "Moonlight Pendant\n\nAttack Power +20\nVision Range +1\nLife Steal +20%"
         ,Rarity: "Rare"
     }
     ,{
@@ -255,21 +256,21 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Lunar_Embrace"
-        ,Defense: 14
+        ,Defense: 11
         ,SP_Regen_Percent: 160
         ,Vision_Range: 1.5
         ,Skill_Damage_Reduction: 18
-        ,Title: "Lunar Embrace\n\nDefense +14\nSP Regen +160%\nVision Range +1.5\nSkill Damage Reduction +18"
+        ,Title: "Lunar Embrace\n\nDefense +11\nSP Regen +160%\nVision Range +1.5\nSkill Damage Reduction +18"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Accessory"
         ,Name: "Emerald_Tablet"
-        ,Attack_Power: 10
-        ,Defense: 10
+        ,Attack_Power: 12
+        ,Defense: 12
         ,Critical_Strike_Chance: 15
         ,Cooldown_Reduction: 10
-        ,Title: "Emerald Tablet\n\nAttack Power +10\nDefense +10\nCritical Strike Chance +15%\nCooldown Reduction +10%"
+        ,Title: "Emerald Tablet\n\nAttack Power +12\nDefense +12\nCritical Strike Chance +15%\nCooldown Reduction +10%"
         ,Rarity: "Legendary"
     }
 ];

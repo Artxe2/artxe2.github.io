@@ -1,7 +1,7 @@
 'use strict';
 const Emma = {
      Attack_Power: 40
-    ,Attack_Power_Growth: 2.5
+    ,Attack_Power_Growth: 2.2
     ,Health: 550
     ,Health_Growth: 60
     ,Health_Regen: 0.4

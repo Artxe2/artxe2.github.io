@@ -97,9 +97,9 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Cube_Watch"
-        ,Defense: 27
+        ,Defense: 22
         ,Attack_Speed: 50
-        ,Title: "Cube Watch\n\nDefense +27\nAttack Speed +50%"
+        ,Title: "Cube Watch\n\nDefense +22\nAttack Speed +50%"
         ,Rarity: "Rare"
     }
     ,{

@@ -66,10 +66,10 @@ const AssaultRifle = [
          Type: "AssaultRifle"
         ,Name: "XCR"
         ,Attack_Power: 60
-        ,Max_HP: 350
+        ,Max_HP: 330
         ,Vision_Range: 1.5
         ,Extra_Normal_Attack_Damage: 10
-        ,Title: "XCR\n\nAttack Power +60\nMax HP +350\nVision Range +1.5\nExtra Normal Attack Damage +10"
+        ,Title: "XCR\n\nAttack Power +60\nMax HP +330\nVision Range +1.5\nExtra Normal Attack Damage +10"
         ,Rarity: "Epic"
     }
 ];

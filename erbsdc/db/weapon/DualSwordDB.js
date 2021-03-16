@@ -29,9 +29,9 @@ const DualSwords = [
          Type: "DualSwords"
         ,Name: "Starsteel_Twin_Swords"
         ,Attack_Power: 60
-        ,Attack_Speed: 50
+        ,Attack_Speed: 40
         ,Extra_Normal_Attack_Damage: 8
-        ,Title: "Starsteel Twin Swords\n\nAttack Power +60\nAttack Speed +50%\nExtra Normal Attack Damage +8"
+        ,Title: "Starsteel Twin Swords\n\nAttack Power +60\nAttack Speed +40%\nExtra Normal Attack Damage +8"
         ,Rarity: "Epic"
     }
     ,{
@@ -46,9 +46,9 @@ const DualSwords = [
          Type: "DualSwords"
         ,Name: "Lloigor_&_Zahr"
         ,Attack_Power: 38
-        ,Attack_Speed: 15
+        ,Attack_Speed: 20
         ,Skill_Amplification: 36
-        ,Title: "Lloigor & Zahr\n\nAttack Power +38\nAttack Speed +15%\nSkill Amplification +36"
+        ,Title: "Lloigor & Zahr\n\nAttack Power +38\nAttack Speed +20%\nSkill Amplification +36"
         ,Rarity: "Epic"
     }
 ];

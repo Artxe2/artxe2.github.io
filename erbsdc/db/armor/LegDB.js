@@ -50,9 +50,9 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Heelys"
-        ,Movement_Speed: 0.12
+        ,Movement_Speed: 0.09
         ,Movement_speed_while_not_in_combat: 0.2
-        ,Title: "Heelys\n\nMovement Speed +0.12\nMovement speed while not in combat +0.2"
+        ,Title: "Heelys\n\nMovement Speed +0.09\nMovement speed while not in combat +0.2"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -84,10 +84,10 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Maverick_Runner"
-        ,Attack_Speed: 10
+        ,Attack_Speed: 5
         ,Movement_Speed: 0.2
         ,Movement_speed_while_not_in_combat: 0.45
-        ,Title: "Maverick Runner\n\nAttack Speed +10%\nMovement Speed +0.2\nMovement Speed while not in combat +0.45"
+        ,Title: "Maverick Runner\n\nAttack Speed +5%\nMovement Speed +0.2\nMovement Speed while not in combat +0.45"
         ,Rarity: "Rare"
     }
     ,{
@@ -112,11 +112,11 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Straitjacket_Sneakers"
-        ,SP_Regen: 0.7
+        ,SP_Regen: 0.5
         ,SP_Regen_Percent: 50
         ,Movement_Speed: 0.35
         ,Skill_Amplification: 10
-        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.7\nSP Regen +50%\nMovement Speed +0.35\nSkill Amplification +10"
+        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.35\nSkill Amplification +10"
         ,Rarity: "Rare"
     }
     ,{

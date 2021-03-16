@@ -18,7 +18,7 @@ const Zahir = {
     ,weapons: [Throws, Shuriken]
     ,correction: {
         Throws: [
-            [0, -10, -12],
+            [0, -10, -14],
             [0, 0, 0]
         ],
         Shuriken: [
@@ -94,8 +94,8 @@ const Zahir = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 60 + r * 90, 0.5, 1);
-            const add = calcSkillDamage(character, enemy, 30 + r * 45, 0.5, 1);
+            const damage = calcSkillDamage(character, enemy, 50 + r * 90, 0.5, 1);
+            const add = calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
             const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
             return "<b class='damage'>" + (damage + add * 4) + ' - ' + (damage + bonus + add * 4) + '</b> ( ' + damage + ', ' + bonus + ', ' + add + ' x 4, )';
         }
@@ -224,11 +224,11 @@ const Zahir = {
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 30 + r * 45, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 60 + r * 90, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 50 + r * 90, 0.5, 1);
                         if (tt) {
                             tt = false;
                             damage += bonus;

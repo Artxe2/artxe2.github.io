@@ -17,8 +17,8 @@ const Trap = [
 	,{
         Type: "Trap"
         ,Name: "Double_Guillotine"
-        ,Trap_Damage: 300
-        ,Title: "Double Guillotine\n\nTrap Damage +300"
+        ,Trap_Damage: 280
+        ,Title: "Double Guillotine\n\nTrap Damage +280"
         ,Rarity: "Epic"
     }
 	,{

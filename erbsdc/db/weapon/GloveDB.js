@@ -81,19 +81,19 @@ const Glove = [
          Type: "Glove"
         ,Name: "One_Inch_Punch"
         ,Attack_Power: 50
-        ,Defense: 21
+        ,Defense: 18
         ,SP_Regen_Percent: 50
-        ,Life_Steal: 10
-        ,Title: "One Inch Punch\n\nAttack Power +50\nDefense +21\nSP Regen +50%\nLife Steal +10%"
+        ,Life_Steal: 12
+        ,Title: "One Inch Punch\n\nAttack Power +50\nDefense +18\nSP Regen +50%\nLife Steal +12%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Glove"
         ,Name: "Divine_Fist"
-        ,Attack_Power: 53
-        ,Movement_Speed: -0.07
+        ,Attack_Power: 55
+        ,Movement_Speed: -0.1
         ,Extra_Normal_Attack_Damage: 33
-        ,Title: "Divine Fist\n\nAttack Power +53\nMovement Speed -0.07\nExtra Normal Attack Damage +33"
+        ,Title: "Divine Fist\n\nAttack Power +55\nMovement Speed -0.1\nExtra Normal Attack Damage +33"
         ,Rarity: "Epic"
     }
     ,{
@@ -117,10 +117,10 @@ const Glove = [
     ,{
          Type: "Glove"
         ,Name: "Buddha`s_Palm"
-        ,Attack_Power: 37
+        ,Attack_Power: 39
         ,Cooldown_Reduction: 18
         ,Skill_Amplification_Percent: 18
-        ,Title: "Buddha`s Palm\n\nAttack Power +37\nCooldown Reduction +18%\nSkill Amplification +18%"
+        ,Title: "Buddha`s Palm\n\nAttack Power +39\nCooldown Reduction +18%\nSkill Amplification +18%"
         ,Rarity: "Epic"
     }
     ,{
@@ -138,17 +138,17 @@ const Glove = [
     ,{
          Type: "Glove"
         ,Name: "White_Claw_Punch"
-        ,Attack_Power: 55
+        ,Attack_Power: 58
         ,Critical_Strike_Chance: 25
-        ,Title: "White Claw Punch\n\nAttack Power +55\nCritical Strike Chance +25%"
+        ,Title: "White Claw Punch\n\nAttack Power +58\nCritical Strike Chance +25%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Glove"
         ,Name: "Imperial_Silk_Gloves"
         ,Attack_Power: 85
-        ,Movement_Speed: 0.1
-        ,Title: "Imperial Silk Gloves\n\nAttack Power +85\nMovement Speed +0.1"
+        ,Movement_Speed: 0.12
+        ,Title: "Imperial Silk Gloves\n\nAttack Power +85\nMovement Speed +0.12"
         ,Rarity: "Epic"
     }
 ];

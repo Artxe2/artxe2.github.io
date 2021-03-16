@@ -721,6 +721,7 @@ class Character {
 
             this.heal_reduction =
                 this.weapon && (
+                    this.weapon.Name === '다마스커스_가시' ||
                     this.weapon.Name === 'Dainsleif' ||
                     this.weapon.Name === 'Harpe' ||
                     this.weapon.Name === 'Divine_Dual_Swords' ||
@@ -752,10 +753,9 @@ class Character {
             const attack_speed_percent =
                 attack_speed_bonus + calcEquip(this, 'Attack_Speed') +
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_attack_speed);
-            this.attack_speed = this.character === Adela ? this.character.Atk_Speed :
+            this.attack_speed =
                 round((this.character.Atk_Speed + this.weapon_attack_speed) *
                     (100 + attack_speed_percent)) / 100;
-            this.ATTACK_SPEED.innerText = this.attack_speed;
 
             const jackie_tw = [0.03, 0.08, 0.15];
             const jackie_ts = [0.05, 0.12, 0.25];
@@ -769,11 +769,16 @@ class Character {
                 (jackie_t_s.checked ? jackie_ts[ t ] : 0) : 0) +
                 (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.axe_d_hp').value * 0.001 : 0.015) : 0) +
                 (hart_w_u && hart_w_u.checked && w >= 0 ? 0.12 + w * 0.07 : 0);
-            const attack_power_bonus = (this.character === Adela ? floor(attack_speed_percent * 0.66) * (0.2 + t * 0.2) : 0)
+            const attack_power_bonus =
+                (this.character === Adela ? floor((this.attack_speed - Adela.Atk_Speed) * 100) * (0.2 + t * 0.25) : 0);
             this.attack_power =
                 floor((this.character.Attack_Power + this.character.Attack_Power_Growth * level +
                     calcEquip(this, 'Attack_Power', 2) + attack_power_bonus
                     ) * attack_power_percent);
+            if (this.character === Adela) {
+                this.attack_speed = 0.66;
+            }
+            this.ATTACK_SPEED.innerText = this.attack_speed;
             this.ATTACK_POWER.innerText = this.attack_power;
             this.pure_attack_power =
                 this.character.Attack_Power + this.character.Attack_Power_Growth * level +
@@ -782,7 +787,7 @@ class Character {
             const shoichi_t = this.DIV.querySelector('.shoichi_t');
             const cri_bonus =
                 (shoichi_t ? shoichi_t.value * (5 + t * 2) : 0) +
-                (this.character === Adela ? 4 + t * 4 : 0);
+                (this.character === Adela ? 2 + t * 4 : 0);
             this.critical_strike_chance =
                 calcEquip(this, 'Critical_Strike_Chance') + cri_bonus;
                 if (this.critical_strike_chance > 100) {
@@ -925,22 +930,26 @@ class Character {
                 (chiara_t && chiara_t.value == 4 ? 0.04 + t * 0.02 : 0) +
                 (silvia_r && silvia_r.checked ? 0.7 : 0);
             const move_bonus =
-                (silvia_r && silvia_r.checked ? 0.25 + r * 0.1 : 0);
+                (silvia_r && silvia_r.checked ? 0.3 + r * 0.075 : 0);
             this.movement_speed =
                 (this.character.Movement_Speed + move_bonus +
                     (1 + this.MOVE_MASTERY.selectedIndex) * 0.01 +
                     calcEquip(this, 'Movement_Speed', 2)) * move_percent;
-                if (this.movement_speed > 7) {
-                    this.movement_speed = 7;
-                }
+            if (this.movement_speed > 7) {
+                this.movement_speed = 7;
+            }
             this.MOVEMENT_SPEED.innerText = round(this.movement_speed, 2);
+            this.pure_movement_speed =
+                (this.character.Movement_Speed +
+                (1 + this.MOVE_MASTERY.selectedIndex) * 0.01 +
+                calcEquip(this, 'Movement_Speed', 2));
 
             this.movement_speed_while_not_in_combat =
                 ((1 + this.MOVE_MASTERY.selectedIndex) * 0.02 +
                     calcEquip(this, 'Movement_speed_while_not_in_combat', 2)) * move_percent;
-                if (this.movement_speed + this.movement_speed_while_not_in_combat > 7) {
-                    this.movement_speed_while_not_in_combat = 7 - this.movement_speed;
-                }
+            if (this.movement_speed + this.movement_speed_while_not_in_combat > 7) {
+                this.movement_speed_while_not_in_combat = 7 - this.movement_speed;
+            }
             this.MOVEMENT_SPEED_WHILE_NOT_IN_COMBAT.innerText = round(this.movement_speed + this.movement_speed_while_not_in_combat, 2);
 
             this.vision_range =

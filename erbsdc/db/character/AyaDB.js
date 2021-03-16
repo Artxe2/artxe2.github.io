@@ -127,7 +127,7 @@ const Aya = {
                 const life1 = calcHeal(shot * (character.life_steal / 100), as1, enemy);
                 const life2 = calcHeal(shot * (character.life_steal / 100), as2, enemy);
                 const cool = 30 * (100 - character.cooldown_reduction) / 100;
-                const shield = floor(100 + t * 50 + character.attack_power * 0.3);
+                const shield = floor(150 + t * 25 + character.attack_power * 0.3);
                 return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
                     "<b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 6) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 6) / cool, 2);
             }
@@ -144,7 +144,7 @@ const Aya = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const shield = floor(100 + t * 50 + character.attack_power * 0.3);
+            const shield = floor(150 + t * 25 + character.attack_power * 0.3);
             const cool = 30 * (100 - character.cooldown_reduction) / 100;
             let as;
             if (character.weapon.Type === 'AssaultRifle') {
@@ -211,7 +211,7 @@ const Aya = {
             as = 1;
         }
         if (index === 0 || floor(as * index / 2 / cool) > floor(as * (index - 1) / 2 / cool)) {
-            shield += floor(100 + t * 50 + character.attack_power * 0.3);
+            shield += floor(150 + t * 25 + character.attack_power * 0.3);
         }
 
         if (character.weapon) {

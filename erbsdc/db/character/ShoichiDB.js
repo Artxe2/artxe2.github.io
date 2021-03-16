@@ -1,6 +1,6 @@
 const Shoichi = {
      Attack_Power: 30
-    ,Attack_Power_Growth: 2.9
+    ,Attack_Power_Growth: 3.1
     ,Health: 550
     ,Health_Growth: 78
     ,Health_Regen: 0.8
@@ -57,7 +57,7 @@ const Shoichi = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -150,21 +150,21 @@ const Shoichi = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Dagger' ? '단검' : 
+        const type =
+            weapon === 'Dagger' ? '단검' :
             '';
-        const skill = 
-            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' : 
+        const skill =
+            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' :
             '';
-        return '쇼이치 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지"\n' + 
-            'W: "스킬 데미지"\n' + 
-            'E: "스킬 데미지"\n' + 
-            'R: "합산 데미지" ( "1타 데미지", "2타 데미지", "패시브 데미지" x "타수", "W 데미지" )\n' + 
-            'D: ' + skill + '\n' + 
+        return '쇼이치 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지"\n' +
+            'W: "스킬 데미지"\n' +
+            'E: "스킬 데미지"\n' +
+            'R: "합산 데미지" ( "1타 데미지", "2타 데미지", "패시브 데미지" x "타수", "W 데미지" )\n' +
+            'D: ' + skill + '\n' +
             'T: "스킬 데미지"_ "스택"\n';
     }
     ,COMBO_VARS: '{\"tt\":0}'
@@ -177,7 +177,7 @@ const Shoichi = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let tt = data.vars.tt;
@@ -279,7 +279,7 @@ const Shoichi = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -298,17 +298,17 @@ const Shoichi = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Dagger' ? 'd & D: 무스 데미지(현재 체력 비례)\n' : 
+        const d =
+            weapon === 'Dagger' ? 'd & D: 무스 데미지(현재 체력 비례)\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' + 
-            'w & W: W스킬 데미지\n' +  
-            'e & E: E스킬 데미지\n' + 
-            'r & R: R스킬 데미지\n' + 
-            't & T: 패시브 데미지\n' + 
-            d + 
+            'q & Q: Q스킬 데미지\n' +
+            'w & W: W스킬 데미지\n' +
+            'e & E: E스킬 데미지\n' +
+            'r & R: R스킬 데미지\n' +
+            't & T: 패시브 데미지\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

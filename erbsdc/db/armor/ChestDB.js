@@ -198,11 +198,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Mithril_Armor"
-        ,Defense: 65
+        ,Defense: 62
         ,Attack_Speed: 12
         ,Movement_Speed: 0.2
         ,Skill_Damage_Reduction: 10
-        ,Title: "Mithril Armor\n\nDefense +65\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +10"
+        ,Title: "Mithril Armor\n\nDefense +62\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +10"
         ,Rarity: "Epic"
     }
     ,{
@@ -277,13 +277,13 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Blazing_Dress"
-        ,Attack_Power: 10
+        ,Attack_Power: 16
         ,Defense: 30
         ,HP_Regen: 2.5
-        ,SP_Regen: 3
+        ,SP_Regen: 2
         ,SP_Regen_Percent: 75
         ,Extra_Normal_Attack_Damage: 18
-        ,Title: "Blazing Dress\n\nAttack Power +10\nDefense +30\nHP Regen +2.5\nSP Regen +3\nSP Regen +75%\nExtra Normal Attack Damage +18"
+        ,Title: "Blazing Dress\n\nAttack Power +16\nDefense +30\nHP Regen +2.5\nSP Regen +2\nSP Regen +75%\nExtra Normal Attack Damage +18"
         ,Rarity: "Legendary"
     }
     ,{

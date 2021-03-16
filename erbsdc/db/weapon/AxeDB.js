@@ -33,8 +33,8 @@ const Axe = [
          Type: "Axe"
         ,Name: "Light_Hatchet"
         ,Attack_Power: 61
-        ,Movement_Speed: 0.1
-        ,Title: "Light Hatchet\n\nAttack Power +61\nMovement Speed +0.1"
+        ,Movement_Speed: 0.05
+        ,Title: "Light Hatchet\n\nAttack Power +61\nMovement Speed +0.05"
         ,Rarity: "Rare"
     }
     ,{
@@ -57,8 +57,8 @@ const Axe = [
          Type: "Axe"
         ,Name: "Beam_Axe"
         ,Attack_Power: 127
-        ,Vision_Range: 4
-        ,Title: "Beam Axe\n\nAttack Power +127\nVision Range +4"
+        ,Vision_Range: 3.5
+        ,Title: "Beam Axe\n\nAttack Power +127\nVision Range +3.5"
         ,Rarity: "Epic"
     }
     ,{
@@ -84,19 +84,19 @@ const Axe = [
          Type: "Axe"
         ,Name: "Parashu"
         ,Attack_Power: 115
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.07
         ,Cooldown_Reduction: 10
-        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.1\nCooldown Reduction +10%"
+        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.07\nCooldown Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Axe"
         ,Name: "Harpe"
         ,Attack_Power: 105
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.07
         ,Attack_Range: 0.5
         ,Skill_Amplification: 33
-        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.1\nAttack Range +0.5\nSkill Amplification +33\nHealing Reduction (Skills) -40%"
+        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.07\nAttack Range +0.5\nSkill Amplification +33\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
 ];

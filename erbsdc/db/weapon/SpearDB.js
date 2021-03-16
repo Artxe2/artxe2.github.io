@@ -63,8 +63,8 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Cosmic_Bident"
-        ,Attack_Power: 150
-        ,Title: "Cosmic Bident\n\nAttack Power +150"
+        ,Attack_Power: 138
+        ,Title: "Cosmic Bident\n\nAttack Power +138"
         ,Rarity: "Epic"
     }
     ,{

@@ -21,8 +21,8 @@ const Rapier = [
         ,Attack_Power: 21
         ,Critical_Strike_Chance: 10
         ,Critical_Damage: 25
-        ,Cooldown_Reduction: 8
-        ,Title: "Apricot Sword\n\nAttack Power +21\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +8%"
+        ,Cooldown_Reduction: 6
+        ,Title: "Apricot Sword\n\nAttack Power +21\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +6%"
         ,Rarity: "Rare"
     }
     ,{
@@ -56,18 +56,18 @@ const Rapier = [
         ,Attack_Speed: 35
         ,Critical_Strike_Chance: 10
         ,Critical_Damage: 25
-        ,Cooldown_Reduction: 8
-        ,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +35%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +8%"
+        ,Cooldown_Reduction: 6
+        ,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +35%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +6%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Rapier"
         ,Name: "Meteor_Claymore"
-        ,Attack_Power: 75
-        ,Critical_Strike_Chance: 15
+        ,Attack_Power: 67
+        ,Critical_Strike_Chance: 17
         ,Critical_Damage: 20
-        ,Cooldown_Reduction: 10
-        ,Title: "Meteor Claymore\n\nAttack Power +75\nCritical Strike Chance +15%\nCritical Damage +20%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 12
+        ,Title: "Meteor Claymore\n\nAttack Power +67\nCritical Strike Chance +17%\nCritical Damage +20%\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{

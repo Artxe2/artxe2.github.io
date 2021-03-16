@@ -113,7 +113,7 @@ const Hart = {
         if (character.weapon && r >= 0) {
             const regen = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
                 (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy);
-            const heal = calcHeal(30 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy);
+            const heal = calcHeal(20 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy);
             const total = round((heal + regen) * 5 * 100) / 100
             return "<b> _h: </b><b class='heal'>" + total + "</b> ( [ <b class='heal'>" + heal + '</b>, ' + regen + ' ] x 5s )';
         }
@@ -321,6 +321,10 @@ const Hart = {
                             round(character.pure_skill_amplification_percent + (ee[index] ? ee[index] * sap : 0));
                         damage += calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
                     }
+                } else if (c === 'r' || c === 'R') {
+                    if (r >= 0) {
+                        heal += calcHeal(20 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy) * 5;
+                    }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Guitar') {
@@ -363,7 +367,7 @@ const Hart = {
             'Q: Q스킬 최대 데미지\n' +
             'w & W: W스킬 On\n' +
             'e & E: E스킬 데미지\n' +
-            'r & R: 데미지 없음\n' +
+            'r & R: 체력 회복\n' +
             't & T: 데미지 없음\n' +
             d +
             'p & P: 트랩 데미지';

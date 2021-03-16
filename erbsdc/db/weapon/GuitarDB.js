@@ -121,10 +121,10 @@ const Guitar = [
     ,{
          Type: "Guitar"
         ,Name: "Wonderful_Tonight"
-        ,Attack_Power: 100
+        ,Attack_Power: 92
         ,Attack_Speed: 25
         ,Extra_Normal_Attack_Damage: 2
-        ,Title: "Wonderful Tonight\n\nAttack Power +100\nAttack Speed +25%\nExtra Normal Attack Damage +2"
+        ,Title: "Wonderful Tonight\n\nAttack Power +92\nAttack Speed +25%\nExtra Normal Attack Damage +2"
         ,Rarity: "Epic"
     }
     ,{

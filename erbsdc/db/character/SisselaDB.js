@@ -61,7 +61,7 @@ const Sissela = {
             const damage1 = calcSkillDamage(character, enemy, 40 + q * 20, 0.3, 1);
             const damage2 = calcSkillDamage(character, enemy, 60 + q * 30, 0.5, 1);
             const cost = 50 + q * 10;
-            const cool = 10000 / ((6.5 - q * 0.75) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((6.5 - q * 0.75) * (100 - character.cooldown_reduction) + 12);
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " ) <b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
@@ -83,7 +83,7 @@ const Sissela = {
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 40 + e * 50, 0.6, 1);
             const shield = 75 + e * 50 + character.attack_power * 0.5;
-            const cool = 10000 / ((14 - e * 1) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((14 - e * 1) * (100 - character.cooldown_reduction) + 20);
             return "<b class='damage'>" + damage + "</b><b> __s: </b><b class='shield'>" + shield + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';

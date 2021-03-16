@@ -11,7 +11,7 @@ const Chiara = {
     ,Stamina_Regen: 2.1
     ,Stamina_Regen_Growth: 0.03
     ,Defense: 27
-    ,Defense_Growth: 1.5
+    ,Defense_Growth: 1.3
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.15
     ,Sight_Range: 8
@@ -51,7 +51,7 @@ const Chiara = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + q * 40, 0.6, 1);
-            const cool = 10000 / ((10 - q * 1) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((10 - q * 1) * (100 - character.cooldown_reduction) + 12);
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';

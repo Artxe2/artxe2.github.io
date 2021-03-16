@@ -1,5 +1,5 @@
 const Yuki = {
-     Attack_Power: 32
+     Attack_Power: 29
     ,Attack_Power_Growth: 2.6
     ,Health: 550
     ,Health_Growth: 81
@@ -98,7 +98,7 @@ const Yuki = {
             if (e >= 0) {
                 const t = character.T_LEVEL.selectedIndex;
                 const damage = calcSkillDamage(character, enemy, 65 + e * 55, 0.4, 1);
-                const cool = (600 + w * 50) / ((16 - e * 1) * (100 - character.cooldown_reduction) - 300) *
+                const cool = (550 + w * 50) / ((17 - e * 1) * (100 - character.cooldown_reduction) - 300) *
                     10000 / ((18 - w * 2) * (100 - character.cooldown_reduction));
                 if (character.DIV.querySelector('.yuki_t').checked) {
                     const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
@@ -115,7 +115,7 @@ const Yuki = {
         if (character.weapon && e >= 0) {
             const t = character.E_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 65 + e * 55, 0.4, 1);
-            const cool = 10000 / ((16 - e * 1) * (100 - character.cooldown_reduction) - 300);
+            const cool = 10000 / ((17 - e * 1) * (100 - character.cooldown_reduction) - 300);
             if (character.DIV.querySelector('.yuki_t').checked) {
                 const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
                 return "<b class='damage'>" + (damage + bonus) + '</b> ( ' + damage + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';

@@ -55,17 +55,18 @@ const Hammer = [
     ,{
          Type: "Hammer"
         ,Name: "Evening_Star"
-        ,Attack_Power: 145
-        ,Title: "Evening Star\n\nAttack Power +145"
+        ,Attack_Power: 137
+        ,Title: "Evening Star\n\nAttack Power +137"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Hammer"
         ,Name: "Magic_Stick"
-        ,Attack_Power: 60
+        ,Attack_Power: 55
+        ,Vision_Range: 0.5
         ,Life_Steal: 30
         ,Skill_Amplification_Percent: 27
-        ,Title: "Magic Stick\n\nAttack Power +60\nLife Steal +30%\nSkill Amplification +27%"
+        ,Title: "Magic Stick\n\nAttack Power +60\nVision Range +0.5\nLife Steal +30%\nSkill Amplification +27%"
         ,Rarity: "Epic"
     }
 ];

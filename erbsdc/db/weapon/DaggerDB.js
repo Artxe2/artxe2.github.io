@@ -31,11 +31,26 @@ const Dagger = [
     }
     ,{
          Type: "Dagger"
+        ,Name: "Scalpel"
+        ,Attack_Power: 18
+        ,Title: "Scalpel\n\nAttack Power +18"
+        ,Rarity: "Uncommon"
+    }
+    ,{
+         Type: "Dagger"
         ,Name: "Rose_Knife"
         ,Attack_Power: 20
         ,Movement_Speed: 0.1
         ,Cooldown_Reduction: 8
         ,Title: "Rose Knife\n\nAttack Power +20\nMovement Speed +0.1\nCooldown Reduction +8%"
+        ,Rarity: "Rare"
+    }
+    ,{
+         Type: "Dagger"
+        ,Name: "Swiss_Army_Knife"
+        ,Attack_Power: 23
+        ,Max_HP: 100
+        ,Title: "Swiss Army Knife\n\nAttack Power +23\nMax HP +100"
         ,Rarity: "Rare"
     }
     ,{
@@ -66,6 +81,14 @@ const Dagger = [
         ,Attack_Speed: 40
         ,Movement_Speed: 0.1
         ,Title: "Vibroblade\n\nAttack Power +55\nAttack Speed +40%\nMovement Speed +0.1"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Dagger"
+        ,Name: "다마스커스_가시"
+        ,Attack_Power: 63
+        ,Max_HP: 250
+        ,Title: "다마스커스 가시\n\nAttack Power +63\nMax HP +250\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
