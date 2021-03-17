@@ -16,7 +16,6 @@ class Character {
             this.D_DAMAGE.innerHTML = this.character.D_Skill(this, this.enemy);
             this.T_DAMAGE.innerHTML = this.character.T_Skill(this, this.enemy);
             this.TRAP_DAMAGE.innerHTML = this.calcTrapDamage();
-            // this.COMBO_DAMAGE.innerHTML = this.character.COMBO(this, this.enemy);
             this.CHAR.innerHTML = this.CHARACTER.value;
             if (this.enemy.character) {
                 this.ENEMY.innerHTML = ' vs ' + this.enemy.CHARACTER.value;
@@ -770,7 +769,7 @@ class Character {
                 (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.axe_d_hp').value * 0.001 : 0.015) : 0) +
                 (hart_w_u && hart_w_u.checked && w >= 0 ? 0.12 + w * 0.07 : 0);
             const attack_power_bonus =
-                (this.character === Adela ? floor((this.attack_speed - Adela.Atk_Speed) * 100) * (0.2 + t * 0.25) : 0);
+                (this.character === Adela && this.attack_speed > 0.66 ? floor((this.attack_speed - 0.66) * 100) * (0.2 + t * 0.25) : 0);
             this.attack_power =
                 floor((this.character.Attack_Power + this.character.Attack_Power_Growth * level +
                     calcEquip(this, 'Attack_Power', 2) + attack_power_bonus
