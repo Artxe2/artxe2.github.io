@@ -1,19 +1,19 @@
 'use strict';
 const Bernice = {
-     Attack_Power: 28
-    ,Attack_Power_Growth: 2.6
-    ,Health: 480
-    ,Health_Growth: 63
+     Attack_Power: 30
+    ,Attack_Power_Growth: 2.4
+    ,Health: 600
+    ,Health_Growth: 80
     ,Health_Regen: 0.5
-    ,Health_Regen_Growth: 0.05
-    ,Stamina: 440
-    ,Stamina_Growth: 22
-    ,Stamina_Regen: 2.3
-    ,Stamina_Regen_Growth: 0.07
-    ,Defense: 14
-    ,Defense_Growth: 1.4
-    ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.0
+    ,Health_Regen_Growth: 0.06
+    ,Stamina: 410
+    ,Stamina_Growth: 15
+    ,Stamina_Regen: 1.8
+    ,Stamina_Regen_Growth: 0.06
+    ,Defense: 25
+    ,Defense_Growth: 1.8
+    ,Atk_Speed: 0.24
+    ,Movement_Speed: 3.2
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [SniperRifle]
