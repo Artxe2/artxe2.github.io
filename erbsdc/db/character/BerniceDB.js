@@ -15,7 +15,7 @@ const Bernice = {
     ,Atk_Speed: 0.24
     ,Movement_Speed: 3.2
     ,Sight_Range: 8
-    ,Attack_Range: 0.4
+    ,Attack_Range: -3.2
     ,weapons: [SniperRifle]
     ,correction: {
         SniperRifle: [
