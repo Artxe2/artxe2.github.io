@@ -250,7 +250,7 @@ const Bernice = {
             }
         };
     }
-    ,COMBO_Option: 'wqAaarAqa'
+    ,COMBO_Option: 'raqawaaqa'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
