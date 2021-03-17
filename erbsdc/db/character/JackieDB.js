@@ -32,7 +32,7 @@ const Jackie = {
         ],
         DualSwords: [
             [0, 0, 0],
-            [0, -2, -8]
+            [0, -2, -5]
         ]
     }
     ,Base_Attack: (character, enemy) => {
