@@ -944,8 +944,7 @@ class Character {
                 calcEquip(this, 'Movement_Speed', 2));
 
             this.movement_speed_while_not_in_combat =
-                ((1 + this.MOVE_MASTERY.selectedIndex) * 0.02 +
-                    calcEquip(this, 'Movement_speed_while_not_in_combat', 2)) * move_percent;
+                (1 + this.MOVE_MASTERY.selectedIndex) * 0.02 + calcEquip(this, 'Movement_speed_while_not_in_combat', 2);
             if (this.movement_speed + this.movement_speed_while_not_in_combat > 7) {
                 this.movement_speed_while_not_in_combat = 7 - this.movement_speed;
             }
