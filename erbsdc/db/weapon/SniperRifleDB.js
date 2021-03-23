@@ -52,10 +52,10 @@ const SniperRifle = [
     ,{
          Type: "SniperRifle"
         ,Name: "Tac-50"
-        ,Attack_Power: 134
+        ,Attack_Power: 128
         ,Vision_Range: 2.5
-        ,Life_Steal: 30
-        ,Title: "Tac-50\n\nAttack Power +134\nVision Range +2.5\nLife Steal +30%"
+        ,Life_Steal: 20
+        ,Title: "Tac-50\n\nAttack Power +128\nVision Range +2.5\nLife Steal +20%"
         ,Rarity: "Epic"
         ,Ammo: 2
     }

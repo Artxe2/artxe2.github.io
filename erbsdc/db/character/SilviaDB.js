@@ -1,6 +1,6 @@
 const Silvia = {
      Attack_Power: 25
-    ,Attack_Power_Growth: 2.5
+    ,Attack_Power_Growth: 2.2
     ,Health: 500
     ,Health_Growth: 61
     ,Health_Regen: 0.4
@@ -18,7 +18,7 @@ const Silvia = {
     ,weapons: [Pistol]
     ,correction: {
         Pistol: [
-            [0, -8, -10],
+            [0, -12, -15],
             [0, 0, 0],
             [0, -10, -10]
         ]
@@ -108,9 +108,9 @@ const Silvia = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             if (character.DIV.querySelector('.silvia_r').checked) {
-                const damage = baseAttackDamage(character, enemy, 0, 1.25 + r * 0.25, character.critical_strike_chance, 1);
-                const min = baseAttackDamage(character, enemy, 0, 1.25 + r * 0.25, 0, 1);
-                const max = baseAttackDamage(character, enemy, 0, 1.25 + r * 0.25, 100, 1);
+                const damage = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, character.critical_strike_chance, 1);
+                const min = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, 0, 1);
+                const max = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, 100, 1);
                 return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
             }
             return '-';
@@ -201,7 +201,7 @@ const Silvia = {
                 if (c === 'a') {
                     if (rr === 2) {
                         rr--;
-                        ba = baseAttackDamage(character, enemy, 0, 1.25 + r * 0.25, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else if (rr) {
@@ -212,7 +212,7 @@ const Silvia = {
                 } else if (c === 'A') {
                     if (rr === 2) {
                         rr--;
-                        ba = baseAttackDamage(character, enemy, 0, 1.25 + r * 0.25, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else if (rr) {

@@ -24,9 +24,9 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Leather_Shield"
-        ,Attack_Power: 10
-        ,Defense: 10
-        ,Title: "Leather Shield\n\nAttack Power +10\nDefense +10"
+        ,Attack_Power: 8
+        ,Defense: 12
+        ,Title: "Leather Shield\n\nAttack Power +8\nDefense +12"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -153,20 +153,20 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Sword_of_Shah_Jahan"
-        ,Attack_Power: 28
+        ,Attack_Power: 30
         ,Max_HP: 300
         ,Normal_Attack_Damage_Reduction: 2
-        ,Title: "Sword of Shah Jahan\n\nAttack Power +28\nMax HP +300\nNormal Attack Damage Reduction +2"
+        ,Title: "Sword of Shah Jahan\n\nAttack Power +30\nMax HP +300\nNormal Attack Damage Reduction +2"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Arm"
         ,Name: "Burnished_Aegis"
-        ,Attack_Power: 10
-        ,Defense: 10
+        ,Attack_Power: 8
+        ,Defense: 12
         ,Max_HP: 320
         ,Max_SP: 250
-        ,Title: "Burnished Aegis\n\nAttack Power +10\nDefense +10\nMax HP +320\nMax SP +250"
+        ,Title: "Burnished Aegis\n\nAttack Power +8\nDefense +12\nMax HP +320\nMax SP +250"
         ,Rarity: "Epic"
     }
     ,{

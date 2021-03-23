@@ -92,15 +92,11 @@ const Hyunwoo = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'Glove') {
-                const coe = wm < 13 ? 1.2 : 2.2;
+                const coe = wm < 13 ? 1.4 : 2.4;
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
-                // const damage = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1) + bonus;
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                // const max = baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;
                 const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
-                // const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
                 return "<b class='damage'>" + min + "</b><b> __h: </b><b class='heal'>" + life + '</b>';
-                // return "<b class='damage'>" + damage + '</b> ( ' +  min + " - <b class='damage'>" + max + "</b> )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
                 return "<b class='damage'>" + (wm < 13 ? 50 : 70) + '%</b>';
@@ -132,7 +128,6 @@ const Hyunwoo = {
             weapon === 'Tonfa' ? '톤파' :
             '';
         const skill =
-            // weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" ) __h: "평균 흡혈량"' :
             weapon === 'Glove' ? '"스킬 데미지"  __h: "평균 흡혈량"' :
             weapon === 'Tonfa' ? '"반사 데미지"' :
             '';
@@ -260,7 +255,7 @@ const Hyunwoo = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            const coe = wm < 13 ? 1.2 : 2.2;
+                            const coe = wm < 13 ? 1.4 : 2.4;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -274,19 +269,6 @@ const Hyunwoo = {
                             damage += 0;
                         }
                     }
-                // } else if (c === 'D') {
-                //     if (wm > 5) {
-                //         if (type === 'Glove') {
-                //             const coe = wm < 13 ? 1 : 2;
-                //             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
-                //             damage += baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;
-                //             life += calcHeal(
-                //                 (baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus)
-                //              * (character.life_steal / 100), 1, enemy);
-                //         } else if (type === 'Tonfa') {
-                //             damage += 0;
-                //         }
-                //     }
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
@@ -314,7 +296,6 @@ const Hyunwoo = {
         }
         const weapon = character.weapon.Type;
         const d =
-            // weapon === 'Glove' ? 'd: 무스 데미지\n' + 'D: 무스 치명타 데미지\n' :
             weapon === 'Glove' ? 'd & D: 무스 데미지\n' :
             weapon === 'Tonfa' ? 'd & D: 데미지 없음\n' :
             '';

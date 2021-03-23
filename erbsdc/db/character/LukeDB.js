@@ -1,5 +1,5 @@
 const Luke = {
-     Attack_Power: 32
+     Attack_Power: 28
     ,Attack_Power_Growth: 2.5
     ,Health: 585
     ,Health_Growth: 84
@@ -105,7 +105,7 @@ const Luke = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const min = calcSkillDamage(character, enemy, 250 + r * 100, 0.8, 1);
+            const min = calcSkillDamage(character, enemy, 200 + r * 100, 0.75, 1);
             let max;
             if (enemy.max_hp) {
                 const hp = enemy.max_hp;
@@ -113,7 +113,7 @@ const Luke = {
                 while (start < end) {
                     mid = (start + end + 1) / 2;
                     coe = (mid * 100.0 / hp > 75 ? 75 : mid * 100.0 / hp) / 75 + 1;
-                    max = calcSkillDamage(character, enemy, (250 + r * 100) * coe, 0.8 * coe, 1);
+                    max = calcSkillDamage(character, enemy, (200 + r * 100) * coe, 0.75 * coe, 1);
                     if (max + mid > hp) {
                         end = mid - 1;
                     } else {
@@ -121,7 +121,7 @@ const Luke = {
                     }
                 }
             } else {
-                max = calcSkillDamage(character, enemy, 500 + r * 200, 1.6, 1);
+                max = calcSkillDamage(character, enemy, 400 + r * 200, 1.5, 1);
             }
             return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
         }
@@ -268,7 +268,7 @@ const Luke = {
                             lost = 0;
                         }
                         const coe = enemy.max_hp ? (lost > 75 ? 75 : lost) / 75 + 1 : 2;
-                        damage += calcSkillDamage(character, enemy, (250 + r * 100) * coe, 0.8 * coe, 1);
+                        damage += calcSkillDamage(character, enemy, (200 + r * 100) * coe, 0.75 * coe, 1);
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {

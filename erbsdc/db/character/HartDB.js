@@ -10,7 +10,7 @@ const Hart = {
     ,Stamina_Growth: 16
     ,Stamina_Regen: 1.7
     ,Stamina_Regen_Growth: 0.04
-    ,Defense: 22
+    ,Defense: 25
     ,Defense_Growth: 1.9
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3
@@ -19,7 +19,7 @@ const Hart = {
     ,weapons: [Guitar]
     ,correction: {
         Guitar: [
-            [0, -5, -5],
+            [0, -7, -9],
             [0, 0, 0]
         ]
     }

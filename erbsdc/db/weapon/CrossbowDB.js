@@ -63,18 +63,18 @@ const Crossbow = [
          Type: "Crossbow"
         ,Name: "Ballista"
         ,Attack_Power: 115
-        ,Attack_Speed: -5
+        ,Attack_Speed: -8
         ,Skill_Amplification_Percent: 8
-        ,Title: "Ballista\n\nAttack Power +115\nAttack Speed -5%\nSkill Amplification +8%"
+        ,Title: "Ballista\n\nAttack Power +115\nAttack Speed -8%\nSkill Amplification +8%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Crossbow"
         ,Name: "Sniper_Crossbow"
         ,Attack_Power: 85
-        ,Vision_Range: 3.5
+        ,Vision_Range: 3
         ,Attack_Range: 1
-        ,Title: "Sniper Crossbow\n\nAttack Power +85\nVision Range +3.5\nAttack Range +1"
+        ,Title: "Sniper Crossbow\n\nAttack Power +85\nVision Range +3\nAttack Range +1"
         ,Rarity: "Epic"
     }
     ,{

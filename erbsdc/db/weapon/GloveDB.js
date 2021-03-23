@@ -146,9 +146,9 @@ const Glove = [
     ,{
          Type: "Glove"
         ,Name: "Imperial_Silk_Gloves"
-        ,Attack_Power: 85
+        ,Attack_Power: 88
         ,Movement_Speed: 0.12
-        ,Title: "Imperial Silk Gloves\n\nAttack Power +85\nMovement Speed +0.12"
+        ,Title: "Imperial Silk Gloves\n\nAttack Power +88\nMovement Speed +0.12"
         ,Rarity: "Epic"
     }
 ];

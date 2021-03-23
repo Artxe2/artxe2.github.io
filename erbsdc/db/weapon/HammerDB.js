@@ -31,8 +31,8 @@ const Hammer = [
          Type: "Hammer"
         ,Name: "Fang_Mace"
         ,Attack_Power: 55
-        ,Skill_Amplification: 31
-        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +31"
+        ,Skill_Amplification: 28
+        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +28"
         ,Rarity: "Epic"
     }
     ,{

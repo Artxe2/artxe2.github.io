@@ -72,8 +72,8 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Chakram"
-        ,Attack_Power: 38
-        ,Title: "Chakram\n\nAttack Power +38"
+        ,Attack_Power: 30
+        ,Title: "Chakram\n\nAttack Power +30"
         ,Rarity: "Rare"
     }
     ,{

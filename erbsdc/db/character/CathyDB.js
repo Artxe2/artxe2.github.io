@@ -21,7 +21,7 @@ const Cathy = {
         Dagger: [
             [0, -5, -8],
             [0, 0, 0],
-            [0, 0, 0]
+            [0, -6, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {

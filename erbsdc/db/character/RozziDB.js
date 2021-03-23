@@ -18,7 +18,7 @@ const Rozzi = {
     ,weapons: [Pistol]
     ,correction: {
         Pistol: [
-            [0, -3, -6],
+            [0, -5, -8],
             [0, 0, 0]
         ],
     }
@@ -35,7 +35,7 @@ const Rozzi = {
     ,DPS: (character, enemy) => {
         if (character.weapon) {
             const as = 10 / (9.5 / character.attack_speed + 2);
-            const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 + 
+            const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
                 baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
             const damage1 = round(shot * as * 100) / 100;
             const damage2 = round(shot * character.attack_speed * 100) / 100;
@@ -47,7 +47,7 @@ const Rozzi = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -107,7 +107,7 @@ const Rozzi = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const coe = 0.5 + t * 0.1;
+            const coe = 0.6 + t * 0.1;
             const damage1 = baseAttackDamage(character, enemy, 0, 0.6, character.critical_strike_chance, 1);
             const damage2 = baseAttackDamage(character, enemy, 0, coe, character.critical_strike_chance, 1);
             const min1 = baseAttackDamage(character, enemy, 0, 0.6, 0, 1);
@@ -127,21 +127,21 @@ const Rozzi = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const type = 
-            weapon === 'Pistol' ? '권총' : 
+        const type =
+            weapon === 'Pistol' ? '권총' :
             '';
-        const skill = 
-            weapon === 'Pistol' ? '"데미지 없음"' :  
+        const skill =
+            weapon === 'Pistol' ? '"데미지 없음"' :
             '';
-        return '로지 ( ' + type + ' )\n' + 
-            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' + 
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' + 
-            'HPS: "초당 회복량"\n' + 
-            'Q: "스킬 데미지"\n' + 
-            'W: "스킬 데미지"\n' + 
-            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' + 
-            'R: "최소 데미지" - "최대 데미지"\n' + 
-            'D: ' + skill + '\n' + 
+        return '로지 ( ' + type + ' )\n' +
+            'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
+            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'HPS: "초당 회복량"\n' +
+            'Q: "스킬 데미지"\n' +
+            'W: "스킬 데미지"\n' +
+            'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
+            'R: "최소 데미지" - "최대 데미지"\n' +
+            'D: ' + skill + '\n' +
             'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" )\n';
     }
     ,COMBO_VARS: '{\"ee\":false}'
@@ -153,12 +153,12 @@ const Rozzi = {
         const t = character.T_LEVEL.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 + 
+        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let ee = data.vars.ee;
         if (character.weapon) {
-            const coe = 0.5 + t * 0.1;
+            const coe = 0.6 + t * 0.1;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {
@@ -204,7 +204,7 @@ const Rozzi = {
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + r * 100, 0.45, 1) + 
+                        damage += calcSkillDamage(character, enemy, 100 + r * 100, 0.45, 1) +
                             calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.04 + r * 0.04) : 0);
                     }
                 } else if (c === 't') {
@@ -238,7 +238,7 @@ const Rozzi = {
                 }
             }
         }
-        return { 
+        return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
@@ -257,19 +257,19 @@ const Rozzi = {
             return 'select weapon plz';
         }
         const weapon = character.weapon.Type;
-        const d = 
-            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' : 
+        const d =
+            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' :
             '';
-        return 'a: 기본공격 데미지\n' + 
+        return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' + 
-            'w & W: W스킬 데미지\n' +  
-            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지\n' + 
-            'r: R스킬 최소 데미지\n' + 
-            'R: R스킬 최대 데미지\n' + 
-            't: 패시브 데미지\n' + 
-            'T: 패시브 치명타 데미지\n' + 
-            d + 
+            'q & Q: Q스킬 데미지\n' +
+            'w & W: W스킬 데미지\n' +
+            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지\n' +
+            'r: R스킬 최소 데미지\n' +
+            'R: R스킬 최대 데미지\n' +
+            't: 패시브 데미지\n' +
+            'T: 패시브 치명타 데미지\n' +
+            d +
             'p & P: 트랩 데미지';
     }
 };

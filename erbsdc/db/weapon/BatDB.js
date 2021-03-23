@@ -75,9 +75,9 @@ const Bat = [
     ,{
          Type: "Bat"
         ,Name: "Monkey_King_Bar"
-        ,Attack_Power: 145
+        ,Attack_Power: 140
         ,Attack_Range: 1
-        ,Title: "Monkey King Bar\n\nAttack Power +145\nAttack Range +1"
+        ,Title: "Monkey King Bar\n\nAttack Power +140\nAttack Range +1"
         ,Rarity: "Legendary"
     }
 ];

@@ -131,16 +131,12 @@ const Li_Dailin = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'Glove') {
-                const coe = wm < 13 ? 1.2 : 2.2;
+                const coe = wm < 13 ? 1.4 : 2.4;
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
-                // const damage = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1) + bonus;
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                // const max = baseAttackDamage(character, enemy, 0, 1 + coe, 100, 1) + bonus;
                 const over = baseAttackDamage(character, enemy, 0, (1 + coe) * 1.19, 0, 1) + bonus;
                 const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
-                // const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
                 return "<b class='damage'>" + min + '</b> ( ' +  min + ' ~ ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
-                // return "<b class='damage'>" + damage + '</b> ( ' +  min + " - <b class='damage'>" + max + '</b> / ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Nunchaku') {
                 const min = calcSkillDamage(character, enemy, wm < 13 ? 150 : 300, 0.5, 1);
@@ -183,7 +179,6 @@ const Li_Dailin = {
             weapon === 'Nunchaku' ? '쌍절곤' :
             '';
         const skill =
-            // weapon === 'Glove' ? '"평균 데미지" ( "평타 데미지" - "치명타 데미지" / "최대 강화 데미지" ) __h: "평균 흡혈량"' :
             weapon === 'Glove' ? '"스킬 데미지" ( "스킬 데미지" ~ "최대 강화 데미지" ) __h: "스킬 흡혈량"' :
             weapon === 'Nunchaku' ? '"최소 데미지" ~ "최대 데미지"' :
             '';
@@ -324,7 +319,7 @@ const Li_Dailin = {
                 } else if (c === 'd') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            const coe = wm < 13 ? 1.2 : 2.2;
+                            const coe = wm < 13 ? 1.4 : 2.4;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             if (liquid) {
                                 ba = baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
@@ -346,7 +341,7 @@ const Li_Dailin = {
                 } else if (c === 'D') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            const coe = wm < 13 ? 1.2 : 2.2;
+                            const coe = wm < 13 ? 1.4 : 2.4;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             if (liquid) {
                                 liquid = 0;

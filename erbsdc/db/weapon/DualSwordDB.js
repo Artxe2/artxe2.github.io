@@ -20,9 +20,9 @@ const DualSwords = [
          Type: "DualSwords"
         ,Name: "Divine_Dual_Swords"
         ,Attack_Power: 49
-        ,Attack_Speed: 10
-        ,Life_Steal: 18
-        ,Title: "Divine Dual Swords\n\nAttack Power +49\nAttack Speed +10%\nLife Steal +18%\nHealing Reduction (Skills) -40%"
+        ,Attack_Speed: 12
+        ,Life_Steal: 20
+        ,Title: "Divine Dual Swords\n\nAttack Power +49\nAttack Speed +12%\nLife Steal +20%\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -37,9 +37,9 @@ const DualSwords = [
     ,{
          Type: "DualSwords"
         ,Name: "Dioscuri"
-        ,Attack_Power: 46
+        ,Attack_Power: 48
         ,Attack_Speed: 50
-        ,Title: "Dioscuri\n\nAttack Power +46\nAttack Speed +50%"
+        ,Title: "Dioscuri\n\nAttack Power +48\nAttack Speed +50%"
         ,Rarity: "Epic"
     }
     ,{

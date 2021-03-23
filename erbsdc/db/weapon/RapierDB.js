@@ -30,23 +30,23 @@ const Rapier = [
         ,Name: "Sword_of_Justice"
         ,Attack_Power: 30
         ,HP_Regen: 1.5
-        ,SP_Regen_Percent: 200
+        ,SP_Regen_Percent: 150
         ,Vision_Range: 1
         ,Critical_Damage: 25
         ,Cooldown_Reduction: 12
-        ,Title: "Sword of Justice\n\nAttack Power +30\nHP Regen +1.5\nSP Regen +200%\nVision Range +1\nCritical Damage +25%\nCooldown Reduction +12%"
+        ,Title: "Sword of Justice\n\nAttack Power +30\nHP Regen +1.5\nSP Regen +150%\nVision Range +1\nCritical Damage +25%\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Rapier"
-        ,Name: "Durendal_mk2"
-        ,Attack_Power: 55
-        ,Vision_Range: 3
+        ,Name: "Durendal_Mk2"
+        ,Attack_Power: 53
+        ,Vision_Range: 1.5
         ,Critical_Strike_Chance: 10
         ,Critical_Damage: 30
         ,Cooldown_Reduction: 8
         ,Life_Steal: 8
-        ,Title: "Durendal Mk2\n\nAttack Power +55\nVision Range +3\nCritical Strike Chance +10%\nCritical Damage +30%\nCooldown Reduction +8%\nLife Steal +8%"
+        ,Title: "Durendal Mk2\n\nAttack Power +53\nVision Range +1.5\nCritical Strike Chance +10%\nCritical Damage +30%\nCooldown Reduction +8%\nLife Steal +8%"
         ,Rarity: "Epic"
     }
     ,{
@@ -73,11 +73,11 @@ const Rapier = [
     ,{
          Type: "Rapier"
         ,Name: "Joyeuse"
-        ,Attack_Power: 71
+        ,Attack_Power: 69
         ,Attack_Speed: 12
         ,Movement_Speed: 0.2
         ,Critical_Damage: 30
-        ,Title: "Joyeuse\n\nAttack Power +71\nAttack Speed +12%\nMovement Speed +0.2\nCritical Damage +30%"
+        ,Title: "Joyeuse\n\nAttack Power +69\nAttack Speed +12%\nMovement Speed +0.2\nCritical Damage +30%"
         ,Rarity: "Epic"
     }
     ,{
@@ -85,12 +85,12 @@ const Rapier = [
         ,Name: "Mistilteinn"
         ,Attack_Power: 33
         ,HP_Regen: 1.5
-        ,SP_Regen_Percent: 160
+        ,SP_Regen_Percent: 150
         ,Vision_Range: 1
         ,Critical_Damage: 25
-        ,Cooldown_Reduction: 12
+        ,Cooldown_Reduction: 15
         ,Skill_Amplification_Percent: 15
-        ,Title: "Mistilteinn\n\nAttack Power +33\nHP Regen +1.5\nSP Regen +160%\nVision Range +1\nCritical Damage +25%\nCooldown Reduction +12%\nSkill Amplification +15%"
+        ,Title: "Mistilteinn\n\nAttack Power +33\nHP Regen +1.5\nSP Regen +150%\nVision Range +1\nCritical Damage +25%\nCooldown Reduction +15%\nSkill Amplification +15%"
         ,Rarity: "Legendary"
     }
 ];

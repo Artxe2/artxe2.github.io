@@ -23,11 +23,11 @@ const Aya = {
             [0, 0, -2]
         ],
         AssaultRifle: [
-            [0, -10, -13],
+            [0, -13, -11],
             [0, 0, 0]
         ],
         SniperRifle: [
-            [0, -15, -15],
+            [0, -15, -18],
             [0, 0, 0]
         ]
     }
@@ -78,7 +78,7 @@ const Aya = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 0, 1, 1);
-            const damage2 = calcSkillDamage(character, enemy, 40 + q * 45, 0.2, 1);
+            const damage2 = calcSkillDamage(character, enemy, 40 + q * 50, 0.2, 1);
             const cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
@@ -88,7 +88,7 @@ const Aya = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage = calcSkillDamage(character, enemy, 22 + w * 22, 0.3 + w * 0.05, 1);
+            const damage = calcSkillDamage(character, enemy, 20 + w * 20, 0.3 + w * 0.05, 1);
             const cool = 10000 / ((18 - w * 1.5) * (100 - character.cooldown_reduction) + 317);
             return "<b class='damage'>" + damage * 10 + '</b> ( ' + damage + " x 10 )<b> __sd/s: </b><b class='damage'>" + round(damage * 10 * cool) / 100 + '</b>';
         }
@@ -291,15 +291,15 @@ const Aya = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
                         }
-                        damage += calcSkillDamage(character, enemy, 40 + q * 45, 0.2, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 50, 0.2, 1);
                     }
                 } else if (c === 'w') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 22 + w * 22, 0.3 + w * 0.05, 1) * 5;
+                        damage += calcSkillDamage(character, enemy, 20 + w * 20, 0.3 + w * 0.05, 1) * 5;
                     }
                 } else if (c === 'W') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 22 + w * 22, 0.3 + w * 0.05, 1) * 10;
+                        damage += calcSkillDamage(character, enemy, 20 + w * 20, 0.3 + w * 0.05, 1) * 10;
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {

@@ -84,8 +84,8 @@ const Pistol = [
         ,Attack_Power: 61
         ,Attack_Speed: 50
         ,Movement_Speed: 0.1
-        ,Extra_Normal_Attack_Damage: 25
-        ,Title: "Electron Blaster\n\nAttack Power +61\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +25"
+        ,Extra_Normal_Attack_Damage: 27
+        ,Title: "Electron Blaster\n\nAttack Power +61\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +27"
         ,Rarity: "Epic"
         ,Ammo: 10
     }
@@ -104,10 +104,10 @@ const Pistol = [
     ,{
          Type: "Pistol"
         ,Name: "Kelte"
-        ,Attack_Power: 120
+        ,Attack_Power: 115
         ,Movement_Speed: 0.2
-        ,Vision_Range: 1
-        ,Title: "Kelte\n\nAttack Power +120\nMovement Speed +0.2\nVision Range +1"
+        ,Vision_Range: 2
+        ,Title: "Kelte\n\nAttack Power +115\nMovement Speed +0.2\nVision Range +2"
         ,Rarity: "Legendary"
         ,Ammo: 10
     }

@@ -5,7 +5,7 @@ const TwoHandedSword = [
         ,Attack_Power: 11
         ,Title: "Rusty Sword\n\nAttack Power +11"
         ,Rarity: "Common"
-        
+
     }
     ,{
          Type: "TwoHandedSword"
@@ -55,9 +55,9 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Thuan_Thien"
-        ,Attack_Power: 77
+        ,Attack_Power: 80
         ,Defense: 25
-        ,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25"
+        ,Title: "Thuan Thien\n\nAttack Power +80\nDefense +25"
         ,Rarity: "Rare"
     }
     ,{
@@ -118,9 +118,9 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Dainsleif"
-        ,Attack_Power: 80
+        ,Attack_Power: 83
         ,Life_Steal: 25
-        ,Title: "Dainsleif\n\nAttack Power +80\nLife Steal +25%\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Dainsleif\n\nAttack Power +83\nLife Steal +25%\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Legendary"
     }
 ];

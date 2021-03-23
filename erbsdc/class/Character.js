@@ -720,7 +720,7 @@ class Character {
 
             this.heal_reduction =
                 this.weapon && (
-                    this.weapon.Name === '다마스커스_가시' ||
+                    this.weapon.Name === 'Damascus_Steel_Thorn' ||
                     this.weapon.Name === 'Dainsleif' ||
                     this.weapon.Name === 'Harpe' ||
                     this.weapon.Name === 'Divine_Dual_Swords' ||
@@ -769,7 +769,7 @@ class Character {
                 (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.axe_d_hp').value * 0.001 : 0.015) : 0) +
                 (hart_w_u && hart_w_u.checked && w >= 0 ? 0.12 + w * 0.07 : 0);
             const attack_power_bonus =
-                (this.character === Adela && this.attack_speed > 0.66 ? floor((this.attack_speed - 0.66) * 100) * (0.2 + t * 0.25) : 0);
+                (this.character === Adela && this.attack_speed > 0.66 ? floor((this.attack_speed - 0.66) * 100) * (0.2 + t * 0.3) : 0);
             this.attack_power =
                 floor((this.character.Attack_Power + this.character.Attack_Power_Growth * level +
                     calcEquip(this, 'Attack_Power', 2) + attack_power_bonus
@@ -923,9 +923,11 @@ class Character {
                 this.normal_attack_damage_reduction + '| ' + this.normal_attack_damage_reduction_percent + '%';
 
             const jackie_w = this.DIV.querySelector('.jackie_w');
+            const bernice_e = this.DIV.querySelector('.bernice_e');
             chiara_t = this.DIV.querySelector('.chiara_t');
             const move_percent = 1 +
                 (jackie_w && jackie_w.checked ? 0.06 + w * 0.03 : 0) +
+                (bernice_e && bernice_e.checked ? 0.12 + w * 0.02 : 0) +
                 (chiara_t && chiara_t.value == 4 ? 0.04 + t * 0.02 : 0) +
                 (silvia_r && silvia_r.checked ? 0.7 : 0);
             const move_bonus =

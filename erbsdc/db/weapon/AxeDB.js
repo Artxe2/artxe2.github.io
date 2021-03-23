@@ -65,19 +65,19 @@ const Axe = [
          Type: "Axe"
         ,Name: "Santa_Muerte"
         ,Attack_Power: 100
-        ,Max_HP: 380
+        ,Max_HP: 365
         ,Life_Steal: 15
         ,Attack_Range: 0.5
-        ,Title: "Santa Muerte\n\nAttack Power +100\nMax HP +380\nLife Steal +15%\nAttack Range +0.5"
+        ,Title: "Santa Muerte\n\nAttack Power +100\nMax HP +365\nLife Steal +15%\nAttack Range +0.5"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Axe"
         ,Name: "Scythe"
-        ,Attack_Power: 115
+        ,Attack_Power: 112
         ,Attack_Range: 1
         ,Skill_Amplification_Percent: 20
-        ,Title: "Scythe\n\nAttack Power +115\nAttack Range +1\nSkill Amplification +20%"
+        ,Title: "Scythe\n\nAttack Power +112\nAttack Range +1\nSkill Amplification +20%"
         ,Rarity: "Epic"
     }
     ,{

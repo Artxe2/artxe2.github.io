@@ -126,8 +126,8 @@ const Chest = [
         ,Name: "Qipao"
         ,Attack_Power: 10
         ,Defense: 10
-        ,SP_Regen_Percent: 150
-        ,Title: "Qipao\n\nAttack Power +10\nDefense +10\nSP Regen +150%"
+        ,SP_Regen_Percent: 120
+        ,Title: "Qipao\n\nAttack Power +10\nDefense +10\nSP Regen +120%"
         ,Rarity: "Rare"
     }
     ,{
@@ -229,10 +229,10 @@ const Chest = [
         ,Name: "Dragon_Dobok"
         ,Attack_Power: 11
         ,Defense: 10
-        ,SP_Regen_Percent: 150
+        ,SP_Regen_Percent: 120
         ,Cooldown_Reduction: 10
         ,Attack_Range: 1
-        ,Title: "Dragon Dobok\n\nAttack Power +11\nDefense +10\nSP Regen +150%\nCooldown Reduction +10%\nAttack Range +1"
+        ,Title: "Dragon Dobok\n\nAttack Power +11\nDefense +10\nSP Regen +120%\nCooldown Reduction +10%\nAttack Range +1"
         ,Rarity: "Epic"
     }
     ,{
@@ -289,9 +289,9 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Kabana"
-        ,Defense: 36
-        ,Skill_Amplification_Percent: 22
-        ,Title: "Kabana\n\nDefense +36\nSkill Amplification +22%"
+        ,Defense: 40
+        ,Skill_Amplification_Percent: 20
+        ,Title: "Kabana\n\nDefense +40\nSkill Amplification +20%"
         ,Rarity: "Legendary"
     }
     ,{

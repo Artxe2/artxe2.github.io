@@ -85,10 +85,10 @@ const Dagger = [
     }
     ,{
          Type: "Dagger"
-        ,Name: "다마스커스_가시"
-        ,Attack_Power: 63
+        ,Name: "Damascus_Steel_Thorn"
+        ,Attack_Power: 66
         ,Max_HP: 250
-        ,Title: "다마스커스 가시\n\nAttack Power +63\nMax HP +250\nHealing Reduction (Skills) -40%"
+        ,Title: "Damascus Steel Thorn\n\nAttack Power +66\nMax HP +250\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{

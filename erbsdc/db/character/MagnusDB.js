@@ -74,7 +74,7 @@ const Magnus = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 55, 0.4, 1);
-            const cool = 10000 / ((12 - e * 0.5) * (100 - character.cooldown_reduction) + 20);
+            const cool = 10000 / ((13 - e * 1) * (100 - character.cooldown_reduction) + 20);
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
