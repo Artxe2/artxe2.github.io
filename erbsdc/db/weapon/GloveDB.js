@@ -92,8 +92,8 @@ const Glove = [
         ,Name: "Divine_Fist"
         ,Attack_Power: 55
         ,Movement_Speed: -0.1
-        ,Extra_Normal_Attack_Damage: 33
-        ,Title: "Divine Fist\n\nAttack Power +55\nMovement Speed -0.1\nExtra Normal Attack Damage +33"
+        ,Extra_Normal_Attack_Damage: 39
+        ,Title: "Divine Fist\n\nAttack Power +55\nMovement Speed -0.1\nExtra Normal Attack Damage +39"
         ,Rarity: "Epic"
     }
     ,{
@@ -108,19 +108,19 @@ const Glove = [
     ,{
          Type: "Glove"
         ,Name: "Frost_Petal_Hand"
-        ,Attack_Power: 30
+        ,Attack_Power: 35
         ,Cooldown_Reduction: 15
         ,Skill_Amplification: 38
-        ,Title: "Frost Petal Hand\n\nAttack Power +30\nCooldown Reduction +15%\nSkill Amplification +38"
+        ,Title: "Frost Petal Hand\n\nAttack Power +35\nCooldown Reduction +15%\nSkill Amplification +38"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Glove"
         ,Name: "Buddha`s_Palm"
-        ,Attack_Power: 39
-        ,Cooldown_Reduction: 18
-        ,Skill_Amplification_Percent: 18
-        ,Title: "Buddha`s Palm\n\nAttack Power +39\nCooldown Reduction +18%\nSkill Amplification +18%"
+        ,Attack_Power: 43
+        ,Cooldown_Reduction: 19
+        ,Skill_Amplification_Percent: 19
+        ,Title: "Buddha`s Palm\n\nAttack Power +43\nCooldown Reduction +19%\nSkill Amplification +19%"
         ,Rarity: "Epic"
     }
     ,{
@@ -139,8 +139,8 @@ const Glove = [
          Type: "Glove"
         ,Name: "White_Claw_Punch"
         ,Attack_Power: 58
-        ,Critical_Strike_Chance: 25
-        ,Title: "White Claw Punch\n\nAttack Power +58\nCritical Strike Chance +25%"
+        ,Critical_Strike_Chance: 30
+        ,Title: "White Claw Punch\n\nAttack Power +58\nCritical Strike Chance +30%"
         ,Rarity: "Epic"
     }
     ,{

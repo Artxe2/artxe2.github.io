@@ -1,8 +1,9 @@
 'use strict';
 const Bernice = {
+     Type: 'R',
      Attack_Power: 25
     ,Attack_Power_Growth: 2.4
-    ,Health: 600
+    ,Health: 620
     ,Health_Growth: 80
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.06
@@ -26,12 +27,12 @@ const Bernice = {
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.1, character.critical_strike_chance, 1);
-            const min = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.1, 0, 1);
-            const max = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.1, 100, 1);
-            const damage2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.2 : 1.44, character.critical_strike_chance, 2 + t);
-            const min2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.2 : 1.44, 0, 2 + t);
-            const max2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.2 : 1.44, 100, 2 + t);
+            const damage = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, character.critical_strike_chance, 1);
+            const min = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 0, 1);
+            const max = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 100, 1);
+            const damage2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, character.critical_strike_chance, 2 + t);
+            const min2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 0, 2 + t);
+            const max2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 100, 2 + t);
             return "<b class='damage'>" + damage + ' ~ ' + damage2 + '</b> ( ' + min + ' - ' + max + ' ~ ' + min2 + ' - ' + max2 + ' )';
         }
         return '-';
@@ -42,8 +43,8 @@ const Bernice = {
             const t = character.T_LEVEL.selectedIndex;
             const reload = Math.max(1.8 - t * 0.5, 1 / character.attack_speed);
             const as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + reload);
-            const shot = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.1, character.critical_strike_chance, 1);
-            const shot2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.2 : 1.44, character.critical_strike_chance, 2 + t);
+            const shot = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, character.critical_strike_chance, 1);
+            const shot2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, character.critical_strike_chance, 2 + t);
             const damage1 = round(shot * as * 100) / 100;
             const damage2 = round(shot2 * as * 100) / 100;
             const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
@@ -151,7 +152,7 @@ const Bernice = {
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" - "최대 데미지"\n' +
             'W: "스킬 데미지" ( "스킬 데미지" x "장전 수" )\n' +
-            'E: "데미지 없음"\n' +
+            'E: _use "스킬 사용"\n' +
             'R: "합산 데미지" ( [ "속박 데미지", "폭발 데미지" ] x 전이 수 )\n' +
             'D: ' + skill + '\n' +
             'T: "데미지 없음"\n';
@@ -179,24 +180,24 @@ const Bernice = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
                 if (c === 'a') {
                     if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.1, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 0, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.2 : 1.44, 0, 2 + t);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 0, 2 + t);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.1, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 100, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.2 : 1.44, 100, 2 + t);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 100, 2 + t);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -222,7 +223,7 @@ const Bernice = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 100 + r * 50, 0.5, 1);
                         cc = true;
@@ -260,8 +261,6 @@ const Bernice = {
         }
         const weapon = character.weapon.Type;
         const d =
-            weapon === 'Pistol' ? 'd & D: 데미지 없음\n' :
-            weapon === 'AssaultRifle' ? 'd & D: 데미지 없음\n' :
             weapon === 'SniperRifle' ? 'd & D: 무스 1회 데미지\n' :
             '';
         return 'a: 기본공격 데미지\n' +

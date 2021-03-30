@@ -31,17 +31,17 @@ const Hammer = [
          Type: "Hammer"
         ,Name: "Fang_Mace"
         ,Attack_Power: 55
-        ,Skill_Amplification: 28
-        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +28"
+        ,Skill_Amplification: 33
+        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +33"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Hammer"
         ,Name: "Hammer_of_Dagda"
         ,Attack_Power: 95
-        ,HP_Regen_Percent: 150
-        ,Extra_Normal_Attack_Damage: 20
-        ,Title: "Hammer of Dagda\n\nAttack Power +95\nHP Regen +150%\nExtra Normal Attack Damage +20"
+        ,HP_Regen_Percent: 200
+        ,Extra_Normal_Attack_Damage: 22
+        ,Title: "Hammer of Dagda\n\nAttack Power +95\nHP Regen +200%\nExtra Normal Attack Damage +22"
         ,Rarity: "Epic"
     }
     ,{

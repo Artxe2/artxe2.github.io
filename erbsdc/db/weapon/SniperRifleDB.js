@@ -94,10 +94,10 @@ const SniperRifle = [
          Type: "SniperRifle"
         ,Name: "The_Deadly_Ray"
         ,Attack_Power: 100
-        ,Movement_Speed: -0.07
+        ,Movement_Speed: -0.03
         ,Vision_Range: 2.5
         ,Skill_Amplification_Percent: 33
-        ,Title: "The Deadly Ray\n\nAttack Power +100\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +33%"
+        ,Title: "The Deadly Ray\n\nAttack Power +100\nMovement Speed -0.03\nVision Range +2.5\nSkill Amplification +33%"
         ,Rarity: "Legendary"
         ,Ammo: 2
     }

@@ -97,18 +97,19 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Cube_Watch"
-        ,Defense: 22
+        ,Defense: 20
         ,Attack_Speed: 50
-        ,Title: "Cube Watch\n\nDefense +22\nAttack Speed +50%"
-        ,Rarity: "Rare"
+        ,Cooldown_Reduction: 6
+        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +6%"
+        ,Rarity: "Epic"
     }
     ,{
          Type: "Arm"
         ,Name: "Sword_Stopper"
-        ,Defense: 30
+        ,Defense: 33
         ,Critical_Damage_Reduction: 8
         ,Normal_Attack_Damage_Reduction: 8
-        ,Title: "Sword Stopper\n\nDefense +30\nCritical Damage Reduction + 8%\nNormal Attack Damage Reduction +8\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Sword Stopper\n\nDefense +33\nCritical Damage Reduction + 8%\nNormal Attack Damage Reduction +8\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -184,17 +185,17 @@ const Arm = [
         ,Max_SP: 250
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
-        ,Skill_Amplification: 20
-        ,Title: "Bracelet of Skadi\n\nMax HP +200\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nSkill Amplification +20"
+        ,Skill_Amplification: 24
+        ,Title: "Bracelet of Skadi\n\nMax HP +200\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nSkill Amplification +24"
         ,Rarity: "Legendary"
     }
     ,{
          Type: "Arm"
         ,Name: "Radar"
-        ,Defense: 15
+        ,Defense: 18
         ,Attack_Speed: 40
         ,Critical_Strike_Chance: 24
-        ,Title: "Radar\n\nDefense +15\nAttack Speed +40%\nCritical Strike Chance +24%"
+        ,Title: "Radar\n\nDefense +18\nAttack Speed +40%\nCritical Strike Chance +24%"
         ,Rarity: "Legendary"
     }
     ,{

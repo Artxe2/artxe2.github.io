@@ -1,8 +1,9 @@
 'use strict';
 const Li_Dailin = {
+     Type: 'M',
      Attack_Power: 33
     ,Attack_Power_Growth: 2.2
-    ,Health: 550
+    ,Health: 580
     ,Health_Growth: 82
     ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.07
@@ -131,7 +132,7 @@ const Li_Dailin = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'Glove') {
-                const coe = wm < 13 ? 1.4 : 2.4;
+                const coe = wm < 13 ? 1.4 : 2;
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                 const over = baseAttackDamage(character, enemy, 0, (1 + coe) * 1.19, 0, 1) + bonus;
@@ -217,7 +218,7 @@ const Li_Dailin = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -308,7 +309,7 @@ const Li_Dailin = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                             }
                         }
                         if (bac >= 40) {
@@ -319,7 +320,7 @@ const Li_Dailin = {
                 } else if (c === 'd') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            const coe = wm < 13 ? 1.4 : 2.4;
+                            const coe = wm < 13 ? 1.4 : 2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             if (liquid) {
                                 ba = baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
@@ -341,7 +342,7 @@ const Li_Dailin = {
                 } else if (c === 'D') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            const coe = wm < 13 ? 1.4 : 2.4;
+                            const coe = wm < 13 ? 1.4 : 2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             if (liquid) {
                                 liquid = 0;
@@ -366,7 +367,7 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 0, 1);
                         damage += ba;
@@ -378,7 +379,7 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 0, 1);
                         damage += ba;
@@ -393,7 +394,7 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25) * (1 + bac * 0.002), 100, 1);
                         damage += ba;
@@ -405,7 +406,7 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, (0.5 + t * 0.25), 100, 1);
                         damage += ba;

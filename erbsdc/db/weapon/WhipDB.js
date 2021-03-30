@@ -49,27 +49,27 @@ const Whip = [
          Type: "Whip"
         ,Name: "Gleipnir"
         ,Attack_Power: 58
-        ,Skill_Amplification: 35
-        ,Title: "Gleipnir\n\nAttack Power +58\nSkill Amplification +35"
+        ,Skill_Amplification: 40
+        ,Title: "Gleipnir\n\nAttack Power +58\nSkill Amplification +40"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Whip"
         ,Name: "Plasma_Whip"
         ,Attack_Power: 60
-        ,Attack_Speed: 30
+        ,Attack_Speed: 40
         ,Vision_Range: 2.3
-        ,Extra_Normal_Attack_Damage: 12
-        ,Title: "Plasma Whip\n\nAttack Power +60\nAttack Speed +30%\nVision Range +2.3\nExtra Normal Attack Damage +12"
+        ,Extra_Normal_Attack_Damage: 15
+        ,Title: "Plasma Whip\n\nAttack Power +60\nAttack Speed +40%\nVision Range +2.3\nExtra Normal Attack Damage +15"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Whip"
         ,Name: "Whip_of_Nine_Bloody_Tails"
-        ,Attack_Power: 65
+        ,Attack_Power: 70
         ,Life_Steal: 25
         ,Skill_Amplification: 40
-        ,Title: "Whip of Nine Bloody Tails\n\nAttack Power +65\nLife Steal +25%\nSkill Amplification +40"
+        ,Title: "Whip of Nine Bloody Tails\n\nAttack Power +70\nLife Steal +25%\nSkill Amplification +40"
         ,Rarity: "Legendary"
     }
 ];

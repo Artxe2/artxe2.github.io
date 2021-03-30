@@ -1,7 +1,8 @@
 const Zahir = {
+     Type: 'R',
      Attack_Power: 25
-    ,Attack_Power_Growth: 2.5
-    ,Health: 520
+    ,Attack_Power_Growth: 2.7
+    ,Health: 540
     ,Health_Growth: 64
     ,Health_Regen: 0.6
     ,Health_Regen_Growth: 0.03
@@ -97,7 +98,7 @@ const Zahir = {
             const damage = calcSkillDamage(character, enemy, 50 + r * 90, 0.5, 1);
             const add = calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
             const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
-            return "<b class='damage'>" + (damage + add * 4) + ' - ' + (damage + bonus + add * 4) + '</b> ( ' + damage + ', ' + bonus + ', ' + add + ' x 4, )';
+            return "<b class='damage'>" + (damage + add * 4) + ' - ' + (damage + bonus * 2 + add * 4) + '</b> ( ' + damage + ', ' + bonus + ' x 2, ' + add + ' x 4, )';
         }
         return '-';
     }
@@ -179,7 +180,7 @@ const Zahir = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -225,6 +226,12 @@ const Zahir = {
                 } else if (c === 'r') {
                     if (r >= 0) {
                         damage += calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
+                        if (tt) {
+                            tt = false;
+                            damage += bonus;
+                        } else {
+                            tt = true;
+                        }
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
@@ -283,7 +290,7 @@ const Zahir = {
             'q & Q: Q스킬 데미지, 패시브 발동\n' +
             'w & W: W스킬 데미지, 패시브 발동\n' +
             'e & E: E스킬 1타 데미지, 재사용시 2타 데미지, 패시브 발동\n' +
-            'r: R스킬 추가타 데미지\n' +
+            'r: R스킬 추가타 데미지, 패시브 발동\n' +
             'R: R스킬 첫타 데미지, 패시브 발동\n' +
             't & T: 데미지 없음\n' +
             d +

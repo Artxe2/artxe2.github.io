@@ -1,8 +1,9 @@
 'use strict';
 const Adriana = {
+     Type: 'R',
      Attack_Power: 31
     ,Attack_Power_Growth: 2.9
-    ,Health: 530
+    ,Health: 550
     ,Health_Growth: 65
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.03
@@ -19,7 +20,7 @@ const Adriana = {
     ,weapons: [Throws]
     ,correction: {
         Throws: [
-            [0, -14, -18],
+            [0, -16, -18],
             [0, 0, 0]
         ]
     }
@@ -156,7 +157,7 @@ const Adriana = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }

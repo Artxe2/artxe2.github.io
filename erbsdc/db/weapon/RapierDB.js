@@ -42,32 +42,32 @@ const Rapier = [
         ,Name: "Durendal_Mk2"
         ,Attack_Power: 53
         ,Vision_Range: 1.5
-        ,Critical_Strike_Chance: 10
+        ,Critical_Strike_Chance: 12
         ,Critical_Damage: 30
-        ,Cooldown_Reduction: 8
+        ,Cooldown_Reduction: 6
         ,Life_Steal: 8
-        ,Title: "Durendal Mk2\n\nAttack Power +53\nVision Range +1.5\nCritical Strike Chance +10%\nCritical Damage +30%\nCooldown Reduction +8%\nLife Steal +8%"
+        ,Title: "Durendal Mk2\n\nAttack Power +53\nVision Range +1.5\nCritical Strike Chance +12%\nCritical Damage +30%\nCooldown Reduction +6%\nLife Steal +8%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Rapier"
         ,Name: "Volticletto"
         ,Attack_Power: 47
-        ,Attack_Speed: 35
+        ,Attack_Speed: 45
         ,Critical_Strike_Chance: 10
         ,Critical_Damage: 25
         ,Cooldown_Reduction: 6
-        ,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +35%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +6%"
+        ,Title: "Volticletto\n\nAttack Power +47\nAttack Speed +45%\nCritical Strike Chance +10%\nCritical Damage +25%\nCooldown Reduction +6%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Rapier"
         ,Name: "Meteor_Claymore"
         ,Attack_Power: 67
-        ,Critical_Strike_Chance: 17
+        ,Critical_Strike_Chance: 20
         ,Critical_Damage: 20
         ,Cooldown_Reduction: 12
-        ,Title: "Meteor Claymore\n\nAttack Power +67\nCritical Strike Chance +17%\nCritical Damage +20%\nCooldown Reduction +12%"
+        ,Title: "Meteor Claymore\n\nAttack Power +67\nCritical Strike Chance +20%\nCritical Damage +20%\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{

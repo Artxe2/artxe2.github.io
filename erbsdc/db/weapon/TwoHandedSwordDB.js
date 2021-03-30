@@ -72,9 +72,9 @@ const TwoHandedSword = [
          Type: "TwoHandedSword"
         ,Name: "Arondight"
         ,Attack_Power: 50
-        ,Attack_Speed: 25
+        ,Attack_Speed: 30
         ,Extra_Normal_Attack_Damage: 25
-        ,Title: "Arondight\n\nAttack Power +50\nAttack Speed +25%\nExtra Normal Attack Damage +25"
+        ,Title: "Arondight\n\nAttack Power +50\nAttack Speed +30%\nExtra Normal Attack Damage +25"
         ,Rarity: "Epic"
     }
     ,{
@@ -100,8 +100,8 @@ const TwoHandedSword = [
         ,Name: "Hovud"
         ,Attack_Power: 50
         ,Max_HP: 300
-        ,Critical_Strike_Chance: 25
-        ,Title: "Hovud\n\nAttack Power +50\nMax HP +300\nCritical Strike Chance +25%"
+        ,Critical_Strike_Chance: 28
+        ,Title: "Hovud\n\nAttack Power +50\nMax HP +300\nCritical Strike Chance +28%"
         ,Rarity: "Epic"
     }
     ,{
@@ -110,9 +110,9 @@ const TwoHandedSword = [
         ,Attack_Power: 78
         ,HP_Regen:2.0
         ,SP_Regen: 2.0
-        ,Attack_Speed: 8
-        ,Extra_Normal_Attack_Damage: 20
-        ,Title: "Laevateinn\n\nAttack Power +78\nHP Regen +2.0\nSP Regen +2.0\nAttack Speed +8%\nExtra Normal Attack Damage +20"
+        ,Attack_Speed: 10
+        ,Extra_Normal_Attack_Damage: 25
+        ,Title: "Laevateinn\n\nAttack Power +78\nHP Regen +2.0\nSP Regen +2.0\nAttack Speed +10%\nExtra Normal Attack Damage +25"
         ,Rarity: "Legendary"
     }
     ,{

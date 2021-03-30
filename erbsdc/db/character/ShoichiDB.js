@@ -1,7 +1,8 @@
 const Shoichi = {
+     Type: 'M',
      Attack_Power: 30
     ,Attack_Power_Growth: 3.1
-    ,Health: 550
+    ,Health: 580
     ,Health_Growth: 78
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
@@ -10,7 +11,7 @@ const Shoichi = {
     ,Stamina_Regen: 1.6
     ,Stamina_Regen_Growth: 0.04
     ,Defense: 27
-    ,Defense_Growth: 1.7
+    ,Defense_Growth: 2.2
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
@@ -191,7 +192,7 @@ const Shoichi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -247,7 +248,7 @@ const Shoichi = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 25 + r * 35, 0.3, 1);
                     }
@@ -289,7 +290,7 @@ const Shoichi = {
             }
         };
     }
-    ,COMBO_Option: 'dqewtarttwttwaqtwa'
+    ,COMBO_Option: 'ewtadrwtttwtaq'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';

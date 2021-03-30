@@ -1,8 +1,9 @@
 'use strict';
 const Hyunwoo = {
-     Attack_Power: 36
+     Type: 'M',
+     Attack_Power: 34
     ,Attack_Power_Growth: 3.1
-    ,Health: 500
+    ,Health: 530
     ,Health_Growth: 85
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
@@ -54,8 +55,8 @@ const Hyunwoo = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const damage = calcSkillDamage(character, enemy, 100 + q * 50, 0.4, 1);
-            const cool = 10000 / ((10 - q * 1) * (100 - character.cooldown_reduction));
+            const damage = calcSkillDamage(character, enemy, 100 + q * 50, 0.3, 1);
+            const cool = 10000 / ((9 - q * 1) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -92,7 +93,7 @@ const Hyunwoo = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'Glove') {
-                const coe = wm < 13 ? 1.4 : 2.4;
+                const coe = wm < 13 ? 1.4 : 2;
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                 const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
@@ -110,7 +111,7 @@ const Hyunwoo = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            return "<b> _h: </b><b class='heal'>" + calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy) + '</b>';
+            return "<b> _h: </b><b class='heal'>" + calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy) + '</b>';
         }
         return '-';
     }
@@ -142,7 +143,7 @@ const Hyunwoo = {
             'D: ' + skill + '\n' +
             'T: _h: "회복량"\n';
     }
-    ,COMBO_VARS: '{\"tt\":70}'
+    ,COMBO_VARS: '{\"tt\":55}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -166,7 +167,7 @@ const Hyunwoo = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -175,8 +176,8 @@ const Hyunwoo = {
                     ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    if (tt >= 70) {
-                        heal += calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy);
+                    if (tt >= 55) {
+                        heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
                         tt = 0;
                     } else {
                         tt += 5;
@@ -185,15 +186,15 @@ const Hyunwoo = {
                     ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    if (tt >= 70) {
-                        heal += calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy);
+                    if (tt >= 55) {
+                        heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
                         tt = 0;
                     } else {
                         tt += 5;
                     }
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + q * 50, 0.4, 1);
+                        damage += calcSkillDamage(character, enemy, 100 + q * 50, 0.3, 1);
                         tt += 5;
                     }
                 } else if (c === 'w' || c === 'W') {
@@ -234,7 +235,7 @@ const Hyunwoo = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                             } else {
                                 enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                             }
@@ -255,7 +256,7 @@ const Hyunwoo = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            const coe = wm < 13 ? 1.4 : 2.4;
+                            const coe = wm < 13 ? 1.4 : 2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);

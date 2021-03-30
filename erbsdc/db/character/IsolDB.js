@@ -1,8 +1,9 @@
 'use strict';
 const Isol = {
+     Type: 'R',
      Attack_Power: 27
     ,Attack_Power_Growth: 2.9
-    ,Health: 500
+    ,Health: 520
     ,Health_Growth: 60
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.03
@@ -74,8 +75,8 @@ const Isol = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const stack = parseInt(character.DIV.querySelector('.isol_q').value);
-            const min = calcSkillDamage(character, enemy, 50 + q * 25, 0.5, 1);
-            const max = calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * stack, 0.5 + stack * 0.3, 1);
+            const min = calcSkillDamage(character, enemy, 50 + q * 25, 0.4, 1);
+            const max = calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * stack, 0.5 + stack * 0.2, 1);
             const cool = 10000 / ((18 - q * 2) * (100 - character.cooldown_reduction) + 27);
             return min + " ~ <b class='damage'>" +  + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
@@ -85,7 +86,7 @@ const Isol = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage = calcSkillDamage(character, enemy, 18 + w * 9, 0.5, 1);
+            const damage = calcSkillDamage(character, enemy, 18 + w * 9, 0.65, 1);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction) + 200);
             return "<b class='damage'>" + damage * 4 + '</b> ( ' + damage + " x 4 )<b> __sd/s: </b><b class='damage'>" + round((damage * 4) * cool) / 100 + '</b>';
         }
@@ -183,7 +184,7 @@ const Isol = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -196,7 +197,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.32, 0, 1);
                         if (enemy.character === Magnus) {
@@ -204,7 +205,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, 0, 1);
                         damage += ba;
@@ -222,7 +223,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.32, 100, 1);
                         if (enemy.character === Magnus) {
@@ -230,7 +231,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, 100, 1);
                         damage += ba;
@@ -247,7 +248,7 @@ const Isol = {
                             for (let x = index + 1; x <= index + 6 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
                             }
-                            damage += calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * (qq - 1), 0.5 + (qq - 1) * 0.3, 1);
+                            damage += calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * (qq - 1), 0.4 + (qq - 1) * 0.2, 1);
                             qq = 0;
                         } else {
                             qq = 1;
@@ -259,13 +260,13 @@ const Isol = {
                             qq += 4;
                         }
                         for (let j = 0; j < 4; j++) {
-                            damage += calcSkillDamage(character, enemy, 18 + w * 9, 0.5, 1);
+                            damage += calcSkillDamage(character, enemy, 18 + w * 9, 0.65, 1);
                             if (enemy.character === Magnus) {
                                 let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                             }
                         }
                     }

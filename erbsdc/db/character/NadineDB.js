@@ -1,7 +1,8 @@
 const Nadine = {
+     Type: 'R',
      Attack_Power: 32
     ,Attack_Power_Growth: 2.2
-    ,Health: 535
+    ,Health: 555
     ,Health_Growth: 60
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.03
@@ -168,7 +169,7 @@ const Nadine = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }

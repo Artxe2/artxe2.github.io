@@ -70,8 +70,8 @@ const Bow = [
          Type: "Bow"
         ,Name: "Ancient_Bolt"
         ,Attack_Power: 60
-        ,Extra_Normal_Attack_Damage: 40
-        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +40"
+        ,Extra_Normal_Attack_Damage: 45
+        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +45"
         ,Rarity: "Epic"
     }
     ,{
@@ -96,9 +96,9 @@ const Bow = [
          Type: "Bow"
         ,Name: "Elemental_Bow"
         ,Attack_Power: 60
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.13
         ,Skill_Amplification: 38
-        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nSkill Amplification +38\nHealing Reduction (Skills) -40%"
+        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.13\nSkill Amplification +38\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{

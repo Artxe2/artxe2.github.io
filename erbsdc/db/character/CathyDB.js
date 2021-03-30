@@ -1,8 +1,9 @@
 'use strict';
 const Cathy = {
+     Type: 'M',
      Attack_Power: 26
     ,Attack_Power_Growth: 2.8
-    ,Health: 530
+    ,Health: 560
     ,Health_Growth: 87
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.06
@@ -63,9 +64,10 @@ const Cathy = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage = calcSkillDamage(character, enemy, 70 + w * 35, 0.5, 1);
+            const min = calcSkillDamage(character, enemy, 40 + w * 35, 0.4, 1);
+            const max = calcSkillDamage(character, enemy, 80 + w * 35, 0.5, 1);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -158,7 +160,7 @@ const Cathy = {
             'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" - "최대 데미지"\n' +
-            'W: "스킬 데미지"\n' +
+            'W: "최소 데미지" - "최대 데미지"\n' +
             'E: "합산데미지" ( "1타 데미지", "2타 데미지" )\n' +
             'R: "최소 데미지" ~ "최대 막타 데미지"\n' +
             'D: ' + skill + '\n' +
@@ -199,7 +201,7 @@ const Cathy = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -313,9 +315,33 @@ const Cathy = {
                             }
                         }
                     }
-                } else if (c === 'w' || c === 'W') {
+                } else if (c === 'w') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 70 + w * 35, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + w * 35, 0.4, 1);
+
+                        if (bleeding[index]) {
+                            if (bleeding[index] >= 2) {
+                                if (bleeding[index] < 4) {
+                                    for (let x = index; x < index + 8; x++) {
+                                        bleeding[x] = 4;
+                                    }
+                                }
+                            } else {
+                                bleeding[index] += 2;
+                                for (let x = index + 1; x < index + 6; x++) {
+                                    bleeding[x] = bleeding[index];
+                                }
+                            }
+                        } else {
+                            bleeding[index] = 2;
+                            for (let x = index + 1; x < index + 6; x++) {
+                                bleeding[x] = bleeding[index];
+                            }
+                        }
+                    }
+                } else if (c === 'W') {
+                    if (w >= 0) {
+                        damage += calcSkillDamage(character, enemy, 80 + w * 35, 0.5, 1);
 
                         if (bleeding[index]) {
                             if (bleeding[index] >= 2) {
@@ -369,7 +395,7 @@ const Cathy = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 10 + e * 10, 0.2, 1);
 
@@ -488,7 +514,8 @@ const Cathy = {
             'A: 치명타 데미지\n' +
             'q: Q스킬 돌진 데미지\n' +
             'Q: Q스킬 근접 데미지\n' +
-            'w & W: W스킬 데미지\n' +
+            'w: W스킬 근접 데미지\n' +
+            'W: W스킬 칼날 데미지\n' +
             'e: E스킬 데미지\n' +
             'E: E스킬 벽꿍 데미지\n' +
             'r & R: R스킬 데미지( 잃은 체력 비례 Max 75% )\n' +

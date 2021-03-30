@@ -125,18 +125,18 @@ const Shuriken = [
          Type: "Shuriken"
         ,Name: "Mystic_Jade_Charm"
         ,Attack_Power: 60
-        ,Skill_Amplification: 10
+        ,Skill_Amplification: 15
         ,Skill_Amplification_Percent: 15
-        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +10\nSkill Amplification +15%"
+        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +15\nSkill Amplification +15%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Shuriken"
         ,Name: "Fuhma_Shuriken"
-        ,Attack_Power: 55
+        ,Attack_Power: 58
         ,Cooldown_Reduction: 15
-        ,Extra_Normal_Attack_Damage: 36
-        ,Title: "Fuhma Shuriken\n\nAttack Power +55\nCooldown Reduction +15%\nExtra Normal Attack Damage +36"
+        ,Extra_Normal_Attack_Damage: 40
+        ,Title: "Fuhma Shuriken\n\nAttack Power +58\nCooldown Reduction +15%\nExtra Normal Attack Damage +40"
         ,Rarity: "Epic"
     }
     ,{
@@ -152,9 +152,9 @@ const Shuriken = [
          Type: "Shuriken"
         ,Name: "Azure_Dagger"
         ,Attack_Power: 20
-        ,Extra_Normal_Attack_Damage: 29
-        ,Skill_Amplification: 21
-        ,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +29\nSkill Amplification +21"
+        ,Extra_Normal_Attack_Damage: 33
+        ,Skill_Amplification: 24
+        ,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +33\nSkill Amplification +24"
         ,Rarity: "Epic"
     }
     ,{
@@ -195,9 +195,9 @@ const Shuriken = [
         ,Name: "Petal_Torrent"
         ,Attack_Power: 80
         ,Critical_Damage: 50
-        ,Extra_Normal_Attack_Damage: 130
-        ,Skill_Amplification: 25
-        ,Title: "Petal Torrent\n\nAttack Power +80\nCritical Damage +50%\nExtra Normal Attack Damage +130\nSkill Amplification +25"
+        ,Extra_Normal_Attack_Damage: 150
+        ,Skill_Amplification: 30
+        ,Title: "Petal Torrent\n\nAttack Power +80\nCritical Damage +50%\nExtra Normal Attack Damage +150\nSkill Amplification +30"
         ,Rarity: "Legendary"
     }
 ];

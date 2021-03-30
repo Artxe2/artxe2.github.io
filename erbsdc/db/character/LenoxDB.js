@@ -1,12 +1,13 @@
 'use strict';
 const Lenox = {
+     Type: 'M',
      Attack_Power: 36
     ,Attack_Power_Growth: 2.4
-    ,Health: 550
-    ,Health_Growth: 75
+    ,Health: 580
+    ,Health_Growth: 80
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.05
-    ,Stamina: 430
+    ,Stamina: 380
     ,Stamina_Growth: 13
     ,Stamina_Regen: 2.2
     ,Stamina_Regen_Growth: 0.06
@@ -19,7 +20,7 @@ const Lenox = {
     ,weapons: [Whip]
     ,correction: {
         Whip: [
-            [0, -8, -11],
+            [0, -10, -13],
             [0, 0, 0]
         ],
     }
@@ -84,7 +85,7 @@ const Lenox = {
         if (character.weapon && r >= 0) {
             const damage = calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1);
             const add = calcTrueDamage(character, enemy, 10 + r * 5);
-            const hit = enemy.movement_speed ? floor(enemy.movement_speed * (3 + r)) : 0;
+            const hit = enemy.movement_speed ? floor(enemy.movement_speed * (4 + r * 0.5)) : 0;
             return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * 2 * hit) + '</b> ( ' + damage + ' x 2, [' + add + ' x 2] x ' + hit + ' )';
         }
         return '-';
@@ -164,7 +165,7 @@ const Lenox = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -204,7 +205,7 @@ const Lenox = {
                         let move = 0;
                         if (enemy.movement_speed) {
                             const bleed = calcTrueDamage(character, enemy, 10 + r * 5);
-                            for (let x = index; x < index + 6 + r * 2; x++) {
+                            for (let x = index; x < index + 8 + r; x++) {
                                 move += enemy.movement_speed / 2;
                                 while (move >= 1) {
                                     move--;
@@ -223,7 +224,7 @@ const Lenox = {
                         let move = 0;
                         if (enemy.movement_speed) {
                             const bleed = calcTrueDamage(character, enemy, 10 + r * 5) * 2;
-                            for (let x = index; x < index + 6 + r * 2; x++) {
+                            for (let x = index; x < index + 8 + r; x++) {
                                 move += enemy.movement_speed / 2;
                                 while (move >= 1) {
                                     move--;

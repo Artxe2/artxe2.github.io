@@ -61,10 +61,10 @@ const Pistol = [
          Type: "Pistol"
         ,Name: "Devil`s_Marksman"
         ,Attack_Power: 35
-        ,Attack_Speed: 10
+        ,Attack_Speed: 15
         ,Movement_Speed: 0.1
-        ,Skill_Amplification: 38
-        ,Title: "Devil`s Marksman\n\nAttack Power +35\nAttack Speed +10%\nMovement Speed +0.1\nSkill Amplification +38"
+        ,Skill_Amplification: 42
+        ,Title: "Devil`s Marksman\n\nAttack Power +35\nAttack Speed +15%\nMovement Speed +0.1\nSkill Amplification +42"
         ,Rarity: "Epic"
         ,Ammo: 7
     }
@@ -83,21 +83,21 @@ const Pistol = [
         ,Name: "Electron_Blaster"
         ,Attack_Power: 61
         ,Attack_Speed: 50
-        ,Movement_Speed: 0.1
-        ,Extra_Normal_Attack_Damage: 27
-        ,Title: "Electron Blaster\n\nAttack Power +61\nAttack Speed +50%\nMovement Speed +0.1\nExtra Normal Attack Damage +27"
+        ,Movement_Speed: 0.12
+        ,Extra_Normal_Attack_Damage: 31
+        ,Title: "Electron Blaster\n\nAttack Power +61\nAttack Speed +50%\nMovement Speed +0.12\nExtra Normal Attack Damage +31"
         ,Rarity: "Epic"
         ,Ammo: 10
     }
     ,{
          Type: "Pistol"
         ,Name: "Magnum-Boa"
-        ,Attack_Power: 95
+        ,Attack_Power: 90
         ,Attack_Speed: 25
         ,Movement_Speed: 0.15
         ,Vision_Range: 2.5
-        ,Life_Steal: 20
-        ,Title: "Magnum-Boa\n\nAttack Power +95\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +2.5\nLife Steal +20%"
+        ,Life_Steal: 22
+        ,Title: "Magnum-Boa\n\nAttack Power +90\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +2.5\nLife Steal +22%"
         ,Rarity: "Epic"
         ,Ammo: 6
     }

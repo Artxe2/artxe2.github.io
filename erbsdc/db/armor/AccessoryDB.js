@@ -24,8 +24,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Fan"
-        ,Skill_Amplification: 6
-        ,Title: "Fan\n\nSkill Amplification +6"
+        ,Skill_Amplification: 9
+        ,Title: "Fan\n\nSkill Amplification +9"
         ,Rarity: "Common"
     }
     ,{
@@ -129,8 +129,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Gilded_Quill_Fan"
-        ,Skill_Amplification: 7
-        ,Title: "Gilded Quill Fan\n\nSkill Amplification +7\nHealing Reductions (Skills) -40%"
+        ,Skill_Amplification: 12
+        ,Title: "Gilded Quill Fan\n\nSkill Amplification +12\nHealing Reductions (Skills) -25%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -145,16 +145,16 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Decorative_Flintlock"
         ,Attack_Power: 10
-        ,Life_Steal: 8
-        ,Title: "Decorative Flintlock\n\nAttack Power +10\nLife Steal +8%"
+        ,Life_Steal: 6
+        ,Title: "Decorative Flintlock\n\nAttack Power +10\nLife Steal +6%"
         ,Rarity: "Uncommon"
     }
     ,{
          Type: "Accessory"
         ,Name: "White_Crane_Fan"
-        ,Movement_Speed: 0.1
-        ,Skill_Amplification: 16
-        ,Title: "White Crane Fan\n\nMovement Speed +0.1\nSkill Amplification +16\nHealing Reduction (Skills) -40%"
+        ,Movement_Speed: 0.12
+        ,Skill_Amplification: 18
+        ,Title: "White Crane Fan\n\nMovement Speed +0.12\nSkill Amplification +18\nHealing Reduction (Skills) -40 / 25%"
         ,Rarity: "Rare"
     }
     ,{
@@ -169,9 +169,9 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Uchiwa"
         ,SP_Regen_Percent: 80
-        ,Life_Steal: 17
-        ,Skill_Amplification: 21
-        ,Title: "Uchiwa\n\nSP Regen +80%\nLife Steal +17%\nSkill Amplification +21"
+        ,Life_Steal: 14
+        ,Skill_Amplification: 23
+        ,Title: "Uchiwa\n\nSP Regen +80%\nLife Steal +14%\nSkill Amplification +23"
         ,Rarity: "Rare"
     }
     ,{
@@ -204,17 +204,17 @@ const Accessory = [
         ,Name: "Buccaneer_Doubloon"
         ,Attack_Power: 15
         ,Critical_Strike_Chance: 12
-        ,Life_Steal: 8
-        ,Title: "Buccaneer Doubloon\n\nAttack Power +15\nCritical Strike Chance +12%\nLife Steal +8%"
+        ,Life_Steal: 6
+        ,Title: "Buccaneer Doubloon\n\nAttack Power +15\nCritical Strike Chance +12%\nLife Steal +6%"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Accessory"
         ,Name: "Moonlight_Pendant"
-        ,Attack_Power: 20
+        ,Attack_Power: 24
         ,Vision_Range: 1
-        ,Life_Steal: 20
-        ,Title: "Moonlight Pendant\n\nAttack Power +20\nVision Range +1\nLife Steal +20%"
+        ,Life_Steal: 16
+        ,Title: "Moonlight Pendant\n\nAttack Power +24\nVision Range +1\nLife Steal +16%"
         ,Rarity: "Rare"
     }
     ,{
@@ -231,8 +231,8 @@ const Accessory = [
         ,HP_Regen_Percent: 150
         ,Cooldown_Reduction: 10
         ,Extra_Normal_Attack_Damage: 12
-        ,Skill_Amplification_Percent: 8
-        ,Title: "Veritas Lux Mea\n\nHP Regen +150%\nCooldown Reduction +10%\nExtra Normal Attack Damage +12\nSkill Amplification +8%"
+        ,Skill_Amplification_Percent: 10
+        ,Title: "Veritas Lux Mea\n\nHP Regen +150%\nCooldown Reduction +10%\nExtra Normal Attack Damage +12\nSkill Amplification +10%"
         ,Rarity: "Rare"
     }
     ,{
@@ -249,8 +249,8 @@ const Accessory = [
         ,Name: "True_Samadhi_Fire"
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
-        ,Extra_Normal_Attack_Damage: 13
-        ,Title: "True Samadhi Fire\n\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +13"
+        ,Extra_Normal_Attack_Damage: 15
+        ,Title: "True Samadhi Fire\n\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +15"
         ,Rarity: "Epic"
     }
     ,{
@@ -266,11 +266,11 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Emerald_Tablet"
-        ,Attack_Power: 12
-        ,Defense: 12
+        ,Attack_Power: 15
+        ,Defense: 15
         ,Critical_Strike_Chance: 15
         ,Cooldown_Reduction: 10
-        ,Title: "Emerald Tablet\n\nAttack Power +12\nDefense +12\nCritical Strike Chance +15%\nCooldown Reduction +10%"
+        ,Title: "Emerald Tablet\n\nAttack Power +15\nDefense +15\nCritical Strike Chance +15%\nCooldown Reduction +10%"
         ,Rarity: "Legendary"
     }
 ];

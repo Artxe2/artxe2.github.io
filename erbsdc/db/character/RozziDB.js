@@ -1,7 +1,8 @@
 const Rozzi = {
+     Type: 'R',
      Attack_Power: 28
     ,Attack_Power_Growth: 2.3
-    ,Health: 495
+    ,Health: 515
     ,Health_Growth: 62
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.02
@@ -167,7 +168,7 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -214,7 +215,7 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     }
                     ba += baseAttackDamage(character, enemy, 0, coe, 0, 1);
                     damage += ba;
@@ -226,7 +227,7 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     }
                     ba += baseAttackDamage(character, enemy, 0, coe, 100, 1);
                     damage += ba;

@@ -59,9 +59,9 @@ const Dagger = [
         ,Attack_Power: 41
         ,HP_Regen: 1.2
         ,Movement_Speed: 0.1
-        ,Cooldown_Reduction: 8
+        ,Cooldown_Reduction: 12
         ,Extra_Normal_Attack_Damage: 29
-        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.1\nCooldown Reduction +8%\nExtra Normal Attack Damage +29"
+        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.1\nCooldown Reduction +12%\nExtra Normal Attack Damage +29"
         ,Rarity: "Epic"
     }
     ,{
@@ -69,9 +69,9 @@ const Dagger = [
         ,Name: "Mount_Slicer"
         ,Attack_Power: 35
         ,Movement_Speed: 0.1
-        ,Cooldown_Reduction: 10
+        ,Cooldown_Reduction: 15
         ,Skill_Amplification: 30
-        ,Title: "Mount Slicer\n\nAttack Power +35\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Amplification +30"
+        ,Title: "Mount Slicer\n\nAttack Power +35\nMovement Speed +0.1\nCooldown Reduction +15%\nSkill Amplification +30"
         ,Rarity: "Epic"
     }
     ,{
@@ -94,9 +94,9 @@ const Dagger = [
     ,{
          Type: "Dagger"
         ,Name: "Fragarach"
-        ,Attack_Power: 90
-        ,Movement_Speed: 0.2
-        ,Title: "Fragarach\n\nAttack Power +90\nMovement Speed +0.2"
+        ,Attack_Power: 95
+        ,Movement_Speed: 0.22
+        ,Title: "Fragarach\n\nAttack Power +95\nMovement Speed +0.22"
         ,Rarity: "Legendary"
     }
 ];

@@ -1,8 +1,9 @@
 'use strict';
 const Hyejin = {
+     Type: 'R',
      Attack_Power: 29
     ,Attack_Power_Growth: 2.5
-    ,Health: 515
+    ,Health: 535
     ,Health_Growth: 64
     ,Health_Regen: 0.6
     ,Health_Regen_Growth: 0.03
@@ -87,7 +88,7 @@ const Hyejin = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 150 + r * 125, 0.7, 1);
-            const damage2 = calcSkillDamage(character, enemy, 80 + r * 50, 0.5, 1);
+            const damage2 = calcSkillDamage(character, enemy, 80 + r * 60, 0.5, 1);
             return "<b class='damage'>" + (damage1 + damage2 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ' x 5 )';
         }
         return '-';
@@ -167,7 +168,7 @@ const Hyejin = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -204,7 +205,7 @@ const Hyejin = {
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 80 + r * 50, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 80 + r * 60, 0.5, 1);
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {

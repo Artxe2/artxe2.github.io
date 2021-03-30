@@ -1,7 +1,8 @@
 const Luke = {
+     Type: 'M',
      Attack_Power: 28
     ,Attack_Power_Growth: 2.5
-    ,Health: 585
+    ,Health: 610
     ,Health_Growth: 84
     ,Health_Regen: 1
     ,Health_Regen_Growth: 0.06
@@ -216,7 +217,7 @@ const Luke = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }

@@ -114,9 +114,9 @@ const Leg = [
         ,Name: "Straitjacket_Sneakers"
         ,SP_Regen: 0.5
         ,SP_Regen_Percent: 50
-        ,Movement_Speed: 0.35
+        ,Movement_Speed: 0.33
         ,Skill_Amplification: 10
-        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.35\nSkill Amplification +10"
+        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.33\nSkill Amplification +10"
         ,Rarity: "Rare"
     }
     ,{
@@ -131,21 +131,21 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Mithril_Boots"
-        ,Defense: 26
+        ,Defense: 22
         ,Attack_Speed: 12
-        ,Movement_Speed: 0.45
-        ,Title: "Mithril Boots\n\nDefense +26\nAttack Speed +12%\nMovement Speed +0.45"
+        ,Movement_Speed: 0.5
+        ,Title: "Mithril Boots\n\nDefense +22\nAttack Speed +12%\nMovement Speed +0.5"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Leg"
         ,Name: "Bucephalus"
-        ,Attack_Power: 5
+        ,Attack_Power: 10
         ,Defense: 10
         ,SP_Regen: 1
         ,Movement_Speed: 0.33
         ,Critical_Strike_Chance: 15
-        ,Title: "Bucephalus\n\nAttack Power +5\nDefense +10\nSP Regen +1\nMovement Speed +0.33\nCriticall Strike Chance +15%"
+        ,Title: "Bucephalus\n\nAttack Power +10\nDefense +10\nSP Regen +1\nMovement Speed +0.33\nCriticall Strike Chance +15%"
         ,Rarity: "Epic"
     }
     ,{
@@ -184,8 +184,8 @@ const Leg = [
         ,SP_Regen_Percent: 60
         ,Movement_Speed: 0.25
         ,Movement_speed_while_not_in_combat: 0.4
-        ,Skill_Amplification: 15
-        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.4\nSkill Amplification +15"
+        ,Skill_Amplification: 20
+        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.4\nSkill Amplification +20"
         ,Rarity: "Legendary"
     }
     ,{

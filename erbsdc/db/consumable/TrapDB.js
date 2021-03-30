@@ -3,29 +3,29 @@ const Trap = [
 	{
         Type: "Trap"
         ,Name: "Mithril_String"
-        ,Trap_Damage: 300
-        ,Title: "Mithril String\n\nTrap Damage +300"
+        ,Trap_Damage: 285
+        ,Title: "Mithril String\n\nTrap Damage +285"
         ,Rarity: "Rare"
     }
 	,{
         Type: "Trap"
         ,Name: "Fire_Trap"
-        ,Trap_Damage: 280
-        ,Title: "Fire Trap\n\nTrap Damage +280"
+        ,Trap_Damage: 265
+        ,Title: "Fire Trap\n\nTrap Damage +265"
         ,Rarity: "Rare"
     }
 	,{
         Type: "Trap"
         ,Name: "Double_Guillotine"
-        ,Trap_Damage: 280
-        ,Title: "Double Guillotine\n\nTrap Damage +280"
+        ,Trap_Damage: 260
+        ,Title: "Double Guillotine\n\nTrap Damage +260"
         ,Rarity: "Epic"
     }
 	,{
         Type: "Trap"
         ,Name: "Claymore"
-        ,Trap_Damage: 260
-        ,Title: "Claymore\n\nTrap Damage +260"
+        ,Trap_Damage: 240
+        ,Title: "Claymore\n\nTrap Damage +240"
         ,Rarity: "Epic"
     }
 	,{

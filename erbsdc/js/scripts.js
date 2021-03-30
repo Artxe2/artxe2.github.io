@@ -29,20 +29,22 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
     let  last = getCookie('lastPreset');
     if (!last) {
-        last = basePreset[0];
+        characters[0].setPreset(basePreset[0]);
+        characters[1].setPreset(basePreset[0]);
+    } else {
+        characters[0].PRESET.selectedIndex = last;
+        characters[1].PRESET.selectedIndex = last;
+        characters[0].setPreset(JSON.parse(decodeURIComponent(getCookie('preset' + last))));
+        characters[1].setPreset(JSON.parse(decodeURIComponent(getCookie('preset' + last))));
     }
-    characters[0].PRESET.selectedIndex = last;
-    characters[1].PRESET.selectedIndex = last;
-    characters[0].setPreset(JSON.parse(decodeURIComponent(getCookie('preset' + last))));
-    characters[1].setPreset(JSON.parse(decodeURIComponent(getCookie('preset' + last))));
 });
 
 function baseAttackDamage(character, enemy, base, coe, cri, onhit) {
-    return (((base + character.attack_power * coe) * (1 + cri / 100 * (1 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100)) / (1 + (!enemy.defense ? 0 : enemy.defense / 100)) + 
-        (character.extra_normal_attack_damage - (!enemy.normal_attack_damage_reduction ? 0 : enemy.normal_attack_damage_reduction)) * onhit) * 
-        (1 + (character.extra_normal_attack_damage_percent - (!enemy.normal_attack_damage_reduction_percent ? 0 : enemy.normal_attack_damage_reduction_percent)) / 100)) * 
-        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) * 
-        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) + 0.0001 | 0;
+    return floor((((base + character.attack_power * coe) * (1 + cri / 100 * (1 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100)) / (1 + (!enemy.defense ? 0 : enemy.defense / 100)) *
+        (1 + (character.extra_normal_attack_damage_percent - (!enemy.normal_attack_damage_reduction_percent ? 0 : enemy.normal_attack_damage_reduction_percent)) / 100)) +
+        (character.extra_normal_attack_damage - (!enemy.normal_attack_damage_reduction ? 0 : enemy.normal_attack_damage_reduction)) * onhit) *
+        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *
+        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)));
 }
 
 function calcAttackSpeed(character, bonusAs) {
@@ -56,11 +58,11 @@ function calcEquip(character, name, n) {
             coe *= 10;
         }
     }
-    let result = (!character.weapon || !character.weapon[name] ? 0 : round6(character.weapon[name] * coe)) + 
-        (!character.chest || !character.chest[name] ? 0 : round6(character.chest[name] * coe)) + 
-        (!character.head || !character.head[name] ? 0 : round6(character.head[name] * coe)) + 
-        (!character.arm || !character.arm[name] ? 0 : round6(character.arm[name] * coe)) + 
-        (!character.leg || !character.leg[name] ? 0 : round6(character.leg[name] * coe)) + 
+    let result = (!character.weapon || !character.weapon[name] ? 0 : round6(character.weapon[name] * coe)) +
+        (!character.chest || !character.chest[name] ? 0 : round6(character.chest[name] * coe)) +
+        (!character.head || !character.head[name] ? 0 : round6(character.head[name] * coe)) +
+        (!character.arm || !character.arm[name] ? 0 : round6(character.arm[name] * coe)) +
+        (!character.leg || !character.leg[name] ? 0 : round6(character.leg[name] * coe)) +
         (!character.accessory || !character.accessory[name] ? 0 : round6(character.accessory[name] * coe));
     if (n) {
         for (let i = 0; i < n; i++) {
@@ -72,22 +74,22 @@ function calcEquip(character, name, n) {
 
 function calcHeal(heal, ps, enemy) {
     let coe = 1.007 + enemy.CRAFT_MASTERY.selectedIndex * 0.007;
-    const hr = enemy.heal_reduction ? (100 - round6(40 * coe)) / 100 : 1; 
+    const hr = enemy.heal_reduction ? (100 - round6(enemy.heal_reduction * coe)) / 100 : 1;
     return round(heal * hr * ps * 100) / 100;
 }
 
-function calcSkillDamage(character, enemy, base, coe, onhit) {	
-    return (((base + character.attack_power * coe) / (1 + (!enemy.defense ? 0 : enemy.defense / 100)) + 
-        (character.skill_amplification - (!enemy.skill_damage_reduction ? 0 : enemy.skill_damage_reduction)) * onhit) * 
-        (1 + (character.skill_amplification_percent - (!enemy.skill_damage_reduction_percent ? 0 : enemy.skill_damage_reduction_percent)) / 100)) * 
-        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) * 
-        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) + 0.0001 | 0;
+function calcSkillDamage(character, enemy, base, coe, onhit) {
+    return floor((((base + character.attack_power * coe) / (1 + (!enemy.defense ? 0 : enemy.defense / 100))) *
+        (1 + (character.skill_amplification_percent - (!enemy.skill_damage_reduction_percent ? 0 : enemy.skill_damage_reduction_percent)) / 100) +
+        (character.skill_amplification - (!enemy.skill_damage_reduction ? 0 : enemy.skill_damage_reduction)) * onhit) *
+        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *
+        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)));
 }
 
 function calcTrueDamage(character, enemy, damage) {
-    return damage * 
-        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) * 
-        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)) + 0.0001 | 0;
+    return floor(damage *
+        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *
+        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)));
 }
 
 function fixLimitNum(target, max) {
@@ -101,8 +103,8 @@ function fixLimitNum(target, max) {
 }
 
 function comboTime(value, change) {
-    if (change && 
-        (characters[0].character && characters[0].COMBO_TIME.value > value || 
+    if (change &&
+        (characters[0].character && characters[0].COMBO_TIME.value > value ||
             characters[1].character && characters[1].COMBO_TIME.value > value)) {
         return;
     }
@@ -116,7 +118,7 @@ function comboTime(value, change) {
         div.querySelector('.combo_time').value = value;
     }
     updateDisplay();
-} 
+}
 
 function floor(n, d) {
     if (d) {
@@ -156,7 +158,7 @@ function hartUp(s, x) {
                     div.querySelector(skill[i][1]).checked = false;
                     count++;
                 }
-                
+
             }
             if (count > 3) {
                 if (div.querySelector(skill[s][x]).checked) {
@@ -254,14 +256,14 @@ function simulateCombo() {
     const defense_minus1 = new Array(length).fill(0);
     const combo0 = c0.COMBO_OPTION.value;
     const combo1 = c1.COMBO_OPTION.value;
-    const data0 = { 
+    const data0 = {
         hp: c1.max_hp ? c1.max_hp : 0,
         damage: 0,
         heal: 0,
         shield: 0,
         vars: c0.character ? JSON.parse(c0.character.COMBO_VARS) : {}
     };
-    const data1 = { 
+    const data1 = {
         hp: c0.max_hp ? c0.max_hp : 0,
         damage: 0,
         heal: 0,
@@ -282,12 +284,10 @@ function simulateCombo() {
             }
         }
     }
-    
+
 
     const attack_power0 = floor(c0.attack_power);
     c0.attack_power = floor(c0.pure_attack_power);
-    // const critical_strike_chance0 = c0.critical_strike_chance;
-    // c0.critical_strike_chance = c0.pure_critical_strike_chance;
     const critical_damage0 = c0.critical_damage;
     c0.critical_damage = c0.pure_critical_damage;
     const skill_amplification0 = round(c0.skill_amplification, 1);
@@ -299,8 +299,6 @@ function simulateCombo() {
 
     const attack_power1 = floor(c1.attack_power);
     c1.attack_power = floor(c1.pure_attack_power);
-    // const critical_strike_chance1 = c1.critical_strike_chance;
-    // c1.critical_strike_chance = c1.pure_critical_strike_chance;
     const critical_damage1 = c1.critical_damage;
     c1.critical_damage = c1.pure_critical_damage;
     const skill_amplification1 = round(c1.skill_amplification, 1);
@@ -378,7 +376,7 @@ function updateDisplay() {
 
 function setCookie(name, value, days) {
 	value = escape(value)
-	if (days) {    			
+	if (days) {
 		const exDate = new Date();
 		exDate.setDate(exDate.getDate() + days);
 		value += '; expires=' + exDate;

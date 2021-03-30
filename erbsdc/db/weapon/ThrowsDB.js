@@ -86,8 +86,8 @@ const Throws = [
          Type: "Throws"
         ,Name: "Grenade_of_Antioch"
         ,Attack_Power: 77
-        ,Extra_Normal_Attack_Damage: 85
-        ,Title: "Grenade of Antioch\n\nAttack Power +77\nExtra Normal Attack Damage +85"
+        ,Extra_Normal_Attack_Damage: 95
+        ,Title: "Grenade of Antioch\n\nAttack Power +77\nExtra Normal Attack Damage +95"
         ,Rarity: "Epic"
 
     }
@@ -96,8 +96,8 @@ const Throws = [
         ,Name: "David`s_Sling"
         ,Attack_Power: 68
         ,HP_Regen_Percent: 150
-        ,Extra_Normal_Attack_Damage: 27
-        ,Title: "David`s Sling\n\nAttack Power +68\nHP Regen +150%\nExtra Normal Attack Damage +27"
+        ,Extra_Normal_Attack_Damage: 33
+        ,Title: "David`s Sling\n\nAttack Power +68\nHP Regen +150%\nExtra Normal Attack Damage +33"
         ,Rarity: "Epic"
     }
     ,{

@@ -160,9 +160,9 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Sunset_Armor"
-        ,Defense: 22
+        ,Defense: 20
         ,Max_HP: 360
-        ,Title: "Sunset Armor\n\nDefense +22\nMax HP +360"
+        ,Title: "Sunset Armor\n\nDefense +20\nMax HP +360"
         ,Rarity: "Rare"
     }
     ,{
@@ -179,30 +179,30 @@ const Chest = [
          Type: "Chest"
         ,Name: "Optical_Camouflage_Suit"
         ,Attack_Power: 10
-        ,Defense: 15
+        ,Defense: 18
         ,Critical_Strike_Chance: 22
         ,Skill_Damage_Reduction_Percent: 10
-        ,Title: "Optical Camouflage Suit\n\nAttack Power +10\nDefense +15\nCritical Strike Chance +22%\nSkill Damage Reduction +10%"
+        ,Title: "Optical Camouflage Suit\n\nAttack Power +10\nDefense +18\nCritical Strike Chance +22%\nSkill Damage Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Chest"
         ,Name: "Rocker`s_Jacket"
         ,Attack_Power: 30
-        ,Defense: 18
+        ,Defense: 15
         ,Movement_speed_while_not_in_combat: 0.1
         ,Normal_Attack_Damage_Reduction: 11
-        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +18\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
+        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +15\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Chest"
         ,Name: "Mithril_Armor"
-        ,Defense: 62
+        ,Defense: 60
         ,Attack_Speed: 12
         ,Movement_Speed: 0.2
-        ,Skill_Damage_Reduction: 10
-        ,Title: "Mithril Armor\n\nDefense +62\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +10"
+        ,Skill_Damage_Reduction: 14
+        ,Title: "Mithril Armor\n\nDefense +60\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +14"
         ,Rarity: "Epic"
     }
     ,{
@@ -210,9 +210,8 @@ const Chest = [
         ,Name: "Crusader_Armor"
         ,Defense: 38
         ,HP_Regen_Percent: 150
-        ,Movement_Speed: -0.02
         ,Extra_Normal_Attack_Damage: 15
-        ,Title: "Crusader Armor\n\nDefense +38\nHP Regen +150%\nMovement Speed - 0.02\nExtra Damage to Normal Attacks +15"
+        ,Title: "Crusader Armor\n\nDefense +38\nHP Regen +150%\nExtra Damage to Normal Attacks +15"
         ,Rarity: "Epic"
     }
     ,{
@@ -247,10 +246,10 @@ const Chest = [
          Type: "Chest"
         ,Name: "Butler`s_Suit"
         ,Attack_Power: 30
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.12
         ,Life_Steal: 20
         ,Normal_Attack_Damage_Reduction: 10
-        ,Title: "Butler`s Suit\n\nAttack Power +30\nMovement Speed +0.1\nLife Steal +20%\nNormal Attack Damage Reduction +10"
+        ,Title: "Butler`s Suit\n\nAttack Power +30\nMovement Speed +0.12\nLife Steal +20%\nNormal Attack Damage Reduction +10"
         ,Rarity: "Epic"
     }
     ,{
@@ -258,32 +257,32 @@ const Chest = [
         ,Name: "Battle_Suit"
         ,Defense: 25
         ,Max_HP: 170
-        ,Normal_Attack_Damage_Reduction: 12
+        ,Normal_Attack_Damage_Reduction: 15
         ,Skill_Damage_Reduction_Percent: 12
-        ,Title: "Battle Suit\n\nDefense +25\nMax HP +170\nNormal Attack Damage Reduction +12\nSkill Damage Reduction +12%"
+        ,Title: "Battle Suit\n\nDefense +25\nMax HP +170\nNormal Attack Damage Reduction +15\nSkill Damage Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Chest"
         ,Name: "EOD_Suit"
         ,Defense: 25
-        ,Max_HP: 270
+        ,Max_HP: 250
         ,HP_Regen: 1
         ,Cooldown_Reduction: 10
-        ,Normal_Attack_Damage_Reduction: 8
-        ,Title: "EPD Siot\n\nDefense +25\nMax HP +270\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +8"
+        ,Normal_Attack_Damage_Reduction: 10
+        ,Title: "EPD Siot\n\nDefense +25\nMax HP +250\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +10"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Chest"
         ,Name: "Blazing_Dress"
-        ,Attack_Power: 16
+        ,Attack_Power: 20
         ,Defense: 30
-        ,HP_Regen: 2.5
+        ,HP_Regen: 2
         ,SP_Regen: 2
         ,SP_Regen_Percent: 75
-        ,Extra_Normal_Attack_Damage: 18
-        ,Title: "Blazing Dress\n\nAttack Power +16\nDefense +30\nHP Regen +2.5\nSP Regen +2\nSP Regen +75%\nExtra Normal Attack Damage +18"
+        ,Extra_Normal_Attack_Damage: 20
+        ,Title: "Blazing Dress\n\nAttack Power +20\nDefense +30\nHP Regen +2\nSP Regen +2\nSP Regen +75%\nExtra Normal Attack Damage +20"
         ,Rarity: "Legendary"
     }
     ,{

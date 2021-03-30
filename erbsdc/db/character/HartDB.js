@@ -1,8 +1,9 @@
 'use strict';
 const Hart = {
+     Type: 'R',
      Attack_Power: 22
     ,Attack_Power_Growth: 3
-    ,Health: 500
+    ,Health: 520
     ,Health_Growth: 66
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
@@ -91,7 +92,7 @@ const Hart = {
             const skill_amplification_percent = character.skill_amplification_percent;
             character.skill_amplification_percent = round(character.pure_skill_amplification_percent);
 
-            const sap = character.DIV.querySelector('.hart_ee').checked ? 25 : character.DIV.querySelector('.hart_e').checked ? 18 : 0;
+            const sap = character.DIV.querySelector('.hart_ee').checked ? 23 : character.DIV.querySelector('.hart_e').checked ? 16 : 0;
             character.skill_amplification_percent += sap;
             const damage1 = calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
             character.skill_amplification_percent += sap;
@@ -124,7 +125,7 @@ const Hart = {
         if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
             const type = character.weapon.Type;
             if (type === 'Guitar') {
-                return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1.5 : 2.5, 1) + '</b>';
+                return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1.2 : 2, 1) + '</b>';
             }
         }
         return '-'
@@ -196,7 +197,7 @@ const Hart = {
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        const sap = character.DIV.querySelector('.hart_ee').checked ? 25 : character.DIV.querySelector('.hart_e').checked ? 18 : 0;
+        const sap = character.DIV.querySelector('.hart_ee').checked ? 23 : character.DIV.querySelector('.hart_e').checked ? 16 : 0;
         let ww = data.vars.ww, ee = data.vars.ee;
         if (character.weapon) {
             const type = character.weapon.Type;
@@ -213,7 +214,7 @@ const Hart = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -226,7 +227,7 @@ const Hart = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.15, 0, 1);
                         if (character.DIV.querySelector('.hart_tt').checked) {
@@ -235,7 +236,7 @@ const Hart = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                             }
                             ba += baseAttackDamage(character, enemy, 0, 0.15, 0, 1);
                         }
@@ -247,7 +248,7 @@ const Hart = {
                         for (let x = index; ww[x]; x++) {
                             ww[x] = 2;
                         }
-                        const dm = hart_ww.checked ? -0.35 : hart_w.checked ? -0.25 : 0;
+                        const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
                         if (dm) {
                             for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
@@ -262,7 +263,7 @@ const Hart = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.15, 100, 1);
                         if (character.DIV.querySelector('.hart_tt').checked) {
@@ -271,7 +272,7 @@ const Hart = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0015)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                             }
                             ba += baseAttackDamage(character, enemy, 0, 0.15, 100, 1);
                         }
@@ -283,7 +284,7 @@ const Hart = {
                         for (let x = index; ww[x]; x++) {
                             ww[x] = 2;
                         }
-                        const dm = hart_ww.checked ? -0.35 : hart_w.checked ? -0.25 : 0;
+                        const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
                         if (dm) {
                             for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
@@ -293,10 +294,34 @@ const Hart = {
                 } else if (c === 'q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 80 + q * 20, 0.3, 1);
+
+                        if (ww[index] && ww[index] === 1) {
+                            for (let x = index; ww[x]; x++) {
+                                ww[x] = 2;
+                            }
+                            const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                            if (dm) {
+                                for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
+                                    defense_minus[x] = dm;
+                                }
+                            }
+                        }
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 160 + q * 40, 0.6, 1);
+
+                        if (ww[index] && ww[index] === 1) {
+                            for (let x = index; ww[x]; x++) {
+                                ww[x] = 2;
+                            }
+                            const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                            if (dm) {
+                                for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
+                                    defense_minus[x] = dm;
+                                }
+                            }
+                        }
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
@@ -320,6 +345,18 @@ const Hart = {
                         character.skill_amplification_percent =
                             round(character.pure_skill_amplification_percent + (ee[index] ? ee[index] * sap : 0));
                         damage += calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
+
+                        if (ww[index] && ww[index] === 1) {
+                            for (let x = index; ww[x]; x++) {
+                                ww[x] = 2;
+                            }
+                            const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                            if (dm) {
+                                for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
+                                    defense_minus[x] = dm;
+                                }
+                            }
+                        }
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
@@ -328,7 +365,7 @@ const Hart = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Guitar') {
-                            damage += calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1.5 : 2.5, 1)
+                            damage += calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1.2 : 2, 1)
                         }
                     }
                 } else if (c === 'p' || c === 'P') {

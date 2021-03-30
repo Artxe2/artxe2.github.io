@@ -729,11 +729,14 @@ class Character {
                     this.weapon.Name === 'Spiky_Bouncy_Ball' || this.weapon.Name === 'Ruthenium_Marble' ||
                     this.weapon.Name === 'Composite_Bow' || this.weapon.Name === 'Twinbow' || this.weapon.Name === 'Elemental_Bow' ||
                     this.weapon.Name === 'The_Smiting_Dragon' ||
-                    this.weapon.Name === 'Ruthenium_Marble') ||
+                    this.weapon.Name === 'Ruthenium_Marble') ? 40 :
                 this.chest && this.chest.Name === 'Rocker`s_Jacket' ||
                 this.arm && this.arm.Name === 'Sword_Stopper' ||
                 this.leg && this.leg.Name === 'White_Rhinos' ||
-                this.accessory && (this.accessory.Name === 'Gilded_Quill_Fan' || this.accessory.Name === 'White_Crane_Fan');
+                this.accessory && this.accessory.Name === 'White_Crane_Fan' ? this.character.Type === 'M' ? 40 : 25 :
+                this.accessory && this.accessory.Name === 'Gilded_Quill_Fan' ? 25 : 0;
+
+            // console.log('heal_reduction:', this.heal_reduction);
 
             this.critical_damage_reduction = calcEquip(this, 'Critical_Damage_Reduction');
             this.CRITICAL_DAMAGE_REDUCTION.innerText = this.critical_damage_reduction + '%';
@@ -747,7 +750,7 @@ class Character {
                 (jackie_r && jackie_r.checked && r >= 0 ? 20 + r * 5 : 0) +
                 (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) +
                 (lida_w && lida_w.checked && w >= 0 ? 20 + t * 10 : 0) +
-                (silvia_t ? silvia_t.value * (1 + t * 1) : 0) +
+                (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (1 + t) : 0) +
                 (luke_w_u && luke_w_u.checked && w >= 0 ? this.DIV.querySelector('.luke_w_s').value * 10 : 0);
             const attack_speed_percent =
                 attack_speed_bonus + calcEquip(this, 'Attack_Speed') +
@@ -786,7 +789,7 @@ class Character {
             const shoichi_t = this.DIV.querySelector('.shoichi_t');
             const cri_bonus =
                 (shoichi_t ? shoichi_t.value * (5 + t * 2) : 0) +
-                (this.character === Adela ? 2 + t * 4 : 0);
+                (this.character === Adela ? 4 + t * 4 : 0);
             this.critical_strike_chance =
                 calcEquip(this, 'Critical_Strike_Chance') + cri_bonus;
                 if (this.critical_strike_chance > 100) {
@@ -820,19 +823,19 @@ class Character {
                 (sissela_t ? (2 + t * 3) *
                     (sissela_t.value < 10 ? 0 : (sissela_t.value >= 90 ? 5 : sissela_t.value / 20 + 0.5)) *
                     (this.DIV.querySelector('.sissela_r').checked ? 2 : 1) : 0);
-            const skill_amplification_percent_bonus = (hart_e && e >= 0 ? hart_e_s.value * (hart_ee.checked ? 25 : hart_e.checked ? 18 : 0) : 0);
+            const skill_amplification_percent_bonus = (hart_e && e >= 0 ? hart_e_s.value * (hart_ee.checked ? 23 : hart_e.checked ? 16 : 0) : 0);
             this.skill_amplification =
                 round(calcEquip(this, 'Skill_Amplification', 2) + skill_amplification_bonus, 1);
             this.skill_amplification_percent =
                 round((!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t && silvia_t.value == 15 ? 15 : 0) +
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.2) : 0) +
                     skill_amplification_percent_bonus);
             this.SKILL_AMPLIFICATION.innerText =
                 this.skill_amplification + '| ' + this.skill_amplification_percent + '%';
             this.pure_skill_amplification = calcEquip(this, 'Skill_Amplification', 2);
             this.pure_skill_amplification_percent =
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t && silvia_t.value == 15 ? 15 : 0);
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.2) : 0);
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
             if (this.cooldown_reduction > 40) {
@@ -852,7 +855,7 @@ class Character {
             this.skill_damage_reduction =
                 calcEquip(this, 'Skill_Damage_Reduction');
             this.skill_damage_reduction_percent =
-                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1 +
+                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 0.8 +
                     calcEquip(this, 'Skill_Damage_Reduction_Percent'));
             this.SKILL_DAMAGE_REDUCTION.innerText =
                 this.skill_damage_reduction + '| ' + this.skill_damage_reduction_percent + '%';
@@ -871,13 +874,13 @@ class Character {
             var chiara_t = this.enemy.DIV.querySelector('.chiara_t');
             const silvia_r = this.DIV.querySelector('.silvia_r');
             const defense_percent = 1 +
-                (magnus_t ? magnus_t.value * (0.002 + t * 0.0015) : 0) +
+                (magnus_t ? magnus_t.value * (0.002 + t * 0.002) : 0) +
                 (yuki_w && w >= 0 && yuki_w.checked ? 0.5 : 0);
             const defense_minus = 1 -
                 (hammer_d && hammer_d.checked && ewm > 5? ewm < 13 ? 0.2 : 0.35 : 0) -
                 (zahir_q ? 0.1 * zahir_q.value : 0) -
                 (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.07 + ee * 0.02 : 0) -
-                (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.35 : hart_w.checked ? 0.25 : 0 : 0) -
+                (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.4 : hart_w.checked ? 0.3 : 0 : 0) -
                 (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) -
                 (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) -
                 (chiara_t ? chiara_t.value * (0.02 + et * 0.02) : 0);
@@ -918,18 +921,20 @@ class Character {
             this.normal_attack_damage_reduction =
                 calcEquip(this, 'Normal_Attack_Damage_Reduction');
             this.normal_attack_damage_reduction_percent =
-                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1.2);
+                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1);
             this.NORMAL_ATTACK_DAMAGE_REDUCTION.innerText =
                 this.normal_attack_damage_reduction + '| ' + this.normal_attack_damage_reduction_percent + '%';
 
             const jackie_w = this.DIV.querySelector('.jackie_w');
             const bernice_e = this.DIV.querySelector('.bernice_e');
             chiara_t = this.DIV.querySelector('.chiara_t');
+            const barbara_e = this.DIV.querySelector('.barbara_e');
             const move_percent = 1 +
                 (jackie_w && jackie_w.checked ? 0.06 + w * 0.03 : 0) +
                 (bernice_e && bernice_e.checked ? 0.12 + w * 0.02 : 0) +
                 (chiara_t && chiara_t.value == 4 ? 0.04 + t * 0.02 : 0) +
-                (silvia_r && silvia_r.checked ? 0.7 : 0);
+                (silvia_r && silvia_r.checked ? 0.7 : 0) +
+                (barbara_e && barbara_e.checked ? 0.2 : 0);
             const move_bonus =
                 (silvia_r && silvia_r.checked ? 0.3 + r * 0.075 : 0);
             this.movement_speed =
