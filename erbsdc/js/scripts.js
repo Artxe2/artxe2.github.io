@@ -48,7 +48,8 @@ function baseAttackDamage(character, enemy, base, coe, cri, onhit) {
 }
 
 function calcAttackSpeed(character, bonusAs) {
-    return character.attack_speed + (character.base_attack_speed * bonusAs + 0.0001 | 0) / 100;
+    return round((character.character.Atk_Speed + character.weapon_attack_speed) *
+        (100 + bonusAs + calcEquip(character, 'Attack_Speed') + (!character.weapon ? 0 : (1 + character.WEAPON_MASTERY.selectedIndex) * character.weapon_mastery_attack_speed))) / 100;
 }
 
 function calcEquip(character, name, n) {
