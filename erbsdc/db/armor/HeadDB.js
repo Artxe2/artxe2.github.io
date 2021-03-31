@@ -200,12 +200,12 @@ const Head = [
     }
     ,{
          Type: "Head"
-        ,Name: "천사의_고리"
+        ,Name: "Elysian_Halo"
         ,Attack_Power:40
         ,Defense: 30
         ,Max_SP: 300
         ,Critical_Damage_Reduction: 10
-        ,Title: "천사의 고리\n\nAttack Power +40\nDefense +30\nMax SP +300\nCritical Damage Reduction +10%"
+        ,Title: "Elysian Halo\n\nAttack Power +40\nDefense +30\nMax SP +300\nCritical Damage Reduction +10%"
         ,Rarity: "Legendary"
     }
 ];

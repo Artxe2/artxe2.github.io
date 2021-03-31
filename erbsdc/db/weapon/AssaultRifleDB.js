@@ -45,11 +45,11 @@ const AssaultRifle = [
     }
     ,{
          Type: "AssaultRifle"
-        ,Name: "95식_자동소총"
+        ,Name: "Type_95"
         ,Attack_Power: 72
         ,Vision_Range: 1.5
         ,Attack_Range: 0.5
-        ,Title: "95식 자동소총\n\nAttack Power +72\nVision Range +1.5\nAttack Range +0.5"
+        ,Title: "Type 95\n\nAttack Power +72\nVision Range +1.5\nAttack Range +0.5"
         ,Rarity: "Epic"
     }
     ,{
@@ -73,12 +73,12 @@ const AssaultRifle = [
     }
     ,{
          Type: "AssaultRifle"
-        ,Name: "아그니"
+        ,Name: "Agni"
         ,Attack_Power: 55
         ,Attack_Speed: 33
         ,Vision_Range: 2.5
         ,Extra_Normal_Attack_Damage: 16
-        ,Title: "아그니\n\nAttack Power +55\nAttack Speed +33%\nVision Range +2.5\nExtra Normal Attack Damage +16"
+        ,Title: "Agni\n\nAttack Power +55\nAttack Speed +33%\nVision Range +2.5\nExtra Normal Attack Damage +16"
         ,Rarity: "Legendary"
     }
 ];
