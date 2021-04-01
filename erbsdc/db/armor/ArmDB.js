@@ -96,15 +96,6 @@ const Arm = [
     }
     ,{
          Type: "Arm"
-        ,Name: "Cube_Watch"
-        ,Defense: 20
-        ,Attack_Speed: 50
-        ,Cooldown_Reduction: 6
-        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +6%"
-        ,Rarity: "Epic"
-    }
-    ,{
-         Type: "Arm"
         ,Name: "Sword_Stopper"
         ,Defense: 33
         ,Critical_Damage_Reduction: 8
@@ -158,6 +149,15 @@ const Arm = [
         ,Max_HP: 300
         ,Normal_Attack_Damage_Reduction: 2
         ,Title: "Sword of Shah Jahan\n\nAttack Power +30\nMax HP +300\nNormal Attack Damage Reduction +2"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Arm"
+        ,Name: "Cube_Watch"
+        ,Defense: 20
+        ,Attack_Speed: 50
+        ,Cooldown_Reduction: 6
+        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +6%"
         ,Rarity: "Epic"
     }
     ,{
