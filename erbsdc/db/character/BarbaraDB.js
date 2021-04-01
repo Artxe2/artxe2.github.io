@@ -1,19 +1,19 @@
 const Barbara = {
      Type: 'M',
-     Attack_Power: 28
-    ,Attack_Power_Growth: 2.5
-    ,Health: 610
-    ,Health_Growth: 84
-    ,Health_Regen: 1
-    ,Health_Regen_Growth: 0.06
-    ,Stamina: 427
-    ,Stamina_Growth: 15
-    ,Stamina_Regen: 1.9
-    ,Stamina_Regen_Growth: 0.06
-    ,Defense: 30
-    ,Defense_Growth: 2.3
-    ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.15
+     Attack_Power: 18
+    ,Attack_Power_Growth: 1.4
+    ,Health: 480
+    ,Health_Growth: 60
+    ,Health_Regen: 0.4
+    ,Health_Regen_Growth: 0.03
+    ,Stamina: 390
+    ,Stamina_Growth: 17
+    ,Stamina_Regen: 2
+    ,Stamina_Regen_Growth: 0.04
+    ,Defense: 21
+    ,Defense_Growth: 1.6
+    ,Atk_Speed: 0.04
+    ,Movement_Speed: 3
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Hammer, Bat]
@@ -56,8 +56,8 @@ const Barbara = {
             const stack = parseInt(character.DIV.querySelector('.barbara_t').value);
             const damage = calcSkillDamage(character, enemy, 15 + q * 15, 0.15, 1) +
                 (r >= 0 && character.DIV.querySelector('.barbara_r').checked ? calcSkillDamage(character, enemy, 50 + r * 25, 0.6, 1) : 0);
-            const shot = calcSkillDamage(character, enemy, 15, 0.06 * level, 1);
-            return "<b class='damage'>" + damage + "</b><b> __dps: </b><b class='damage'>" + shot * (1 + stack * (0.15 + t * 0.05)) + '</b> ( ' + shot + ' )';
+            const shot = calcSkillDamage(character, enemy, 15, 0.075 * level, 1);
+            return "<b class='damage'>" + damage + "</b><b> __dps: </b><b class='damage'>" + shot * (0.9 + stack * (0.15 + t * 0.05)) + '</b> ( ' + shot + ' )';
         }
         return '-';
     }
@@ -70,7 +70,7 @@ const Barbara = {
             const min = calcSkillDamage(character, enemy, (40 + w * 40) * 0.7 * coe, 0.35 * 0.7 * coe, 1);
             const max = calcSkillDamage(character, enemy, (40 + w * 40) * coe, 0.35 * coe, 1);
             const rail = calcSkillDamage(character, enemy, (55 + w * 45) * coe, 0.5 * coe, 1);
-            const cool = 10000 / ((r >= 0 && character.DIV.querySelector('.barbara_r').checked ? 0.5 : 4) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((r >= 0 && character.DIV.querySelector('.barbara_r').checked ? 0.66 : 4) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + max + ' - ' + min * 2 + "</b><b> / </b><b class='damage'>" + rail + "</b><b> __sd/s: </b><b class='damage'>" + round(rail * cool) / 100 + '</b>';
         }
         return '-';
@@ -194,7 +194,7 @@ const Barbara = {
                         if (w >= 0 && ww) {
                             damage += calcSkillDamage(character, enemy, (55 + w * 45) * coe, 0.5 * coe, 1);
                         } else {
-                            damage += calcSkillDamage(character, enemy, 15, 0.06 * level, 1);
+                            damage += calcSkillDamage(character, enemy, 15, 0.075 * level, 1);
                         }
                     }
                 } else if (c === 'Q') {

@@ -442,6 +442,7 @@ const Jackie = {
                             damage += ba;
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         } else if (type === 'DualSwords') {
+                            console.log('damage:', damage);
                             if (bleeding[index] && ww) {
                                 for (let j = 0; j < 6; j++) {
                                     damage += calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.3 : 0.5) + 0.1 + w * 0.025, 1) * 6;
@@ -466,6 +467,7 @@ const Jackie = {
                                     }
                                 }
                             }
+                            console.log('damage:', damage);
                         } else if (type === 'Axe') {
                             for (let x = index; x <= index + (wm < 13 ? 12 : 16); x++) {
                                 dd[x] = true;
