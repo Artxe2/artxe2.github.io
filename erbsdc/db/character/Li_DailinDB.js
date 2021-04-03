@@ -135,9 +135,10 @@ const Li_Dailin = {
                 const coe = wm < 13 ? 1.4 : 2;
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                const over = baseAttackDamage(character, enemy, 0, (1 + coe) * 1.19, 0, 1) + bonus;
+                const max = baseAttackDamage(character, enemy, 0, (1 + coe) * 1.19, 0, 1) + bonus;
                 const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + min + '</b> ( ' +  min + ' ~ ' + over + " )<b> __h: </b><b class='heal'>" + life + '</b>';
+                const cool = 100 / (wm < 13 ? 12 : 10);
+                return "<b class='damage'>" + min + '</b> ( ' +  min + ' ~ ' + max + " )<b> __h: </b><b class='heal'>" + life + "</b><b> __sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
             }
             if (type === 'Nunchaku') {
                 const min = calcSkillDamage(character, enemy, wm < 13 ? 150 : 300, 0.5, 1);

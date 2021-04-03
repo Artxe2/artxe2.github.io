@@ -115,7 +115,9 @@ const Rozzi = {
             const min2 = baseAttackDamage(character, enemy, 0, coe, 0, 1);
             const max1 = baseAttackDamage(character, enemy, 0, 0.6, 100, 1);
             const max2 = baseAttackDamage(character, enemy, 0, coe, 100, 1);
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + ' ) ';
+            const dps = round((damage1 + damage2) * character.attack_speed * 100) / 100;
+            const life = calcHeal((damage1 + damage2) * (character.life_steal / 100), character.attack_speed, enemy);
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + " ) <b> _d/s: </b><b class='damage'>" + dps + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
