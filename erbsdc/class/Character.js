@@ -718,7 +718,8 @@ class Character {
             const et = this.enemy.T_LEVEL.selectedIndex;
             const ewm = this.enemy.WEAPON_MASTERY.selectedIndex;
 
-            this.heal_reduction =
+            let rozzi_w = this.DIV.querySelector('.rozzi_w');
+            this.pure_heal_reduction =
                 this.weapon && (
                     this.weapon.Name === 'Damascus_Steel_Thorn' ||
                     this.weapon.Name === 'Dainsleif' ||
@@ -735,8 +736,8 @@ class Character {
                 this.leg && this.leg.Name === 'White_Rhinos' ||
                 this.accessory && this.accessory.Name === 'White_Crane_Fan' ? this.character.Type === 'M' ? 40 : 25 :
                 this.accessory && this.accessory.Name === 'Gilded_Quill_Fan' ? 25 : 0;
-
-            // console.log('heal_reduction:', this.heal_reduction);
+            this.heal_reduction =
+                rozzi_w && rozzi_w.checked ? 100 : this.pure_heal_reduction;
 
             this.critical_damage_reduction = calcEquip(this, 'Critical_Damage_Reduction');
             this.CRITICAL_DAMAGE_REDUCTION.innerText = this.critical_damage_reduction + '%';
@@ -869,6 +870,7 @@ class Character {
             const hart_w = this.enemy.DIV.querySelector('.hart_w');
             const hart_ww = this.enemy.DIV.querySelector('.hart_ww');
             const isol_t = this.enemy.DIV.querySelector('.isol_t');
+            rozzi_w = this.enemy.DIV.querySelector('.rozzi_w');
             const yuki_w = this.DIV.querySelector('.yuki_w');
             const xiukai_r = this.enemy.DIV.querySelector('.xiukai_r');
             var chiara_t = this.enemy.DIV.querySelector('.chiara_t');
@@ -882,6 +884,7 @@ class Character {
                 (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.07 + ee * 0.02 : 0) -
                 (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.4 : hart_w.checked ? 0.3 : 0 : 0) -
                 (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) -
+                (rozzi_w && rozzi_w.checked ? 0.12 + ew * 0.02 : 0) -
                 (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) -
                 (chiara_t ? chiara_t.value * (0.02 + et * 0.02) : 0);
             const defense_bonus = (hyunwoo_w && hyunwoo_w.checked ? 6 + w * 14 + this.defense * 0.1 : 0) +

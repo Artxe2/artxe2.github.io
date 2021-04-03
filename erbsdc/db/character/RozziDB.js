@@ -70,7 +70,7 @@ const Rozzi = {
         }
         return '-';
     }
-    ,W_Option: ''
+    ,W_Option: "<b> __use</b><input type='checkbox' class='rozzi_w' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
@@ -147,7 +147,7 @@ const Rozzi = {
             'D: ' + skill + '\n' +
             'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" )\n';
     }
-    ,COMBO_VARS: '{\"ee\":false}'
+    ,COMBO_VARS: '{\"ee\":false,\"healBan\":0}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -159,9 +159,12 @@ const Rozzi = {
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let ee = data.vars.ee;
+        let ee = data.vars.ee, healBan = data.vars.healBan;
         if (character.weapon) {
             const coe = 0.6 + t * 0.1;
+            if (healBan) {
+                healBan--;
+            }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {
@@ -189,7 +192,12 @@ const Rozzi = {
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
+                        const dm = -0.12 - w * 0.02;
+                        for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
+                            defense_minus[x] = dm;
+                        }
                         damage += calcSkillDamage(character, enemy, 85 + w * 40, 0.35, 1);
+                        healBan = 6;
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
@@ -247,7 +255,8 @@ const Rozzi = {
             heal: heal,
             shield: shield,
             vars: {
-                ee: ee
+                ee: ee,
+                healBan: healBan
             }
         };
     }

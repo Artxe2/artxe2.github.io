@@ -444,7 +444,7 @@ const Jackie = {
                         } else if (type === 'DualSwords') {
                             if (bleeding[index] && ww) {
                                 for (let j = 0; j < 6; j++) {
-                                    damage += calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.3 : 0.5) + 0.1 + w * 0.025, 1) * 6;
+                                    damage += calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.3 : 0.5) + 0.1 + w * 0.025, 1);
                                     heal += calcHeal(12 + w * 7 + character.attack_power * 0.1, 1, enemy);
                                     if (enemy.character === Magnus) {
                                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -466,7 +466,6 @@ const Jackie = {
                                     }
                                 }
                             }
-                            console.log('damage:', damage);
                         } else if (type === 'Axe') {
                             for (let x = index; x <= index + (wm < 13 ? 12 : 16); x++) {
                                 dd[x] = true;

@@ -75,7 +75,10 @@ function calcEquip(character, name, n) {
 
 function calcHeal(heal, ps, enemy) {
     let coe = 1.007 + enemy.CRAFT_MASTERY.selectedIndex * 0.007;
-    const hr = enemy.heal_reduction ? (100 - round6(enemy.heal_reduction * coe)) / 100 : 1;
+    let hr = enemy.heal_reduction ? (100 - round6(enemy.heal_reduction * coe)) / 100 : 1;
+    if (hr <= 0) {
+        return 0;
+    }
     return round(heal * hr * ps * 100) / 100;
 }
 
@@ -286,6 +289,10 @@ function simulateCombo() {
         }
     }
 
+    const heal_reduction0 = c0.heal_reduction;
+    c0.heal_reduction = c0.pure_heal_reduction
+    const heal_reduction1 = c1.heal_reduction;
+    c1.heal_reduction = c1.pure_heal_reduction
 
     const attack_power0 = floor(c0.attack_power);
     c0.attack_power = floor(c0.pure_attack_power);
@@ -325,6 +332,14 @@ function simulateCombo() {
             data1.shield += d1.shield;
             data1.vars = d1.vars;
             if (c0.character) {
+                if (d0 && d0.vars.healBan) {
+                    data1.heal -= d1.heal;
+                    d1.heal = 0;
+                }
+                if (d1 && d1.vars.healBan) {
+                    data0.heal -= d0.heal;
+                    d0.heal = 0;
+                }
                 data0.hp = d0.hp + d1.heal + d1.shield;
                 data1.hp = d1.hp + d0.heal + d0.shield;
             }
@@ -349,16 +364,15 @@ function simulateCombo() {
     c0.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data0.damage + (data1.heal ? " - </b><b class='heal'>" + round(data1.heal, 1) : '') + (data1.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data1.shield : '') + (c1.character ? "</b><b> _ : </b><b class='damage'>" + percent0 + '</b><b>%</b>' : '');
     c1.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data1.damage + (data0.heal ? " - </b><b class='heal'>" + round(data0.heal, 1) : '') + (data0.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data0.shield : '') + (c0.character ? "</b><b> _ : </b><b class='damage'>" + percent1 + '</b><b>%</b>' : '');
 
-
+    c0.heal_reduction = heal_reduction0;
     c0.attack_power = attack_power0;
-    // c0.critical_strike_chance = critical_strike_chance0;
     c0.critical_damage = critical_damage0;
     c0.skill_amplification = skill_amplification0;
     c0.skill_amplification_percent = skill_amplification_percent0;
     c0.defense = defense0;
 
+    c1.heal_reduction = heal_reduction1;
     c1.attack_power = attack_power1;
-    // c1.critical_strike_chance = critical_strike_chance1;
     c1.critical_damage = critical_damage1;
     c1.skill_amplification = skill_amplification1;
     c1.skill_amplification_percent = skill_amplification_percent1;
