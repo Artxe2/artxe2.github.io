@@ -100,7 +100,7 @@ const Hyunwoo = {
                 return "<b class='damage'>" + min + "</b><b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
-                return "<b class='damage'>" + (wm < 13 ? 50 : 70) + '%</b>';
+                return "<b class='damage'>" + (wm < 13 ? 60 : 90) + '%</b>';
             }
         }
         return '-';

@@ -47,8 +47,8 @@ const DualSwords = [
         ,Name: "Lloigor_&_Zahr"
         ,Attack_Power: 38
         ,Attack_Speed: 20
-        ,Skill_Amplification: 36
-        ,Title: "Lloigor & Zahr\n\nAttack Power +38\nAttack Speed +20%\nSkill Amplification +36"
+        ,Skill_Amplification: 38
+        ,Title: "Lloigor & Zahr\n\nAttack Power +38\nAttack Speed +20%\nSkill Amplification +38"
         ,Rarity: "Epic"
     }
 ];

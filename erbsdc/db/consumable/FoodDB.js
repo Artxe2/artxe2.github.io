@@ -67,14 +67,14 @@ const Food = [
         Type: "Food"
         ,Name: "Spicy_Fish_Stew"
         ,HP_Regen: 550
-        ,Title: "Spicy Fish Stew\n\nHP Regen +450"
+        ,Title: "Spicy Fish Stew\n\nHP Regen +550"
         ,Rarity: "Rare"
     }
     ,{
         Type: "Food"
         ,Name: "Spicy_Fish_Stew_xiu"
-        ,HP_Regen: 660
-        ,Title: "Spicy Fish Stew xiu\n\nHP Regen +585"
+        ,HP_Regen: 715
+        ,Title: "Spicy Fish Stew xiu\n\nHP Regen +715"
         ,Rarity: "Rare"
     }
     ,{

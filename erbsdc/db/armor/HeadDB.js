@@ -160,9 +160,9 @@ const Head = [
          Type: "Head"
         ,Name: "Imperial_Crown"
         ,Defense: 20
-        ,Max_HP: 330
+        ,Max_HP: 350
         ,Skill_Amplification_Percent: 10
-        ,Title: "Imperial Crown\n\nDefense +20\nMax HP +330\nSkill Amplification +10%"
+        ,Title: "Imperial Crown\n\nDefense +20\nMax HP +350\nSkill Amplification +10%"
         ,Rarity: "Epic"
     }
     ,{
@@ -183,8 +183,8 @@ const Head = [
         ,Max_SP: 300
         ,Movement_Speed: 0.2
         ,Life_Steal: 22
-        ,Movement_speed_while_not_in_combat: 0.35
-        ,Title: "Chinese Opera Mask\n\nDefense +10\nMax SP +300\nMovement Speed +0.2\nLife Steal +22%\nMovement speed while not in combat +0.35"
+        ,Movement_speed_while_not_in_combat: 0.3
+        ,Title: "Chinese Opera Mask\n\nDefense +10\nMax SP +300\nMovement Speed +0.2\nLife Steal +22%\nMovement speed while not in combat +0.3"
         ,Rarity: "Epic"
     }
     ,{
@@ -201,11 +201,11 @@ const Head = [
     ,{
          Type: "Head"
         ,Name: "Elysian_Halo"
-        ,Attack_Power:40
+        ,Attack_Power:35
         ,Defense: 30
         ,Max_SP: 300
         ,Critical_Damage_Reduction: 10
-        ,Title: "Elysian Halo\n\nAttack Power +40\nDefense +30\nMax SP +300\nCritical Damage Reduction +10%"
+        ,Title: "Elysian Halo\n\nAttack Power +35\nDefense +30\nMax SP +300\nCritical Damage Reduction +10%"
         ,Rarity: "Legendary"
     }
 ];

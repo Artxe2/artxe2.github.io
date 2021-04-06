@@ -70,8 +70,8 @@ const Bow = [
          Type: "Bow"
         ,Name: "Ancient_Bolt"
         ,Attack_Power: 60
-        ,Extra_Normal_Attack_Damage: 45
-        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +45"
+        ,Extra_Normal_Attack_Damage: 48
+        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +48"
         ,Rarity: "Epic"
     }
     ,{
@@ -86,10 +86,10 @@ const Bow = [
     ,{
          Type: "Bow"
         ,Name: "Twinbow"
-        ,Attack_Power: 70
+        ,Attack_Power: 74
         ,Attack_Speed: 55
         ,Vision_Range: 1
-        ,Title: "Twinbow\n\nAttack Power +70\nAttack Speed +55%\nVision Range +1\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Twinbow\n\nAttack Power +74\nAttack Speed +55%\nVision Range +1\nHealing Reduction (Normal Attacks) -25%"
         ,Rarity: "Epic"
     }
     ,{
@@ -97,8 +97,8 @@ const Bow = [
         ,Name: "Elemental_Bow"
         ,Attack_Power: 60
         ,Movement_Speed: 0.13
-        ,Skill_Amplification: 38
-        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.13\nSkill Amplification +38\nHealing Reduction (Skills) -40%"
+        ,Skill_Amplification: 45
+        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.13\nSkill Amplification +45\nHealing Reduction (Skills) -25%"
         ,Rarity: "Epic"
     }
     ,{

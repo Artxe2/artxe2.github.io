@@ -70,7 +70,7 @@ const Throws = [
          Type: "Throws"
         ,Name: "Spiky_Bouncy_Ball"
         ,Attack_Power: 45
-        ,Title: "Spiky Bouncy Ball\n\nAttack Power +45\nHealing Reduction (Skills) -40%"
+        ,Title: "Spiky Bouncy Ball\n\nAttack Power +45\nHealing Reduction (Skills) -25%"
         ,Rarity: "Rare"
     }
     ,{
@@ -86,8 +86,8 @@ const Throws = [
          Type: "Throws"
         ,Name: "Grenade_of_Antioch"
         ,Attack_Power: 77
-        ,Extra_Normal_Attack_Damage: 95
-        ,Title: "Grenade of Antioch\n\nAttack Power +77\nExtra Normal Attack Damage +95"
+        ,Extra_Normal_Attack_Damage: 100
+        ,Title: "Grenade of Antioch\n\nAttack Power +77\nExtra Normal Attack Damage +100"
         ,Rarity: "Epic"
 
     }
@@ -121,7 +121,7 @@ const Throws = [
         ,Name: "Ruthenium_Marble"
         ,Attack_Power: 76
         ,Skill_Amplification_Percent: 28
-        ,Title: "Ruthenium Marble\n\nAttack Power +76\nSkill Amplification +28%\nHealing Reduction (Skills) -40%"
+        ,Title: "Ruthenium Marble\n\nAttack Power +76\nSkill Amplification +28%\nHealing Reduction (Skills) -25%"
         ,Rarity: "Epic"
     }
 ];

@@ -53,7 +53,7 @@ const Lenox = {
         if (character.weapon && q >= 0) {
             const min = calcSkillDamage(character, enemy, 20 + q * 30, 0.3, 1);
             const max = calcSkillDamage(character, enemy, 20 + q * 30 + character.max_hp * (0.07 + q * 0.005), 0.3, 1);
-            const cool = 10000 / (2.5 * (100 - character.cooldown_reduction));
+            const cool = 10000 / (2 * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + ' - ' + max  + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
@@ -84,9 +84,9 @@ const Lenox = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const damage = calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1);
-            const add = calcTrueDamage(character, enemy, 10 + r * 5);
+            const add = calcTrueDamage(character, enemy, 30 + r * 5);
             const hit = enemy.movement_speed ? floor(enemy.movement_speed * (4 + r * 0.5)) : 0;
-            return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * 2 * hit) + '</b> ( ' + damage + ' x 2, [' + add + ' x 2] x ' + hit + ' )';
+            return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * hit) + '</b> ( ' + damage + ' x 2, ' + max + ' x ' + hit + ' )';
         }
         return '-';
     }
@@ -204,7 +204,7 @@ const Lenox = {
                         damage += calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1);
                         let move = 0;
                         if (enemy.movement_speed) {
-                            const bleed = calcTrueDamage(character, enemy, 10 + r * 5);
+                            const bleed = calcTrueDamage(character, enemy, 15 + r * 5);
                             for (let x = index; x < index + 8 + r; x++) {
                                 move += enemy.movement_speed / 2;
                                 while (move >= 1) {
@@ -223,7 +223,7 @@ const Lenox = {
                         damage += calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1) * 2;
                         let move = 0;
                         if (enemy.movement_speed) {
-                            const bleed = calcTrueDamage(character, enemy, 10 + r * 5) * 2;
+                            const bleed = calcTrueDamage(character, enemy, 30 + r * 5);
                             for (let x = index; x < index + 8 + r; x++) {
                                 move += enemy.movement_speed / 2;
                                 while (move >= 1) {

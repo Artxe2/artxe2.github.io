@@ -139,8 +139,8 @@ const Glove = [
          Type: "Glove"
         ,Name: "White_Claw_Punch"
         ,Attack_Power: 58
-        ,Critical_Strike_Chance: 30
-        ,Title: "White Claw Punch\n\nAttack Power +58\nCritical Strike Chance +30%"
+        ,Critical_Strike_Chance: 33
+        ,Title: "White Claw Punch\n\nAttack Power +58\nCritical Strike Chance +33%"
         ,Rarity: "Epic"
     }
     ,{

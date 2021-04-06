@@ -32,9 +32,9 @@ const Whip = [
     ,{
          Type: "Whip"
         ,Name: "Thunder_Whip"
-        ,Attack_Power: 30
+        ,Attack_Power: 40
         ,Skill_Amplification_Percent: 24
-        ,Title: "Thunder Whip\n\nAttack Power +30\nSkill Amplification +24%"
+        ,Title: "Thunder Whip\n\nAttack Power +40\nSkill Amplification +24%"
         ,Rarity: "Rare"
     }
     ,{
@@ -56,11 +56,11 @@ const Whip = [
     ,{
          Type: "Whip"
         ,Name: "Plasma_Whip"
-        ,Attack_Power: 60
+        ,Attack_Power: 64
         ,Attack_Speed: 40
         ,Vision_Range: 2.3
         ,Extra_Normal_Attack_Damage: 15
-        ,Title: "Plasma Whip\n\nAttack Power +60\nAttack Speed +40%\nVision Range +2.3\nExtra Normal Attack Damage +15"
+        ,Title: "Plasma Whip\n\nAttack Power +64\nAttack Speed +40%\nVision Range +2.3\nExtra Normal Attack Damage +15"
         ,Rarity: "Epic"
     }
     ,{
@@ -68,8 +68,8 @@ const Whip = [
         ,Name: "Whip_of_Nine_Bloody_Tails"
         ,Attack_Power: 70
         ,Life_Steal: 25
-        ,Skill_Amplification: 40
-        ,Title: "Whip of Nine Bloody Tails\n\nAttack Power +70\nLife Steal +25%\nSkill Amplification +40"
+        ,Skill_Amplification: 44
+        ,Title: "Whip of Nine Bloody Tails\n\nAttack Power +70\nLife Steal +25%\nSkill Amplification +44"
         ,Rarity: "Legendary"
     }
 ];

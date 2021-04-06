@@ -249,7 +249,7 @@ const Hart = {
                         for (let x = index; ww[x]; x++) {
                             ww[x] = 2;
                         }
-                        const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                        const dm = hart_ww.checked ? -0.45 : hart_w.checked ? -0.3 : 0;
                         if (dm) {
                             for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
@@ -285,7 +285,7 @@ const Hart = {
                         for (let x = index; ww[x]; x++) {
                             ww[x] = 2;
                         }
-                        const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                        const dm = hart_ww.checked ? -0.45 : hart_w.checked ? -0.3 : 0;
                         if (dm) {
                             for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
@@ -300,7 +300,7 @@ const Hart = {
                             for (let x = index; ww[x]; x++) {
                                 ww[x] = 2;
                             }
-                            const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                            const dm = hart_ww.checked ? -0.45 : hart_w.checked ? -0.3 : 0;
                             if (dm) {
                                 for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                                     defense_minus[x] = dm;
@@ -316,7 +316,7 @@ const Hart = {
                             for (let x = index; ww[x]; x++) {
                                 ww[x] = 2;
                             }
-                            const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                            const dm = hart_ww.checked ? -0.45 : hart_w.checked ? -0.3 : 0;
                             if (dm) {
                                 for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                                     defense_minus[x] = dm;
@@ -351,7 +351,7 @@ const Hart = {
                             for (let x = index; ww[x]; x++) {
                                 ww[x] = 2;
                             }
-                            const dm = hart_ww.checked ? -0.4 : hart_w.checked ? -0.3 : 0;
+                            const dm = hart_ww.checked ? -0.45 : hart_w.checked ? -0.3 : 0;
                             if (dm) {
                                 for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                                     defense_minus[x] = dm;

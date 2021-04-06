@@ -85,9 +85,9 @@ const Leg = [
          Type: "Leg"
         ,Name: "Maverick_Runner"
         ,Attack_Speed: 5
-        ,Movement_Speed: 0.2
-        ,Movement_speed_while_not_in_combat: 0.45
-        ,Title: "Maverick Runner\n\nAttack Speed +5%\nMovement Speed +0.2\nMovement Speed while not in combat +0.45"
+        ,Movement_Speed: 0.25
+        ,Movement_speed_while_not_in_combat: 0.35
+        ,Title: "Maverick Runner\n\nAttack Speed +5%\nMovement Speed +0.25\nMovement Speed while not in combat +0.35"
         ,Rarity: "Rare"
     }
     ,{
@@ -115,8 +115,8 @@ const Leg = [
         ,SP_Regen: 0.5
         ,SP_Regen_Percent: 50
         ,Movement_Speed: 0.33
-        ,Skill_Amplification: 10
-        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.33\nSkill Amplification +10"
+        ,Skill_Amplification: 12
+        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.33\nSkill Amplification +12"
         ,Rarity: "Rare"
     }
     ,{
@@ -131,10 +131,10 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Mithril_Boots"
-        ,Defense: 22
+        ,Defense: 20
         ,Attack_Speed: 12
         ,Movement_Speed: 0.5
-        ,Title: "Mithril Boots\n\nDefense +22\nAttack Speed +12%\nMovement Speed +0.5"
+        ,Title: "Mithril Boots\n\nDefense +20\nAttack Speed +12%\nMovement Speed +0.5"
         ,Rarity: "Epic"
     }
     ,{
@@ -182,10 +182,10 @@ const Leg = [
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
         ,SP_Regen_Percent: 60
-        ,Movement_Speed: 0.25
-        ,Movement_speed_while_not_in_combat: 0.4
-        ,Skill_Amplification: 20
-        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.4\nSkill Amplification +20"
+        ,Movement_Speed: 0.3
+        ,Movement_speed_while_not_in_combat: 0.35
+        ,Skill_Amplification: 24
+        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.3\nMovement speed while not in combat +0.35\nSkill Amplification +24"
         ,Rarity: "Legendary"
     }
     ,{

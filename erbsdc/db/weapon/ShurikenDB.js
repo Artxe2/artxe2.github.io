@@ -170,17 +170,17 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Wind_and_Fire_Wheels"
-        ,Attack_Power: 51
+        ,Attack_Power: 53
         ,Skill_Amplification_Percent: 23
-        ,Title: "Wind and Fire Wheels\n\nAttack Power +51\nSkill Amplification +23%"
+        ,Title: "Wind and Fire Wheels\n\nAttack Power +53\nSkill Amplification +23%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Shuriken"
         ,Name: "Death_Rune"
         ,Attack_Power: 80
-        ,Skill_Amplification_Percent: 23
-        ,Title: "Death Rune\n\nAttack Power +80\nSkill Amplification +23%"
+        ,Skill_Amplification_Percent: 25
+        ,Title: "Death Rune\n\nAttack Power +80\nSkill Amplification +25%"
         ,Rarity: "Epic"
     }
     ,{
@@ -193,11 +193,11 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Petal_Torrent"
-        ,Attack_Power: 80
-        ,Critical_Damage: 50
+        ,Attack_Power: 85
+        ,Critical_Damage: 30
         ,Extra_Normal_Attack_Damage: 150
         ,Skill_Amplification: 30
-        ,Title: "Petal Torrent\n\nAttack Power +80\nCritical Damage +50%\nExtra Normal Attack Damage +150\nSkill Amplification +30"
+        ,Title: "Petal Torrent\n\nAttack Power +85\nCritical Damage +30%\nExtra Normal Attack Damage +150\nSkill Amplification +30"
         ,Rarity: "Legendary"
     }
 ];

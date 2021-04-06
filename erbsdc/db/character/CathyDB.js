@@ -20,7 +20,7 @@ const Cathy = {
     ,weapons: [Dagger]
     ,correction: {
         Dagger: [
-            [0, -5, -8],
+            [0, -7, -10],
             [0, 0, 0],
             [0, -6, 0]
         ]
@@ -64,7 +64,7 @@ const Cathy = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const min = calcSkillDamage(character, enemy, 40 + w * 35, 0.4, 1);
+            const min = calcSkillDamage(character, enemy, 35 + w * 35, 0.3, 1);
             const max = calcSkillDamage(character, enemy, 80 + w * 35, 0.5, 1);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
@@ -133,7 +133,7 @@ const Cathy = {
             const t = character.T_LEVEL.selectedIndex;
             const max = character.DIV.querySelector('.cathy_t').checked;
             const damage = calcTrueDamage(character, enemy, character.attack_power * 0.2 + (max ? character.max_hp * 0.01 : 0));
-            const shield = floor(100 + t * 55 + character.attack_power * 0.3);
+            const shield = floor(100 + t * 55 + character.attack_power * 0.2);
             const cool = (20 - t * 2) * (100 - character.cooldown_reduction) / 100;
             const as = character.attack_speed * character.critical_strike_chance / 100;
             return "<b class='damage'>" + damage * (max ? 4 : 3) + "</b> ( <b class='damage'>" + damage + '</b> x ' + (max ? 4 : 3) + ")<b> __s: </b><b class='shield'>" + shield + "</b><b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
@@ -185,7 +185,7 @@ const Cathy = {
         const as = character.attack_speed * character.critical_strike_chance / 100 + 1 +
             (1 / (12 - q * 0.5) * (100 - character.cooldown_reduction) / 100);
         if (index === 0 || floor(as * index / 2 / cool) > floor(as * (index - 1) / 2 / cool)) {
-            shield += floor(100 + t * 50 + character.attack_power * 0.3);
+            shield += floor(100 + t * 50 + character.attack_power * 0.2);
         }
 
         if (character.weapon) {
@@ -317,7 +317,7 @@ const Cathy = {
                     }
                 } else if (c === 'w') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + w * 35, 0.4, 1);
+                        damage += calcSkillDamage(character, enemy, 35 + w * 35, 0.3, 1);
 
                         if (bleeding[index]) {
                             if (bleeding[index] >= 2) {

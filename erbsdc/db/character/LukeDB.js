@@ -1,7 +1,7 @@
 const Luke = {
      Type: 'M',
      Attack_Power: 28
-    ,Attack_Power_Growth: 2.5
+    ,Attack_Power_Growth: 2
     ,Health: 610
     ,Health_Growth: 84
     ,Health_Regen: 1
@@ -68,7 +68,7 @@ const Luke = {
             const cool = 10000 / ((16 - q * 2) * (100 - character.cooldown_reduction));
             let cd;
             if (character.DIV.querySelector('.luke_w').checked && w >= 0) {
-                const cool2 = 10000 / ((16 - q * 2) * (100 - character.cooldown_reduction) / (1 + character.attack_speed * 0.5));
+                const cool2 = 10000 / ((18 - q * 2.5) * (100 - character.cooldown_reduction) / (1 + character.attack_speed * 0.5));
                 cd = round((damage1 + damage2) * cool) / 100 + ' ~ ' + round((damage1 + damage2) * cool2) / 100;
             } else {
                 cd = round((damage1 + damage2) * cool) / 100;

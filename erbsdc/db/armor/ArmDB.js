@@ -156,8 +156,8 @@ const Arm = [
         ,Name: "Cube_Watch"
         ,Defense: 20
         ,Attack_Speed: 50
-        ,Cooldown_Reduction: 6
-        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +6%"
+        ,Cooldown_Reduction: 8
+        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +8%"
         ,Rarity: "Epic"
     }
     ,{
@@ -185,17 +185,17 @@ const Arm = [
         ,Max_SP: 250
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
-        ,Skill_Amplification: 24
-        ,Title: "Bracelet of Skadi\n\nMax HP +200\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nSkill Amplification +24"
+        ,Skill_Amplification: 27
+        ,Title: "Bracelet of Skadi\n\nMax HP +200\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nSkill Amplification +27"
         ,Rarity: "Legendary"
     }
     ,{
          Type: "Arm"
         ,Name: "Radar"
-        ,Defense: 18
+        ,Defense: 15
         ,Attack_Speed: 40
         ,Critical_Strike_Chance: 24
-        ,Title: "Radar\n\nDefense +18\nAttack Speed +40%\nCritical Strike Chance +24%"
+        ,Title: "Radar\n\nDefense +15\nAttack Speed +40%\nCritical Strike Chance +24%"
         ,Rarity: "Legendary"
     }
     ,{

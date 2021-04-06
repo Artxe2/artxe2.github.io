@@ -198,11 +198,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Mithril_Armor"
-        ,Defense: 60
+        ,Defense: 55
         ,Attack_Speed: 12
         ,Movement_Speed: 0.2
         ,Skill_Damage_Reduction: 14
-        ,Title: "Mithril Armor\n\nDefense +60\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +14"
+        ,Title: "Mithril Armor\n\nDefense +55\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +14"
         ,Rarity: "Epic"
     }
     ,{

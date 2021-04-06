@@ -47,17 +47,17 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Gentian_Silver_Gun"
-        ,Attack_Power: 105
+        ,Attack_Power: 108
         ,Movement_Speed: 0.12
-        ,Title: "Gentian Silver Gun\n\nAttack Power +105\nMovement Speed +0.12"
+        ,Title: "Gentian Silver Gun\n\nAttack Power +108\nMovement Speed +0.12"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Spear"
         ,Name: "Eighteen_foot_spear"
-        ,Attack_Power: 100
+        ,Attack_Power: 104
         ,Attack_Speed: 40
-        ,Title: "Eighteen Foot Spear\n\nAttack Power +100\nMovement Speed +40%"
+        ,Title: "Eighteen Foot Spear\n\nAttack Power +104\nMovement Speed +40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -71,9 +71,9 @@ const Spear = [
          Type: "Spear"
         ,Name: "Lance_of_Poseidon"
         ,Attack_Power: 90
-        ,Cooldown_Reduction: 5
+        ,Cooldown_Reduction: 7
         ,Skill_Amplification_Percent: 21
-        ,Title: "Lance of Poseidon\n\nAttack Power +90\nCooldown Reduction +15%\nSkill Amplification +21%"
+        ,Title: "Lance of Poseidon\n\nAttack Power +90\nCooldown Reduction +7%\nSkill Amplification +21%"
         ,Rarity: "Epic"
     }
     ,{

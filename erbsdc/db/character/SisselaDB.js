@@ -12,7 +12,7 @@ const Sissela = {
     ,Stamina_Regen_Growth: 0.02
     ,Defense: 19
     ,Defense_Growth: 1.7
-    ,Atk_Speed: 0.12
+    ,Atk_Speed: 0.15
     ,Movement_Speed: 3
     ,Sight_Range: 8
     ,Attack_Range: 0.4
@@ -62,7 +62,7 @@ const Sissela = {
             const damage1 = calcSkillDamage(character, enemy, 40 + q * 20, 0.3, 1);
             const damage2 = calcSkillDamage(character, enemy, 60 + q * 30, 0.5, 1);
             const cost = 50 + q * 10;
-            const cool = 10000 / ((6.5 - q * 0.75) * (100 - character.cooldown_reduction) + 10);
+            const cool = 10000 / ((6.5 - q * 0.75) * (100 - character.cooldown_reduction) + 7);
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " ) <b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';

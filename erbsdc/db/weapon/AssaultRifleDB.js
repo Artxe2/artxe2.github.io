@@ -46,10 +46,10 @@ const AssaultRifle = [
     ,{
          Type: "AssaultRifle"
         ,Name: "Type_95"
-        ,Attack_Power: 72
+        ,Attack_Power: 75
         ,Vision_Range: 1.5
-        ,Attack_Range: 0.5
-        ,Title: "Type 95\n\nAttack Power +72\nVision Range +1.5\nAttack Range +0.5"
+        ,Attack_Range: 1
+        ,Title: "Type 95\n\nAttack Power +75\nVision Range +1.5\nAttack Range +1"
         ,Rarity: "Epic"
     }
     ,{
@@ -64,21 +64,21 @@ const AssaultRifle = [
     ,{
          Type: "AssaultRifle"
         ,Name: "XCR"
-        ,Attack_Power: 63
+        ,Attack_Power: 66
         ,Max_HP: 330
         ,Vision_Range: 1.5
         ,Extra_Normal_Attack_Damage: 10
-        ,Title: "XCR\n\nAttack Power +63\nMax HP +330\nVision Range +1.5\nExtra Normal Attack Damage +10"
+        ,Title: "XCR\n\nAttack Power +66\nMax HP +330\nVision Range +1.5\nExtra Normal Attack Damage +10"
         ,Rarity: "Epic"
     }
     ,{
          Type: "AssaultRifle"
         ,Name: "Agni"
         ,Attack_Power: 55
-        ,Attack_Speed: 33
+        ,Attack_Speed: 25
         ,Vision_Range: 2.5
         ,Extra_Normal_Attack_Damage: 16
-        ,Title: "Agni\n\nAttack Power +55\nAttack Speed +33%\nVision Range +2.5\nExtra Normal Attack Damage +16"
+        ,Title: "Agni\n\nAttack Power +55\nAttack Speed +25%\nVision Range +2.5\nExtra Normal Attack Damage +16"
         ,Rarity: "Legendary"
     }
 ];

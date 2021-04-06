@@ -727,10 +727,11 @@ class Character {
                     this.weapon.Name === 'Divine_Dual_Swords' ||
                     this.weapon.Name === 'Fangtian_Huaji' ||
                     this.weapon.Name === 'Goblin_Bat' || this.weapon.Name === 'Mallet' ||
+                    this.weapon.Name === 'Composite_Bow' ||
+                    this.weapon.Name === 'The_Smiting_Dragon') ? 40 :
+                this.weapon && (
                     this.weapon.Name === 'Spiky_Bouncy_Ball' || this.weapon.Name === 'Ruthenium_Marble' ||
-                    this.weapon.Name === 'Composite_Bow' || this.weapon.Name === 'Twinbow' || this.weapon.Name === 'Elemental_Bow' ||
-                    this.weapon.Name === 'The_Smiting_Dragon' ||
-                    this.weapon.Name === 'Ruthenium_Marble') ? 40 :
+                    tthis.weapon.Name === 'Twinbow' || this.weapon.Name === 'Elemental_Bow') ||
                 this.chest && this.chest.Name === 'Rocker`s_Jacket' ||
                 this.arm && this.arm.Name === 'Sword_Stopper' ||
                 this.leg && this.leg.Name === 'White_Rhinos' ||
@@ -752,7 +753,7 @@ class Character {
                 (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) +
                 (lida_w && lida_w.checked && w >= 0 ? 20 + t * 10 : 0) +
                 (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (1 + t) : 0) +
-                (luke_w_u && luke_w_u.checked && w >= 0 ? this.DIV.querySelector('.luke_w_s').value * 10 : 0);
+                (luke_w_u && luke_w_u.checked && w >= 0 ? this.DIV.querySelector('.luke_w_s').value * 8 : 0);
             const attack_speed_percent =
                 attack_speed_bonus + calcEquip(this, 'Attack_Speed') +
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_attack_speed);
@@ -773,7 +774,7 @@ class Character {
                 (axe_d_s ? axe_d_s.value * (axe_d_u.checked ? 0.05 + this.DIV.querySelector('.axe_d_hp').value * 0.001 : 0.015) : 0) +
                 (hart_w_u && hart_w_u.checked && w >= 0 ? 0.12 + w * 0.07 : 0);
             const attack_power_bonus =
-                (this.character === Adela && this.attack_speed > 0.66 ? floor((this.attack_speed - 0.66) * 100) * (0.2 + t * 0.3) : 0);
+                (this.character === Adela && this.attack_speed > 0.66 ? floor((this.attack_speed - 0.66) * 100) * (0.2 + t * 0.4) : 0);
             this.attack_power =
                 floor((this.character.Attack_Power + this.character.Attack_Power_Growth * level +
                     calcEquip(this, 'Attack_Power', 2) + attack_power_bonus
@@ -882,7 +883,7 @@ class Character {
                 (hammer_d && hammer_d.checked && ewm > 5? ewm < 13 ? 0.2 : 0.35 : 0) -
                 (zahir_q ? 0.1 * zahir_q.value : 0) -
                 (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.07 + ee * 0.02 : 0) -
-                (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.4 : hart_w.checked ? 0.3 : 0 : 0) -
+                (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.45 : hart_w.checked ? 0.3 : 0 : 0) -
                 (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) -
                 (rozzi_w && rozzi_w.checked ? 0.12 + ew * 0.02 : 0) -
                 (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) -

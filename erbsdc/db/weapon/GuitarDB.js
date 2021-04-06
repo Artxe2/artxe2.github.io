@@ -81,12 +81,12 @@ const Guitar = [
     ,{
          Type: "Guitar"
         ,Name: "Bohemian"
-        ,Attack_Power: 50
-        ,Max_HP: 380
+        ,Attack_Power: 53
+        ,Max_HP: 350
         ,Attack_Speed: 20
         ,Critical_Strike_Chance: 20
         ,Extra_Normal_Attack_Damage: 2
-        ,Title: "Bohemian\n\nAttack Power +50\nMax HP +380\nAttack Speed +20%\nCritical Strike Chance +20%\nExtra Normal Attack Damage +2"
+        ,Title: "Bohemian\n\nAttack Power +53\nMax HP +350\nAttack Speed +20%\nCritical Strike Chance +20%\nExtra Normal Attack Damage +2"
         ,Rarity: "Epic"
     }
     ,{
@@ -114,8 +114,8 @@ const Guitar = [
         ,Attack_Power: 30
         ,Attack_Speed: 30
         ,Life_Steal: 15
-        ,Extra_Normal_Attack_Damage: 13
-        ,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +15%\nExtra Normal Attack Damage +13"
+        ,Extra_Normal_Attack_Damage: 15
+        ,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +15%\nExtra Normal Attack Damage +15"
         ,Rarity: "Epic"
     }
     ,{

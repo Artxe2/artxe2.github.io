@@ -1,6 +1,6 @@
 const Adela = {
      Type: 'M',
-     Attack_Power: 37
+     Attack_Power: 34
     ,Attack_Power_Growth: 3.0
     ,Health: 530
     ,Health_Growth: 78

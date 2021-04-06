@@ -1,6 +1,6 @@
 const Shoichi = {
      Type: 'M',
-     Attack_Power: 30
+     Attack_Power: 27
     ,Attack_Power_Growth: 3.1
     ,Health: 580
     ,Health_Growth: 78
@@ -68,7 +68,7 @@ const Shoichi = {
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 10 + q * 55, 0.45, 1);
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 10 + w * 30, 0.3, 1) : 0;
-            const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.3, 1);
+            const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.4, 1);
             const cool = 10000 / (6 * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round((damage + (tt + ww) / 2) * cool) / 100 + '</b>';
         }
@@ -92,7 +92,7 @@ const Shoichi = {
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 35 + e * 40, 0.3, 1);
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 10 + w * 30, 0.3, 1) : 0;
-            const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.3, 1);
+            const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.4, 1);
             const cool = 10000 / ((18 - e * 2) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round((damage + tt + ww) * cool) / 100 + '</b>';
         }
@@ -107,7 +107,7 @@ const Shoichi = {
             const damage1 = calcSkillDamage(character, enemy, 50 + r * 100, 0.3, 1);
             const damage2 = calcSkillDamage(character, enemy, 25 + r * 35, 0.3, 1);
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 10 + w * 30, 0.3, 1) : 0;
-            const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.3, 1);
+            const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.4, 1);
             return "<b class='damage'>" + (damage1 + damage2 + tt * 4 + ww * 2) + '</b> ( ' + damage1 + ', ' + damage2 + ', ' + tt + ' x 4, ' + ww + ' x 2 )';
         }
         return '-';
@@ -137,7 +137,7 @@ const Shoichi = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 10 + t * 35, 0.3, 1);
+            const damage = calcSkillDamage(character, enemy, 10 + t * 35, 0.4, 1);
             return "<b class='damage'>" + damage + '</b>';
         }
         return '-';
@@ -272,7 +272,7 @@ const Shoichi = {
                     if (tt < 5) {
                         tt++;
                     }
-                    damage += calcSkillDamage(character, enemy, 10 + t * 35, 0.3, 1);
+                    damage += calcSkillDamage(character, enemy, 10 + t * 35, 0.4, 1);
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));

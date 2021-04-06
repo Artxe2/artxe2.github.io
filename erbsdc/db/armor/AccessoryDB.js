@@ -266,11 +266,11 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Emerald_Tablet"
-        ,Attack_Power: 15
-        ,Defense: 15
+        ,Attack_Power: 18
+        ,Defense: 18
         ,Critical_Strike_Chance: 15
         ,Cooldown_Reduction: 10
-        ,Title: "Emerald Tablet\n\nAttack Power +15\nDefense +15\nCritical Strike Chance +15%\nCooldown Reduction +10%"
+        ,Title: "Emerald Tablet\n\nAttack Power +18\nDefense +18\nCritical Strike Chance +15%\nCooldown Reduction +10%"
         ,Rarity: "Legendary"
     }
 ];
