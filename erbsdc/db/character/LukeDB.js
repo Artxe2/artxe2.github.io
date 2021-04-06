@@ -147,7 +147,7 @@ const Luke = {
             let stack = parseInt(character.DIV.querySelector('.luke_t').value);
             stack = stack > 50 ? floor(stack / 10 - 5) : 0;
             const min = calcHeal(character.max_hp * ((t === 2 ? 0.01 : 0) + 0.05 + t * 0.03 + stack * 0.01), 1, enemy);
-            const max = calcHeal(character.max_hp * (0.2 + t * 0.05 + stack * 0.01), 1, enemy);
+            const max = calcHeal(character.max_hp * (0.1 + t * 0.05 + stack * 0.01), 1, enemy);
             return "<b> _h: </b><b class='heal'> 0 ~ " + min + ' / ' + max + '</b>';
         }
         return ' - ';
