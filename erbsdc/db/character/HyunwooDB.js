@@ -260,7 +260,7 @@ const Hyunwoo = {
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                            if (tt >= 70) {
+                            if (tt >= 55) {
                                 heal += calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy);
                                 tt = 0;
                             } else {
