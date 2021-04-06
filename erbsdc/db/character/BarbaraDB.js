@@ -16,7 +16,7 @@ const Barbara = {
     ,Movement_Speed: 3
     ,Sight_Range: 8
     ,Attack_Range: 0.4
-    ,weapons: [Hammer, Bat]
+    ,weapons: [Bat]
     ,correction: {
         Bat: [
             [0, -4, -6],
