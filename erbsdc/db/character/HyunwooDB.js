@@ -266,6 +266,7 @@ const Hyunwoo = {
                             } else {
                                 tt += 5;
                             }
+                            damage += ba;
                         } else if (type === 'Tonfa') {
                             damage += 0;
                         }
