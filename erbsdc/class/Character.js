@@ -731,7 +731,7 @@ class Character {
                     this.weapon.Name === 'The_Smiting_Dragon') ? 40 :
                 this.weapon && (
                     this.weapon.Name === 'Spiky_Bouncy_Ball' || this.weapon.Name === 'Ruthenium_Marble' ||
-                    tthis.weapon.Name === 'Twinbow' || this.weapon.Name === 'Elemental_Bow') ||
+                    this.weapon.Name === 'Twinbow' || this.weapon.Name === 'Elemental_Bow') ||
                 this.chest && this.chest.Name === 'Rocker`s_Jacket' ||
                 this.arm && this.arm.Name === 'Sword_Stopper' ||
                 this.leg && this.leg.Name === 'White_Rhinos' ||
