@@ -85,7 +85,7 @@ const Lenox = {
             const damage = calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1);
             const add = calcTrueDamage(character, enemy, 30 + r * 5);
             const hit = enemy.movement_speed ? floor(enemy.movement_speed * (4 + r * 0.5)) : 0;
-            return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * hit) + '</b> ( ' + damage + ' x 2, ' + max + ' x ' + hit + ' )';
+            return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * hit) + '</b> ( ' + damage + ' x 2, ' + add + ' x ' + hit + ' )';
         }
         return '-';
     }
