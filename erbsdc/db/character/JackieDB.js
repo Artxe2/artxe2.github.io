@@ -1,6 +1,5 @@
 'use strict';
 const Jackie = {
-     Type: 'M',
      Attack_Power: 37
     ,Attack_Power_Growth: 2.7
     ,Health: 590
@@ -86,18 +85,18 @@ const Jackie = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const w = character.W_LEVEL.selectedIndex - 1;
-            const damage3 = calcTrueDamage(character, enemy, 21 + q * 6);
+            const damage3 = calcTrueDamage(character, enemy, 20 + q * 5);
             const cool = 10000 / ((10 - q * 0.5) * (100 - character.cooldown_reduction) + 17);
             let damage1, damage2;
             if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
                 const heal = calcHeal(12 + w * 7 + character.attack_power * 0.1, 2, enemy);
                 damage1 = calcSkillDamage(character, enemy, 30 + q * 35 + (q === 4 ? 10 : 0), 0.25 + 0.1 + w * 0.025, 1);
                 damage2 = calcSkillDamage(character, enemy, 20 + q * 25, 0.65 + 0.1 + w * 0.025, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 5 ] ) <b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" +round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
+                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 6) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 6 ] ) <b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" +round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
             } else {
                 damage1 = calcSkillDamage(character, enemy, 30 + q * 35 + (q === 4 ? 10 : 0), 0.25, 1);
                 damage2 = calcSkillDamage(character, enemy, 20 + q * 25, 0.65, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 5 ] )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
+                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 6) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 6 ] )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
             }
         }
         return '-';
@@ -170,10 +169,10 @@ const Jackie = {
                     const w = character.W_LEVEL.selectedIndex - 1;
                     if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
                         const heal = calcHeal(12 + w * 7 + character.attack_power * 0.1, 12, enemy);
-                        damage = calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.3 : 0.5) + 0.1 + w * 0.025, 1);
+                        damage = calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.25 : 0.4) + 0.1 + w * 0.025, 1);
                         return "<b class='damage'>" + damage * 12 + '</b> ( ' + damage + " x 12 ) <b> __h: </b><b class='heal'>" + heal + '</b>';
                     } else {
-                        damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.3 : 0.5, 1);
+                        damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.25 : 0.4, 1);
                         return "<b class='damage'>" + damage * 12 + '</b> ( ' + damage + ' x 12 )';
                     }
                 }
@@ -298,7 +297,7 @@ const Jackie = {
                     if (r >= 0) {
                         if (rr) {
                             const bleed = calcSkillDamage(character, enemy, 10 + r * 10, 0, 0) / 10;
-                            for (let x = index; x < index + 10; x++) {
+                            for (let x = index; x < index + 12; x++) {
                                 if (bleeding[x]) {
                                     bleeding[x] += bleed;
                                 } else {
@@ -340,8 +339,8 @@ const Jackie = {
                         } else {
                             damage += calcSkillDamage(character, enemy, 30 + q * 35 + (q === 4 ? 10 : 0), 0.25, 1);
                         }
-                        const bleed = calcTrueDamage(character, enemy, 21 + q * 6);
-                        for (let x = index; x < index + 10; x++) {
+                        const bleed = calcTrueDamage(character, enemy, 20 + q * 5);
+                        for (let x = index; x < index + 12; x++) {
                             if (bleeding[x]) {
                                 bleeding[x] += bleed;
                             } else {
@@ -386,8 +385,8 @@ const Jackie = {
                             }
                             damage += calcSkillDamage(character, enemy, 20 + q * 25, 0.65, 1);
                         }
-                        const bleed = calcTrueDamage(character, enemy, 21 + q * 6);
-                        for (let x = index; x < index + 10; x++) {
+                        const bleed = calcTrueDamage(character, enemy, 20 + q * 5);
+                        for (let x = index; x < index + 12; x++) {
                             if (bleeding[x]) {
                                 bleeding[x] += bleed;
                             } else {
@@ -444,7 +443,7 @@ const Jackie = {
                         } else if (type === 'DualSwords') {
                             if (bleeding[index] && ww) {
                                 for (let j = 0; j < 6; j++) {
-                                    damage += calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.3 : 0.5) + 0.1 + w * 0.025, 1);
+                                    damage += calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.25 : 0.4) + 0.1 + w * 0.025, 1);
                                     heal += calcHeal(12 + w * 7 + character.attack_power * 0.1, 1, enemy);
                                     if (enemy.character === Magnus) {
                                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -456,7 +455,7 @@ const Jackie = {
                                 }
                             } else {
                                 for (let j = 0; j < 6; j++) {
-                                    damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.3 : 0.5, 1);
+                                    damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.25 : 0.4, 1);
                                     if (enemy.character === Magnus) {
                                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                         if (lost < 0) {

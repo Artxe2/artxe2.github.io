@@ -24,9 +24,9 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Leather_Shield"
-        ,Attack_Power: 8
-        ,Defense: 12
-        ,Title: "Leather Shield\n\nAttack Power +8\nDefense +12"
+        ,Attack_Power: 5
+        ,Defense: 15
+        ,Title: "Leather Shield\n\nAttack Power +5\nDefense +15"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -127,8 +127,8 @@ const Arm = [
          Type: "Arm"
         ,Name: "Vital_Sign_Sensor"
         ,Defense: 15
-        ,Attack_Speed: 30
-        ,Title: "Vital Sign Sensor\n\nDefense +15\nAttack Speed +30%"
+        ,Attack_Speed: 35
+        ,Title: "Vital Sign Sensor\n\nDefense +15\nAttack Speed +35%"
         ,Rarity: "Epic"
     }
     ,{
@@ -163,11 +163,11 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Burnished_Aegis"
-        ,Attack_Power: 8
-        ,Defense: 12
+        ,Attack_Power: 5
+        ,Defense: 15
         ,Max_HP: 320
         ,Max_SP: 250
-        ,Title: "Burnished Aegis\n\nAttack Power +8\nDefense +12\nMax HP +320\nMax SP +250"
+        ,Title: "Burnished Aegis\n\nAttack Power +5\nDefense +15\nMax HP +320\nMax SP +250"
         ,Rarity: "Epic"
     }
     ,{

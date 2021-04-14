@@ -1,6 +1,5 @@
 'use strict';
 const Fiora = {
-     Type: 'M',
      Attack_Power: 31
     ,Attack_Power_Growth: 3.4
     ,Health: 580
@@ -333,7 +332,7 @@ const Fiora = {
             }
         };
     }
-    ,COMBO_Option: 'rDaWaqeAaWq'
+    ,COMBO_Option: 'rdaWqAweaWqAw'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';

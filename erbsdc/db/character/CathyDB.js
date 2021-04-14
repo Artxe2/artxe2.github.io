@@ -1,6 +1,5 @@
 'use strict';
 const Cathy = {
-     Type: 'M',
      Attack_Power: 26
     ,Attack_Power_Growth: 2.8
     ,Health: 560
@@ -132,8 +131,8 @@ const Cathy = {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
             const max = character.DIV.querySelector('.cathy_t').checked;
-            const damage = calcTrueDamage(character, enemy, character.attack_power * 0.2 + (max ? character.max_hp * 0.01 : 0));
-            const shield = floor(100 + t * 55 + character.attack_power * 0.2);
+            const damage = calcTrueDamage(character, enemy, character.attack_power * 0.2 + (max ? character.max_hp * 0.0075 : 0));
+            const shield = floor(100 + t * 25 + character.attack_power * 0.25);
             const cool = (20 - t * 2) * (100 - character.cooldown_reduction) / 100;
             const as = character.attack_speed * character.critical_strike_chance / 100;
             return "<b class='damage'>" + damage * (max ? 4 : 3) + "</b> ( <b class='damage'>" + damage + '</b> x ' + (max ? 4 : 3) + ")<b> __s: </b><b class='shield'>" + shield + "</b><b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
@@ -185,13 +184,13 @@ const Cathy = {
         const as = character.attack_speed * character.critical_strike_chance / 100 + 1 +
             (1 / (12 - q * 0.5) * (100 - character.cooldown_reduction) / 100);
         if (index === 0 || floor(as * index / 2 / cool) > floor(as * (index - 1) / 2 / cool)) {
-            shield += floor(100 + t * 50 + character.attack_power * 0.2);
+            shield += floor(100 + t * 25 + character.attack_power * 0.25);
         }
 
         if (character.weapon) {
             const type = character.weapon.Type;
             const tra = calcTrueDamage(character, enemy, character.attack_power * 0.2);
-            const ftra = calcTrueDamage(character, enemy, character.attack_power * 0.2 + character.max_hp * 0.01);
+            const ftra = calcTrueDamage(character, enemy, character.attack_power * 0.2 + character.max_hp * 0.0075);
             let crid;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);

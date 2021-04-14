@@ -1,5 +1,4 @@
 const Shoichi = {
-     Type: 'M',
      Attack_Power: 27
     ,Attack_Power_Growth: 3.1
     ,Health: 580

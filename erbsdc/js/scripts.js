@@ -364,19 +364,28 @@ function simulateCombo() {
     c0.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data0.damage + (data1.heal ? " - </b><b class='heal'>" + round(data1.heal, 1) : '') + (data1.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data1.shield : '') + (c1.character ? "</b><b> _ : </b><b class='damage'>" + percent0 + '</b><b>%</b>' : '');
     c1.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data1.damage + (data0.heal ? " - </b><b class='heal'>" + round(data0.heal, 1) : '') + (data0.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data0.shield : '') + (c0.character ? "</b><b> _ : </b><b class='damage'>" + percent1 + '</b><b>%</b>' : '');
 
-    c0.heal_reduction = heal_reduction0;
-    c0.attack_power = attack_power0;
-    c0.critical_damage = critical_damage0;
-    c0.skill_amplification = skill_amplification0;
-    c0.skill_amplification_percent = skill_amplification_percent0;
-    c0.defense = defense0;
+    // c0.heal_reduction = heal_reduction0;
+    // c0.attack_power = attack_power0;
+    // c0.critical_damage = critical_damage0;
+    // c0.skill_amplification = skill_amplification0;
+    // c0.skill_amplification_percent = skill_amplification_percent0;
+    // c0.defense = defense0;
 
-    c1.heal_reduction = heal_reduction1;
-    c1.attack_power = attack_power1;
-    c1.critical_damage = critical_damage1;
-    c1.skill_amplification = skill_amplification1;
-    c1.skill_amplification_percent = skill_amplification_percent1;
-    c1.defense = defense1;
+    // c1.heal_reduction = heal_reduction1;
+    // c1.attack_power = attack_power1;
+    // c1.critical_damage = critical_damage1;
+    // c1.skill_amplification = skill_amplification1;
+    // c1.skill_amplification_percent = skill_amplification_percent1;
+    // c1.defense = defense1;
+
+    if (c0.changeWeapon) {
+        swapWeapon(c0);
+    }
+    if (c1.changeWeapon) {
+        swapWeapon(c1);
+    }
+    c0.calcStat();
+    c1.calcStat();
 }
 
 function updateDisplay() {
@@ -410,4 +419,26 @@ function getCookie(name) {
 		}
 	}
 	return null;
+}
+function swapWeapon(character) {
+    character.changeWeapon = !character.changeWeapon;
+    const temp = character.weapon;
+    character.weapon = character.subWeapon;
+    character.subWeapon = temp;
+
+    character.weapon_mastery_attack_speed = WeaponInfo[character.weapon.Type][0];
+    character.weapon_mastery_extra_normal_attack_damage_percent = WeaponInfo[character.weapon.Type][1];
+    character.weapon_mastery_skill_amplification_percent = WeaponInfo[character.weapon.Type][2];
+    character.weapon_attack_range = WeaponInfo[character.weapon.Type][3];
+    character.weapon_attack_speed = WeaponInfo[character.weapon.Type][4];
+
+    character.calcStat();
+
+    character.heal_reduction = character.pure_heal_reduction
+
+    character.attack_power = floor(character.pure_attack_power);
+    character.critical_damage = character.pure_critical_damage;
+    character.skill_amplification = round(character.pure_skill_amplification, 1);
+    character.skill_amplification_percent = round(character.pure_skill_amplification_percent);
+    character.defense = floor(character.pure_defense);
 }

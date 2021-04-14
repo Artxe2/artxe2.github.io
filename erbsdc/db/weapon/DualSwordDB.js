@@ -2,9 +2,9 @@ const DualSwords = [
     {
          Type: "DualSwords"
         ,Name: "Twin_Sword"
-        ,Attack_Power: 18
+        ,Attack_Power: 12
         ,Attack_Speed: 10
-        ,Title: "Twin Sword\n\nAttack Power +18\nAttack Speed +10%"
+        ,Title: "Twin Sword\n\nAttack Power +12\nAttack Speed +10%"
         ,Rarity: "Uncommon"
     }
     ,{

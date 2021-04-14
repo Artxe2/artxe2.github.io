@@ -1,6 +1,5 @@
 'use strict';
 const Isol = {
-     Type: 'R',
      Attack_Power: 27
     ,Attack_Power_Growth: 2.9
     ,Health: 520
@@ -20,7 +19,7 @@ const Isol = {
     ,weapons: [Pistol, AssaultRifle]
     ,correction: {
         Pistol: [
-            [0, -8, -18],
+            [0, -10, -18],
             [0, 0, 0]
         ],
         AssaultRifle: [
@@ -118,7 +117,7 @@ const Isol = {
                 const as2 = calcAttackSpeed(character, wm < 13 ? 40 : 60);
                 const as1 = 10 / (9.5 / as2 + 2);
                 const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
-                    baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
+                    baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1) + (wm < 13 ? 5 : 7);
                 const damage1 = round(shot * as1 * 100) / 100;
                 const damage2 = round(shot * as2 * 100) / 100;
                 const life1 = calcHeal(shot * (character.life_steal / 100), as1, enemy);
@@ -162,18 +161,19 @@ const Isol = {
             'D: ' + skill + '\n' +
             'T: _use "트랩 사용"\n';
     }
-    ,COMBO_VARS: '{\"qq\":0}'
+    ,COMBO_VARS: '{\"qq\":0,\"dd\":0}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
         const r = character.R_LEVEL.selectedIndex - 1;
         const t = character.T_LEVEL.selectedIndex;
+        const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
         (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let qq = data.vars.qq;
+        let qq = data.vars.qq, dd = data.vars.dd;
         if (character.weapon) {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
@@ -191,7 +191,7 @@ const Isol = {
                 }
                 if (c === 'a') {
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -199,7 +199,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.32, 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -207,7 +207,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.48, 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.48, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
@@ -217,7 +217,7 @@ const Isol = {
                     }
                 } else if (c === 'A') {
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -225,7 +225,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.32, 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -233,7 +233,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.48, 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.48, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
@@ -278,6 +278,12 @@ const Isol = {
                         }
                         damage += floor((100 + r * 50 + character.attack_power * 0.3) * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
+                } else if (c === 'd' || c === 'D') {
+                    if (wm > 5) {
+                        if (type === 'AssaultRifle') {
+                            dd = !dd;
+                        }
+                    }
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         const dm = -0.05 - t * 0.1;
@@ -295,7 +301,8 @@ const Isol = {
             heal: heal,
             shield: shield,
             vars: {
-                qq: qq
+                qq: qq,
+                dd: dd
             }
         };
     }

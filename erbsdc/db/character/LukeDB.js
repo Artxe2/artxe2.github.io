@@ -1,5 +1,4 @@
 const Luke = {
-     Type: 'M',
      Attack_Power: 28
     ,Attack_Power_Growth: 2
     ,Health: 610

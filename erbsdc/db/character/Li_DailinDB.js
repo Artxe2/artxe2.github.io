@@ -1,6 +1,5 @@
 'use strict';
 const Li_Dailin = {
-     Type: 'M',
      Attack_Power: 33
     ,Attack_Power_Growth: 2.2
     ,Health: 580
@@ -106,23 +105,10 @@ const Li_Dailin = {
                         start = mid;
                     }
                 }
-                start = 0;
-                end = floor(hp * 0.75) + 1;
-                while (start < end) {
-                    mid = (start + end + 1) / 2;
-                    coe = 2 * (mid * 100.0 / hp > 75 ? 75 : mid * 100.0 / hp) / 75 + 1;
-                    over = calcSkillDamage(character, enemy, (40 + r * 30) * coe * 1.19, 0.2 * coe * 1.19, 1);
-                    if (max * 4 + mid > hp + heal) {
-                        end = mid - 1;
-                    } else {
-                        start = mid;
-                    }
-                }
             } else {
                 max = calcSkillDamage(character, enemy, 120 + r * 90, 0.6, 1);
-                over = calcSkillDamage(character, enemy, 120 + r * 90 * 1.19, 0.6 * 1.19, 1);
             }
-            return "<b class='damage'>" + min * 4 + ' ~ ' + max * 4 + '</b> / ' + over * 4 + ' ( [ ' + min + ' x 4 ] ~ [ ' + max + ' x 4 ] / [ ' + over + ' x 4 ] )';
+            return "<b class='damage'>" + min * 4 + ' ~ ' + max * 4 + '</b> ( [ ' + min + ' x 4 ] ~ [ ' + max + ' x 4 ] )';
         }
         return '-';
     }
@@ -191,7 +177,7 @@ const Li_Dailin = {
             'Q: "합산 강화 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" - "1타 강화", "2타 강화", "3타 강화" )\n' +
             'W: _d/s: "만취 초당 데미지" __h/s: "만취 초당 흡혈량" __use "스킬 사용"\n' +
             'E: "스킬 데미지"\n' +
-            'R: "최소 합산 데미지" ~ "최대 막타 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] ~ [ "최대 데미지" x "타수" ] / [ "최대 강화 데미지" x "타수" ] )\n' +
+            'R: "최소 합산 데미지" ~ "최대 막타 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] ~ [ "최대 데미지" x "타수" ] )\n' +
             'D: ' + skill + '\n' +
             'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" / "1타 최대 강화", "2타 최대 강화" )\n';
     }
@@ -300,11 +286,7 @@ const Li_Dailin = {
                         const coe = enemy.max_hp ? 2 * (lost > 75 ? 75 : lost) / 75 + 1 : 3;
                         const hit = bac >= 40 ? 4 : 2;
                         for (let j = 0; j < hit; j++) {
-                            if (liquid > 1) {
-                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe * (1 + bac * 0.002), 0.2 * coe * (1 + bac * 0.002), 1);
-                            } else {
-                                damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1);
-                            }
+                            damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1);
                             if (enemy.character === Magnus) {
                                 lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {
@@ -316,7 +298,6 @@ const Li_Dailin = {
                         if (bac >= 40) {
                             bac -= 40;
                         }
-                        liquid = 0;
                     }
                 } else if (c === 'd') {
                     if (wm > 5) {
@@ -360,9 +341,8 @@ const Li_Dailin = {
                         }
                     }
                 } else if (c === 't') {
-                    if (liquid) {
-                        liquid = 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1);
+                    if (liquid > 1) {
+                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, 0, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -386,10 +366,10 @@ const Li_Dailin = {
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
+                    liquid = 0;
                 } else if (c === 'T') {
-                    if (liquid) {
-                        liquid = 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1);
+                    if (liquid > 1) {
+                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, 100, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -413,6 +393,7 @@ const Li_Dailin = {
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
+                    liquid = 0;
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
@@ -433,7 +414,7 @@ const Li_Dailin = {
             }
         };
     }
-    ,COMBO_Option: 'wwqqqtdetwart'
+    ,COMBO_Option: 'wweqtdwqtqtrt'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -443,7 +424,6 @@ const Li_Dailin = {
         }
         const weapon = character.weapon.Type;
         const d =
-            // weapon === 'Glove' ? 'd: 무스 데미지\n' + 'D: 무스 치명타 데미지\n' :
             weapon === 'Glove' ? 'd & D: 무스 데미지\n' :
             weapon === 'Nunchaku' ? 'd: 무스 즉발 데미지\n' + 'D: 무스 최대 데미지\n' :
             '';

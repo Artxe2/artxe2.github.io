@@ -55,7 +55,7 @@ const Pistol = [
         ,Life_Steal: 10
         ,Title: "Magnum-Anaconda\n\nAttack Power +43\nAttack Speed +10%\nMovement Speed +0.1\nLife Steal +10%"
         ,Rarity: "Rare"
-        ,Ammo: 7
+        ,Ammo: 6
     }
     ,{
          Type: "Pistol"
@@ -81,11 +81,11 @@ const Pistol = [
     ,{
          Type: "Pistol"
         ,Name: "Electron_Blaster"
-        ,Attack_Power: 61
+        ,Attack_Power: 58
         ,Attack_Speed: 55
         ,Movement_Speed: 0.12
         ,Extra_Normal_Attack_Damage: 31
-        ,Title: "Electron Blaster\n\nAttack Power +61\nAttack Speed +55%\nMovement Speed +0.12\nExtra Normal Attack Damage +31"
+        ,Title: "Electron Blaster\n\nAttack Power +58\nAttack Speed +55%\nMovement Speed +0.12\nExtra Normal Attack Damage +31"
         ,Rarity: "Epic"
         ,Ammo: 10
     }

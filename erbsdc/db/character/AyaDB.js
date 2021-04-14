@@ -1,6 +1,5 @@
 'use strict';
 const Aya = {
-     Type: 'R',
      Attack_Power: 28
     ,Attack_Power_Growth: 2.6
     ,Health: 500
@@ -122,7 +121,7 @@ const Aya = {
                 const as2 = calcAttackSpeed(character, wm < 13 ? 40 : 60);
                 const as1 = 10 / (9.5 / as2 + 2);
                 const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
-                    baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
+                    baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1) + (wm < 13 ? 5 : 7);
                 const damage1 = round(shot * as1 * 100) / 100;
                 const damage2 = round(shot * as2 * 100) / 100;
                 const life1 = calcHeal(shot * (character.life_steal / 100), as1, enemy);
@@ -187,7 +186,7 @@ const Aya = {
             'D: ' + skill + '\n' +
             'T: _s: "쉴드량" __s/s: "초당 쉴드량"\n';
     }
-    ,COMBO_VARS: '{}'
+    ,COMBO_VARS: '{\"dd\":0}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const t = character.T_LEVEL.selectedIndex;
         const q = character.Q_LEVEL.selectedIndex - 1;
@@ -202,6 +201,7 @@ const Aya = {
 
         const cool = 30 * (100 - character.cooldown_reduction) / 100;
         let as;
+        let dd = data.vars.dd;
         if (character.weapon) {
             if (character.weapon.Type === 'AssaultRifle') {
                 as = 10 / (9.5 / character.attack_speed + 2) * 6 + 1;
@@ -232,7 +232,7 @@ const Aya = {
                 }
                 if (c === 'a') {
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -240,7 +240,7 @@ const Aya = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.32, 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -248,7 +248,7 @@ const Aya = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.48, 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.48, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
@@ -258,7 +258,7 @@ const Aya = {
                     }
                 } else if (c === 'A') {
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -266,7 +266,7 @@ const Aya = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.32, 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -274,7 +274,7 @@ const Aya = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.48, 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.48, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
@@ -312,6 +312,9 @@ const Aya = {
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
+                        if (type === 'AssaultRifle') {
+                            dd = !dd;
+                        }
                         if (type === 'SniperRifle') {
                             damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 3, 1);
                         }
@@ -328,7 +331,9 @@ const Aya = {
             damage: damage,
             heal: heal,
             shield: shield,
-            vars: {}
+            vars: {
+                dd: dd
+            }
         };
     }
     ,COMBO_Option: 'aqrwaaaq'

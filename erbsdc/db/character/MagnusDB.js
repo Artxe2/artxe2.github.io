@@ -1,5 +1,4 @@
 const Magnus = {
-     Type: 'M',
      Attack_Power: 32
     ,Attack_Power_Growth: 2.2
     ,Health: 630

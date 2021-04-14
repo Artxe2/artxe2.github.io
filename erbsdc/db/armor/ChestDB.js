@@ -208,19 +208,19 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Crusader_Armor"
-        ,Defense: 38
+        ,Defense: 35
         ,HP_Regen_Percent: 150
         ,Extra_Normal_Attack_Damage: 15
-        ,Title: "Crusader Armor\n\nDefense +38\nHP Regen +150%\nExtra Damage to Normal Attacks +15"
+        ,Title: "Crusader Armor\n\nDefense +35\nHP Regen +150%\nExtra Damage to Normal Attacks +15"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Chest"
         ,Name: "Amazoness_Armor"
         ,Defense: 28
-        ,Max_HP: 140
+        ,Max_HP: 155
         ,Skill_Damage_Reduction_Percent: 20
-        ,Title: "Amazoness Armor\n\nDefense +28\nMax HP +140\nSkill Damage Reduction +20%"
+        ,Title: "Amazoness Armor\n\nDefense +28\nMax HP +155\nSkill Damage Reduction +20%"
         ,Rarity: "Epic"
     }
     ,{
@@ -237,9 +237,9 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Commander`s_Armor"
-        ,Defense: 24
+        ,Defense: 26
         ,Skill_Amplification_Percent: 18
-        ,Title: "Commander`s Armor\n\nDefense +24\nSkill Damage Increase +18%"
+        ,Title: "Commander`s Armor\n\nDefense +26\nSkill Damage Increase +18%"
         ,Rarity: "Epic"
     }
     ,{

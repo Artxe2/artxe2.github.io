@@ -1,5 +1,4 @@
 const Xiukai = {
-     Type: 'M',
      Attack_Power: 40
     ,Attack_Power_Growth: 2.2
     ,Health: 560

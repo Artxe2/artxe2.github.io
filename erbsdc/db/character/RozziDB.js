@@ -1,5 +1,4 @@
 const Rozzi = {
-     Type: 'R',
      Attack_Power: 28
     ,Attack_Power_Growth: 2.3
     ,Health: 515
@@ -10,7 +9,7 @@ const Rozzi = {
     ,Stamina_Growth: 22
     ,Stamina_Regen: 2.1
     ,Stamina_Regen_Growth: 0.03
-    ,Defense: 20
+    ,Defense: 22
     ,Defense_Growth: 1.4
     ,Atk_Speed: 0.11
     ,Movement_Speed: 3.0
@@ -65,7 +64,7 @@ const Rozzi = {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
             const damage = calcSkillDamage(character, enemy, 85 + w * 40, 0.35, 1);
-            const cool = 10000 / ((9 - w * 0.5) * (100 - character.cooldown_reduction) + 30);
+            const cool = 10000 / ((8.5 - w * 0.5) * (100 - character.cooldown_reduction) + 30);
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -85,8 +84,8 @@ const Rozzi = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage1 = calcSkillDamage(character, enemy, 100 + r * 100, 0.45, 1);
-            const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.04 + r * 0.04) : 0);
+            const damage1 = calcSkillDamage(character, enemy, 100 + r * 75, 0.35, 1);
+            const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.03 + r * 0.03) : 0);
             return "<b class='damage'>" + damage1 + ' - ' + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + ' )';
         }
         return '-';
@@ -211,12 +210,12 @@ const Rozzi = {
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + r * 100, 0.45, 1);
+                        damage += calcSkillDamage(character, enemy, 100 + r * 75, 0.35, 1);
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + r * 100, 0.45, 1) +
-                            calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.04 + r * 0.04) : 0);
+                        damage += calcSkillDamage(character, enemy, 100 + r * 75, 0.35, 1) +
+                            calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.03 + r * 0.03) : 0);
                     }
                 } else if (c === 't') {
                     ba = baseAttackDamage(character, enemy, 0, 0.6, 0, 1);

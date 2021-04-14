@@ -84,10 +84,10 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Maverick_Runner"
-        ,Attack_Speed: 5
-        ,Movement_Speed: 0.25
-        ,Movement_speed_while_not_in_combat: 0.35
-        ,Title: "Maverick Runner\n\nAttack Speed +5%\nMovement Speed +0.25\nMovement Speed while not in combat +0.35"
+        ,Attack_Speed: 10
+        ,Movement_Speed: 0.3
+        ,Movement_speed_while_not_in_combat: 0.25
+        ,Title: "Maverick Runner\n\nAttack Speed +10%\nMovement Speed +0.3\nMovement Speed while not in combat +0.25"
         ,Rarity: "Rare"
     }
     ,{
@@ -104,9 +104,9 @@ const Leg = [
         ,Name: "Killer_Heels"
         ,Attack_Power: 5
         ,SP_Regen: 0.8
-        ,Movement_Speed: 0.16
+        ,Movement_Speed: 0.18
         ,Critical_Strike_Chance: 10
-        ,Title: "Killer Heels\n\nAttack Power +5\nSP Regen +0.8\nMovement Speed +0.16\nCritical Strike Chance +10%"
+        ,Title: "Killer Heels\n\nAttack Power +5\nSP Regen +0.8\nMovement Speed +0.18\nCritical Strike Chance +10%"
         ,Rarity: "Rare"
     }
     ,{
@@ -131,10 +131,10 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Mithril_Boots"
-        ,Defense: 20
+        ,Defense: 18
         ,Attack_Speed: 12
         ,Movement_Speed: 0.5
-        ,Title: "Mithril Boots\n\nDefense +20\nAttack Speed +12%\nMovement Speed +0.5"
+        ,Title: "Mithril Boots\n\nDefense +18\nAttack Speed +12%\nMovement Speed +0.5"
         ,Rarity: "Epic"
     }
     ,{
@@ -172,8 +172,8 @@ const Leg = [
         ,Defense: 26
         ,HP_Regen: 1
         ,SP_Regen: 0.5
-        ,Movement_Speed: 0.33
-        ,Title: "EOD Boots\n\nDefense +26\nHP Regen +1\nSP Regen +0.5\nMovement Speed +0.33"
+        ,Movement_Speed: 0.35
+        ,Title: "EOD Boots\n\nDefense +26\nHP Regen +1\nSP Regen +0.5\nMovement Speed +0.35"
         ,Rarity: "Legendary"
     }
     ,{
@@ -184,8 +184,8 @@ const Leg = [
         ,SP_Regen_Percent: 60
         ,Movement_Speed: 0.3
         ,Movement_speed_while_not_in_combat: 0.35
-        ,Skill_Amplification: 24
-        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.3\nMovement speed while not in combat +0.35\nSkill Amplification +24"
+        ,Skill_Amplification: 22
+        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.3\nMovement speed while not in combat +0.35\nSkill Amplification +22"
         ,Rarity: "Legendary"
     }
     ,{
@@ -203,9 +203,9 @@ const Leg = [
         ,Attack_Power: 5
         ,SP_Regen: 1
         ,Movement_Speed: 0.4
-        ,Critical_Strike_Chance: 10
-        ,Life_Steal: 15
-        ,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.4\nCritical Strike Chance +10%\nLife Steal +15%"
+        ,Critical_Strike_Chance: 15
+        ,Life_Steal: 12
+        ,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.4\nCritical Strike Chance +15%\nLife Steal +12%"
         ,Rarity: "Legendary"
     }
 ];

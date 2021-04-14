@@ -1,5 +1,4 @@
 const Sissela = {
-     Type: 'R',
      Attack_Power: 23
     ,Attack_Power_Growth: 2.4
     ,Health: 510

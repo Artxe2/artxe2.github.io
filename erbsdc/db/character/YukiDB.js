@@ -1,5 +1,4 @@
 const Yuki = {
-     Type: 'M',
      Attack_Power: 29
     ,Attack_Power_Growth: 2.6
     ,Health: 580
@@ -149,7 +148,7 @@ const Yuki = {
                 return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1) + '</b>';
             }
             if (type === 'DualSwords') {
-                const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.3 : 0.5, 1);
+                const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.25 : 0.4, 1);
                 return "<b class='damage'>" + damage * 12 + '</b> ( ' + damage + ' x 12 )';
             }
         }
@@ -317,7 +316,7 @@ const Yuki = {
                             damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1);
                         } else if (type === 'DualSwords') {
                             for (let j = 0; j < 6; j++) {
-                                damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.3 : 0.5, 1);
+                                damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.25 : 0.4, 1);
                                 if (tt) {
                                     tt--;
                                     damage += bonus;

@@ -151,9 +151,9 @@ const Head = [
         ,Defense: 28
         ,Max_SP: 200
         ,Movement_Speed: 0.1
-        ,Cooldown_Reduction: 10
+        ,Cooldown_Reduction: 8
         ,Skill_Damage_Reduction_Percent: 11
-        ,Title: "Helm of Banneret\n\nDefense +28\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +10%\nSkill Damage Reduction +11%"
+        ,Title: "Helm of Banneret\n\nDefense +28\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +8%\nSkill Damage Reduction +11%"
         ,Rarity: "Epic"
     }
     ,{
@@ -204,8 +204,8 @@ const Head = [
         ,Attack_Power:35
         ,Defense: 30
         ,Max_SP: 300
-        ,Critical_Damage_Reduction: 10
-        ,Title: "Elysian Halo\n\nAttack Power +35\nDefense +30\nMax SP +300\nCritical Damage Reduction +10%"
+        ,Critical_Damage_Reduction: 8
+        ,Title: "Elysian Halo\n\nAttack Power +35\nDefense +30\nMax SP +300\nCritical Damage Reduction +8%"
         ,Rarity: "Legendary"
     }
 ];

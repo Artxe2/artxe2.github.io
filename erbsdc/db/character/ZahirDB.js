@@ -1,5 +1,4 @@
 const Zahir = {
-     Type: 'R',
      Attack_Power: 25
     ,Attack_Power_Growth: 2.7
     ,Health: 540

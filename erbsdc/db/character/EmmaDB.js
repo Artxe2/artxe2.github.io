@@ -1,6 +1,5 @@
 'use strict';
 const Emma = {
-     Type: 'R',
      Attack_Power: 40
     ,Attack_Power_Growth: 2.2
     ,Health: 570
@@ -88,7 +87,7 @@ const Emma = {
             const min = calcSkillDamage(character, enemy, 125 + r * 25, 0.45, 1);
             const max = calcSkillDamage(character, enemy, 200 + r * 25, 0.75, 1);
             const heal = calcHeal(100 * (0.12 + e * 0.02), 1, enemy);
-            const cool = 10000 / (16 * (100 - character.cooldown_reduction));
+            const cool = 10000 / (18 * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + ' - ' + max * 2 + '</b> ( ' + max + " x 2 )<b> __h: </b><b class='heal'>" + heal + ' ~ ' + heal * 2 + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';

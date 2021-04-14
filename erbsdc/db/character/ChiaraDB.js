@@ -1,6 +1,5 @@
 'use strict';
 const Chiara = {
-     Type: 'M',
      Attack_Power: 34
     ,Attack_Power_Growth: 2
     ,Health: 530
@@ -20,7 +19,7 @@ const Chiara = {
     ,weapons: [Rapier]
     ,correction: {
         Rapier: [
-            [0, -5, -9],
+            [0, -8, -12],
             [0, 0, 0]
         ]
     }

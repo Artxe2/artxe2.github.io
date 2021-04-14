@@ -1,6 +1,5 @@
 'use strict';
 const Adriana = {
-     Type: 'R',
      Attack_Power: 31
     ,Attack_Power_Growth: 2.9
     ,Health: 550

@@ -1,6 +1,5 @@
 'use strict';
 const Hyunwoo = {
-     Type: 'M',
      Attack_Power: 34
     ,Attack_Power_Growth: 3.1
     ,Health: 530
@@ -100,7 +99,7 @@ const Hyunwoo = {
                 return "<b class='damage'>" + min + "</b><b> __h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
-                return "<b class='damage'>" + (wm < 13 ? 60 : 90) + '%</b>';
+                return "<b class='damage'>" + (wm < 13 ? 60 : 80) + '%</b>';
             }
         }
         return '-';
@@ -288,7 +287,7 @@ const Hyunwoo = {
             }
         };
     }
-    ,COMBO_Option: 'ERqad'
+    ,COMBO_Option: 'Eadqaaawaaqr'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';

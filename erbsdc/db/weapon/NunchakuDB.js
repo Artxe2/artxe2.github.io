@@ -43,4 +43,13 @@ const Nunchaku = [
         ,Title: "Vibro Nunchaku\n\nAttack Power +65\nAttack Speed +50%"
         ,Rarity: "Epic"
     }
+    ,{
+         Type: "Nunchaku"
+        ,Name: "Cerberus"
+        ,Attack_Power: 61
+        ,Movement_Speed: 0.1
+        ,Attack_Range: 0.5
+        ,Title: "Cerberus\n\nAttack Power +61\nMovement Speed +0.1\nAttack Range +0.5\nHealing Reduction (Normal Attacks) -40%"
+        ,Rarity: "Epic"
+    }
 ];

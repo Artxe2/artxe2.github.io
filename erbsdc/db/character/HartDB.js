@@ -1,6 +1,5 @@
 'use strict';
 const Hart = {
-     Type: 'R',
      Attack_Power: 22
     ,Attack_Power_Growth: 3
     ,Health: 520

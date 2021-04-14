@@ -63,9 +63,9 @@ const SniperRifle = [
          Type: "SniperRifle"
         ,Name: "Intervention"
         ,Attack_Power: 120
-        ,Vision_Range: 5
+        ,Vision_Range: 4
         ,Attack_Range: 1.5
-        ,Title: "Intervention\n\nAttack Power +120\nVision Range +5\nAttack Range +1.5"
+        ,Title: "Intervention\n\nAttack Power +120\nVision Range +4\nAttack Range +1.5"
         ,Rarity: "Epic"
         ,Ammo: 2
     }
@@ -83,10 +83,10 @@ const SniperRifle = [
     ,{
          Type: "SniperRifle"
         ,Name: "Polaris"
-        ,Attack_Power: 110
+        ,Attack_Power: 113
         ,Attack_Speed: 35
         ,Vision_Range: 2
-        ,Title: "Polaris\n\nAttack Power +110\nAttack Speed +35%\nVision Range +2"
+        ,Title: "Polaris\n\nAttack Power +113\nAttack Speed +35%\nVision Range +2"
         ,Rarity: "Epic"
         ,Ammo: 4
     }

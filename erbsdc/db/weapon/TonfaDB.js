@@ -34,8 +34,8 @@ const Tonfa = [
         ,Name: "Tactical_Tonfa"
         ,Attack_Power: 74
         ,Defense: 16
-        ,Life_Steal: 25
-        ,Title: "Tactical Tonfa\n\nAttack Power +74\nDefense +16\nLife Steal +25%"
+        ,Life_Steal: 20
+        ,Title: "Tactical Tonfa\n\nAttack Power +74\nDefense +16\nLife Steal +20%"
         ,Rarity: "Epic"
     }
     ,{

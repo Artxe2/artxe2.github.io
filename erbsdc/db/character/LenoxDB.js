@@ -1,6 +1,5 @@
 'use strict';
 const Lenox = {
-     Type: 'M',
      Attack_Power: 36
     ,Attack_Power_Growth: 2.4
     ,Health: 580

@@ -1,6 +1,5 @@
 'use strict';
 const Bernice = {
-     Type: 'R',
      Attack_Power: 25
     ,Attack_Power_Growth: 2.4
     ,Health: 620
@@ -15,7 +14,7 @@ const Bernice = {
     ,Defense_Growth: 1.8
     ,Atk_Speed: 0.24
     ,Movement_Speed: 3.15
-    ,Sight_Range: 8
+    ,Sight_Range: 9
     ,Attack_Range: -3.2
     ,weapons: [SniperRifle]
     ,correction: {
