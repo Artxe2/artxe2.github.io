@@ -1,5 +1,7 @@
 'use strict';
 class Character {
+    IMG_PATH = 'https://cdn.jsdelivr.net/gh/artxe2/Artxe2.github.io/erbsdc/img/';
+
     calcTrapDamage() {
         return this.trap ? "<b class='damage'>" + floor(this.trap.Trap_Damage * (1.04 + this.TRAP_MASTERY.selectedIndex * 0.04)) + '</b>' : '-';
     }
@@ -177,14 +179,14 @@ class Character {
                 for (let i = 0, j; i < this.character.weapons.length; i++) {
                     const w = this.character.weapons[i];
                     for (j = 0; j < w.length; j++) {
-                        list += "<img class='" + w[j].Rarity + "' title='" + w[j].Title + "' onclick='characters[" + this.index + "].setSubWeapon (" + i + ", " + j + ")' src='./img/weapon/" + w[j].Name + ".png' width='128px' height='71px' border='1'>";
+                        list += "<img class='" + w[j].Rarity + "' title='" + w[j].Title + "' onclick='characters[" + this.index + "].setSubWeapon (" + i + ", " + j + ")' src = '" + this.IMG_PATH + "weapon/" + w[j].Name + ".png' width='128px' height='71px' border='1'>";
                         if (++br == 3) {
                             br = 0;
                             list += '<br>';
                         }
                     }
                 }
-                list += "<img title='remove weapon' onclick='characters[" + this.index + "].removeSubWeapon()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove weapon' onclick='characters[" + this.index + "].removeSubWeapon()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -198,14 +200,14 @@ class Character {
                 for (let i = 0, j; i < this.character.weapons.length; i++) {
                     const w = this.character.weapons[i];
                     for (j = 0; j < w.length; j++) {
-                        list += "<img class='" + w[j].Rarity + "' title='" + w[j].Title + "' onclick='characters[" + this.index + "].setWeapon (" + i + ", " + j + ")' src='./img/weapon/" + w[j].Name + ".png' width='128px' height='71px' border='1'>";
+                        list += "<img class='" + w[j].Rarity + "' title='" + w[j].Title + "' onclick='characters[" + this.index + "].setWeapon (" + i + ", " + j + ")' src = '" + this.IMG_PATH + "weapon/" + w[j].Name + ".png' width='128px' height='71px' border='1'>";
                         if (++br == 3) {
                             br = 0;
                             list += '<br>';
                         }
                     }
                 }
-                list += "<img title='remove weapon' onclick='characters[" + this.index + "].removeWeapon()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove weapon' onclick='characters[" + this.index + "].removeWeapon()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -217,13 +219,13 @@ class Character {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Chest.length; i++) {
-                    list += "<img class='" + Chest[i].Rarity + "' title='" + Chest[i].Title + "' onclick='characters[" + this.index + "].setChest(" + i + ")' src='./img/armors/" + Chest[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    list += "<img class='" + Chest[i].Rarity + "' title='" + Chest[i].Title + "' onclick='characters[" + this.index + "].setChest(" + i + ")' src = '" + this.IMG_PATH + "armors/" + Chest[i].Name + ".png' width='128px' height='71px' border='1'>";
                     if (++br == 3) {
                         br = 0;
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove chest' onclick='characters[" + this.index + "].removeChest()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove chest' onclick='characters[" + this.index + "].removeChest()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -235,13 +237,13 @@ class Character {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Head.length; i++) {
-                    list += "<img class='" + Head[i].Rarity + "' title='" + Head[i].Title + "' onclick='characters[" + this.index + "].setHead(" + i + ")' src='./img/armors/" + Head[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    list += "<img class='" + Head[i].Rarity + "' title='" + Head[i].Title + "' onclick='characters[" + this.index + "].setHead(" + i + ")' src = '" + this.IMG_PATH + "armors/" + Head[i].Name + ".png' width='128px' height='71px' border='1'>";
                     if (++br == 3) {
                         br = 0;
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove head' onclick='characters[" + this.index + "].removeHead()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove head' onclick='characters[" + this.index + "].removeHead()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -253,13 +255,13 @@ class Character {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Arm.length; i++) {
-                    list += "<img class='" + Arm[i].Rarity + "' title='" + Arm[i].Title + "' onclick='characters[" + this.index + "].setArm(" + i + ")' src='./img/armors/" + Arm[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    list += "<img class='" + Arm[i].Rarity + "' title='" + Arm[i].Title + "' onclick='characters[" + this.index + "].setArm(" + i + ")' src = '" + this.IMG_PATH + "armors/" + Arm[i].Name + ".png' width='128px' height='71px' border='1'>";
                     if (++br == 3) {
                         br = 0;
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove arm' onclick='characters[" + this.index + "].removeArm()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove arm' onclick='characters[" + this.index + "].removeArm()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -271,13 +273,13 @@ class Character {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Leg.length; i++) {
-                    list += "<img class='" + Leg[i].Rarity + "' title='" + Leg[i].Title + "' onclick='characters[" + this.index + "].setLeg(" + i + ")' src='./img/armors/" + Leg[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    list += "<img class='" + Leg[i].Rarity + "' title='" + Leg[i].Title + "' onclick='characters[" + this.index + "].setLeg(" + i + ")' src = '" + this.IMG_PATH + "armors/" + Leg[i].Name + ".png' width='128px' height='71px' border='1'>";
                     if (++br == 3) {
                         br = 0;
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove leg' onclick='characters[" + this.index + "].removeLeg()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove leg' onclick='characters[" + this.index + "].removeLeg()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -289,13 +291,13 @@ class Character {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Accessory.length; i++) {
-                    list += "<img class='" + Accessory[i].Rarity + "' title='" + Accessory[i].Title + "' onclick='characters[" + this.index + "].setAccessory(" + i + ")' src='./img/armors/" + Accessory[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    list += "<img class='" + Accessory[i].Rarity + "' title='" + Accessory[i].Title + "' onclick='characters[" + this.index + "].setAccessory(" + i + ")' src = '" + this.IMG_PATH + "armors/" + Accessory[i].Name + ".png' width='128px' height='71px' border='1'>";
                     if (++br == 3) {
                         br = 0;
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove accessory' onclick='characters[" + this.index + "].removeAccessory()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove accessory' onclick='characters[" + this.index + "].removeAccessory()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -307,13 +309,13 @@ class Character {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Food.length; i++) {
-                    list += "<img class='" + Food[i].Rarity + "' title='" + Food[i].Title + "' onclick='characters[" + this.index + "].setFood(" + i + ")' src='./img/foods/" + Food[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    list += "<img class='" + Food[i].Rarity + "' title='" + Food[i].Title + "' onclick='characters[" + this.index + "].setFood(" + i + ")' src = '" + this.IMG_PATH + "foods/" + Food[i].Name + ".png' width='128px' height='71px' border='1'>";
                     if (++br == 3) {
                         br = 0;
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove trap' onclick='characters[" + this.index + "].removeFood()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove trap' onclick='characters[" + this.index + "].removeFood()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -325,13 +327,13 @@ class Character {
                 let list = '';
                 let br = 0;
                 for (let i = 0; i < Trap.length; i++) {
-                    list += "<img class='" + Trap[i].Rarity + "' title='" + Trap[i].Title + "' onclick='characters[" + this.index + "].setTrap(" + i + ")' src='./img/traps/" + Trap[i].Name + ".png' width='128px' height='71px' border='1'>";
+                    list += "<img class='" + Trap[i].Rarity + "' title='" + Trap[i].Title + "' onclick='characters[" + this.index + "].setTrap(" + i + ")' src = '" + this.IMG_PATH + "traps/" + Trap[i].Name + ".png' width='128px' height='71px' border='1'>";
                     if (++br == 3) {
                         br = 0;
                         list += '<br>';
                     }
                 }
-                list += "<img title='remove trap' onclick='characters[" + this.index + "].removeTrap()' src='./img/weapon/blank.png' width='128px' height='71px' border='1'>";
+                list += "<img title='remove trap' onclick='characters[" + this.index + "].removeTrap()' src = '" + this.IMG_PATH + "weapon/blank.png' width='128px' height='71px' border='1'>";
 				this.ITEM_LIST.querySelector('.item_view').innerHTML = list;
 				this.ITEM_LIST.style.display = 'block';
             }
@@ -369,7 +371,7 @@ class Character {
                 this.COMBO_DAMAGE.innerHTML = '';
                 comboTime(0, true);
             } else {
-                this.I_CHARACTER.innerHTML = "<img class='character_image' src='./img/character/" + select + ".png'>";
+                this.I_CHARACTER.innerHTML = "<img class='character_image' src = '" + this.IMG_PATH + "character/" + select + ".png'>";
                 this.character = eval(select);
                 if (this.subWeapon != null && this.character != Alex) {
                     this.subWeapon = null;
@@ -631,7 +633,7 @@ class Character {
         // this.weapon_attack_range = WeaponInfo[this.weapon.Type][3];
         // this.weapon_attack_speed = WeaponInfo[this.weapon.Type][4];
 
-        this.SUB_WEAPON.innerHTML = "<img class = '" + this.subWeapon.Rarity + "' title = '" + this.subWeapon.Title + "' src = './img/weapon/" + this.subWeapon.Name + ".png' width = '78px' height = '42px'>";
+        this.SUB_WEAPON.innerHTML = "<img class = '" + this.subWeapon.Rarity + "' title = '" + this.subWeapon.Title + "' src = '" + this.IMG_PATH + "weapon/" + this.subWeapon.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         // this.D_OPTION.innerHTML = this.character.D_Option(this, this.enemy);
         updateDisplay();
@@ -656,7 +658,7 @@ class Character {
         this.weapon_attack_range = WeaponInfo[this.weapon.Type][3];
         this.weapon_attack_speed = WeaponInfo[this.weapon.Type][4];
 
-        this.WEAPON.innerHTML = "<img class = '" + this.weapon.Rarity + "' title = '" + this.weapon.Title + "' src = './img/weapon/" + this.weapon.Name + ".png' width = '78px' height = '42px'>";
+        this.WEAPON.innerHTML = "<img class = '" + this.weapon.Rarity + "' title = '" + this.weapon.Title + "' src = '" + this.IMG_PATH + "weapon/" + this.weapon.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         this.D_OPTION.innerHTML = this.character.D_Option(this, this.enemy);
         updateDisplay();
@@ -675,7 +677,7 @@ class Character {
     }
     setChest(i) {
         this.chest = Chest[i];
-        this.CHEST.innerHTML = "<img class = '" + this.chest.Rarity + "' title = '" + this.chest.Title + "' src = './img/armors/" + this.chest.Name + ".png' width = '78px' height = '42px'>";
+        this.CHEST.innerHTML = "<img class = '" + this.chest.Rarity + "' title = '" + this.chest.Title + "' src = '" + this.IMG_PATH + "armors/" + this.chest.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -687,7 +689,7 @@ class Character {
     }
     setHead(i) {
         this.head = Head[i];
-        this.HEAD.innerHTML = "<img class = '" + this.head.Rarity + "' title = '" + this.head.Title + "' src = './img/armors/" + this.head.Name + ".png' width = '78px' height = '42px'>";
+        this.HEAD.innerHTML = "<img class = '" + this.head.Rarity + "' title = '" + this.head.Title + "' src = '" + this.IMG_PATH + "armors/" + this.head.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -699,7 +701,7 @@ class Character {
     }
     setArm(i) {
         this.arm = Arm[i];
-        this.ARM.innerHTML = "<img class = '" + this.arm.Rarity + "' title = '" + this.arm.Title + "' src = './img/armors/" + this.arm.Name + ".png' width = '78px' height = '42px'>";
+        this.ARM.innerHTML = "<img class = '" + this.arm.Rarity + "' title = '" + this.arm.Title + "' src = '" + this.IMG_PATH + "armors/" + this.arm.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -711,7 +713,7 @@ class Character {
     }
     setLeg(i) {
         this.leg = Leg[i];
-        this.LEG.innerHTML = "<img class = '" + this.leg.Rarity + "' title = '" + this.leg.Title + "' src = './img/armors/" + this.leg.Name + ".png' width = '78px' height = '42px'>";
+        this.LEG.innerHTML = "<img class = '" + this.leg.Rarity + "' title = '" + this.leg.Title + "' src = '" + this.IMG_PATH + "armors/" + this.leg.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -723,7 +725,7 @@ class Character {
     }
     setAccessory(i) {
         this.accessory = Accessory[i];
-        this.ACCESSORY.innerHTML = "<img class = '" + this.accessory.Rarity + "' title = '" + this.accessory.Title + "' src = './img/armors/" + this.accessory.Name + ".png' width = '78px' height = '42px'>";
+        this.ACCESSORY.innerHTML = "<img class = '" + this.accessory.Rarity + "' title = '" + this.accessory.Title + "' src = '" + this.IMG_PATH + "armors/" + this.accessory.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -735,7 +737,7 @@ class Character {
     }
     setFood(i) {
         this.food = Food[i];
-        this.FOOD.innerHTML = "<img class = '" + this.food.Rarity + "' title = '" + this.food.Title + "' src = './img/foods/" + this.food.Name + ".png' width = '78px' height = '42px'>";
+        this.FOOD.innerHTML = "<img class = '" + this.food.Rarity + "' title = '" + this.food.Title + "' src = '" + this.IMG_PATH + "foods/" + this.food.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
@@ -747,7 +749,7 @@ class Character {
     }
     setTrap(i) {
         this.trap = Trap[i];
-        this.TRAP.innerHTML = "<img class = '" + this.trap.Rarity + "' title = '" + this.trap.Title + "' src = './img/traps/" + this.trap.Name + ".png' width = '78px' height = '42px'>";
+        this.TRAP.innerHTML = "<img class = '" + this.trap.Rarity + "' title = '" + this.trap.Title + "' src = '" + this.IMG_PATH + "traps/" + this.trap.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
         updateDisplay();
     }
