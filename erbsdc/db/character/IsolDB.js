@@ -1,7 +1,7 @@
 'use strict';
 const Isol = {
      Attack_Power: 27
-    ,Attack_Power_Growth: 2.9
+    ,Attack_Power_Growth: 2.6
     ,Health: 520
     ,Health_Growth: 60
     ,Health_Regen: 0.5
@@ -11,7 +11,7 @@ const Isol = {
     ,Stamina_Regen: 1.8
     ,Stamina_Regen_Growth: 0.03
     ,Defense: 23
-    ,Defense_Growth: 1.2
+    ,Defense_Growth: 1.5
     ,Atk_Speed: 0.14
     ,Movement_Speed: 3.05
     ,Sight_Range: 8
@@ -117,7 +117,7 @@ const Isol = {
                 const as2 = calcAttackSpeed(character, wm < 13 ? 40 : 60);
                 const as1 = 10 / (9.5 / as2 + 2);
                 const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
-                    baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1) + (wm < 13 ? 5 : 7);
+                    baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1) + (wm < 13 ? 6 : 9);
                 const damage1 = round(shot * as1 * 100) / 100;
                 const damage2 = round(shot * as2 * 100) / 100;
                 const life1 = calcHeal(shot * (character.life_steal / 100), as1, enemy);
@@ -191,7 +191,7 @@ const Isol = {
                 }
                 if (c === 'a') {
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -199,7 +199,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
+                        ba += baseAttackDamage(character, enemy, 0, 0.32, 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -207,7 +207,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.48, 0, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
+                        ba += baseAttackDamage(character, enemy, 0, 0.48, 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
@@ -217,7 +217,7 @@ const Isol = {
                     }
                 } else if (c === 'A') {
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -225,7 +225,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
+                        ba += baseAttackDamage(character, enemy, 0, 0.32, 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -233,7 +233,7 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.48, 100, 1) + (dd ? wm < 13 ? 5 : 7 : 0);
+                        ba += baseAttackDamage(character, enemy, 0, 0.48, 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {

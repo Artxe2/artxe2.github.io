@@ -19,7 +19,7 @@ const Bernice = {
     ,weapons: [SniperRifle]
     ,correction: {
         SniperRifle: [
-            [0, -3, -6],
+            [0, -6, -10],
             [0, 0, 0]
         ]
     }

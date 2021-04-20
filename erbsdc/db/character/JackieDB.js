@@ -31,7 +31,7 @@ const Jackie = {
             [0, -2, -5]
         ],
         DualSwords: [
-            [0, 0, 0],
+            [0, -3, -5],
             [0, -2, -5]
         ]
     }
@@ -86,7 +86,7 @@ const Jackie = {
         if (character.weapon && q >= 0) {
             const w = character.W_LEVEL.selectedIndex - 1;
             const damage3 = calcTrueDamage(character, enemy, 20 + q * 5);
-            const cool = 10000 / ((10 - q * 0.5) * (100 - character.cooldown_reduction) + 17);
+            const cool = 10000 / ((9 - q * 0.5) * (100 - character.cooldown_reduction) + 17);
             let damage1, damage2;
             if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
                 const heal = calcHeal(12 + w * 7 + character.attack_power * 0.1, 2, enemy);

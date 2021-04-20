@@ -1,7 +1,7 @@
 'use strict';
 const Hyejin = {
      Attack_Power: 29
-    ,Attack_Power_Growth: 2.5
+    ,Attack_Power_Growth: 2.7
     ,Health: 535
     ,Health_Growth: 68
     ,Health_Regen: 0.6
@@ -19,7 +19,7 @@ const Hyejin = {
     ,weapons: [Shuriken, Bow]
     ,correction: {
         Shuriken: [
-            [5, 5, 0],
+            [0, 5, 0],
             [-4, -3, -7]
         ],
         Bow: [

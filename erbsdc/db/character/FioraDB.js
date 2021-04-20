@@ -243,6 +243,7 @@ const Fiora = {
                     if (q >= 0) {
                         if (f >= 3 && t === 2 || f >= 4 && t === 1 || f >= 5 && t === 0) {
                             damage += calcSkillDamage(character, enemy, (60 + q * 60) * crid, 0.25 * crid, 1);
+                            f = 0;
                         } else {
                             damage += calcSkillDamage(character, enemy, 60 + q * 60, 0.25, 1);
                         }
@@ -291,6 +292,7 @@ const Fiora = {
                     if (e >= 0) {
                         if (f >= 3 && t === 2 || f >= 4 && t === 1 || f >= 5 && t === 0) {
                             damage += calcSkillDamage(character, enemy, (90 + e * 40) * (1.2 +character.critical_damage / 100), 0.4 * (1.2 + character.critical_damage / 100), 1);
+                            f = 0;
                         } else {
                             damage += calcSkillDamage(character, enemy, 90 + e * 40, 0.4, 1);
                         }

@@ -10,7 +10,7 @@ const Chiara = {
     ,Stamina_Growth: 13
     ,Stamina_Regen: 2.1
     ,Stamina_Regen_Growth: 0.03
-    ,Defense: 27
+    ,Defense: 25
     ,Defense_Growth: 1.3
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.15
@@ -83,7 +83,7 @@ const Chiara = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 20 + r * 7, 0.15, 1);
-            const damage2 = floor(200 + r * 100 + character.attack_power * 1.2);
+            const damage2 = floor(200 + r * 100 + character.attack_power * 1);
             const heal = calcHeal(damage1 * 0.2, 1, enemy);
             return "<b class='damage'>" + (damage1 * 12 + damage2) + '</b> ( ' + damage1 + " x 12, <b class='damage'>" + damage2 + "</b> ) <b> __h/s: </b><b class='heal'>" + heal + '</b>';
         }
@@ -281,7 +281,7 @@ const Chiara = {
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
-                        damage += floor(200 + r * 100 + character.attack_power * 1.2);
+                        damage += floor(200 + r * 100 + character.attack_power * 1);
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {

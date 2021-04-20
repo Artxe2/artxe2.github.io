@@ -1,6 +1,6 @@
 'use strict';
 const Li_Dailin = {
-     Attack_Power: 33
+     Attack_Power: 31
     ,Attack_Power_Growth: 2.2
     ,Health: 580
     ,Health_Growth: 82

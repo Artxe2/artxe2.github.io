@@ -88,10 +88,10 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Steel_Shield"
-        ,Attack_Power: 23
+        ,Attack_Power: 20
         ,Defense: 20
         ,Movement_Speed: -0.05
-        ,Title: "Steel Shield\n\nAttack Power +23\nDefense +20\nMovement Speed -0.05"
+        ,Title: "Steel Shield\n\nAttack Power +20\nDefense +20\nMovement Speed -0.05"
         ,Rarity: "Rare"
     }
     ,{

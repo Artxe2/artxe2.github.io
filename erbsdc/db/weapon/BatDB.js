@@ -66,20 +66,20 @@ const Bat = [
     ,{
          Type: "Bat"
         ,Name: "Spy_Umbrella"
-        ,Attack_Power: 68
+        ,Attack_Power: 65
         ,SP_Regen: 0.8
         ,Skill_Amplification: 25
-        ,Title: "Spy Umbrella\n\nAttack Power +68\nSP Regen +0.8\nSkill Amplification +25"
+        ,Title: "Spy Umbrella\n\nAttack Power +65\nSP Regen +0.8\nSkill Amplification +25"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Bat"
         ,Name: "Magic_Stick"
-        ,Attack_Power: 55
-        ,Vision_Range: 0.5
+        ,Attack_Power: 59
+        ,Vision_Range: 1
         ,Life_Steal: 30
         ,Skill_Amplification_Percent: 27
-        ,Title: "Magic Stick\n\nAttack Power +55\nVision Range +0.5\nLife Steal +30%\nSkill Amplification +27%"
+        ,Title: "Magic Stick\n\nAttack Power +59\nVision Range +1\nLife Steal +30%\nSkill Amplification +27%"
         ,Rarity: "Epic"
     }
     ,{

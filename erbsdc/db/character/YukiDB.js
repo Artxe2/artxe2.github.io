@@ -11,7 +11,7 @@ const Yuki = {
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 26
     ,Defense_Growth: 2.3
-    ,Atk_Speed: 0.06
+    ,Atk_Speed: 0.08
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.45
@@ -22,8 +22,8 @@ const Yuki = {
             [0, 4, 0]
         ],
         DualSwords: [
-            [3, 0, 0],
-            [-3, -3, -3]
+            [0, -4, -6],
+            [0, -3, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {

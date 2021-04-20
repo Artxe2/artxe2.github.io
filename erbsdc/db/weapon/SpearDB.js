@@ -40,8 +40,8 @@ const Spear = [
          Type: "Spear"
         ,Name: "Sharpened_Spear"
         ,Attack_Power: 40
-        ,Movement_Speed: 0.1
-        ,Title: "Sharpened Spear\n\nAttack Power +40\nMovement Speed +0.1"
+        ,Movement_Speed: 0.06
+        ,Title: "Sharpened Spear\n\nAttack Power +40\nMovement Speed +0.06"
         ,Rarity: "Rare"
     }
     ,{
@@ -57,7 +57,8 @@ const Spear = [
         ,Name: "Eighteen_foot_spear"
         ,Attack_Power: 104
         ,Attack_Speed: 40
-        ,Title: "Eighteen Foot Spear\n\nAttack Power +104\nMovement Speed +40%"
+        ,Movement_Speed: 0.06
+        ,Title: "Eighteen Foot Spear\n\nAttack Power +104\nMovement Speed +40%\nMovement Speed +0.06"
         ,Rarity: "Epic"
     }
     ,{

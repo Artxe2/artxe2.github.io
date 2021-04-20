@@ -154,8 +154,8 @@ const Shuriken = [
         ,Name: "Azure_Dagger"
         ,Attack_Power: 20
         ,Extra_Normal_Attack_Damage: 33
-        ,Skill_Amplification: 24
-        ,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +33\nSkill Amplification +24"
+        ,Skill_Amplification: 20
+        ,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +33\nSkill Amplification +20"
         ,Rarity: "Epic"
     }
     ,{

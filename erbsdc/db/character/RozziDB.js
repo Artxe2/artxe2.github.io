@@ -1,5 +1,5 @@
 const Rozzi = {
-     Attack_Power: 28
+     Attack_Power: 26
     ,Attack_Power_Growth: 2.3
     ,Health: 515
     ,Health_Growth: 62

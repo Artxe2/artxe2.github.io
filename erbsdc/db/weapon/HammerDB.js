@@ -47,9 +47,9 @@ const Hammer = [
     ,{
          Type: "Hammer"
         ,Name: "Hammer_of_Thor"
-        ,Attack_Power: 120
+        ,Attack_Power: 115
         ,Attack_Speed: 40
-        ,Title: "Hammer of Thor\n\nAttack Power +120\nAttack Speed +40%"
+        ,Title: "Hammer of Thor\n\nAttack Power +115\nAttack Speed +40%"
         ,Rarity: "Epic"
     }
     ,{

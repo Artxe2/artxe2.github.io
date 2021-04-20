@@ -1,19 +1,19 @@
 'use strict';
 const Alex = {
      Attack_Power: 19
-    ,Attack_Power_Growth: 1.9
+    ,Attack_Power_Growth: 2.4
     ,Health: 490
     ,Health_Growth: 77
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.04
     ,Stamina: 420
-    ,Stamina_Growth: 17
+    ,Stamina_Growth: 22
     ,Stamina_Regen: 1.8
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 23
     ,Defense_Growth: 2.1
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [TwoHandedSword, Pistol, Shuriken, Tonfa]
@@ -73,8 +73,8 @@ const Alex = {
         if (character.weapon && q >= 0) {
             let damage, cool;
             if (character.isMelee) {
-                damage = calcSkillDamage(character, enemy, 30 + q * 35, 0.3, 1);
-                cool = 10000 / ((9 - q) * (100 - character.cooldown_reduction));
+                damage = calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
+                cool = 10000 / ((8.5 - q) * (100 - character.cooldown_reduction));
             } else {
                 damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
                 cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction));
@@ -221,7 +221,7 @@ const Alex = {
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (character.isMelee) {
-                            damage += calcSkillDamage(character, enemy, 30 + q * 35, 0.3, 1);
+                            damage += calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
                         } else {
                             damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
                         }

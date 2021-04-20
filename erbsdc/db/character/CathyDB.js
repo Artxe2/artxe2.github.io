@@ -1,19 +1,19 @@
 'use strict';
 const Cathy = {
      Attack_Power: 26
-    ,Attack_Power_Growth: 2.8
+    ,Attack_Power_Growth: 2.4
     ,Health: 560
-    ,Health_Growth: 87
+    ,Health_Growth: 80
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.06
-    ,Stamina: 430
-    ,Stamina_Growth: 13
-    ,Stamina_Regen: 2.2
-    ,Stamina_Regen_Growth: 0.06
-    ,Defense: 25
+    ,Stamina: 440
+    ,Stamina_Growth: 16
+    ,Stamina_Regen: 2
+    ,Stamina_Regen_Growth: 0.08
+    ,Defense: 24
     ,Defense_Growth: 2.0
-    ,Atk_Speed: 0.22
-    ,Movement_Speed: 3.15
+    ,Atk_Speed: 0.12
+    ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Dagger]

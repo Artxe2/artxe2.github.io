@@ -129,10 +129,10 @@ const Head = [
     ,{
          Type: "Head"
         ,Name: "Crystal_Tiara"
-        ,Defense: 21
-        ,Max_SP: 600
+        ,Defense: 24
+        ,Max_SP: 500
         ,Critical_Strike_Chance: 22
-        ,Title: "Crystal Tiara\n\nDefense +21\nMax SP +600\nCritical Strike Chance +22%"
+        ,Title: "Crystal Tiara\n\nDefense +24\nMax SP +500\nCritical Strike Chance +22%"
         ,Rarity: "Epic"
     }
     ,{

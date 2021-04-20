@@ -7,9 +7,9 @@ const Xiukai = {
     ,Health_Regen_Growth: 0.06
     ,Stamina: 420
     ,Stamina_Growth: 14
-    ,Stamina_Regen: 0.3
+    ,Stamina_Regen: 0.5
     ,Stamina_Regen_Growth: 0.01
-    ,Defense: 34
+    ,Defense: 36
     ,Defense_Growth: 1.7
     ,Atk_Speed: 0.16
     ,Movement_Speed: 3.1

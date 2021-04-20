@@ -296,10 +296,10 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Queen_of_Hearts"
-        ,Defense: 37
-        ,HP_Regen: 3
+        ,Defense: 40
+        ,HP_Regen: 2.5
         ,Cooldown_Reduction: 25
-        ,Title: "Queen of Hearts\n\nDefense +37\nHP Regen +3\nCooldown Reduction +25%"
+        ,Title: "Queen of Hearts\n\nDefense +40\nHP Regen +2.5\nCooldown Reduction +25%"
         ,Rarity: "Legendary"
     }
 ];

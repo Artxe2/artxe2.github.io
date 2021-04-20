@@ -46,10 +46,10 @@ const Nunchaku = [
     ,{
          Type: "Nunchaku"
         ,Name: "Cerberus"
-        ,Attack_Power: 61
+        ,Attack_Power: 65
         ,Movement_Speed: 0.1
         ,Attack_Range: 0.5
-        ,Title: "Cerberus\n\nAttack Power +61\nMovement Speed +0.1\nAttack Range +0.5\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Cerberus\n\nAttack Power +65\nMovement Speed +0.1\nAttack Range +0.5\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
 ];

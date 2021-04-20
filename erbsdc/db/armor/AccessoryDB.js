@@ -194,9 +194,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Revenge_of_Goujian"
-        ,Attack_Power: 15
-        ,Skill_Amplification_Percent: 20
-        ,Title: "Revenge of Goujian\n\nAttack Power +15\nSkill Amplification +20%"
+        ,Attack_Power: 18
+        ,Skill_Amplification_Percent: 15
+        ,Title: "Revenge of Goujian\n\nAttack Power +18\nSkill Amplification +15%"
         ,Rarity: "Rare"
     }
     ,{

@@ -1,6 +1,6 @@
 const Zahir = {
      Attack_Power: 25
-    ,Attack_Power_Growth: 2.7
+    ,Attack_Power_Growth: 2.4
     ,Health: 540
     ,Health_Growth: 64
     ,Health_Regen: 0.6
