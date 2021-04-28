@@ -910,8 +910,10 @@ class Character {
                     calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.3) : 0);
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
-            if (this.chest && this.chest.Name === 'Queen_of_Hearts' && this.cooldown_reduction > 50) {
-                this.cooldown_reduction = 50;
+            if (this.chest && this.chest.Name === 'Queen_of_Hearts') {
+                if (this.cooldown_reduction > 50) {
+                    this.cooldown_reduction = 50;
+                }
             } else if (this.cooldown_reduction > 40) {
                 this.cooldown_reduction = 40;
             }
