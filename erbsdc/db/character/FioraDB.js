@@ -1,6 +1,6 @@
 'use strict';
 const Fiora = {
-     Attack_Power: 31
+     Attack_Power: 28
     ,Attack_Power_Growth: 3.4
     ,Health: 580
     ,Health_Growth: 87

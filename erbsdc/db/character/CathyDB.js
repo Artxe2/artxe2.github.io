@@ -63,8 +63,8 @@ const Cathy = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const min = calcSkillDamage(character, enemy, 35 + w * 35, 0.3, 1);
-            const max = calcSkillDamage(character, enemy, 80 + w * 35, 0.5, 1);
+            const min = calcSkillDamage(character, enemy, 35 + w * 35, 0.2, 1);
+            const max = calcSkillDamage(character, enemy, 80 + w * 35, 0.55, 1);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
@@ -316,7 +316,7 @@ const Cathy = {
                     }
                 } else if (c === 'w') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 35 + w * 35, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 35 + w * 35, 0.2, 1);
 
                         if (bleeding[index]) {
                             if (bleeding[index] >= 2) {
@@ -340,7 +340,7 @@ const Cathy = {
                     }
                 } else if (c === 'W') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 80 + w * 35, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 80 + w * 35, 0.55, 1);
 
                         if (bleeding[index]) {
                             if (bleeding[index] >= 2) {

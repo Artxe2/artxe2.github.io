@@ -106,8 +106,16 @@ const Bow = [
         ,Name: "Failnaught"
         ,Attack_Power: 105
         ,Attack_Speed: 15
-        ,Life_Steal: 15
-        ,Title: "Failnaught\n\nAttack Power +105\nAttack Speed +15%\nLife Steal +15%"
+        ,Life_Steal: 20
+        ,Title: "Failnaught\n\nAttack Power +105\nAttack Speed +15%\nLife Steal +20%"
+        ,Rarity: "Legendary"
+    }
+    ,{
+         Type: "Bow"
+        ,Name: "Argyrotoxus"
+        ,Attack_Power: 120
+        ,Skill_Amplification_Percent: 25
+        ,Title: "Argyrotoxus\n\nAttack Power +120\nSkill Amplification +25%"
         ,Rarity: "Legendary"
     }
 ];

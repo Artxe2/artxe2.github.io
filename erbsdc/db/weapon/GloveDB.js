@@ -117,7 +117,7 @@ const Glove = [
     ,{
          Type: "Glove"
         ,Name: "Buddha`s_Palm"
-        ,Attack_Power: 43
+        ,Attack_Power: 40
         ,Cooldown_Reduction: 19
         ,Skill_Amplification_Percent: 19
         ,Title: "Buddha`s Palm\n\nAttack Power +43\nCooldown Reduction +19%\nSkill Amplification +19%"
@@ -140,7 +140,8 @@ const Glove = [
         ,Name: "White_Claw_Punch"
         ,Attack_Power: 58
         ,Critical_Strike_Chance: 33
-        ,Title: "White Claw Punch\n\nAttack Power +58\nCritical Strike Chance +33%"
+        ,Critical_Damage: 7
+        ,Title: "White Claw Punch\n\nAttack Power +58\nCritical Strike Chance +33%\nCritical Damage +7%"
         ,Rarity: "Epic"
     }
     ,{

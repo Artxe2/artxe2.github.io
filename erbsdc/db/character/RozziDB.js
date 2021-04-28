@@ -163,6 +163,9 @@ const Rozzi = {
             const coe = 0.6 + t * 0.1;
             if (healBan) {
                 healBan--;
+                character.heal_reduction = 40;
+            } else {
+                character.heal_reduction = character.pure_heal_reduction;
             }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
@@ -191,7 +194,7 @@ const Rozzi = {
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        const dm = -0.12 - w * 0.02;
+                        const dm = -0.4;
                         for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }

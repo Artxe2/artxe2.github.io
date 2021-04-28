@@ -85,8 +85,8 @@ const Axe = [
         ,Name: "Parashu"
         ,Attack_Power: 115
         ,Movement_Speed: 0.07
-        ,Cooldown_Reduction: 10
-        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.07\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 12
+        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.07\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{

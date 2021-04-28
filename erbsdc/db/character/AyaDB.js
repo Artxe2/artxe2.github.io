@@ -78,7 +78,7 @@ const Aya = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 0, 1, 1);
-            const damage2 = calcSkillDamage(character, enemy, 40 + q * 50, 0.2, 1);
+            const damage2 = calcSkillDamage(character, enemy, 35 + q * 55, 0.2, 1);
             const cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
@@ -292,7 +292,7 @@ const Aya = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        damage += calcSkillDamage(character, enemy, 40 + q * 50, 0.2, 1);
+                        damage += calcSkillDamage(character, enemy, 35 + q * 55, 0.2, 1);
                     }
                 } else if (c === 'w') {
                     if (w >= 0) {

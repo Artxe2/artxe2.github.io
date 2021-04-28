@@ -160,19 +160,19 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Sunset_Armor"
-        ,Defense: 20
+        ,Defense: 18
         ,Max_HP: 360
-        ,Title: "Sunset Armor\n\nDefense +20\nMax HP +360"
+        ,Title: "Sunset Armor\n\nDefense +18\nMax HP +360"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Chest"
         ,Name: "Covert_Agent_Uniform"
-        ,Defense: 23
-        ,HP_Regen: 2.5
+        ,Defense: 26
+        ,HP_Regen: 2
         ,Vision_Range: 1
         ,Cooldown_Reduction: 15
-        ,Title: "Convert Agent Uniform\n\nDefense +23\nHP Regen +2.5\nVision Range +1\nCooldown Reduction +15%"
+        ,Title: "Convert Agent Uniform\n\nDefense +26\nHP Regen +2\nVision Range +1\nCooldown Reduction +15%"
         ,Rarity: "Rare"
     }
     ,{
@@ -188,11 +188,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Rocker`s_Jacket"
-        ,Attack_Power: 30
-        ,Defense: 15
+        ,Attack_Power: 28
+        ,Defense: 13
         ,Movement_speed_while_not_in_combat: 0.1
         ,Normal_Attack_Damage_Reduction: 11
-        ,Title: "Rocker`s Jacket\n\nAttack Power +30\nDefense +15\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
+        ,Title: "Rocker`s Jacket\n\nAttack Power +28\nDefense +13\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -297,9 +297,10 @@ const Chest = [
          Type: "Chest"
         ,Name: "Queen_of_Hearts"
         ,Defense: 40
-        ,HP_Regen: 2.5
+        ,HP_Regen: 2
         ,Cooldown_Reduction: 25
-        ,Title: "Queen of Hearts\n\nDefense +40\nHP Regen +2.5\nCooldown Reduction +25%"
+        ,Cooldown_Reduction_Cap: 10
+        ,Title: "Queen of Hearts\n\nDefense +40\nHP Regen +2.5\nCooldown Reduction +25%\nCooldown Reduction +10%"
         ,Rarity: "Legendary"
     }
 ];

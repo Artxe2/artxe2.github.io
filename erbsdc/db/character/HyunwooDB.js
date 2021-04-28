@@ -55,7 +55,7 @@ const Hyunwoo = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 100 + q * 50, 0.3, 1);
-            const cool = 10000 / ((9 - q * 1) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((8.5 - q * 1) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';

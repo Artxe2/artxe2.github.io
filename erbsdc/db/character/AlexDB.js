@@ -2,11 +2,11 @@
 const Alex = {
      Attack_Power: 19
     ,Attack_Power_Growth: 2.4
-    ,Health: 490
+    ,Health: 520
     ,Health_Growth: 77
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.04
-    ,Stamina: 420
+    ,Stamina: 450
     ,Stamina_Growth: 22
     ,Stamina_Regen: 1.8
     ,Stamina_Regen_Growth: 0.06
@@ -76,7 +76,7 @@ const Alex = {
                 damage = calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
                 cool = 10000 / ((8.5 - q) * (100 - character.cooldown_reduction));
             } else {
-                damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
+                damage = calcSkillDamage(character, enemy, 50 + q * 40, 0.3, 1);
                 cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction));
             }
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -92,7 +92,7 @@ const Alex = {
                 damage = calcSkillDamage(character, enemy, 60 + w * 30, 0.4, 1);
                 cool = 10000 / (10 * (100 - character.cooldown_reduction));
             } else {
-                damage = calcSkillDamage(character, enemy, 40 + w * 20, 0.3, 1);
+                damage = calcSkillDamage(character, enemy, 40 + w * 20, 0.4, 1);
                 cool = 10000 / (13 * (100 - character.cooldown_reduction));
             }
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -103,8 +103,8 @@ const Alex = {
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0 && !character.isMelee) {
-            const damage = calcSkillDamage(character, enemy, 40 + e * 20, 0.3, 1);
-            const cool = 10000 / ((22 - e) * (100 - character.cooldown_reduction) + 50);
+            const damage = calcSkillDamage(character, enemy, 60 + e * 30, 0.4, 1);
+            const cool = 10000 / ((22 - e * 2) * (100 - character.cooldown_reduction) + 50);
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -223,7 +223,7 @@ const Alex = {
                         if (character.isMelee) {
                             damage += calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
                         } else {
-                            damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.3, 1);
+                            damage += calcSkillDamage(character, enemy, 50 + q * 40, 0.3, 1);
                         }
                         if (qq <= 3) {
                             qq++;
@@ -234,13 +234,13 @@ const Alex = {
                         if (character.isMelee) {
                             damage += calcSkillDamage(character, enemy, 60 + w * 30, 0.4, 1);
                         } else {
-                            damage += calcSkillDamage(character, enemy, 40 + w * 20, 0.3, 1);
+                            damage += calcSkillDamage(character, enemy, 40 + w * 20, 0.4, 1);
                         }
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
                         if (!character.isMelee) {
-                            damage += calcSkillDamage(character, enemy, 40 + e * 20, 0.3, 1);
+                            damage += calcSkillDamage(character, enemy, 60 + e * 30, 0.4, 1);
                         }
                         if (character.subWeapon) {
                             swapWeapon(character);

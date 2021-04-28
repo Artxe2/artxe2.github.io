@@ -84,10 +84,10 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Maverick_Runner"
-        ,Attack_Speed: 10
-        ,Movement_Speed: 0.3
-        ,Movement_speed_while_not_in_combat: 0.25
-        ,Title: "Maverick Runner\n\nAttack Speed +10%\nMovement Speed +0.3\nMovement Speed while not in combat +0.25"
+        ,Attack_Power: -8
+        ,Movement_Speed: 0.35
+        ,Movement_speed_while_not_in_combat: 0.3
+        ,Title: "Maverick Runner\n\nAttack Power -8\nMovement Speed +0.35\nMovement Speed while not in combat +0.3"
         ,Rarity: "Rare"
     }
     ,{
@@ -111,21 +111,21 @@ const Leg = [
     }
     ,{
          Type: "Leg"
-        ,Name: "Straitjacket_Sneakers"
-        ,SP_Regen: 0.5
-        ,SP_Regen_Percent: 50
-        ,Movement_Speed: 0.33
-        ,Skill_Amplification: 12
-        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.33\nSkill Amplification +12"
-        ,Rarity: "Rare"
-    }
-    ,{
-         Type: "Leg"
         ,Name: "Feather_Boots"
         ,HP_Regen: 1
         ,Attack_Speed: 35
         ,Movement_Speed: 0.4
         ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +35%\nMovement Speed +0.4"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Leg"
+        ,Name: "Straitjacket_Sneakers"
+        ,SP_Regen: 0.5
+        ,SP_Regen_Percent: 50
+        ,Movement_Speed: 0.33
+        ,Skill_Amplification: 14
+        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.33\nSkill Amplification +14"
         ,Rarity: "Epic"
     }
     ,{

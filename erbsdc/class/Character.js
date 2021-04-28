@@ -802,7 +802,7 @@ class Character {
                 this.accessory && this.accessory.Name === 'White_Crane_Fan' ? this.isMelee ? 40 : 25 :
                 this.accessory && this.accessory.Name === 'Gilded_Quill_Fan' ? 25 : 0;
             this.heal_reduction =
-                rozzi_w && rozzi_w.checked ? 100 : this.pure_heal_reduction;
+                rozzi_w && rozzi_w.checked ? 40 : this.pure_heal_reduction;
 
             this.critical_damage_reduction = calcEquip(this, 'Critical_Damage_Reduction');
             this.CRITICAL_DAMAGE_REDUCTION.innerText = this.critical_damage_reduction + '%';
@@ -812,13 +812,15 @@ class Character {
             const lida_w = this.DIV.querySelector('.lida_w');
             const silvia_t = this.DIV.querySelector('.silvia_t');
             const luke_w_u = this.DIV.querySelector('.luke_w_u');
+            const sua_t = this.DIV.querySelector('.sua_t');
             const attack_speed_bonus =
                 (jackie_r && jackie_r.checked && r >= 0 ? 20 + r * 5 : 0) +
                 (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) +
                 (lida_w && lida_w.checked && w >= 0 ? 20 + t * 10 : 0) +
-                (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.2) : 0) +
+                (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.3) : 0) +
                 (luke_w_u && luke_w_u.checked && w >= 0 ? this.DIV.querySelector('.luke_w_s').value * 8 : 0) +
-                (this.character === Alex && this.weapon && this.isMelee ? 3 + e * 3 : 0);
+                (this.character === Alex && this.weapon && !this.isMelee && e >= 0 ? 6 + e * 3 : 0) +
+                (sua_t && sua_t.checked ? 40 : 0);
             const attack_speed_percent =
                 attack_speed_bonus + calcEquip(this, 'Attack_Speed') +
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_attack_speed);
@@ -859,7 +861,7 @@ class Character {
             const cri_bonus =
                 (shoichi_t ? shoichi_t.value * (5 + t * 2) : 0) +
                 (this.character === Adela ? 4 + t * 4 : 0) +
-                (this.character === Alex && this.weapon && this.isMelee ? 3 + e * 3 : 0);
+                (this.character === Alex && this.weapon && this.isMelee && e >= 0 ? 6 + e * 3 : 0);
             this.critical_strike_chance =
                 calcEquip(this, 'Critical_Strike_Chance') + cri_bonus;
                 if (this.critical_strike_chance > 100) {
@@ -898,17 +900,19 @@ class Character {
                 round(calcEquip(this, 'Skill_Amplification', 2) + skill_amplification_bonus, 1);
             this.skill_amplification_percent =
                 round((!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.2) : 0) +
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.3) : 0) +
                     skill_amplification_percent_bonus);
             this.SKILL_AMPLIFICATION.innerText =
                 this.skill_amplification + '| ' + this.skill_amplification_percent + '%';
             this.pure_skill_amplification = calcEquip(this, 'Skill_Amplification', 2);
             this.pure_skill_amplification_percent =
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.2) : 0);
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.3) : 0);
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
-            if (this.cooldown_reduction > 40) {
+            if (this.chest && this.chest.Name === 'Queen_of_Hearts' && this.cooldown_reduction > 50) {
+                this.cooldown_reduction = 50;
+            } else if (this.cooldown_reduction > 40) {
                 this.cooldown_reduction = 40;
             }
             this.COOLDOWN_REDUCTION.innerText = this.cooldown_reduction + '%';
@@ -953,7 +957,7 @@ class Character {
                 (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.07 + ee * 0.02 : 0) -
                 (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.45 : hart_w.checked ? 0.3 : 0 : 0) -
                 (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) -
-                (rozzi_w && rozzi_w.checked ? 0.12 + ew * 0.02 : 0) -
+                (rozzi_w && rozzi_w.checked ? 0.4 : 0) -
                 (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) -
                 (chiara_t ? chiara_t.value * (0.02 + et * 0.02) : 0);
             const defense_bonus =

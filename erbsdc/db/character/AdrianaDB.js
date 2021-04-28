@@ -1,6 +1,6 @@
 'use strict';
 const Adriana = {
-     Attack_Power: 31
+     Attack_Power: 28
     ,Attack_Power_Growth: 2.9
     ,Health: 550
     ,Health_Growth: 65

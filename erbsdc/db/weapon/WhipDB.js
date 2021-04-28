@@ -31,19 +31,20 @@ const Whip = [
     }
     ,{
          Type: "Whip"
-        ,Name: "Thunder_Whip"
-        ,Attack_Power: 40
-        ,Skill_Amplification_Percent: 24
-        ,Title: "Thunder Whip\n\nAttack Power +40\nSkill Amplification +24%"
+        ,Name: "Lightning_Whip"
+        ,Attack_Power: 42
+        ,Attack_Speed: 10
+        ,Title: "Lightning Whip\n\nAttack Power +42\nAttack Speed +10%"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Whip"
-        ,Name: "Lightning_Whip"
-        ,Attack_Power: 42
-        ,Attack_Speed: 20
-        ,Title: "Lightning Whip\n\nAttack Power +42\nAttack Speed +20%"
-        ,Rarity: "Rare"
+        ,Name: "Thunder_Whip"
+        ,Attack_Power: 46
+        ,Attack_Speed: 10
+        ,Skill_Amplification_Percent: 24
+        ,Title: "Thunder Whip\n\nAttack Power +40\nAttack Speed +10%\nSkill Amplification +24%"
+        ,Rarity: "Epic"
     }
     ,{
          Type: "Whip"

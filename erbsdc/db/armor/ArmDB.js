@@ -136,10 +136,10 @@ const Arm = [
         ,Name: "Creed_of_the_Knight"
         ,Attack_Power: 30
         ,Defense: 20
-        ,HP_Regen: 1.5
+        ,HP_Regen: 1.2
         ,Movement_Speed: -0.03
         ,Critical_Damage: 25
-        ,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +20\nHP Regen +1.5\nMovement Speed -0.03\nCritical Damage +25%"
+        ,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +20\nHP Regen +1.2\nMovement Speed -0.03\nCritical Damage +25%"
         ,Rarity: "Epic"
     }
     ,{
@@ -156,8 +156,8 @@ const Arm = [
         ,Name: "Cube_Watch"
         ,Defense: 20
         ,Attack_Speed: 50
-        ,Cooldown_Reduction: 8
-        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +8%"
+        ,Cooldown_Reduction: 10
+        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{

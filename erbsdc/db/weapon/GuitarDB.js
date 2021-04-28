@@ -113,9 +113,9 @@ const Guitar = [
         ,Name: "Satisfaction"
         ,Attack_Power: 30
         ,Attack_Speed: 30
-        ,Life_Steal: 15
+        ,Life_Steal: 20
         ,Extra_Normal_Attack_Damage: 15
-        ,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +15%\nExtra Normal Attack Damage +15"
+        ,Title: "Satisfaction\n\nAttack Power +30\nAttack Speed +30%\nLife Steal +20%\nExtra Normal Attack Damage +15"
         ,Rarity: "Epic"
     }
     ,{
@@ -130,20 +130,20 @@ const Guitar = [
     ,{
          Type: "Guitar"
         ,Name: "The_Wall"
-        ,Attack_Power: 75
+        ,Attack_Power: 72
         ,Attack_Speed: 20
         ,Extra_Normal_Attack_Damage: 2
-        ,Title: "The Wall\n\nAttack Power +75\nAttack Speed +20%\nExtra Normal Attack Damage +2"
+        ,Title: "The Wall\n\nAttack Power +72\nAttack Speed +20%\nExtra Normal Attack Damage +2"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Guitar"
         ,Name: "Teen_Spirit"
         ,Attack_Power: 18
-        ,Attack_Speed: 35
+        ,Attack_Speed: 40
         ,Attack_Range: 1
-        ,Extra_Normal_Attack_Damage: 22
-        ,Title: "Teen Spirit\n\nAttack Power +18\nAttack Speed +35%\nAttack Range +1\nExtra Normal Attack Damage +22"
+        ,Extra_Normal_Attack_Damage: 25
+        ,Title: "Teen Spirit\n\nAttack Power +18\nAttack Speed +40%\nAttack Range +1\nExtra Normal Attack Damage +25"
         ,Rarity: "Epic"
     }
 ];

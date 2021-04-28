@@ -194,9 +194,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Revenge_of_Goujian"
-        ,Attack_Power: 18
+        ,Attack_Power: 15
         ,Skill_Amplification_Percent: 15
-        ,Title: "Revenge of Goujian\n\nAttack Power +18\nSkill Amplification +15%"
+        ,Title: "Revenge of Goujian\n\nAttack Power +15\nSkill Amplification +15%"
         ,Rarity: "Rare"
     }
     ,{
@@ -256,11 +256,11 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Lunar_Embrace"
-        ,Defense: 11
-        ,SP_Regen_Percent: 160
+        ,Defense: 15
+        ,SP_Regen_Percent: 180
         ,Vision_Range: 1.5
         ,Skill_Damage_Reduction: 18
-        ,Title: "Lunar Embrace\n\nDefense +11\nSP Regen +160%\nVision Range +1.5\nSkill Damage Reduction +18"
+        ,Title: "Lunar Embrace\n\nDefense +15\nSP Regen +180%\nVision Range +1.5\nSkill Damage Reduction +18"
         ,Rarity: "Epic"
     }
     ,{

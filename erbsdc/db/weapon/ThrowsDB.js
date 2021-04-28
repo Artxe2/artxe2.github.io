@@ -76,20 +76,11 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Incendiary_Bomb"
-        ,Attack_Power: 66
+        ,Attack_Power: 63
         ,Attack_Speed: 60
-        ,Cooldown_Reduction: 10
-        ,Title: "Incendiary Bomb\n\nAttack Power +66\nAttack Speed +60%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 8
+        ,Title: "Incendiary Bomb\n\nAttack Power +63\nAttack Speed +60%\nCooldown Reduction +8%"
         ,Rarity: "Epic"
-    }
-    ,{
-         Type: "Throws"
-        ,Name: "Grenade_of_Antioch"
-        ,Attack_Power: 77
-        ,Extra_Normal_Attack_Damage: 100
-        ,Title: "Grenade of Antioch\n\nAttack Power +77\nExtra Normal Attack Damage +100"
-        ,Rarity: "Epic"
-
     }
     ,{
          Type: "Throws"
@@ -123,5 +114,14 @@ const Throws = [
         ,Skill_Amplification_Percent: 28
         ,Title: "Ruthenium Marble\n\nAttack Power +76\nSkill Amplification +28%\nHealing Reduction (Skills) -25%"
         ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Throws"
+        ,Name: "Grenade_of_Antioch"
+        ,Attack_Power: 80
+        ,Extra_Normal_Attack_Damage: 100
+        ,Title: "Grenade of Antioch\n\nAttack Power +80\nExtra Normal Attack Damage +100"
+        ,Rarity: "Legendary"
+
     }
 ];

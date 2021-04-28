@@ -127,10 +127,15 @@ const Jackie = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const w = character.W_LEVEL.selectedIndex - 1;
+            let min, max;
             if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
-                return "<b class='damage'>" + calcSkillDamage(character, enemy, 300 + r * 200, 1 + 0.1 + w * 0.025, 1) + '</b>';
+                min = calcSkillDamage(character, enemy, 150 + r * 150, 0.7 + 0.1 + w * 0.025, 1);
+                max = calcSkillDamage(character, enemy, 300 + r * 150, 1 + 0.1 + w * 0.025, 1);
+                return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
             }
-            return "<b class='damage'>" + calcSkillDamage(character, enemy, 300 + r * 200, 1, 1) + '</b>';
+            min = calcSkillDamage(character, enemy, 150 + r * 150, 0.7, 1);
+            max = calcSkillDamage(character, enemy, 300 + r * 150, 1, 1);
+            return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
         }
         return '-';
     }
@@ -318,7 +323,7 @@ const Jackie = {
                         if (r >= 0) {
                             if (rr) {
                                 const bleed = calcSkillDamage(character, enemy, 10 + r * 10, 0, 0) / 10;
-                                for (let x = index; x < index + 10; x++) {
+                                for (let x = index; x < index + 12; x++) {
                                     if (bleeding[x]) {
                                         bleeding[x] += bleed;
                                     } else {
@@ -407,10 +412,33 @@ const Jackie = {
                             damage += calcSkillDamage(character, enemy, 10 + e * 60, 0.3 + e * 0.1, 1);
                         }
                     }
-                } else if (c === 'r' || c === 'R') {
+                } else if (c === 'r') {
                     if (r >= 0) {
-                        rr = 21 + r * 10;
-                        bleeding[index + 20 + r * 10] = calcSkillDamage(character, enemy, 300 + r * 200, 1, 1);
+                        if (rr > 0) {
+                            if (bleeding[index] && ww) {
+                                damage += calcSkillDamage(character, enemy, 150 + r * 150, 0.7 + 0.1 + w * 0.025, 1);
+                            } else {
+                                damage += calcSkillDamage(character, enemy, 150 + r * 150, 0.7, 1);
+                            }
+                            rr = 0;
+                        } else {
+                            rr = 31;
+                            bleeding[index + 20 + r * 10] = calcSkillDamage(character, enemy, 300 + r * 200, 1, 1);
+                        }
+                    }
+                } else if (c === 'R') {
+                    if (r >= 0) {
+                        if (rr > 0) {
+                            if (bleeding[index] && ww) {
+                                damage += calcSkillDamage(character, enemy, 300 + r * 150, 1 + 0.1 + w * 0.025, 1);
+                            } else {
+                                damage += calcSkillDamage(character, enemy, 300 + r * 150, 1, 1);
+                            }
+                            rr = 0;
+                        } else {
+                            rr = 31;
+                            bleeding[index + 20 + r * 10] = calcSkillDamage(character, enemy, 300 + r * 200, 1, 1);
+                        }
                     }
                 } else if (c === 't') {
                     tt = !tt;
@@ -466,7 +494,7 @@ const Jackie = {
                                 }
                             }
                         } else if (type === 'Axe') {
-                            for (let x = index; x <= index + (wm < 13 ? 12 : 16); x++) {
+                            for (let x = index; x <= index + (wm < 13 ? 16 : 24); x++) {
                                 dd[x] = true;
                             }
                         }
@@ -519,7 +547,8 @@ const Jackie = {
             'Q: Q스킬 최대 데미지, 출혈\n' +
             'w & W: W스킬 On\n' +
             'e & E: E스킬 데미지\n' +
-            'r & R: R스킬 On, 사용후 평타시 출혈\n' +
+            'r: R스킬 On, 사용후 평타시 출혈, 재사용시 최소 데미지\n' +
+            'R: R스킬 On, 사용후 평타시 출혈, 재사용시 최대 데미지\n' +
             't: 패시브 닭, 멧돼지, 들개 On / Off\n' +
             'T: 패시브 곰, 위클라인, 실험체 On / Off\n' +
             d +

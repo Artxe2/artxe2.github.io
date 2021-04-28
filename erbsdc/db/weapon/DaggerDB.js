@@ -67,11 +67,11 @@ const Dagger = [
     ,{
          Type: "Dagger"
         ,Name: "Mount_Slicer"
-        ,Attack_Power: 35
+        ,Attack_Power: 30
         ,Movement_Speed: 0.1
         ,Cooldown_Reduction: 15
-        ,Skill_Amplification: 30
-        ,Title: "Mount Slicer\n\nAttack Power +35\nMovement Speed +0.1\nCooldown Reduction +15%\nSkill Amplification +30"
+        ,Skill_Amplification: 33
+        ,Title: "Mount Slicer\n\nAttack Power +30\nMovement Speed +0.1\nCooldown Reduction +15%\nSkill Amplification +33"
         ,Rarity: "Epic"
     }
     ,{

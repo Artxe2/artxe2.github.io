@@ -289,31 +289,31 @@ function simulateCombo() {
         }
     }
 
-    const heal_reduction0 = c0.heal_reduction;
+    // const heal_reduction0 = c0.heal_reduction;
     c0.heal_reduction = c0.pure_heal_reduction
-    const heal_reduction1 = c1.heal_reduction;
+    // const heal_reduction1 = c1.heal_reduction;
     c1.heal_reduction = c1.pure_heal_reduction
 
-    const attack_power0 = floor(c0.attack_power);
+    // const attack_power0 = floor(c0.attack_power);
     c0.attack_power = floor(c0.pure_attack_power);
-    const critical_damage0 = c0.critical_damage;
+    // const critical_damage0 = c0.critical_damage;
     c0.critical_damage = c0.pure_critical_damage;
-    const skill_amplification0 = round(c0.skill_amplification, 1);
+    // const skill_amplification0 = round(c0.skill_amplification, 1);
     c0.skill_amplification = round(c0.pure_skill_amplification, 1);
-    const skill_amplification_percent0 = round(c0.skill_amplification_percent);
+    // const skill_amplification_percent0 = round(c0.skill_amplification_percent);
     c0.skill_amplification_percent = round(c0.pure_skill_amplification_percent);
-    const defense0 = floor(c0.defense);
+    // const defense0 = floor(c0.defense);
     c0.defense = floor(c0.pure_defense);
 
-    const attack_power1 = floor(c1.attack_power);
+    // const attack_power1 = floor(c1.attack_power);
     c1.attack_power = floor(c1.pure_attack_power);
-    const critical_damage1 = c1.critical_damage;
+    // const critical_damage1 = c1.critical_damage;
     c1.critical_damage = c1.pure_critical_damage;
-    const skill_amplification1 = round(c1.skill_amplification, 1);
+    // const skill_amplification1 = round(c1.skill_amplification, 1);
     c1.skill_amplification = round(c1.pure_skill_amplification, 1);
-    const skill_amplification_percent1 = round(c1.skill_amplification_percent);
+    // const skill_amplification_percent1 = round(c1.skill_amplification_percent);
     c1.skill_amplification_percent = round(c1.pure_skill_amplification_percent);
-    const defense1 = floor(c1.defense);
+    // const defense1 = floor(c1.defense);
     c1.defense = floor(c1.pure_defense);
 
 
@@ -332,14 +332,14 @@ function simulateCombo() {
             data1.shield += d1.shield;
             data1.vars = d1.vars;
             if (c0.character) {
-                if (d0 && d0.vars.healBan) {
-                    data1.heal -= d1.heal;
-                    d1.heal = 0;
-                }
-                if (d1 && d1.vars.healBan) {
-                    data0.heal -= d0.heal;
-                    d0.heal = 0;
-                }
+                // if (d0 && d0.vars.healBan) {
+                //     data1.heal -= d1.heal;
+                //     d1.heal = 0;
+                // }
+                // if (d1 && d1.vars.healBan) {
+                //     data0.heal -= d0.heal;
+                //     d0.heal = 0;
+                // }
                 data0.hp = d0.hp + d1.heal + d1.shield;
                 data1.hp = d1.hp + d0.heal + d0.shield;
             }

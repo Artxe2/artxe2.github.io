@@ -89,14 +89,6 @@ const TwoHandedSword = [
     }
     ,{
          Type: "TwoHandedSword"
-        ,Name: "Monohoshizao"
-        ,Attack_Power: 77
-        ,Life_Steal: 25
-        ,Title: "Monohoshizao\n\nAttack Power +77\nLife Steal +25%"
-        ,Rarity: "Epic"
-    }
-    ,{
-         Type: "TwoHandedSword"
         ,Name: "Hovud"
         ,Attack_Power: 50
         ,Max_HP: 300
@@ -113,6 +105,14 @@ const TwoHandedSword = [
         ,Attack_Speed: 10
         ,Extra_Normal_Attack_Damage: 25
         ,Title: "Laevateinn\n\nAttack Power +78\nHP Regen +2.0\nSP Regen +2.0\nAttack Speed +10%\nExtra Normal Attack Damage +25"
+        ,Rarity: "Legendary"
+    }
+    ,{
+         Type: "TwoHandedSword"
+        ,Name: "Monohoshizao"
+        ,Attack_Power: 77
+        ,Life_Steal: 25
+        ,Title: "Monohoshizao\n\nAttack Power +77\nLife Steal +25%"
         ,Rarity: "Legendary"
     }
     ,{

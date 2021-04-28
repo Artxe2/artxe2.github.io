@@ -171,9 +171,9 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Wind_and_Fire_Wheels"
-        ,Attack_Power: 53
+        ,Attack_Power: 55
         ,Skill_Amplification_Percent: 23
-        ,Title: "Wind and Fire Wheels\n\nAttack Power +53\nSkill Amplification +23%"
+        ,Title: "Wind and Fire Wheels\n\nAttack Power +55\nSkill Amplification +23%"
         ,Rarity: "Epic"
     }
     ,{
