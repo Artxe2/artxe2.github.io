@@ -252,7 +252,7 @@ const Sua = {
             }
         };
     }
-    ,COMBO_Option: 'qeadaraq'
+    ,COMBO_Option: 'wqetrtqttqttqt'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -270,7 +270,7 @@ const Sua = {
             'w & W: W스킬 데미지\n' +
             'e & E: E스킬 데미지\n' +
             'r & R: R스킬 데미지\n' +
-            't && T: 데미지 없음\n' +
+            't && T: 패시브 데미지\n' +
             d +
             'p & P: 트랩 데미지';
     }
