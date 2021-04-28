@@ -252,7 +252,7 @@ const Sua = {
             }
         };
     }
-    ,COMBO_Option: 'wqetrtqttqttqt'
+    ,COMBO_Option: 'wqetrtqttqt'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
