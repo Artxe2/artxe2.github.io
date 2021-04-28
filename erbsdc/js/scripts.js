@@ -74,8 +74,7 @@ function calcEquip(character, name, n) {
 }
 
 function calcHeal(heal, ps, enemy) {
-    let coe = 1.007 + enemy.CRAFT_MASTERY.selectedIndex * 0.007;
-    let hr = enemy.heal_reduction ? (100 - round6(enemy.heal_reduction * coe)) / 100 : 1;
+    let hr = enemy.heal_reduction ? (100 - enemy.heal_reduction) / 100 : 1;
     if (hr <= 0) {
         return 0;
     }
