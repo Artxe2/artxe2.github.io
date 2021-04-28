@@ -194,7 +194,7 @@ const Rozzi = {
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        const dm = -0.4;
+                        const dm = -0.12 - w * 0.02;
                         for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }

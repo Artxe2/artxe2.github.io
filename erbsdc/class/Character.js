@@ -959,7 +959,7 @@ class Character {
                 (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.07 + ee * 0.02 : 0) -
                 (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.45 : hart_w.checked ? 0.3 : 0 : 0) -
                 (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) -
-                (rozzi_w && rozzi_w.checked ? 0.4 : 0) -
+                (rozzi_w && rozzi_w.checked ? 0.12 + ew * 0.02 : 0) -
                 (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) -
                 (chiara_t ? chiara_t.value * (0.02 + et * 0.02) : 0);
             const defense_bonus =
