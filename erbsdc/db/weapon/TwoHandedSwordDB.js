@@ -110,9 +110,9 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Monohoshizao"
-        ,Attack_Power: 77
+        ,Attack_Power: 80
         ,Life_Steal: 25
-        ,Title: "Monohoshizao\n\nAttack Power +77\nLife Steal +25%"
+        ,Title: "Monohoshizao\n\nAttack Power +80\nLife Steal +25%"
         ,Rarity: "Legendary"
     }
     ,{
