@@ -262,7 +262,7 @@ const Emma = {
             vars: {}
         };
     }
-    ,COMBO_Option: 'qwRaeDddaaQWR'
+    ,COMBO_Option: 'qwaeDddRaaQrwa'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';

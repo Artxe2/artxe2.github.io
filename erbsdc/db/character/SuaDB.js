@@ -199,6 +199,7 @@ const Sua = {
                         } else {
                             damage += calcSkillDamage(character, enemy, 90 + e * 30, 0.4, 1);
                         }
+                        qq = false;
                         rr = 2;
                     }
                 } else if (c === 'r' || c === 'R') {
@@ -218,6 +219,7 @@ const Sua = {
                             } else {
                                 damage += calcSkillDamage(character, enemy, 100 + r * 60, 0.4, 1);
                             }
+                            qq = false;
                         }
                     }
                 } else if (c === 'd' || c === 'D') {
@@ -252,7 +254,7 @@ const Sua = {
             }
         };
     }
-    ,COMBO_Option: 'wqedtrtqttqt'
+    ,COMBO_Option: 'wqetdtqrtttqt'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
