@@ -55,9 +55,9 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Thuan_Thien"
-        ,Attack_Power: 80
+        ,Attack_Power: 77
         ,Defense: 25
-        ,Title: "Thuan Thien\n\nAttack Power +80\nDefense +25"
+        ,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25"
         ,Rarity: "Rare"
     }
     ,{
