@@ -139,7 +139,7 @@ const Adela = {
             'D: ' + skill + '\n' +
             'T: "스킬 데미지"\n';
     }
-    ,COMBO_VARS: '{\"qq\":0,\"qw\":false,\"qe\":false,\"ww\":0,\"ee\":0,\"rr\":false}'
+    ,COMBO_VARS: '{\"qq\":false,\"qqq\":false,\"qw\":false,\"qe\":false,\"ww\":0,\"ee\":0}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -151,7 +151,7 @@ const Adela = {
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let qq = data.vars.qq, qw = data.vars.qw, qe = data.vars.qe, ww = data.vars.ww, ee = data.vars.ee, rr = data.vars.rr;
+        let qq = data.vars.qq, qqq = data.vars.qqq, qw = data.vars.qw, qe = data.vars.qe, ww = data.vars.ww, ee = data.vars.ee;
         if (character.weapon) {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
@@ -175,25 +175,30 @@ const Adela = {
                     ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'q' || c === 'Q') {
+                } else if (c === 'q') {
                     if (q >= 0) {
                         if (qq < 4) {
                             qq++;
                         }
-                        if (qq === 4) {
-                            rr = true;
-                            qq = 0;
-                            damage += calcSkillDamage(character, enemy, 40 + q * 30, 1, 1);
-                        } else {
-                            damage += calcSkillDamage(character, enemy, 30 + q * 30, 0.6, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 30, 1, 1);
+                        qqq = false;
+                        qw = true;
+                        qe = true;
+                    }
+                } else if (c === 'Q') {
+                    if (q >= 0) {
+                        if (qq < 4) {
+                            qq++;
                         }
+                        damage += calcSkillDamage(character, enemy, 40 + q * 30, 1, 1);
+                        qqq = true;
                         qw = true;
                         qe = true;
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
                         if (qw) {
-                            if (qq === 4) {
+                            if (qqq) {
                                 damage += calcSkillDamage(character, enemy, (40 + q * 30) * 0.55, 1 * 0.55, 1);
                             } else {
                                 damage += calcSkillDamage(character, enemy, (30 + q * 30) * 0.55, 0.6 * 0.55, 1);
@@ -210,7 +215,7 @@ const Adela = {
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
                         if (qe) {
-                            if (qq === 4) {
+                            if (qqq) {
                                 damage += calcSkillDamage(character, enemy, (40 + q * 30) * 0.55, 1 * 0.55, 1);
                             } else {
                                 damage += calcSkillDamage(character, enemy, (30 + q * 30) * 0.55, 0.6 * 0.55, 1);
@@ -226,14 +231,7 @@ const Adela = {
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        let ea = 0;
-                        if (rr) {
-                            ea += 4;
-                        } else if (qq <= 4) {
-                            ea += qq;
-                        } else {
-                            ea += 4;
-                        }
+                        let ea = qq;
                         if (ww) {
                             ea++;
                         }
@@ -263,15 +261,15 @@ const Adela = {
             shield: shield,
             vars: {
                 qq: qq,
+                qqq: qqq,
                 qw: qw,
                 qe: qe,
                 ww: ww,
-                ee: ee,
-                rr: rr
+                ee: ee
             }
         };
     }
-    ,COMBO_Option: 'qweaqdaaqr'
+    ,COMBO_Option: 'aQweaaqdrqa'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -285,7 +283,8 @@ const Adela = {
             '';
         return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' +
+            'q & Q: Q스킬 폰 데미지\n' +
+            'Q: Q스킬 퀸 데미지\n' +
             'w & W: W스킬 데미지, 쿠션 데미지\n' +
             'e & E: E스킬 데미지, 쿠션 데미지\n' +
             'r & R: R스킬 데미지\n' +

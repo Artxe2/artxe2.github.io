@@ -289,7 +289,7 @@ const Shoichi = {
             }
         };
     }
-    ,COMBO_Option: 'ewtadrwtttwtaq'
+    ,COMBO_Option: 'ewtaqdrwtttwtaq'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
