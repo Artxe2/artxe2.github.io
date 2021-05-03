@@ -912,8 +912,8 @@ class Character {
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
             if (this.chest && this.chest.Name === 'Queen_of_Hearts') {
-                if (this.cooldown_reduction > 50) {
-                    this.cooldown_reduction = 50;
+                if (this.cooldown_reduction > 45) {
+                    this.cooldown_reduction = 45;
                 }
             } else if (this.cooldown_reduction > 40) {
                 this.cooldown_reduction = 40;
