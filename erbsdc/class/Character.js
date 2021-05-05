@@ -818,7 +818,7 @@ class Character {
                 (jackie_r && jackie_r.checked && r >= 0 ? 20 + r * 5 : 0) +
                 (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) +
                 (lida_w && lida_w.checked && w >= 0 ? 20 + t * 10 : 0) +
-                (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.3) : 0) +
+                (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0) +
                 (luke_w_u && luke_w_u.checked && w >= 0 ? this.DIV.querySelector('.luke_w_s').value * 8 : 0) +
                 (this.character === Alex && this.weapon && !this.isMelee && e >= 0 ? 6 + e * 3 : 0) +
                 (sua_t && sua_t.checked ? 40 : 0);
@@ -901,14 +901,14 @@ class Character {
                 round(calcEquip(this, 'Skill_Amplification', 2) + skill_amplification_bonus, 1);
             this.skill_amplification_percent =
                 round((!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.3) : 0) +
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0) +
                     skill_amplification_percent_bonus);
             this.SKILL_AMPLIFICATION.innerText =
                 this.skill_amplification + '| ' + this.skill_amplification_percent + '%';
             this.pure_skill_amplification = calcEquip(this, 'Skill_Amplification', 2);
             this.pure_skill_amplification_percent =
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification_percent) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.6 + t * 0.3) : 0);
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0);
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
             if (this.chest && this.chest.Name === 'Queen_of_Hearts') {

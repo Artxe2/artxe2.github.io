@@ -94,7 +94,7 @@ const Pistol = [
         ,Name: "Magnum-Boa"
         ,Attack_Power: 90
         ,Attack_Speed: 25
-        ,Movement_Speed: 0.15
+        ,Movement_Speed: 0.1
         ,Vision_Range: 2.5
         ,Life_Steal: 22
         ,Title: "Magnum-Boa\n\nAttack Power +90\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +2.5\nLife Steal +22%"

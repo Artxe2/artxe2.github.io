@@ -129,7 +129,7 @@ const Fiora = {
             }
             if (type === 'Rapier') {
                 const damage = calcSkillDamage(character, enemy, 0,
-                    2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
+                    1.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                 const cool = 10000 / ((wm < 13 ? 30 : 18) * (100 - character.cooldown_reduction));
                 return "<b class='damage'>" + damage + "</b><b> __d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
@@ -307,7 +307,7 @@ const Fiora = {
                             damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1);
                         } else if (type === 'Rapier') {
                             damage += calcSkillDamage(character, enemy, 0,
-                                2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
+                                1.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                         } else if (type === 'Spear') {
                             if (c === 'd') {
                                 damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1);

@@ -12,26 +12,26 @@ const Alex = {
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 23
     ,Defense_Growth: 2.1
-    ,Atk_Speed: 0.12
+    ,Atk_Speed: 0.18
     ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [TwoHandedSword, Pistol, Shuriken, Tonfa]
     ,correction: {
         TwoHandedSword: [
-            [0, -3, -5],
+            [0, -6, -8],
             [0, 0, 0]
         ],
         Pistol: [
-            [0, -3, -5],
+            [0, -6, -8],
             [0, 0, 0]
         ],
         Shuriken: [
-            [0, -3, -5],
+            [0, -6, -8],
             [0, 0, 0]
         ],
         Tonfa: [
-            [0, -3, -5],
+            [0, -6, -8],
             [0, 0, 0]
         ]
     }

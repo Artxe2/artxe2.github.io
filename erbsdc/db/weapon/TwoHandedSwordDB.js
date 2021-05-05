@@ -91,9 +91,9 @@ const TwoHandedSword = [
          Type: "TwoHandedSword"
         ,Name: "Hovud"
         ,Attack_Power: 50
-        ,Max_HP: 300
+        ,Max_HP: 260
         ,Critical_Strike_Chance: 28
-        ,Title: "Hovud\n\nAttack Power +50\nMax HP +300\nCritical Strike Chance +28%"
+        ,Title: "Hovud\n\nAttack Power +50\nMax HP +260\nCritical Strike Chance +28%"
         ,Rarity: "Epic"
     }
     ,{

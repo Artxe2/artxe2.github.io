@@ -258,8 +258,8 @@ const Chest = [
         ,Defense: 25
         ,Max_HP: 170
         ,Normal_Attack_Damage_Reduction: 15
-        ,Skill_Damage_Reduction_Percent: 12
-        ,Title: "Battle Suit\n\nDefense +25\nMax HP +170\nNormal Attack Damage Reduction +15\nSkill Damage Reduction +12%"
+        ,Skill_Damage_Reduction_Percent: 8
+        ,Title: "Battle Suit\n\nDefense +25\nMax HP +170\nNormal Attack Damage Reduction +15\nSkill Damage Reduction +8%"
         ,Rarity: "Epic"
     }
     ,{

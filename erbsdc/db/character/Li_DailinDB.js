@@ -54,8 +54,8 @@ const Li_Dailin = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const min = calcSkillDamage(character, enemy, 25 + q * 20, 0.6, 1);
-            const max = calcSkillDamage(character, enemy, 28 + q * 28, 0.7, 1);
+            const min = calcSkillDamage(character, enemy, 25 + q * 20, 0.5, 1);
+            const max = calcSkillDamage(character, enemy, 28 + q * 28, 0.6, 1);
             const cool = 10000 / ((12 - q * 0.5) * (100 - character.cooldown_reduction) + 100);
             return "<b class='damage'>" + max * 3 + '</b> ( ' + min + ' x 3 - ' + max + " x 3 )<b> __sd/s: </b><b class='damage'>" + round((max * 3) * cool) / 100 + '</b>';
         }
@@ -88,8 +88,8 @@ const Li_Dailin = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const min = calcSkillDamage(character, enemy, 40 + r * 30, 0.2, 1);
-            let max, over;
+            const min = calcSkillDamage(character, enemy, 25 + r * 30, 0.15, 1);
+            let max;
             if (enemy.max_hp) {
                 const hp = enemy.max_hp;
                 const heal = calcHeal(enemy.hp_regen * (enemy.hp_regen_percent + 100) / 100 +
@@ -98,7 +98,7 @@ const Li_Dailin = {
                 while (start < end) {
                     mid = (start + end + 1) / 2;
                     coe = 2 * (mid * 100.0 / hp > 75 ? 75 : mid * 100.0 / hp) / 75 + 1;
-                    max = calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1);
+                    max = calcSkillDamage(character, enemy, (25 + r * 30) * coe, 0.15 * coe, 1);
                     if (max * 4 + mid > hp + heal) {
                         end = mid - 1;
                     } else {
@@ -106,7 +106,7 @@ const Li_Dailin = {
                     }
                 }
             } else {
-                max = calcSkillDamage(character, enemy, 120 + r * 90, 0.6, 1);
+                max = calcSkillDamage(character, enemy, 75 + r * 90, 0.45, 1);
             }
             return "<b class='damage'>" + min * 4 + ' ~ ' + max * 4 + '</b> ( [ ' + min + ' x 4 ] ~ [ ' + max + ' x 4 ] )';
         }
@@ -241,17 +241,17 @@ const Li_Dailin = {
                         }
                         if (qq > 0) {
                             qq--;
-                            damage += calcSkillDamage(character, enemy, 25 + q * 20, 0.6, 1);
+                            damage += calcSkillDamage(character, enemy, 25 + q * 20, 0.5, 1);
                         } else if (wq > 0) {
                             wq--;
-                            damage += calcSkillDamage(character, enemy, 28 + q * 28, 0.7, 1);
+                            damage += calcSkillDamage(character, enemy, 28 + q * 28, 0.6, 1);
                         } else if (bac >= 40) {
                             wq = 2;
-                            damage += calcSkillDamage(character, enemy, 28 + q * 28, 0.7, 1);
+                            damage += calcSkillDamage(character, enemy, 28 + q * 28, 0.6, 1);
                             bac -= 40;
                         } else {
                             qq = 2;
-                            damage += calcSkillDamage(character, enemy, 25 + q * 20, 0.6, 1);
+                            damage += calcSkillDamage(character, enemy, 25 + q * 20, 0.5, 1);
                         }
                     }
                 } else if (c === 'w' || c === 'W') {
@@ -286,7 +286,7 @@ const Li_Dailin = {
                         const coe = enemy.max_hp ? 2 * (lost > 75 ? 75 : lost) / 75 + 1 : 3;
                         const hit = bac >= 40 ? 4 : 2;
                         for (let j = 0; j < hit; j++) {
-                            damage += calcSkillDamage(character, enemy, (40 + r * 30) * coe, 0.2 * coe, 1);
+                            damage += calcSkillDamage(character, enemy, (25 + r * 30) * coe, 0.15 * coe, 1);
                             if (enemy.character === Magnus) {
                                 lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {

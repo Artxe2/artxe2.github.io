@@ -71,7 +71,7 @@ const Hyunwoo = {
             const min = calcSkillDamage(character, enemy, character.defense * 0.8, 0, 1);
             const max = calcSkillDamage(character, enemy, (enemy.max_hp ? enemy.max_hp * (0.05 + e * 0.03) : 0) + character.defense * 0.8, 0, 1);
             const bonus = calcSkillDamage(character, enemy, 60 + e * 35 + character.defense * 0.15, 0, 1);
-            const cool = 10000 / ((18 - e * 1) * 0.8 * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((18 - e * 1) * 0.75 * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + (max + bonus) + '</b> ( ' + min + ' ~ ' + max + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((min + max + bonus) / 2 * cool) / 100 + '</b>';
         }
         return '-';

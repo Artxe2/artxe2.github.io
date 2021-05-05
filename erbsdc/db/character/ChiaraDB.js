@@ -96,7 +96,7 @@ const Chiara = {
             const type = character.weapon.Type;
             if (type === 'Rapier') {
                 const damage = calcSkillDamage(character, enemy, 0,
-                    2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
+                    1.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                 const cool = 10000 / ((wm < 13 ? 30 : 18) * (100 - character.cooldown_reduction));
                 return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
@@ -294,7 +294,7 @@ const Chiara = {
                                 defense_minus[x] = dm;
                             }
                             damage += calcSkillDamage(character, enemy, 0,
-                                2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
+                                1.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                         }
                     }
                 } else if (c === 'p' || c === 'P') {
