@@ -150,60 +150,106 @@
         document.addEventListener('DOMContentLoaded', () => {
             const table = document.querySelector('#table');
             const items = [];
+            const equips = [[],[],[],[],[],[]];
             let count = 0;
 
             for (i of Accessory) {
-                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary')
-                items.push([
-                    "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='78px' height='42px' border='1'>"
-                    , calcSpec(i), count++]);
+                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                    items.push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                    equips[5].push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                }
             }
             for (i of Leg) {
-                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary')
-                items.push([
-                    "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='78px' height='42px' border='1'>"
-                    , calcSpec(i), count++]);
+                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                    items.push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                    equips[4].push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                }
             }
             for (i of Arm) {
-                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary')
-                items.push([
-                    "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='78px' height='42px' border='1'>"
-                    , calcSpec(i), count++]);
+                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                    items.push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                    equips[3].push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                }
             }
             for (i of Head) {
-                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary')
-                items.push([
-                    "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='78px' height='42px' border='1'>"
-                    , calcSpec(i), count++]);
+                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                    items.push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                    equips[2].push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                }
             }
             for (i of Chest) {
-                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary')
-                items.push([
-                    "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='78px' height='42px' border='1'>"
-                    , calcSpec(i), count++]);
+                if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                    items.push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                    equips[1].push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "armors/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                }
             }
             for (i of Glove) {
-                if (i.Name === 'Cotton_Gloves' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary')
-                items.push([
-                    "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' width='78px' height='42px' border='1'>"
-                    , calcSpec(i), count++]);
+                if (i.Name === 'Cotton_Gloves' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                    items.push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                    equips[0].push([
+                        "<img class='" + i.Rarity + "' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' width='65px' height='35px' border='1'>"
+                        , calcSpec(i), count++]);
+                }
             }
 
-            items.sort((a, b) => (a[1] < b[1]) - (b[1] < a[1]) || (a[2] < b[2]) - (b[2] < a[2]) );
+            const compare = (a, b) => (a[1] < b[1]) - (b[1] < a[1]) || (a[2] < b[2]) - (b[2] < a[2]);
+
+            items.sort(compare);
+            for (e of equips) {
+                e.sort(compare);
+            }
 
             let br = 0;
             let list = '';
-
-            br = 0;
-            for (i of items) {
-                list += i[0];
-                list += "<div style='width:100px'><b> _ " + i[1] + '</b></div>';
-                if (++br === 6) {
-                    br = 0;
+            for (item of equips) {
+                br = 0;
+                for (i of item) {
+                    list += i[0];
+                    list += "<div style='width:100px'><b> _ " + i[1] + '</b></div>';
+                    if (++br === 6) {
+                        br = 0;
+                        list += '<br/>';
+                    }
+                }
+                if (br > 0) {
                     list += '<br/>';
                 }
+                list += '<br/>';
             }
             table.innerHTML = list;
+
+            // br = 0;
+            // for (i of items) {
+            //     list += i[0];
+            //     list += "<div style='width:100px'><b> _ " + i[1] + '</b></div>';
+            //     if (++br === 6) {
+            //         br = 0;
+            //         list += '<br/>';
+            //     }
+            // }
+            // table.innerHTML = list;
         });
     </script>
 </head>
