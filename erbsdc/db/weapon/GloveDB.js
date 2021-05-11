@@ -120,7 +120,7 @@ const Glove = [
         ,Attack_Power: 40
         ,Cooldown_Reduction: 19
         ,Skill_Amplification_Percent: 19
-        ,Title: "Buddha`s Palm\n\nAttack Power +43\nCooldown Reduction +19%\nSkill Amplification +19%"
+        ,Title: "Buddha`s Palm\n\nAttack Power +40\nCooldown Reduction +19%\nSkill Amplification +19%"
         ,Rarity: "Epic"
     }
     ,{

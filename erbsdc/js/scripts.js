@@ -200,14 +200,15 @@ function lukeUp(x) {
 }
 
 function round(n, d) {
+    const corr = n < 0 ? -0.0001 : 0.0001;
     if (d) {
         for (let i = 0; i < d; i++) {
             n *= 10;
         }
-        if (n % 1 + 0.0001 >= 0.5) {
-            n = (n + 0.0001 | 0) + 1;
+        if (n % 1 + corr >= 0.5) {
+            n = (n + corr | 0) + 1;
         } else {
-            n = n + 0.0001 | 0;
+            n = n + corr | 0;
         }
         let v = 1;
         for (let i = 0; i < d; i++) {
@@ -215,21 +216,22 @@ function round(n, d) {
         }
         return n / v;
     }
-    if (n % 1 + 0.0001 >= 0.5) {
-        return (n + 0.0001 | 0) + 1;
+    if (n % 1 + corr >= 0.5) {
+        return (n + corr | 0) + 1;
     }
-    return n + 0.0001 | 0;
+    return n + corr | 0;
 }
 
 function round6(n, d) {
+    const corr = n < 0 ? -0.0001 : 0.0001;
     if (d) {
         for (let i = 0; i < d; i++) {
             n *= 10;
         }
-        if (n % 1 + 0.0001 >= 0.6) {
-            n = (n + 0.0001 | 0) + 1;
+        if (n % 1 + corr >= 0.6) {
+            n = (n + corr | 0) + 1;
         } else {
-            n = n + 0.0001 | 0;
+            n = n + corr | 0;
         }
         let v = 1;
         for (let i = 0; i < d; i++) {
@@ -237,15 +239,33 @@ function round6(n, d) {
         }
         return n / v;
     }
-    if (n % 1 + 0.0001 >= 0.6) {
-        return (n + 0.0001 | 0) + 1;
+    if (n % 1 + corr >= 0.6) {
+        return (n + corr | 0) + 1;
     }
-    return n + 0.0001 | 0;
+    return n + corr | 0;
 }
 
 function simulateCombo() {
     const c0 = characters[0];
     const c1 = characters[1];
+
+    c0.heal_reduction = c0.pure_heal_reduction
+    c1.heal_reduction = c1.pure_heal_reduction
+
+    c0.attack_power = floor(c0.pure_attack_power);
+    c0.critical_damage = c0.pure_critical_damage;
+    c0.skill_amplification = round(c0.pure_skill_amplification, 1);
+    c0.skill_amplification_percent = round(c0.pure_skill_amplification_percent);
+    c0.defense = floor(c0.pure_defense);
+    c0.max_hp = floor(c0.pure_max_hp);
+
+    c1.attack_power = floor(c1.pure_attack_power);
+    c1.critical_damage = c1.pure_critical_damage;
+    c1.skill_amplification = round(c1.pure_skill_amplification, 1);
+    c1.skill_amplification_percent = round(c1.pure_skill_amplification_percent);
+    c1.defense = floor(c1.pure_defense);
+    c1.max_hp = floor(c1.pure_max_hp);
+
     let d0;
     let d1;
     const length = c0.COMBO_TIME.value > 0 ? c0.COMBO_TIME.value * 2 : 1;
@@ -287,34 +307,6 @@ function simulateCombo() {
             }
         }
     }
-
-    // const heal_reduction0 = c0.heal_reduction;
-    c0.heal_reduction = c0.pure_heal_reduction
-    // const heal_reduction1 = c1.heal_reduction;
-    c1.heal_reduction = c1.pure_heal_reduction
-
-    // const attack_power0 = floor(c0.attack_power);
-    c0.attack_power = floor(c0.pure_attack_power);
-    // const critical_damage0 = c0.critical_damage;
-    c0.critical_damage = c0.pure_critical_damage;
-    // const skill_amplification0 = round(c0.skill_amplification, 1);
-    c0.skill_amplification = round(c0.pure_skill_amplification, 1);
-    // const skill_amplification_percent0 = round(c0.skill_amplification_percent);
-    c0.skill_amplification_percent = round(c0.pure_skill_amplification_percent);
-    // const defense0 = floor(c0.defense);
-    c0.defense = floor(c0.pure_defense);
-
-    // const attack_power1 = floor(c1.attack_power);
-    c1.attack_power = floor(c1.pure_attack_power);
-    // const critical_damage1 = c1.critical_damage;
-    c1.critical_damage = c1.pure_critical_damage;
-    // const skill_amplification1 = round(c1.skill_amplification, 1);
-    c1.skill_amplification = round(c1.pure_skill_amplification, 1);
-    // const skill_amplification_percent1 = round(c1.skill_amplification_percent);
-    c1.skill_amplification_percent = round(c1.pure_skill_amplification_percent);
-    // const defense1 = floor(c1.defense);
-    c1.defense = floor(c1.pure_defense);
-
 
     for (let i = 0; i < comboStr0.length; i++) {
         if (c0.character) {

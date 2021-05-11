@@ -627,27 +627,15 @@ class Character {
 
 	setSubWeapon(i, j) {
         this.subWeapon = this.character.weapons[i][j];
-        // this.weapon_mastery_attack_speed = WeaponInfo[this.weapon.Type][0];
-        // this.weapon_mastery_extra_normal_attack_damage_percent = WeaponInfo[this.weapon.Type][1];
-        // this.weapon_mastery_skill_amplification_percent = WeaponInfo[this.weapon.Type][2];
-        // this.weapon_attack_range = WeaponInfo[this.weapon.Type][3];
-        // this.weapon_attack_speed = WeaponInfo[this.weapon.Type][4];
 
         this.SUB_WEAPON.innerHTML = "<img class = '" + this.subWeapon.Rarity + "' title = '" + this.subWeapon.Title + "' src = '" + this.IMG_PATH + "weapon/" + this.subWeapon.Name + ".png' width = '78px' height = '42px'>";
         this.ITEM_LIST.style.display = 'none';
-        // this.D_OPTION.innerHTML = this.character.D_Option(this, this.enemy);
         updateDisplay();
     }
     removeSubWeapon() {
         this.subWeapon = null;
-        // this.weapon_mastery_attack_speed = 0;
-        // this.weapon_mastery_extra_normal_attack_damage_percent = 0;
-        // this.weapon_mastery_skill_amplification_percent = 0;
-        // this.weapon_attack_range = 0;
-        // this.weapon_attack_speed = 0;
         this.SUB_WEAPON.innerHTML = '';
         this.ITEM_LIST.style.display = 'none';
-        // this.D_OPTION.innerHTML = '';
         updateDisplay();
     }
 	setWeapon(i, j) {
@@ -985,6 +973,10 @@ class Character {
                 floor((this.character.Health + this.character.Health_Growth * level + hp_bonus +
                     calcEquip(this, 'Max_HP', 2)) * (1 + (1 + this.HEALTH_MASTERY.selectedIndex) * 0.01));
             this.MAX_HP.innerText = this.max_hp;
+            this.pure_max_hp =
+                floor((this.character.Health + this.character.Health_Growth * level + hp_bonus -
+                    (chiara_r && chiara_r.checked ? 100 + r * 100 : 0) +
+                    calcEquip(this, 'Max_HP', 2)) * (1 + (1 + this.HEALTH_MASTERY.selectedIndex) * 0.01));
 
             this.max_sp =
                 floor((this.character.Stamina + this.character.Stamina_Growth * level +
