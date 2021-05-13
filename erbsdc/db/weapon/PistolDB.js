@@ -81,23 +81,24 @@ const Pistol = [
     ,{
          Type: "Pistol"
         ,Name: "Electron_Blaster"
-        ,Attack_Power: 58
+        ,Attack_Power: 55
         ,Attack_Speed: 55
         ,Movement_Speed: 0.12
-        ,Extra_Normal_Attack_Damage: 31
-        ,Title: "Electron Blaster\n\nAttack Power +58\nAttack Speed +55%\nMovement Speed +0.12\nExtra Normal Attack Damage +31"
+        ,Extra_Normal_Attack_Damage: 13
+        ,Extra_Normal_Attack_Damage_per_level: 2
+        ,Title: "Electron Blaster\n\nAttack Power +55\nAttack Speed +55%\nMovement Speed +0.12\nExtra Normal Attack Damage +13\nExtra Normal Attack Damage per level +2"
         ,Rarity: "Epic"
         ,Ammo: 10
     }
     ,{
          Type: "Pistol"
         ,Name: "Magnum-Boa"
-        ,Attack_Power: 90
+        ,Attack_Power: 84
         ,Attack_Speed: 25
         ,Movement_Speed: 0.1
         ,Vision_Range: 2.5
         ,Life_Steal: 22
-        ,Title: "Magnum-Boa\n\nAttack Power +90\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +2.5\nLife Steal +22%"
+        ,Title: "Magnum-Boa\n\nAttack Power +84\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +2.5\nLife Steal +22%"
         ,Rarity: "Epic"
         ,Ammo: 6
     }

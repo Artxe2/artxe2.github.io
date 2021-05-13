@@ -1,20 +1,20 @@
 const Sua = {
-     Attack_Power: 32
-    ,Attack_Power_Growth: 2.2
-    ,Health: 630
-    ,Health_Growth: 82
+     Attack_Power: 23
+    ,Attack_Power_Growth: 2
+    ,Health: 580
+    ,Health_Growth: 77
     ,Health_Regen: 0.7
-    ,Health_Regen_Growth: 0.05
-    ,Stamina: 410
-    ,Stamina_Growth: 14
-    ,Stamina_Regen: 1.9
-    ,Stamina_Regen_Growth: 0.06
-    ,Defense: 25
-    ,Defense_Growth: 1.5
-    ,Atk_Speed: 0.14
-    ,Movement_Speed: 3.2
+    ,Health_Regen_Growth: 0.06
+    ,Stamina: 480
+    ,Stamina_Growth: 18
+    ,Stamina_Regen: 1.8
+    ,Stamina_Regen_Growth: 0.08
+    ,Defense: 23
+    ,Defense_Growth: 2.1
+    ,Atk_Speed: 0.12
+    ,Movement_Speed: 3.1
     ,Sight_Range: 8
-    ,Attack_Range: 0.5
+    ,Attack_Range: 0.4
     ,weapons: [Hammer]
     ,correction: {
         Hammer: [
@@ -108,7 +108,7 @@ const Sua = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 20 + t * 40 + character.defense * 0.6, 0.6, 1);
+            const damage = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.6, 1);
             const heal = calcHeal(damage * 0.3, 1, enemy);
             return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
         }
@@ -233,7 +233,7 @@ const Sua = {
                         }
                     }
                 } else if (c === 't' || c === 'T') {
-                    ba = calcSkillDamage(character, enemy, 20 + t * 40 + character.defense * 0.6, 0.6, 1);
+                    ba = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.6, 1);
                     damage += ba;
                     heal += calcHeal(ba * 0.3, 1, enemy);
                 } else if (c === 'p' || c === 'P') {

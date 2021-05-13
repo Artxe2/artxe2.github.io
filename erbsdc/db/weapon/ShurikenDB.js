@@ -125,9 +125,10 @@ const Shuriken = [
          Type: "Shuriken"
         ,Name: "Mystic_Jade_Charm"
         ,Attack_Power: 60
-        ,Skill_Amplification: 15
+        ,Skill_Amplification: 5
+        ,Skill_Amplification_per_level: 1
         ,Skill_Amplification_Percent: 15
-        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +15\nSkill Amplification +15%"
+        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +5\nSkill Amplification per level +1\nSkill Amplification +15%"
         ,Rarity: "Epic"
     }
     ,{
@@ -135,18 +136,18 @@ const Shuriken = [
         ,Name: "Fuhma_Shuriken"
         ,Attack_Power: 58
         ,SP_Regen: 0.6
-        ,Cooldown_Reduction: 15
-        ,Extra_Normal_Attack_Damage: 40
-        ,Title: "Fuhma Shuriken\n\nAttack Power +58\nSP Regen 0.6\nCooldown Reduction +15%\nExtra Normal Attack Damage +40"
+        ,Cooldown_Reduction: 12
+        ,Extra_Normal_Attack_Damage: 35
+        ,Title: "Fuhma Shuriken\n\nAttack Power +58\nSP Regen 0.6\nCooldown Reduction +12%\nExtra Normal Attack Damage +35"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Shuriken"
         ,Name: "Frost_Venom_Dart"
         ,Attack_Power: 80
-        ,Critical_Damage: 50
+        ,Critical_Damage: 25
         ,Skill_Amplification: 20
-        ,Title: "Frost Venom Dart\n\nAttack Power +80\nCritical Damage +50%\nSkill Amplification +20"
+        ,Title: "Frost Venom Dart\n\nAttack Power +80\nCritical Damage +25%\nSkill Amplification +20"
         ,Rarity: "Epic"
     }
     ,{
@@ -194,11 +195,11 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Petal_Torrent"
-        ,Attack_Power: 85
+        ,Attack_Power: 75
         ,Critical_Damage: 30
-        ,Extra_Normal_Attack_Damage: 150
+        ,Extra_Normal_Attack_Damage: 140
         ,Skill_Amplification: 30
-        ,Title: "Petal Torrent\n\nAttack Power +85\nCritical Damage +30%\nExtra Normal Attack Damage +150\nSkill Amplification +30"
+        ,Title: "Petal Torrent\n\nAttack Power +75\nCritical Damage +30%\nExtra Normal Attack Damage +140\nSkill Amplification +30"
         ,Rarity: "Legendary"
     }
 ];

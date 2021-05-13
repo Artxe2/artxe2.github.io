@@ -56,7 +56,7 @@ const Silvia = {
         if (character.weapon && q >= 0) {
             let damage, cool;
             if (character.DIV.querySelector('.silvia_r').checked) {
-                damage = calcSkillDamage(character, enemy, 40 + q * 60, 0.6, 1);
+                damage = calcSkillDamage(character, enemy, 60 + q * 35, 0.6, 1);
                 cool = 10000 / ((3.5 - q * 0.5) * (100 - character.cooldown_reduction));
                 return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
@@ -225,7 +225,7 @@ const Silvia = {
                         if (rr) {
                             damage += calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
                         } else {
-                            damage += calcSkillDamage(character, enemy, 40 + q * 60, 0.6, 1);
+                            damage += calcSkillDamage(character, enemy, 60 + q * 35, 0.6, 1);
                         }
                     }
                 } else if (c === 'w' || c === 'W') {

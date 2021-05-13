@@ -47,12 +47,13 @@ const Bat = [
     ,{
          Type: "Bat"
         ,Name: "Statue_of_Soteria"
-        ,Attack_Power: 82
+        ,Attack_Power: 64
+        ,Attack_Power_per_level: 2
         ,HP_Regen: 0.6
         ,SP_Regen_Percent: 80
         ,Attack_Speed: 15
         ,Life_Steal: 12
-        ,Title: "Statue of Soteria\n\nAttack Power +82\nHP Regen +0.6\nSP Regen +80%\nAttack Speed +15%\nLife Steal +12%"
+        ,Title: "Statue of Soteria\n\nAttack Power +64\nAttack Power per level +2\nHP Regen +0.6\nSP Regen +80%\nAttack Speed +15%\nLife Steal +12%"
         ,Rarity: "Epic"
     }
     ,{

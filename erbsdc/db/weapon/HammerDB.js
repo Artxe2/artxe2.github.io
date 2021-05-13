@@ -31,8 +31,9 @@ const Hammer = [
          Type: "Hammer"
         ,Name: "Fang_Mace"
         ,Attack_Power: 55
-        ,Skill_Amplification: 35
-        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +35"
+        ,Skill_Amplification: 25
+        ,Skill_Amplification_per_level: 1
+        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +25\nSkill Amplification per level +1"
         ,Rarity: "Epic"
     }
     ,{
@@ -48,8 +49,9 @@ const Hammer = [
          Type: "Hammer"
         ,Name: "Hammer_of_Thor"
         ,Attack_Power: 105
-        ,Attack_Speed: 40
-        ,Title: "Hammer of Thor\n\nAttack Power +105\nAttack Speed +40%"
+        ,Attack_Speed: 30
+        ,Attack_Speed_per_level: 1
+        ,Title: "Hammer of Thor\n\nAttack Power +105\nAttack Speed +30%\nAttack Speed per level +1%"
         ,Rarity: "Epic"
     }
     ,{
@@ -65,7 +67,8 @@ const Hammer = [
        ,Name: "Peace_Bringer"
        ,Attack_Power: 140
        ,Life_Steal: 20
-       ,Title: "Peace Bringer\n\nAttack Power +140\nLife Steal +20%"
+       ,Armor_penetration_percent: 8
+       ,Title: "Peace Bringer\n\nAttack Power +140\nLife Steal +20%\nArmor_penetration_percent (%) +8%"
        ,Rarity: "Legendary"
    }
 ];

@@ -69,8 +69,8 @@ const Whip = [
         ,Name: "Whip_of_Nine_Bloody_Tails"
         ,Attack_Power: 70
         ,Life_Steal: 25
-        ,Skill_Amplification: 44
-        ,Title: "Whip of Nine Bloody Tails\n\nAttack Power +70\nLife Steal +25%\nSkill Amplification +44"
+        ,Skill_Amplification_per_level: 3
+        ,Title: "Whip of Nine Bloody Tails\n\nAttack Power +70\nLife Steal +25%\nSkill Amplification per level +3"
         ,Rarity: "Legendary"
     }
 ];

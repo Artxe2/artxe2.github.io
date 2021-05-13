@@ -79,35 +79,38 @@ const Bow = [
         ,Name: "Golden-Ratio_Bow"
         ,Attack_Power: 68
         ,Cooldown_Reduction: 15
-        ,Skill_Amplification_Percent: 20
-        ,Title: "Golden-Ratio Bow\n\nAttack Power +68\nCooldown Reduction +15%\nSkill Amplification +20%"
+        ,Skill_Amplification_Percent: 10
+        ,Skill_Amplification_Percent_per_level: 1
+        ,Title: "Golden-Ratio Bow\n\nAttack Power +68\nCooldown Reduction +15%\nSkill Amplification +10%\nSkill Amplification per level +1%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Bow"
         ,Name: "Twinbow"
-        ,Attack_Power: 74
-        ,Attack_Speed: 55
+        ,Attack_Power: 48
+        ,Attack_Power_per_level: 2
+        ,Attack_Speed: 50
         ,Vision_Range: 1
-        ,Title: "Twinbow\n\nAttack Power +74\nAttack Speed +55%\nVision Range +1\nHealing Reduction (Normal Attacks) -25%"
+        ,Title: "Twinbow\n\nAttack Power +48\nAttack Power per level +2\nAttack Speed +50%\nVision Range +1\nHealing Reduction (Normal Attacks) -25%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Bow"
         ,Name: "Elemental_Bow"
         ,Attack_Power: 60
-        ,Movement_Speed: 0.13
+        ,Movement_Speed: 0.1
         ,Skill_Amplification: 45
-        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.13\nSkill Amplification +45\nHealing Reduction (Skills) -25%"
+        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nSkill Amplification +45\nHealing Reduction (Skills) -25%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Bow"
         ,Name: "Failnaught"
-        ,Attack_Power: 105
-        ,Attack_Speed: 15
+        ,Attack_Power: 110
+        ,Attack_Speed: 5
+        ,Attack_Speed_per_level: 1
         ,Life_Steal: 20
-        ,Title: "Failnaught\n\nAttack Power +105\nAttack Speed +15%\nLife Steal +20%"
+        ,Title: "Failnaught\n\nAttack Power +110\nAttack Speed +5%\nAttack Speed per level +1%\nLife Steal +20%"
         ,Rarity: "Legendary"
     }
     ,{

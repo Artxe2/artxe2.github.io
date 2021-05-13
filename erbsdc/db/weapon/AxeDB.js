@@ -56,9 +56,10 @@ const Axe = [
     ,{
          Type: "Axe"
         ,Name: "Beam_Axe"
-        ,Attack_Power: 127
+        ,Attack_Power: 115
+        ,Attack_Power_per_level: 1
         ,Vision_Range: 3.5
-        ,Title: "Beam Axe\n\nAttack Power +127\nVision Range +3.5"
+        ,Title: "Beam Axe\n\nAttack Power +115\nAttack Power per level +1\nVision Range +3.5"
         ,Rarity: "Epic"
     }
     ,{
@@ -76,8 +77,9 @@ const Axe = [
         ,Name: "Scythe"
         ,Attack_Power: 112
         ,Attack_Range: 1
-        ,Skill_Amplification_Percent: 20
-        ,Title: "Scythe\n\nAttack Power +112\nAttack Range +1\nSkill Amplification +20%"
+        ,Skill_Amplification_Percent: 10
+        ,Skill_Amplification_Percent_per_level: 1
+        ,Title: "Scythe\n\nAttack Power +112\nAttack Range +1\nSkill Amplification +10%\nSkill Amplification per level +1%"
         ,Rarity: "Epic"
     }
     ,{

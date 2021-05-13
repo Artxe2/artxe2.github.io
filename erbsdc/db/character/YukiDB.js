@@ -1,3 +1,4 @@
+'use strict';
 const Yuki = {
      Attack_Power: 29
     ,Attack_Power_Growth: 2.6
@@ -191,7 +192,7 @@ const Yuki = {
             'E: "스킬 데미지"\n' +
             'R: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
             'D: ' + skill + '\n' +
-            'T: "추가 데미지" ( "스킬 데미지" x "장전 수" )\n';
+            'T: "추가 데미지" _use "스킬 사용"\n';
     }
     ,COMBO_VARS: '{\"tt\":4}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {

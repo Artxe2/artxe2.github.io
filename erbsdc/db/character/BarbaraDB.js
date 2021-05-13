@@ -69,7 +69,7 @@ const Barbara = {
             const coe = r >= 0 && character.DIV.querySelector('.barbara_r').checked ? 1.05 + r * 0.05 : 1;
             const min = calcSkillDamage(character, enemy, (30 + w * 30) * 0.7 * coe, 0.25 * 0.7 * coe, 1);
             const max = calcSkillDamage(character, enemy, (30 + w * 30) * coe, 0.25 * coe, 1);
-            const rail = calcSkillDamage(character, enemy, (40 + w * 40) * coe, (15 + 0.065 * level) * 0.4 * coe, 1);
+            const rail = calcSkillDamage(character, enemy, (40 + w * 40 + 6) * coe, (0.065 * level) * 0.4 * coe, 1);
             const cool = 10000 / ((r >= 0 && character.DIV.querySelector('.barbara_r').checked ? 0.66 : 4) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + max + ' - ' + min * 2 + "</b><b> / </b><b class='damage'>" + rail + "</b><b> __sd/s: </b><b class='damage'>" + round(rail * cool) / 100 + '</b>';
         }
@@ -221,7 +221,7 @@ const Barbara = {
                             rr = false;
                             ww = 15;
                         } else {
-                            damage += calcSkillDamage(character, enemy, (40 + w * 40) * (ww ? coe : 1), (15 + 0.065 * level) * 0.4 * (ww ? coe : 1), 1);
+                            damage += calcSkillDamage(character, enemy, (40 + w * 40 + 6) * (ww ? coe : 1), (0.065 * level) * 0.4 * (ww ? coe : 1), 1);
                         }
                     }
                 } else if (c === 'e') {

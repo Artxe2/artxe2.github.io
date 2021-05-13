@@ -118,8 +118,9 @@ const Cathy = {
             const type = character.weapon.Type;
             if (type === 'Dagger') {
                 const damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                const heal = calcHeal(floor(damage + (enemy.max_hp ? enemy.max_hp *0.08 : 0)) * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + damage + ' ~ ' + floor(damage + calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * 0.08 : 0)) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
+                const bonus = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * 0.08 : 0);
+                const heal = calcHeal(floor(damage + bonus) * (character.life_steal / 100), 1, enemy);
+                return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
             }
         }
         return '-';

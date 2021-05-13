@@ -47,9 +47,10 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Gentian_Silver_Gun"
-        ,Attack_Power: 108
+        ,Attack_Power: 85
+        ,Attack_Power_per_level: 2
         ,Movement_Speed: 0.12
-        ,Title: "Gentian Silver Gun\n\nAttack Power +108\nMovement Speed +0.12"
+        ,Title: "Gentian Silver Gun\n\nAttack Power +85\nAttack Power per level +2\nMovement Speed +0.12"
         ,Rarity: "Epic"
     }
     ,{
@@ -64,8 +65,8 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Cosmic_Bident"
-        ,Attack_Power: 138
-        ,Title: "Cosmic Bident\n\nAttack Power +138"
+        ,Attack_Power: 141
+        ,Title: "Cosmic Bident\n\nAttack Power +141"
         ,Rarity: "Epic"
     }
     ,{
@@ -82,17 +83,19 @@ const Spear = [
         ,Name: "Fangtian_Huaji"
         ,Attack_Power: 84
         ,Movement_Speed: -0.07
-        ,Skill_Amplification: 31
-        ,Title: "Fangtian Huaji\n\nAttack Power +84\nMovement Speed -0.07\nSkill Amplification +31\n Healing Reduction (Skills) -40%"
+        ,Skill_Amplification: 21
+        ,Skill_Amplification_per_level: 1
+        ,Title: "Fangtian Huaji\n\nAttack Power +84\nMovement Speed -0.07\nSkill Amplification +21\nSkill Amplification per level +1\n Healing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Spear"
         ,Name: "Dragon_Guandao"
         ,Attack_Power: 118
-        ,Max_HP: 320
+        ,Max_HP: 220
+        ,Max_HP_per_level: 10
         ,Movement_Speed: -0.05
-        ,Title: "Dragon Guandao\n\nAttack Power +118\nMax HP +320\nMovement Speed -0.05"
+        ,Title: "Dragon Guandao\n\nAttack Power +118\nMax HP +220\nMax HP per level +10\nMovement Speed -0.05"
         ,Rarity: "Epic"
     }
     ,{

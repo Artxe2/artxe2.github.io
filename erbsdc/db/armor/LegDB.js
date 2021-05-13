@@ -86,8 +86,8 @@ const Leg = [
         ,Name: "Maverick_Runner"
         ,Attack_Power: -8
         ,Movement_Speed: 0.35
-        ,Movement_speed_while_not_in_combat: 0.3
-        ,Title: "Maverick Runner\n\nAttack Power -8\nMovement Speed +0.35\nMovement Speed while not in combat +0.3"
+        ,Movement_speed_while_not_in_combat: 0.25
+        ,Title: "Maverick Runner\n\nAttack Power -8\nMovement Speed +0.35\nMovement Speed while not in combat +0.25"
         ,Rarity: "Rare"
     }
     ,{
@@ -169,11 +169,11 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "EOD_Boots"
-        ,Defense: 26
+        ,Defense: 20
         ,HP_Regen: 1
         ,SP_Regen: 0.5
         ,Movement_Speed: 0.35
-        ,Title: "EOD Boots\n\nDefense +26\nHP Regen +1\nSP Regen +0.5\nMovement Speed +0.35"
+        ,Title: "EOD Boots\n\nDefense +20\nHP Regen +1\nSP Regen +0.5\nMovement Speed +0.35\nTrap Damage Reduction (%) +8%"
         ,Rarity: "Legendary"
     }
     ,{

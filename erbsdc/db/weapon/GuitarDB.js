@@ -81,12 +81,12 @@ const Guitar = [
     ,{
          Type: "Guitar"
         ,Name: "Bohemian"
-        ,Attack_Power: 53
+        ,Attack_Power: 50
         ,Max_HP: 350
         ,Attack_Speed: 20
-        ,Critical_Strike_Chance: 20
+        ,Critical_Strike_Chance: 18
         ,Extra_Normal_Attack_Damage: 2
-        ,Title: "Bohemian\n\nAttack Power +53\nMax HP +350\nAttack Speed +20%\nCritical Strike Chance +20%\nExtra Normal Attack Damage +2"
+        ,Title: "Bohemian\n\nAttack Power +50\nMax HP +350\nAttack Speed +20%\nCritical Strike Chance +18%\nExtra Normal Attack Damage +2"
         ,Rarity: "Epic"
     }
     ,{
@@ -142,8 +142,8 @@ const Guitar = [
         ,Attack_Power: 18
         ,Attack_Speed: 40
         ,Attack_Range: 1
-        ,Extra_Normal_Attack_Damage: 25
-        ,Title: "Teen Spirit\n\nAttack Power +18\nAttack Speed +40%\nAttack Range +1\nExtra Normal Attack Damage +25"
+        ,Extra_Normal_Attack_Damage_per_level: 2
+        ,Title: "Teen Spirit\n\nAttack Power +18\nAttack Speed +40%\nAttack Range +1\nExtra Normal Attack Damage per level +2"
         ,Rarity: "Epic"
     }
 ];

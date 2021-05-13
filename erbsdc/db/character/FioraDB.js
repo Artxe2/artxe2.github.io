@@ -205,7 +205,6 @@ const Fiora = {
         if (character.weapon) {
             const type = character.weapon.Type;
             const crid = (1.2 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100);
-            const bonus = calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {
@@ -226,7 +225,7 @@ const Fiora = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
                         if (rr) {
-                            damage += bonus;
+                            damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
                         }
                     }
                 } else if (c === 'A') {
@@ -236,7 +235,7 @@ const Fiora = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
                         if (rr) {
-                            damage += bonus;
+                            damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
                         }
                     }
                 } else if (c === 'q' || c === 'Q') {
@@ -252,6 +251,11 @@ const Fiora = {
                     if (w >= 0) {
                         f += 2;
                         ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 0, 1);
+                        if (r >= 0) {
+                            if (rr) {
+                                damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
+                            }
+                        }
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -260,18 +264,23 @@ const Fiora = {
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 0, 1);
-                        damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         if (r >= 0) {
                             if (rr) {
-                                damage += bonus * 2;
+                                damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
                             }
                         }
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'W') {
                     if (w >= 0) {
                         f += 2;
                         ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 100, 1);
+                        if (r >= 0) {
+                            if (rr) {
+                                damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
+                            }
+                        }
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -280,13 +289,13 @@ const Fiora = {
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
-                        damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         if (r >= 0) {
                             if (rr) {
-                                damage += bonus * 2;
+                                damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
                             }
                         }
+                        damage += ba;
+                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {

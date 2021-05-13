@@ -11,7 +11,7 @@ const Adriana = {
     ,Stamina_Regen: 1
     ,Stamina_Regen_Growth: 0.01
     ,Defense: 27
-    ,Defense_Growth: 1.7
+    ,Defense_Growth: 2
     ,Atk_Speed: 0.04
     ,Movement_Speed: 3
     ,Sight_Range: 8

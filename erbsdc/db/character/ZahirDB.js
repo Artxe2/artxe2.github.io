@@ -57,7 +57,7 @@ const Zahir = {
             const t = character.T_LEVEL.selectedIndex;
             const min = calcSkillDamage(character, enemy, 40 + q * 60, 0.5, 1);
             const max = calcSkillDamage(character, enemy, 75 + q * 75, 0.5, 1);
-            const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
+            const bonus = calcSkillDamage(character, enemy, 10 + t * 15, 0.25, 1);
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1) : 0;
             const cool = 10000 / ((8 - q * 0.5) * (100 - character.cooldown_reduction) + 20);
             return "<b class='damage'>" + min + ' - ' + (max + bonus)  + '</b> ( ' + max + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round(((min + max) / 2 + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
@@ -70,7 +70,7 @@ const Zahir = {
         if (character.weapon && w >= 0) {
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1);
-            const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
+            const bonus = calcSkillDamage(character, enemy, 10 + t * 15, 0.25, 1);
             return "<b class='damage'>" + damage + ' - ' + (damage + bonus)  + '</b> ( ' + damage + ', ' + bonus + ' )';
         }
         return '-';
@@ -82,7 +82,7 @@ const Zahir = {
             const w = character.W_LEVEL.selectedIndex - 1;
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 80 + e * 30, 0.5, 1);
-            const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
+            const bonus = calcSkillDamage(character, enemy, 10 + t * 15, 0.25, 1);
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1) : 0;
             const cool = 10000 / ((20 - e * 2) * (100 - character.cooldown_reduction) + 17);
             return "<b class='damage'>" + damage + ' - ' + (damage + bonus)  + '</b> ( ' + damage + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
@@ -96,7 +96,7 @@ const Zahir = {
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 50 + r * 90, 0.5, 1);
             const add = calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
-            const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
+            const bonus = calcSkillDamage(character, enemy, 10 + t * 15, 0.25, 1);
             return "<b class='damage'>" + (damage + add * 4) + ' - ' + (damage + bonus * 2 + add * 4) + '</b> ( ' + damage + ', ' + bonus + ' x 2, ' + add + ' x 4, )';
         }
         return '-';
@@ -122,7 +122,8 @@ const Zahir = {
     }
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
-            return "<b class='damage'>" + calcSkillDamage(character, enemy, 10 + character.T_LEVEL.selectedIndex * 25, 0.3, 1) + '</b>';
+            const t = character.T_LEVEL.selectedIndex;
+            return "<b class='damage'>" + calcSkillDamage(character, enemy, 10 + t * 15, 0.25, 1) + '</b>';
         }
         return '-';
     }
@@ -170,7 +171,7 @@ const Zahir = {
         let tt = data.vars.tt;
         if (character.weapon) {
             const type = character.weapon.Type;
-            const bonus = calcSkillDamage(character, enemy, 10 + t * 25, 0.3, 1);
+            const bonus = calcSkillDamage(character, enemy, 10 + t * 15, 0.25, 1);
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {

@@ -62,15 +62,15 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Flubber"
-        ,Attack_Power: 42
-        ,Title: "Flubber\n\nAttack Power +42"
+        ,Attack_Power: 38
+        ,Title: "Flubber\n\nAttack Power +38"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Throws"
         ,Name: "Spiky_Bouncy_Ball"
-        ,Attack_Power: 45
-        ,Title: "Spiky Bouncy Ball\n\nAttack Power +45\nHealing Reduction (Skills) -25%"
+        ,Attack_Power: 40
+        ,Title: "Spiky Bouncy Ball\n\nAttack Power +40\nHealing Reduction (Skills) -25%"
         ,Rarity: "Rare"
     }
     ,{
@@ -110,9 +110,9 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Ruthenium_Marble"
-        ,Attack_Power: 76
+        ,Attack_Power: 73
         ,Skill_Amplification_Percent: 28
-        ,Title: "Ruthenium Marble\n\nAttack Power +76\nSkill Amplification +28%\nHealing Reduction (Skills) -25%"
+        ,Title: "Ruthenium Marble\n\nAttack Power +73\nSkill Amplification +28%\nHealing Reduction (Skills) -25%"
         ,Rarity: "Epic"
     }
     ,{

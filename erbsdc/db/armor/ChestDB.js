@@ -198,11 +198,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Mithril_Armor"
-        ,Defense: 55
+        ,Defense: 60
         ,Attack_Speed: 12
-        ,Movement_Speed: 0.2
+        ,Movement_Speed: 0.1
         ,Skill_Damage_Reduction: 14
-        ,Title: "Mithril Armor\n\nDefense +55\nAttack Speed +12%\nMovement Speed +0.2\nSkill Damage Reduction +14"
+        ,Title: "Mithril Armor\n\nDefense +60\nAttack Speed +12%\nMovement Speed +0.1\nSkill Damage Reduction +14"
         ,Rarity: "Epic"
     }
     ,{
@@ -226,12 +226,12 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Dragon_Dobok"
-        ,Attack_Power: 11
-        ,Defense: 10
+        ,Attack_Power: 15
+        ,Defense: 15
         ,SP_Regen_Percent: 120
         ,Cooldown_Reduction: 10
-        ,Attack_Range: 1
-        ,Title: "Dragon Dobok\n\nAttack Power +11\nDefense +10\nSP Regen +120%\nCooldown Reduction +10%\nAttack Range +1"
+        ,Attack_Range: 0.5
+        ,Title: "Dragon Dobok\n\nAttack Power +15\nDefense +15\nSP Regen +120%\nCooldown Reduction +10%\nAttack Range +0.5"
         ,Rarity: "Epic"
     }
     ,{

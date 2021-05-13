@@ -160,7 +160,7 @@ const Emma = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
 
-        const cool = (15 - t * 2) * (100 - character.cooldown_reduction) / 100;
+        const cool = (16 - t * 2) * (100 - character.cooldown_reduction) / 100;
         if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
             shield += floor(100 + t * 25 + character.max_sp * (0.03 + t * 0.03));
         }

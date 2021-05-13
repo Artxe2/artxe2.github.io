@@ -1,7 +1,7 @@
 const Rozzi = {
      Attack_Power: 26
     ,Attack_Power_Growth: 2.3
-    ,Health: 515
+    ,Health: 545
     ,Health_Growth: 62
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.02
@@ -12,7 +12,7 @@ const Rozzi = {
     ,Defense: 22
     ,Defense_Growth: 1.4
     ,Atk_Speed: 0.11
-    ,Movement_Speed: 3.0
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Pistol]
@@ -85,7 +85,7 @@ const Rozzi = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 100 + r * 75, 0.35, 1);
-            const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.03 + r * 0.03) : 0);
+            const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.04 + r * 0.03) : 0);
             return "<b class='damage'>" + damage1 + ' - ' + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + ' )';
         }
         return '-';
@@ -218,7 +218,7 @@ const Rozzi = {
                 } else if (c === 'R') {
                     if (r >= 0) {
                         damage += calcSkillDamage(character, enemy, 100 + r * 75, 0.35, 1) +
-                            calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.03 + r * 0.03) : 0);
+                            calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.04 + r * 0.03) : 0);
                     }
                 } else if (c === 't') {
                     ba = baseAttackDamage(character, enemy, 0, 0.6, 0, 1);

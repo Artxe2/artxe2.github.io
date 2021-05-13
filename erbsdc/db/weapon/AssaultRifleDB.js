@@ -46,19 +46,20 @@ const AssaultRifle = [
     ,{
          Type: "AssaultRifle"
         ,Name: "Type_95"
-        ,Attack_Power: 77
-        ,Vision_Range: 1.5
+        ,Attack_Power: 79
+        ,Vision_Range: 2
         ,Attack_Range: 1
-        ,Title: "Type 95\n\nAttack Power +77\nVision Range +1.5\nAttack Range +1"
+        ,Title: "Type 95\n\nAttack Power +79\nVision Range +2\nAttack Range +1"
         ,Rarity: "Epic"
     }
     ,{
          Type: "AssaultRifle"
         ,Name: "AK-12"
-        ,Attack_Power: 89
+        ,Attack_Power: 68
+        ,Attack_Power_per_level: 2
         ,Vision_Range: 1.5
-        ,Critical_Strike_Chance: 20
-        ,Title: "AK-12\n\nAttack Power +89\nVision Range +1.5\nCritical Strike Chance +20%"
+        ,Critical_Strike_Chance: 22
+        ,Title: "AK-12\n\nAttack Power +68\nAttack Power per level +2\nVision Range +1.5\nCritical Strike Chance +22%"
         ,Rarity: "Epic"
     }
     ,{

@@ -59,9 +59,9 @@ const Dagger = [
         ,Attack_Power: 41
         ,HP_Regen: 1.2
         ,Movement_Speed: 0.1
-        ,Cooldown_Reduction: 12
+        ,Cooldown_Reduction: 10
         ,Extra_Normal_Attack_Damage: 29
-        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.1\nCooldown Reduction +12%\nExtra Normal Attack Damage +29"
+        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.1\nCooldown Reduction +10%\nExtra Normal Attack Damage +29"
         ,Rarity: "Epic"
     }
     ,{
@@ -69,9 +69,9 @@ const Dagger = [
         ,Name: "Mount_Slicer"
         ,Attack_Power: 30
         ,Movement_Speed: 0.1
-        ,Cooldown_Reduction: 15
-        ,Skill_Amplification: 33
-        ,Title: "Mount Slicer\n\nAttack Power +30\nMovement Speed +0.1\nCooldown Reduction +15%\nSkill Amplification +33"
+        ,Cooldown_Reduction: 12
+        ,Skill_Amplification: 29
+        ,Title: "Mount Slicer\n\nAttack Power +30\nMovement Speed +0.1\nCooldown Reduction +12%\nSkill Amplification +29"
         ,Rarity: "Epic"
     }
     ,{

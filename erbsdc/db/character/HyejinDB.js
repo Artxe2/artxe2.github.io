@@ -13,17 +13,17 @@ const Hyejin = {
     ,Defense: 25
     ,Defense_Growth: 1.7
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Shuriken, Bow]
     ,correction: {
         Shuriken: [
-            [0, 5, 0],
-            [-4, -3, -7]
+            [0, 0, -3],
+            [0, -3, -6]
         ],
         Bow: [
-            [0, -16, -18],
+            [0, -14, -16],
             [0, 0, 0]
         ]
     }
@@ -66,7 +66,7 @@ const Hyejin = {
         if (character.weapon && w >= 0) {
             const min = calcSkillDamage(character, enemy, 15 + w * 5, 0.5, 1);
             const max = calcSkillDamage(character, enemy, 140 + w * 65, 0.5, 1);
-            const cool = 10000 / ((22 - w * 3) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((20 - w * 2) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
         }
         return '-';

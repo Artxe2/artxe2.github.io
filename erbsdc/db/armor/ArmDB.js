@@ -134,12 +134,12 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Creed_of_the_Knight"
-        ,Attack_Power: 30
-        ,Defense: 20
+        ,Attack_Power: 25
+        ,Defense: 25
         ,HP_Regen: 1.2
         ,Movement_Speed: -0.03
         ,Critical_Damage: 25
-        ,Title: "Creed pf the Knight\n\nAttack Power +30\nDefense +20\nHP Regen +1.2\nMovement Speed -0.03\nCritical Damage +25%"
+        ,Title: "Creed pf the Knight\n\nAttack Power +25\nDefense +25\nHP Regen +1.2\nMovement Speed -0.03\nCritical Damage +25%"
         ,Rarity: "Epic"
     }
     ,{
@@ -181,12 +181,13 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Bracelet_of_Skadi"
-        ,Max_HP: 200
+        ,Max_HP: 100
+        ,Max_HP_per_level: 10
         ,Max_SP: 250
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
         ,Skill_Amplification: 27
-        ,Title: "Bracelet of Skadi\n\nMax HP +200\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nSkill Amplification +27"
+        ,Title: "Bracelet of Skadi\n\nMax HP +100\nMax HP per level +10\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nSkill Amplification +27"
         ,Rarity: "Legendary"
     }
     ,{

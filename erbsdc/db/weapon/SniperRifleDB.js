@@ -52,10 +52,11 @@ const SniperRifle = [
     ,{
          Type: "SniperRifle"
         ,Name: "Tac-50"
-        ,Attack_Power: 128
+        ,Attack_Power: 102
+        ,Attack_Power_per_level: 2
         ,Vision_Range: 2.5
-        ,Life_Steal: 20
-        ,Title: "Tac-50\n\nAttack Power +128\nVision Range +2.5\nLife Steal +20%"
+        ,Life_Steal: 18
+        ,Title: "Tac-50\n\nAttack Power +102\nAttack Power per level +2\nVision Range +2.5\nLife Steal +18%"
         ,Rarity: "Epic"
         ,Ammo: 2
     }
@@ -63,9 +64,9 @@ const SniperRifle = [
          Type: "SniperRifle"
         ,Name: "Intervention"
         ,Attack_Power: 120
-        ,Vision_Range: 4
-        ,Attack_Range: 1.5
-        ,Title: "Intervention\n\nAttack Power +120\nVision Range +4\nAttack Range +1.5"
+        ,Vision_Range: 5
+        ,Attack_Range: 1
+        ,Title: "Intervention\n\nAttack Power +120\nVision Range +5\nAttack Range +1"
         ,Rarity: "Epic"
         ,Ammo: 2
     }

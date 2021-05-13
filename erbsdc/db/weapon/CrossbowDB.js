@@ -81,8 +81,9 @@ const Crossbow = [
          Type: "Crossbow"
         ,Name: "The_Golden_Ghost"
         ,Attack_Power: 66
-        ,Extra_Normal_Attack_Damage: 44
-        ,Title: "The Golden Ghost\n\nAttack Power +66\nExtra Normal Attack Damage +44"
+        ,Extra_Normal_Attack_Damage: 22
+        ,Extra_Normal_Attack_Damage_per_level: 2
+        ,Title: "The Golden Ghost\n\nAttack Power +66\nExtra Normal Attack Damage +22\nExtra Normal Attack Damage per level +2"
         ,Rarity: "Epic"
     }
     ,{

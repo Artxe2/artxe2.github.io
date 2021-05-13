@@ -74,10 +74,10 @@ const Rapier = [
          Type: "Rapier"
         ,Name: "Joyeuse"
         ,Attack_Power: 69
-        ,Attack_Speed: 12
-        ,Movement_Speed: 0.2
+        ,Attack_Speed_per_level: 1
+        ,Movement_Speed: 0.15
         ,Critical_Damage: 15
-        ,Title: "Joyeuse\n\nAttack Power +69\nAttack Speed +12%\nMovement Speed +0.2\nCritical Damage +15%"
+        ,Title: "Joyeuse\n\nAttack Power +69\nAttack Speed per level +1%\nMovement Speed +0.15\nCritical Damage +15%"
         ,Rarity: "Epic"
     }
     ,{

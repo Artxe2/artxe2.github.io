@@ -1,37 +1,38 @@
 'use strict';
-const Hyunwoo = {
-     Attack_Power: 34
+const Leon = {
+     Attack_Power: 40
     ,Attack_Power_Growth: 3.1
-    ,Health: 530
+    ,Health: 570
     ,Health_Growth: 85
-    ,Health_Regen: 0.8
+    ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.04
-    ,Stamina: 350
+    ,Stamina: 420
     ,Stamina_Growth: 16
-    ,Stamina_Regen: 1.8
+    ,Stamina_Regen: 2.2
     ,Stamina_Regen_Growth: 0.04
-    ,Defense: 23
+    ,Defense: 22
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.15
+    ,Movement_Speed: 3.08
     ,Sight_Range: 8
     ,Attack_Range: 0.45
-    ,weapons: [Glove, Tonfa]
+    ,weapons: [Glove]
     ,correction: {
         Glove: [
-            [0, 0, -3],
-            [0, -2, -5]
-        ],
-        Tonfa: [
-            [0, -5, -7],
-            [0, -2, -5]
+            [0, -2, -6],
+            [0, 0, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+            if (character.DIV.querySelector('.leon_t').checked) {
+                const tBonus = calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
+                return "<b class='damage'>" + (damage + tBonus) + '</b> ( ' +  min + ', ' + tBonus + ' - ' + max + ', ' + tBonus + ' )';
+            }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
         }
         return '-';
@@ -39,8 +40,15 @@ const Hyunwoo = {
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
         if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const damage = round(ba * character.attack_speed * 100) / 100;
+            let damage;
+            if (character.DIV.querySelector('.leon_t').checked) {
+                const tBonus = calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
+                damage = round((ba + tBonus) * character.attack_speed * 100) / 100;
+            } else {
+                damage = round(ba * character.attack_speed * 100) / 100;
+            }
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
         }
@@ -54,35 +62,47 @@ const Hyunwoo = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const damage = calcSkillDamage(character, enemy, 100 + q * 50, 0.3, 1);
-            const cool = 10000 / ((8.5 - q * 1) * (100 - character.cooldown_reduction));
+            const damage = calcSkillDamage(character, enemy, 40 + q * 35, 0.4, 1);
+            const cool = 10000 / ((12 - q * 1) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
     ,Q_Option: ''
     ,W_Skill: (character, enemy) => {
-        return '';
-    }
-    ,W_Option: "<b> _use</b><input type='checkbox' class='hyunwoo_w' onchange='updateDisplay()'>"
-    ,E_Skill: (character, enemy) => {
-        const e = character.E_LEVEL.selectedIndex - 1;
-        if (character.weapon && e >= 0) {
-            const min = calcSkillDamage(character, enemy, character.defense * 0.8, 0, 1);
-            const max = calcSkillDamage(character, enemy, (enemy.max_hp ? enemy.max_hp * (0.05 + e * 0.03) : 0) + character.defense * 0.8, 0, 1);
-            const bonus = calcSkillDamage(character, enemy, 60 + e * 35 + character.defense * 0.15, 0, 1);
-            const cool = 10000 / ((18 - e * 1) * 0.75 * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + (max + bonus) + '</b> ( ' + min + ' ~ ' + max + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((min + max + bonus) / 2 * cool) / 100 + '</b>';
+        const w = character.W_LEVEL.selectedIndex - 1;
+        if (character.weapon && w >= 0) {
+            const t = character.T_LEVEL.selectedIndex;
+            const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+            const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+            const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+            const shield = floor(60 + w * 30 + character.attack_power * 0.3);
+            const wBonus = calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+            if (character.DIV.querySelector('.leon_t').checked) {
+                const tBonus = calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
+                return "<b class='damage'>" + (damage + wBonus + tBonus) + '</b> ( ' +  min + ', ' + wBonus + ', ' + tBonus + ' - ' + max + ', ' + wBonus + ', ' + tBonus + ' )';
+            }
+            return "<b class='damage'>" + (damage + wBonus) + '</b> ( ' +  min + ', ' + wBonus + ' - ' + max + ', ' + wBonus + " )</b><b> __s: </b><b class='shield'>" + shield + '</b>';
         }
         return '-';
     }
-    ,E_Option: "<b> __use</b><input type='checkbox' class='hyunwoo_e' onchange='updateDisplay()'>"
+    ,W_Option: ''
+    ,E_Skill: (character, enemy) => {
+        const e = character.E_LEVEL.selectedIndex - 1;
+        if (character.weapon && e >= 0) {
+            const damage = calcSkillDamage(character, enemy, 60 + e * 40, 0.35, 1);
+            const cool = 10000 / ((24 - e * 2) * (100 - character.cooldown_reduction));
+            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+        }
+        return '-';
+    }
+    ,E_Option: ''
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const min = calcSkillDamage(character, enemy, 200 + r * 100, 0.7, 1);
-            const max = calcSkillDamage(character, enemy, 600 + r * 300, 2.1, 1);
-            return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
+            const damage = calcSkillDamage(character, enemy, 150 + r * 80, 0.5, 1);
+            const bonus = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05)) : 0);
+            return "<b class='damage'>" + damage + ' ~ ' + (damage + bonus) + '</b>';
         }
         return '-';
     }
@@ -110,11 +130,12 @@ const Hyunwoo = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            return "<b> _h: </b><b class='heal'>" + calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy) + '</b>';
+            const damage = calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
+            return "<b class='damage'>" + damage + '</b>';
         }
         return '-';
     }
-    ,T_Option: ''
+    ,T_Option: "<b> _use</b><input type='checkbox' class='leon_t' onchange='updateDisplay()'>"
     ,Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -125,24 +146,22 @@ const Hyunwoo = {
         const weapon = character.weapon.Type;
         const type =
             weapon === 'Glove' ? '글러브' :
-            weapon === 'Tonfa' ? '톤파' :
             '';
         const skill =
             weapon === 'Glove' ? '"스킬 데미지"  __h: "평균 흡혈량"' :
-            weapon === 'Tonfa' ? '"반사 데미지"' :
             '';
-        return '현우 ( ' + type + ' )\n' +
+        return '레온 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
             'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
-            'W: _use "스킬 사용"\n' +
-            'E: "합산 데미지" ( "최소 데미지" ~ "최대 데미지", "벽꿍 데미지" )\n' +
+            'W: "평균 데미지" ( "평타 데미지", "보너스 데미지" - "치명타 데미지", "보너스 데미지" ) __s: 쉴드량\n' +
+            'E: "스킬 데미지"\n' +
             'R: "최소 데미지" ~ "최대 데미지"\n' +
             'D: ' + skill + '\n' +
-            'T: _h: "회복량"\n';
+            'T: "추가 데미지" _use "스킬 사용"\n';
     }
-    ,COMBO_VARS: '{\"tt\":55}'
+    ,COMBO_VARS: '{\"ww\":0}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -155,7 +174,13 @@ const Hyunwoo = {
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let tt = data.vars.tt;
+        let ww = data.vars.ww;
+
+        const cool = (18 - w) * (100 - character.cooldown_reduction) / 100;
+        if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
+            shield += floor(60 + w * 30 + character.attack_power * 0.3);
+        }
+
         if (character.weapon) {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
@@ -175,100 +200,89 @@ const Hyunwoo = {
                     ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    if (tt >= 55) {
-                        heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
-                        tt = 0;
-                    } else {
-                        tt += 5;
+                    if (ww > 0) {
+                        ww--;
+                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
                     }
                 } else if (c === 'A') {
                     ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    if (tt >= 55) {
-                        heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
-                        tt = 0;
-                    } else {
-                        tt += 5;
+                    if (ww > 0) {
+                        ww--;
+                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
                     }
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + q * 50, 0.3, 1);
-                        tt += 5;
+                        damage += calcSkillDamage(character, enemy, 40 + q * 35, 0.4, 1);
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        const db = 6 + w * 14 + character.defense * 0.1;
-                        for (let x = index; x <= index + 5 && x < de_bonus.length; x++) {
-                            de_bonus[x] = db;
-                        }
+                        ww = 3;
                     }
-                } else if (c === 'e') {
+                } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
-                        const dm = -0.04 - e * 0.02;
-                        for (let x = index + 1; x <= index + 12 && x < defense_minus.length; x++) {
-                            defense_minus[x] = dm;
-                        }
-                        let currHp = enemy.max_hp ? data.hp - damage + heal + shield : 0;
-                        if (currHp > enemy.max_hp) {
-                            currHp = enemy.max_hp;
-                        }
-                        damage += calcSkillDamage(character, enemy, (enemy.max_hp ? currHp * (0.05 + e * 0.03) : 0) + character.defense * 0.8, 0, 1);
-                        tt += 5;
+                        damage += calcSkillDamage(character, enemy, 60 + e * 40, 0.35, 1);
                     }
-                } else if (c === 'E') {
-                    if (e >= 0) {
-                        const dm = -0.04 - e * 0.02;
-                        for (let x = index + 1; x <= index + 12 && x < defense_minus.length; x++) {
-                            defense_minus[x] = dm;
-                        }
-                        let currHp = enemy.max_hp ? data.hp - damage + heal + shield : 0;
-                        if (currHp > enemy.max_hp) {
-                            currHp = enemy.max_hp;
-                        }
-                        damage += calcSkillDamage(character, enemy, (enemy.max_hp ? currHp * (0.05 + e * 0.03) : 0) + character.defense * 0.8, 0, 1);
-                        tt += 5;
-                        if (enemy.defense) {
-                            if (enemy.character === Magnus) {
-                                let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                                if (lost < 0) {
-                                    lost = 0;
-                                }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
-                            } else {
-                                enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
+                } else if (c === 'r' || c === 'R') {
+                    if (r >= 0) {
+                        if (enemy.max_hp) {
+                            let lost = character.max_hp - (data.hp - damage + heal + shield);
+                            if (lost < 0) {
+                                lost = 0;
+                            } else if (lost > character.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05))) {
+                                lost = character.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05));
                             }
+                            damage += calcTrueDamage(character, enemy, lost);
                         }
-                        damage += calcSkillDamage(character, enemy, 60 + e * 35 + character.defense * 0.15, 0, 1);
-                        tt += 5;
+                        damage += calcSkillDamage(character, enemy, 150 + r * 80, 0.5, 1);
                     }
-                } else if (c === 'r') {
-                    if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 200 + r * 100, 0.7, 1);
-                        tt += 5;
-                    }
-                } else if (c === 'R') {
-                    if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 600 + r * 300, 2.1, 1);
-                        tt += 5;
-                    }
-                } else if (c === 'd' || c === 'D') {
+                } else if (c === 'd') {
                     if (wm > 5) {
                         if (type === 'Glove') {
                             const coe = wm < 13 ? 1.4 : 2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                            if (tt >= 55) {
-                                heal += calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy);
-                                tt = 0;
-                            } else {
-                                tt += 5;
-                            }
                             damage += ba;
-                        } else if (type === 'Tonfa') {
-                            damage += 0;
+                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                            if (ww > 0) {
+                                ww--;
+                                damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                            }
                         }
+                    }
+                } else if (c === 'D') {
+                    if (wm > 5) {
+                        if (type === 'Glove') {
+                            const coe = wm < 13 ? 1.4 : 2;
+                            const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
+                            ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
+                            damage += ba;
+                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                            damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
+                            if (ww > 0) {
+                                ww--;
+                                damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                            }
+                        }
+                    }
+                } else if (c === 't') {
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
+                    if (ww > 0) {
+                        ww--;
+                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                    }
+                } else if (c === 'T') {
+                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    damage += ba;
+                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
+                    if (ww > 0) {
+                        ww--;
+                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
                     }
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
@@ -283,11 +297,11 @@ const Hyunwoo = {
             heal: heal,
             shield: shield,
             vars: {
-                tt: tt
+                ww: ww
             }
         };
     }
-    ,COMBO_Option: 'Eadqaaawaaqr'
+    ,COMBO_Option: 'qewtDttttrt'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -297,18 +311,16 @@ const Hyunwoo = {
         }
         const weapon = character.weapon.Type;
         const d =
-            weapon === 'Glove' ? 'd & D: 무스 데미지\n' :
-            weapon === 'Tonfa' ? 'd & D: 데미지 없음\n' :
+            weapon === 'Glove' ? 'd: 무스 데미지\nD: 무스 데미지 패시브 추뎀\n' :
             '';
         return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
             'q & Q: Q스킬 데미지\n' +
-            'w & W: 다음 E스킬 방어력 증가\n' +
-            'e: E스킬 데미지(현재 체력 비례)\n' +
-            'E: E스킬 벽꿍 데미지(현재 체력 비례)\n' +
-            'r: R스킬 즉발 데미지\n' +
-            'R: R스킬 최대 데미지\n' +
-            't & T: 데미지 없음\n' +
+            'w & W: W스킬 사용 (추뎀 3회)\n' +
+            'e & E: E스킬 데미지\n' +
+            'r & R: R스킬 데미지 (잃은 체력 추뎀)\n' +
+            't: 패시브 데미지\n' +
+            'T: 패시브 치명타 데미지\n' +
             d +
             'p & P: 트랩 데미지';
     }

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 });
 
 function baseAttackDamage(character, enemy, base, coe, cri, onhit) {
-    return floor((((base + character.attack_power * coe) * (1 + cri / 100 * (0.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100)) / (1 + (!enemy.defense ? 0 : enemy.defense / 100)) *
+    return floor((((base + character.attack_power * coe) * (1 + cri / 100 * (0.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100)) / (1 + (!enemy.defense ? 0 : (enemy.defense * (1 - character.armer_penetration_percent / 100)) / 100)) *
         (1 + (character.extra_normal_attack_damage_percent - (!enemy.normal_attack_damage_reduction_percent ? 0 : enemy.normal_attack_damage_reduction_percent)) / 100)) +
         (character.extra_normal_attack_damage - (!enemy.normal_attack_damage_reduction ? 0 : enemy.normal_attack_damage_reduction)) * onhit) *
         (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *
@@ -82,7 +82,7 @@ function calcHeal(heal, ps, enemy) {
 }
 
 function calcSkillDamage(character, enemy, base, coe, onhit) {
-    return floor((((base + character.attack_power * coe) / (1 + (!enemy.defense ? 0 : enemy.defense / 100))) *
+    return floor((((base + character.attack_power * coe) / (1 + (!enemy.defense ? 0 : (enemy.defense * (1 - character.armer_penetration_percent / 100)) / 100))) *
         (1 + (character.skill_amplification_percent - (!enemy.skill_damage_reduction_percent ? 0 : enemy.skill_damage_reduction_percent)) / 100) +
         (character.skill_amplification - (!enemy.skill_damage_reduction ? 0 : enemy.skill_damage_reduction)) * onhit) *
         (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *

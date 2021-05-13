@@ -18,7 +18,7 @@ const Adela = {
     ,weapons: [Rapier]
     ,correction: {
         Rapier: [
-            [0, -5, -5],
+            [0, -7, -9],
             [0, 0, 0]
         ]
     }

@@ -98,9 +98,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Sniping_Scope"
-        ,Attack_Power: 10
-        ,Vision_Range: 4.5
-        ,Title: "Sniper Scope\n\nAttack Power +10\nVision Range +4.5"
+        ,Attack_Power: 8
+        ,Vision_Range: 3.5
+        ,Title: "Sniper Scope\n\nAttack Power +8\nVision Range +3.5"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -147,6 +147,14 @@ const Accessory = [
         ,Attack_Power: 10
         ,Life_Steal: 6
         ,Title: "Decorative Flintlock\n\nAttack Power +10\nLife Steal +6%"
+        ,Rarity: "Uncommon"
+    }
+    ,{
+         Type: "Accessory"
+        ,Name: "Marksman_Handbook"
+        ,Attack_Power: 8
+        ,Attack_Range: 0.35
+        ,Title: "Marksman Handbook\n\nAttack Power +8\nAttack Range +0.35"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -206,6 +214,15 @@ const Accessory = [
         ,Critical_Strike_Chance: 12
         ,Life_Steal: 6
         ,Title: "Buccaneer Doubloon\n\nAttack Power +15\nCritical Strike Chance +12%\nLife Steal +6%"
+        ,Rarity: "Rare"
+    }
+    ,{
+         Type: "Accessory"
+        ,Name: "Hawkeye"
+        ,Attack_Power: 8
+        ,Vision_Range: 1.5
+        ,Attack_Range: 0.5
+        ,Title: "Hawkeye\n\nAttack Power +8\nVision_Range +1.5\nAttack Range +0.5"
         ,Rarity: "Rare"
     }
     ,{
