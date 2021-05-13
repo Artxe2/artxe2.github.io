@@ -227,11 +227,11 @@ const Leon = {
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
                         if (enemy.max_hp) {
-                            let lost = character.max_hp - (data.hp - damage + heal + shield);
+                            let lost = enemy.max_hp - (data.hp - damage + heal + shield);
                             if (lost < 0) {
                                 lost = 0;
-                            } else if (lost > character.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05))) {
-                                lost = character.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05));
+                            } else if (lost > enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05))) {
+                                lost = enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05));
                             }
                             damage += calcTrueDamage(character, enemy, lost);
                         }
