@@ -71,13 +71,21 @@
                 i.Name === 'White_Crane_Fan' ||
                 i.Name === 'Gilded_Quill_Fan'
 
+        const level = 15;
+
         calcSpec = i => round(
             (i.Attack_Power ?
                 round(i.Attack_Power * 0.6, 2) : 0) +
+            (i.Attack_Power_per_level ?
+                round(i.Attack_Power_per_level * 0.6 * level, 2) : 0) +
             (i.Defense ?
                 round(i.Defense * 0.45, 2) : 0) +
+            (i.Defense_per_level ?
+                round(i.Defense_per_level * 0.45 * level, 2) : 0) +
             (i.Max_HP ?
                 round(i.Max_HP * 0.05, 2) : 0) +
+            (i.Max_HP_per_level ?
+                round(i.Max_HP_per_level * 0.05 * level, 2) : 0) +
             // (i.Max_SP ?
             //     round(i.Max_SP * 0.0, 2) : 0) +
             (i.HP_Regen ?
@@ -90,6 +98,8 @@
             //     round(i.MSP_Regen_Percentax_SP * 0.0, 2) : 0) +
             (i.Attack_Speed ?
                 round(i.Attack_Speed * 0.3, 2) : 0) +
+            (i.Attack_Speed_per_level ?
+                round(i.Attack_Speed_per_level * 0.3 * level, 2) : 0) +
             (i.Movement_Speed ?
                 round(i.Movement_Speed * 25, 2) : 0) +
             (i.Movement_speed_while_not_in_combat ?
@@ -110,14 +120,20 @@
                 round(i.Attack_Range * 5, 2) : 0) +
             (i.Extra_Normal_Attack_Damage ?
                 round(i.Extra_Normal_Attack_Damage * 0.65, 2) : 0) +
+            (i.Extra_Normal_Attack_Damage_per_level ?
+                round(i.Extra_Normal_Attack_Damage_per_level * 0.65 * level, 2) : 0) +
             (i.Extra_Normal_Attack_Damage_Percent ?
                 round(i.Extra_Normal_Attack_Damage_Percent * 0.65, 2) : 0) +
             (i.Normal_Attack_Damage_Reduction ?
                 round(i.Normal_Attack_Damage_Reduction * 0.5, 2) : 0) +
             (i.Skill_Amplification ?
                 round(i.Skill_Amplification * 0.6, 2) : 0) +
+            (i.Skill_Amplification_per_level ?
+                round(i.Skill_Amplification_per_level * 0.6 * level, 2) : 0) +
             (i.Skill_Amplification_Percent ?
                 round(i.Skill_Amplification_Percent * 0.75, 2) : 0) +
+            (i.Skill_Amplification_Percent_per_level ?
+                round(i.Skill_Amplification_Percent_per_level * 0.75 * level, 2) : 0) +
             (i.Skill_Damage_Reduction ?
                 round(i.Skill_Damage_Reduction * 0.45, 2) : 0) +
             (i.Skill_Damage_Reduction_Percent ?
