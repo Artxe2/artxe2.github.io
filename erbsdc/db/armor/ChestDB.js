@@ -300,7 +300,7 @@ const Chest = [
         ,HP_Regen: 2
         ,Cooldown_Reduction: 25
         ,Cooldown_Reduction_Cap: 5
-        ,Title: "Queen of Hearts\n\nDefense +40\nHP Regen +2.5\nCooldown Reduction +25%\nCooldown Reduction +5%"
+        ,Title: "Queen of Hearts\n\nDefense +40\nHP Regen +2.5\nCooldown Reduction +25%\nCooldown Reduction Cap +5%"
         ,Rarity: "Legendary"
     }
 ];
