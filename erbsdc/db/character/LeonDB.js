@@ -1,21 +1,21 @@
 'use strict';
 const Leon = {
-     Attack_Power: 40
-    ,Attack_Power_Growth: 3.1
+     Attack_Power: 33
+    ,Attack_Power_Growth: 2.2
     ,Health: 570
-    ,Health_Growth: 85
+    ,Health_Growth: 82
     ,Health_Regen: 1.1
-    ,Health_Regen_Growth: 0.04
+    ,Health_Regen_Growth: 0.07
     ,Stamina: 420
     ,Stamina_Growth: 16
     ,Stamina_Regen: 2.2
-    ,Stamina_Regen_Growth: 0.04
+    ,Stamina_Regen_Growth: 0.06
     ,Defense: 22
     ,Defense_Growth: 2.2
-    ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.08
+    ,Atk_Speed: 0.05
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
-    ,Attack_Range: 0.45
+    ,Attack_Range: 0.4
     ,weapons: [Glove]
     ,correction: {
         Glove: [
