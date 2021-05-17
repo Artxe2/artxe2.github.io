@@ -19,7 +19,7 @@ const Chiara = {
     ,weapons: [Rapier]
     ,correction: {
         Rapier: [
-            [0, -8, -12],
+            [0, -8, -14],
             [0, 0, 0]
         ]
     }

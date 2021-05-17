@@ -8,11 +8,11 @@ const Emma = {
     ,Health_Regen_Growth: 0.02
     ,Stamina: 450
     ,Stamina_Growth: 22
-    ,Stamina_Regen: 1.1
+    ,Stamina_Regen: 1.6
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 31
     ,Defense_Growth: 1.3
-    ,Atk_Speed: 0.12
+    ,Atk_Speed: 0.1
     ,Movement_Speed: 3
     ,Sight_Range: 8
     ,Attack_Range: 0.4

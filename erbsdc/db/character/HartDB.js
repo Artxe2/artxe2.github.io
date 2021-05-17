@@ -13,13 +13,13 @@ const Hart = {
     ,Defense: 25
     ,Defense_Growth: 1.9
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.03
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Guitar]
     ,correction: {
         Guitar: [
-            [0, -7, -9],
+            [0, -7, -8],
             [0, 0, 0]
         ]
     }

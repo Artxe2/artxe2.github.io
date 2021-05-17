@@ -1,19 +1,19 @@
 'use strict';
 const Aya = {
      Attack_Power: 25
-    ,Attack_Power_Growth: 3.0
+    ,Attack_Power_Growth: 3
     ,Health: 500
     ,Health_Growth: 63
     ,Health_Regen: 0.5
-    ,Health_Regen_Growth: 0.05
+    ,Health_Regen_Growth: 0.04
     ,Stamina: 440
     ,Stamina_Growth: 25
     ,Stamina_Regen: 2.3
     ,Stamina_Regen_Growth: 0.07
-    ,Defense: 14
+    ,Defense: 18
     ,Defense_Growth: 1.6
     ,Atk_Speed: 0.14
-    ,Movement_Speed: 3.0
+    ,Movement_Speed: 3
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Pistol, AssaultRifle, SniperRifle]

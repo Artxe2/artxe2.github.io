@@ -3,7 +3,7 @@ const Hyunwoo = {
      Attack_Power: 34
     ,Attack_Power_Growth: 3.1
     ,Health: 530
-    ,Health_Growth: 85
+    ,Health_Growth: 80
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 350
@@ -23,8 +23,8 @@ const Hyunwoo = {
             [0, -2, -5]
         ],
         Tonfa: [
-            [0, -5, -7],
-            [0, -2, -5]
+            [0, -5, -5],
+            [0, 0, 3]
         ]
     }
     ,Base_Attack: (character, enemy) => {

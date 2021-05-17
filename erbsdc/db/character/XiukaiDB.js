@@ -22,8 +22,8 @@ const Xiukai = {
             [0, 0, -3]
         ],
         Spear: [
-            [0, -8, -10],
-            [0, 0, 0]
+            [0, -5, -10],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {

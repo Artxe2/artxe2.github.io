@@ -18,7 +18,7 @@ const Sua = {
     ,weapons: [Hammer]
     ,correction: {
         Hammer: [
-            [0, -5, -9],
+            [0, 0, 0],
             [0, 0, 0]
         ]
     }

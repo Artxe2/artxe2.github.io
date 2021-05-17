@@ -11,7 +11,7 @@ const Cathy = {
     ,Stamina_Regen: 2
     ,Stamina_Regen_Growth: 0.08
     ,Defense: 24
-    ,Defense_Growth: 2.0
+    ,Defense_Growth: 2
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
@@ -19,7 +19,7 @@ const Cathy = {
     ,weapons: [Dagger]
     ,correction: {
         Dagger: [
-            [0, -7, -10],
+            [0, -5, -8],
             [0, 0, 0],
             [0, -6, 0]
         ]

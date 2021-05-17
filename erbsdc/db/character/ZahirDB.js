@@ -18,11 +18,11 @@ const Zahir = {
     ,weapons: [Throws, Shuriken]
     ,correction: {
         Throws: [
-            [0, -10, -15],
+            [0, -10, -14],
             [0, 0, 0]
         ],
         Shuriken: [
-            [0, -12, -16],
+            [0, -10, -12],
             [0, 0, 0]
         ]
     }

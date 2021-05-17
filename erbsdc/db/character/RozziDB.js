@@ -3,7 +3,7 @@ const Rozzi = {
     ,Attack_Power_Growth: 2.3
     ,Health: 545
     ,Health_Growth: 62
-    ,Health_Regen: 0.5
+    ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 440
     ,Stamina_Growth: 22

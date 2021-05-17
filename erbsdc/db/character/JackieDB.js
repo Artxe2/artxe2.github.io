@@ -3,7 +3,7 @@ const Jackie = {
      Attack_Power: 35
     ,Attack_Power_Growth: 2.7
     ,Health: 590
-    ,Health_Growth: 77
+    ,Health_Growth: 80
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.03
     ,Stamina: 430

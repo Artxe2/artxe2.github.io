@@ -2,7 +2,7 @@ const Shoichi = {
      Attack_Power: 27
     ,Attack_Power_Growth: 3.1
     ,Health: 580
-    ,Health_Growth: 78
+    ,Health_Growth: 75
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 370

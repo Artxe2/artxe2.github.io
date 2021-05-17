@@ -5,11 +5,11 @@ const Isol = {
     ,Health: 520
     ,Health_Growth: 60
     ,Health_Regen: 0.5
-    ,Health_Regen_Growth: 0.06
+    ,Health_Regen_Growth: 0.03
     ,Stamina: 400
     ,Stamina_Growth: 21
     ,Stamina_Regen: 1.8
-    ,Stamina_Regen_Growth: 0.03
+    ,Stamina_Regen_Growth: 0.06
     ,Defense: 23
     ,Defense_Growth: 1.5
     ,Atk_Speed: 0.14

@@ -1,5 +1,5 @@
 const Silvia = {
-     Attack_Power: 25
+     Attack_Power: 22
     ,Attack_Power_Growth: 2
     ,Health: 520
     ,Health_Growth: 61
@@ -10,15 +10,15 @@ const Silvia = {
     ,Stamina_Regen: 2.1
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 24
-    ,Defense_Growth: 1.2
-    ,Atk_Speed: 0.12
+    ,Defense_Growth: 1.5
+    ,Atk_Speed: 0.05
     ,Movement_Speed: 3
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Pistol]
     ,correction: {
         Pistol: [
-            [0, -12, -15],
+            [0, -14, -17],
             [0, 0, 0],
             [0, -10, -10]
         ]

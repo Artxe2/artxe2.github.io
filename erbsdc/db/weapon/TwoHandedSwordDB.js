@@ -100,8 +100,8 @@ const TwoHandedSword = [
          Type: "TwoHandedSword"
         ,Name: "Laevateinn"
         ,Attack_Power: 78
-        ,HP_Regen:2.0
-        ,SP_Regen: 2.0
+        ,HP_Regen:2
+        ,SP_Regen: 2
         ,Attack_Speed: 10
         ,Extra_Normal_Attack_Damage: 25
         ,Title: "Laevateinn\n\nAttack Power +78\nHP Regen +2.0\nSP Regen +2.0\nAttack Speed +10%\nExtra Normal Attack Damage +25"

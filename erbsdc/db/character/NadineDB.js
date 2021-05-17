@@ -22,8 +22,8 @@ const Nadine = {
             [0, 0, 0]
         ],
         Crossbow: [
-            [0, -9, -13],
-            [0, 0, -3]
+            [0, -11, -13],
+            [0, 0, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {

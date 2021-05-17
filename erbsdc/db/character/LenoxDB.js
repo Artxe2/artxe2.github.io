@@ -2,17 +2,17 @@
 const Lenox = {
      Attack_Power: 36
     ,Attack_Power_Growth: 2.4
-    ,Health: 580
+    ,Health: 530
     ,Health_Growth: 80
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.05
     ,Stamina: 380
-    ,Stamina_Growth: 13
-    ,Stamina_Regen: 2.2
+    ,Stamina_Growth: 16
+    ,Stamina_Regen: 1.8
     ,Stamina_Regen_Growth: 0.06
-    ,Defense: 28
+    ,Defense: 26
     ,Defense_Growth: 2
-    ,Atk_Speed: 0.22
+    ,Atk_Speed: 0.12
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4

@@ -4,7 +4,7 @@ const Hyejin = {
     ,Attack_Power_Growth: 2.7
     ,Health: 535
     ,Health_Growth: 68
-    ,Health_Regen: 0.6
+    ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.03
     ,Stamina: 400
     ,Stamina_Growth: 26

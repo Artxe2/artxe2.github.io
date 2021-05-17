@@ -13,14 +13,14 @@ const Yuki = {
     ,Defense: 26
     ,Defense_Growth: 2.3
     ,Atk_Speed: 0.08
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.13
     ,Sight_Range: 8
     ,Attack_Range: 0.45
     ,weapons: [TwoHandedSword, DualSwords]
     ,correction: {
         TwoHandedSword: [
-            [0, -8, -12],
-            [0, 4, 0]
+            [0, -12, -14],
+            [0, 2, 0]
         ],
         DualSwords: [
             [0, -4, -6],
