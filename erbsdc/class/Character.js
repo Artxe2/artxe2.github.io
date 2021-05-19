@@ -1,6 +1,6 @@
 'use strict';
 class Character {
-    IMG_PATH = 'https://cdn.jsdelivr.net/gh/artxe2/Artxe2.github.io/erbsdc/img/';
+    IMG_PATH = 'https://cdn.jsdelivr.net/gh/artxe2/Artxe2.github.io@0.32.1/erbsdc/img/';
 
     calcTrapDamage() {
         return this.trap ? "<b class='damage'>" + floor(this.trap.Trap_Damage * (1.04 + this.TRAP_MASTERY.selectedIndex * 0.04)) + '</b>' : '-';
