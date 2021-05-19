@@ -70,8 +70,9 @@ const Bow = [
          Type: "Bow"
         ,Name: "Ancient_Bolt"
         ,Attack_Power: 60
-        ,Extra_Normal_Attack_Damage: 48
-        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +48"
+        ,Extra_Normal_Attack_Damage: 40
+        ,Extra_Normal_Attack_Damage_per_level: 1
+        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +40\nExtra Normal Attack Damage per level +1"
         ,Rarity: "Epic"
     }
     ,{
@@ -87,11 +88,11 @@ const Bow = [
     ,{
          Type: "Bow"
         ,Name: "Twinbow"
-        ,Attack_Power: 48
+        ,Attack_Power: 50
         ,Attack_Power_per_level: 2
         ,Attack_Speed: 50
         ,Vision_Range: 1
-        ,Title: "Twinbow\n\nAttack Power +48\nAttack Power per level +2\nAttack Speed +50%\nVision Range +1\nHealing Reduction (Normal Attacks) -25%"
+        ,Title: "Twinbow\n\nAttack Power +50\nAttack Power per level +2\nAttack Speed +50%\nVision Range +1\nHealing Reduction (Normal Attacks) -25%"
         ,Rarity: "Epic"
     }
     ,{

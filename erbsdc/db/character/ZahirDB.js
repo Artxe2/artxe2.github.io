@@ -1,8 +1,9 @@
+'use strict';
 const Zahir = {
      Attack_Power: 25
     ,Attack_Power_Growth: 2.4
-    ,Health: 540
-    ,Health_Growth: 64
+    ,Health: 620
+    ,Health_Growth: 61
     ,Health_Regen: 0.6
     ,Health_Regen_Growth: 0.03
     ,Stamina: 400
@@ -12,7 +13,7 @@ const Zahir = {
     ,Defense: 20
     ,Defense_Growth: 1.8
     ,Atk_Speed: 0.11
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.45
     ,weapons: [Throws, Shuriken]

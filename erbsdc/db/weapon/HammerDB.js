@@ -58,8 +58,8 @@ const Hammer = [
          Type: "Hammer"
         ,Name: "Evening_Star"
         ,Attack_Power: 105
-        ,Skill_Amplification_Percent: 16
-        ,Title: "Evening Star\n\nAttack Power +105\nSkill Amplification +16%"
+        ,Skill_Amplification_Percent: 20
+        ,Title: "Evening Star\n\nAttack Power +105\nSkill Amplification +20%"
         ,Rarity: "Epic"
     }
     ,{
@@ -67,8 +67,8 @@ const Hammer = [
        ,Name: "Peace_Bringer"
        ,Attack_Power: 140
        ,Life_Steal: 20
-       ,Armor_penetration_percent: 8
-       ,Title: "Peace Bringer\n\nAttack Power +140\nLife Steal +20%\nArmor_penetration_percent (%) +8%"
+       ,Armor_penetration_percent: 12
+       ,Title: "Peace Bringer\n\nAttack Power +140\nLife Steal +20%\nArmor_penetration_percent (%) +12%"
        ,Rarity: "Legendary"
    }
 ];

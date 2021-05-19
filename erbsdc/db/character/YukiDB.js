@@ -2,8 +2,8 @@
 const Yuki = {
      Attack_Power: 29
     ,Attack_Power_Growth: 2.6
-    ,Health: 580
-    ,Health_Growth: 81
+    ,Health: 660
+    ,Health_Growth: 78
     ,Health_Regen: 0.7
     ,Health_Regen_Growth: 0.05
     ,Stamina: 410
@@ -13,7 +13,7 @@ const Yuki = {
     ,Defense: 26
     ,Defense_Growth: 2.3
     ,Atk_Speed: 0.08
-    ,Movement_Speed: 3.13
+    ,Movement_Speed: 3.18
     ,Sight_Range: 8
     ,Attack_Range: 0.45
     ,weapons: [TwoHandedSword, DualSwords]

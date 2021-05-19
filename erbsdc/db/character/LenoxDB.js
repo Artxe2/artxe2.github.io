@@ -2,8 +2,8 @@
 const Lenox = {
      Attack_Power: 36
     ,Attack_Power_Growth: 2.4
-    ,Health: 530
-    ,Health_Growth: 80
+    ,Health: 610
+    ,Health_Growth: 77
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.05
     ,Stamina: 380
@@ -13,7 +13,7 @@ const Lenox = {
     ,Defense: 26
     ,Defense_Growth: 2
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Whip]

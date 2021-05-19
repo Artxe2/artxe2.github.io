@@ -2,8 +2,8 @@
 const Hyunwoo = {
      Attack_Power: 34
     ,Attack_Power_Growth: 3.1
-    ,Health: 530
-    ,Health_Growth: 80
+    ,Health: 610
+    ,Health_Growth: 77
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 350
@@ -13,7 +13,7 @@ const Hyunwoo = {
     ,Defense: 23
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.15
+    ,Movement_Speed: 3.2
     ,Sight_Range: 8
     ,Attack_Range: 0.45
     ,weapons: [Glove, Tonfa]

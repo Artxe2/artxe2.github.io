@@ -2,8 +2,8 @@
 const Chiara = {
      Attack_Power: 34
     ,Attack_Power_Growth: 2
-    ,Health: 530
-    ,Health_Growth: 60
+    ,Health: 610
+    ,Health_Growth: 57
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.02
     ,Stamina: 410
@@ -13,7 +13,7 @@ const Chiara = {
     ,Defense: 25
     ,Defense_Growth: 1.3
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.15
+    ,Movement_Speed: 3.2
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Rapier]

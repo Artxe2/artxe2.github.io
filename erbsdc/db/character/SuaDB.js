@@ -1,8 +1,9 @@
+'use strict';
 const Sua = {
      Attack_Power: 23
     ,Attack_Power_Growth: 2
-    ,Health: 580
-    ,Health_Growth: 77
+    ,Health: 660
+    ,Health_Growth: 74
     ,Health_Regen: 0.7
     ,Health_Regen_Growth: 0.06
     ,Stamina: 480
@@ -12,7 +13,7 @@ const Sua = {
     ,Defense: 23
     ,Defense_Growth: 2.1
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Hammer]

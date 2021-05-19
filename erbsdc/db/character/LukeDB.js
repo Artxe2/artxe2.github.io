@@ -1,8 +1,9 @@
+'use strict';
 const Luke = {
      Attack_Power: 28
     ,Attack_Power_Growth: 2
-    ,Health: 610
-    ,Health_Growth: 84
+    ,Health: 690
+    ,Health_Growth: 81
     ,Health_Regen: 1
     ,Health_Regen_Growth: 0.06
     ,Stamina: 427
@@ -12,7 +13,7 @@ const Luke = {
     ,Defense: 30
     ,Defense_Growth: 2.3
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.15
+    ,Movement_Speed: 3.2
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Bat]

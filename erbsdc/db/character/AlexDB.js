@@ -2,8 +2,8 @@
 const Alex = {
      Attack_Power: 19
     ,Attack_Power_Growth: 2.4
-    ,Health: 520
-    ,Health_Growth: 77
+    ,Health: 600
+    ,Health_Growth: 74
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.04
     ,Stamina: 450
@@ -13,7 +13,7 @@ const Alex = {
     ,Defense: 23
     ,Defense_Growth: 2.1
     ,Atk_Speed: 0.18
-    ,Movement_Speed: 3.05
+    ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [TwoHandedSword, Pistol, Shuriken, Tonfa]

@@ -3,8 +3,8 @@ const Food = [
     {
         Type: "Food"
         ,Name: "Bread"
-        ,HP_Regen: 275
-        ,Title: "Bread\n\nHP Regen +275"
+        ,HP_Regen: 325
+        ,Title: "Bread\n\nHP Regen +325"
         ,Rarity: "Common"
     }
     ,{

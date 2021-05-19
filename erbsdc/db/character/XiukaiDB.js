@@ -1,8 +1,9 @@
+'use strict';
 const Xiukai = {
      Attack_Power: 40
     ,Attack_Power_Growth: 2.2
-    ,Health: 560
-    ,Health_Growth: 80
+    ,Health: 640
+    ,Health_Growth: 77
     ,Health_Regen: 1
     ,Health_Regen_Growth: 0.06
     ,Stamina: 420
@@ -12,7 +13,7 @@ const Xiukai = {
     ,Defense: 36
     ,Defense_Growth: 1.7
     ,Atk_Speed: 0.16
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.48
     ,weapons: [Dagger, Spear]

@@ -2,8 +2,8 @@
 const Hart = {
      Attack_Power: 22
     ,Attack_Power_Growth: 3
-    ,Health: 520
-    ,Health_Growth: 66
+    ,Health: 600
+    ,Health_Growth: 63
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 420
@@ -13,7 +13,7 @@ const Hart = {
     ,Defense: 25
     ,Defense_Growth: 1.9
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.03
+    ,Movement_Speed: 3.08
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Guitar]

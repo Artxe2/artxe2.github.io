@@ -54,19 +54,20 @@ const TwoHandedSword = [
     }
     ,{
          Type: "TwoHandedSword"
-        ,Name: "Thuan_Thien"
-        ,Attack_Power: 77
-        ,Defense: 25
-        ,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25"
-        ,Rarity: "Rare"
-    }
-    ,{
-         Type: "TwoHandedSword"
         ,Name: "Plasma_Sword"
         ,Attack_Power: 75
         ,Vision_Range: 3
         ,Title: "Plasma Sword\n\nAttack Power +75\nVision Range +3"
         ,Rarity: "Rare"
+    }
+    ,{
+         Type: "TwoHandedSword"
+        ,Name: "Thuan_Thien"
+        ,Attack_Power: 77
+        ,Defense: 25
+        ,Cooldown_Reduction: 10
+        ,Title: "Thuan Thien\n\nAttack Power +77\nDefense +25\nCooldown Reduction +10%"
+        ,Rarity: "Epic"
     }
     ,{
          Type: "TwoHandedSword"

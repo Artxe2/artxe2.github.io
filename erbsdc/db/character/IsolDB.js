@@ -2,8 +2,8 @@
 const Isol = {
      Attack_Power: 27
     ,Attack_Power_Growth: 2.6
-    ,Health: 520
-    ,Health_Growth: 60
+    ,Health: 600
+    ,Health_Growth: 57
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.03
     ,Stamina: 400
@@ -13,7 +13,7 @@ const Isol = {
     ,Defense: 23
     ,Defense_Growth: 1.5
     ,Atk_Speed: 0.14
-    ,Movement_Speed: 3.05
+    ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.45
     ,weapons: [Pistol, AssaultRifle]

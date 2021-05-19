@@ -2,8 +2,8 @@
 const Bernice = {
      Attack_Power: 25
     ,Attack_Power_Growth: 2.4
-    ,Health: 620
-    ,Health_Growth: 80
+    ,Health: 700
+    ,Health_Growth: 77
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.06
     ,Stamina: 410
@@ -13,7 +13,7 @@ const Bernice = {
     ,Defense: 25
     ,Defense_Growth: 1.8
     ,Atk_Speed: 0.24
-    ,Movement_Speed: 3.15
+    ,Movement_Speed: 3.2
     ,Sight_Range: 9
     ,Attack_Range: -3.2
     ,weapons: [SniperRifle]

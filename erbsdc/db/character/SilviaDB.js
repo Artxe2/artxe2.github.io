@@ -1,8 +1,9 @@
+'use strict';
 const Silvia = {
      Attack_Power: 22
     ,Attack_Power_Growth: 2
-    ,Health: 520
-    ,Health_Growth: 61
+    ,Health: 600
+    ,Health_Growth: 58
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.03
     ,Stamina: 440
@@ -12,7 +13,7 @@ const Silvia = {
     ,Defense: 24
     ,Defense_Growth: 1.5
     ,Atk_Speed: 0.05
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Pistol]

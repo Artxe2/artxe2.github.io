@@ -1,8 +1,9 @@
+'use strict';
 const Sissela = {
      Attack_Power: 23
     ,Attack_Power_Growth: 2.4
-    ,Health: 510
-    ,Health_Growth: 63
+    ,Health: 590
+    ,Health_Growth: 60
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 400
@@ -12,7 +13,7 @@ const Sissela = {
     ,Defense: 19
     ,Defense_Growth: 1.7
     ,Atk_Speed: 0.15
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Throws, Shuriken]

@@ -1,8 +1,9 @@
+'use strict';
 const Shoichi = {
      Attack_Power: 27
     ,Attack_Power_Growth: 3.1
-    ,Health: 580
-    ,Health_Growth: 75
+    ,Health: 660
+    ,Health_Growth: 72
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 370
@@ -12,7 +13,7 @@ const Shoichi = {
     ,Defense: 27
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.43
     ,weapons: [Dagger]

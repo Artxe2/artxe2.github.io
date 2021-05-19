@@ -2,8 +2,8 @@
 const Leon = {
      Attack_Power: 33
     ,Attack_Power_Growth: 2.2
-    ,Health: 570
-    ,Health_Growth: 82
+    ,Health: 650
+    ,Health_Growth: 79
     ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.07
     ,Stamina: 420
@@ -13,13 +13,13 @@ const Leon = {
     ,Defense: 22
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.05
-    ,Movement_Speed: 3.05
+    ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Glove]
     ,correction: {
         Glove: [
-            [0, -2, -6],
+            [0, -4, -8],
             [0, 0, 0]
         ]
     }
@@ -63,7 +63,7 @@ const Leon = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 40 + q * 35, 0.4, 1);
-            const cool = 10000 / ((12 - q * 1) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((10 - q * 0.5) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -91,7 +91,7 @@ const Leon = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 40, 0.35, 1);
-            const cool = 10000 / ((24 - e * 2) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((22 - e * 1.5) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';

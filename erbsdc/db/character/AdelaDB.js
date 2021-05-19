@@ -1,8 +1,9 @@
+'use strict';
 const Adela = {
      Attack_Power: 34
     ,Attack_Power_Growth: 3.3
-    ,Health: 530
-    ,Health_Growth: 78
+    ,Health: 610
+    ,Health_Growth: 75
     ,Health_Regen: 0.6
     ,Health_Regen_Growth: 0.06
     ,Stamina: 500
@@ -12,7 +13,7 @@ const Adela = {
     ,Defense: 28
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.045
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 2.9
     ,weapons: [Rapier]

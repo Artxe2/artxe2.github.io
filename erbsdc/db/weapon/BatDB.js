@@ -79,8 +79,8 @@ const Bat = [
         ,Attack_Power: 59
         ,Vision_Range: 1
         ,Life_Steal: 30
-        ,Skill_Amplification_Percent: 27
-        ,Title: "Magic Stick\n\nAttack Power +59\nVision Range +1\nLife Steal +30%\nSkill Amplification +27%"
+        ,Skill_Amplification_Percent: 30
+        ,Title: "Magic Stick\n\nAttack Power +59\nVision Range +1\nLife Steal +30%\nSkill Amplification +30%"
         ,Rarity: "Epic"
     }
     ,{

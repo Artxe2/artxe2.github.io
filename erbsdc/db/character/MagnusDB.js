@@ -1,8 +1,9 @@
+'use strict';
 const Magnus = {
      Attack_Power: 32
     ,Attack_Power_Growth: 2.2
-    ,Health: 630
-    ,Health_Growth: 82
+    ,Health: 710
+    ,Health_Growth: 79
     ,Health_Regen: 0.7
     ,Health_Regen_Growth: 0.05
     ,Stamina: 410
@@ -12,7 +13,7 @@ const Magnus = {
     ,Defense: 25
     ,Defense_Growth: 1.5
     ,Atk_Speed: 0.14
-    ,Movement_Speed: 3.2
+    ,Movement_Speed: 3.25
     ,Sight_Range: 8
     ,Attack_Range: 0.5
     ,weapons: [Hammer, Bat]

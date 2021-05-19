@@ -59,9 +59,9 @@ const Dagger = [
         ,Attack_Power: 41
         ,HP_Regen: 1.2
         ,Movement_Speed: 0.1
-        ,Cooldown_Reduction: 10
+        ,Cooldown_Reduction: 8
         ,Extra_Normal_Attack_Damage: 29
-        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.1\nCooldown Reduction +10%\nExtra Normal Attack Damage +29"
+        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.1\nCooldown Reduction +8%\nExtra Normal Attack Damage +29"
         ,Rarity: "Epic"
     }
     ,{

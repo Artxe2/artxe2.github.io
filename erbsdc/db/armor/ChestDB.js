@@ -227,11 +227,11 @@ const Chest = [
          Type: "Chest"
         ,Name: "Dragon_Dobok"
         ,Attack_Power: 15
-        ,Defense: 15
+        ,Defense: 18
         ,SP_Regen_Percent: 120
         ,Cooldown_Reduction: 10
-        ,Attack_Range: 0.5
-        ,Title: "Dragon Dobok\n\nAttack Power +15\nDefense +15\nSP Regen +120%\nCooldown Reduction +10%\nAttack Range +0.5"
+        ,Attack_Range: 0.6
+        ,Title: "Dragon Dobok\n\nAttack Power +15\nDefense +18\nSP Regen +120%\nCooldown Reduction +10%\nAttack Range +0.6"
         ,Rarity: "Epic"
     }
     ,{

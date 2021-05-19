@@ -1,8 +1,9 @@
+'use strict';
 const Rozzi = {
      Attack_Power: 26
     ,Attack_Power_Growth: 2.3
-    ,Health: 545
-    ,Health_Growth: 62
+    ,Health: 625
+    ,Health_Growth: 59
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 440
@@ -12,7 +13,7 @@ const Rozzi = {
     ,Defense: 22
     ,Defense_Growth: 1.4
     ,Atk_Speed: 0.11
-    ,Movement_Speed: 3.05
+    ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Pistol]

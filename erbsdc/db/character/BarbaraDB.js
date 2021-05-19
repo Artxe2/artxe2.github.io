@@ -1,8 +1,9 @@
+'use strict';
 const Barbara = {
      Attack_Power: 18
     ,Attack_Power_Growth: 1.4
-    ,Health: 480
-    ,Health_Growth: 74
+    ,Health: 560
+    ,Health_Growth: 71
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.03
     ,Stamina: 390
@@ -12,7 +13,7 @@ const Barbara = {
     ,Defense: 21
     ,Defense_Growth: 1.9
     ,Atk_Speed: 0.04
-    ,Movement_Speed: 3
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Bat]
