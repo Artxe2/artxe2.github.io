@@ -85,9 +85,9 @@ const Leg = [
          Type: "Leg"
         ,Name: "Maverick_Runner"
         ,Attack_Power: -8
-        ,Movement_Speed: 0.35
+        ,Movement_Speed: 0.3
         ,Movement_speed_while_not_in_combat: 0.25
-        ,Title: "Maverick Runner\n\nAttack Power -8\nMovement Speed +0.35\nMovement Speed while not in combat +0.25"
+        ,Title: "Maverick Runner\n\nAttack Power -8\nMovement Speed +0.3\nMovement Speed while not in combat +0.25"
         ,Rarity: "Rare"
     }
     ,{
@@ -114,8 +114,8 @@ const Leg = [
         ,Name: "Feather_Boots"
         ,HP_Regen: 1
         ,Attack_Speed: 35
-        ,Movement_Speed: 0.4
-        ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +35%\nMovement Speed +0.4"
+        ,Movement_Speed: 0.35
+        ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +35%\nMovement Speed +0.35"
         ,Rarity: "Epic"
     }
     ,{
@@ -123,9 +123,9 @@ const Leg = [
         ,Name: "Straitjacket_Sneakers"
         ,SP_Regen: 0.5
         ,SP_Regen_Percent: 50
-        ,Movement_Speed: 0.33
+        ,Movement_Speed: 0.28
         ,Skill_Amplification: 14
-        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.33\nSkill Amplification +14"
+        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.28\nSkill Amplification +14"
         ,Rarity: "Epic"
     }
     ,{
@@ -133,8 +133,8 @@ const Leg = [
         ,Name: "Mithril_Boots"
         ,Defense: 18
         ,Attack_Speed: 12
-        ,Movement_Speed: 0.5
-        ,Title: "Mithril Boots\n\nDefense +18\nAttack Speed +12%\nMovement Speed +0.5"
+        ,Movement_Speed: 0.45
+        ,Title: "Mithril Boots\n\nDefense +18\nAttack Speed +12%\nMovement Speed +0.45"
         ,Rarity: "Epic"
     }
     ,{
@@ -143,9 +143,9 @@ const Leg = [
         ,Attack_Power: 10
         ,Defense: 10
         ,SP_Regen: 1
-        ,Movement_Speed: 0.33
+        ,Movement_Speed: 0.28
         ,Critical_Strike_Chance: 15
-        ,Title: "Bucephalus\n\nAttack Power +10\nDefense +10\nSP Regen +1\nMovement Speed +0.33\nCriticall Strike Chance +15%"
+        ,Title: "Bucephalus\n\nAttack Power +10\nDefense +10\nSP Regen +1\nMovement Speed +0.28\nCriticall Strike Chance +15%"
         ,Rarity: "Epic"
     }
     ,{
@@ -153,17 +153,17 @@ const Leg = [
         ,Name: "White_Rhinos"
         ,HP_Regen: 0.7
         ,Attack_Speed: 15
-        ,Movement_Speed: 0.35
-        ,Title: "White Rhinos\n\nHP Regen +0.7\nAttack Speed +15%\nMovement Speed +0.35\nHealing Reduction (Normal Attacks) -40%"
+        ,Movement_Speed: 0.3
+        ,Title: "White Rhinos\n\nHP Regen +0.7\nAttack Speed +15%\nMovement Speed +0.3\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Leg"
         ,Name: "Tachyon_Brace"
         ,Defense: 15
-        ,Movement_Speed: 0.38
+        ,Movement_Speed: 0.33
         ,Cooldown_Reduction: 10
-        ,Title: "Tachyon Brace\n\nDefense +15\nMovement Speed +0.38\nCooldown Reduction +10%"
+        ,Title: "Tachyon Brace\n\nDefense +15\nMovement Speed +0.33\nCooldown Reduction +10%"
         ,Rarity: "Epic"
    }
     ,{
@@ -172,8 +172,8 @@ const Leg = [
         ,Defense: 20
         ,HP_Regen: 1
         ,SP_Regen: 0.5
-        ,Movement_Speed: 0.35
-        ,Title: "EOD Boots\n\nDefense +20\nHP Regen +1\nSP Regen +0.5\nMovement Speed +0.35\nTrap Damage Reduction (%) +8%"
+        ,Movement_Speed: 0.3
+        ,Title: "EOD Boots\n\nDefense +20\nHP Regen +1\nSP Regen +0.5\nMovement Speed +0.3\nTrap Damage Reduction (%) +8%"
         ,Rarity: "Legendary"
     }
     ,{
@@ -182,19 +182,19 @@ const Leg = [
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
         ,SP_Regen_Percent: 60
-        ,Movement_Speed: 0.3
+        ,Movement_Speed: 0.25
         ,Movement_speed_while_not_in_combat: 0.35
         ,Skill_Amplification: 22
-        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.3\nMovement speed while not in combat +0.35\nSkill Amplification +22"
+        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.35\nSkill Amplification +22"
         ,Rarity: "Legendary"
     }
     ,{
          Type: "Leg"
         ,Name: "Boots_of_Hermes"
         ,Defense: 35
-        ,Movement_Speed: 0.4
+        ,Movement_Speed: 0.35
         ,Movement_speed_while_not_in_combat: 0.2
-        ,Title: "Boots of Hermes\n\nDefense +35\nMovement Speed +0.4\nMovement speed while not in combat +0.2"
+        ,Title: "Boots of Hermes\n\nDefense +35\nMovement Speed +0.35\nMovement speed while not in combat +0.2"
         ,Rarity: "Legendary"
     }
     ,{
@@ -202,10 +202,10 @@ const Leg = [
         ,Name: "Red_Shoes"
         ,Attack_Power: 5
         ,SP_Regen: 1
-        ,Movement_Speed: 0.4
+        ,Movement_Speed: 0.35
         ,Critical_Strike_Chance: 15
         ,Life_Steal: 12
-        ,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.4\nCritical Strike Chance +15%\nLife Steal +12%"
+        ,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.35\nCritical Strike Chance +15%\nLife Steal +12%"
         ,Rarity: "Legendary"
     }
 ];
