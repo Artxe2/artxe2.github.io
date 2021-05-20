@@ -101,7 +101,7 @@ const Leon = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const damage = calcSkillDamage(character, enemy, 150 + r * 80, 0.5, 1);
-            const bonus = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05)) : 0);
+            const bonus = calcSkillDamage(character, enemy, enemy.max_hp ? enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05)) : 0, 0, 1);
             return "<b class='damage'>" + damage + ' ~ ' + (damage + bonus) + '</b>';
         }
         return '-';
@@ -233,7 +233,7 @@ const Leon = {
                             } else if (lost > enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05))) {
                                 lost = enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05));
                             }
-                            damage += calcTrueDamage(character, enemy, lost);
+                            damage += calcSkillDamage(character, enemy, lost, 0, 1);
                         }
                         damage += calcSkillDamage(character, enemy, 150 + r * 80, 0.5, 1);
                     }
