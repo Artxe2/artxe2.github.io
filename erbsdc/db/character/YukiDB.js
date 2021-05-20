@@ -13,7 +13,7 @@ const Yuki = {
     ,Defense: 26
     ,Defense_Growth: 2.3
     ,Atk_Speed: 0.08
-    ,Movement_Speed: 3.18
+    ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.45
     ,weapons: [TwoHandedSword, DualSwords]
