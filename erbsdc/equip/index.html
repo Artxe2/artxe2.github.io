@@ -34,6 +34,12 @@
             border: 1px solid rgb(255, 204, 0);
             background: linear-gradient(rgb(58, 47, 32) 0%, rgb(179, 145, 78) 80%);
         }
+        #table, #param {
+            float: left;
+        }
+        input {
+            width: 60px;
+        }
     </style>
     <script type="text/javascript" src='../db/armor/AccessoryDB.js?v0.32.1.2'></script>
     <script type="text/javascript" src='../db/armor/ArmDB.js?v0.32.1.2'></script>
@@ -69,6 +75,7 @@
             const equips = [[],[],[],[],[],[]];
             let count = 0;
 
+            level = document.querySelector('.Level').value;
             for (i of Accessory) {
                 if (i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
                     items.push([
@@ -228,9 +235,129 @@
                         }
                     }
                     break;
+                case 'Hammer':
+                    for (i of Hammer) {
+                        if (i.Name === 'Hammer' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Bat':
+                    for (i of Bat) {
+                        if (i.Name === 'Bat' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Throw':
+                    for (i of Throws) {
+                        if (i.Name === 'Base_Ball' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Shuriken':
+                    for (i of Shuriken) {
+                        if (i.Name === 'Razor' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Bow':
+                    for (i of Bow) {
+                        if (i.Name === 'Bow' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Crossbow':
+                    for (i of Crossbow) {
+                        if (i.Name === 'Short_Crossbow' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
                 case 'Glove':
                     for (i of Glove) {
                         if (i.Name === 'Cotton_Gloves' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Tonfa':
+                    for (i of Tonfa) {
+                        if (i.Name === 'Bamboo' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Guitar':
+                    for (i of Guitar) {
+                        if (i.Name === 'Starter_Guitar' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Nunchaku':
+                    for (i of Nunchaku) {
+                        if (i.Name === 'Steel_Chain' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
+                            items.push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                            equips[0].push([
+                                "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
+                                , calcSpec(i), count++]);
+                        }
+                    }
+                    break;
+                case 'Whip':
+                    for (i of Whip) {
+                        if (i.Name === 'Whip' || i.Rarity === 'Rare' || i.Rarity === 'Epic' || i.Rarity === 'Legendary') {
                             items.push([
                                 "<img class='" + i.Rarity + " equip_image' title='" + i.Title + "' src = '" + IMG_PATH + "weapon/" + i.Name + ".png' border='1'>"
                                 , calcSpec(i), count++]);
@@ -277,73 +404,75 @@
                 i.Name === 'White_Crane_Fan' ||
                 i.Name === 'Gilded_Quill_Fan'
 
-        const level = 17;
+        let level;
 
         calcSpec = i => round(
             (i.Attack_Power ?
-                round(i.Attack_Power * 0.65, 2) : 0) +
+                round(i.Attack_Power * document.querySelector('.Attack_Power').value, 2) : 0) +
             (i.Attack_Power_per_level ?
-                round(i.Attack_Power_per_level * 0.65 * level, 2) : 0) +
+                round(i.Attack_Power_per_level * document.querySelector('.Attack_Power_per_level').value * level, 2) : 0) +
             (i.Defense ?
-                round(i.Defense * 0.45, 2) : 0) +
+                round(i.Defense * document.querySelector('.Defense').value, 2) : 0) +
             (i.Defense_per_level ?
-                round(i.Defense_per_level * 0.45 * level, 2) : 0) +
+                round(i.Defense_per_level * document.querySelector('.Defense_per_level').value * level, 2) : 0) +
             (i.Max_HP ?
-                round(i.Max_HP * 0.045, 2) : 0) +
+                round(i.Max_HP * document.querySelector('.Max_HP').value, 2) : 0) +
             (i.Max_HP_per_level ?
-                round(i.Max_HP_per_level * 0.04 * level, 2) : 0) +
-            // (i.Max_SP ?
-            //     round(i.Max_SP * 0.0, 2) : 0) +
+                round(i.Max_HP_per_level * document.querySelector('.Max_HP_per_level').value * level, 2) : 0) +
+            (i.Max_SP ?
+                round(i.Max_SP * document.querySelector('.Max_SP').value, 2) : 0) +
             (i.HP_Regen ?
-                round(i.HP_Regen * 0.25, 2) : 0) +
+                round(i.HP_Regen * document.querySelector('.HP_Regen').value, 2) : 0) +
             (i.HP_Regen_Percent ?
-                round(i.HP_Regen_Percent * 0.005, 2) : 0) +
-            // (i.SP_Regen ?
-            //     round(i.SP_Regen * 0.0, 2) : 0) +
-            // (i.SP_Regen_Percent ?
-            //     round(i.MSP_Regen_Percentax_SP * 0.0, 2) : 0) +
+                round(i.HP_Regen_Percent * document.querySelector('.HP_Regen_Percent').value, 2) : 0) +
+            (i.SP_Regen ?
+                round(i.SP_Regen * document.querySelector('.SP_Regen').value, 2) : 0) +
+            (i.SP_Regen_Percent ?
+                round(i.MSP_Regen_Percent * document.querySelector('.SP_Regen_Percent').value, 2) : 0) +
             (i.Attack_Speed ?
-                round(i.Attack_Speed * 0.3, 2) : 0) +
+                round(i.Attack_Speed * document.querySelector('.Attack_Speed').value, 2) : 0) +
             (i.Attack_Speed_per_level ?
-                round(i.Attack_Speed_per_level * 0.3 * level, 2) : 0) +
+                round(i.Attack_Speed_per_level * document.querySelector('.Attack_Speed_per_level').value * level, 2) : 0) +
             (i.Movement_Speed ?
-                round(i.Movement_Speed * 25, 2) : 0) +
+                round(i.Movement_Speed * document.querySelector('.Movement_Speed').value, 2) : 0) +
             (i.Movement_speed_while_not_in_combat ?
-                round(i.Movement_speed_while_not_in_combat * 10, 2) : 0) +
+                round(i.Movement_speed_while_not_in_combat * document.querySelector('.Movement_speed_while_not_in_combat').value, 2) : 0) +
             (i.Vision_Range ?
-                round(i.Vision_Range, 2) : 0) +
+                round(i.Vision_Range * document.querySelector('.Vision_Range').value, 2) : 0) +
             (i.Critical_Strike_Chance ?
-                round(i.Critical_Strike_Chance * 0.5, 2) : 0) +
+                round(i.Critical_Strike_Chance * document.querySelector('.Critical_Strike_Chance').value, 2) : 0) +
             (i.Critical_Damage ?
-                round(i.Critical_Damage * 0.25, 2) : 0) +
+                round(i.Critical_Damage * document.querySelector('.Critical_Damage').value, 2) : 0) +
             (i.Critical_Damage_Reduction ?
-                round(i.Critical_Damage_Reduction * 0.2, 2) : 0) +
+                round(i.Critical_Damage_Reduction * document.querySelector('.Critical_Damage_Reduction').value, 2) : 0) +
             (i.Cooldown_Reduction ?
-                round(i.Cooldown_Reduction * 0.85, 2) : 0) +
+                round(i.Cooldown_Reduction * document.querySelector('.Cooldown_Reduction').value, 2) : 0) +
             (i.Life_Steal ?
-                round(i.Life_Steal * 0.45, 2) : 0) +
+                round(i.Life_Steal * document.querySelector('.Life_Steal').value, 2) : 0) +
             (i.Attack_Range ?
-                round(i.Attack_Range * 10, 2) : 0) +
+                round(i.Attack_Range * document.querySelector('.Attack_Range').value, 2) : 0) +
             (i.Extra_Normal_Attack_Damage ?
-                round(i.Extra_Normal_Attack_Damage * 0.65, 2) : 0) +
+                round(i.Extra_Normal_Attack_Damage * document.querySelector('.Extra_Normal_Attack_Damage').value, 2) : 0) +
             (i.Extra_Normal_Attack_Damage_per_level ?
-                round(i.Extra_Normal_Attack_Damage_per_level * 0.65 * level, 2) : 0) +
+                round(i.Extra_Normal_Attack_Damage_per_level * document.querySelector('.Extra_Normal_Attack_Damage_per_level').value * level, 2) : 0) +
             (i.Extra_Normal_Attack_Damage_Percent ?
-                round(i.Extra_Normal_Attack_Damage_Percent * 0.7, 2) : 0) +
+                round(i.Extra_Normal_Attack_Damage_Percent * document.querySelector('.Extra_Normal_Attack_Damage_Percent').value, 2) : 0) +
             (i.Normal_Attack_Damage_Reduction ?
-                round(i.Normal_Attack_Damage_Reduction * 0.5, 2) : 0) +
+                round(i.Normal_Attack_Damage_Reduction * document.querySelector('.Normal_Attack_Damage_Reduction').value, 2) : 0) +
             (i.Skill_Amplification ?
-                round(i.Skill_Amplification * 0.6, 2) : 0) +
+                round(i.Skill_Amplification * document.querySelector('.Skill_Amplification').value, 2) : 0) +
             (i.Skill_Amplification_per_level ?
-                round(i.Skill_Amplification_per_level * 0.6 * level, 2) : 0) +
+                round(i.Skill_Amplification_per_level * document.querySelector('.Skill_Amplification_per_level').value * level, 2) : 0) +
             (i.Skill_Amplification_Percent ?
-                round(i.Skill_Amplification_Percent * 0.7, 2) : 0) +
+                round(i.Skill_Amplification_Percent * document.querySelector('.Skill_Amplification_Percent').value, 2) : 0) +
             (i.Skill_Amplification_Percent_per_level ?
-                round(i.Skill_Amplification_Percent_per_level * 0.7 * level, 2) : 0) +
+                round(i.Skill_Amplification_Percent_per_level * document.querySelector('.Skill_Amplification_Percent_per_level').value * level, 2) : 0) +
             (i.Skill_Damage_Reduction ?
-                round(i.Skill_Damage_Reduction * 0.45, 2) : 0) +
+                round(i.Skill_Damage_Reduction * document.querySelector('.Skill_Damage_Reduction').value, 2) : 0) +
             (i.Skill_Damage_Reduction_Percent ?
-                round(i.Skill_Damage_Reduction_Percent * 0.55, 2) : 0) +
+                round(i.Skill_Damage_Reduction_Percent * document.querySelector('.Skill_Damage_Reduction_Percent').value, 2) : 0) +
+            (i.Armor_penetration_percent ?
+                round(i.Armor_penetration_percent * document.querySelector('.Armor_penetration_percent').value, 2) : 0) +
             (checkHr(i) ? 0 : 0), 2);
 
         round = (n, d) => {
@@ -371,35 +500,85 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#select').addEventListener('change', calcEquipTier);
+            document.querySelector('.Level').addEventListener('change', e => {
+                if (e.target.value > 20) {
+                    e.target.value = 20;
+                } else if (e.target.value < 1) {
+                    e.target.value = 1;
+                }
+                calcEquipTier();
+            });
+            for (i of document.querySelectorAll('.input')) {
+                i.addEventListener('change', e => {
+                    if (e.target.value < 0) {
+                        e.target.value = 0;
+                    }
+                    calcEquipTier();
+                });
+            }
             calcEquipTier();
         });
     </script>
 </head>
 <body>
-    <select id='select'>
-        <option>Dagger</option>
-        <option>TwoHandedSword</option>
-        <option>Axe</option>
-        <option>DualSwords</option>
-        <option>Pistol</option>
-        <option>AssaultRifle</option>
-        <option>SniperRifle</option>
-        <option>Rapier</option>
-        <option>Spear</option>
-        <option>Hammer</option>
-        <option>Bat</option>
-        <option>Throw</option>
-        <option>Shuriken</option>
-        <option>Bow</option>
-        <option>Crossbow</option>
-        <option>Glove</option>
-        <option>Tonfa</option>
-        <option>Guitar</option>
-        <option>Nunchaku</option>
-        <option>Whip</option>
-    </select>
-    <br/>
-    <br/>
     <div id='table'></div>
+    <div id='param'>
+        <select id='select'>
+            <option>Dagger</option>
+            <option>TwoHandedSword</option>
+            <option>Axe</option>
+            <option>DualSwords</option>
+            <option>Pistol</option>
+            <option>AssaultRifle</option>
+            <option>SniperRifle</option>
+            <option>Rapier</option>
+            <option>Spear</option>
+            <option>Hammer</option>
+            <option>Bat</option>
+            <option>Throw</option>
+            <option>Shuriken</option>
+            <option>Bow</option>
+            <option>Crossbow</option>
+            <option>Glove</option>
+            <option>Tonfa</option>
+            <option>Guitar</option>
+            <option>Nunchaku</option>
+            <option>Whip</option>
+        </select><br />
+        Level: <input value='17' type='number' class='Level' /><br />
+        Attack_Power: <input value='0.65' type='number' class='input Attack_Power' /><br />
+        Attack_Power_per_level: <input value='0.65' type='number' class='input Attack_Power_per_level' /><br />
+        Defense: <input value='0.45' type='number' class='input Defense' /><br />
+        Defense_per_level: <input value='0.45' type='number' class='input Defense_per_level' /><br />
+        Max_HP: <input value='0.045' type='number' class='input Max_HP' /><br />
+        Max_HP_per_level: <input value='0.045' type='number' class='input Max_HP_per_level' /><br />
+        Max_SP: <input value='0.005' type='number' class='input Max_SP' /><br />
+        HP_Regen: <input value='0.25' type='number' class='input HP_Regen' /><br />
+        HP_Regen_Percent: <input value='0.005' type='number' class='input HP_Regen_Percent' /><br />
+        SP_Regen: <input value='0.025' type='number' class='input SP_Regen' /><br />
+        SP_Regen_Percent: <input value='0.0005' type='number' class='input SP_Regen_Percent' /><br />
+        Attack_Speed: <input value='0.3' type='number' class='input Attack_Speed' /><br />
+        Attack_Speed_per_level: <input value='0.3' type='number' class='input Attack_Speed_per_level' /><br />
+        Movement_Speed: <input value='25' type='number' class='input Movement_Speed' /><br />
+        Movement_speed_while_not_in_combat: <input value='10' type='number' class='input Movement_speed_while_not_in_combat' /><br />
+        Vision_Range: <input value='1' type='number' class='input Vision_Range' /><br />
+        Critical_Strike_Chance: <input value='0.5' type='number' class='input Critical_Strike_Chance' /><br />
+        Critical_Damage: <input value='0.25' type='number' class='input Critical_Damage' /><br />
+        Critical_Damage_Reduction: <input value='0.2' type='number' class='input Critical_Damage_Reduction' /><br />
+        Cooldown_Reduction: <input value='0.9' type='number' class='input Cooldown_Reduction' /><br />
+        Life_Steal: <input value='0.5' type='number' class='input Life_Steal' /><br />
+        Attack_Range: <input value='10' type='number' class='input Attack_Range' /><br />
+        Extra_Normal_Attack_Damage: <input value='0.7' type='number' class='input Extra_Normal_Attack_Damage' /><br />
+        Extra_Normal_Attack_Damage_per_level: <input value='0.7' type='number' class='input Extra_Normal_Attack_Damage_per_level' /><br />
+        Extra_Normal_Attack_Damage_Percent: <input value='0.75' type='number' class='input Extra_Normal_Attack_Damage_Percent' /><br />
+        Normal_Attack_Damage_Reduction: <input value='0.5' type='number' class='input Normal_Attack_Damage_Reduction' /><br />
+        Skill_Amplification: <input value='0.6' type='number' class='input Skill_Amplification' /><br />
+        Skill_Amplification_per_level: <input value='0.6' type='number' class='input Skill_Amplification_per_level' /><br />
+        Skill_Amplification_Percent: <input value='0.7' type='number' class='input Skill_Amplification_Percent' /><br />
+        Skill_Amplification_Percent_per_level: <input value='0.7' type='number' class='input Skill_Amplification_Percent_per_level' /><br />
+        Skill_Damage_Reduction: <input value='0.45' type='number' class='input Skill_Damage_Reduction' /><br />
+        Skill_Damage_Reduction_Percent: <input value='0.55' type='number' class='input Skill_Damage_Reduction_Percent' /><br />
+        Armor_penetration_percent: <input value='0.7' type='number' class='input Armor_penetration_percent' /><br />
+    </div>
 </body>
 </html>
