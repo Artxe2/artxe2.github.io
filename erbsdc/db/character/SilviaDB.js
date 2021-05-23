@@ -280,7 +280,7 @@ const Silvia = {
             }
         };
     }
-    ,COMBO_Option: 'wrweqreqdqreq'
+    ,COMBO_Option: 'wereqwqraqdqerqweq'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';

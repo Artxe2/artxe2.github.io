@@ -271,7 +271,7 @@ const Barbara = {
             }
         };
     }
-    ,COMBO_Option: 'QqEearwWqaWqawqad'
+    ,COMBO_Option: 'QwWerwedwWewWewWEwWewWewWewWEwW'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';

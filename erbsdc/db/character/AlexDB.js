@@ -237,7 +237,13 @@ const Alex = {
                             damage += calcSkillDamage(character, enemy, 40 + w * 20, 0.4, 1);
                         }
                     }
-                } else if (c === 'e' || c === 'E') {
+                } else if (c === 'e') {
+                    if (e >= 0) {
+                        if (!character.isMelee) {
+                            damage += calcSkillDamage(character, enemy, 60 + e * 30, 0.4, 1);
+                        }
+                    }
+                } else if (c === 'E') {
                     if (e >= 0) {
                         if (!character.isMelee) {
                             damage += calcSkillDamage(character, enemy, 60 + e * 30, 0.4, 1);
@@ -298,7 +304,7 @@ const Alex = {
             }
         };
     }
-    ,COMBO_Option: 'qwDaReqrwDaeaa'
+    ,COMBO_Option: 'qaAeRaRwARaRArqAr'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -316,7 +322,8 @@ const Alex = {
             'q & Q: Q스킬 데미지\n' +
             'w & W: W스킬 데미지\n' +
             'w: W스킬 최대 데미지\n' +
-            'e & E: E스킬 데미지, 무기 스왑\n' +
+            'e: E스킬 데미지\n' +
+            'e: E스킬 데미지, 무기 스왑\n' +
             'r: R스킬 외곽 데미지, 재사용시 틱당 데미지\n' +
             'R: R스킬 중심 데미지, 재사용시 틱당 데미지\n' +
             't & T: 데미지 없음\n' +
