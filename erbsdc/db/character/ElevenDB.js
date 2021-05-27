@@ -162,7 +162,7 @@ const Eleven = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (rr) {
@@ -173,12 +173,12 @@ const Eleven = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (rr) {
@@ -189,7 +189,7 @@ const Eleven = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
