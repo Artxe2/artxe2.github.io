@@ -165,11 +165,11 @@ const Jackie = {
                 if (type === 'TwoHandedSword') {
                     const w = character.W_LEVEL.selectedIndex - 1;
                     if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
-                        const damage = calcSkillDamage(character, enemy, 0, (wm < 13 ? 2 : 2.5) + 0.1 + w * 0.025, 1);
+                        const damage = calcSkillDamage(character, enemy, 0, (wm < 13 ? 1.75 : 2.25) + 0.1 + w * 0.025, 1);
                         const heal = calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
                         return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + '</b>'
                     }
-                    return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1) + '</b>';
+                    return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, wm < 13 ? 1.75 : 2.25, 1) + '</b>';
                 }
                 if (type === 'DualSwords') {
                     let damage;
@@ -279,7 +279,7 @@ const Jackie = {
                 ap = 1 +
                 (tt ? jackie_tw[ t ] : 0) +
                 (ttt ? jackie_ts[ t ] : 0) +
-                stack * (dd[index] ? 0.05 + character.DIV.querySelector('.axe_d_hp').value * 0.001 : 0.015);
+                stack * (dd[index] ? 0.06 + character.DIV.querySelector('.axe_d_hp').value * 0.0012 : 0.02);
                 character.attack_power = floor(character.pure_attack_power * ap);
                 if (enemy.defense) {
                     if (enemy.character === Magnus) {
@@ -314,6 +314,13 @@ const Jackie = {
                         }
                     }
                     if (character.weapon.Type === 'DualSwords') {
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        }
                         if (bleeding[index] && ww && w >= 0) {
                             ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, c === 'a' ? 0 : 100, 1);
                             heal += calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
@@ -335,7 +342,7 @@ const Jackie = {
                             }
                         }
                     }
-                    if (stack < 5 && type === 'Axe') {
+                    if (stack < 4 && type === 'Axe') {
                         stack++;
                     }
                 } else if (c === 'q') {
@@ -463,10 +470,10 @@ const Jackie = {
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         } else if (type === 'TwoHandedSword') {
                             if (bleeding[index] && ww) {
-                                damage += calcSkillDamage(character, enemy, 0, (wm < 13 ? 2 : 2.5) + 0.1 + w * 0.025, 1);
+                                damage += calcSkillDamage(character, enemy, 0, (wm < 13 ? 1.75 : 2.25) + 0.1 + w * 0.025, 1);
                                 heal += calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
                             } else {
-                                damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1);
+                                damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1.75 : 2.25, 1);
                             }
                             damage += ba;
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);

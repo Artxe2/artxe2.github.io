@@ -81,7 +81,7 @@ const Xiukai = {
             const min = calcSkillDamage(character, enemy, 80 + e * 30 + character.max_hp * 0.02 - floor(0.3 * e) * 10, 0.5, 1);
             const max = calcSkillDamage(character, enemy, 80 + e * 30 + character.max_hp * 0.04 - floor(0.3 * e) * 10, 0.5, 1);
             const cost = 20 + e * 15;
-            const cool = 10000 / ((18 - e * 2) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((20 - e * 2) * (100 - character.cooldown_reduction));
             return min + " - <b class='damage'>" + max + "</b><b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
@@ -91,7 +91,7 @@ const Xiukai = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const stack = parseInt(character.DIV.querySelector('.xiukai_t').value);
-            const damage = calcSkillDamage(character, enemy, 20 + r * 45 + stack * 1, 0.5, 1);
+            const damage = calcSkillDamage(character, enemy, 20 + r * 45 + stack * 0.8, 0.5, 1);
             const cost = 100 + r * 20;
             return "<b class='damage'>" + damage * 6 + '</b> ( ' + damage + " x 6 ) <b> __cost: </b><b class='heal'>-" + cost + '</b>';
         }
@@ -221,7 +221,7 @@ const Xiukai = {
                         }
                         const hit = c === 'r' ? 3 : 6;
                         for (let j = 0; j < hit; j++) {
-                            damage += calcSkillDamage(character, enemy, 20 + r * 45 + stack * 1, 0.5, 1);
+                            damage += calcSkillDamage(character, enemy, 20 + r * 45 + stack * 0.8, 0.5, 1);
                             if (enemy.defense) {
                                 if (enemy.character === Magnus) {
                                     let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);

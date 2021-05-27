@@ -62,7 +62,14 @@ const Hyunwoo = {
     }
     ,Q_Option: ''
     ,W_Skill: (character, enemy) => {
-        return '';
+        const w = character.W_LEVEL.selectedIndex - 1;
+        if (character.weapon && w >= 0) {
+            const damage = baseAttackDamage(character, enemy, character.defense * 0.15, 1, character.critical_strike_chance, 1);
+            const min = baseAttackDamage(character, enemy, character.defense * 0.15, 1, 0, 1);
+            const max = baseAttackDamage(character, enemy, character.defense * 0.15, 1, 100, 1);
+            return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
+        }
+        return '-';
     }
     ,W_Option: "<b> _use</b><input type='checkbox' class='hyunwoo_w' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
@@ -70,8 +77,8 @@ const Hyunwoo = {
         if (character.weapon && e >= 0) {
             const min = calcSkillDamage(character, enemy, character.defense * 0.8, 0, 1);
             const max = calcSkillDamage(character, enemy, (enemy.max_hp ? enemy.max_hp * (0.05 + e * 0.03) : 0) + character.defense * 0.8, 0, 1);
-            const bonus = calcSkillDamage(character, enemy, 60 + e * 35 + character.defense * 0.15, 0, 1);
-            const cool = 10000 / ((18 - e * 1) * 0.75 * (100 - character.cooldown_reduction));
+            const bonus = calcSkillDamage(character, enemy, 60 + e * 35, 0, 1);
+            const cool = 10000 / ((17 - e * 1) * 0.75 * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + (max + bonus) + '</b> ( ' + min + ' ~ ' + max + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((min + max + bonus) / 2 * cool) / 100 + '</b>';
         }
         return '-';
@@ -136,13 +143,13 @@ const Hyunwoo = {
             'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
-            'W: _use "스킬 사용"\n' +
+            'W: "평균 데미지" ( "평타 데미지" - "치명타 데미지" ) _use "스킬 사용"\n' +
             'E: "합산 데미지" ( "최소 데미지" ~ "최대 데미지", "벽꿍 데미지" )\n' +
             'R: "최소 데미지" ~ "최대 데미지"\n' +
             'D: ' + skill + '\n' +
             'T: _h: "회복량"\n';
     }
-    ,COMBO_VARS: '{\"tt\":55}'
+    ,COMBO_VARS: '{\"ww\":false, \"tt\":55}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -155,7 +162,7 @@ const Hyunwoo = {
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let tt = data.vars.tt;
+        let ww = data.vars.ww, tt = data.vars.tt;
         if (character.weapon) {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
@@ -172,7 +179,7 @@ const Hyunwoo = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (tt >= 55) {
@@ -181,8 +188,9 @@ const Hyunwoo = {
                     } else {
                         tt += 5;
                     }
+                    ww = false;
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (tt >= 55) {
@@ -191,6 +199,7 @@ const Hyunwoo = {
                     } else {
                         tt += 5;
                     }
+                    ww = false;
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 100 + q * 50, 0.3, 1);
@@ -202,6 +211,7 @@ const Hyunwoo = {
                         for (let x = index; x <= index + 5 && x < de_bonus.length; x++) {
                             de_bonus[x] = db;
                         }
+                        ww = true;
                     }
                 } else if (c === 'e') {
                     if (e >= 0) {
@@ -239,7 +249,7 @@ const Hyunwoo = {
                                 enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                             }
                         }
-                        damage += calcSkillDamage(character, enemy, 60 + e * 35 + character.defense * 0.15, 0, 1);
+                        damage += calcSkillDamage(character, enemy, 60 + e * 35, 0, 1);
                         tt += 5;
                     }
                 } else if (c === 'r') {
@@ -283,6 +293,7 @@ const Hyunwoo = {
             heal: heal,
             shield: shield,
             vars: {
+                ww: ww,
                 tt: tt
             }
         };
@@ -303,7 +314,7 @@ const Hyunwoo = {
         return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
             'q & Q: Q스킬 데미지\n' +
-            'w & W: 다음 E스킬 방어력 증가\n' +
+            'w & W: 방어력 버프, 다음 평타 강화\n' +
             'e: E스킬 데미지(현재 체력 비례)\n' +
             'E: E스킬 벽꿍 데미지(현재 체력 비례)\n' +
             'r: R스킬 즉발 데미지\n' +

@@ -76,7 +76,7 @@ const Leon = {
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
-            const shield = floor(60 + w * 30 + character.attack_power * 0.3);
+            const shield = floor(60 + w * 35 + character.attack_power * 0.3);
             const wBonus = calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
             if (character.DIV.querySelector('.leon_t').checked) {
                 const tBonus = calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
@@ -91,7 +91,7 @@ const Leon = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 40, 0.35, 1);
-            const cool = 10000 / ((22 - e * 1.5) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((20 - e) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -178,7 +178,7 @@ const Leon = {
 
         const cool = (18 - w) * (100 - character.cooldown_reduction) / 100;
         if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
-            shield += floor(60 + w * 30 + character.attack_power * 0.3);
+            shield += floor(60 + w * 35 + character.attack_power * 0.3);
         }
 
         if (character.weapon) {
@@ -232,6 +232,8 @@ const Leon = {
                                 lost = 0;
                             } else if (lost > enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05))) {
                                 lost = enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05));
+                            } else {
+                                lost *= (0.1 + r * 0.05);
                             }
                             damage += calcSkillDamage(character, enemy, lost, 0, 1);
                         }

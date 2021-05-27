@@ -88,19 +88,19 @@ const Hart = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
 
-            const skill_amplification_percent = character.skill_amplification_percent;
-            character.skill_amplification_percent = round(character.pure_skill_amplification_percent);
+            const skill_amplification = character.skill_amplification;
+            character.skill_amplification = round(character.pure_skill_amplification);
 
             const sap = character.DIV.querySelector('.hart_ee').checked ? 23 : character.DIV.querySelector('.hart_e').checked ? 16 : 0;
-            character.skill_amplification_percent += sap;
+            character.skill_amplification += sap;
             const damage1 = calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
-            character.skill_amplification_percent += sap;
+            character.skill_amplification += sap;
             const damage2 = calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
-            character.skill_amplification_percent += sap;
+            character.skill_amplification += sap;
             const damage3 = calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
             const cool = 10000 / ((17 - e * 2) * (100 - character.cooldown_reduction) + 46);
 
-            character.skill_amplification_percent = skill_amplification_percent;
+            character.skill_amplification = skill_amplification;
 
             return "<b class='damage'>" + (damage1 + damage2 + damage3) + '</b> ( ' + damage1 + ', ' + damage2 + ', ' + damage3 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2 + damage3) * cool) / 100 + '</b>';
         }
@@ -124,7 +124,8 @@ const Hart = {
         if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
             const type = character.weapon.Type;
             if (type === 'Guitar') {
-                return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1.2 : 2, 1) + '</b>';
+                const wm = character.WEAPON_MASTERY.selectedIndex;
+                return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.8, 1) + '</b>';
             }
         }
         return '-'
@@ -206,8 +207,8 @@ const Hart = {
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 character.attack_power = floor(character.pure_attack_power * (1 + (ww[index] ? 0.12 + w * 0.07 : 0)));
-                character.skill_amplification_percent =
-                    round(character.pure_skill_amplification_percent + (ee[index] ? ee[index] * sap : 0));
+                character.skill_amplification =
+                    round(character.pure_skill_amplification + (ee[index] ? ee[index] * sap : 0));
                 if (enemy.defense) {
                     if (enemy.character === Magnus) {
                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -342,8 +343,8 @@ const Hart = {
                                 ee[x] = ee[index];
                             }
                         }
-                        character.skill_amplification_percent =
-                            round(character.pure_skill_amplification_percent + (ee[index] ? ee[index] * sap : 0));
+                        character.skill_amplification =
+                            round(character.pure_skill_amplification + (ee[index] ? ee[index] * sap : 0));
                         damage += calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
 
                         if (ww[index] && ww[index] === 1) {
@@ -365,7 +366,7 @@ const Hart = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Guitar') {
-                            damage += calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 1.2 : 2, 1)
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.8, 1)
                         }
                     }
                 } else if (c === 'p' || c === 'P') {

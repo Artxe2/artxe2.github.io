@@ -82,7 +82,7 @@ const Chiara = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage1 = calcSkillDamage(character, enemy, 20 + r * 7, 0.15, 1);
+            const damage1 = calcSkillDamage(character, enemy, 10 + r * 10, 0.2, 1);
             const damage2 = floor(200 + r * 100 + character.attack_power * 1);
             const heal = calcHeal(damage1 * 0.2, 1, enemy);
             return "<b class='damage'>" + (damage1 * 12 + damage2) + '</b> ( ' + damage1 + " x 12, <b class='damage'>" + damage2 + "</b> ) <b> __h/s: </b><b class='heal'>" + heal + '</b>';
@@ -184,7 +184,7 @@ const Chiara = {
                         if (stack < 4) {
                             stack++;
                         }
-                        dm = -stack * (0.02 + t * 0.02);
+                        dm = -stack * (0.03 + t * 0.02);
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
@@ -195,7 +195,7 @@ const Chiara = {
                         if (stack < 4) {
                             stack++;
                         }
-                        dm = -stack * (0.02 + t * 0.02);
+                        dm = -stack * (0.03 + t * 0.02);
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
@@ -206,7 +206,7 @@ const Chiara = {
                         if (stack < 4) {
                             stack++;
                         }
-                        dm = -stack * (0.02 + t * 0.02);
+                        dm = -stack * (0.03 + t * 0.02);
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
@@ -217,7 +217,7 @@ const Chiara = {
                         if (stack < 4) {
                             stack++;
                         }
-                        dm = -stack * (0.02 + t * 0.02);
+                        dm = -stack * (0.03 + t * 0.02);
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
@@ -236,7 +236,7 @@ const Chiara = {
                         if (stack < 4) {
                             stack++;
                         }
-                        dm = -stack * (0.02 + t * 0.02);
+                        dm = -stack * (0.03 + t * 0.02);
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
@@ -246,13 +246,13 @@ const Chiara = {
                     if (r >= 0) {
                         if (!rr) {
                             rr = true;
-                            heal += (100 + r * 100) * (1 + (1 + character.HEALTH_MASTERY.selectedIndex) * 0.01);
+                            heal += (150 + r * 75) * (1 + (1 + character.HEALTH_MASTERY.selectedIndex) * 0.01);
                         }
                         for (let j = 0; j < 3; j++) {
                             if (stack < 4) {
                                 stack++;
                             }
-                            dm = -stack * (0.02 + t * 0.02);
+                            dm = -stack * (0.03 + t * 0.02);
                             for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
                             }
@@ -267,7 +267,7 @@ const Chiara = {
                                     enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                                 }
                             }
-                            ba = calcSkillDamage(character, enemy, 20 + r * 7, 0.15, 1);
+                            ba = calcSkillDamage(character, enemy, 10 + r * 10, 0.2, 1);
                             damage += ba;
                             heal += calcHeal(ba * 0.2, 1, enemy);
                         }
@@ -277,7 +277,7 @@ const Chiara = {
                         if (stack < 4) {
                             stack++;
                         }
-                        dm = -stack * (0.02 + t * 0.02);
+                        dm = -stack * (0.03 + t * 0.02);
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
@@ -289,7 +289,7 @@ const Chiara = {
                             if (stack < 4) {
                                 stack++;
                             }
-                            dm = -stack * (0.02 + t * 0.02);
+                            dm = -stack * (0.03 + t * 0.02);
                             for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
                             }

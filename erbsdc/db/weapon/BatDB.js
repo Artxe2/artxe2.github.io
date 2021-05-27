@@ -31,8 +31,8 @@ const Bat = [
          Type: "Bat"
         ,Name: "Umbrella"
         ,Attack_Power: 30
-        ,Skill_Amplification: 14
-        ,Title: "Umbrella\n\nAttack Power +30\nSkill Amplification +14"
+        ,Extra_Skill_Damage: 14
+        ,Title: "Umbrella\n\nAttack Power +30\nExtra Skill Damage +14"
         ,Rarity: "Rare"
     }
     ,{
@@ -69,8 +69,8 @@ const Bat = [
         ,Name: "Spy_Umbrella"
         ,Attack_Power: 65
         ,SP_Regen: 0.8
-        ,Skill_Amplification: 25
-        ,Title: "Spy Umbrella\n\nAttack Power +65\nSP Regen +0.8\nSkill Amplification +25"
+        ,Extra_Skill_Damage: 25
+        ,Title: "Spy Umbrella\n\nAttack Power +65\nSP Regen +0.8\nExtra Skill Damage +25"
         ,Rarity: "Epic"
     }
     ,{

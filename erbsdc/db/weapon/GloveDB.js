@@ -73,8 +73,8 @@ const Glove = [
          Type: "Glove"
         ,Name: "Phoenix_Gloves"
         ,Attack_Power: 27
-        ,Skill_Amplification: 30
-        ,Title: "Phoenix Gloves\n\nAttack Power +27\nSkill Amplification +30"
+        ,Extra_Skill_Damage: 30
+        ,Title: "Phoenix Gloves\n\nAttack Power +27\nExtra Skill Damage +30"
         ,Rarity: "Rare"
     }
     ,{
@@ -110,8 +110,8 @@ const Glove = [
         ,Name: "Frost_Petal_Hand"
         ,Attack_Power: 35
         ,Cooldown_Reduction: 15
-        ,Skill_Amplification: 38
-        ,Title: "Frost Petal Hand\n\nAttack Power +35\nCooldown Reduction +15%\nSkill Amplification +38"
+        ,Extra_Skill_Damage: 38
+        ,Title: "Frost Petal Hand\n\nAttack Power +35\nCooldown Reduction +15%\nExtra Skill Damage +38"
         ,Rarity: "Epic"
     }
     ,{

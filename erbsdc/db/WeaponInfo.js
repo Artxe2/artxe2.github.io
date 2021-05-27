@@ -3,16 +3,16 @@ const WeaponInfo = {
     /*[
         weapon_mastery_attack_speed
         weapon_mastery_extra_normal_attack_damage_percent
-        weapon_mastery_skill_amplification_percent
+        weapon_mastery_skill_amplification
         weapon_attack_range
         weapon_attack_speed
     ]*/
      Dagger:            [2.7, 5.0, 1.2, 1.00, 0.580]
-    ,TwoHandedSword:    [3.3, 4.6, 1.5, 1.60, 0.560]
-    ,Axe:               [0.3, 4.0, 2.0, 1.15, 0.455]
+    ,TwoHandedSword:    [3.3, 4.3, 1.5, 1.60, 0.560]
+    ,Axe:               [0.3, 4.0, 2.0, 1.35, 0.455]
     ,DualSwords:        [2.0, 2.2, 1.3, 1.10, 0.470]
     ,Pistol:            [3.3, 4.1, 2.3, 4.20, 0.505]
-    ,AssaultRifle:      [4.0, 1.5, 1.5, 5.00, 0.550]
+    ,AssaultRifle:      [3.7, 1.5, 1.5, 5.00, 0.550]
     ,SniperRifle:       [0.0, 4.8, 2.2, 7.20, 0.430]
     ,Rapier:            [2.5, 4.0, 1.8, 1.20, 0.615]
     ,Spear:             [0.7, 3.8, 1.2, 2.15, 0.445]
@@ -25,7 +25,7 @@ const WeaponInfo = {
     ,Glove:             [3.3, 2.7, 1.5, 0.85, 0.630]
     ,Tonfa:             [1.8, 4.1, 3.7, 1.15, 0.500]
     ,Guitar:            [1.5, 2.0, 2.2, 3.85, 0.430]
-    ,Nunchaku:          [1.9, 3.2, 3.2, 1.30, 0.570]
+    ,Nunchaku:          [2.1, 3.2, 3.2, 1.30, 0.570]
     ,Whip:              [1.8, 3.0, 2.0, 2.35, 0.550]
 }
 
@@ -58,8 +58,8 @@ const WeaponInfo = {
 //    ,Extra_Normal_Attack_Damage_per_level: 0
 //    ,Extra_Normal_Attack_Damage_Percent: 0
 //    ,Normal_Attack_Damage_Reduction: 0
-//    ,Skill_Amplification: 0
-//    ,Skill_Amplification_per_level: 0
+//    ,Extra_Skill_Damage: 0
+//    ,Extra_Skill_Damage_per_level: 0
 //    ,Skill_Amplification_Percent: 0
 //    ,Skill_Amplification_Percent_per_level: 0
 //    ,Skill_Damage_Reduction: 0

@@ -88,9 +88,9 @@ const Bernice = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage1 = calcSkillDamage(character, enemy, 150 + r * 50, 0.5, 1);
-            const damage2 = calcSkillDamage(character, enemy, 100 + r * 50, 0.5, 1);
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( [ ' + damage1 + ', ' + damage2 + ' ] x 4 )';
+            const damage1 = calcSkillDamage(character, enemy, 150 + r * 50, 0.7, 1);
+            const damage2 = calcSkillDamage(character, enemy, 100 + r * 50, 0.3, 1);
+            return "<b class='damage'>" + damage1 + '</b> ( [ ' + damage1 + ', ' + damage2 + ' ] x 4 )';
         }
         return '-';
     }
@@ -152,7 +152,7 @@ const Bernice = {
             'Q: "최소 데미지" - "최대 데미지"\n' +
             'W: "스킬 데미지" ( "스킬 데미지" x "장전 수" )\n' +
             'E: _use "스킬 사용"\n' +
-            'R: "합산 데미지" ( [ "속박 데미지", "폭발 데미지" ] x 전이 수 )\n' +
+            'R: "속박 데미지" ( [ "속박 데미지", "폭발 데미지" ] x 전이 수 )\n' +
             'D: ' + skill + '\n' +
             'T: "데미지 없음"\n';
     }
@@ -216,15 +216,7 @@ const Bernice = {
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 150 + r * 50, 0.5, 1);
-                        if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                            if (lost < 0) {
-                                lost = 0;
-                            }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
-                        }
-                        damage += calcSkillDamage(character, enemy, 100 + r * 50, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 150 + r * 50, 0.7, 1);
                         cc = true;
                     }
                 } else if (c === 'd' || c === 'D') {

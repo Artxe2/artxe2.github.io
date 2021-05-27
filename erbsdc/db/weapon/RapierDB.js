@@ -27,6 +27,14 @@ const Rapier = [
     }
     ,{
          Type: "Rapier"
+        ,Name: "Estoc"
+        ,Attack_Power: 23
+        ,Extra_Skill_Damage: 12
+        ,Title: "Estoc\n\nAttack Power +23\nExtra Skill Damage +12"
+        ,Rarity: "Rare"
+    }
+    ,{
+         Type: "Rapier"
         ,Name: "Sword_of_Justice"
         ,Attack_Power: 30
         ,HP_Regen: 1.5
@@ -73,11 +81,21 @@ const Rapier = [
     ,{
          Type: "Rapier"
         ,Name: "Joyeuse"
-        ,Attack_Power: 69
+        ,Attack_Power: 73
         ,Attack_Speed_per_level: 1
         ,Movement_Speed: 0.15
-        ,Critical_Damage: 15
-        ,Title: "Joyeuse\n\nAttack Power +69\nAttack Speed per level +1%\nMovement Speed +0.15\nCritical Damage +15%"
+        ,Critical_Damage: 12
+        ,Title: "Joyeuse\n\nAttack Power +73\nAttack Speed per level +1%\nMovement Speed +0.15\nCritical Damage +12%"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Rapier"
+        ,Name: "Red_Panther"
+        ,Attack_Power: 46
+        ,Max_HP: 225
+        ,SP_Regen_Percent: 50
+        ,Extra_Skill_Damage: 20
+        ,Title: "Red Panther\n\nAttack Power +46\nMax HP +225\nSP Regen +50%\nExtra Skill Damage +20"
         ,Rarity: "Epic"
     }
     ,{

@@ -31,9 +31,9 @@ const Hammer = [
          Type: "Hammer"
         ,Name: "Fang_Mace"
         ,Attack_Power: 55
-        ,Skill_Amplification: 25
-        ,Skill_Amplification_per_level: 1
-        ,Title: "Fang Mace\n\nAttack Power +55\nSkill Amplification +25\nSkill Amplification per level +1"
+        ,Extra_Skill_Damage: 25
+        ,Extra_Skill_Damage_per_level: 1
+        ,Title: "Fang Mace\n\nAttack Power +55\nExtra Skill Damage +25\nSkill Amplification per level +1"
         ,Rarity: "Epic"
     }
     ,{

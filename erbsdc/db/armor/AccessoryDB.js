@@ -24,8 +24,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Fan"
-        ,Skill_Amplification: 9
-        ,Title: "Fan\n\nSkill Amplification +9"
+        ,Extra_Skill_Damage: 9
+        ,Title: "Fan\n\nExtra Skill Damage +9"
         ,Rarity: "Common"
     }
     ,{
@@ -129,8 +129,8 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Gilded_Quill_Fan"
-        ,Skill_Amplification: 12
-        ,Title: "Gilded Quill Fan\n\nSkill Amplification +12\nHealing Reductions (Skills) -25%"
+        ,Extra_Skill_Damage: 12
+        ,Title: "Gilded Quill Fan\n\nExtra Skill Damage +12\nHealing Reductions (Skills) -25%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -161,8 +161,8 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "White_Crane_Fan"
         ,Movement_Speed: 0.12
-        ,Skill_Amplification: 18
-        ,Title: "White Crane Fan\n\nMovement Speed +0.12\nSkill Amplification +18\nHealing Reduction (Skills) -40 / 25%"
+        ,Extra_Skill_Damage: 18
+        ,Title: "White Crane Fan\n\nMovement Speed +0.12\nExtra Skill Damage +18\nHealing Reduction (Skills) -40 / 25%"
         ,Rarity: "Rare"
     }
     ,{
@@ -178,8 +178,8 @@ const Accessory = [
         ,Name: "Uchiwa"
         ,SP_Regen_Percent: 80
         ,Life_Steal: 14
-        ,Skill_Amplification: 23
-        ,Title: "Uchiwa\n\nSP Regen +80%\nLife Steal +14%\nSkill Amplification +23"
+        ,Extra_Skill_Damage: 23
+        ,Title: "Uchiwa\n\nSP Regen +80%\nLife Steal +14%\nExtra Skill Damage +23"
         ,Rarity: "Rare"
     }
     ,{
@@ -219,10 +219,10 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Hawkeye"
-        ,Attack_Power: 8
+        ,Attack_Power: 10
         ,Vision_Range: 1.5
         ,Attack_Range: 0.5
-        ,Title: "Hawkeye\n\nAttack Power +8\nVision_Range +1.5\nAttack Range +0.5"
+        ,Title: "Hawkeye\n\nAttack Power +10\nVision_Range +1.5\nAttack Range +0.5"
         ,Rarity: "Rare"
     }
     ,{
@@ -238,8 +238,8 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Schrodinger`s_Box"
         ,Max_HP: 360
-        ,Skill_Amplification: 7
-        ,Title: "Schrodinger`s Box\n\nMax HP +360\nSkill Amplification +7"
+        ,Extra_Skill_Damage: 7
+        ,Title: "Schrodinger`s Box\n\nMax HP +360\nExtra Skill Damage +7"
         ,Rarity: "Rare"
     }
     ,{
@@ -257,8 +257,8 @@ const Accessory = [
         ,Name: "Glacial_Ice"
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
-        ,Skill_Amplification: 18
-        ,Title: "Glacial Ice\n\nHP Regen +1.5\nSP Regen +1.5\n Skill Amplification +18"
+        ,Extra_Skill_Damage: 18
+        ,Title: "Glacial Ice\n\nHP Regen +1.5\nSP Regen +1.5\n Extra Skill Damage +18"
         ,Rarity: "Epic"
     }
     ,{
@@ -276,8 +276,8 @@ const Accessory = [
         ,Defense: 15
         ,SP_Regen_Percent: 180
         ,Vision_Range: 1.5
-        ,Skill_Damage_Reduction: 18
-        ,Title: "Lunar Embrace\n\nDefense +15\nSP Regen +180%\nVision Range +1.5\nSkill Damage Reduction +18"
+        ,Skill_Damage_Reduction: 20
+        ,Title: "Lunar Embrace\n\nDefense +15\nSP Regen +180%\nVision Range +1.5\nSkill Damage Reduction +20"
         ,Rarity: "Epic"
     }
     ,{

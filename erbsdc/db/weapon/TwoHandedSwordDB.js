@@ -55,9 +55,9 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Plasma_Sword"
-        ,Attack_Power: 75
-        ,Vision_Range: 3
-        ,Title: "Plasma Sword\n\nAttack Power +75\nVision Range +3"
+        ,Attack_Power: 60
+        ,Vision_Range: 2
+        ,Title: "Plasma Sword\n\nAttack Power +60\nVision Range +2"
         ,Rarity: "Rare"
     }
     ,{
@@ -99,6 +99,15 @@ const TwoHandedSword = [
     }
     ,{
          Type: "TwoHandedSword"
+        ,Name: "Aurora_Longsword"
+        ,Attack_Power: 75
+        ,Vision_Range: 2
+        ,Skill_Amplification_Percent: 12
+        ,Title: "Aurora Longsword\n\nAttack Power +75\nVision Range +2\nSkill Amplification +12%"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "TwoHandedSword"
         ,Name: "Laevateinn"
         ,Attack_Power: 78
         ,HP_Regen:2
@@ -111,10 +120,10 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Monohoshizao"
-        ,Attack_Power: 56
+        ,Attack_Power: 54
         ,Attack_Power_per_level: 2
         ,Life_Steal: 25
-        ,Title: "Monohoshizao\n\nAttack Power +56\nAttack Power per level +2\nLife Steal +25%"
+        ,Title: "Monohoshizao\n\nAttack Power +54\nAttack Power per level +2\nLife Steal +25%"
         ,Rarity: "Legendary"
     }
     ,{

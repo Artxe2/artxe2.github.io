@@ -42,10 +42,10 @@ const Tonfa = [
          Type: "Tonfa"
         ,Name: "Mai_Sok"
         ,Attack_Power: 63
-        ,Defense: 15
+        ,Defense: 18
         ,Defense_per_level: 1
         ,HP_Regen_Percent: 100
-        ,Title: "Mai Sok\n\nAttack Power +63\nDefense +15\nDefense per level +1\nHP Regen +100%"
+        ,Title: "Mai Sok\n\nAttack Power +63\nDefense +18\nDefense per level +1\nHP Regen +100%"
         ,Rarity: "Epic"
     }
     ,{

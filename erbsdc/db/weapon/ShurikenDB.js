@@ -81,8 +81,8 @@ const Shuriken = [
         ,Name: "Apricot_Flower_Tag"
         ,Attack_Power: 17
         ,Cooldown_Reduction: 10
-        ,Extra_Normal_Attack_Damage: 30
-        ,Title: "Apricot Flower Tag\n\nAttack Power +17\nCooldown Reduction +10%\nExtra Normal Attack Damage +30"
+        ,Extra_Normal_Attack_Damage: 25
+        ,Title: "Apricot Flower Tag\n\nAttack Power +17\nCooldown Reduction +10%\nExtra Normal Attack Damage +25"
         ,Rarity: "Rare"
     }
     ,{
@@ -90,8 +90,8 @@ const Shuriken = [
         ,Name: "Venom_Dart"
         ,Attack_Power: 55
         ,Critical_Damage: 20
-        ,Skill_Amplification: 15
-        ,Title: "Venom Dart\n\nAttack Power +55\nCritical Damage +20%\nSkill Amplification +15"
+        ,Extra_Skill_Damage: 15
+        ,Title: "Venom Dart\n\nAttack Power +55\nCritical Damage +20%\nExtra Skill Damage +15"
         ,Rarity: "Rare"
     }
     ,{
@@ -116,19 +116,19 @@ const Shuriken = [
         ,Name: "Cards_of_Tyranny"
         ,Attack_Power: 49
         ,Attack_Speed: 40
-        ,Critical_Strike_Chance: 25
+        ,Critical_Strike_Chance: 15
         ,Critical_Damage: 10
-        ,Title: "Cards of Tyranny\n\nAttack Power +49\nAttack Speed +40%\nCritical Strike Chance +25%\nCritical Damage +10%"
+        ,Title: "Cards of Tyranny\n\nAttack Power +49\nAttack Speed +40%\nCritical Strike Chance +15%\nCritical Damage +10%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Shuriken"
         ,Name: "Mystic_Jade_Charm"
         ,Attack_Power: 60
-        ,Skill_Amplification: 5
-        ,Skill_Amplification_per_level: 1
+        ,Extra_Skill_Damage: 5
+        ,Extra_Skill_Damage_per_level: 1
         ,Skill_Amplification_Percent: 15
-        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nSkill Amplification +5\nSkill Amplification per level +1\nSkill Amplification +15%"
+        ,Title: "Mystic Jade Charm\n\nAttack Power +60\nExtra Skill Damage +5\nSkill Amplification per level +1\nSkill Amplification +15%"
         ,Rarity: "Epic"
     }
     ,{
@@ -136,9 +136,9 @@ const Shuriken = [
         ,Name: "Fuhma_Shuriken"
         ,Attack_Power: 58
         ,SP_Regen: 0.6
-        ,Cooldown_Reduction: 12
+        ,Cooldown_Reduction: 10
         ,Extra_Normal_Attack_Damage: 35
-        ,Title: "Fuhma Shuriken\n\nAttack Power +58\nSP Regen 0.6\nCooldown Reduction +12%\nExtra Normal Attack Damage +35"
+        ,Title: "Fuhma Shuriken\n\nAttack Power +58\nSP Regen 0.6\nCooldown Reduction +10%\nExtra Normal Attack Damage +35"
         ,Rarity: "Epic"
     }
     ,{
@@ -146,8 +146,8 @@ const Shuriken = [
         ,Name: "Frost_Venom_Dart"
         ,Attack_Power: 80
         ,Critical_Damage: 25
-        ,Skill_Amplification: 20
-        ,Title: "Frost Venom Dart\n\nAttack Power +80\nCritical Damage +25%\nSkill Amplification +20"
+        ,Extra_Skill_Damage: 20
+        ,Title: "Frost Venom Dart\n\nAttack Power +80\nCritical Damage +25%\nExtra Skill Damage +20"
         ,Rarity: "Epic"
     }
     ,{
@@ -155,8 +155,8 @@ const Shuriken = [
         ,Name: "Azure_Dagger"
         ,Attack_Power: 20
         ,Extra_Normal_Attack_Damage: 33
-        ,Skill_Amplification: 20
-        ,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +33\nSkill Amplification +20"
+        ,Extra_Skill_Damage: 20
+        ,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +33\nExtra Skill Damage +20"
         ,Rarity: "Epic"
     }
     ,{
@@ -198,8 +198,8 @@ const Shuriken = [
         ,Attack_Power: 75
         ,Critical_Damage: 30
         ,Extra_Normal_Attack_Damage: 140
-        ,Skill_Amplification: 30
-        ,Title: "Petal Torrent\n\nAttack Power +75\nCritical Damage +30%\nExtra Normal Attack Damage +140\nSkill Amplification +30"
+        ,Extra_Skill_Damage: 30
+        ,Title: "Petal Torrent\n\nAttack Power +75\nCritical Damage +30%\nExtra Normal Attack Damage +140\nExtra Skill Damage +30"
         ,Rarity: "Legendary"
     }
 ];

@@ -83,8 +83,8 @@ function calcHeal(heal, ps, enemy) {
 
 function calcSkillDamage(character, enemy, base, coe, onhit) {
     return floor((((base + character.attack_power * coe) / (1 + (!enemy.defense ? 0 : (enemy.defense * (1 - character.armer_penetration_percent / 100)) / 100))) *
-        (1 + (character.skill_amplification_percent - (!enemy.skill_damage_reduction_percent ? 0 : enemy.skill_damage_reduction_percent)) / 100) +
-        (character.skill_amplification - (!enemy.skill_damage_reduction ? 0 : enemy.skill_damage_reduction)) * onhit) *
+        (1 + (character.skill_amplification - (!enemy.skill_damage_reduction_percent ? 0 : enemy.skill_damage_reduction_percent)) / 100) +
+        (character.extra_skill_damage - (!enemy.skill_damage_reduction ? 0 : enemy.skill_damage_reduction)) * onhit) *
         (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *
         (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)));
 }
@@ -254,15 +254,15 @@ function simulateCombo() {
 
     c0.attack_power = floor(c0.pure_attack_power);
     c0.critical_damage = c0.pure_critical_damage;
-    c0.skill_amplification = round(c0.pure_skill_amplification, 1);
-    c0.skill_amplification_percent = round(c0.pure_skill_amplification_percent);
+    c0.extra_skill_damage = round(c0.pure_extra_skill_damage, 1);
+    c0.skill_amplification = round(c0.pure_skill_amplification);
     c0.defense = floor(c0.pure_defense);
     c0.max_hp = floor(c0.pure_max_hp);
 
     c1.attack_power = floor(c1.pure_attack_power);
     c1.critical_damage = c1.pure_critical_damage;
-    c1.skill_amplification = round(c1.pure_skill_amplification, 1);
-    c1.skill_amplification_percent = round(c1.pure_skill_amplification_percent);
+    c1.extra_skill_damage = round(c1.pure_extra_skill_damage, 1);
+    c1.skill_amplification = round(c1.pure_skill_amplification);
     c1.defense = floor(c1.pure_defense);
     c1.max_hp = floor(c1.pure_max_hp);
 
@@ -358,15 +358,15 @@ function simulateCombo() {
     // c0.heal_reduction = heal_reduction0;
     // c0.attack_power = attack_power0;
     // c0.critical_damage = critical_damage0;
+    // c0.extra_skill_damage = extra_skill_damage0;
     // c0.skill_amplification = skill_amplification0;
-    // c0.skill_amplification_percent = skill_amplification_percent0;
     // c0.defense = defense0;
 
     // c1.heal_reduction = heal_reduction1;
     // c1.attack_power = attack_power1;
     // c1.critical_damage = critical_damage1;
+    // c1.extra_skill_damage = extra_skill_damage1;
     // c1.skill_amplification = skill_amplification1;
-    // c1.skill_amplification_percent = skill_amplification_percent1;
     // c1.defense = defense1;
 
     if (c0.changeWeapon) {
@@ -419,7 +419,7 @@ function swapWeapon(character) {
 
     character.weapon_mastery_attack_speed = WeaponInfo[character.weapon.Type][0];
     character.weapon_mastery_extra_normal_attack_damage_percent = WeaponInfo[character.weapon.Type][1];
-    character.weapon_mastery_skill_amplification_percent = WeaponInfo[character.weapon.Type][2];
+    character.weapon_mastery_skill_amplification = WeaponInfo[character.weapon.Type][2];
     character.weapon_attack_range = WeaponInfo[character.weapon.Type][3];
     character.weapon_attack_speed = WeaponInfo[character.weapon.Type][4];
 
@@ -429,7 +429,7 @@ function swapWeapon(character) {
 
     character.attack_power = floor(character.pure_attack_power);
     character.critical_damage = character.pure_critical_damage;
-    character.skill_amplification = round(character.pure_skill_amplification, 1);
-    character.skill_amplification_percent = round(character.pure_skill_amplification_percent);
+    character.extra_skill_damage = round(character.pure_extra_skill_damage, 1);
+    character.skill_amplification = round(character.pure_skill_amplification);
     character.defense = floor(character.pure_defense);
 }

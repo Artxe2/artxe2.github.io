@@ -63,8 +63,8 @@ const Pistol = [
         ,Attack_Power: 38
         ,Attack_Speed: 15
         ,Movement_Speed: 0.1
-        ,Skill_Amplification: 42
-        ,Title: "Devil`s Marksman\n\nAttack Power +38\nAttack Speed +15%\nMovement Speed +0.1\nSkill Amplification +42"
+        ,Extra_Skill_Damage: 42
+        ,Title: "Devil`s Marksman\n\nAttack Power +38\nAttack Speed +15%\nMovement Speed +0.1\nExtra Skill Damage +42"
         ,Rarity: "Epic"
         ,Ammo: 7
     }
@@ -105,10 +105,11 @@ const Pistol = [
     ,{
          Type: "Pistol"
         ,Name: "Kelte"
-        ,Attack_Power: 115
+        ,Attack_Power: 108
         ,Movement_Speed: 0.2
         ,Vision_Range: 2
-        ,Title: "Kelte\n\nAttack Power +115\nMovement Speed +0.2\nVision Range +2"
+        ,Armor_penetration_percent: 10
+        ,Title: "Kelte\n\nAttack Power +115\nMovement Speed +0.2\nVision Range +2\nArmor_penetration_percent (%) +10%"
         ,Rarity: "Legendary"
         ,Ammo: 10
     }

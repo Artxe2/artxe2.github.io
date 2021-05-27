@@ -9,8 +9,8 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Bamboo_Spear"
-        ,Attack_Power: 37
-        ,Title: "Bamboo Spear\n\nAttack Power +37"
+        ,Attack_Power: 32
+        ,Title: "Bamboo Spear\n\nAttack Power +32"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -23,17 +23,15 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Pike"
-        ,Attack_Power: 53
-        ,Movement_Speed: -0.1
-        ,Title: "Pike\n\nAttack Power +53\nMovement Speed -0.1"
+        ,Attack_Power: 45
+        ,Title: "Pike\n\nAttack Power +45"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Spear"
         ,Name: "Halberd_Axe"
-        ,Attack_Power: 85
-        ,Movement_Speed: -0.1
-        ,Title: "Halberd Axe\n\nAttack Power +85\nMovement Speed -0.1"
+        ,Attack_Power: 70
+        ,Title: "Halberd Axe\n\nAttack Power +70"
         ,Rarity: "Rare"
     }
     ,{
@@ -65,17 +63,18 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Cosmic_Bident"
-        ,Attack_Power: 141
-        ,Title: "Cosmic Bident\n\nAttack Power +141"
+        ,Attack_Power: 130
+        ,Attack_Speed_per_level: 1
+        ,Title: "Cosmic Bident\n\nAttack Power +130\nAttack Speed per level +1%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Spear"
         ,Name: "Lance_of_Poseidon"
         ,Attack_Power: 90
-        ,Cooldown_Reduction: 7
+        ,Cooldown_Reduction: 5
         ,Skill_Amplification_Percent: 21
-        ,Title: "Lance of Poseidon\n\nAttack Power +90\nCooldown Reduction +7%\nSkill Amplification +21%"
+        ,Title: "Lance of Poseidon\n\nAttack Power +90\nCooldown Reduction +5%\nSkill Amplification +21%"
         ,Rarity: "Epic"
     }
     ,{
@@ -83,9 +82,9 @@ const Spear = [
         ,Name: "Fangtian_Huaji"
         ,Attack_Power: 84
         ,Movement_Speed: -0.07
-        ,Skill_Amplification: 21
-        ,Skill_Amplification_per_level: 1
-        ,Title: "Fangtian Huaji\n\nAttack Power +84\nMovement Speed -0.07\nSkill Amplification +21\nSkill Amplification per level +1\n Healing Reduction (Skills) -40%"
+        ,Extra_Skill_Damage: 21
+        ,Extra_Skill_Damage_per_level: 1
+        ,Title: "Fangtian Huaji\n\nAttack Power +84\nMovement Speed -0.07\nExtra Skill Damage +21\nSkill Amplification per level +1\n Healing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{

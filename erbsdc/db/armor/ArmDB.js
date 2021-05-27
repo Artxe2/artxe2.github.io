@@ -65,16 +65,15 @@ const Arm = [
         ,Name: "Golden_Bracelet"
         ,Max_SP: 220
         ,Skill_Amplification_Percent: 12
-        ,Title: "Golden Bracelet\n\nMax SP +220\nSkill Amplification +12%"
+        ,Title: "Golden Bracelet\n\nMax SP +220\nExtra Skill Damage +12%"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Arm"
         ,Name: "Bazuband"
-        ,Defense: 25
-        ,Critical_Damage_Reduction: 6
+        ,Defense: 28
         ,Normal_Attack_Damage_Reduction: 8
-        ,Title: "Bazuband\n\nDefense +25\nCritical Damage Reduction + 6%\nNormal Attack Damage Reduction +8"
+        ,Title: "Bazuband\n\nDefense +28\nNormal Attack Damage Reduction +8"
         ,Rarity: "Rare"
     }
     ,{
@@ -97,10 +96,9 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Sword_Stopper"
-        ,Defense: 33
-        ,Critical_Damage_Reduction: 8
-        ,Normal_Attack_Damage_Reduction: 8
-        ,Title: "Sword Stopper\n\nDefense +33\nCritical Damage Reduction + 8%\nNormal Attack Damage Reduction +8\nHealing Reduction (Normal Attacks) -40%"
+        ,Defense: 36
+        ,Normal_Attack_Damage_Reduction: 12
+        ,Title: "Sword Stopper\n\nDefense +36\nNormal Attack Damage Reduction +12\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -146,9 +144,9 @@ const Arm = [
          Type: "Arm"
         ,Name: "Sword_of_Shah_Jahan"
         ,Attack_Power: 30
-        ,Max_HP: 300
+        ,Max_HP: 245
         ,Normal_Attack_Damage_Reduction: 2
-        ,Title: "Sword of Shah Jahan\n\nAttack Power +30\nMax HP +300\nNormal Attack Damage Reduction +2"
+        ,Title: "Sword of Shah Jahan\n\nAttack Power +30\nMax HP +245\nNormal Attack Damage Reduction +2"
         ,Rarity: "Epic"
     }
     ,{
@@ -175,7 +173,7 @@ const Arm = [
        ,Name: "Tindalos_Band"
        ,Skill_Amplification_Percent: 12
        ,Cooldown_Reduction: 12
-       ,Title: "Tindalos Band\n\nCooldown Reduction +12%\nSkill Amplification +12%"
+       ,Title: "Tindalos Band\n\nCooldown Reduction +12%\nExtra Skill Damage +12%"
        ,Rarity: "Epic"
    }
     ,{
@@ -186,8 +184,8 @@ const Arm = [
         ,Max_SP: 250
         ,HP_Regen: 1.5
         ,SP_Regen: 1.5
-        ,Skill_Amplification: 27
-        ,Title: "Bracelet of Skadi\n\nMax HP +100\nMax HP per level +10\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nSkill Amplification +27"
+        ,Extra_Skill_Damage: 27
+        ,Title: "Bracelet of Skadi\n\nMax HP +100\nMax HP per level +10\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nExtra Skill Damage +27"
         ,Rarity: "Legendary"
     }
     ,{
@@ -205,7 +203,8 @@ const Arm = [
         ,Attack_Power:45
         ,Defense: 35
         ,HP_Regen: 1
-        ,Title: "Auto-arms\n\nAttack Power +45\nDefense +35\nHP Regen +1"
+        ,Critical_Damage_Reduction: 6
+        ,Title: "Auto-arms\n\nAttack Power +45\nDefense +35\nHP Regen +1\nCritical Damage Reduction +6%"
         ,Rarity: "Legendary"
     }
 ];

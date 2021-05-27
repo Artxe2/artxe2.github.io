@@ -1,7 +1,7 @@
 'use strict';
 const Nadine = {
-     Attack_Power: 32
-    ,Attack_Power_Growth: 2.2
+     Attack_Power: 26//
+    ,Attack_Power_Growth: 2.0//
     ,Health: 635
     ,Health_Growth: 57
     ,Health_Regen: 0.4
@@ -103,7 +103,7 @@ const Nadine = {
                 return "<b class='damage'>" + min + ' - ' + max + '</b>';
             }
             if (type === 'Crossbow') {
-                const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1);
+                const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.8 : 1.2, 1);
                 return "<b class='damage'>" + damage * 2 + '</b> ( ' + damage + ', ' + damage + ' )';
             }
         }
@@ -224,7 +224,7 @@ const Nadine = {
                         if (type === 'Bow') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 150 : 250, 1, 1);
                         } else if (type === 'Crossbow') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1);
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.8 : 1.2, 1);
                         }
                     }
                 } else if (c === 'D') {
@@ -232,7 +232,7 @@ const Nadine = {
                         if (type === 'Bow') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 300 : 500, 2, 1);
                         } else if (type === 'Crossbow') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.6 : 1, 1) * 2;
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 0.8 : 1.2, 1) * 2;
                         }
                     }
                 } else if (c === 'p' || c === 'P') {

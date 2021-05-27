@@ -65,7 +65,7 @@ const Emma = {
             const e = character.E_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 60 + w * 60, 0.75, 1);
             const heal = calcHeal((60 + w * 10) * (0.12 + e * 0.02), 1, enemy);
-            const cool = 10000 / ((11 - w * 1) * (100 - character.cooldown_reduction) - 279);
+            const cool = 10000 / ((11 - w * 1) * (100 - character.cooldown_reduction) - 179);
             return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';

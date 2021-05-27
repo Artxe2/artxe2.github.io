@@ -41,34 +41,34 @@
             width: 60px;
         }
     </style>
-    <script type="text/javascript" src='../db/armor/AccessoryDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/armor/ArmDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/armor/ChestDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/armor/HeadDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/armor/LegDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/AssaultRifleDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/AxeDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/BatDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/BowDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/CrossbowDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/DaggerDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/DualSwordsDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/GloveDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/GuitarDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/HammerDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/NunchakuDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/PistolDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/RapierDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/ShurikenDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/SniperRifleDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/SpearDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/ThrowsDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/TonfaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/TwoHandedSwordDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='../db/weapon/WhipDB.js?v0.32.1.2'></script>
+    <script type="text/javascript" src='../db/armor/AccessoryDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/armor/ArmDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/armor/ChestDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/armor/HeadDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/armor/LegDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/AssaultRifleDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/AxeDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/BatDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/BowDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/CrossbowDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/DaggerDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/DualSwordsDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/GloveDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/GuitarDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/HammerDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/NunchakuDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/PistolDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/RapierDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/ShurikenDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/SniperRifleDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/SpearDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/ThrowsDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/TonfaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/TwoHandedSwordDB.js?210527-2317'></script>
+    <script type="text/javascript" src='../db/weapon/WhipDB.js?210527-2317'></script>
     <script type="text/javascript">
 
-        const IMG_PATH = 'https://cdn.jsdelivr.net/gh/artxe2/Artxe2.github.io@v0.32.1.2/erbsdc/img/';
+        const IMG_PATH = 'https://cdn.jsdelivr.net/gh/artxe2/Artxe2.github.io/erbsdc/img/';
 
         calcEquipTier = () => {
             const items = [];
@@ -459,10 +459,10 @@
                 round(i.Extra_Normal_Attack_Damage_Percent * document.querySelector('.Extra_Normal_Attack_Damage_Percent').value, 2) : 0) +
             (i.Normal_Attack_Damage_Reduction ?
                 round(i.Normal_Attack_Damage_Reduction * document.querySelector('.Normal_Attack_Damage_Reduction').value, 2) : 0) +
-            (i.Skill_Amplification ?
-                round(i.Skill_Amplification * document.querySelector('.Skill_Amplification').value, 2) : 0) +
-            (i.Skill_Amplification_per_level ?
-                round(i.Skill_Amplification_per_level * document.querySelector('.Skill_Amplification_per_level').value * level, 2) : 0) +
+            (i.Extra_Skill_Damage ?
+                round(i.Extra_Skill_Damage * document.querySelector('.Extra_Skill_Damage').value, 2) : 0) +
+            (i.Extra_Skill_Damage_per_level ?
+                round(i.Extra_Skill_Damage_per_level * document.querySelector('.Extra_Skill_Damage_per_level').value * level, 2) : 0) +
             (i.Skill_Amplification_Percent ?
                 round(i.Skill_Amplification_Percent * document.querySelector('.Skill_Amplification_Percent').value, 2) : 0) +
             (i.Skill_Amplification_Percent_per_level ?
@@ -576,8 +576,8 @@
         레벨 당 기본 공격 추가 피해: <input value='1.2' type='number' class='input Extra_Normal_Attack_Damage_per_level' /><br />
         기본 공격 추가 피해 (%): <input value='1.5' type='number' class='input Extra_Normal_Attack_Damage_Percent' /><br />
         기본 공격 피해 감소: <input value='1.2' type='number' class='input Normal_Attack_Damage_Reduction' /><br />
-        스킬 공격 추가 피해: <input value='1' type='number' class='input Skill_Amplification' /><br />
-        레벨 당 스킬 공격 추가 피해: <input value='1' type='number' class='input Skill_Amplification_per_level' /><br />
+        스킬 공격 추가 피해: <input value='1' type='number' class='input Extra_Skill_Damage' /><br />
+        레벨 당 스킬 공격 추가 피해: <input value='1' type='number' class='input Extra_Skill_Damage_per_level' /><br />
         스킬 증폭: <input value='1.2' type='number' class='input Skill_Amplification_Percent' /><br />
         레벨 당 스킬 증폭: <input value='1.2' type='number' class='input Skill_Amplification_Percent_per_level' /><br />
         스킬 피해 감소: <input value='0.8' type='number' class='input Skill_Damage_Reduction' /><br />

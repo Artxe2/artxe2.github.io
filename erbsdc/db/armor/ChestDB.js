@@ -51,8 +51,8 @@ const Chest = [
          Type: "Chest"
         ,Name: "Turtle_Dobok"
         ,Defense: 10
-        ,Cooldown_Reduction: 10
-        ,Title: "Turtle Donok\n\nDefense +10\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 7
+        ,Title: "Turtle Donok\n\nDefense +10\nCooldown Reduction +7%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -168,11 +168,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Covert_Agent_Uniform"
-        ,Defense: 26
+        ,Defense: 30
         ,HP_Regen: 2
-        ,Vision_Range: 1
-        ,Cooldown_Reduction: 15
-        ,Title: "Convert Agent Uniform\n\nDefense +26\nHP Regen +2\nVision Range +1\nCooldown Reduction +15%"
+        ,Vision_Range: 2
+        ,Cooldown_Reduction: 12
+        ,Title: "Convert Agent Uniform\n\nDefense +30\nHP Regen +2\nVision Range +2\nCooldown Reduction +12%"
         ,Rarity: "Rare"
     }
     ,{
@@ -180,9 +180,9 @@ const Chest = [
         ,Name: "Optical_Camouflage_Suit"
         ,Attack_Power: 10
         ,Defense: 18
-        ,Critical_Strike_Chance: 22
+        ,Critical_Strike_Chance: 24
         ,Skill_Damage_Reduction_Percent: 10
-        ,Title: "Optical Camouflage Suit\n\nAttack Power +10\nDefense +18\nCritical Strike Chance +22%\nSkill Damage Reduction +10%"
+        ,Title: "Optical Camouflage Suit\n\nAttack Power +10\nDefense +18\nCritical Strike Chance +24%\nSkill Damage Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{
@@ -229,9 +229,9 @@ const Chest = [
         ,Attack_Power: 15
         ,Defense: 18
         ,SP_Regen_Percent: 120
-        ,Cooldown_Reduction: 10
+        ,Cooldown_Reduction: 7
         ,Attack_Range: 0.6
-        ,Title: "Dragon Dobok\n\nAttack Power +15\nDefense +18\nSP Regen +120%\nCooldown Reduction +10%\nAttack Range +0.6"
+        ,Title: "Dragon Dobok\n\nAttack Power +15\nDefense +18\nSP Regen +120%\nCooldown Reduction +7%\nAttack Range +0.6"
         ,Rarity: "Epic"
     }
     ,{
@@ -270,7 +270,27 @@ const Chest = [
         ,HP_Regen: 1
         ,Cooldown_Reduction: 10
         ,Normal_Attack_Damage_Reduction: 10
-        ,Title: "EPD Siot\n\nDefense +25\nMax HP +250\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +10"
+        ,Title: "EOD Suit\n\nDefense +25\nMax HP +250\nHP Regen +1\nCooldown Reduction +10%\nNormal Attack Damage Reduction +10"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Chest"
+        ,Name: "Tuxedo"
+        ,Defense: 18
+        ,Critical_Damage_Reduction: 8
+        ,Life_Steal: 6
+        ,Extra_Normal_Attack_Damage_per_level: 1
+        ,Title: "Tuxedo\n\nDefense +18\nCritical Damage Reduction +8%\nLife Steal +6%\nExtra Normal Attack Damage per level +1"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Chest"
+        ,Name: "High_Priest_Robes"
+        ,Defense: 36
+        ,HP_Regen: 1
+        ,SP_Regen_Percent: 50
+        ,Cooldown_Reduction: 12
+        ,Title: "High Priest Robes\n\nDefense +36\nHP Regen +1\nSP Regen +50%\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{

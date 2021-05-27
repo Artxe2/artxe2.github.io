@@ -46,9 +46,9 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Flour_Bomb"
-        ,Attack_Power: 58
+        ,Attack_Power: 50
         ,Attack_Speed: 15
-        ,Title: "Flour Bomb\n\nAttack Power +58\nAttack Speed 15%"
+        ,Title: "Flour Bomb\n\nAttack Power +50\nAttack Speed 15%"
         ,Rarity: "Rare"
     }
     ,{

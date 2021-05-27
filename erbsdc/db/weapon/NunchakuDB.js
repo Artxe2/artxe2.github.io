@@ -31,8 +31,8 @@ const Nunchaku = [
          Type: "Nunchaku"
         ,Name: "The_Smiting_Dragon"
         ,Attack_Power: 50
-        ,Skill_Amplification: 20
-        ,Title: "The Smiting Dragon\n\nAttack Power +50\nSkill Amplification +20\nHealing Reduction (Skills) -40%"
+        ,Extra_Skill_Damage: 20
+        ,Title: "The Smiting Dragon\n\nAttack Power +50\nExtra Skill Damage +20\nHealing Reduction (Skills) -40%"
         ,Rarity: "Epic"
     }
     ,{
@@ -46,10 +46,11 @@ const Nunchaku = [
     ,{
          Type: "Nunchaku"
         ,Name: "Cerberus"
-        ,Attack_Power: 65
+        ,Attack_Power: 45
+        ,Attack_Power_per_level: 2
         ,Movement_Speed: 0.1
         ,Attack_Range: 0.5
-        ,Title: "Cerberus\n\nAttack Power +65\nMovement Speed +0.1\nAttack Range +0.5\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Cerberus\n\nAttack Power +45\nAttack Power per level +2\nMovement Speed +0.1\nAttack Range +0.5\nHealing Reduction (Normal Attacks) -40%"
         ,Rarity: "Epic"
     }
 ];

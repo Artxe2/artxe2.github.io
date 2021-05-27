@@ -1,7 +1,7 @@
 'use strict';
 const Aya = {
      Attack_Power: 25
-    ,Attack_Power_Growth: 3
+    ,Attack_Power_Growth: 3.3
     ,Health: 580
     ,Health_Growth: 60
     ,Health_Regen: 0.5
@@ -92,7 +92,7 @@ const Aya = {
             const cool = 10000 / ((18 - w * 1.5) * (100 - character.cooldown_reduction) + 317);
             let acc = 0;
             for (let i = 0; i < 10; i++) {
-                acc += calcSkillDamage(character, enemy, (25 + w * 20) * (1 - i * 0.06), (0.3 + w * 0.05) * (1 - i * 0.06), 1);
+                acc += calcSkillDamage(character, enemy, (25 + w * 20) * (1 - i * 0.05), (0.3 + w * 0.05) * (1 - i * 0.05), 1);
             }
             return "<b class='damage'>" + acc + '</b> ( ' + damage + " x 10 )<b> __sd/s: </b><b class='damage'>" + round(acc * cool) / 100 + '</b>';
         }
@@ -301,7 +301,7 @@ const Aya = {
                 } else if (c === 'w') {
                     if (w >= 0) {
                         for (let x = 0; x < 5; x++) {
-                            damage += calcSkillDamage(character, enemy, (25 + w * 20) * (1 - x * 0.06), (0.3 + w * 0.05) * (1 - x * 0.06), 1);
+                            damage += calcSkillDamage(character, enemy, (25 + w * 20) * (1 - x * 0.06), (0.3 + w * 0.05) * (1 - x * 0.05), 1);
                             if (enemy.character === Magnus) {
                                 let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {
@@ -314,7 +314,7 @@ const Aya = {
                 } else if (c === 'W') {
                     if (w >= 0) {
                         for (let x = 0; x < 10; x++) {
-                            damage += calcSkillDamage(character, enemy, (25 + w * 20) * (1 - x * 0.06), (0.3 + w * 0.05) * (1 - x * 0.06), 1);
+                            damage += calcSkillDamage(character, enemy, (25 + w * 20) * (1 - x * 0.06), (0.3 + w * 0.05) * (1 - x * 0.05), 1);
                             if (enemy.character === Magnus) {
                                 let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {

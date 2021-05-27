@@ -2,7 +2,7 @@
 <html lang='ko'>
 <head>
     <meta charset="UTF-8">
-    <title>Eternal Return: Black Survival Damage Calculator 0.32.1</title>
+    <title>Eternal Return: Black Survival Damage Calculator 0.33.0</title>
     <style type="text/css">
         @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
         body {
@@ -130,73 +130,74 @@
             width: 180px;
         }
     </style>
-    <script type="text/javascript" src='./db/armor/AccessoryDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/armor/ArmDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/armor/ChestDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/armor/HeadDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/armor/LegDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/AssaultRifleDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/AxeDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/BatDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/BowDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/CrossbowDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/DaggerDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/DualSwordsDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/GloveDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/GuitarDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/HammerDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/NunchakuDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/PistolDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/RapierDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/ShurikenDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/SniperRifleDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/SpearDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/ThrowsDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/TonfaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/TwoHandedSwordDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/weapon/WhipDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/WeaponInfo.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/JackieDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/AyaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/FioraDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/MagnusDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/ZahirDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/NadineDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/HyunwooDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/HartDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/IsolDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/Li_DailinDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/YukiDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/HyejinDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/XiukaiDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/ChiaraDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/SisselaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/AdrianaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/ShoichiDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/SilviaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/EmmaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/LenoxDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/RozziDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/LukeDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/CathyDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/AdelaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/BerniceDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/BarbaraDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/AlexDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/SuaDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/character/LeonDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/consumable/FoodDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./db/consumable/TrapDB.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./class/Character.js?v0.32.1.2'></script>
-    <script type="text/javascript" src='./js/scripts.js?v0.32.1.2'></script>
+    <script type="text/javascript" src='./db/armor/AccessoryDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/armor/ArmDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/armor/ChestDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/armor/HeadDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/armor/LegDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/AssaultRifleDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/AxeDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/BatDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/BowDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/CrossbowDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/DaggerDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/DualSwordsDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/GloveDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/GuitarDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/HammerDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/NunchakuDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/PistolDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/RapierDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/ShurikenDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/SniperRifleDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/SpearDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/ThrowsDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/TonfaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/TwoHandedSwordDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/weapon/WhipDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/WeaponInfo.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/JackieDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/AyaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/FioraDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/MagnusDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/ZahirDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/NadineDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/HyunwooDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/HartDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/IsolDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/Li_DailinDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/YukiDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/HyejinDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/XiukaiDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/ChiaraDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/SisselaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/AdrianaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/ShoichiDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/SilviaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/EmmaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/LenoxDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/RozziDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/LukeDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/CathyDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/AdelaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/BerniceDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/BarbaraDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/AlexDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/SuaDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/LeonDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/character/ElevenDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/consumable/FoodDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./db/consumable/TrapDB.js?210527-2317'></script>
+    <script type="text/javascript" src='./class/Character.js?210527-2317'></script>
+    <script type="text/javascript" src='./js/scripts.js?210527-2317'></script>
 </head>
 <body>
     <h3 class='subject'>
-        Eternal Return: Black Survival Damage Calculator 0.32.1
-        <img class='hit_count' alt='hit'
+        Eternal Return: Black Survival Damage Calculator 0.33.0
+        <!-- <img class='hit_count' alt='hit'
             src='https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fartxe2.github.io%2Ferbsdc%2F&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false'
             align='middle'
-        />
+        /> -->
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href='./equips/' target='_blank'>Equip Value</a>
     </h3>
@@ -469,7 +470,7 @@
                         <span class='label' title='Critical Strike Damage'> 치뎀: <span class='stat critical_damage'>%</span></span><br>
                         <span class='label' title='Life Steal'> 흡혈: <span class='stat life_steal'>%</span></span><br>
                         <span class='label' title='Extra Normal Attack Damage'> 기추: <span class='stat extra_normal_attack_damage'>| %</span></span><br>
-                        <span class='label' title='Skill Amplification'> 스증: <span class='stat skill_amplification'>| %</span></span><br>
+                        <span class='label' title='Skill Amplification'> 스증: <span class='stat extra_skill_damage'>| %</span></span><br>
                         <span class='label' title='Cooldown Reduction'> 쿨감: <span class='stat cooldown_reduction'>%</span></span><br>
                         <span class='label' title='SP Regen'> 마젠: <span class='stat sp_regen'>| %</span></span><br>
                         <span class='label' title='Skill Damage Reduction'> 스감: <span class='stat skill_damage_reduction'>| %</span></span><br>
@@ -531,6 +532,7 @@
                             <option>Alex</option>
                             <option>Sua</option>
                             <option>Leon</option>
+                            <option>Eleven</option>
                             <option></option>
                         </select>
                     </td>
@@ -916,7 +918,7 @@
                         <span class='label' title='Critical Strike Damage'> 치뎀: <span class='stat critical_damage'>%</span></span><br>
                         <span class='label' title='Life Steal'> 흡혈: <span class='stat life_steal'>%</span></span><br>
                         <span class='label' title='Extra Normal Attack Damage'> 기추: <span class='stat extra_normal_attack_damage'>| %</span></span><br>
-                        <span class='label' title='Skill Amplification'> 스증: <span class='stat skill_amplification'>| %</span></span><br>
+                        <span class='label' title='Skill Amplification'> 스증: <span class='stat extra_skill_damage'>| %</span></span><br>
                         <span class='label' title='Cooldown Reduction'> 쿨감: <span class='stat cooldown_reduction'>%</span></span><br>
                         <span class='label' title='SP Regen'> 마젠: <span class='stat sp_regen'>| %</span></span><br>
                         <span class='label' title='Skill Damage Reduction'> 스감: <span class='stat skill_damage_reduction'>| %</span></span><br>
@@ -978,6 +980,7 @@
                             <option>Alex</option>
                             <option>Sua</option>
                             <option>Leon</option>
+                            <option>Eleven</option>
                             <option></option>
                         </select>
                     </td>
@@ -1085,7 +1088,7 @@
     </div>
     <br/>
     <div style='width:100%;float:left;'>
-    <br><br><b>last update: 2021-05-22_19:22</b><br><br><br>
+    <br><br><b>last update: 210527-2317</b><br><br><br>
 
 기본 공격 및 일부 스킬들은 일반 피해를 입히며 다음 공식을 적용합니다.<br>
 <br>

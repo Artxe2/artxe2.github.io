@@ -74,7 +74,7 @@ const Adela = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const q = character.Q_LEVEL.selectedIndex - 1;
-            const damage = calcSkillDamage(character, enemy, 65 + e * 45, 0.5, 1);
+            const damage = calcSkillDamage(character, enemy, 65 + e * 45, 0.4, 1);
             const bonus = calcSkillDamage(character, enemy, (30 + q * 40) * 0.55, 0.6 * 0.55, 1);
             const cool = 10000 / ((20 - e * 1.5) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + (damage + bonus) + "</b> ( <b class='damage'>" + damage + '</b>, ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
@@ -208,7 +208,7 @@ const Adela = {
                         }
                         if (ee > 1) {
                             ee = 1;
-                            damage += calcSkillDamage(character, enemy, (65 + e * 45) * 0.55, 0.5 * 0.55, 1);
+                            damage += calcSkillDamage(character, enemy, (65 + e * 45) * 0.55, 0.4 * 0.55, 1);
                         }
                         ww = 2;
                         damage += calcSkillDamage(character, enemy, 45 + w * 45, 0.3, 1);
@@ -228,7 +228,7 @@ const Adela = {
                             damage += calcSkillDamage(character, enemy, (45 + w * 45) * 0.55, 0.3 * 0.55, 1);
                         }
                         ee = 2;
-                        damage += calcSkillDamage(character, enemy, 65 + e * 45, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 65 + e * 45, 0.4, 1);
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {

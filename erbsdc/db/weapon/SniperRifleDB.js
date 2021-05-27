@@ -11,41 +11,37 @@ const SniperRifle = [
          Type: "SniperRifle"
         ,Name: "Springfield"
         ,Attack_Power: 50
-        ,Movement_Speed: -0.07
         ,Vision_Range: 1.5
-        ,Title: "Springfield\n\nAttack Power +50\nMovement Speed -0.07\nVision Range +1.5"
+        ,Title: "Springfield\n\nAttack Power +50\nVision Range +1.5"
         ,Rarity: "Uncommon"
         ,Ammo: 1
     }
     ,{
          Type: "SniperRifle"
         ,Name: "Harpoon_Gun"
-        ,Attack_Power: 64
-        ,Movement_Speed: -0.07
+        ,Attack_Power: 60
         ,Vision_Range: 2
-        ,Title: "Harpoon Gun\n\nAttack Power +64\nMovement Speed -0.07\nVision Range +2"
+        ,Title: "Harpoon Gun\n\nAttack Power +60\nVision Range +2"
         ,Rarity: "Rare"
         ,Ammo: 2
     }
     ,{
          Type: "SniperRifle"
         ,Name: "Golden_Rifle"
-        ,Attack_Power: 56
-        ,Movement_Speed: -0.07
+        ,Attack_Power: 50
         ,Vision_Range: 2.5
         ,Skill_Amplification_Percent: 18
-        ,Title: "Golden Rifle\n\nAttack Power +56\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +18%"
+        ,Title: "Golden Rifle\n\nAttack Power +50\nVision Range +2.5\nSkill Amplification +18%"
         ,Rarity: "Rare"
         ,Ammo: 1
     }
     ,{
          Type: "SniperRifle"
         ,Name: "Railgun"
-        ,Attack_Power: 78
+        ,Attack_Power: 72
         ,Attack_Speed: 20
-        ,Movement_Speed: -0.03
         ,Vision_Range: 2
-        ,Title: "Railgun\n\nAttack Power +78\nAttack Speed +20%\nMovement Speed -0.03\nVision Range +2"
+        ,Title: "Railgun\n\nAttack Power +72\nAttack Speed +20%\nVision Range +2"
         ,Rarity: "Rare"
         ,Ammo: 3
     }
@@ -74,10 +70,9 @@ const SniperRifle = [
          Type: "SniperRifle"
         ,Name: "NTW-20"
         ,Attack_Power: 95
-        ,Movement_Speed: -0.07
         ,Vision_Range: 2.5
         ,Skill_Amplification_Percent: 24
-        ,Title: "NTW-20\n\nAttack Power +95\nMovement Speed -0.07\nVision Range +2.5\nSkill Amplification +24%"
+        ,Title: "NTW-20\n\nAttack Power +95\nVision Range +2.5\nSkill Amplification +24%"
         ,Rarity: "Epic"
         ,Ammo: 1
     }
@@ -85,10 +80,10 @@ const SniperRifle = [
          Type: "SniperRifle"
         ,Name: "Polaris"
         ,Attack_Power: 113
-        ,Attack_Speed: 15
+        ,Attack_Speed: 18
         ,Attack_Speed_per_level: 2
         ,Vision_Range: 2
-        ,Title: "Polaris\n\nAttack Power +113\nAttack Speed +15%\nAttack Speed per level +2%\nVision Range +2"
+        ,Title: "Polaris\n\nAttack Power +113\nAttack Speed +18%\nAttack Speed per level +2%\nVision Range +2"
         ,Rarity: "Epic"
         ,Ammo: 4
     }

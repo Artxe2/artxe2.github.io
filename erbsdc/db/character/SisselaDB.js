@@ -95,15 +95,15 @@ const Sissela = {
         if (character.weapon && r >= 0) {
 
             const sissela_t = character.DIV.querySelector('.sissela_t');
-            const skill_amplification = character.skill_amplification;
-            character.skill_amplification = round(character.calc_skill_amplification +
+            const extra_skill_damage = character.extra_skill_damage;
+            character.extra_skill_damage = round(character.calc_extra_skill_damage +
                 (2 + character.T_LEVEL.selectedIndex * 3) * (sissela_t.value < 10 ? 0 : (sissela_t.value >= 90 ? 5 : sissela_t.value / 20 + 0.5)), 1);
 
             const bonus = character.DIV.querySelector('.sissela_t').value * 2;
             const min = calcSkillDamage(character, enemy, (150 + r * 125 + bonus) * 0.5, 1 * 0.5, 1);
             const max = calcSkillDamage(character, enemy, 150 + r * 125 + bonus, 1, 1);
 
-            character.skill_amplification = skill_amplification;
+            character.extra_skill_damage = extra_skill_damage;
 
             return "<b class='damage'>" + min + ' - ' + max + '</b>';
         }
@@ -131,7 +131,7 @@ const Sissela = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const bonus = calcSkillDamage(character, enemy, 28 + character.LEVEL.selectedIndex * 10, 0.2, 1);
+            const bonus = calcSkillDamage(character, enemy, 26 + character.LEVEL.selectedIndex * 8, 0.2, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + ' ) ';
@@ -190,7 +190,7 @@ const Sissela = {
             }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
-                character.skill_amplification = round(character.pure_skill_amplification +
+                character.extra_skill_damage = round(character.pure_extra_skill_damage +
                     (2 + t * 3) * (lost < 10 ? 0 : (lost >= 90 ? 5 : lost / 20 + 0.5)) * (rr ? 2 : 1), 1);
                 if (enemy.defense) {
                     if (enemy.character === Magnus) {
@@ -260,12 +260,12 @@ const Sissela = {
                     ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    damage += calcSkillDamage(character, enemy, 28 + character.LEVEL.selectedIndex * 10, 0.2, 1);
+                    damage += calcSkillDamage(character, enemy, 26 + character.LEVEL.selectedIndex * 8, 0.2, 1);
                 } else if (c === 'T') {
                     ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    damage += calcSkillDamage(character, enemy, 28 + character.LEVEL.selectedIndex * 10, 0.2, 1);
+                    damage += calcSkillDamage(character, enemy, 26 + character.LEVEL.selectedIndex * 8, 0.2, 1);
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));

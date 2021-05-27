@@ -38,16 +38,15 @@ const Crossbow = [
     ,{
          Type: "Crossbow"
         ,Name: "Heavy_Crossbow"
-        ,Attack_Power: 63
-        ,Movement_Speed: -0.1
-        ,Title: "Heavy Crossbow\n\nAttack Power +63\nMovement Speed -0.1"
+        ,Attack_Power: 55
+        ,Title: "Heavy Crossbow\n\nAttack Power +55"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Crossbow"
         ,Name: "Steel_Bow"
-        ,Attack_Power: 60
-        ,Title: "Steel Bow\n\nAttack Power +60"
+        ,Attack_Power: 52
+        ,Title: "Steel Bow\n\nAttack Power +52"
         ,Rarity: "Rare"
     }
     ,{

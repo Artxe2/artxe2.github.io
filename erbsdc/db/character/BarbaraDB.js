@@ -56,7 +56,7 @@ const Barbara = {
             const stack = parseInt(character.DIV.querySelector('.barbara_t').value);
             const damage = calcSkillDamage(character, enemy, 15 + q * 15, 0.15, 1) +
                 (r >= 0 && character.DIV.querySelector('.barbara_r').checked ? calcSkillDamage(character, enemy, 50 + r * 25, 0.6, 1) : 0);
-            const shot = calcSkillDamage(character, enemy, 15, 0.065 * level, 1);
+            const shot = calcSkillDamage(character, enemy, 15, 0.06 * level, 1);
             return "<b class='damage'>" + damage + "</b><b> __dps: </b><b class='damage'>" + shot * (0.9 + stack * (0.15 + t * 0.05)) + '</b> ( ' + shot + ' )';
         }
         return '-';
@@ -68,9 +68,9 @@ const Barbara = {
             const r = character.R_LEVEL.selectedIndex - 1;
             const level = character.LEVEL.selectedIndex + 1;
             const coe = r >= 0 && character.DIV.querySelector('.barbara_r').checked ? 1.05 + r * 0.05 : 1;
-            const min = calcSkillDamage(character, enemy, (30 + w * 30) * 0.7 * coe, 0.25 * 0.7 * coe, 1);
+            const min = calcSkillDamage(character, enemy, (30 + w * 30) * 0.65 * coe, 0.25 * 0.65 * coe, 1);
             const max = calcSkillDamage(character, enemy, (30 + w * 30) * coe, 0.25 * coe, 1);
-            const rail = calcSkillDamage(character, enemy, (40 + w * 40 + 6) * coe, (0.065 * level) * 0.4 * coe, 1);
+            const rail = calcSkillDamage(character, enemy, (40 + w * 40 + 6) * coe, (0.06 * level) * 0.4 * coe, 1);
             const cool = 10000 / ((r >= 0 && character.DIV.querySelector('.barbara_r').checked ? 0.66 : 4) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + max + ' - ' + min * 2 + "</b><b> / </b><b class='damage'>" + rail + "</b><b> __sd/s: </b><b class='damage'>" + round(rail * cool) / 100 + '</b>';
         }
@@ -196,7 +196,7 @@ const Barbara = {
                         if (w >= 0 && ww) {
                             damage += calcSkillDamage(character, enemy, (40 + w * 40) * coe, 0.5 * coe, 1);
                         } else {
-                            damage += calcSkillDamage(character, enemy, 15, 0.065 * level, 1);
+                            damage += calcSkillDamage(character, enemy, 15, 0.06 * level, 1);
                         }
                     }
                 } else if (c === 'Q') {
@@ -213,7 +213,7 @@ const Barbara = {
                             rr = false;
                             ww = 15;
                         } else {
-                            damage += calcSkillDamage(character, enemy, (30 + w * 30) * 0.7 * (ww ? coe : 1), 0.25 * 0.7 * (ww ? coe : 1), 1) * 2;
+                            damage += calcSkillDamage(character, enemy, (30 + w * 30) * 0.65 * (ww ? coe : 1), 0.25 * 0.65 * (ww ? coe : 1), 1) * 2;
                         }
                     }
                 } else if (c === 'W') {
@@ -222,7 +222,7 @@ const Barbara = {
                             rr = false;
                             ww = 15;
                         } else {
-                            damage += calcSkillDamage(character, enemy, (40 + w * 40 + 6) * (ww ? coe : 1), (0.065 * level) * 0.4 * (ww ? coe : 1), 1);
+                            damage += calcSkillDamage(character, enemy, (40 + w * 40 + 6) * (ww ? coe : 1), (0.06 * level) * 0.4 * (ww ? coe : 1), 1);
                         }
                     }
                 } else if (c === 'e') {

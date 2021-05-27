@@ -127,7 +127,7 @@ const Alex = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'TwoHandedSword') {
-                return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1) + '</b>';
+                return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, wm < 13 ? 1.75 : 2.25, 1) + '</b>';
             }
             if (type === 'Pistol') {
                 return '-';
@@ -273,7 +273,7 @@ const Alex = {
                 } else if (c === 'd') {
                     if (wm > 5) {
                         if (type === 'TwoHandedSword') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1);
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1.75 : 2.25, 1);
                         } else if (type === 'Shuriken') {
                             damage += calcSkillDamage(character, enemy, (wm < 13 ? 80 : 160) * 0.3, 0.3 * 0.3, 1);
                         }
@@ -281,7 +281,7 @@ const Alex = {
                 } else if (c === 'D') {
                     if (wm > 5) {
                         if (type === 'TwoHandedSword') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 2.5, 1);
+                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1.75 : 2.25, 1);
                         } else if (type === 'Shuriken') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 80 : 160, 0.3, 1);
                         }

@@ -23,6 +23,14 @@ const Food = [
     }
     ,{
         Type: "Food"
+        ,Name: "Holy_Water"
+        ,HP_Regen: 800
+        ,Defense: 10
+        ,Title: "Holy Water\n\nHP Regen +800\nDefense +10"
+        ,Rarity: "Rare"
+    }
+    ,{
+        Type: "Food"
         ,Name: "Baked_Carp"
         ,HP_Regen: 600
         ,Title: "Baked Carp\n\nHP Regen +600"

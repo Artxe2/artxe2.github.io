@@ -62,8 +62,8 @@ const Bow = [
          Type: "Bow"
         ,Name: "Scorchbow"
         ,Attack_Power: 22
-        ,Skill_Amplification: 18
-        ,Title: "Scorchbow\n\nAttack Power +22\nSkill Amplification +18"
+        ,Extra_Skill_Damage: 18
+        ,Title: "Scorchbow\n\nAttack Power +22\nExtra Skill Damage +18"
         ,Rarity: "Rare"
     }
     ,{
@@ -96,12 +96,21 @@ const Bow = [
         ,Rarity: "Epic"
     }
     ,{
+        Type: "Bow"
+       ,Name: "Jebe`s_Altered_Bow"
+       ,Attack_Power: 84
+       ,Attack_Speed: 33
+       ,Movement_Speed: 0.1
+       ,Title: "Jebe`s Altered Bow\n\nAttack Power +84\nAttack Speed +33%\nMovement Speed +0.1"
+       ,Rarity: "Epic"
+   }
+    ,{
          Type: "Bow"
         ,Name: "Elemental_Bow"
         ,Attack_Power: 60
         ,Movement_Speed: 0.1
-        ,Skill_Amplification: 45
-        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nSkill Amplification +45\nHealing Reduction (Skills) -25%"
+        ,Extra_Skill_Damage: 45
+        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nExtra Skill Damage +45\nHealing Reduction (Skills) -25%"
         ,Rarity: "Epic"
     }
     ,{

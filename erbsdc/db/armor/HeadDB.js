@@ -179,12 +179,12 @@ const Head = [
     ,{
          Type: "Head"
         ,Name: "Chinese_Opera_Mask"
-        ,Defense: 10
+        ,Defense: 20
         ,Max_SP: 300
         ,Movement_Speed: 0.2
-        ,Life_Steal: 22
-        ,Movement_speed_while_not_in_combat: 0.3
-        ,Title: "Chinese Opera Mask\n\nDefense +10\nMax SP +300\nMovement Speed +0.2\nLife Steal +22%\nMovement speed while not in combat +0.3"
+        ,Life_Steal: 20
+        ,Movement_speed_while_not_in_combat: 0.2
+        ,Title: "Chinese Opera Mask\n\nDefense +20\nMax SP +300\nMovement Speed +0.2\nLife Steal +20%\nMovement speed while not in combat +0.2"
         ,Rarity: "Epic"
     }
     ,{

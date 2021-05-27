@@ -4,7 +4,7 @@ const Magnus = {
     ,Attack_Power_Growth: 2.2
     ,Health: 710
     ,Health_Growth: 79
-    ,Health_Regen: 0.7
+    ,Health_Regen: 1
     ,Health_Regen_Growth: 0.05
     ,Stamina: 410
     ,Stamina_Growth: 14
