@@ -280,7 +280,7 @@ const Eleven = {
             }
         };
     }
-    ,COMBO_Option: 'ErwaqataataQ'
+    ,COMBO_Option: 'ErwaqataatQ'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
