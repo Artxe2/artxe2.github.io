@@ -280,7 +280,7 @@ const Eleven = {
             }
         };
     }
-    ,COMBO_Option: 'wdqtrttqtetqt'
+    ,COMBO_Option: 'ErwaqataataQ'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
