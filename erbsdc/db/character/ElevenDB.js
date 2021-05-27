@@ -26,9 +26,9 @@ const Eleven = {
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = baseAttackDamage(character, enemy, 10 + t * 5, 1, character.critical_strike_chance, 1);
-            const min = baseAttackDamage(character, enemy, 10 + t * 5, 1, 0, 1);
-            const max = baseAttackDamage(character, enemy, 10 + t * 5, 1, 100, 1);
+            const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+            const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+            const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
         }
         return '-';
@@ -37,7 +37,7 @@ const Eleven = {
     ,DPS: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, character.critical_strike_chance, 1);
+            const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
@@ -162,7 +162,7 @@ const Eleven = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (rr) {
@@ -173,12 +173,12 @@ const Eleven = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (rr) {
@@ -189,7 +189,7 @@ const Eleven = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba = baseAttackDamage(character, enemy, 10 + t * 5, 1, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }

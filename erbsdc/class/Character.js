@@ -878,11 +878,12 @@ class Character {
             this.LIFE_STEAL.innerText = this.life_steal + '%';
 
             this.extra_normal_attack_damage = calcEquip(this, 'Extra_Normal_Attack_Damage') +
-                calcEquip(this, 'Extra_Normal_Attack_Damage_per_level') * (level + 1);
+                calcEquip(this, 'Extra_Normal_Attack_Damage_per_level') * (level + 1) +
+                (this.character === Eleven ? 10 + t * 5 : 0);
             this.extra_normal_attack_damage_percent =
                 !this.weapon ? 0 : (1 + wm) * this.weapon_mastery_extra_normal_attack_damage_percent;
             this.EXTRA_NORMAL_ATTACK_DAMAGE.innerText =
-                this.extra_normal_attack_damage + '| ' + round(this.extra_normal_attack_damage_percent) + '%';
+                (this.extra_normal_attack_damage - (this.character === Eleven ? 10 + t * 5 : 0)) + '| ' + round(this.extra_normal_attack_damage_percent) + '%';
 
             const hart_e = this.DIV.querySelector('.hart_e');
             const hart_ee = this.DIV.querySelector('.hart_ee');
