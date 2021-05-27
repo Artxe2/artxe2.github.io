@@ -35,9 +35,16 @@ const Sua = {
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
         if (character.weapon) {
-            const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const damage = round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            let damage, life;
+            if (character.DIV.querySelector('.sua_t').checked) {
+                const t = character.T_LEVEL.selectedIndex;
+                damage = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.6, 1);
+                life = calcHeal(damage * 0.3, character.attack_speed, enemy);
+            } else {
+                const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+                damage = round(ba * character.attack_speed * 100) / 100;
+                life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            }
             return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
