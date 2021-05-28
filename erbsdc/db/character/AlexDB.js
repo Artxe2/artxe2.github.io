@@ -19,19 +19,19 @@ const Alex = {
     ,weapons: [TwoHandedSword, Pistol, Shuriken, Tonfa]
     ,correction: {
         TwoHandedSword: [
-            [0, -6, -8],
+            [0, -8, -8],
             [0, 0, 0]
         ],
         Pistol: [
-            [0, -6, -8],
+            [0, -8, -8],
             [0, 0, 0]
         ],
         Shuriken: [
-            [0, -6, -8],
+            [0, -8, -8],
             [0, 0, 0]
         ],
         Tonfa: [
-            [0, -6, -8],
+            [0, -8, -8],
             [0, 0, 0]
         ]
     }

@@ -19,7 +19,7 @@ const Silvia = {
     ,weapons: [Pistol]
     ,correction: {
         Pistol: [
-            [0, -14, -17],
+            [0, -16, -17],
             [0, 0, 0],
             [0, -10, -10]
         ]

@@ -19,11 +19,11 @@ const Hyunwoo = {
     ,weapons: [Glove, Tonfa]
     ,correction: {
         Glove: [
-            [0, 0, -3],
+            [0, -3, -3],
             [0, -2, -5]
         ],
         Tonfa: [
-            [0, -5, -5],
+            [0, -5, -9],
             [0, 0, 3]
         ]
     }

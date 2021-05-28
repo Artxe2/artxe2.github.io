@@ -20,7 +20,7 @@ const Adela = {
     ,correction: {
         Rapier: [
             [0, -7, -9],
-            [0, 0, 0]
+            [0, 2, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {

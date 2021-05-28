@@ -19,7 +19,7 @@ const Jackie = {
     ,weapons: [Dagger, TwoHandedSword, Axe, DualSwords]
     ,correction: {
         Dagger: [
-            [0, 0, 5],
+            [0, -2, 5],
             [0, -2, -5]
         ],
         TwoHandedSword: [
