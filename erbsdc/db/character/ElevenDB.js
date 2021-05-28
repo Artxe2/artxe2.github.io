@@ -2,7 +2,7 @@
 const Eleven = {
      Attack_Power: 30
     ,Attack_Power_Growth: 2.2
-    ,Health: 665
+    ,Health: 700
     ,Health_Growth: 80
     ,Health_Regen: 1.2
     ,Health_Regen_Growth: 0.07
@@ -11,7 +11,7 @@ const Eleven = {
     ,Stamina_Regen: 2
     ,Stamina_Regen_Growth: 0.04
     ,Defense: 21
-    ,Defense_Growth: 2.1
+    ,Defense_Growth: 2.5
     ,Atk_Speed: 0.07
     ,Movement_Speed: 3.15
     ,Sight_Range: 8
@@ -54,7 +54,7 @@ const Eleven = {
         if (character.weapon && q >= 0) {
             const min = calcSkillDamage(character, enemy, 100 + q * 30, 0.5, 1);
             const max = calcSkillDamage(character, enemy, (100 + q * 30) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
-            const cool = 10000 / ((7.5 - q * 0.5) * (100 - character.cooldown_reduction) - 150);
+            const cool = 10000 / ((6.5 - q * 0.5) * (100 - character.cooldown_reduction) - 150);
             return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
