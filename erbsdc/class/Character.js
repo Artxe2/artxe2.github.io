@@ -399,7 +399,7 @@ class Character {
                 this.D_OPTION.innerHTML = this.character.D_Option(this, this.enemy);
                 this.T_OPTION.innerHTML = this.character.T_Option;
                 this.COMBO_OPTION.value = this.character.COMBO_Option;
-                comboTime(5, true);
+                comboTime(10, true);
             }
             updateDisplay();
         });
