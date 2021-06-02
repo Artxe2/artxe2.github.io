@@ -32,9 +32,9 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Squad_Leader_Armband"
-        ,HP_Regen: 1.5
+        ,HP_Regen: 1.2
         ,Critical_Damage: 15
-        ,Title: "Squad Leader Armband\n\nHP Regen +1.5\nCritical Damage +15%"
+        ,Title: "Squad Leader Armband\n\nHP Regen +1.2\nCritical Damage +15%"
         ,Rarity: "Uncommon"
     }
     ,{

@@ -1,7 +1,7 @@
 'use strict';
 const Shoichi = {
-     Attack_Power: 27
-    ,Attack_Power_Growth: 3.1
+     Attack_Power: 19
+    ,Attack_Power_Growth: 3.7
     ,Health: 660
     ,Health_Growth: 72
     ,Health_Regen: 0.8

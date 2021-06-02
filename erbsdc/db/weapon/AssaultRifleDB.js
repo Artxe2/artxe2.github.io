@@ -75,11 +75,11 @@ const AssaultRifle = [
     ,{
          Type: "AssaultRifle"
         ,Name: "Agni"
-        ,Attack_Power: 55
+        ,Attack_Power: 51
         ,Attack_Speed: 25
         ,Vision_Range: 2.5
         ,Extra_Normal_Attack_Damage: 16
-        ,Title: "Agni\n\nAttack Power +55\nAttack Speed +25%\nVision Range +2.5\nExtra Normal Attack Damage +16"
+        ,Title: "Agni\n\nAttack Power +51\nAttack Speed +25%\nVision Range +2.5\nExtra Normal Attack Damage +16"
         ,Rarity: "Legendary"
     }
 ];

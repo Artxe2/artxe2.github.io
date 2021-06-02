@@ -276,11 +276,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Tuxedo"
-        ,Defense: 18
+        ,Defense: 20
         ,Critical_Damage_Reduction: 8
-        ,Life_Steal: 6
+        ,Life_Steal: 8
         ,Extra_Normal_Attack_Damage_per_level: 1
-        ,Title: "Tuxedo\n\nDefense +18\nCritical Damage Reduction +8%\nLife Steal +6%\nExtra Normal Attack Damage per level +1"
+        ,Title: "Tuxedo\n\nDefense +20\nCritical Damage Reduction +8%\nLife Steal +8%\nExtra Normal Attack Damage per level +1"
         ,Rarity: "Epic"
     }
     ,{
@@ -288,9 +288,9 @@ const Chest = [
         ,Name: "High_Priest_Robes"
         ,Defense: 36
         ,HP_Regen: 1
-        ,SP_Regen_Percent: 50
+        ,SP_Regen_Percent: 65
         ,Cooldown_Reduction: 12
-        ,Title: "High Priest Robes\n\nDefense +36\nHP Regen +1\nSP Regen +50%\nCooldown Reduction +12%"
+        ,Title: "High Priest Robes\n\nDefense +36\nHP Regen +1\nSP Regen +65%\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{

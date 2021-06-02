@@ -62,7 +62,7 @@ const Leon = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const damage = calcSkillDamage(character, enemy, 40 + q * 35, 0.4, 1);
+            const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.4, 1);
             const cool = 10000 / ((10 - q * 0.5) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
@@ -101,7 +101,7 @@ const Leon = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const damage = calcSkillDamage(character, enemy, 150 + r * 80, 0.5, 1);
-            const bonus = calcSkillDamage(character, enemy, enemy.max_hp ? enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05)) : 0, 0, 1);
+            const bonus = calcSkillDamage(character, enemy, enemy.max_hp ? enemy.max_hp * ((0.15 + r * 0.05) / (1.15 + r * 0.05)) : 0, 0, 1);
             return "<b class='damage'>" + damage + ' ~ ' + (damage + bonus) + '</b>';
         }
         return '-';
@@ -214,7 +214,7 @@ const Leon = {
                     }
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + q * 35, 0.4, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.4, 1);
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
@@ -230,10 +230,10 @@ const Leon = {
                             let lost = enemy.max_hp - (data.hp - damage + heal + shield);
                             if (lost < 0) {
                                 lost = 0;
-                            } else if (lost > enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05))) {
-                                lost = enemy.max_hp * ((0.1 + r * 0.05) / (1.1 + r * 0.05));
+                            } else if (lost > enemy.max_hp) {
+                                lost = enemy.max_hp * (0.15 + r * 0.05);
                             } else {
-                                lost *= (0.1 + r * 0.05);
+                                lost *= (0.15 + r * 0.05);
                             }
                             damage += calcSkillDamage(character, enemy, lost, 0, 1);
                         }

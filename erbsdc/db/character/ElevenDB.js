@@ -12,7 +12,7 @@ const Eleven = {
     ,Stamina_Regen_Growth: 0.04
     ,Defense: 21
     ,Defense_Growth: 2.5
-    ,Atk_Speed: 0.07
+    ,Atk_Speed: 0.11
     ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.4
@@ -25,10 +25,13 @@ const Eleven = {
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
-            const t = character.T_LEVEL.selectedIndex;
+            const r = character.R_LEVEL.selectedIndex - 1;
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+            if (character.DIV.querySelector('.eleven_r').checked && r > 0) {
+                return "<b class='damage'>" + damage * 2 + '</b> ( ' +  min + ', ' + min + ' - ' + max + ',' + max + ' )';
+            }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
         }
         return '-';
@@ -36,8 +39,11 @@ const Eleven = {
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
         if (character.weapon) {
-            const t = character.T_LEVEL.selectedIndex;
-            const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+            const r = character.R_LEVEL.selectedIndex - 1;
+            let ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+            if (character.DIV.querySelector('.eleven_r').checked && r > 0) {
+                ba *= 2;
+            }
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
@@ -84,7 +90,7 @@ const Eleven = {
         }
         return '-';
     }
-    ,R_Option: ''
+    ,R_Option: "<b> __use</b><input type='checkbox' class='eleven_r' onchange='updateDisplay()'>"
     ,D_Skill: (character, enemy) => {
         if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
             const type = character.weapon.Type;

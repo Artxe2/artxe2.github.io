@@ -105,10 +105,10 @@ const Axe = [
          Type: "Axe"
         ,Name: "The_Juggernaut"
         ,Attack_Power: 92
-        ,Attack_Speed_per_level: 2
+        ,Attack_Speed_per_level: 3
         ,Movement_Speed: 0.1
         ,Attack_Range: -0.35
-        ,Title: "The Juggernaut\n\nAttack Power +92\nAttack Speed per level +2%\nMovement Speed +0.1\nAttack Range -0.35"
+        ,Title: "The Juggernaut\n\nAttack Power +92\nAttack Speed per level +3%\nMovement Speed +0.1\nAttack Range -0.35"
         ,Rarity: "Epic"
     }
 ];

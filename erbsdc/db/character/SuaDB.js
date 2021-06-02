@@ -59,7 +59,7 @@ const Sua = {
         if (character.weapon && q >= 0) {
             const min = calcSkillDamage(character, enemy, 45 + q * 30, 0.4, 1);
             const max = calcSkillDamage(character, enemy, 65 + q * 50, 1, 1);
-            const cool = 10000 / ((12 - q) * (100 - character.cooldown_reduction) - 150);
+            const cool = 10000 / ((13 - q) * (100 - character.cooldown_reduction) - 150);
             return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';

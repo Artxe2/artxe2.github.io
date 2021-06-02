@@ -25,7 +25,8 @@ const Silvia = {
         ]
     }
     ,Base_Attack: (character, enemy) => {
-        if (character.weapon && !character.DIV.querySelector('.silvia_r').checked) {
+        const r = character.R_LEVEL.selectedIndex - 1;
+        if (character.weapon && !character.DIV.querySelector('.silvia_r').checked && r > 0) {
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
@@ -35,7 +36,8 @@ const Silvia = {
     }
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
-        if (character.weapon && !character.DIV.querySelector('.silvia_r').checked) {
+        const r = character.R_LEVEL.selectedIndex - 1;
+        if (character.weapon && !character.DIV.querySelector('.silvia_r').checked && r > 0) {
             const as = 10 / (9.5 / character.attack_speed + 2);
             const shot = baseAttackDamage(character, enemy, 0, 0.32, character.critical_strike_chance, 1) * 2 +
                 baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);

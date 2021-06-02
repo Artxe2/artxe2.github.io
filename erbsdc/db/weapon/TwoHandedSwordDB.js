@@ -101,9 +101,9 @@ const TwoHandedSword = [
          Type: "TwoHandedSword"
         ,Name: "Aurora_Longsword"
         ,Attack_Power: 75
+        ,Attack_Speed: 20
         ,Vision_Range: 2
-        ,Skill_Amplification_Percent: 12
-        ,Title: "Aurora Longsword\n\nAttack Power +75\nVision Range +2\nSkill Amplification +12%"
+        ,Title: "Aurora Longsword\n\nAttack Power +75\nAttack Speed +20%\nVision Range +2"
         ,Rarity: "Epic"
     }
     ,{

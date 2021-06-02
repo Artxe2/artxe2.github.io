@@ -98,7 +98,7 @@ const Hart = {
             const damage2 = calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
             character.skill_amplification += sap;
             const damage3 = calcSkillDamage(character, enemy, 20 + e * 10, 0.4, 1);
-            const cool = 10000 / ((17 - e * 2) * (100 - character.cooldown_reduction) + 46);
+            const cool = 10000 / ((18 - e) * (100 - character.cooldown_reduction) + 46);
 
             character.skill_amplification = skill_amplification;
 
