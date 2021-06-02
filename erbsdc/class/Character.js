@@ -1,6 +1,7 @@
 'use strict';
 class Character {
     IMG_PATH = 'https://cdn.jsdelivr.net/gh/artxe2/Artxe2.github.io/erbsdc/img/';
+    CHR_PATH = 'https://Artxe2.github.io/erbsdc/img/';
 
     calcTrapDamage() {
         return this.trap ? "<b class='damage'>" + floor(this.trap.Trap_Damage * (1.04 + this.TRAP_MASTERY.selectedIndex * 0.04)) + '</b>' : '-';
@@ -371,7 +372,7 @@ class Character {
                 this.COMBO_DAMAGE.innerHTML = '';
                 comboTime(0, true);
             } else {
-                this.I_CHARACTER.innerHTML = "<img class='character_image' src = '" + this.IMG_PATH + "character/" + select + ".png'>";
+                this.I_CHARACTER.innerHTML = "<img class='character_image' src = '" + this.CHR_PATH + "character/" + select + ".png'>";
                 this.character = eval(select);
                 if (this.subWeapon != null && this.character != Alex) {
                     this.removeSubWeapon();
