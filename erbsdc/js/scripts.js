@@ -323,14 +323,22 @@ function simulateCombo() {
             data1.shield += d1.shield;
             data1.vars = d1.vars;
             if (c0.character) {
-                // if (d0 && d0.vars.healBan) {
-                //     data1.heal -= d1.heal;
-                //     d1.heal = 0;
-                // }
-                // if (d1 && d1.vars.healBan) {
-                //     data0.heal -= d0.heal;
-                //     d0.heal = 0;
-                // }
+                if (d0) {
+                    if (d0.vars.healBan) {
+                        d0.vars.healBan--;
+                        c0.heal_reduction = 40;
+                    } else {
+                        c0.heal_reduction = c0.pure_heal_reduction;
+                    }
+                }
+                if (d1) {
+                    if (d1.vars.healBan) {
+                        d1.vars.healBan--;
+                        c1.heal_reduction = 40;
+                    } else {
+                        c1.heal_reduction = c1.pure_heal_reduction;
+                    }
+                }
                 data0.hp = d0.hp + d1.heal + d1.shield;
                 data1.hp = d1.hp + d0.heal + d0.shield;
             }

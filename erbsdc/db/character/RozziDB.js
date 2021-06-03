@@ -162,12 +162,6 @@ const Rozzi = {
         let ee = data.vars.ee, healBan = data.vars.healBan;
         if (character.weapon) {
             const coe = 0.6 + t * 0.1;
-            if (healBan) {
-                healBan--;
-                character.heal_reduction = 40;
-            } else {
-                character.heal_reduction = character.pure_heal_reduction;
-            }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {
