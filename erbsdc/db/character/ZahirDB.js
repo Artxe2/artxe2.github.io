@@ -98,7 +98,7 @@ const Zahir = {
             const damage = calcSkillDamage(character, enemy, 50 + r * 90, 0.5, 1);
             const add = calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
             const bonus = calcSkillDamage(character, enemy, 10 + t * 10, 0.25, 1);
-            return "<b class='damage'>" + (damage + add * 4) + ' - ' + (damage + bonus * 2 + add * 4) + '</b> ( ' + damage + ', ' + bonus + ' x 2, ' + add + ' x 4, )';
+            return "<b class='damage'>" + (damage + add * 4) + ' - ' + (damage + bonus + add * 4) + '</b> ( ' + damage + ', ' + bonus + ', ' + add + ' x 4, )';
         }
         return '-';
     }
@@ -227,12 +227,6 @@ const Zahir = {
                 } else if (c === 'r') {
                     if (r >= 0) {
                         damage += calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
-                        if (tt) {
-                            tt = false;
-                            damage += bonus;
-                        } else {
-                            tt = true;
-                        }
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
