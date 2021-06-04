@@ -227,6 +227,9 @@ const Zahir = {
                 } else if (c === 'r') {
                     if (r >= 0) {
                         damage += calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
+                        if (!tt) {
+                            tt = true;
+                        }
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
