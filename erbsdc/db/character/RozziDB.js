@@ -155,6 +155,7 @@ const Rozzi = {
         const r = character.R_LEVEL.selectedIndex - 1;
         const t = character.T_LEVEL.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
+        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -176,11 +177,11 @@ const Rozzi = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
@@ -216,7 +217,7 @@ const Rozzi = {
                             calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.04 + r * 0.03) : 0);
                     }
                 } else if (c === 't') {
-                    ba = baseAttackDamage(character, enemy, 0, 0.6, 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 0.6, auto_cri ? character.critical_strike_chance : 0, 1);
                     if (enemy.character === Magnus) {
                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                         if (lost < 0) {
@@ -224,11 +225,11 @@ const Rozzi = {
                         }
                         enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     }
-                    ba += baseAttackDamage(character, enemy, 0, coe, 0, 1);
+                    ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'T') {
-                    ba = baseAttackDamage(character, enemy, 0, 0.6, 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 0.6, auto_cri ? character.critical_strike_chance : 100, 1);
                     if (enemy.character === Magnus) {
                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                         if (lost < 0) {
@@ -236,7 +237,7 @@ const Rozzi = {
                         }
                         enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                     }
-                    ba += baseAttackDamage(character, enemy, 0, coe, 100, 1);
+                    ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'p' || c === 'P') {

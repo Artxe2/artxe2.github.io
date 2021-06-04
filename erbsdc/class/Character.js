@@ -126,6 +126,7 @@ class Character {
         this.COMBO_DAMAGE = DIV.querySelector('.combo_damage');
         this.COMBO_OPTION = DIV.querySelector('.combo_option');
         this.COMBO_TIME = DIV.querySelector('.combo_time');
+        this.AUTO_CRI = DIV.querySelector('.auto_cri');
         this.CHAR = DIV.querySelector('.char');
         this.ENEMY = DIV.querySelector('.enemy');
 
@@ -558,6 +559,9 @@ class Character {
         this.COMBO_TIME.addEventListener('change', (e) => {
             comboTime(e.target.value, false);
         });
+        this.AUTO_CRI.addEventListener('change', (e) => {
+            updateDisplay();
+        });
 
         this.ITEM_LIST.querySelector('.close_button').addEventListener('click', (e) => {
             this.ITEM_LIST.querySelector('.item_view').innerHTML = '';
@@ -865,7 +869,8 @@ class Character {
                     this.critical_strike_chance = 100;
                 }
             this.CRITICAL_STRIKE_CHANCE.innerText = this.critical_strike_chance + '%';
-            this.pure_critical_strike_chance = calcEquip(this, 'Critical_Strike_Chance');
+            this.pure_critical_strike_chance = this.critical_strike_chance -
+                (shoichi_t ? shoichi_t.value * (5 + t * 2) : 0);
 
             const cathy_t = this.DIV.querySelector('.cathy_t');
             const critical_damage_bonus = (cathy_t && cathy_t.checked ? 10 + t * 15 : 0);

@@ -170,6 +170,7 @@ const Leon = {
         const t = character.T_LEVEL.selectedIndex;
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
+        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -197,7 +198,7 @@ const Leon = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (ww > 0) {
@@ -205,7 +206,7 @@ const Leon = {
                         damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
                     }
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (ww > 0) {
@@ -269,7 +270,7 @@ const Leon = {
                         }
                     }
                 } else if (c === 't') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
@@ -278,7 +279,7 @@ const Leon = {
                         damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
                     }
                 } else if (c === 'T') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);

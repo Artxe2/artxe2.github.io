@@ -178,6 +178,7 @@ const Shoichi = {
         const t = character.T_LEVEL.selectedIndex;
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
+        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -200,17 +201,17 @@ const Shoichi = {
                 }
                 if (c === 'a') {
                     if (tt === 5) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, auto_cri ? character.critical_strike_chance : 0, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (tt === 5) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, auto_cri ? character.critical_strike_chance : 100, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -218,6 +219,10 @@ const Shoichi = {
                     if (q >= 0) {
                         if (tt < 5) {
                             tt++;
+                            character.critical_strike_chance += 5 + t * 2;
+                            if (character.critical_strike_chance > 100) {
+                                character.critical_strike_chance = 100;
+                            }
                         }
                         damage += calcSkillDamage(character, enemy, 10 + q * 55, 0.45, 1);
                     }
@@ -225,6 +230,10 @@ const Shoichi = {
                     if (w >= 0) {
                         if (tt < 5) {
                             tt++;
+                            character.critical_strike_chance += 5 + t * 2;
+                            if (character.critical_strike_chance > 100) {
+                                character.critical_strike_chance = 100;
+                            }
                         }
                         damage += calcSkillDamage(character, enemy, 10 + w * 30, 0.3, 1);
                     }
@@ -232,6 +241,10 @@ const Shoichi = {
                     if (e >= 0) {
                         if (tt < 5) {
                             tt++;
+                            character.critical_strike_chance += 5 + t * 2;
+                            if (character.critical_strike_chance > 100) {
+                                character.critical_strike_chance = 100;
+                            }
                         }
                         damage += calcSkillDamage(character, enemy, 35 + e * 40, 0.3, 1);
                     }
@@ -239,9 +252,17 @@ const Shoichi = {
                     if (r >= 0) {
                         if (tt < 5) {
                             tt++;
+                            character.critical_strike_chance += 5 + t * 2;
+                            if (character.critical_strike_chance > 100) {
+                                character.critical_strike_chance = 100;
+                            }
                         }
                         if (tt < 5) {
                             tt++;
+                            character.critical_strike_chance += 5 + t * 2;
+                            if (character.critical_strike_chance > 100) {
+                                character.critical_strike_chance = 100;
+                            }
                         }
                         damage += calcSkillDamage(character, enemy, 50 + r * 100, 0.3, 1);
                         if (enemy.character === Magnus) {

@@ -253,6 +253,7 @@ function simulateCombo() {
     c1.heal_reduction = c1.pure_heal_reduction
 
     c0.attack_power = floor(c0.pure_attack_power);
+    c0.critical_strike_chance = c0.pure_critical_strike_chance;
     c0.critical_damage = c0.pure_critical_damage;
     c0.extra_skill_damage = round(c0.pure_extra_skill_damage, 1);
     c0.skill_amplification = round(c0.pure_skill_amplification);
@@ -260,6 +261,7 @@ function simulateCombo() {
     c0.max_hp = floor(c0.pure_max_hp);
 
     c1.attack_power = floor(c1.pure_attack_power);
+    c1.critical_strike_chance = c1.pure_critical_strike_chance;
     c1.critical_damage = c1.pure_critical_damage;
     c1.extra_skill_damage = round(c1.pure_extra_skill_damage, 1);
     c1.skill_amplification = round(c1.pure_skill_amplification);
@@ -363,20 +365,6 @@ function simulateCombo() {
     c0.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data0.damage + (data1.heal ? " - </b><b class='heal'>" + round(data1.heal, 1) : '') + (data1.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data1.shield : '') + (c1.character ? "</b><b> _ : </b><b class='damage'>" + percent0 + '</b><b>%</b>' : '');
     c1.COMBO_DAMAGE.innerHTML = "<b class='damage'>" + data1.damage + (data0.heal ? " - </b><b class='heal'>" + round(data0.heal, 1) : '') + (data0.shield ? "</b><b class='damage'> - </b><b class='shield'>" + data0.shield : '') + (c0.character ? "</b><b> _ : </b><b class='damage'>" + percent1 + '</b><b>%</b>' : '');
 
-    // c0.heal_reduction = heal_reduction0;
-    // c0.attack_power = attack_power0;
-    // c0.critical_damage = critical_damage0;
-    // c0.extra_skill_damage = extra_skill_damage0;
-    // c0.skill_amplification = skill_amplification0;
-    // c0.defense = defense0;
-
-    // c1.heal_reduction = heal_reduction1;
-    // c1.attack_power = attack_power1;
-    // c1.critical_damage = critical_damage1;
-    // c1.extra_skill_damage = extra_skill_damage1;
-    // c1.skill_amplification = skill_amplification1;
-    // c1.defense = defense1;
-
     if (c0.changeWeapon) {
         swapWeapon(c0);
     }
@@ -388,11 +376,11 @@ function simulateCombo() {
 }
 
 function updateDisplay() {
-    for (let i = 0; i < characters.length; i++) {
-        characters[i].calcStat();
+    for (const c of characters) {
+        c.calcStat();
     }
-    for (let i = 0; i < characters.length; i++) {
-        characters[i].updateDisplay();
+    for (const c of characters) {
+        c.updateDisplay();
     }
     simulateCombo();
 }
@@ -409,10 +397,10 @@ function setCookie(name, value, days) {
 function getCookie(name) {
 	let key, value, values = document.cookie + '; ';
 	values = values.split('; ');
-	for (let i = 0; i < values.length; i++) {
-		key = values[i].substr(0, values[i].indexOf('='));
+	for (const v of values) {
+		key = v.substr(0, v.indexOf('='));
 		if (key == name) {
-			value = unescape(values[i].substr(key.length + 1));
+			value = unescape(v.substr(key.length + 1));
 			value = value.substr(0, value.indexOf(';'));
 			return value;
 		}

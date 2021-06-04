@@ -190,6 +190,7 @@ const Li_Dailin = {
         const t = character.T_LEVEL.selectedIndex;
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
+        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -213,24 +214,24 @@ const Li_Dailin = {
                 if (c === 'a') {
                     if (liquid > 1) {
                         liquid = liquid === 2 ? 1 : 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
                         liquid = 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'A') {
                     if (liquid > 1) {
                         liquid = liquid === 2 ? 1 : 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
                         liquid = 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
@@ -342,7 +343,7 @@ const Li_Dailin = {
                     }
                 } else if (c === 't') {
                     if (liquid > 1) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -350,11 +351,11 @@ const Li_Dailin = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -362,14 +363,14 @@ const Li_Dailin = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                     liquid = 0;
                 } else if (c === 'T') {
                     if (liquid > 1) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -377,11 +378,11 @@ const Li_Dailin = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -389,7 +390,7 @@ const Li_Dailin = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }

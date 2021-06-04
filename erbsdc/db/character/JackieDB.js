@@ -257,6 +257,7 @@ const Jackie = {
         const t = character.T_LEVEL.selectedIndex;
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
+        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -294,10 +295,10 @@ const Jackie = {
                 }
                 if (c === 'a' || c === 'A') {
                     if (bleeding[index] && ww && w >= 0) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, c === 'a' ? 0 : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         heal += calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, c === 'a' ? 0 : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -322,10 +323,10 @@ const Jackie = {
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
                         if (bleeding[index] && ww && w >= 0) {
-                            ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, c === 'a' ? 0 : 100, 1);
+                            ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                             heal += calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
                         } else {
-                            ba = baseAttackDamage(character, enemy, 0, 1, c === 'a' ? 0 : 100, 1);
+                            ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         }
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);

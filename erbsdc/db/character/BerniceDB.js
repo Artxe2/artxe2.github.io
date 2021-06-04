@@ -164,6 +164,7 @@ const Bernice = {
         const r = character.R_LEVEL.selectedIndex - 1;
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
+        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -186,17 +187,17 @@ const Bernice = {
                 }
                 if (c === 'a') {
                     if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, auto_cri ? character.critical_strike_chance : 0, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 0, 2 + t);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, auto_cri ? character.critical_strike_chance : 0, 1.5 + t * 0.5);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, auto_cri ? character.critical_strike_chance : 100, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 100, 2 + t);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, auto_cri ? character.critical_strike_chance : 100, 1.5 + t * 0.5);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);

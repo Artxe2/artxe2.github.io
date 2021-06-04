@@ -197,6 +197,7 @@ const Fiora = {
         const t = character.T_LEVEL.selectedIndex;
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
+        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -220,7 +221,7 @@ const Fiora = {
                 }
                 if (c === 'a') {
                     f++;
-                    ba = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
@@ -230,7 +231,7 @@ const Fiora = {
                     }
                 } else if (c === 'A') {
                     f++;
-                    ba = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
@@ -250,7 +251,7 @@ const Fiora = {
                 } else if (c === 'w') {
                     if (w >= 0) {
                         f += 2;
-                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
@@ -263,7 +264,7 @@ const Fiora = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
@@ -275,7 +276,7 @@ const Fiora = {
                 } else if (c === 'W') {
                     if (w >= 0) {
                         f += 2;
-                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
@@ -288,7 +289,7 @@ const Fiora = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
@@ -343,7 +344,7 @@ const Fiora = {
             }
         };
     }
-    ,COMBO_Option: 'rdaWqAweaWqAw'
+    ,COMBO_Option: 'rdawqaweawqaw'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
