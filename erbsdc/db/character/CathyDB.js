@@ -503,7 +503,7 @@ const Cathy = {
             }
         };
     }
-    ,COMBO_Option: 'dqeAaqAawr'
+    ,COMBO_Option: 'wqadqaaara'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
