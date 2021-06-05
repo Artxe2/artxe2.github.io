@@ -75,7 +75,7 @@ const Isol = {
         if (character.weapon && q >= 0) {
             const stack = parseInt(character.DIV.querySelector('.isol_q').value);
             const min = calcSkillDamage(character, enemy, 50 + q * 25, 0.4, 1);
-            const max = calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * stack, 0.5 + stack * 0.2, 1);
+            const max = calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * stack, 0.4 + stack * 0.2, 1);
             const cool = 10000 / ((18 - q * 2) * (100 - character.cooldown_reduction) + 27);
             return min + " ~ <b class='damage'>" +  + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
