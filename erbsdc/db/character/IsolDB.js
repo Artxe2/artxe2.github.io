@@ -211,10 +211,12 @@ const Isol = {
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        qq += 3;
                     } else {
                         ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        qq++;
                     }
                 } else if (c === 'A') {
                     if (type === 'AssaultRifle') {
@@ -237,10 +239,12 @@ const Isol = {
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        qq += 3;
                     } else {
                         ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        qq++;
                     }
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
