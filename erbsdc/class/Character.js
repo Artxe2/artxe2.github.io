@@ -906,7 +906,7 @@ class Character {
             this.skill_amplification =
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification) +
                     calcEquip(this, 'Skill_Amplification_Percent') +
-                    calcEquip(this, 'Skill_Amplification_Percent_per_level') * (level + 1)+
+                    calcEquip(this, 'Skill_Amplification_Percent_per_level') * (level + 1) +
                     (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0) +
                     skill_amplification_bonus;
             this.EXTRA_SKILL_DAMAGE.innerText =

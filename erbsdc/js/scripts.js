@@ -256,17 +256,17 @@ function simulateCombo() {
     c0.critical_strike_chance = c0.pure_critical_strike_chance;
     c0.critical_damage = c0.pure_critical_damage;
     c0.extra_skill_damage = round(c0.pure_extra_skill_damage, 1);
-    c0.skill_amplification = round(c0.pure_skill_amplification);
+    c0.skill_amplification = c0.pure_skill_amplification;
     c0.defense = floor(c0.pure_defense);
-    c0.max_hp = floor(c0.pure_max_hp);
+    c0.max_hp = c0.pure_max_hp;
 
     c1.attack_power = floor(c1.pure_attack_power);
     c1.critical_strike_chance = c1.pure_critical_strike_chance;
     c1.critical_damage = c1.pure_critical_damage;
     c1.extra_skill_damage = round(c1.pure_extra_skill_damage, 1);
-    c1.skill_amplification = round(c1.pure_skill_amplification);
+    c1.skill_amplification = c1.pure_skill_amplification;
     c1.defense = floor(c1.pure_defense);
-    c1.max_hp = floor(c1.pure_max_hp);
+    c1.max_hp = c1.pure_max_hp;
 
     let d0;
     let d1;

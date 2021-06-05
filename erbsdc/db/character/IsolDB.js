@@ -254,6 +254,10 @@ const Isol = {
                                 defense_minus[x] = dm;
                             }
                             damage += calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * (qq - 1), 0.4 + (qq - 1) * 0.2, 1);
+                            console.log(50 + q * 25 + (8 + q * 4) * (qq - 1), 0.4 + (qq - 1) * 0.2)
+                            const stack = parseInt(character.DIV.querySelector('.isol_q').value);
+                            console.log(50 + q * 25 + (8 + q * 4) * stack, 0.4 + stack * 0.2)
+                            console.log()
                             qq = 0;
                         } else {
                             qq = 1;
@@ -266,6 +270,7 @@ const Isol = {
                         }
                         for (let j = 0; j < 4; j++) {
                             damage += calcSkillDamage(character, enemy, 18 + w * 9, 0.65, 1);
+                            console.log('damage = ', damage)
                             if (enemy.character === Magnus) {
                                 let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {
