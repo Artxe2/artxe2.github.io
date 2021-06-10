@@ -58,7 +58,7 @@ const Fiora = {
             } else {
                 damage = round(ba * character.attack_speed * 100) / 100;
             }
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -74,7 +74,7 @@ const Fiora = {
             const min = calcSkillDamage(character, enemy, 60 + q * 60, 0.25, 1);
             const max = calcSkillDamage(character, enemy, (60 + q * 60) * crid, 0.25 * crid, 1);
             const cool = 10000 / ((9 - q * 1) * (100 - character.cooldown_reduction));
-            return min + " - <b class='damage'>" + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
+            return min + " - <b class='damage'>" + max + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -92,9 +92,9 @@ const Fiora = {
             const cool = 10000 / ((20 - w * 3) * (100 - character.cooldown_reduction) - 500);
             if (character.DIV.querySelector('.fiora_r').checked && r >= 0) {
                 const bonus = calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + bonus * 2) + '</b> ( ' +  min1 + ', ' + min2 + ', ' + bonus + ' - ' + max1 + ', ' + max2 + ', ' + bonus + " ) <b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2 + bonus * 2) * cool) / 100 + '</b>';
+                return "<b class='damage'>" + (damage1 + damage2 + bonus * 2) + '</b> ( ' +  min1 + ', ' + min2 + ', ' + bonus + ' - ' + max1 + ', ' + max2 + ', ' + bonus + " ) <b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2 + bonus * 2) * cool) / 100 + '</b>';
             }
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + " ) <b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + " ) <b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -106,7 +106,7 @@ const Fiora = {
             const min = calcSkillDamage(character, enemy, 90 + e * 40, 0.4, 1);
             const max = calcSkillDamage(character, enemy, (90 + e * 40) * crid, 0.4 * crid, 1);
             const cool = 10000 / ((16 - e * 2) * (100 - character.cooldown_reduction) + 200);
-            return "<b class='damage'>" + min + '</b> - ' + max + "<b> __sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + '</b> - ' + max + "<b> _sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -131,7 +131,7 @@ const Fiora = {
                 const damage = calcSkillDamage(character, enemy, 0,
                     1.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                 const cool = 10000 / ((wm < 13 ? 30 : 18) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + damage + "</b><b> __d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+                return "<b class='damage'>" + damage + "</b><b> _d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
             if (type === 'Spear') {
                 const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1);
@@ -168,7 +168,7 @@ const Fiora = {
         if (character.DIV.querySelector('.fiora_r').checked) {
             return '피오라 ( ' + type + ' )\n' +
                 'A: "평균 데미지" ( "평타 데미지", "갸르드 데미지" - "치명타 데미지", "갸르드 데미지" )\n' +
-                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+                'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
                 'HPS: "초당 회복량"\n' +
                 'Q: "스킬 데미지" - "뚜셰 데미지"\n' +
                 'W: "합산 데미지" ( "1타 데미지", "2타 데미지", "갸르드 데미지" - "1타 치명타", "2타 치명타", "갸르드 데미지" )\n' +
@@ -179,7 +179,7 @@ const Fiora = {
         }
         return '피오라 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지" - "뚜셰 데미지"\n' +
             'W: "합산 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" )\n' +

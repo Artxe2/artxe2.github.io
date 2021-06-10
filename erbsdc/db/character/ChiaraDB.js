@@ -38,7 +38,7 @@ const Chiara = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -52,7 +52,7 @@ const Chiara = {
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + q * 40, 0.6, 1);
             const cool = 10000 / ((10 - q * 1) * (100 - character.cooldown_reduction) + 12);
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -63,7 +63,7 @@ const Chiara = {
             const damage = calcSkillDamage(character, enemy, 80 + w * 40, 0.75, 1);
             const shield = floor(90 + w * 35 + character.attack_power * 0.6);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __s: </b><b class='shield'>" + shield + "</b><b> __s/s: </b><b class='shield'>" + round(shield * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _s: </b><b class='shield'>" + shield + "</b><b> _s/s: </b><b class='shield'>" + round(shield * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -74,7 +74,7 @@ const Chiara = {
             const damage1 = calcSkillDamage(character, enemy, 40 + e * 20, 0.3, 1);
             const damage2 = calcSkillDamage(character, enemy, 70 + e * 40, 0.7, 1);
             const cool = 10000 / ((17 - e * 1.5) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -85,7 +85,7 @@ const Chiara = {
             const damage1 = calcSkillDamage(character, enemy, 10 + r * 10, 0.2, 1);
             const damage2 = floor(200 + r * 100 + character.attack_power * 1);
             const heal = calcHeal(damage1 * 0.2, 1, enemy);
-            return "<b class='damage'>" + (damage1 * 12 + damage2) + '</b> ( ' + damage1 + " x 12, <b class='damage'>" + damage2 + "</b> ) <b> __h/s: </b><b class='heal'>" + heal + '</b>';
+            return "<b class='damage'>" + (damage1 * 12 + damage2) + '</b> ( ' + damage1 + " x 12, <b class='damage'>" + damage2 + "</b> ) <b> _h/s: </b><b class='heal'>" + heal + '</b>';
         }
         return ' - ';
     }
@@ -98,7 +98,7 @@ const Chiara = {
                 const damage = calcSkillDamage(character, enemy, 0,
                     1.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                 const cool = 10000 / ((wm < 13 ? 30 : 18) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+                return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
         }
         return '-';
@@ -126,12 +126,12 @@ const Chiara = {
             '';
         return '키아라 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
-            'W: "스킬 데미지" __s: 쉴드량\n' +
+            'W: "스킬 데미지" _s: 쉴드량\n' +
             'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
-            'R: "합산 데미지" ( "초당 데미지" x "타수", "징벌 데미지" ) __h/s: "초당 흡혈량" _use "스킬 사용"\n' +
+            'R: "합산 데미지" ( "초당 데미지" x "타수", "징벌 데미지" ) _h/s: "초당 흡혈량" _use "스킬 사용"\n' +
             'D: ' + skill + '\n' +
             'T: "패시브 스택"\n';
     }

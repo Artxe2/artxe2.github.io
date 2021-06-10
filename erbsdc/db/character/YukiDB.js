@@ -63,7 +63,7 @@ const Yuki = {
             } else {
                 damage= round(ba * character.attack_speed * 100) / 100;
             }
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -85,9 +85,9 @@ const Yuki = {
             const cool = 10000 / ((9 - q * 1) * (100 - character.cooldown_reduction) + 23);
             if (character.DIV.querySelector('.yuki_t').checked) {
                 const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
-                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + " )<b> __h: </b><b class='heal'>" + life + "</b><b> __sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
+                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + " )<b> _h: </b><b class='heal'>" + life + "</b><b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
             }
-            return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> __h: </b><b class='heal'>" + life + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> _h: </b><b class='heal'>" + life + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -119,9 +119,9 @@ const Yuki = {
             const cool = 10000 / ((17 - e * 1) * (100 - character.cooldown_reduction) - 300);
             if (character.DIV.querySelector('.yuki_t').checked) {
                 const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
-                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' + damage + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
+                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' + damage + ', ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
             }
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -185,7 +185,7 @@ const Yuki = {
             '';
         return '유키 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
             'W: _use "스킬 사용"\n' +

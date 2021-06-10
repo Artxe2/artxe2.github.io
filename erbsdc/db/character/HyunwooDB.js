@@ -42,7 +42,7 @@ const Hyunwoo = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -56,7 +56,7 @@ const Hyunwoo = {
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 100 + q * 50, 0.3, 1);
             const cool = 10000 / ((8.5 - q * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -79,11 +79,11 @@ const Hyunwoo = {
             const max = calcSkillDamage(character, enemy, (enemy.max_hp ? enemy.max_hp * (0.05 + e * 0.03) : 0) + character.defense * 0.8, 0, 1);
             const bonus = calcSkillDamage(character, enemy, 60 + e * 35, 0, 1);
             const cool = 10000 / ((17 - e * 1) * 0.75 * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + (max + bonus) + '</b> ( ' + min + ' ~ ' + max + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((min + max + bonus) / 2 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (max + bonus) + '</b> ( ' + min + ' ~ ' + max + ', ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((min + max + bonus) / 2 * cool) / 100 + '</b>';
         }
         return '-';
     }
-    ,E_Option: "<b> __use</b><input type='checkbox' class='hyunwoo_e' onchange='updateDisplay()'>"
+    ,E_Option: "<b> _use</b><input type='checkbox' class='hyunwoo_e' onchange='updateDisplay()'>"
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
@@ -103,7 +103,7 @@ const Hyunwoo = {
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                 const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + min + "</b><b> __h: </b><b class='heal'>" + life + '</b>';
+                return "<b class='damage'>" + min + "</b><b> _h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
                 return "<b class='damage'>" + (wm < 13 ? 60 : 80) + '%</b>';
@@ -135,12 +135,12 @@ const Hyunwoo = {
             weapon === 'Tonfa' ? '톤파' :
             '';
         const skill =
-            weapon === 'Glove' ? '"스킬 데미지"  __h: "평균 흡혈량"' :
+            weapon === 'Glove' ? '"스킬 데미지"  _h: "평균 흡혈량"' :
             weapon === 'Tonfa' ? '"반사 데미지"' :
             '';
         return '현우 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
             'W: "평균 데미지" ( "평타 데미지" - "치명타 데미지" ) _use "스킬 사용"\n' +

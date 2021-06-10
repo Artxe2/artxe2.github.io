@@ -42,7 +42,7 @@ const Sissela = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -63,7 +63,7 @@ const Sissela = {
             const damage2 = calcSkillDamage(character, enemy, 60 + q * 30, 0.5, 1);
             const cost = 50 + q * 10;
             const cool = 10000 / ((6.5 - q * 0.75) * (100 - character.cooldown_reduction) + 4);
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " ) <b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " ) <b> _cost: </b><b class='heal'>-" + cost + "</b><b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -74,7 +74,7 @@ const Sissela = {
             const damage = calcSkillDamage(character, enemy, 30 + w * 60, 0.7, 1);
             const cost = 60 + w * 20;
             const cool = 10000 / ((19.5 - w * 1.5) * (100 - character.cooldown_reduction) + 150);
-            return "<b class='damage'>" + damage + "</b><b> __cost: </b><b class='heal'>-" + cost + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _cost: </b><b class='heal'>-" + cost + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -85,7 +85,7 @@ const Sissela = {
             const damage = calcSkillDamage(character, enemy, 40 + e * 50, 0.6, 1);
             const shield = 75 + e * 50 + character.attack_power * 0.5;
             const cool = 10000 / ((14 - e * 1) * (100 - character.cooldown_reduction) + 20);
-            return "<b class='damage'>" + damage + "</b><b> __s: </b><b class='shield'>" + shield + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _s: </b><b class='shield'>" + shield + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -157,11 +157,11 @@ const Sissela = {
             '';
         return '시셀라 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
-            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __cost: "체력소모"\n' +
-            'W: "스킬 데미지" __cost: "체력소모"\n' +
-            'E: "스킬 데미지" __s: "쉴드량"\n' +
+            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) _cost: "체력소모"\n' +
+            'W: "스킬 데미지" _cost: "체력소모"\n' +
+            'E: "스킬 데미지" _s: "쉴드량"\n' +
             'R: "최소 데미지" - "최대 데미지" _use "스킬 사용"\n' +
             'D: ' + skill + '\n' +
             'T: "패시브 데미지" ( "평타 데미지", "추가 데미지" - "치명타 데미지", "추가 데미지" ) _"잃은 체력"\n';

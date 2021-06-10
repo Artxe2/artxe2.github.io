@@ -52,7 +52,7 @@ const Shoichi = {
             }
             const damage = floor(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -70,7 +70,7 @@ const Shoichi = {
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 10 + w * 30, 0.3, 1) : 0;
             const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.4, 1);
             const cool = 10000 / (6 * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round((damage + (tt + ww) / 2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round((damage + (tt + ww) / 2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -80,7 +80,7 @@ const Shoichi = {
         if (character.weapon && w >= 0) {
             const damage = calcSkillDamage(character, enemy, 10 + w * 30, 0.3, 1);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -94,7 +94,7 @@ const Shoichi = {
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 10 + w * 30, 0.3, 1) : 0;
             const tt = calcSkillDamage(character, enemy, 10 + t * 35, 0.4, 1);
             const cool = 10000 / ((18 - e * 2) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round((damage + tt + ww) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round((damage + tt + ww) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -127,7 +127,7 @@ const Shoichi = {
                 }
                 const bonus = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * 0.08 : 0);
                 const heal = calcHeal(floor(damage + bonus) * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
+                return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> _h: </b><b class='heal'>" + heal + '</b>';
             }
         }
         return '-';
@@ -156,11 +156,11 @@ const Shoichi = {
             weapon === 'Dagger' ? '단검' :
             '';
         const skill =
-            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' :
+            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" _h: "흡혈량"' :
             '';
         return '쇼이치 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
             'W: "스킬 데미지"\n' +

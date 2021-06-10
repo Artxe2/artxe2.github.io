@@ -38,7 +38,7 @@ const Adriana = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -52,7 +52,7 @@ const Adriana = {
         if (character.weapon && q >= 0) {
             const damage = calcTrueDamage(character, enemy, 12 + q * 3 + character.attack_power * (0.1 + q * 0.05));
             const cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction) + 200);
-            return "<b class='damage'>" + damage + ' ~ ' + damage * 9 + '</b> ( ' + damage + " x 9 )<b> __sd/s: </b><b class='damage'>" + round(damage * 9 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + ' ~ ' + damage * 9 + '</b> ( ' + damage + " x 9 )<b> _sd/s: </b><b class='damage'>" + round(damage * 9 * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -80,7 +80,7 @@ const Adriana = {
         if (character.weapon && r >= 0) {
             const damage = calcSkillDamage(character, enemy, 70 + r * 60, 0.4, 1);
             const cool = 10000 / ((40 - r * 8) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + ' - ' + damage * 3 + '</b> ( ' + damage + " x 3 )<b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + ' - ' + damage * 3 + '</b> ( ' + damage + " x 3 )<b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -125,7 +125,7 @@ const Adriana = {
             '';
         return '아드리아나 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "틱당 데미지" ~ "풀히트 데미지" ( "틱당 데미지" x "타수" )\n' +
             'W: "데미지 없음"\n' +

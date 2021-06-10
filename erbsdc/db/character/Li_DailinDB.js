@@ -42,7 +42,7 @@ const Li_Dailin = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -57,7 +57,7 @@ const Li_Dailin = {
             const min = calcSkillDamage(character, enemy, 25 + q * 20, 0.5, 1);
             const max = calcSkillDamage(character, enemy, 28 + q * 28, 0.6, 1);
             const cool = 10000 / ((12 - q * 0.5) * (100 - character.cooldown_reduction) + 100);
-            return "<b class='damage'>" + max * 3 + '</b> ( ' + min + ' x 3 - ' + max + " x 3 )<b> __sd/s: </b><b class='damage'>" + round((max * 3) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + max * 3 + '</b> ( ' + min + ' x 3 - ' + max + " x 3 )<b> _sd/s: </b><b class='damage'>" + round((max * 3) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -70,17 +70,17 @@ const Li_Dailin = {
             const damage2 = baseAttackDamage(character, enemy, 0, 0.4 + t * 0.2, character.critical_strike_chance, 1);
             const dps = round((damage1 + damage2) * character.attack_speed * 100) / 100;
             const life = calcHeal((damage1 + damage2) * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b> _d/s: </b><b class='damage'>" + dps + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b> _d/s: </b><b class='damage'>" + dps + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
-    ,W_Option: "<b> __use</b><input type='checkbox' class='lida_w' onchange='updateDisplay()'>"
+    ,W_Option: "<b> _use</b><input type='checkbox' class='lida_w' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 80 + e * 55, 0.5, 1);
             const cool = 10000 / ((13 - e * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -124,7 +124,7 @@ const Li_Dailin = {
                 const max = baseAttackDamage(character, enemy, 0, (1 + coe) * 1.19, 0, 1) + bonus;
                 const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
                 const cool = 100 / (wm < 13 ? 12 : 10);
-                return "<b class='damage'>" + min + '</b> ( ' +  min + ' ~ ' + max + " )<b> __h: </b><b class='heal'>" + life + "</b><b> __sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
+                return "<b class='damage'>" + min + '</b> ( ' +  min + ' ~ ' + max + " )<b> _h: </b><b class='heal'>" + life + "</b><b> _sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
             }
             if (type === 'Nunchaku') {
                 const min = calcSkillDamage(character, enemy, wm < 13 ? 150 : 300, 0.5, 1);
@@ -167,15 +167,15 @@ const Li_Dailin = {
             weapon === 'Nunchaku' ? '쌍절곤' :
             '';
         const skill =
-            weapon === 'Glove' ? '"스킬 데미지" ( "스킬 데미지" ~ "최대 강화 데미지" ) __h: "스킬 흡혈량"' :
+            weapon === 'Glove' ? '"스킬 데미지" ( "스킬 데미지" ~ "최대 강화 데미지" ) _h: "스킬 흡혈량"' :
             weapon === 'Nunchaku' ? '"최소 데미지" ~ "최대 데미지"' :
             '';
         return '리 다이린 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "합산 강화 데미지" ( "1타 데미지", "2타 데미지", "3타 데미지" - "1타 강화", "2타 강화", "3타 강화" )\n' +
-            'W: _d/s: "만취 초당 데미지" __h/s: "만취 초당 흡혈량" __use "스킬 사용"\n' +
+            'W: _d/s: "만취 초당 데미지" _h/s: "만취 초당 흡혈량" _use "스킬 사용"\n' +
             'E: "스킬 데미지"\n' +
             'R: "최소 합산 데미지" ~ "최대 막타 데미지" / "최대 강화 데미지" ( [ "최소 데미지" x "타수" ] ~ [ "최대 데미지" x "타수" ] )\n' +
             'D: ' + skill + '\n' +

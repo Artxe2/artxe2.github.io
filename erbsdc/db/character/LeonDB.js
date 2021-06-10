@@ -50,7 +50,7 @@ const Leon = {
                 damage = round(ba * character.attack_speed * 100) / 100;
             }
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -64,7 +64,7 @@ const Leon = {
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.4, 1);
             const cool = 10000 / ((10 - q * 0.5) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -82,7 +82,7 @@ const Leon = {
                 const tBonus = calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
                 return "<b class='damage'>" + (damage + wBonus + tBonus) + '</b> ( ' +  min + ', ' + wBonus + ', ' + tBonus + ' - ' + max + ', ' + wBonus + ', ' + tBonus + ' )';
             }
-            return "<b class='damage'>" + (damage + wBonus) + '</b> ( ' +  min + ', ' + wBonus + ' - ' + max + ', ' + wBonus + " )</b><b> __s: </b><b class='shield'>" + shield + '</b>';
+            return "<b class='damage'>" + (damage + wBonus) + '</b> ( ' +  min + ', ' + wBonus + ' - ' + max + ', ' + wBonus + " )</b><b> _s: </b><b class='shield'>" + shield + '</b>';
         }
         return '-';
     }
@@ -92,7 +92,7 @@ const Leon = {
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 40, 0.35, 1);
             const cool = 10000 / ((20 - e) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -116,7 +116,7 @@ const Leon = {
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                 const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + min + "</b><b> __h: </b><b class='heal'>" + life + '</b>';
+                return "<b class='damage'>" + min + "</b><b> _h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
                 return "<b class='damage'>" + (wm < 13 ? 60 : 80) + '%</b>';
@@ -148,14 +148,14 @@ const Leon = {
             weapon === 'Glove' ? '글러브' :
             '';
         const skill =
-            weapon === 'Glove' ? '"스킬 데미지"  __h: "평균 흡혈량"' :
+            weapon === 'Glove' ? '"스킬 데미지"  _h: "평균 흡혈량"' :
             '';
         return '레온 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
-            'W: "평균 데미지" ( "평타 데미지", "보너스 데미지" - "치명타 데미지", "보너스 데미지" ) __s: 쉴드량\n' +
+            'W: "평균 데미지" ( "평타 데미지", "보너스 데미지" - "치명타 데미지", "보너스 데미지" ) _s: 쉴드량\n' +
             'E: "스킬 데미지"\n' +
             'R: "최소 데미지" ~ "최대 데미지"\n' +
             'D: ' + skill + '\n' +

@@ -38,7 +38,7 @@ const Emma = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -54,7 +54,7 @@ const Emma = {
             const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
             const heal = calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / (5.5 * (100 - character.cooldown_reduction) + 13);
-            return "<b class='damage'>" + damage + ' - ' + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * 2 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + ' - ' + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * 2 * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -66,7 +66,7 @@ const Emma = {
             const damage = calcSkillDamage(character, enemy, 60 + w * 60, 0.75, 1);
             const heal = calcHeal((60 + w * 10) * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / ((11 - w * 1) * (100 - character.cooldown_reduction) - 179);
-            return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -88,7 +88,7 @@ const Emma = {
             const max = calcSkillDamage(character, enemy, 200 + r * 25, 0.75, 1);
             const heal = calcHeal(100 * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / ((24 - r * 3) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + ' - ' + max * 2 + '</b> ( ' + max + " x 2 )<b> __h: </b><b class='heal'>" + heal + ' ~ ' + heal * 2 + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + ' - ' + max * 2 + '</b> ( ' + max + " x 2 )<b> _h: </b><b class='heal'>" + heal + ' ~ ' + heal * 2 + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -116,7 +116,7 @@ const Emma = {
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             const shield = floor(100 + t * 25 + character.max_sp * (0.03 + t * 0.03));
-            return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + " ) <b> __s: </b><b class='shield'>" + shield + '</b>';
+            return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + " ) <b> _s: </b><b class='shield'>" + shield + '</b>';
         }
         return '-';
     }
@@ -137,14 +137,14 @@ const Emma = {
             '';
         return '엠마 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
-            'Q: "스킬 데미지" - "합산 데미지" ( "1발당 데미지" x "타수" ) __h: "회복량"\n' +
+            'Q: "스킬 데미지" - "합산 데미지" ( "1발당 데미지" x "타수" ) _h: "회복량"\n' +
             'W: "스킬 데미지" _h: "회복량"\n' +
             'E: _h: "회복량"\n' +
-            'R: "비둘기 데미지" / "모자 데미지" - "2회 사용시 데미지" ( "스킬 데미지" x "타수" ) __h: "회복량"\n' +
+            'R: "비둘기 데미지" / "모자 데미지" - "2회 사용시 데미지" ( "스킬 데미지" x "타수" ) _h: "회복량"\n' +
             'D: ' + skill + '\n' +
-            'T: "패시브 데미지" ( "평타 데미지", "추가 데미지" - "치명타 데미지", "추가 데미지" ) __s: "쉴드량"\n';
+            'T: "패시브 데미지" ( "평타 데미지", "추가 데미지" - "치명타 데미지", "추가 데미지" ) _s: "쉴드량"\n';
     }
     ,COMBO_VARS: '{}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {

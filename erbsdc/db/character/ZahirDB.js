@@ -42,7 +42,7 @@ const Zahir = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -61,7 +61,7 @@ const Zahir = {
             const bonus = calcSkillDamage(character, enemy, 10 + t * 10, 0.25, 1);
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1) : 0;
             const cool = 10000 / ((8 - q * 0.5) * (100 - character.cooldown_reduction) + 20);
-            return "<b class='damage'>" + min + ' - ' + (max + bonus)  + '</b> ( ' + max + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round(((min + max) / 2 + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + (max + bonus)  + '</b> ( ' + max + ', ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round(((min + max) / 2 + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -86,7 +86,7 @@ const Zahir = {
             const bonus = calcSkillDamage(character, enemy, 10 + t * 10, 0.25, 1);
             const ww = w >= 0 ? calcSkillDamage(character, enemy, 20 + w * 30, 0.3, 1) : 0;
             const cool = 10000 / ((20 - e * 2) * (100 - character.cooldown_reduction) + 17);
-            return "<b class='damage'>" + damage + ' - ' + (damage + bonus)  + '</b> ( ' + damage + ', ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + ' - ' + (damage + bonus)  + '</b> ( ' + damage + ', ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((damage + bonus * 1.5 + ww * 2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -147,7 +147,7 @@ const Zahir = {
             '';
         return '자히르 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" - "합산 데미지" ( "강화 데미지", "패시브 데미지" ) _ "처치 수 차이"\n' +
             'W: "스킬 데미지" - "합산 데미지" ( "스킬 데미지", "패시브 데미지" )\n' +

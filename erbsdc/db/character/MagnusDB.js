@@ -42,7 +42,7 @@ const Magnus = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -56,7 +56,7 @@ const Magnus = {
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 40 + q * 60, 0.6, 1);
             const cool = 10000 / ((18 - q * 2.5) * (100 - character.cooldown_reduction) + 80);
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -66,7 +66,7 @@ const Magnus = {
         if (character.weapon && w >= 0) {
             const damage = calcSkillDamage(character, enemy, floor(1.5 + w * 0.5) * 10 + character.defense * 0.2, 0.4, 1);
             const cool = 10000 / (16 * (100 - character.cooldown_reduction) + 400 - floor(6 + w * 0.5) * 100);
-            return "<b class='damage'>" + damage * floor(6 + w * 0.5) + '</b> ( ' + damage + ' x ' + floor(6 + w * 0.5) + " )<b> __sd/s: </b><b class='damage'>" + round((damage * floor(6 + w * 0.5)) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage * floor(6 + w * 0.5) + '</b> ( ' + damage + ' x ' + floor(6 + w * 0.5) + " )<b> _sd/s: </b><b class='damage'>" + round((damage * floor(6 + w * 0.5)) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -76,7 +76,7 @@ const Magnus = {
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 55, 0.4, 1);
             const cool = 10000 / ((13 - e * 1) * (100 - character.cooldown_reduction) + 20);
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -104,7 +104,7 @@ const Magnus = {
     }
     ,D_Option: (character, enemy) => {
         return !character.weapon || character.weapon.Type !== 'Hammer' ? '' :
-            "<b> __use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
+            "<b> _use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
     }
     ,T_Skill: (character, enemy) => {
         return '';
@@ -128,7 +128,7 @@ const Magnus = {
             '';
         return '매그너스 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
             'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' +

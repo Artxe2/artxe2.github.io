@@ -54,12 +54,12 @@ const Alex = {
                 const damage2 = round(shot * character.attack_speed * 100) / 100;
                 const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
                 const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
-                return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
+                return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
             }
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -79,7 +79,7 @@ const Alex = {
                 damage = calcSkillDamage(character, enemy, 50 + q * 40, 0.3, 1);
                 cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction));
             }
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -95,7 +95,7 @@ const Alex = {
                 damage = calcSkillDamage(character, enemy, 40 + w * 20, 0.4, 1);
                 cool = 10000 / (13 * (100 - character.cooldown_reduction));
             }
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -105,7 +105,7 @@ const Alex = {
         if (character.weapon && e >= 0 && !character.isMelee) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 30, 0.4, 1);
             const cool = 10000 / ((22 - e * 2) * (100 - character.cooldown_reduction) + 50);
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -172,7 +172,7 @@ const Alex = {
             '';
         return '알렉스 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
             'W: "스킬데미지"\n' +

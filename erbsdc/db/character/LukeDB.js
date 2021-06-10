@@ -50,7 +50,7 @@ const Luke = {
             } else {
                 damage = round(ba * character.attack_speed * 100) / 100;
             }
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -75,13 +75,13 @@ const Luke = {
             }
             if (character.DIV.querySelector('.luke_q').checked) {
                 const heal = calcHeal(calcSkillDamage(character, enemy, 50 + q * 30, 1, 1) * 0.8, 1, enemy);
-                return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )</b><b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + cd + '</b>';
+                return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )</b><b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + cd + '</b>';
             }
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + cd + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + cd + '</b>';
         }
         return '-';
     }
-    ,Q_Option:  "<b> __up</b><input type='checkbox' class='luke_q' onchange='lukeUp(0)'/>"
+    ,Q_Option:  "<b> _up</b><input type='checkbox' class='luke_q' onchange='lukeUp(0)'/>"
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
@@ -90,7 +90,7 @@ const Luke = {
         }
         return '-';
     }
-    ,W_Option:  "<b> __up</b><input type='checkbox' class='luke_w' onchange='lukeUp(1)'/> _ " +
+    ,W_Option:  "<b> _up</b><input type='checkbox' class='luke_w' onchange='lukeUp(1)'/> _ " +
         "<input type='number' class='stack luke_w_s' value='0' onchange='fixLimitNum(this, 5)'><b>Stack _use</b>" +
         "<input type='checkbox' class='luke_w_u' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
@@ -98,11 +98,11 @@ const Luke = {
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 30, 0.4, 1);
             const cool = 10000 / ((22 - e * 3) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
-    ,E_Option:  "<b> __up</b><input type='checkbox' class='luke_e' onchange='lukeUp(2)'/>"
+    ,E_Option:  "<b> _up</b><input type='checkbox' class='luke_e' onchange='lukeUp(2)'/>"
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
@@ -128,7 +128,7 @@ const Luke = {
         }
         return '-';
     }
-    ,R_Option: "<b> __up</b><input type='checkbox' class='luke_r' onchange='lukeUp(3)'/>"
+    ,R_Option: "<b> _up</b><input type='checkbox' class='luke_r' onchange='lukeUp(3)'/>"
     ,D_Skill: (character, enemy) => {
         if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
             const type = character.weapon.Type;
@@ -170,23 +170,23 @@ const Luke = {
         if (character.DIV.querySelector('.luke_w_u').checked) {
             return '루크 ( ' + type + ' )\n' +
                 'A: "평균 데미지" ( "평타 데미지", "강박증 데미지" - "치명타 데미지", "강박증 데미지" )\n' +
-                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+                'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
                 'HPS: "초당 회복량"\n' +
-                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __h: "흡혈량" __up "스킬 강화"\n' +
-                'W: "스킬 데미지" __up "스킬 강화" _ "스택" _use "스킬사용"\n' +
-                'E: "스킬 데미지" __up "스킬 강화"\n' +
-                'R: "최소 데미지" ~ "최대 막타 데미지" __up "스킬 강화"\n' +
+                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) _h: "흡혈량" _up "스킬 강화"\n' +
+                'W: "스킬 데미지" _up "스킬 강화" _ "스택" _use "스킬사용"\n' +
+                'E: "스킬 데미지" _up "스킬 강화"\n' +
+                'R: "최소 데미지" ~ "최대 막타 데미지" _up "스킬 강화"\n' +
                 'D: ' + skill + '\n' +
                 'T: _h: "회복량" _ "스택"\n';
         }
         return '루크 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
-            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) __h: "흡혈량" __up "스킬 강화"\n' +
-            'W: "스킬 데미지" __up "스킬 강화" _ "스택" _use "스킬사용"\n' +
-            'E: "스킬 데미지" __up "스킬 강화"\n' +
-            'R: "최소 데미지" ~ "최대 막타 데미지" __up "스킬 강화"\n' +
+            'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" ) _h: "흡혈량" _up "스킬 강화"\n' +
+            'W: "스킬 데미지" _up "스킬 강화" _ "스택" _use "스킬사용"\n' +
+            'E: "스킬 데미지" _up "스킬 강화"\n' +
+            'R: "최소 데미지" ~ "최대 막타 데미지" _up "스킬 강화"\n' +
             'D: ' + skill + '\n' +
             'T: _h: "회복량" _ "스택"\n';
     }

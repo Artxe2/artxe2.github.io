@@ -72,7 +72,7 @@ const Jackie = {
                 life += life;
             }
             const damage = round(ba * character.attack_speed * 100) / 100;
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -92,11 +92,11 @@ const Jackie = {
                 const heal = calcHeal(10 + w * 5 + character.attack_power * 0.1, 2, enemy);
                 damage1 = calcSkillDamage(character, enemy, 30 + q * 30, 0.25 + 0.1 + w * 0.025, 1);
                 damage2 = calcSkillDamage(character, enemy, 20 + q * 25, 0.65 + 0.1 + w * 0.025, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 6) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 6 ] ) <b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" +round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
+                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 6) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 6 ] ) <b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" +round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
             } else {
                 damage1 = calcSkillDamage(character, enemy, 30 + q * 30, 0.25, 1);
                 damage2 = calcSkillDamage(character, enemy, 20 + q * 25, 0.65, 1);
-                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 6) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 6 ] )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
+                return "<b class='damage'>" + (damage1 + damage2 + damage3 * 6) + '</b> ( ' + damage1 + ', ' + damage2 + ', [ ' + damage3 + " x 6 ] )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2 + damage3 * 5) * cool) / 100 + '</b>';
             }
         }
         return '-';
@@ -115,10 +115,10 @@ const Jackie = {
             if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
                 damage = calcSkillDamage(character, enemy, 10 + e * 60, 0.3 + e * 0.1 + 0.1 + w * 0.025, 1);
                 const heal = calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
-                return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+                return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
             damage = calcSkillDamage(character, enemy, 10 + e * 60, 0.3 + e * 0.1, 1);
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -139,7 +139,7 @@ const Jackie = {
         }
         return '-';
     }
-    ,R_Option: "<b> __use</b><input type='checkbox' class='jackie_r' onchange='updateDisplay()'>"
+    ,R_Option: "<b> _use</b><input type='checkbox' class='jackie_r' onchange='updateDisplay()'>"
     ,D_Skill: (character, enemy) => {
         if (character.weapon) {
             const type = character.weapon.Type;
@@ -160,14 +160,14 @@ const Jackie = {
                         bonus = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * 0.08 : 0);
                         heal = calcHeal(floor(damage + bonus) * (character.life_steal / 100), 1, enemy);
                     }
-                    return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
+                    return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> _h: </b><b class='heal'>" + heal + '</b>';
                 }
                 if (type === 'TwoHandedSword') {
                     const w = character.W_LEVEL.selectedIndex - 1;
                     if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
                         const damage = calcSkillDamage(character, enemy, 0, (wm < 13 ? 1.75 : 2.25) + 0.1 + w * 0.025, 1);
                         const heal = calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
-                        return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + '</b>'
+                        return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + heal + '</b>'
                     }
                     return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, wm < 13 ? 1.75 : 2.25, 1) + '</b>';
                 }
@@ -177,7 +177,7 @@ const Jackie = {
                     if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
                         const heal = calcHeal(10 + w * 5 + character.attack_power * 0.1, 12, enemy);
                         damage = calcSkillDamage(character, enemy, 0, (wm < 13 ? 0.25 : 0.4) + 0.1 + w * 0.025, 1);
-                        return "<b class='damage'>" + damage * 12 + '</b> ( ' + damage + " x 12 ) <b> __h: </b><b class='heal'>" + heal + '</b>';
+                        return "<b class='damage'>" + damage * 12 + '</b> ( ' + damage + " x 12 ) <b> _h: </b><b class='heal'>" + heal + '</b>';
                     } else {
                         damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 0.25 : 0.4, 1);
                         return "<b class='damage'>" + damage * 12 + '</b> ( ' + damage + ' x 12 )';
@@ -214,36 +214,36 @@ const Jackie = {
         let skill;
         if (character.DIV.querySelector('.jackie_w').checked) {
             skill =
-                weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"'  :
-                weapon === 'TwoHandedSword' ? '"스킬 데미지" __h: "흡혈량"' :
-                weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" ) __h: "흡혈량"' :
+                weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" _h: "흡혈량"'  :
+                weapon === 'TwoHandedSword' ? '"스킬 데미지" _h: "흡혈량"' :
+                weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" ) _h: "흡혈량"' :
                 weapon === 'Axe' ? '"스택" _use "스킬사용" _"잃은 체력"' :
                 '';
             return '재키 ( ' + type + ' )\n' +
                 'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+                'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
                 'HPS: "초당 회복량"\n' +
-                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지", "출혈 데미지" ) __h: "흡혈량"\n' +
+                'Q: "합산 데미지" ( "1타 데미지", "2타 데미지", "출혈 데미지" ) _h: "흡혈량"\n' +
                 'W: _use "스킬 사용"\n' +
-                'E: "스킬 데미지" __h: "흡혈량"\n' +
-                'R: "스킬 데미지" __use "스킬 사용"\n' +
+                'E: "스킬 데미지" _h: "흡혈량"\n' +
+                'R: "스킬 데미지" _use "스킬 사용"\n' +
                 'D: ' + skill + '\n' +
                 'T: _weak "닭, 멧돼지, 늑대" _strong "곰, 생존자, 위클라인"\n';
         } else {
             skill =
-                weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"'  :
+                weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" _h: "흡혈량"'  :
                 weapon === 'TwoHandedSword' ? '"스킬 데미지"' :
                 weapon === 'DualSwords' ? '"합산 데미지" ( "틱당 데미지" x "타수" )' :
                 weapon === 'Axe' ? '"스택" _use "스킬사용" _"잃은 체력"' :
                 '';
             return '재키 ( ' + type + ' )\n' +
                 'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-                'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+                'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
                 'HPS: "초당 회복량"\n' +
                 'Q: "합산 데미지" ( "1타 데미지", "2타 데미지", [ "출혈 데미지" x "타수" ] )\n' +
                 'W: _use "스킬 사용"\n' +
                 'E: "스킬 데미지"\n' +
-                'R: "스킬 데미지" __use "스킬 사용"\n' +
+                'R: "스킬 데미지" _use "스킬 사용"\n' +
                 'D: ' + skill + '\n' +
                 'T: _weak "닭, 멧돼지, 늑대" _strong "곰, 생존자, 위클라인"\n';
         }

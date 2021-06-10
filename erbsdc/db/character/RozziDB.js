@@ -42,7 +42,7 @@ const Rozzi = {
             const damage2 = round(shot * character.attack_speed * 100) / 100;
             const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
             const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
+            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
         }
         return '-';
     }
@@ -56,7 +56,7 @@ const Rozzi = {
         if (character.weapon && q >= 0) {
             const damage = calcSkillDamage(character, enemy, 30 + q * 40, 0.3, 1);
             const cool = 10000 / (6 * (100 - character.cooldown_reduction) - 200);
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -66,18 +66,18 @@ const Rozzi = {
         if (character.weapon && w >= 0) {
             const damage = calcSkillDamage(character, enemy, 85 + w * 40, 0.35, 1);
             const cool = 10000 / ((8.5 - w * 0.5) * (100 - character.cooldown_reduction) + 30);
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
-    ,W_Option: "<b> __use</b><input type='checkbox' class='rozzi_w' onchange='updateDisplay()'>"
+    ,W_Option: "<b> _use</b><input type='checkbox' class='rozzi_w' onchange='updateDisplay()'>"
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 50 + e * 20, 0.4, 1);
             const damage2 = calcSkillDamage(character, enemy, 50 + e * 20, 0.45, 1);
             const cool = 10000 / ((18 - e * 2) * (100 - character.cooldown_reduction) + 50);
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -117,7 +117,7 @@ const Rozzi = {
             const max2 = baseAttackDamage(character, enemy, 0, coe, 100, 1);
             const dps = round((damage1 + damage2) * character.attack_speed * 100) / 100;
             const life = calcHeal((damage1 + damage2) * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + " ) <b> _d/s: </b><b class='damage'>" + dps + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + " ) <b> _d/s: </b><b class='damage'>" + dps + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -138,7 +138,7 @@ const Rozzi = {
             '';
         return '로지 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지"\n' +
             'W: "스킬 데미지"\n' +

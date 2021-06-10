@@ -46,7 +46,7 @@ const Eleven = {
             }
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -61,7 +61,7 @@ const Eleven = {
             const min = calcSkillDamage(character, enemy, 100 + q * 30, 0.5, 1);
             const max = calcSkillDamage(character, enemy, (100 + q * 30) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
             const cool = 10000 / ((6.5 - q * 0.5) * (100 - character.cooldown_reduction) - 150);
-            return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -77,7 +77,7 @@ const Eleven = {
             const max = calcSkillDamage(character, enemy, (110 + e * 20) * (1.22 + e * 0.02), 0.35 * (1.22 + e * 0.02), 1);
             const bonus = calcSkillDamage(character, enemy, enemy.max_hp ? enemy.max_hp * ((0.1 + e * 0.02) / (1.1 + e * 0.02)) : 0, 0, 1);
             const cool = 10000 / ((20 - e) * (100 - character.cooldown_reduction) - 150);
-            return "<b class='damage'>" + min + ' - ' + (max + bonus) + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + (max + bonus) + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -90,7 +90,7 @@ const Eleven = {
         }
         return '-';
     }
-    ,R_Option: "<b> __use</b><input type='checkbox' class='eleven_r' onchange='updateDisplay()'>"
+    ,R_Option: "<b> _use</b><input type='checkbox' class='eleven_r' onchange='updateDisplay()'>"
     ,D_Skill: (character, enemy) => {
         if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
             const type = character.weapon.Type;
@@ -102,14 +102,14 @@ const Eleven = {
     }
     ,D_Option: (character, enemy) => {
         return !character.weapon || character.weapon.Type !== 'Hammer' ? '' :
-            "<b> __use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
+            "<b> _use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
     }
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
             const heal = calcHeal(50 + t * 100, 1, enemy);
             const tick = calcHeal(20, 1, enemy);
-            return "<b> __h: </b><b class='heal'>" + (heal + tick * 8) + '</b> ( ' + heal + ', ' + tick + ' x 8 )';
+            return "<b> _h: </b><b class='heal'>" + (heal + tick * 8) + '</b> ( ' + heal + ', ' + tick + ' x 8 )';
         }
         return '-';
     }
@@ -130,7 +130,7 @@ const Eleven = {
             '';
         return '일레븐 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지" - "최대 데미지"\n' +
             'W: "데미지 없음"\n' +

@@ -38,7 +38,7 @@ const Adela = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -53,7 +53,7 @@ const Adela = {
             const min = calcSkillDamage(character, enemy, 30 + q * 30, 0.6, 1);
             const max = calcSkillDamage(character, enemy, 40 + q * 30, 1, 1);
             const cool = 100 / (4 - q * 0.5);
-            return "<b class='damage'>" + min + ' - ' + max  + "</b><b> __sd/s: </b><b class='damage'>" + round(min * cool) / 100 + ' ~ ' + round(max * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max  + "</b><b> _sd/s: </b><b class='damage'>" + round(min * cool) / 100 + ' ~ ' + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -65,7 +65,7 @@ const Adela = {
             const damage = calcSkillDamage(character, enemy, 45 + w * 45, 0.3, 1);
             const bonus = calcSkillDamage(character, enemy, (30 + q * 40) * 0.55, 0.6 * 0.55, 1);
             const cool = 10000 / ((18 - w * 2) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + (damage + bonus) + "</b> ( <b class='damage'>" + damage + '</b>, ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage + bonus) + "</b> ( <b class='damage'>" + damage + '</b>, ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -77,7 +77,7 @@ const Adela = {
             const damage = calcSkillDamage(character, enemy, 65 + e * 45, 0.4, 1);
             const bonus = calcSkillDamage(character, enemy, (30 + q * 40) * 0.55, 0.6 * 0.55, 1);
             const cool = 10000 / ((20 - e * 1.5) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + (damage + bonus) + "</b> ( <b class='damage'>" + damage + '</b>, ' + bonus + " )<b> __sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage + bonus) + "</b> ( <b class='damage'>" + damage + '</b>, ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -100,7 +100,7 @@ const Adela = {
                 const damage = calcSkillDamage(character, enemy, 0,
                     1.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100, 1);
                 const cool = 10000 / ((wm < 13 ? 30 : 18) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + damage + "</b><b> __d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+                return "<b class='damage'>" + damage + "</b><b> _d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
         }
         return '-';
@@ -131,7 +131,7 @@ const Adela = {
             '';
         return '아델라 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "폰 데미지" - "퀸 데미지"\n' +
             'W: "합산 데미지" ( "나이트 데미지", "폰 데미지" )\n' +

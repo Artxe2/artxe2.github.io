@@ -48,7 +48,7 @@ const Nadine = {
             } else {
                 damage = round(ba * character.attack_speed * 100) / 100;
             }
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -64,7 +64,7 @@ const Nadine = {
             const min = calcSkillDamage(character, enemy, 70 + q * 45 + stack, 0.6, 1);
             const max = calcSkillDamage(character, enemy, 140 + q * 90 + stack, 1.2, 1);
             const cool = 10000 / (7 * (100 - character.cooldown_reduction) + 200);
-            return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -134,7 +134,7 @@ const Nadine = {
             '';
         return '나딘 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" ~ "최대 데미지"\n' +
             'W: "합산 데미지" ( "1타 데미지", "2타 데미지", "덫 데미지" )\n' +

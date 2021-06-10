@@ -45,7 +45,7 @@ const Sua = {
                 damage = round(ba * character.attack_speed * 100) / 100;
                 life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
             }
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -60,7 +60,7 @@ const Sua = {
             const min = calcSkillDamage(character, enemy, 45 + q * 30, 0.4, 1);
             const max = calcSkillDamage(character, enemy, 65 + q * 50, 1, 1);
             const cool = 10000 / ((13 - q) * (100 - character.cooldown_reduction) - 150);
-            return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -71,7 +71,7 @@ const Sua = {
             const damage = calcSkillDamage(character, enemy, 25 + w * 25, 0.4, 1);
             const shield = floor(50 + w * 40 + character.attack_power * 0.2);
             const cool = 10000 / ((26 - w * 2) * (100 - character.cooldown_reduction) - 150);
-            return "<b class='damage'>" + damage + "</b><b> __s: </b><b class='shield'>" + shield + "</b><b> __sd/s: </b><b class='damage'>" + round((damage * floor(6 + w * 0.5)) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _s: </b><b class='shield'>" + shield + "</b><b> _sd/s: </b><b class='damage'>" + round((damage * floor(6 + w * 0.5)) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -82,7 +82,7 @@ const Sua = {
             const min = calcSkillDamage(character, enemy, 90 + e * 30, 0.4, 1);
             const max = calcSkillDamage(character, enemy, 120 + e * 40, 0.6, 1);
             const cool = 10000 / ((20 - e * 1.5) * (100 - character.cooldown_reduction) - 150);
-            return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -97,7 +97,7 @@ const Sua = {
             const minE = calcSkillDamage(character, enemy, 100 + r * 60, 0.4, 1);
             const maxE = calcSkillDamage(character, enemy, 250 + r * 150, 1, 1);
             return "<b class='damage'>" + minQ + ' - ' + maxQ + '</b><b> / </b>' +
-                "<b class='damage'>" + damage + "</b></b><b> __s: </b><b class='shield'>" + shield + '<b> / </b>' +
+                "<b class='damage'>" + damage + "</b></b><b> _s: </b><b class='shield'>" + shield + '<b> / </b>' +
                 "<b class='damage'>" + minE + ' - ' + maxE + '</b>';
         }
         return '-';
@@ -114,18 +114,18 @@ const Sua = {
     }
     ,D_Option: (character, enemy) => {
         return !character.weapon || character.weapon.Type !== 'Hammer' ? '' :
-            "<b> __use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
+            "<b> _use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
     }
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.6, 1);
             const heal = calcHeal(damage * 0.3, 1, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + heal + '</b>';
         }
         return '-';
     }
-    ,T_Option: "<b> __use</b><input type='checkbox' class='sua_t' onchange='updateDisplay()'>"
+    ,T_Option: "<b> _use</b><input type='checkbox' class='sua_t' onchange='updateDisplay()'>"
     ,Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -142,14 +142,14 @@ const Sua = {
             '';
         return '수아 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "스킬 데미지" - "최대 데미지"\n' +
-            'W: "스킬 데미지" __s: 쉴드량\n' +
+            'W: "스킬 데미지" _s: 쉴드량\n' +
             'E: "스킬 데미지" - "최대 데미지"\n' +
             'R: "오딧세이" / "파랑새" / "돈키호테"\n' +
             'D: ' + skill + '\n' +
-            'T: "스킬 데미지" __h: "스킬 흡혈량"\n';
+            'T: "스킬 데미지" _h: "스킬 흡혈량"\n';
     }
     ,COMBO_VARS: '{\"qq\":false,\"rr\":0}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {

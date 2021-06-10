@@ -39,7 +39,7 @@ const Cathy = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -55,7 +55,7 @@ const Cathy = {
             const min = calcSkillDamage(character, enemy, 20 + q * 30, 0.4, 1);
             const max = calcSkillDamage(character, enemy, (20 + q * 30) * crid, 0.4 * crid, 1);
             const cool = 10000 / ((12 - q * 0.5) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + min + ' - ' + max  + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max  + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -66,7 +66,7 @@ const Cathy = {
             const min = calcSkillDamage(character, enemy, 35 + w * 35, 0.2, 1);
             const max = calcSkillDamage(character, enemy, 80 + w * 35, 0.55, 1);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -77,7 +77,7 @@ const Cathy = {
             const damage1 = calcSkillDamage(character, enemy, 30 + e * 10, 0.3, 1);
             const damage2 = calcSkillDamage(character, enemy, 10 + e * 10, 0.2, 1);
             const cool = 10000 / ((24 - e * 2) * (100 - character.cooldown_reduction) + 20);
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -107,7 +107,7 @@ const Cathy = {
             } else {
                 max = calcSkillDamage(character, enemy, 240 + r * 160, 1.2, 1);
             }
-            return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> __emergency h: </b><b class='heal'>" + minHeal + ' - ' + maxHeal + '</b>';
+            return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> _emergency h: </b><b class='heal'>" + minHeal + ' - ' + maxHeal + '</b>';
         }
         return '-';
     }
@@ -120,7 +120,7 @@ const Cathy = {
                 const damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
                 const bonus = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * 0.08 : 0);
                 const heal = calcHeal(floor(damage + bonus) * (character.life_steal / 100), 1, enemy);
-                return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> __h: </b><b class='heal'>" + heal + '</b>';
+                return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> _h: </b><b class='heal'>" + heal + '</b>';
             }
         }
         return '-';
@@ -136,7 +136,7 @@ const Cathy = {
             const shield = floor(100 + t * 25 + character.attack_power * 0.25);
             const cool = (20 - t * 2) * (100 - character.cooldown_reduction) / 100;
             const as = character.attack_speed * character.critical_strike_chance / 100;
-            return "<b class='damage'>" + damage * (max ? 4 : 3) + "</b> ( <b class='damage'>" + damage + '</b> x ' + (max ? 4 : 3) + ")<b> __s: </b><b class='shield'>" + shield + "</b><b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
+            return "<b class='damage'>" + damage * (max ? 4 : 3) + "</b> ( <b class='damage'>" + damage + '</b> x ' + (max ? 4 : 3) + ")<b> _s: </b><b class='shield'>" + shield + "</b><b> _s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
         }
         return '-';
     }
@@ -153,18 +153,18 @@ const Cathy = {
             weapon === 'Dagger' ? '단검' :
             '';
         const skill =
-            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" __h: "흡혈량"' :
+            weapon === 'Dagger' ? '"최소 데미지" ~ "최대 데미지" _h: "흡혈량"' :
             '';
         return '캐시 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" - "최대 데미지"\n' +
             'W: "최소 데미지" - "최대 데미지"\n' +
             'E: "합산데미지" ( "1타 데미지", "2타 데미지" )\n' +
             'R: "최소 데미지" ~ "최대 막타 데미지"\n' +
             'D: ' + skill + '\n' +
-            'T: "합산 데미지" ( "틱당 데미지" x "타수" ) _s: "쉴드량" __s/s: "초당 쉴드량" _full "최대스택"\n';
+            'T: "합산 데미지" ( "틱당 데미지" x "타수" ) _s: "쉴드량" _s/s: "초당 쉴드량" _full "최대스택"\n';
     }
     ,COMBO_VARS: '{\"bleeding\":[]}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus, myHp) => {

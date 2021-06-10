@@ -1,5 +1,5 @@
 'use strict';
-const Hyejin = {
+const Rio = {
      Attack_Power: 29
     ,Attack_Power_Growth: 2.7
     ,Health: 615
@@ -16,12 +16,8 @@ const Hyejin = {
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4
-    ,weapons: [Shuriken, Bow]
+    ,weapons: [Bow]
     ,correction: {
-        Shuriken: [
-            [0, 0, -3],
-            [0, -3, -6]
-        ],
         Bow: [
             [0, -14, -16],
             [0, 0, 0]
@@ -29,10 +25,22 @@ const Hyejin = {
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
-            const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
-            const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
-            return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
+            const q = character.Q_LEVEL.selectedIndex - 1;
+            const t = character.T_LEVEL.selectedIndex;
+            if (q >= 0) {
+                if (character.DIV.querySelector('.rio_q').checked) {
+                    const min = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
+                    const max = rioAttackDamage(character, enemy, 0, 1.6 + q * 0.04, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
+                    return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + '</b>';
+                } else {
+                    const damage1 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
+                    const damage2 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, 5 + t * 2.5 + character.critical_strike_chance * 0.25, false);
+                    return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  damage1 + ', ' + damage2 + ' )';
+                }
+            } else {
+                const damage = rioAttackDamage(character, enemy, 0, 1, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
+                return "<b class='damage'>" + damage + '</b>';
+            }
         }
         return '-';
     }
@@ -54,13 +62,11 @@ const Hyejin = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const damage = calcSkillDamage(character, enemy, 100 + q * 20, 0.4, 1);
-            const cool = 10000 / ((20 - q * 3) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (character.DIV.querySelector('.rio_q').checked ? 'Hankyu' : 'Daikyu') + '</b>';
         }
         return '-';
     }
-    ,Q_Option: ''
+    ,Q_Option: "<b> _use</b><input type='checkbox' class='rio_q' onchange='updateDisplay()'>"
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {

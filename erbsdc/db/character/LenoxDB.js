@@ -38,7 +38,7 @@ const Lenox = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -53,7 +53,7 @@ const Lenox = {
             const min = calcSkillDamage(character, enemy, 20 + q * 30, 0.3, 1);
             const max = calcSkillDamage(character, enemy, 20 + q * 30 + character.max_hp * (0.07 + q * 0.005), 0.3, 1);
             const cool = 10000 / (2 * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + min + ' - ' + max  + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max  + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -64,7 +64,7 @@ const Lenox = {
             const damage1 = calcSkillDamage(character, enemy, 20 + w * 10, 0.3, 1);
             const damage2 = calcSkillDamage(character, enemy, 50 + w * 35, 0.6, 1);
             const cool = 10000 / ((12 - w * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage1 + ' - ' + (damage1 + damage2)  + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage1 + ' - ' + (damage1 + damage2)  + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -74,7 +74,7 @@ const Lenox = {
         if (character.weapon && e >= 0) {
             const damage = calcSkillDamage(character, enemy, 20 + e * 60, 0.3, 1);
             const cool = 10000 / (9 * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -125,7 +125,7 @@ const Lenox = {
             '';
         return '레녹스 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" - "최대 데미지"\n' +
             'W: "1타 데미지" - "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +

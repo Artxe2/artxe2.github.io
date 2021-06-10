@@ -45,7 +45,7 @@ const Silvia = {
             const damage2 = round(shot * character.attack_speed * 100) / 100;
             const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
             const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
+            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
         }
         return '-';
     }
@@ -61,13 +61,13 @@ const Silvia = {
             if (character.DIV.querySelector('.silvia_r').checked) {
                 damage = calcSkillDamage(character, enemy, 60 + q * 35, 0.6, 1);
                 cool = 10000 / ((3.5 - q * 0.5) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+                return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
             damage = calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
             let heal = calcHeal((40 + q * 20 + character.attack_power * 0.5) *
                 (100 + character.character.correction[character.weapon.Type][2][character.MODE.selectedIndex]) / 100, 1, enemy);
             cool = 10000 / ((7.5 - q * 0.75) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __h: </b><b class='heal'>" + heal + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -79,11 +79,11 @@ const Silvia = {
             if (character.DIV.querySelector('.silvia_r').checked) {
                 damage = calcSkillDamage(character, enemy, 90 + w * 40, 0.6, 1);
                 cool = 10000 / ((10 - w * 1) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+                return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             }
             damage = calcSkillDamage(character, enemy, 40 + w * 20, 0.3, 1);
             cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + damage + "</b><b> __sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -97,12 +97,12 @@ const Silvia = {
                 min = calcSkillDamage(character, enemy, 40 + e * 25 + move / 17 * 2 * (6 + e * 4), 0.6, 1);
                 max = calcSkillDamage(character, enemy, 40 + e * 25 + move * (6 + e * 4), 0.6, 1);
                 cool = 10000 / ((14 - e * 1) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
+                return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
             }
             min = calcSkillDamage(character, enemy, 80 + e * 20, 0.5, 1);
             max = calcSkillDamage(character, enemy, 154 + e * 33, 1.32, 1);
             cool = 10000 / ((13 - e * 1) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -166,9 +166,9 @@ const Silvia = {
         }
         return '실비아 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
-            'Q: "스킬 데미지" __h: "회복량"\n' +
+            'Q: "스킬 데미지" _h: "회복량"\n' +
             'W: "스킬 데미지"\n' +
             'E: "최소 데미지" ~ "최대 데미지"\n' +
             'R: _use "스킬 사용"\n' +

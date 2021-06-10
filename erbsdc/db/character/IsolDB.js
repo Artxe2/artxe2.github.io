@@ -61,7 +61,7 @@ const Isol = {
             const damage2 = round(shot * character.attack_speed * 100) / 100;
             const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
             const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
+            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
         }
         return '-';
     }
@@ -77,7 +77,7 @@ const Isol = {
             const min = calcSkillDamage(character, enemy, 50 + q * 25, 0.4, 1);
             const max = calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * stack, 0.4 + stack * 0.2, 1);
             const cool = 10000 / ((18 - q * 2) * (100 - character.cooldown_reduction) + 27);
-            return min + " ~ <b class='damage'>" +  + max + "</b><b> __sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
+            return min + " ~ <b class='damage'>" +  + max + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -87,7 +87,7 @@ const Isol = {
         if (character.weapon && w >= 0) {
             const damage = calcSkillDamage(character, enemy, 18 + w * 9, 0.65, 1);
             const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction) + 200);
-            return "<b class='damage'>" + damage * 4 + '</b> ( ' + damage + " x 4 )<b> __sd/s: </b><b class='damage'>" + round((damage * 4) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage * 4 + '</b> ( ' + damage + " x 4 )<b> _sd/s: </b><b class='damage'>" + round((damage * 4) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -101,7 +101,7 @@ const Isol = {
         if (character.weapon && r >= 0) {
             const damage = floor((100 + r * 50 + character.attack_power * 0.3) * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
             const cool = 10000 / ((30 - r * 5) * (100 - character.cooldown_reduction) + 54);
-            return "<b class='damage'>" + damage + "</b><b> __d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -122,7 +122,7 @@ const Isol = {
                 const damage2 = round(shot * as2 * 100) / 100;
                 const life1 = calcHeal(shot * (character.life_steal / 100), as1, enemy);
                 const life2 = calcHeal(shot * (character.life_steal / 100), as2, enemy);
-                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
+                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
             }
         }
         return '-';
@@ -148,11 +148,11 @@ const Isol = {
             '';
         const skill =
             weapon === 'Pistol' ? '"데미지 없음"' :
-            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" __h/s: "초당 흡혈량" - "장전 배제 흡혈량"' :
+            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" _h/s: "초당 흡혈량" - "장전 배제 흡혈량"' :
             '';
         return '아이솔 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" ~ "최대 데미지" "강화 스택"\n' +
             'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' +

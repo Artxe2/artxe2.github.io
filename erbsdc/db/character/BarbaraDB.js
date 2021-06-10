@@ -38,7 +38,7 @@ const Barbara = {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> __h/s: </b><b class='heal'>" + life + '</b>';
+            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
@@ -57,7 +57,7 @@ const Barbara = {
             const damage = calcSkillDamage(character, enemy, 15 + q * 15, 0.15, 1) +
                 (r >= 0 && character.DIV.querySelector('.barbara_r').checked ? calcSkillDamage(character, enemy, 50 + r * 25, 0.6, 1) : 0);
             const shot = calcSkillDamage(character, enemy, 15, 0.06 * level, 1);
-            return "<b class='damage'>" + damage + "</b><b> __dps: </b><b class='damage'>" + shot * (0.9 + stack * (0.15 + t * 0.05)) + '</b> ( ' + shot + ' )';
+            return "<b class='damage'>" + damage + "</b><b> _dps: </b><b class='damage'>" + shot * (0.9 + stack * (0.15 + t * 0.05)) + '</b> ( ' + shot + ' )';
         }
         return '-';
     }
@@ -72,7 +72,7 @@ const Barbara = {
             const max = calcSkillDamage(character, enemy, (30 + w * 30) * coe, 0.25 * coe, 1);
             const rail = calcSkillDamage(character, enemy, (40 + w * 40 + 6) * coe, (0.06 * level) * 0.4 * coe, 1);
             const cool = 10000 / ((r >= 0 && character.DIV.querySelector('.barbara_r').checked ? 0.66 : 4) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + max + ' - ' + min * 2 + "</b><b> / </b><b class='damage'>" + rail + "</b><b> __sd/s: </b><b class='damage'>" + round(rail * cool) / 100 + '</b>';
+            return "<b class='damage'>" + max + ' - ' + min * 2 + "</b><b> / </b><b class='damage'>" + rail + "</b><b> _sd/s: </b><b class='damage'>" + round(rail * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -88,7 +88,7 @@ const Barbara = {
                 (enemy.max_hp ? enemy.max_hp * (0.005 + e * 0.005) : 0));
             const min = floor((damage + bonus) * coe);
             const max = floor((damage + bonus * (rr ? 10 : 8)) * coe);
-            return "<b class='damage'>" + damage + ' ~ ' + bonus * (rr ? 10 : 8) + "</b><b> __dps: </b><b class='damage'>" + bonus * 2 + "</b><b> __s: </b><b class='shield'>" + min + ' - ' + max + '</b>';
+            return "<b class='damage'>" + damage + ' ~ ' + bonus * (rr ? 10 : 8) + "</b><b> _dps: </b><b class='damage'>" + bonus * 2 + "</b><b> _s: </b><b class='shield'>" + min + ' - ' + max + '</b>';
         }
         return '-';
     }
@@ -111,7 +111,7 @@ const Barbara = {
     }
     ,D_Option: (character, enemy) => {
         return !character.weapon || character.weapon.Type !== 'Hammer' ? '' :
-            "<b> __use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
+            "<b> _use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
     }
     ,T_Skill: (character, enemy) => {
         return '-';
@@ -133,11 +133,11 @@ const Barbara = {
             '';
         return '바바라 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
-            'Q: "스킬 데미지" __dps: "포탑 DPS" ( "포탑 데미지" )\n' +
+            'Q: "스킬 데미지" _dps: "포탑 DPS" ( "포탑 데미지" )\n' +
             'W: "스킬 데미지" - "합산 데미지" / "레이저 데미지"\n' +
-            'E: "스킬 데미지" __dps: "초당 데미지" __s: "최소 쉴드량" - "최대 쉴드량" _use "스킬 사용"\n' +
+            'E: "스킬 데미지" _dps: "초당 데미지" _s: "최소 쉴드량" - "최대 쉴드량" _use "스킬 사용"\n' +
             'R: _use "스킬 사용"\n' +
             'D: ' + skill + '\n' +
             'T: "데미지 없음" _ "스택"\n';

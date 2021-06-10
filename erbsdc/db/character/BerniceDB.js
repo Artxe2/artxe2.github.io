@@ -49,9 +49,9 @@ const Bernice = {
             const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
             const life2 = calcHeal(shot2 * (character.life_steal / 100), as, enemy);
             if (enemy.attack_range && enemy.attack_range >= 3) {
-                return "<b class='damage'>" + damage1 + '</b> ~ ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> ~ ' + life2;
+                return "<b class='damage'>" + damage1 + '</b> ~ ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> ~ ' + life2;
             }
-            return damage1 + " ~ <b class='damage'>" + damage2 + "</b><b> __h/s: </b><b class='heal'>" + life1 + '</b> ~ ' + life2;
+            return damage1 + " ~ <b class='damage'>" + damage2 + "</b><b> _h/s: </b><b class='heal'>" + life1 + '</b> ~ ' + life2;
         }
         return '-';
     }
@@ -66,7 +66,7 @@ const Bernice = {
             const min = calcSkillDamage(character, enemy, 70 + q * 40, 0.6, 1);
             const max = calcSkillDamage(character, enemy, 100 + q * 40, 0.6, 1);
             const cool = 10000 / ((8 - q * 0.5) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + min + ' - ' + max + "</b><b> __sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
+            return "<b class='damage'>" + min + ' - ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -114,8 +114,8 @@ const Bernice = {
                 const life2 = calcHeal(shot * (character.life_steal / 100), as2, enemy);
                 const cool = 30 * (100 - character.cooldown_reduction) / 100;
                 const shield = floor(100 + t * 50 + character.attack_power * 0.3);
-                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
-                    "<b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 6) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 6) / cool, 2);
+                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
+                    "<b> _s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 6) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 6) / cool, 2);
             }
             if (type === 'SniperRifle') {
                 const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 3, 1);
@@ -147,7 +147,7 @@ const Bernice = {
             '';
         return '버니스 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "최소 데미지" - "최대 데미지"\n' +
             'W: "스킬 데미지" ( "스킬 데미지" x "장전 수" )\n' +

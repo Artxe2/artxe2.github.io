@@ -65,7 +65,7 @@ const Aya = {
             const damage2 = round(shot * character.attack_speed * 100) / 100;
             const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
             const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
+            return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
         }
         return '-';
     }
@@ -80,7 +80,7 @@ const Aya = {
             const damage1 = calcSkillDamage(character, enemy, 0, 1, 1);
             const damage2 = calcSkillDamage(character, enemy, 35 + q * 55, 0.2, 1);
             const cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> __sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -94,7 +94,7 @@ const Aya = {
             for (let i = 0; i < 10; i++) {
                 acc += calcSkillDamage(character, enemy, (25 + w * 20) * (1 - i * 0.05), (0.3 + w * 0.05) * (1 - i * 0.05), 1);
             }
-            return "<b class='damage'>" + acc + '</b> ( ' + damage + " x 10 )<b> __sd/s: </b><b class='damage'>" + round(acc * cool) / 100 + '</b>';
+            return "<b class='damage'>" + acc + '</b> ( ' + damage + " x 10 )<b> _sd/s: </b><b class='damage'>" + round(acc * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -132,8 +132,8 @@ const Aya = {
                 const life2 = calcHeal(shot * (character.life_steal / 100), as2, enemy);
                 const cool = 30 * (100 - character.cooldown_reduction) / 100;
                 const shield = floor(150 + t * 25 + character.attack_power * 0.3);
-                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> __h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
-                    "<b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 6) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 6) / cool, 2);
+                return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
+                    "<b> _s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 6) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 6) / cool, 2);
             }
             if (type === 'SniperRifle') {
                 const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 3, 1);
@@ -156,7 +156,7 @@ const Aya = {
             } else {
                 as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2) * 2;
             }
-            return "<b> _s: </b><b class='shield'>" + shield + "</b><b> __s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
+            return "<b> _s: </b><b class='shield'>" + shield + "</b><b> _s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
         }
         return '-';
     }
@@ -176,19 +176,19 @@ const Aya = {
             '';
         const skill =
             weapon === 'Pistol' ? '"데미지 없음"' :
-            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" __h/s: "초당 흡혈량" - "장전 배제 흡혈량" __s/s: "초당 쉴드량" - "장전 배제 쉴드량"' :
+            weapon === 'AssaultRifle' ? '_d/s: "초당 데미지" - "장전 배제 데미지" _h/s: "초당 흡혈량" - "장전 배제 흡혈량" _s/s: "초당 쉴드량" - "장전 배제 쉴드량"' :
             weapon === 'SniperRifle' ? '"1발당 데미지"' :
             '';
         return '아야 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "최소 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" __h/s: "초당 흡혈량"\n' +
+            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
             'W: "합산 데미지" ( "1발당 데미지" x "타수" )\n' +
             'E: "데미지 없음"\n' +
             'R: "최소 데미지" ~ "최대 데미지"\n' +
             'D: ' + skill + '\n' +
-            'T: _s: "쉴드량" __s/s: "초당 쉴드량"\n';
+            'T: _s: "쉴드량" _s/s: "초당 쉴드량"\n';
     }
     ,COMBO_VARS: '{\"dd\":0}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
