@@ -20,15 +20,15 @@ const Fiora = {
     ,correction: {
         TwoHandedSword: [
             [0, 0, 0],
-            [0, 0, 0]
+            [0, 3, -3]
         ],
         Rapier: [
             [0, -2, -3],
-            [0, 0, -4]
+            [0, 0, -7]
         ],
         Spear: [
-            [0, -2, -6],
-            [0, 0, -6]
+            [0, -2, -3],
+            [0, 3, -9]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -89,7 +89,7 @@ const Fiora = {
             const min2 = baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 0, 1);
             const max1 = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, 100, 1);
             const max2 = baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, 100, 1);
-            const cool = 10000 / ((20 - w * 3) * (100 - character.cooldown_reduction) - 500);
+            const cool = 10000 / ((18 - w * 2) * (100 - character.cooldown_reduction) - 500);
             if (character.DIV.querySelector('.fiora_r').checked && r >= 0) {
                 const bonus = calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
                 return "<b class='damage'>" + (damage1 + damage2 + bonus * 2) + '</b> ( ' +  min1 + ', ' + min2 + ', ' + bonus + ' - ' + max1 + ', ' + max2 + ', ' + bonus + " ) <b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2 + bonus * 2) * cool) / 100 + '</b>';
@@ -214,7 +214,7 @@ const Fiora = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -262,7 +262,7 @@ const Fiora = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (r >= 0) {
@@ -287,7 +287,7 @@ const Fiora = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (r >= 0) {
@@ -333,6 +333,7 @@ const Fiora = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

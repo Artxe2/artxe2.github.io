@@ -12,14 +12,14 @@ const Xiukai = {
     ,Stamina_Regen_Growth: 0.01
     ,Defense: 36
     ,Defense_Growth: 1.7
-    ,Atk_Speed: 0.16
+    ,Atk_Speed: 0.16 //
     ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.48
     ,weapons: [Dagger, Spear]
     ,correction: {
         Dagger: [
-            [0, -3, -5],
+            [0, -3, -8],
             [0, 0, -3]
         ],
         Spear: [
@@ -173,7 +173,7 @@ const Xiukai = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -229,7 +229,7 @@ const Xiukai = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                 } else {
                                     enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                                 }
@@ -256,7 +256,7 @@ const Xiukai = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                 }
                                 damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1) * 2;
                             }
@@ -270,6 +270,7 @@ const Xiukai = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

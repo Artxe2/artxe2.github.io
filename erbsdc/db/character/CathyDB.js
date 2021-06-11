@@ -3,7 +3,7 @@ const Cathy = {
      Attack_Power: 26
     ,Attack_Power_Growth: 2.4
     ,Health: 640
-    ,Health_Growth: 77
+    ,Health_Growth: 82
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.06
     ,Stamina: 440
@@ -19,8 +19,8 @@ const Cathy = {
     ,weapons: [Dagger]
     ,correction: {
         Dagger: [
-            [0, -5, -8],
-            [0, 0, 0],
+            [0, -9, -12],
+            [0, 0, -3],
             [0, -6, 0]
         ]
     }
@@ -202,7 +202,7 @@ const Cathy = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -402,7 +402,7 @@ const Cathy = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 10 + e * 10, 0.2, 1);
 
@@ -493,6 +493,7 @@ const Cathy = {
             }
             damage += index % 2 === 0 && bleeding[index] ? bleeding[index] === 5 ? ftra : tra : 0;
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

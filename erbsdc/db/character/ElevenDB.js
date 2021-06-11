@@ -1,16 +1,16 @@
 'use strict';
 const Eleven = {
-     Attack_Power: 30
+     Attack_Power: 33
     ,Attack_Power_Growth: 2.2
     ,Health: 700
     ,Health_Growth: 80
-    ,Health_Regen: 1.2
+    ,Health_Regen: 1.3
     ,Health_Regen_Growth: 0.07
-    ,Stamina: 430
+    ,Stamina: 420
     ,Stamina_Growth: 16
     ,Stamina_Regen: 2
     ,Stamina_Regen_Growth: 0.04
-    ,Defense: 21
+    ,Defense: 22
     ,Defense_Growth: 2.5
     ,Atk_Speed: 0.11
     ,Movement_Speed: 3.15
@@ -19,7 +19,7 @@ const Eleven = {
     ,weapons: [Hammer]
     ,correction: {
         Hammer: [
-            [0, -2, -4],
+            [0, -4, -7],
             [0, 0, 0]
         ]
     }
@@ -58,8 +58,8 @@ const Eleven = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const min = calcSkillDamage(character, enemy, 100 + q * 30, 0.5, 1);
-            const max = calcSkillDamage(character, enemy, (100 + q * 30) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
+            const min = calcSkillDamage(character, enemy, 100 + q * 40, 0.5, 1);
+            const max = calcSkillDamage(character, enemy, (100 + q * 40) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
             const cool = 10000 / ((6.5 - q * 0.5) * (100 - character.cooldown_reduction) - 150);
             return "<b class='damage'>" + min + ' - ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
@@ -76,7 +76,7 @@ const Eleven = {
             const min = calcSkillDamage(character, enemy, 110 + e * 20, 0.35, 1);
             const max = calcSkillDamage(character, enemy, (110 + e * 20) * (1.22 + e * 0.02), 0.35 * (1.22 + e * 0.02), 1);
             const bonus = calcSkillDamage(character, enemy, enemy.max_hp ? enemy.max_hp * ((0.1 + e * 0.02) / (1.1 + e * 0.02)) : 0, 0, 1);
-            const cool = 10000 / ((20 - e) * (100 - character.cooldown_reduction) - 150);
+            const cool = 10000 / ((22 - e * 2) * (100 - character.cooldown_reduction) - 150);
             return "<b class='damage'>" + min + ' - ' + (max + bonus) + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
         return '-';
@@ -108,8 +108,8 @@ const Eleven = {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
             const heal = calcHeal(50 + t * 100, 1, enemy);
-            const tick = calcHeal(20, 1, enemy);
-            return "<b> _h: </b><b class='heal'>" + (heal + tick * 8) + '</b> ( ' + heal + ', ' + tick + ' x 8 )';
+            const tick = calcHeal(25, 1, enemy);
+            return "<b> _h: </b><b class='heal'>" + (heal + tick * 4) + '</b> ( ' + heal + ', ' + tick + ' x 4 )';
         }
         return '-';
     }
@@ -163,7 +163,7 @@ const Eleven = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -178,7 +178,7 @@ const Eleven = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
@@ -194,7 +194,7 @@ const Eleven = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
@@ -202,11 +202,11 @@ const Eleven = {
                     }
                 } else if (c === 'q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + q * 30, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 100 + q * 40, 0.5, 1);
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, (100 + q * 30) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
+                        damage += calcSkillDamage(character, enemy, (100 + q * 40) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
                     }
                 } else if (c === 'e') {
                     if (e >= 0) {
@@ -276,6 +276,7 @@ const Eleven = {
                 damage += calcSkillDamage(character, enemy, 50 + r * 30, 0, 1);
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

@@ -29,19 +29,19 @@ const SniperRifle = [
          Type: "SniperRifle"
         ,Name: "Golden_Rifle"
         ,Attack_Power: 50
-        ,Vision_Range: 2.5
+        ,Vision_Range: 2
         ,Skill_Amplification_Percent: 18
-        ,Title: "Golden Rifle\n\nAttack Power +50\nVision Range +2.5\nSkill Amplification +18%"
+        ,Title: "Golden Rifle\n\nAttack Power +50\nVision Range +2\nSkill Amplification +18%"
         ,Rarity: "Rare"
         ,Ammo: 1
     }
     ,{
          Type: "SniperRifle"
         ,Name: "Railgun"
-        ,Attack_Power: 72
+        ,Attack_Power: 65
         ,Attack_Speed: 20
         ,Vision_Range: 2
-        ,Title: "Railgun\n\nAttack Power +72\nAttack Speed +20%\nVision Range +2"
+        ,Title: "Railgun\n\nAttack Power +65\nAttack Speed +20%\nVision Range +2"
         ,Rarity: "Rare"
         ,Ammo: 3
     }
@@ -69,10 +69,10 @@ const SniperRifle = [
     ,{
          Type: "SniperRifle"
         ,Name: "NTW-20"
-        ,Attack_Power: 95
-        ,Vision_Range: 2.5
+        ,Attack_Power: 92
+        ,Vision_Range: 2
         ,Skill_Amplification_Percent: 24
-        ,Title: "NTW-20\n\nAttack Power +95\nVision Range +2.5\nSkill Amplification +24%"
+        ,Title: "NTW-20\n\nAttack Power +92\nVision Range +2\nSkill Amplification +24%"
         ,Rarity: "Epic"
         ,Ammo: 1
     }

@@ -375,8 +375,27 @@ class Character {
             } else {
                 this.I_CHARACTER.innerHTML = "<img class='character_image' src = '" + this.CHR_PATH + "character/" + select + ".png'>";
                 this.character = eval(select);
+                const level = this.LEVEL.selectedIndex;
+                if (this.character === Rio && this.Q_LEVEL.selectedIndex === 0) {
+                    let skills = this.Q_LEVEL.selectedIndex +
+                    this.W_LEVEL.selectedIndex +
+                    this.E_LEVEL.selectedIndex +
+                    this.R_LEVEL.selectedIndex +
+                    this.T_LEVEL.selectedIndex - 1;
+                    while (skills-- > level) {
+                        if (this.W_LEVEL.selectedIndex) {
+                            this.W_LEVEL.selectedIndex--;
+                        } else if (this.E_LEVEL.selectedIndex) {
+                            this.E_LEVEL.selectedIndex--;
+                        }
+                    }
+                    this.Q_LEVEL.selectedIndex++;
+                }
                 if (this.subWeapon != null && this.character != Alex) {
-                    this.removeSubWeapon();
+                    // this.removeSubWeapon();
+                    this.subWeapon = null;
+                    this.SUB_WEAPON.innerHTML = '';
+                    this.ITEM_LIST.style.display = 'none';
                 }
                 if (this.weapon != null) {
                     this.character.weapons.some(w => {
@@ -389,7 +408,16 @@ class Character {
                             return true;
                         }
                     })) {
-                        this.removeWeapon();
+                        // this.removeWeapon();
+                        this.weapon = null;
+                        this.weapon_mastery_attack_speed = 0;
+                        this.weapon_mastery_extra_normal_attack_damage_percent = 0;
+                        this.weapon_mastery_skill_amplification = 0;
+                        this.weapon_attack_range = 0;
+                        this.weapon_attack_speed = 0;
+                        this.WEAPON.innerHTML = '';
+                        this.ITEM_LIST.style.display = 'none';
+                        this.D_OPTION.innerHTML = '';
                     }
                 }
                 this.BASE_ATTACK_OPTION.innerHTML = this.character.Base_Attack_Option;
@@ -407,7 +435,7 @@ class Character {
         });
 
         this.LEVEL.addEventListener('change', (e) => {
-            const level = this.LEVEL.selectedIndex
+            const level = this.LEVEL.selectedIndex;
             while (this.R_LEVEL.selectedIndex > floor(level / 5)) {
                 this.R_LEVEL.selectedIndex--;
             }
@@ -485,6 +513,9 @@ class Character {
             }
             while (e.target.selectedIndex > floor(level / 2) + 1) {
                 e.target.selectedIndex--;
+            }
+            if (this.character === Rio && this.Q_LEVEL.selectedIndex === 0) {
+                this.Q_LEVEL.selectedIndex = 1;
             }
             this.savePreset()
             updateDisplay();
@@ -768,9 +799,7 @@ class Character {
             const et = this.enemy.T_LEVEL.selectedIndex;
             const ewm = this.enemy.WEAPON_MASTERY.selectedIndex;
 
-            this.armer_penetration_percent = calcEquip(this, 'Armor_penetration_percent');
-
-            this.isMelee = this.weapon && (this.weapon.Type === 'Axe' ||
+            this.isMelee = !this.weapon || (this.weapon.Type === 'Axe' ||
                 this.weapon.Type === 'Bat' || this.weapon.Type === 'Dagger' ||
                 this.weapon.Type === 'DualSwords' || this.weapon.Type === 'Glove' ||
                 this.weapon.Type === 'Hammer' || this.weapon.Type === 'Nunchaku' ||
@@ -810,6 +839,7 @@ class Character {
             const luke_w_u = this.DIV.querySelector('.luke_w_u');
             const sua_t = this.DIV.querySelector('.sua_t');
             const leon_t = this.DIV.querySelector('.leon_t');
+            const rio_q = this.DIV.querySelector('.rio_q');
             const attack_speed_bonus =
                 (jackie_r && jackie_r.checked && r >= 0 ? 20 + r * 5 : 0) +
                 (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) +
@@ -825,8 +855,13 @@ class Character {
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_attack_speed);
             this.attack_speed =
                 round((this.character === Eleven ? 0.9 : 1) *
-                    (this.character.Atk_Speed + this.weapon_attack_speed) *
+                    (this.character.Atk_Speed + this.weapon_attack_speed - (rio_q && rio_q.checked ? 0.3 : 0)) *
                     (100 + attack_speed_percent)) / 100;
+            if (this.attack_speed < 0) {
+                this.attack_speed = 0;
+            } else if (this.attack_speed > 2.5) {
+                this.attack_speed = 2.5;
+            }
 
             const jackie_tw = [0.04, 0.08, 0.12];
             const jackie_ts = [0.10, 0.15, 0.20];
@@ -921,8 +956,12 @@ class Character {
                 if (this.cooldown_reduction > 45) {
                     this.cooldown_reduction = 45;
                 }
-            } else if (this.cooldown_reduction > 40) {
-                this.cooldown_reduction = 40;
+            } else if (this.chest && this.chest.Name === 'High_Priest_Robes') {
+                if (this.cooldown_reduction > 40) {
+                    this.cooldown_reduction = 40;
+                }
+            } else if (this.cooldown_reduction > 35) {
+                this.cooldown_reduction = 35;
             }
             this.COOLDOWN_REDUCTION.innerText = this.cooldown_reduction + '%';
 
@@ -966,13 +1005,13 @@ class Character {
                 (hyunwoo_e && ee >= 0 && hyunwoo_e.checked ? 0.04 + ee * 0.02 : 0) -
                 (hart_w_u && ew >= 0 && hart_w_u.checked ? hart_ww.checked ? 0.45 : hart_w.checked ? 0.3 : 0 : 0) -
                 (isol_t && isol_t.checked ? 0.05 + et * 0.1 : 0) -
-                (rozzi_w && rozzi_w.checked && ew >= 0 ? 0.12 + ew * 0.02 : 0) -
+                (rozzi_w && rozzi_w.checked && ew >= 0 ? 0.09 + ew * 0.02 : 0) -
                 (xiukai_r && xiukai_r.checked ? 0.1 + er * 0.05 : 0) -
                 (chiara_t ? chiara_t.value * (0.03 + et * 0.02) : 0);
             const defense_bonus =
                 (hyunwoo_w && hyunwoo_w.checked ? 6 + w * 14 + this.defense * 0.1 : 0) +
                 (silvia_r && r >= 0 && silvia_r.checked ? 2 + er * 14 : 0) +
-                (this.character === Alex && this.weapon && this.isMelee ? 5 + t * 5 : 0);
+                (this.character === Alex && this.weapon && this.isMelee ? 10 + t * 5 : 0);
             this.defense =
                 floor((this.character.Defense + this.character.Defense_Growth * level +
                     calcEquip(this, 'Defense', 2) + calcEquip(this, 'Defense_per_level', 2) * (level + 1) +
@@ -987,8 +1026,8 @@ class Character {
             const chiara_r = this.DIV.querySelector('.chiara_r');
             const hp_bonus =
                 (xiukai_t ? xiukai_t.value * 7 : 0) +
-                (chiara_r && chiara_r.checked ? 150 + r * 75 : 0) +
-                (this.character === Alex && this.weapon && this.isMelee ? 50 + t * 50 : 0);
+                (chiara_r && chiara_r.checked ? 150 + r * 75 : 0);
+                // (this.character === Alex && this.weapon && this.isMelee ? 50 + t * 50 : 0);
             this.max_hp =
                 floor((this.character.Health + this.character.Health_Growth * level + hp_bonus +
                     calcEquip(this, 'Max_HP', 2) + calcEquip(this, 'Max_HP_per_level', 2) * (level + 1)) *
@@ -1031,7 +1070,7 @@ class Character {
                 (chiara_t && chiara_t.value == 4 ? 0.04 + t * 0.02 : 0) +
                 (silvia_r && silvia_r.checked ? 0.7 : 0) +
                 (barbara_e && barbara_e.checked ? 0.2 : 0) +
-                (leon_t && leon_t.checked ? 0.05 + t * 0.05 : 0);
+                (leon_t && leon_t.checked ? 0.08 + t * 0.08 : 0);
             const move_bonus =
                 (silvia_r && silvia_r.checked ? 0.3 + r * 0.075 : 0);
             this.movement_speed =
@@ -1063,9 +1102,13 @@ class Character {
             const attack_range_bonus =
                 (chiara_r && chiara_r.checked ? 3.65 : 0);
             this.attack_range =
-                round(this.character.Attack_Range + this.weapon_attack_range +
+                round((rio_q ? rio_q.checked ? 6.8 : 4.2 :
+                    this.character.Attack_Range + this.weapon_attack_range) +
                     attack_range_bonus + calcEquip(this, 'Attack_Range', 2), 2);
             this.ATTACK_RANGE.innerText = this.attack_range;
+
+            this.armer_penetration_percent = calcEquip(this, 'Armor_penetration_percent') +
+                (this.character === Rio ? 5 + t * 2.5 + this.critical_strike_chance * 0.25 : 0);
         } else {
             this.heal_reduction = '';
 

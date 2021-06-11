@@ -12,7 +12,7 @@ const Adela = {
     ,Stamina_Regen_Growth: 0.08
     ,Defense: 28
     ,Defense_Growth: 2.2
-    ,Atk_Speed: 0.045
+    ,Atk_Speed: 0.045 //
     ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 2.9
@@ -76,7 +76,7 @@ const Adela = {
             const q = character.Q_LEVEL.selectedIndex - 1;
             const damage = calcSkillDamage(character, enemy, 65 + e * 45, 0.4, 1);
             const bonus = calcSkillDamage(character, enemy, (30 + q * 40) * 0.55, 0.6 * 0.55, 1);
-            const cool = 10000 / ((20 - e * 1.5) * (100 - character.cooldown_reduction));
+            const cool = 10000 / ((20 - e * 2) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + (damage + bonus) + "</b> ( <b class='damage'>" + damage + '</b>, ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
         }
         return '-';
@@ -164,7 +164,7 @@ const Adela = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -256,6 +256,7 @@ const Adela = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

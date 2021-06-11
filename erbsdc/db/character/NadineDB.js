@@ -1,7 +1,7 @@
 'use strict';
 const Nadine = {
-     Attack_Power: 26//
-    ,Attack_Power_Growth: 2.0//
+     Attack_Power: 32
+    ,Attack_Power_Growth: 2.0
     ,Health: 635
     ,Health_Growth: 57
     ,Health_Regen: 0.4
@@ -10,7 +10,7 @@ const Nadine = {
     ,Stamina_Growth: 13
     ,Stamina_Regen: 1.9
     ,Stamina_Regen_Growth: 0.05
-    ,Defense: 23
+    ,Defense: 26
     ,Defense_Growth: 1.5
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.05
@@ -23,7 +23,7 @@ const Nadine = {
             [0, 0, 0]
         ],
         Crossbow: [
-            [0, -11, -13],
+            [0, -11, -17],
             [0, 0, 0]
         ]
     }
@@ -72,7 +72,7 @@ const Nadine = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage1 = calcSkillDamage(character, enemy, 100 + w * 70, 0.6, 1);
+            const damage1 = calcSkillDamage(character, enemy, 50 + w * 50, 0.75, 1);
             const damage2 = calcSkillDamage(character, enemy, 100 + w * 40, 0.6, 1);
             return "<b class='damage'>" + (damage1 * 2 + damage2) + '</b> ( ' + damage1 + ', ' + damage1 + ", <b class='damage'>" +  + damage2 + '</b> )';
         }
@@ -170,7 +170,7 @@ const Nadine = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -213,7 +213,7 @@ const Nadine = {
                     }
                 } else if (c === 'W') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + w * 70, 0.6, 1);
+                        damage += calcSkillDamage(character, enemy, 50 + w * 50, 0.75, 1);
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
@@ -243,6 +243,7 @@ const Nadine = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,
@@ -271,8 +272,8 @@ const Nadine = {
             'A: 치명타 데미지\n' +
             'q: Q스킬 즉발 데미지\n' +
             'Q: Q스킬 최대 데미지\n' +
-            'w: W스킬 설치 데미지\n' +
-            'W: W스킬 덫 데미지\n' +
+            'w: W스킬 덫 데미지\n' +
+            'W: W스킬 투척 데미지\n' +
             'e & E: 데미지 없음\n' +
             'r & R: R스킬 On / Off\n' +
             't && T: 데미지 없음\n' +

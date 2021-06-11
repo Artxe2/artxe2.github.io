@@ -83,15 +83,6 @@ const Leg = [
     }
     ,{
          Type: "Leg"
-        ,Name: "Maverick_Runner"
-        ,Attack_Power: -8
-        ,Movement_Speed: 0.3
-        ,Movement_speed_while_not_in_combat: 0.25
-        ,Title: "Maverick Runner\n\nAttack Power -8\nMovement Speed +0.3\nMovement Speed while not in combat +0.25"
-        ,Rarity: "Rare"
-    }
-    ,{
-         Type: "Leg"
         ,Name: "Combat_Boots"
         ,HP_Regen: 0.6
         ,Attack_Speed: 7
@@ -116,6 +107,15 @@ const Leg = [
         ,Attack_Speed: 35
         ,Movement_Speed: 0.35
         ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +35%\nMovement Speed +0.35"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Leg"
+        ,Name: "Maverick_Runner"
+        ,Attack_Power: 10
+        ,Movement_Speed: 0.33
+        ,Tenacity: true
+        ,Title: "Maverick Runner\n\nAttack Power 10\nMovement Speed +0.33\nTenacity"
         ,Rarity: "Epic"
     }
     ,{
@@ -192,9 +192,10 @@ const Leg = [
          Type: "Leg"
         ,Name: "Boots_of_Hermes"
         ,Defense: 35
-        ,Movement_Speed: 0.38
-        ,Movement_speed_while_not_in_combat: 0.2
-        ,Title: "Boots of Hermes\n\nDefense +35\nMovement Speed +0.38\nMovement speed while not in combat +0.2"
+        ,Movement_Speed: 0.35
+        ,Movement_speed_while_not_in_combat: 0.1
+        ,Tenacity: true
+        ,Title: "Boots of Hermes\n\nDefense +35\nMovement Speed +0.35\nMovement speed while not in combat +0.1\nTenacity"
         ,Rarity: "Legendary"
     }
     ,{

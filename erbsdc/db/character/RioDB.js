@@ -1,45 +1,39 @@
 'use strict';
 const Rio = {
-     Attack_Power: 29
-    ,Attack_Power_Growth: 2.7
-    ,Health: 615
-    ,Health_Growth: 65
+     Attack_Power: 25
+    ,Attack_Power_Growth: 2.2
+    ,Health: 600
+    ,Health_Growth: 63
     ,Health_Regen: 0.8
-    ,Health_Regen_Growth: 0.03
-    ,Stamina: 400
-    ,Stamina_Growth: 26
-    ,Stamina_Regen: 2
-    ,Stamina_Regen_Growth: 0.08
-    ,Defense: 25
-    ,Defense_Growth: 1.7
-    ,Atk_Speed: 0.12
-    ,Movement_Speed: 3.1
+    ,Health_Regen_Growth: 0.04
+    ,Stamina: 420
+    ,Stamina_Growth: 16
+    ,Stamina_Regen: 1.5
+    ,Stamina_Regen_Growth: 0.1
+    ,Defense: 24
+    ,Defense_Growth: 1.8
+    ,Atk_Speed: 0.1
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
-    ,Attack_Range: 0.4
+    ,Attack_Range: 4.2
     ,weapons: [Bow]
     ,correction: {
         Bow: [
-            [0, -14, -16],
+            [0, -2, -4],
             [0, 0, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
             const q = character.Q_LEVEL.selectedIndex - 1;
-            const t = character.T_LEVEL.selectedIndex;
-            if (q >= 0) {
-                if (character.DIV.querySelector('.rio_q').checked) {
-                    const min = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
-                    const max = rioAttackDamage(character, enemy, 0, 1.6 + q * 0.04, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
-                    return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + '</b>';
-                } else {
-                    const damage1 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
-                    const damage2 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, 5 + t * 2.5 + character.critical_strike_chance * 0.25, false);
-                    return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  damage1 + ', ' + damage2 + ' )';
-                }
+            if (character.DIV.querySelector('.rio_q').checked) {
+                const min = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, true);
+                const max = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * 1.5, true);
+                return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + '</b>';
             } else {
-                const damage = rioAttackDamage(character, enemy, 0, 1, 5 + t * 2.5 + character.critical_strike_chance * 0.25, true);
-                return "<b class='damage'>" + damage + '</b>';
+                const damage1 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true);
+                const damage2 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
+                return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  damage1 + ', ' + damage2 + ' )';
             }
         }
         return '-';
@@ -47,10 +41,22 @@ const Rio = {
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
         if (character.weapon) {
-            const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const damage = round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
+            const q = character.Q_LEVEL.selectedIndex - 1;
+            if (character.DIV.querySelector('.rio_q').checked) {
+                const min = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, true);
+                const max = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * 1.5, true);
+                const ba = (min * 3 + max) / 4;
+                const damage = round(ba * character.attack_speed * 100) / 100;
+                const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+                return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
+            } else {
+                const ba = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true) +
+                    rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
+                const damage1 = round(ba * character.attack_speed * 100) / 100;
+                const damage2 = round(ba * calcAttackSpeed(character, 10 + q * 5) * 100) / 100;
+                const life = calcHeal(ba * (character.life_steal / 100), calcAttackSpeed(character, 10 + q * 5), enemy);
+                return damage1 + " - <b class='damage'>" + damage2 + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
+            }
         }
         return '-';
     }
@@ -60,20 +66,21 @@ const Rio = {
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
-        const q = character.Q_LEVEL.selectedIndex - 1;
-        if (character.weapon && q >= 0) {
-            return "<b class='damage'>" + (character.DIV.querySelector('.rio_q').checked ? 'Hankyu' : 'Daikyu') + '</b>';
-        }
-        return '-';
+        return "<b class='damage'>" + (character.DIV.querySelector('.rio_q').checked ? 'Hankyu' : 'Daikyu') + '</b>';
     }
     ,Q_Option: "<b> _use</b><input type='checkbox' class='rio_q' onchange='updateDisplay()'>"
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const min = calcSkillDamage(character, enemy, 15 + w * 5, 0.5, 1);
-            const max = calcSkillDamage(character, enemy, 140 + w * 65, 0.5, 1);
-            const cool = 10000 / ((20 - w * 2) * (100 - character.cooldown_reduction));
-            return "<b class='damage'>" + min + ' ~ ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
+            if (character.DIV.querySelector('.rio_q').checked) {
+                const damage = calcSkillDamage(character, enemy, 45 + w * 45, 0.55, 1);
+                const cool = 10000 / ((10 - w) * (100 - character.cooldown_reduction) * 0.3);
+                return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            } else {
+                const damage = calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
+                const cool = 10000 / ((10 - w) * (100 - character.cooldown_reduction));
+                return "<b class='damage'>" + damage + ' ~ ' + damage * 5 + '</b> ( ' + damage + " x 5 ) <b> _sd/s: </b><b class='damage'>" + round(damage * 5 * cool) / 100 + '</b>';
+            }
         }
         return '-';
     }
@@ -81,10 +88,15 @@ const Rio = {
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
-            const damage1 = calcSkillDamage(character, enemy, 45 + e * 25, 0.3, 1);
-            const damage2 = calcSkillDamage(character, enemy, 50 + e * 30, 0.7, 1);
-            const cool = 10000 / ((16 - e * 1.5) * (100 - character.cooldown_reduction) + 50);
-            return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
+            if (character.DIV.querySelector('.rio_q').checked) {
+                const damage = calcSkillDamage(character, enemy, 50 + e * 20, 0.4, 1);
+                const cool = 10000 / ((5 - e * 0.5) * (100 - character.cooldown_reduction) + 30);
+                return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            } else {
+                const damage = calcSkillDamage(character, enemy, 40 + e * 10, 0.3, 1);
+                const cool = 10000 / ((5 - e * 0.5) * (100 - character.cooldown_reduction) + 30);
+                return "<b class='damage'>" + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> _sd/s: </b><b class='damage'>" + round(damage * 2 * cool) / 100 + '</b>';
+            }
         }
         return '-';
     }
@@ -92,9 +104,15 @@ const Rio = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage1 = calcSkillDamage(character, enemy, 150 + r * 125, 0.7, 1);
-            const damage2 = calcSkillDamage(character, enemy, 80 + r * 60, 0.5, 1);
-            return "<b class='damage'>" + (damage1 + damage2 * 5) + '</b> ( ' + damage1 + ', ' + damage2 + ' x 5 )';
+            if (character.DIV.querySelector('.rio_q').checked) {
+                const min = calcSkillDamage(character, enemy, 300 + r * 50, 0.4, 1);
+                const max = calcSkillDamage(character, enemy, (300 + r * 50) * 1.3, 0.4 * 1.3, 1);
+                return "<b class='damage'>" + min + ' - ' + max + '</b>';
+            } else {
+                const damage1 = calcSkillDamage(character, enemy, 40 + r * 30, 0.3, 1);
+                const damage2 = calcSkillDamage(character, enemy, 150 + r * 50, 0.6, 1);
+                return "<b class='damage'>" + (damage1 * 3 + damage2) + '</b> ( ' + damage1 + ' x 3, ' + damage2 + ' )';
+            }
         }
         return '-';
     }
@@ -103,11 +121,6 @@ const Rio = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
-            if (type === 'Shuriken') {
-                const damage = calcSkillDamage(character, enemy, wm < 13 ? 80 : 160, 0.3, 1);
-                const add = calcSkillDamage(character, enemy, (wm < 13 ? 80 : 160) * 0.3, 0.3 * 0.3, 1);
-                return "<b class='damage'>" + damage + ' ~ ' + (damage + add * 11) + '</b> ( ' + damage + ', ' + add + ' x 11 )';
-            }
             if (type === 'Bow') {
                 const min = calcSkillDamage(character, enemy, wm < 13 ? 150 : 250, 1, 1);
                 const max = calcSkillDamage(character, enemy, wm < 13 ? 300 : 500, 2, 1);
@@ -120,7 +133,7 @@ const Rio = {
         return '';
     }
     ,T_Skill: (character, enemy) => {
-        return '-';
+        return "<b class='damage'>" + character.armer_penetration_percent + '%</b>';
     }
     ,T_Option: ''
     ,Help: (character) => {
@@ -132,25 +145,35 @@ const Rio = {
         }
         const weapon = character.weapon.Type;
         const type =
-            weapon === 'Shuriken' ? '암기' :
             weapon === 'Bow' ? '보우' :
             '';
         const skill =
-            weapon === 'Shuriken' ? '"1타 데미지" ~ "합산 데미지" ( "1타 데미지", "추가 데미지" x "타수" )' :
             weapon === 'Bow' ? '"최소 데미지" - "최대 데미지"' :
             '';
-        return '혜진 ( ' + type + ' )\n' +
-            'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
-            'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
+        if (character.DIV.querySelector('.rio_q').checked) {
+            return '리오 ( ' + type + ' )\n' +
+                'A: "평타 데미지" / "카이츄 데미지"\n' +
+                'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
+                'HPS: "초당 회복량"\n' +
+                'Q: "무기 변환"\n' +
+                'W: "스킬 데미지"\n' +
+                'E: "스킬 데미지"\n' +
+                'R: "최소 데미지" - "최대 데미지"\n' +
+                'D: ' + skill + '\n' +
+                'T: "방어구 관통력"\n';
+        }
+        return '리오 ( ' + type + ' )\n' +
+            'A: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
+            'DPS: "초당 데미지" - "카이츄 데미지" _h/s: "초당 흡혈량" - "카이츄 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
-            'Q: "스킬 데미지"\n' +
-            'W: "최소 데미지" ~ "최대 데미지"\n' +
+            'Q: "무기 변환"\n' +
+            'W: "최소 데미지" ~ "최대 데미지" ( "스킬 데미지", "타수" )\n' +
             'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
-            'R: "합산 데미지" ( "폭발 데미지", "구체 데미지" x "타수" )\n' +
+            'R: "합산 데미지" ( "연사 데미지" x "타수", "추가타 데미지" )\n' +
             'D: ' + skill + '\n' +
-            'T: "데미지 없음"\n';
+            'T: "방어구 관통력"\n';
     }
-    ,COMBO_VARS: '{\"ee\":false}'
+    ,COMBO_VARS: '{\"qq\":false}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -163,7 +186,7 @@ const Rio = {
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let ee = data.vars.ee;
+        let qq = data.vars.qq;
         if (character.weapon) {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
@@ -174,62 +197,134 @@ const Rio = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (qq) {
+                        ba = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, true);
+                    } else {
+                        ba = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        }
+                        ba += rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
+                    }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (qq) {
+                        let lost = enemy.max_hp ? floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp) : 0;
+                        if (lost < 0) {
+                            lost = 0;
+                        }
+                        ba = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * (1 + lost / 200), true);
+                    } else {
+                        ba = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true);
+                        if (enemy.character === Magnus) {
+                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        }
+                        ba += rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
+                    }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
-                    if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + q * 20, 0.4, 1);
-                    }
+                    qq = !qq;
                 } else if (c === 'w') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 15 + w * 5, 0.5, 1);
+                        if (qq) {
+                            damage += calcSkillDamage(character, enemy, 45 + w * 45, 0.55, 1);
+                        } else {
+                            damage += calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
+                        }
                     }
                 } else if (c === 'W') {
                     if (w >= 0) {
-                        damage += calcSkillDamage(character, enemy, 140 + w * 65, 0.5, 1);
+                        if (qq) {
+                            damage += calcSkillDamage(character, enemy, 45 + w * 45, 0.55, 1);
+                        } else {
+                            for (let j = 0; j < 5; j++) {
+                                damage += calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
+                                if (enemy.character === Magnus) {
+                                    let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                    if (lost < 0) {
+                                        lost = 0;
+                                    }
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                }
+                            }
+                        }
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
-                        if (ee) {
-                            ee = false;
-                            damage += calcSkillDamage(character, enemy, 50 + e * 30, 0.7, 1);
+                        if (qq) {
+                            damage += calcSkillDamage(character, enemy, 50 + e * 20, 0.4, 1);
                         } else {
-                            ee = true;
-                            damage += calcSkillDamage(character, enemy, 45 + e * 25, 0.3, 1);
+                            damage += calcSkillDamage(character, enemy, 40 + e * 10, 0.3, 1);
+                            if (enemy.character === Magnus) {
+                                let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                if (lost < 0) {
+                                    lost = 0;
+                                }
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            }
+                            damage += calcSkillDamage(character, enemy, 40 + e * 10, 0.3, 1);
                         }
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 80 + r * 60, 0.5, 1);
+                        if (qq) {
+                            damage += calcSkillDamage(character, enemy, 300 + r * 50, 0.4, 1);
+                        } else {
+                            for (let j = 0; j < 3; j++) {
+                                damage += calcSkillDamage(character, enemy, 40 + r * 30, 0.3, 1);
+                                if (enemy.character === Magnus) {
+                                    let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                    if (lost < 0) {
+                                        lost = 0;
+                                    }
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                }
+                            }
+                        }
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 150 + r * 125, 0.7, 1);
+                        if (qq) {
+                            damage += calcSkillDamage(character, enemy, (300 + r * 50) * 1.3, 0.4 * 1.3, 1);
+                        } else {
+                            for (let j = 0; j < 3; j++) {
+                                damage += calcSkillDamage(character, enemy, 40 + r * 30, 0.3, 1);
+                                if (enemy.character === Magnus) {
+                                    let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                    if (lost < 0) {
+                                        lost = 0;
+                                    }
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                }
+                            }
+                            damage += calcSkillDamage(character, enemy, 150 + r * 50, 0.6, 1);
+                        }
                     }
                 } else if (c === 'd') {
                     if (wm > 5) {
-                        if (type === 'Shuriken') {
-                            damage += calcSkillDamage(character, enemy, (wm < 13 ? 80 : 160) * 0.3, 0.3 * 0.3, 1);
-                        } else if (type === 'Bow') {
+                        if (type === 'Bow') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 150 : 250, 1, 1);
                         }
                     }
                 } else if (c === 'D') {
                     if (wm > 5) {
-                        if (type === 'Shuriken') {
-                            damage += calcSkillDamage(character, enemy, wm < 13 ? 80 : 160, 0.3, 1);
-                        } else if (type === 'Bow') {
+                        if (type === 'Bow') {
                             damage += calcSkillDamage(character, enemy, wm < 13 ? 300 : 500, 2, 1);
                         }
                     }
@@ -240,17 +335,18 @@ const Rio = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,
             heal: heal,
             shield: shield,
             vars: {
-                ee: ee
+                qq: qq
             }
         };
     }
-    ,COMBO_Option: 'qweaeRrqdara'
+    ,COMBO_Option: 'AaaWaeDqARqaa'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -264,13 +360,13 @@ const Rio = {
             weapon === 'Bow' ? 'd: 무스 외곽 데미지\n' + 'D: 무스 중앙 데미지\n' :
             '';
         return 'a: 기본공격 데미지\n' +
-            'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' +
-            'w: W스킬 즉발 데미지\n' +
+            'A: 카이츄 데미지\n' +
+            'q & Q: 무기 스왑 ( 기본 단궁 )\n' +
+            'w: W스킬 최소 데미지\n' +
             'W: W스킬 최대 데미지\n' +
-            'e & E: E스킬 1타 데미지, 재사용시 2타 데미지\n' +
-            'r: R스킬 구체 데미지\n' +
-            'R: R스킬 폭발 데미지\n' +
+            'e & E: E스킬 데미지\n' +
+            'r: R스킬 최소 데미지\n' +
+            'R: R스킬 최대 데미지\n' +
             't & T: 데미지 없음\n' +
             d +
             'p & P: 트랩 데미지';

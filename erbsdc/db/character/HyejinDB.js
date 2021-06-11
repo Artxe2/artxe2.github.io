@@ -1,7 +1,7 @@
 'use strict';
 const Hyejin = {
      Attack_Power: 29
-    ,Attack_Power_Growth: 2.7
+    ,Attack_Power_Growth: 2.5
     ,Health: 615
     ,Health_Growth: 65
     ,Health_Regen: 0.8
@@ -10,9 +10,9 @@ const Hyejin = {
     ,Stamina_Growth: 26
     ,Stamina_Regen: 2
     ,Stamina_Regen_Growth: 0.08
-    ,Defense: 25
-    ,Defense_Growth: 1.7
-    ,Atk_Speed: 0.12
+    ,Defense: 22
+    ,Defense_Growth: 2
+    ,Atk_Speed: 0.09
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4
@@ -24,7 +24,7 @@ const Hyejin = {
         ],
         Bow: [
             [0, -14, -16],
-            [0, 0, 0]
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -168,7 +168,7 @@ const Hyejin = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -234,6 +234,7 @@ const Hyejin = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

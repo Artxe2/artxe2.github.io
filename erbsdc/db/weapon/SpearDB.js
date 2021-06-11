@@ -30,8 +30,8 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Halberd_Axe"
-        ,Attack_Power: 70
-        ,Title: "Halberd Axe\n\nAttack Power +70"
+        ,Attack_Power: 60
+        ,Title: "Halberd Axe\n\nAttack Power +60"
         ,Rarity: "Rare"
     }
     ,{

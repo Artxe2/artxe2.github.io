@@ -118,9 +118,9 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Grenade_of_Antioch"
-        ,Attack_Power: 80
-        ,Extra_Normal_Attack_Damage: 100
-        ,Title: "Grenade of Antioch\n\nAttack Power +80\nExtra Normal Attack Damage +100"
+        ,Attack_Power: 85
+        ,Extra_Normal_Attack_Damage: 85
+        ,Title: "Grenade of Antioch\n\nAttack Power +85\nExtra Normal Attack Damage +85"
         ,Rarity: "Legendary"
 
     }

@@ -20,11 +20,11 @@ const Magnus = {
     ,correction: {
         Hammer: [
             [0, -5, -9],
-            [0, 0, 0]
+            [0, 0, -3]
         ],
         Bat: [
-            [0, -3, -7],
-            [0, 0, 0]
+            [0, -3, -6],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -161,7 +161,7 @@ const Magnus = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -188,7 +188,7 @@ const Magnus = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                         }
                     }
@@ -221,6 +221,7 @@ const Magnus = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

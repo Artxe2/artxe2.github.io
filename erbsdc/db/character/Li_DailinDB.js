@@ -12,19 +12,19 @@ const Li_Dailin = {
     ,Stamina_Regen_Growth: 0.01
     ,Defense: 22
     ,Defense_Growth: 2.2
-    ,Atk_Speed: 0.07
+    ,Atk_Speed: 0.07 //
     ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Glove, Nunchaku]
     ,correction: {
         Glove: [
-            [0, 0, 0],
-            [0, 0, 0]
+            [0, -2, -3],
+            [0, 0, -3]
         ],
         Nunchaku: [
             [0, 0, 0],
-            [0, 3, 3]
+            [0, 3, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -206,7 +206,7 @@ const Li_Dailin = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -293,7 +293,7 @@ const Li_Dailin = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                         }
                         if (bac >= 40) {
@@ -349,8 +349,9 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
+
                         ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -361,7 +362,7 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
@@ -376,7 +377,7 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
@@ -388,7 +389,7 @@ const Li_Dailin = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
@@ -402,6 +403,7 @@ const Li_Dailin = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

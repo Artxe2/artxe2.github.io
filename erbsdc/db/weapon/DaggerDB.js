@@ -40,9 +40,9 @@ const Dagger = [
          Type: "Dagger"
         ,Name: "Rose_Knife"
         ,Attack_Power: 20
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.08
         ,Cooldown_Reduction: 8
-        ,Title: "Rose Knife\n\nAttack Power +20\nMovement Speed +0.1\nCooldown Reduction +8%"
+        ,Title: "Rose Knife\n\nAttack Power +20\nMovement Speed +0.08\nCooldown Reduction +8%"
         ,Rarity: "Rare"
     }
     ,{
@@ -58,10 +58,10 @@ const Dagger = [
         ,Name: "Carnwennan"
         ,Attack_Power: 41
         ,HP_Regen: 1.2
-        ,Movement_Speed: 0.1
+        ,Movement_Speed: 0.08
         ,Cooldown_Reduction: 8
-        ,Extra_Normal_Attack_Damage: 29
-        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.1\nCooldown Reduction +8%\nExtra Normal Attack Damage +29"
+        ,Extra_Normal_Attack_Damage: 26
+        ,Title: "Carnwennan\n\nAttack Power +41\nHP Regen +1.2\nMovement Speed +0.08\nCooldown Reduction +8%\nExtra Normal Attack Damage +26"
         ,Rarity: "Epic"
     }
     ,{
@@ -70,8 +70,8 @@ const Dagger = [
         ,Attack_Power: 30
         ,Movement_Speed: 0.1
         ,Cooldown_Reduction: 12
-        ,Extra_Skill_Damage: 29
-        ,Title: "Mount Slicer\n\nAttack Power +30\nMovement Speed +0.1\nCooldown Reduction +12%\nExtra Skill Damage +29"
+        ,Extra_Skill_Damage_per_level: 2
+        ,Title: "Mount Slicer\n\nAttack Power +30\nMovement Speed +0.1\nCooldown Reduction +12%\nSkill Amplification per level +2"
         ,Rarity: "Epic"
     }
     ,{

@@ -20,11 +20,11 @@ const Sissela = {
     ,correction: {
         Throws: [
             [0, -15, -18],
-            [0, 0, 0]
+            [0, 0, -3]
         ],
         Shuriken: [
             [0, -13, -16],
-            [0, 0, 0]
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -199,7 +199,7 @@ const Sissela = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -274,6 +274,7 @@ const Sissela = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

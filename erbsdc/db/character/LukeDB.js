@@ -1,17 +1,17 @@
 'use strict';
 const Luke = {
      Attack_Power: 28
-    ,Attack_Power_Growth: 2
+    ,Attack_Power_Growth: 2.2
     ,Health: 690
     ,Health_Growth: 81
     ,Health_Regen: 1
     ,Health_Regen_Growth: 0.06
-    ,Stamina: 427
+    ,Stamina: 420
     ,Stamina_Growth: 15
     ,Stamina_Regen: 1.9
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 30
-    ,Defense_Growth: 2.3
+    ,Defense_Growth: 1.8
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.2
     ,Sight_Range: 8
@@ -19,8 +19,8 @@ const Luke = {
     ,weapons: [Bat]
     ,correction: {
         Bat: [
-            [0, 0, -1],
-            [0, 0, 0]
+            [0, 0, 0],
+            [0, 0, -6]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -218,7 +218,7 @@ const Luke = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -285,6 +285,7 @@ const Luke = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

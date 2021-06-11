@@ -29,6 +29,15 @@ const Hammer = [
     }
     ,{
          Type: "Hammer"
+        ,Name: "Forged_Destiny"
+        ,Attack_Power: 40
+        ,Critical_Strike_Chance: 8
+        ,Cooldown_Reduction: 8
+        ,Title: "Forged Destiny\n\nAttack Power +40\nCritical Strike Chance +8%\nCooldown Reduction +8%"
+        ,Rarity: "Rare"
+    }
+    ,{
+         Type: "Hammer"
         ,Name: "Fang_Mace"
         ,Attack_Power: 55
         ,Extra_Skill_Damage: 25
@@ -60,6 +69,16 @@ const Hammer = [
         ,Attack_Power: 105
         ,Skill_Amplification_Percent: 20
         ,Title: "Evening Star\n\nAttack Power +105\nSkill Amplification +20%"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Hammer"
+        ,Name: "Weight_of_the_World"
+        ,Attack_Power: 88
+        ,Critical_Strike_Chance: 10
+        ,Cooldown_Reduction: 12
+        ,Skill_Amplification_Percent: 8
+        ,Title: "Weight of the World\n\nAttack Power +88\nCritical Strike Chance +10%\nCooldown Reduction +812%\nSkill Amplification +8%"
         ,Rarity: "Epic"
     }
     ,{

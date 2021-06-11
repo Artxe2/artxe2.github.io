@@ -5,13 +5,13 @@ const Aya = {
     ,Health: 580
     ,Health_Growth: 60
     ,Health_Regen: 0.5
-    ,Health_Regen_Growth: 0.04
+    ,Health_Regen_Growth: 0.07
     ,Stamina: 440
-    ,Stamina_Growth: 25
+    ,Stamina_Growth: 22
     ,Stamina_Regen: 2.3
     ,Stamina_Regen_Growth: 0.07
-    ,Defense: 18
-    ,Defense_Growth: 1.6
+    ,Defense: 20
+    ,Defense_Growth: 1.4
     ,Atk_Speed: 0.14
     ,Movement_Speed: 3.05
     ,Sight_Range: 8
@@ -20,15 +20,15 @@ const Aya = {
     ,correction: {
         Pistol: [
             [0, -12, -11],
-            [0, 0, -2]
+            [0, 0, -5]
         ],
         AssaultRifle: [
             [0, -13, -11],
-            [0, 0, 0]
+            [0, 0, -3]
         ],
         SniperRifle: [
             [0, -15, -18],
-            [0, 0, 0]
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -106,8 +106,8 @@ const Aya = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const min = calcSkillDamage(character, enemy, 200 + r * 100, 0.5, 1);
-            const max = calcSkillDamage(character, enemy, 400 + r * 200, 1, 1);
+            const min = calcSkillDamage(character, enemy, 175 + r * 75, 0.5, 1);
+            const max = calcSkillDamage(character, enemy, 350 + r * 150, 1, 1);
             return "<b class='damage'>" + min + ' ~ ' + max + "</b>";
         }
         return '-';
@@ -133,7 +133,7 @@ const Aya = {
                 const cool = 30 * (100 - character.cooldown_reduction) / 100;
                 const shield = floor(150 + t * 25 + character.attack_power * 0.3);
                 return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
-                    "<b> _s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 6) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 6) / cool, 2);
+                    "<b> _s/s: </b><b class='shield'>" + floor(shield * (1 + as1 * 4.5) / cool, 2) + '</b> - ' + floor(shield * (1 + as2 * 4.5) / cool, 2);
             }
             if (type === 'SniperRifle') {
                 const damage = calcSkillDamage(character, enemy, 0, wm < 13 ? 2.2 : 3, 1);
@@ -152,9 +152,9 @@ const Aya = {
             const cool = 30 * (100 - character.cooldown_reduction) / 100;
             let as;
             if (character.weapon.Type === 'AssaultRifle') {
-                as = 10 / (9.5 / character.attack_speed + 2) * 6;
+                as = 10 / (9.5 / character.attack_speed + 2) * 4.5;
             } else {
-                as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2) * 2;
+                as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2) * 1.5;
             }
             return "<b> _s: </b><b class='shield'>" + shield + "</b><b> _s/s: </b><b class='shield'>" + floor(shield * (1 + as) / cool, 2) + '</b>';
         }
@@ -209,9 +209,9 @@ const Aya = {
         let dd = data.vars.dd;
         if (character.weapon) {
             if (character.weapon.Type === 'AssaultRifle') {
-                as = 10 / (9.5 / character.attack_speed + 2) * 6 + 1;
+                as = 10 / (9.5 / character.attack_speed + 2) * 4.5 + 1;
             } else {
-                as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2) * 2 + 1;
+                as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + 2) * 1.5 + 1;
             }
         } else {
             as = 1;
@@ -230,7 +230,7 @@ const Aya = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -243,7 +243,7 @@ const Aya = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.32, auto_cri ? character.critical_strike_chance : 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
@@ -251,7 +251,7 @@ const Aya = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
@@ -269,7 +269,7 @@ const Aya = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.32, auto_cri ? character.critical_strike_chance : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
@@ -277,7 +277,7 @@ const Aya = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
@@ -295,7 +295,7 @@ const Aya = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 35 + q * 55, 0.2, 1);
                     }
@@ -308,7 +308,7 @@ const Aya = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                         }
                     }
@@ -321,17 +321,17 @@ const Aya = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                         }
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 200 + r * 100, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 175 + r * 75, 0.5, 1);
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 400 + r * 200, 1, 1);
+                        damage += calcSkillDamage(character, enemy, 350 + r * 150, 1, 1);
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
@@ -349,6 +349,7 @@ const Aya = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

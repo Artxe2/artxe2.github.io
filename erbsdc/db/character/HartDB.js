@@ -12,15 +12,15 @@ const Hart = {
     ,Stamina_Regen_Growth: 0.04
     ,Defense: 25
     ,Defense_Growth: 1.9
-    ,Atk_Speed: 0.12
+    ,Atk_Speed: 0.09
     ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Guitar]
     ,correction: {
         Guitar: [
-            [0, -7, -8],
-            [0, 0, 0]
+            [0, -7, -9],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -216,7 +216,7 @@ const Hart = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -229,7 +229,7 @@ const Hart = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.15, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (character.DIV.querySelector('.hart_tt').checked) {
@@ -238,7 +238,7 @@ const Hart = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                             ba += baseAttackDamage(character, enemy, 0, 0.15, auto_cri ? character.critical_strike_chance : 0, 1);
                         }
@@ -265,7 +265,7 @@ const Hart = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.15, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (character.DIV.querySelector('.hart_tt').checked) {
@@ -274,7 +274,7 @@ const Hart = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                             ba += baseAttackDamage(character, enemy, 0, 0.15, auto_cri ? character.critical_strike_chance : 100, 1);
                         }
@@ -377,6 +377,7 @@ const Hart = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

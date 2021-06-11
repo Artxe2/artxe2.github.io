@@ -83,26 +83,26 @@ const Glove = [
         ,Attack_Power: 50
         ,Defense: 18
         ,SP_Regen_Percent: 50
-        ,Life_Steal: 12
-        ,Title: "One Inch Punch\n\nAttack Power +50\nDefense +18\nSP Regen +50%\nLife Steal +12%"
+        ,Life_Steal: 15
+        ,Title: "One Inch Punch\n\nAttack Power +50\nDefense +18\nSP Regen +50%\nLife Steal +15%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Glove"
         ,Name: "Divine_Fist"
         ,Attack_Power: 55
-        ,Movement_Speed: -0.1
+        ,Movement_Speed: -0.05
         ,Extra_Normal_Attack_Damage: 39
-        ,Title: "Divine Fist\n\nAttack Power +55\nMovement Speed -0.1\nExtra Normal Attack Damage +39"
+        ,Title: "Divine Fist\n\nAttack Power +55\nMovement Speed -0.05\nExtra Normal Attack Damage +39"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Glove"
         ,Name: "Bloodwing_Knuckles"
         ,Attack_Power: 53
-        ,Max_HP: 210
+        ,Max_HP: 225
         ,Movement_Speed: 0.1
-        ,Title: "Bloodwing Knuckles\n\nAttack Power +53\nMax HP +210\nMovement Speed +0.1"
+        ,Title: "Bloodwing Knuckles\n\nAttack Power +53\nMax HP +225\nMovement Speed +0.1"
         ,Rarity: "Epic"
     }
     ,{
@@ -131,8 +131,7 @@ const Glove = [
         ,HP_Regen: 1.2
         ,SP_Regen: 1.2
         ,Attack_Speed: 35
-        ,Movement_Speed: -0.07
-        ,Title: "Brasil Gauntlet\n\nAttack Power +50\nDefense +10\nHP Regen +1.2\nSP Regen +1.2\nAttack Speed +35%\nMovement Speed -0.07"
+        ,Title: "Brasil Gauntlet\n\nAttack Power +50\nDefense +10\nHP Regen +1.2\nSP Regen +1.2\nAttack Speed +35%"
         ,Rarity: "Epic"
     }
     ,{
@@ -148,8 +147,8 @@ const Glove = [
          Type: "Glove"
         ,Name: "Imperial_Silk_Gloves"
         ,Attack_Power: 88
-        ,Movement_Speed: 0.12
-        ,Title: "Imperial Silk Gloves\n\nAttack Power +88\nMovement Speed +0.12"
+        ,Movement_Speed: 0.15
+        ,Title: "Imperial Silk Gloves\n\nAttack Power +88\nMovement Speed +0.15"
         ,Rarity: "Epic"
     }
 ];

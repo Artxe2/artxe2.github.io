@@ -20,19 +20,19 @@ const Jackie = {
     ,correction: {
         Dagger: [
             [0, -2, 5],
-            [0, -2, -5]
+            [0, -2, -8]
         ],
         TwoHandedSword: [
             [0, 0, 0],
-            [0, -4, -5]
+            [0, 2, -8]
         ],
         Axe: [
-            [0, 0, 0],
-            [0, -2, -5]
+            [0, 0, -2],
+            [0, 2, -8]
         ],
         DualSwords: [
             [0, -5, -8],
-            [0, -2, -5]
+            [0, 2, -9]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -288,7 +288,7 @@ const Jackie = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -320,7 +320,7 @@ const Jackie = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         if (bleeding[index] && ww && w >= 0) {
                             ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
@@ -373,7 +373,7 @@ const Jackie = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                 }
                                 damage += calcSkillDamage(character, enemy, 20 + q * 25, 0.65 + 0.1 + w * 0.025, 1);
                                 heal += calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy) * 2;
@@ -384,7 +384,7 @@ const Jackie = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                 }
                                 damage += calcSkillDamage(character, enemy, 20 + q * 25, 0.65 + 0.1 + w * 0.025, 1);
                                 heal += calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
@@ -396,7 +396,7 @@ const Jackie = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                             damage += calcSkillDamage(character, enemy, 20 + q * 25, 0.65, 1);
                         }
@@ -488,7 +488,7 @@ const Jackie = {
                                         if (lost < 0) {
                                             lost = 0;
                                         }
-                                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                     }
                                 }
                             } else {
@@ -499,7 +499,7 @@ const Jackie = {
                                         if (lost < 0) {
                                             lost = 0;
                                         }
-                                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                     }
                                 }
                             }
@@ -519,6 +519,7 @@ const Jackie = {
                 damage += floor(bleeding[index]);
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

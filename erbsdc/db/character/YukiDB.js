@@ -20,11 +20,11 @@ const Yuki = {
     ,correction: {
         TwoHandedSword: [
             [0, -14, -14],
-            [0, 2, 0]
+            [0, 2, -3]
         ],
         DualSwords: [
             [0, -4, -6],
-            [0, -3, -3]
+            [0, -3, -6]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -222,7 +222,7 @@ const Yuki = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -230,7 +230,9 @@ const Yuki = {
                 if (c === 'a') {
                     ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                     if (tt) {
-                        tt--;
+                        if (character.weapon.Type != 'DualSwords') {
+                            tt--;
+                        }
                         ba += bonus;
                     }
                     if (character.weapon.Type === 'DualSwords') {
@@ -239,7 +241,7 @@ const Yuki = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (tt) {
@@ -252,7 +254,9 @@ const Yuki = {
                 } else if (c === 'A') {
                     ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                     if (tt) {
-                        tt--;
+                        if (character.weapon.Type != 'DualSwords') {
+                            tt--;
+                        }
                         ba += bonus;
                     }
                     if (character.weapon.Type === 'DualSwords') {
@@ -261,7 +265,7 @@ const Yuki = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (tt) {
@@ -328,7 +332,7 @@ const Yuki = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                 }
                             }
                         }
@@ -340,6 +344,7 @@ const Yuki = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

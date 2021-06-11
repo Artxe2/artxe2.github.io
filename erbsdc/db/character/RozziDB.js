@@ -3,7 +3,7 @@ const Rozzi = {
      Attack_Power: 26
     ,Attack_Power_Growth: 2.3
     ,Health: 625
-    ,Health_Growth: 59
+    ,Health_Growth: 79
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 440
@@ -20,7 +20,7 @@ const Rozzi = {
     ,correction: {
         Pistol: [
             [0, -5, -8],
-            [0, 0, 0]
+            [0, 0, -3]
         ],
     }
     ,Base_Attack: (character, enemy) => {
@@ -171,7 +171,7 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -190,7 +190,7 @@ const Rozzi = {
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        const dm = -0.12 - w * 0.02;
+                        const dm = -0.09 - w * 0.02;
                         for (let x = index + 1; x <= index + 10 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
@@ -223,7 +223,7 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     }
                     ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
@@ -235,7 +235,7 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     }
                     ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
@@ -247,6 +247,7 @@ const Rozzi = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

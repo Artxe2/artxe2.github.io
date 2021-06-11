@@ -90,20 +90,20 @@ const TwoHandedSword = [
     }
     ,{
          Type: "TwoHandedSword"
+        ,Name: "Monohoshizao"
+        ,Attack_Power: 54
+        ,Attack_Power_per_level: 2
+        ,Life_Steal: 25
+        ,Title: "Monohoshizao\n\nAttack Power +54\nAttack Power per level +2\nLife Steal +25%"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "TwoHandedSword"
         ,Name: "Hovud"
         ,Attack_Power: 50
         ,Max_HP: 260
         ,Critical_Strike_Chance: 28
         ,Title: "Hovud\n\nAttack Power +50\nMax HP +260\nCritical Strike Chance +28%"
-        ,Rarity: "Epic"
-    }
-    ,{
-         Type: "TwoHandedSword"
-        ,Name: "Aurora_Longsword"
-        ,Attack_Power: 75
-        ,Attack_Speed: 20
-        ,Vision_Range: 2
-        ,Title: "Aurora Longsword\n\nAttack Power +75\nAttack Speed +20%\nVision Range +2"
         ,Rarity: "Epic"
     }
     ,{
@@ -119,11 +119,11 @@ const TwoHandedSword = [
     }
     ,{
          Type: "TwoHandedSword"
-        ,Name: "Monohoshizao"
-        ,Attack_Power: 54
-        ,Attack_Power_per_level: 2
-        ,Life_Steal: 25
-        ,Title: "Monohoshizao\n\nAttack Power +54\nAttack Power per level +2\nLife Steal +25%"
+        ,Name: "Aurora_Longsword"
+        ,Attack_Power: 75
+        ,Attack_Speed: 20
+        ,Vision_Range: 2
+        ,Title: "Aurora Longsword\n\nAttack Power +75\nAttack Speed +20%\nVision Range +2"
         ,Rarity: "Legendary"
     }
     ,{

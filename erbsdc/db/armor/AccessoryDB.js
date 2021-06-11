@@ -160,9 +160,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "White_Crane_Fan"
-        ,Movement_Speed: 0.12
+        ,Movement_Speed: 0.1
         ,Extra_Skill_Damage: 18
-        ,Title: "White Crane Fan\n\nMovement Speed +0.12\nExtra Skill Damage +18\nHealing Reduction (Skills) -40 / 25%"
+        ,Title: "White Crane Fan\n\nMovement Speed +0.1\nExtra Skill Damage +18\nHealing Reduction (Skills) -40 / 25%"
         ,Rarity: "Rare"
     }
     ,{
@@ -229,9 +229,9 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Moonlight_Pendant"
         ,Attack_Power: 24
-        ,Vision_Range: 1
+        ,Vision_Range: 1.5
         ,Life_Steal: 16
-        ,Title: "Moonlight Pendant\n\nAttack Power +24\nVision Range +1\nLife Steal +16%"
+        ,Title: "Moonlight Pendant\n\nAttack Power +24\nVision Range +1.5\nLife Steal +16%"
         ,Rarity: "Rare"
     }
     ,{
@@ -273,11 +273,11 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Lunar_Embrace"
-        ,Defense: 15
-        ,SP_Regen_Percent: 180
+        ,Defense: 20
+        ,SP_Regen_Percent: 100
         ,Vision_Range: 1.5
         ,Skill_Damage_Reduction: 20
-        ,Title: "Lunar Embrace\n\nDefense +15\nSP Regen +180%\nVision Range +1.5\nSkill Damage Reduction +20"
+        ,Title: "Lunar Embrace\n\nDefense +20\nSP Regen +100%\nVision Range +1.5\nSkill Damage Reduction +20"
         ,Rarity: "Epic"
     }
     ,{
@@ -286,8 +286,8 @@ const Accessory = [
         ,Attack_Power: 18
         ,Defense: 18
         ,Critical_Strike_Chance: 15
-        ,Cooldown_Reduction: 10
-        ,Title: "Emerald Tablet\n\nAttack Power +18\nDefense +18\nCritical Strike Chance +15%\nCooldown Reduction +10%"
+        ,Cooldown_Reduction: 12
+        ,Title: "Emerald Tablet\n\nAttack Power +18\nDefense +18\nCritical Strike Chance +15%\nCooldown Reduction +12%"
         ,Rarity: "Legendary"
     }
 ];

@@ -1,7 +1,7 @@
 'use strict';
 const Emma = {
      Attack_Power: 37
-    ,Attack_Power_Growth: 2.2
+    ,Attack_Power_Growth: 2
     ,Health: 650
     ,Health_Growth: 57
     ,Health_Regen: 0.4
@@ -19,8 +19,8 @@ const Emma = {
     ,weapons: [Shuriken]
     ,correction: {
         Shuriken: [
-            [0, -4, -8],
-            [0, 0, 0]
+            [0, 0, 0],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -176,7 +176,7 @@ const Emma = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -202,7 +202,7 @@ const Emma = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
                         heal += calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
@@ -255,6 +255,7 @@ const Emma = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

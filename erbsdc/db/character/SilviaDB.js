@@ -20,8 +20,8 @@ const Silvia = {
     ,correction: {
         Pistol: [
             [0, -16, -17],
-            [0, 0, 0],
-            [0, -10, -10]
+            [0, 0, -3],
+            [0, -10, -10] //
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -197,7 +197,7 @@ const Silvia = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -273,6 +273,7 @@ const Silvia = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

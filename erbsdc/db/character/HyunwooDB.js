@@ -149,7 +149,7 @@ const Hyunwoo = {
             'D: ' + skill + '\n' +
             'T: _h: "회복량"\n';
     }
-    ,COMBO_VARS: '{\"ww\":false, \"tt\":55}'
+    ,COMBO_VARS: '{\"ww\":false, \"tt\":50}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -174,7 +174,7 @@ const Hyunwoo = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -183,7 +183,7 @@ const Hyunwoo = {
                     ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    if (tt >= 55) {
+                    if (tt >= 50) {
                         heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
                         tt = 0;
                     } else {
@@ -194,7 +194,7 @@ const Hyunwoo = {
                     ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    if (tt >= 55) {
+                    if (tt >= 50) {
                         heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
                         tt = 0;
                     } else {
@@ -245,7 +245,7 @@ const Hyunwoo = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             } else {
                                 enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                             }
@@ -270,7 +270,7 @@ const Hyunwoo = {
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                            if (tt >= 55) {
+                            if (tt >= 50) {
                                 heal += calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy);
                                 tt = 0;
                             } else {
@@ -288,6 +288,7 @@ const Hyunwoo = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

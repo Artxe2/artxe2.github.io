@@ -1,14 +1,14 @@
 'use strict';
 const Lenox = {
      Attack_Power: 36
-    ,Attack_Power_Growth: 2.4
+    ,Attack_Power_Growth: 2.8
     ,Health: 610
-    ,Health_Growth: 77
+    ,Health_Growth: 81
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.05
     ,Stamina: 380
     ,Stamina_Growth: 16
-    ,Stamina_Regen: 1.8
+    ,Stamina_Regen: 2.2
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 26
     ,Defense_Growth: 2
@@ -20,7 +20,7 @@ const Lenox = {
     ,correction: {
         Whip: [
             [0, -10, -13],
-            [0, 0, 0]
+            [0, 0, -3]
         ],
     }
     ,Base_Attack: (character, enemy) => {
@@ -82,7 +82,7 @@ const Lenox = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage = calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1);
+            const damage = calcSkillDamage(character, enemy, 50 + r * 50, 0.7, 1);
             const add = calcTrueDamage(character, enemy, 30 + r * 5);
             const hit = enemy.movement_speed ? floor(enemy.movement_speed * (4 + r * 0.5)) : 0;
             return "<b class='damage'>" + (damage * 2) + ' ~ ' + (damage * 2 + add * hit) + '</b> ( ' + damage + ' x 2, ' + add + ' x ' + hit + ' )';
@@ -165,7 +165,7 @@ const Lenox = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -201,7 +201,7 @@ const Lenox = {
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1);
+                        damage += calcSkillDamage(character, enemy, 50 + r * 50, 0.7, 1);
                         let move = 0;
                         if (enemy.movement_speed) {
                             const bleed = calcTrueDamage(character, enemy, 15 + r * 5);
@@ -220,7 +220,7 @@ const Lenox = {
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 50 + r * 50, 0.8, 1) * 2;
+                        damage += calcSkillDamage(character, enemy, 50 + r * 50, 0.7, 1) * 2;
                         let move = 0;
                         if (enemy.movement_speed) {
                             const bleed = calcTrueDamage(character, enemy, 30 + r * 5);
@@ -253,6 +253,7 @@ const Lenox = {
                 damage += floor(bleeding[index]);
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

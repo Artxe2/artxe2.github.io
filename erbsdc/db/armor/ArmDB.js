@@ -104,11 +104,11 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Draupnir"
-        ,Defense: 10
+        ,Defense: 15
         ,Max_SP: 240
         ,HP_Regen: 1
         ,Skill_Amplification_Percent: 17
-        ,Title: "Draupnir\n\nDefense +10\nMax SP +240\nHP Regen +1\nSkill Amplification +17%"
+        ,Title: "Draupnir\n\nDefense +15\nMax SP +240\nHP Regen +1\nSkill Amplification +17%"
         ,Rarity: "Epic"
     }
     ,{
@@ -144,9 +144,9 @@ const Arm = [
          Type: "Arm"
         ,Name: "Sword_of_Shah_Jahan"
         ,Attack_Power: 30
-        ,Max_HP: 245
+        ,Max_HP: 230
         ,Normal_Attack_Damage_Reduction: 2
-        ,Title: "Sword of Shah Jahan\n\nAttack Power +30\nMax HP +245\nNormal Attack Damage Reduction +2"
+        ,Title: "Sword of Shah Jahan\n\nAttack Power +30\nMax HP +230\nNormal Attack Damage Reduction +2"
         ,Rarity: "Epic"
     }
     ,{
@@ -162,10 +162,10 @@ const Arm = [
          Type: "Arm"
         ,Name: "Burnished_Aegis"
         ,Attack_Power: 5
-        ,Defense: 15
-        ,Max_HP: 320
+        ,Defense: 20
+        ,Max_HP: 300
         ,Max_SP: 250
-        ,Title: "Burnished Aegis\n\nAttack Power +5\nDefense +15\nMax HP +320\nMax SP +250"
+        ,Title: "Burnished Aegis\n\nAttack Power +5\nDefense +20\nMax HP +300\nMax SP +250"
         ,Rarity: "Epic"
     }
     ,{

@@ -51,10 +51,19 @@ const Tonfa = [
     ,{
          Type: "Tonfa"
         ,Name: "Plasma_Tonfa"
-        ,Attack_Power: 65
+        ,Attack_Power: 60
         ,Defense: 24
-        ,Vision_Range: 2.5
-        ,Title: "Plasma Tonfa\n\nAttack Power +65\nDefense +24\nVision Range +2.5"
+        ,Vision_Range: 5
+        ,Title: "Plasma Tonfa\n\nAttack Power +60\nDefense +24\nVision Range +5"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Tonfa"
+        ,Name: "Windrunner"
+        ,Attack_Power: 70
+        ,Defense: 20
+        ,Movement_Speed: 0.2
+        ,Title: "Windrunner\n\nAttack Power +70\nDefense +20\nMovement Speed +0.2"
         ,Rarity: "Epic"
     }
 ];

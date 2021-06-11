@@ -20,7 +20,7 @@ const Adriana = {
     ,correction: {
         Throws: [
             [0, -16, -18],
-            [0, 0, 0]
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -50,7 +50,7 @@ const Adriana = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const damage = calcTrueDamage(character, enemy, 12 + q * 3 + character.attack_power * (0.1 + q * 0.05));
+            const damage = calcTrueDamage(character, enemy, 16 + q * 2 + character.attack_power * (0.1 + q * 0.05));
             const cool = 10000 / ((7 - q * 0.5) * (100 - character.cooldown_reduction) + 200);
             return "<b class='damage'>" + damage + ' ~ ' + damage * 9 + '</b> ( ' + damage + " x 9 )<b> _sd/s: </b><b class='damage'>" + round(damage * 9 * cool) / 100 + '</b>';
         }
@@ -157,7 +157,7 @@ const Adriana = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -173,7 +173,7 @@ const Adriana = {
                 } else if (c === 'q') {
                     if (q >= 0) {
                         td = 0;
-                        damage += calcTrueDamage(character, enemy, 12 + q * 3 + character.attack_power * (0.1 + q * 0.05)) * 5;
+                        damage += calcTrueDamage(character, enemy, 16 + q * 2 + character.attack_power * (0.1 + q * 0.05)) * 5;
                         if (ww) {
                             damage += calcSkillDamage(character, enemy, (4 + t * 4) * (1 + td * 0.2), 0.2 * (1 + td * 0.2), 1);
                             td++;
@@ -194,7 +194,7 @@ const Adriana = {
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
-                        damage += calcTrueDamage(character, enemy, 12 + q * 3 + character.attack_power * (0.1 + q * 0.05)) * 9;
+                        damage += calcTrueDamage(character, enemy, 16 + q * 2 + character.attack_power * (0.1 + q * 0.05)) * 9;
                         if (ww) {
                             if (!tt) {
                                 damage += calcSkillDamage(character, enemy, (4 + t * 4) * (1 + td * 0.2), 0.2 * (1 + td * 0.2), 1);
@@ -385,6 +385,7 @@ const Adriana = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

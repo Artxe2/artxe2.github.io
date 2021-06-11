@@ -245,11 +245,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Butler`s_Suit"
-        ,Attack_Power: 30
+        ,Attack_Power: 25
         ,Movement_Speed: 0.12
         ,Life_Steal: 20
-        ,Normal_Attack_Damage_Reduction: 10
-        ,Title: "Butler`s Suit\n\nAttack Power +30\nMovement Speed +0.12\nLife Steal +20%\nNormal Attack Damage Reduction +10"
+        ,Normal_Attack_Damage_Reduction: 13
+        ,Title: "Butler`s Suit\n\nAttack Power +25\nMovement Speed +0.12\nLife Steal +20%\nNormal Attack Damage Reduction +13"
         ,Rarity: "Epic"
     }
     ,{
@@ -276,21 +276,22 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Tuxedo"
-        ,Defense: 20
+        ,Defense: 30
         ,Critical_Damage_Reduction: 8
         ,Life_Steal: 8
         ,Extra_Normal_Attack_Damage_per_level: 1
-        ,Title: "Tuxedo\n\nDefense +20\nCritical Damage Reduction +8%\nLife Steal +8%\nExtra Normal Attack Damage per level +1"
+        ,Title: "Tuxedo\n\nDefense +30\nCritical Damage Reduction +8%\nLife Steal +8%\nExtra Normal Attack Damage per level +1"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Chest"
         ,Name: "High_Priest_Robes"
-        ,Defense: 36
+        ,Defense: 32
         ,HP_Regen: 1
-        ,SP_Regen_Percent: 65
+        ,SP_Regen_Percent: 85
         ,Cooldown_Reduction: 12
-        ,Title: "High Priest Robes\n\nDefense +36\nHP Regen +1\nSP Regen +65%\nCooldown Reduction +12%"
+        ,Cooldown_Reduction_Cap: 5
+        ,Title: "High Priest Robes\n\nDefense +32\nHP Regen +1\nSP Regen +85%\nCooldown Reduction +12%\nCooldown Reduction Cap +5%"
         ,Rarity: "Epic"
     }
     ,{
@@ -298,11 +299,11 @@ const Chest = [
         ,Name: "Blazing_Dress"
         ,Attack_Power: 20
         ,Defense: 30
-        ,HP_Regen: 2
-        ,SP_Regen: 2
+        ,HP_Regen: 1.5
+        ,SP_Regen: 1.5
         ,SP_Regen_Percent: 75
-        ,Extra_Normal_Attack_Damage: 20
-        ,Title: "Blazing Dress\n\nAttack Power +20\nDefense +30\nHP Regen +2\nSP Regen +2\nSP Regen +75%\nExtra Normal Attack Damage +20"
+        ,Flame_Barrier: true
+        ,Title: "Blazing Dress\n\nAttack Power +20\nDefense +30\nHP Regen +2\nSP Regen +2\nSP Regen +75%\nFlame_Barrier"
         ,Rarity: "Legendary"
     }
     ,{
@@ -319,8 +320,8 @@ const Chest = [
         ,Defense: 40
         ,HP_Regen: 2
         ,Cooldown_Reduction: 25
-        ,Cooldown_Reduction_Cap: 5
-        ,Title: "Queen of Hearts\n\nDefense +40\nHP Regen +2.5\nCooldown Reduction +25%\nCooldown Reduction Cap +5%"
+        ,Cooldown_Reduction_Cap: 10
+        ,Title: "Queen of Hearts\n\nDefense +40\nHP Regen +2.5\nCooldown Reduction +25%\nCooldown Reduction Cap +10%"
         ,Rarity: "Legendary"
     }
 ];

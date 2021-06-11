@@ -163,10 +163,10 @@ const Shuriken = [
          Type: "Shuriken"
         ,Name: "Flechette"
         ,Attack_Power: 85
-        ,Movement_Speed: 0.25
+        ,Movement_Speed: 0.15
         ,Critical_Damage: 15
         ,Attack_Range: 0.5
-        ,Title: "Flechette\n\nAttack Power +85\nMovement Speed +0.25\nCritical Damage +15%\nAttack Range +0.5"
+        ,Title: "Flechette\n\nAttack Power +85\nMovement Speed +0.15\nCritical Damage +15%\nAttack Range +0.5"
         ,Rarity: "Epic"
     }
     ,{

@@ -3,7 +3,7 @@ const Leon = {
      Attack_Power: 33
     ,Attack_Power_Growth: 2.2
     ,Health: 650
-    ,Health_Growth: 79
+    ,Health_Growth: 82
     ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.07
     ,Stamina: 420
@@ -13,14 +13,14 @@ const Leon = {
     ,Defense: 22
     ,Defense_Growth: 2.2
     ,Atk_Speed: 0.05
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.1 //
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Glove]
     ,correction: {
         Glove: [
-            [0, -4, -8],
-            [0, 0, 0]
+            [0, -6, -10],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -192,7 +192,7 @@ const Leon = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -294,6 +294,7 @@ const Leon = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

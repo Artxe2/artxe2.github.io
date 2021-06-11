@@ -1,7 +1,7 @@
 'use strict';
 const Alex = {
      Attack_Power: 19
-    ,Attack_Power_Growth: 2.4
+    ,Attack_Power_Growth: 2.1
     ,Health: 600
     ,Health_Growth: 74
     ,Health_Regen: 0.5
@@ -12,27 +12,27 @@ const Alex = {
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 23
     ,Defense_Growth: 2.1
-    ,Atk_Speed: 0.18
+    ,Atk_Speed: 0.11
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [TwoHandedSword, Pistol, Shuriken, Tonfa]
     ,correction: {
         TwoHandedSword: [
-            [0, -8, -8],
-            [0, 0, 0]
+            [0, -8, -10],
+            [0, 0, -3]
         ],
         Pistol: [
-            [0, -8, -8],
-            [0, 0, 0]
+            [0, -8, -10],
+            [0, 0, -3]
         ],
         Shuriken: [
-            [0, -8, -8],
-            [0, 0, 0]
+            [0, -8, -10],
+            [0, 0, -3]
         ],
         Tonfa: [
-            [0, -8, -8],
-            [0, 0, 0]
+            [0, -8, -10],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -89,11 +89,11 @@ const Alex = {
         if (character.weapon && w >= 0) {
             let damage, cool;
             if (character.isMelee) {
-                damage = calcSkillDamage(character, enemy, 60 + w * 30, 0.4, 1);
-                cool = 10000 / (10 * (100 - character.cooldown_reduction));
+                damage = calcSkillDamage(character, enemy, 60 + w * 30, 0.5, 1);
+                cool = 10000 / (12 * (100 - character.cooldown_reduction));
             } else {
-                damage = calcSkillDamage(character, enemy, 40 + w * 20, 0.4, 1);
-                cool = 10000 / (13 * (100 - character.cooldown_reduction));
+                damage = calcSkillDamage(character, enemy, 40 + w * 40, 0.4, 1);
+                cool = 10000 / (15 * (100 - character.cooldown_reduction));
             }
             return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
@@ -104,7 +104,7 @@ const Alex = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0 && !character.isMelee) {
             const damage = calcSkillDamage(character, enemy, 60 + e * 30, 0.4, 1);
-            const cool = 10000 / ((22 - e * 2) * (100 - character.cooldown_reduction) + 50);
+            const cool = 10000 / ((20 - e) * (100 - character.cooldown_reduction) + 50);
             return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -206,7 +206,7 @@ const Alex = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -233,9 +233,9 @@ const Alex = {
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
                         if (character.isMelee) {
-                            damage += calcSkillDamage(character, enemy, 60 + w * 30, 0.4, 1);
+                            damage += calcSkillDamage(character, enemy, 60 + w * 30, 0.5, 1);
                         } else {
-                            damage += calcSkillDamage(character, enemy, 40 + w * 20, 0.4, 1);
+                            damage += calcSkillDamage(character, enemy, 40 + w * 40, 0.4, 1);
                         }
                     }
                 } else if (c === 'e') {
@@ -294,6 +294,7 @@ const Alex = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

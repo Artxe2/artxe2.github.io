@@ -19,19 +19,19 @@ const Bernice = {
     ,weapons: [SniperRifle]
     ,correction: {
         SniperRifle: [
-            [0, -6, -10],
-            [0, 0, 0]
+            [0, -10, -10],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, character.critical_strike_chance, 1);
-            const min = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 0, 1);
-            const max = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, 100, 1);
-            const damage2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, character.critical_strike_chance, 2 + t);
-            const min2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 0, 2 + t);
-            const max2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, 100, 2 + t);
+            const damage = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, character.critical_strike_chance, 1);
+            const min = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, 0, 1);
+            const max = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, 100, 1);
+            const damage2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, character.critical_strike_chance, 2 + t);
+            const min2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, 0, 2 + t);
+            const max2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, 100, 2 + t);
             return "<b class='damage'>" + damage + ' ~ ' + damage2 + '</b> ( ' + min + ' - ' + max + ' ~ ' + min2 + ' - ' + max2 + ' )';
         }
         return '-';
@@ -42,8 +42,8 @@ const Bernice = {
             const t = character.T_LEVEL.selectedIndex;
             const reload = Math.max(1.8 - t * 0.5, 1 / character.attack_speed);
             const as = character.weapon.Ammo / ((character.weapon.Ammo - 1) / character.attack_speed + reload);
-            const shot = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, character.critical_strike_chance, 1);
-            const shot2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, character.critical_strike_chance, 2 + t);
+            const shot = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, character.critical_strike_chance, 1);
+            const shot2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, character.critical_strike_chance, 2 + t);
             const damage1 = round(shot * as * 100) / 100;
             const damage2 = round(shot2 * as * 100) / 100;
             const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
@@ -187,17 +187,17 @@ const Bernice = {
                 }
                 if (c === 'a') {
                     if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, auto_cri ? character.critical_strike_chance : 0, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, auto_cri ? character.critical_strike_chance : 0, 1.5 + t * 0.5);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, auto_cri ? character.critical_strike_chance : 0, 1.5 + t * 0.5);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, 0.7 + t * 0.15, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, auto_cri ? character.critical_strike_chance : 100, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.91 : t === 1 ? 1.15 : 1.33, auto_cri ? character.critical_strike_chance : 100, 1.5 + t * 0.5);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, auto_cri ? character.critical_strike_chance : 100, 1.5 + t * 0.5);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -233,6 +233,7 @@ const Bernice = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

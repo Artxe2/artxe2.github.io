@@ -61,10 +61,10 @@ const Crossbow = [
     ,{
          Type: "Crossbow"
         ,Name: "Ballista"
-        ,Attack_Power: 110
-        ,Attack_Speed: -8
-        ,Skill_Amplification_Percent_per_level: 1
-        ,Title: "Ballista\n\nAttack Power +115\nAttack Speed -8%\nSkill Amplification per level +1%"
+        ,Attack_Power: 75
+        ,Attack_Speed: -10
+        ,Skill_Amplification_Percent_per_level: 2
+        ,Title: "Ballista\n\nAttack Power +75\nAttack Speed -10%\nSkill Amplification per level +2%"
         ,Rarity: "Epic"
     }
     ,{
@@ -79,10 +79,10 @@ const Crossbow = [
     ,{
          Type: "Crossbow"
         ,Name: "The_Golden_Ghost"
-        ,Attack_Power: 66
+        ,Attack_Power: 68
         ,Extra_Normal_Attack_Damage: 22
         ,Extra_Normal_Attack_Damage_per_level: 2
-        ,Title: "The Golden Ghost\n\nAttack Power +66\nExtra Normal Attack Damage +22\nExtra Normal Attack Damage per level +2"
+        ,Title: "The Golden Ghost\n\nAttack Power +68\nExtra Normal Attack Damage +22\nExtra Normal Attack Damage per level +2"
         ,Rarity: "Epic"
     }
     ,{

@@ -1,7 +1,7 @@
 'use strict';
 const Isol = {
      Attack_Power: 27
-    ,Attack_Power_Growth: 2.6
+    ,Attack_Power_Growth: 2.9
     ,Health: 600
     ,Health_Growth: 57
     ,Health_Regen: 0.5
@@ -11,7 +11,7 @@ const Isol = {
     ,Stamina_Regen: 1.8
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 23
-    ,Defense_Growth: 1.5
+    ,Defense_Growth: 1.2
     ,Atk_Speed: 0.14
     ,Movement_Speed: 3.1
     ,Sight_Range: 8
@@ -20,11 +20,11 @@ const Isol = {
     ,correction: {
         Pistol: [
             [0, -10, -18],
-            [0, 0, 0]
+            [0, 0, -3]
         ],
         AssaultRifle: [
-            [0, -10, -18],
-            [0, 0, 0]
+            [0, -8, -8],
+            [0, 0, -3]
         ]
     }
     ,Base_Attack: (character, enemy) => {
@@ -74,9 +74,9 @@ const Isol = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const stack = parseInt(character.DIV.querySelector('.isol_q').value);
-            const min = calcSkillDamage(character, enemy, 50 + q * 25, 0.4, 1);
-            const max = calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * stack, 0.4 + stack * 0.2, 1);
-            const cool = 10000 / ((18 - q * 2) * (100 - character.cooldown_reduction) + 27);
+            const min = calcSkillDamage(character, enemy, 20 + q * 20, 0.4, 1);
+            const max = calcSkillDamage(character, enemy, 20 + q * 20 + (8 + q * 4) * stack, 0.4 + stack * 0.2, 1);
+            const cool = 10000 / ((16 - q) * (100 - character.cooldown_reduction) + 27);
             return min + " ~ <b class='damage'>" +  + max + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
         return '-';
@@ -185,7 +185,7 @@ const Isol = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -198,7 +198,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.32, auto_cri ? character.critical_strike_chance : 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
@@ -206,7 +206,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
@@ -226,7 +226,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.32, auto_cri ? character.critical_strike_chance : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
@@ -234,7 +234,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
@@ -253,11 +253,7 @@ const Isol = {
                             for (let x = index + 1; x <= index + 6 && x < defense_minus.length; x++) {
                                 defense_minus[x] = dm;
                             }
-                            damage += calcSkillDamage(character, enemy, 50 + q * 25 + (8 + q * 4) * (qq - 1), 0.4 + (qq - 1) * 0.2, 1);
-                            console.log(50 + q * 25 + (8 + q * 4) * (qq - 1), 0.4 + (qq - 1) * 0.2)
-                            const stack = parseInt(character.DIV.querySelector('.isol_q').value);
-                            console.log(50 + q * 25 + (8 + q * 4) * stack, 0.4 + stack * 0.2)
-                            console.log()
+                            damage += calcSkillDamage(character, enemy, 20 + q * 20 + (8 + q * 4) * (qq - 1), 0.4 + (qq - 1) * 0.2, 1);
                             qq = 0;
                         } else {
                             qq = 1;
@@ -276,7 +272,7 @@ const Isol = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.002)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                             }
                         }
                     }
@@ -305,6 +301,7 @@ const Isol = {
                 }
             }
         }
+        damage += checkItemDamage(character, enemy, index);
         return {
             hp: data.hp - damage,
             damage: damage,

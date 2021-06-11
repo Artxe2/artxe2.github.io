@@ -49,14 +49,14 @@ function baseAttackDamage(character, enemy, base, coe, cri, onhit) {
         (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0)));
 }
 
-function rioAttackDamage(character, enemy, base, coe, ap, ampl) {
+function rioAttackDamage(character, enemy, base, coe, ampl) {
     let cri = character.critical_strike_chance + character.skill_amplification;
     if (cri > 100) {
         cri = 100;
     }
     return floor((((base + character.attack_power * coe) *
         (ampl ? 1.1 + cri / 100 * (0.75 + (character.critical_damage - (!enemy.critical_damage_reduction ? 0 : enemy.critical_damage_reduction)) / 100) : 1) /
-        (1 + (!enemy.defense ? 0 : (enemy.defense * (1 - (character.armer_penetration_percent + ap) / 100)) / 100)) *
+        (1 + (!enemy.defense ? 0 : (enemy.defense * (1 - character.armer_penetration_percent / 100)) / 100)) *
         (1 + (character.extra_normal_attack_damage_percent - (!enemy.normal_attack_damage_reduction_percent ? 0 : enemy.normal_attack_damage_reduction_percent)) / 100)) +
         (character.extra_normal_attack_damage - (!enemy.normal_attack_damage_reduction ? 0 : enemy.normal_attack_damage_reduction))) *
         (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *
@@ -64,8 +64,14 @@ function rioAttackDamage(character, enemy, base, coe, ap, ampl) {
 }
 
 function calcAttackSpeed(character, bonusAs) {
-    return round((character.character.Atk_Speed + character.weapon_attack_speed) *
+    let as = round((character.character.Atk_Speed + character.weapon_attack_speed) *
         (100 + bonusAs + calcEquip(character, 'Attack_Speed') + (!character.weapon ? 0 : (1 + character.WEAPON_MASTERY.selectedIndex) * character.weapon_mastery_attack_speed))) / 100;
+    if (as < 0) {
+        as = 0;
+    } else if (as > 2.5) {
+        as = 2.5
+    }
+    return as;
 }
 
 function calcEquip(character, name, n) {
@@ -95,6 +101,36 @@ function calcHeal(heal, ps, enemy) {
         return 0;
     }
     return round(heal * hr * ps * 100) / 100;
+}
+
+function checkItemDamage(character, enemy, index) {
+    let damage = 0;
+    let cool = 1;
+    if (character.chest && character.chest.Name === 'Blazing_Dress') {
+        if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
+            damage += calcItemDamage(character, enemy, character.max_hp * (character.isMelee ? 0.025 : 0.02));
+        }
+    }
+    cool = 3;
+    if (character.head && character.weapon) {
+        if (character.head.Name === 'Chinese_Opera_Mask') {
+            if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
+                damage += calcItemDamage(character, enemy, 7.5 + character.LEVEL.selectedIndex * 7.5);
+            }
+        } else if (character.head.Name === 'Elysian_Halo' && enemy.max_hp) {
+            if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
+                damage += calcItemDamage(character, enemy, enemy.max_hp * 0.06);
+                console.log(enemy.max_hp * 0.06)
+            }
+        }
+    }
+    return damage;
+}
+
+function calcItemDamage(character, enemy, base) {
+    return floor(base / (1 + (!enemy.defense ? 0 : (enemy.defense * (1 - character.armer_penetration_percent / 100)) / 100))) *
+        (1 + (character.weapon ? character.character.correction[character.weapon.Type][0][character.MODE.selectedIndex] / 100 : 0)) *
+        (1 + (enemy.weapon ? enemy.character.correction[enemy.weapon.Type][1][enemy.MODE.selectedIndex] / 100 : 0));
 }
 
 function calcSkillDamage(character, enemy, base, coe, onhit) {

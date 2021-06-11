@@ -71,11 +71,11 @@ const Rapier = [
     ,{
          Type: "Rapier"
         ,Name: "Meteor_Claymore"
-        ,Attack_Power: 67
+        ,Attack_Power: 70
         ,Critical_Strike_Chance: 20
         ,Critical_Damage: 10
         ,Cooldown_Reduction: 12
-        ,Title: "Meteor Claymore\n\nAttack Power +67\nCritical Strike Chance +20%\nCritical Damage +10%\nCooldown Reduction +12%"
+        ,Title: "Meteor Claymore\n\nAttack Power +70\nCritical Strike Chance +20%\nCritical Damage +10%\nCooldown Reduction +12%"
         ,Rarity: "Epic"
     }
     ,{
@@ -93,9 +93,9 @@ const Rapier = [
         ,Name: "Red_Panther"
         ,Attack_Power: 46
         ,Max_HP: 225
-        ,SP_Regen_Percent: 50
+        ,SP_Regen_Percent: 80
         ,Extra_Skill_Damage: 20
-        ,Title: "Red Panther\n\nAttack Power +46\nMax HP +225\nSP Regen +50%\nExtra Skill Damage +20"
+        ,Title: "Red Panther\n\nAttack Power +46\nMax HP +225\nSP Regen +80%\nExtra Skill Damage +20"
         ,Rarity: "Epic"
     }
     ,{
