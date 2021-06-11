@@ -78,7 +78,7 @@ const Hammer = [
         ,Critical_Strike_Chance: 10
         ,Cooldown_Reduction: 12
         ,Skill_Amplification_Percent: 8
-        ,Title: "Weight of the World\n\nAttack Power +88\nCritical Strike Chance +10%\nCooldown Reduction +812%\nSkill Amplification +8%"
+        ,Title: "Weight of the World\n\nAttack Power +88\nCritical Strike Chance +10%\nCooldown Reduction +12%\nSkill Amplification +8%"
         ,Rarity: "Epic"
     }
     ,{
