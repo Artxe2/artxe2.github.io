@@ -77,10 +77,10 @@ const Rio = {
                 const cool = 10000 / ((10 - w) * (100 - character.cooldown_reduction) * 0.3);
                 return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             } else {
-                const damage = calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
+                const damage1 = calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
+                const damage2 = calcSkillDamage(character, enemy, (30 + w * 20) * 0.5, 0.3 * 0.5, 1);
                 const cool = 10000 / ((10 - w) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + damage + ' ~ ' + damage * 5 + '</b> ( ' + damage + " x 5 ) <b> _sd/s: </b><b class='damage'>" + round(damage * 5 * cool) / 100 + '</b>';
-            }
+                return "<b class='damage'>" + damage1 + ' ~ ' + (damage1 + damage2 * 4) + '</b> ( ' + damage1 + ", " + damage2 + " x 4 ) <b> _sd/s: </b><b class='damage'>" + round(damage * 5 * cool) / 100 + '</b>';            }
         }
         return '-';
     }
@@ -167,7 +167,7 @@ const Rio = {
             'DPS: "초당 데미지" - "카이츄 데미지" _h/s: "초당 흡혈량" - "카이츄 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
             'Q: "무기 변환"\n' +
-            'W: "최소 데미지" ~ "최대 데미지" ( "스킬 데미지", "타수" )\n' +
+            'W: "최소 데미지" ~ "최대 데미지" ( "첫타 데미지", "추가타 데미지" x "타수" )\n' +
             'E: "합산 데미지" ( "1타 데미지", "2타 데미지" )\n' +
             'R: "합산 데미지" ( "연사 데미지" x "타수", "추가타 데미지" )\n' +
             'D: ' + skill + '\n' +
@@ -181,7 +181,6 @@ const Rio = {
         const r = character.R_LEVEL.selectedIndex - 1;
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
-        const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
         let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
@@ -253,8 +252,8 @@ const Rio = {
                         if (qq) {
                             damage += calcSkillDamage(character, enemy, 45 + w * 45, 0.55, 1);
                         } else {
-                            for (let j = 0; j < 5; j++) {
-                                damage += calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
+                            damage += calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
+                            for (let j = 0; j < 4; j++) {
                                 if (enemy.character === Magnus) {
                                     let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                     if (lost < 0) {
@@ -262,6 +261,7 @@ const Rio = {
                                     }
                                     enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                                 }
+                                damage += calcSkillDamage(character, enemy, (30 + w * 20) * 0.5, 0.3 * 0.5, 1);
                             }
                         }
                     }
