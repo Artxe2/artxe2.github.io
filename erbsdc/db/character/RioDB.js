@@ -1,7 +1,7 @@
 'use strict';
 const Rio = {
      Attack_Power: 25
-    ,Attack_Power_Growth: 2.2
+    ,Attack_Power_Growth: 2
     ,Health: 600
     ,Health_Growth: 63
     ,Health_Regen: 0.8
