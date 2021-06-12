@@ -80,7 +80,8 @@ const Rio = {
                 const damage1 = calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
                 const damage2 = calcSkillDamage(character, enemy, (30 + w * 20) * 0.5, 0.3 * 0.5, 1);
                 const cool = 10000 / ((10 - w) * (100 - character.cooldown_reduction));
-                return "<b class='damage'>" + damage1 + ' ~ ' + (damage1 + damage2 * 4) + '</b> ( ' + damage1 + ", " + damage2 + " x 4 ) <b> _sd/s: </b><b class='damage'>" + round(damage * 5 * cool) / 100 + '</b>';            }
+                return "<b class='damage'>" + damage1 + ' ~ ' + (damage1 + damage2 * 4) + '</b> ( ' + damage1 + ", " + damage2 + " x 4 ) <b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2 * 4) * cool) / 100 + '</b>';
+            }
         }
         return '-';
     }
