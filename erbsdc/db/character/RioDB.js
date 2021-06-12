@@ -44,7 +44,7 @@ const Rio = {
             const q = character.Q_LEVEL.selectedIndex - 1;
             if (character.DIV.querySelector('.rio_q').checked) {
                 const min = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, true);
-                const max = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * 1.5, true);
+                const max = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * 1.25, true);
                 const ba = (min * 3 + max) / 4;
                 const damage = round(ba * character.attack_speed * 100) / 100;
                 const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);

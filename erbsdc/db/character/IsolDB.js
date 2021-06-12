@@ -266,7 +266,6 @@ const Isol = {
                         }
                         for (let j = 0; j < 4; j++) {
                             damage += calcSkillDamage(character, enemy, 18 + w * 9, 0.65, 1);
-                            console.log('damage = ', damage)
                             if (enemy.character === Magnus) {
                                 let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {
