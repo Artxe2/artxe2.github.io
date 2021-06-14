@@ -11,9 +11,9 @@ const Eleven = {
     ,Stamina_Regen: 2
     ,Stamina_Regen_Growth: 0.04
     ,Defense: 22
-    ,Defense_Growth: 2.5
+    ,Defense_Growth: 3
     ,Atk_Speed: 0.11
-    ,Movement_Speed: 3.15
+    ,Movement_Speed: 3.2
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Hammer]

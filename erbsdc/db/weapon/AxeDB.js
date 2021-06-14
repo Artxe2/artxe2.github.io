@@ -66,10 +66,10 @@ const Axe = [
          Type: "Axe"
         ,Name: "Santa_Muerte"
         ,Attack_Power: 100
-        ,Max_HP: 365
+        ,Max_HP: 335
         ,Life_Steal: 15
         ,Attack_Range: 0.5
-        ,Title: "Santa Muerte\n\nAttack Power +100\nMax HP +365\nLife Steal +15%\nAttack Range +0.5"
+        ,Title: "Santa Muerte\n\nAttack Power +100\nMax HP +335\nLife Steal +15%\nAttack Range +0.5"
         ,Rarity: "Epic"
     }
     ,{

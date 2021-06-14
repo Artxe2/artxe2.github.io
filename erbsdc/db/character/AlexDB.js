@@ -13,25 +13,25 @@ const Alex = {
     ,Defense: 23
     ,Defense_Growth: 2.1
     ,Atk_Speed: 0.11
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.15
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [TwoHandedSword, Pistol, Shuriken, Tonfa]
     ,correction: {
         TwoHandedSword: [
-            [0, -8, -10],
+            [0, -6, -8],
             [0, 0, -3]
         ],
         Pistol: [
-            [0, -8, -10],
+            [0, -6, -8],
             [0, 0, -3]
         ],
         Shuriken: [
-            [0, -8, -10],
+            [0, -6, -8],
             [0, 0, -3]
         ],
         Tonfa: [
-            [0, -8, -10],
+            [0, -6, -8],
             [0, 0, -3]
         ]
     }

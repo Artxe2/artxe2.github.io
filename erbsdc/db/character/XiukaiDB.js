@@ -19,11 +19,11 @@ const Xiukai = {
     ,weapons: [Dagger, Spear]
     ,correction: {
         Dagger: [
-            [0, -3, -8],
+            [0, -5, -10],
             [0, 0, -3]
         ],
         Spear: [
-            [0, -5, -10],
+            [0, -7, -12],
             [0, 0, -3]
         ]
     }
