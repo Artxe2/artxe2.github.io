@@ -88,15 +88,16 @@ const Dagger = [
         ,Name: "Damascus_Steel_Thorn"
         ,Attack_Power: 66
         ,Max_HP: 220
-        ,Title: "Damascus Steel Thorn\n\nAttack Power +66\nMax HP +220\nHealing Reduction (Skills) -40%"
+        ,Title: "Damascus Steel Thorn\n\nAttack Power +66\nMax HP +220\nHealing Reduction (Skills) -45%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Dagger"
         ,Name: "Fragarach"
-        ,Attack_Power: 95
-        ,Movement_Speed: 0.22
-        ,Title: "Fragarach\n\nAttack Power +95\nMovement Speed +0.22"
+        ,Attack_Power: 90
+        ,Movement_Speed: 0.2
+        ,Focused_Impact: true
+        ,Title: "Fragarach\n\nAttack Power +90\nMovement Speed +0.2\nFocused_Impact"
         ,Rarity: "Legendary"
     }
 ];

@@ -83,9 +83,9 @@ const TwoHandedSword = [
         ,Name: "Excalibur"
         ,Attack_Power: 60
         ,Max_HP: 360
-        ,HP_Regen_Percent: 200
+        ,HP_Regen_Percent: 150
         ,Attack_Speed: 10
-        ,Title: "Excalibur\n\nAttack Power +60\nMax HP +360\nHP Regen +200%\nAttack Speed +10%"
+        ,Title: "Excalibur\n\nAttack Power +60\nMax HP +360\nHP Regen +150%\nAttack Speed +10%"
         ,Rarity: "Epic"
     }
     ,{
@@ -109,12 +109,9 @@ const TwoHandedSword = [
     ,{
          Type: "TwoHandedSword"
         ,Name: "Laevateinn"
-        ,Attack_Power: 78
-        ,HP_Regen:2
-        ,SP_Regen: 2
+        ,Attack_Power: 68
         ,Attack_Speed: 10
-        ,Extra_Normal_Attack_Damage: 25
-        ,Title: "Laevateinn\n\nAttack Power +78\nHP Regen +2.0\nSP Regen +2.0\nAttack Speed +10%\nExtra Normal Attack Damage +25"
+        ,Title: "Laevateinn\n\nAttack Power +78\nAttack Speed +10%"
         ,Rarity: "Legendary"
     }
     ,{
@@ -131,7 +128,7 @@ const TwoHandedSword = [
         ,Name: "Dainsleif"
         ,Attack_Power: 83
         ,Life_Steal: 25
-        ,Title: "Dainsleif\n\nAttack Power +83\nLife Steal +25%\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Dainsleif\n\nAttack Power +83\nLife Steal +25%\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Legendary"
     }
 ];

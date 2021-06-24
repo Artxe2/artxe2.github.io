@@ -1,16 +1,16 @@
 'use strict';
 const Rio = {
-     Attack_Power: 25
-    ,Attack_Power_Growth: 2
-    ,Health: 600
-    ,Health_Growth: 63
+     Attack_Power: 21
+    ,Attack_Power_Growth: 2.3
+    ,Health: 670
+    ,Health_Growth: 62
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 420
     ,Stamina_Growth: 16
-    ,Stamina_Regen: 1.5
-    ,Stamina_Regen_Growth: 0.1
-    ,Defense: 24
+    ,Stamina_Regen: 1.6
+    ,Stamina_Regen_Growth: 0.06
+    ,Defense: 27
     ,Defense_Growth: 1.8
     ,Atk_Speed: 0.1
     ,Movement_Speed: 3.05
@@ -31,8 +31,8 @@ const Rio = {
                 const max = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * 1.5, true);
                 return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + '</b>';
             } else {
-                const damage1 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true);
-                const damage2 = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
+                const damage1 = rioAttackDamage(character, enemy, 0, 0.38 + q * 0.03, true);
+                const damage2 = rioAttackDamage(character, enemy, 0, 0.42 + q * 0.03, false);
                 return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  damage1 + ', ' + damage2 + ' )';
             }
         }
@@ -43,8 +43,8 @@ const Rio = {
         if (character.weapon) {
             const q = character.Q_LEVEL.selectedIndex - 1;
             if (character.DIV.querySelector('.rio_q').checked) {
-                const min = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, true);
-                const max = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * 1.25, true);
+                const min = rioAttackDamage(character, enemy, 0, 1.04 + q * 0.04, true);
+                const max = rioAttackDamage(character, enemy, 0, (1.04 + q * 0.04) * 1.25, true);
                 const ba = (min * 3 + max) / 4;
                 const damage = round(ba * character.attack_speed * 100) / 100;
                 const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
@@ -91,11 +91,11 @@ const Rio = {
         if (character.weapon && e >= 0) {
             if (character.DIV.querySelector('.rio_q').checked) {
                 const damage = calcSkillDamage(character, enemy, 50 + e * 20, 0.4, 1);
-                const cool = 10000 / ((5 - e * 0.5) * (100 - character.cooldown_reduction) + 30);
+                const cool = 10000 / ((6 - e * 0.5) * (100 - character.cooldown_reduction) + 30);
                 return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             } else {
                 const damage = calcSkillDamage(character, enemy, 40 + e * 10, 0.3, 1);
-                const cool = 10000 / ((5 - e * 0.5) * (100 - character.cooldown_reduction) + 30);
+                const cool = 10000 / ((6 - e * 0.5) * (100 - character.cooldown_reduction) + 30);
                 return "<b class='damage'>" + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> _sd/s: </b><b class='damage'>" + round(damage * 2 * cool) / 100 + '</b>';
             }
         }
@@ -204,9 +204,9 @@ const Rio = {
                 }
                 if (c === 'a') {
                     if (qq) {
-                        ba = rioAttackDamage(character, enemy, 0, 1.1 + q * 0.04, true);
+                        ba = rioAttackDamage(character, enemy, 0, 1.04 + q * 0.04, true);
                     } else {
-                        ba = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true);
+                        ba = rioAttackDamage(character, enemy, 0, 0.38 + q * 0.03, true);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -214,7 +214,7 @@ const Rio = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        ba += rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
+                        ba += rioAttackDamage(character, enemy, 0, 0.42 + q * 0.03, false);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -224,9 +224,9 @@ const Rio = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        ba = rioAttackDamage(character, enemy, 0, (1.1 + q * 0.04) * (1 + lost / 200), true);
+                        ba = rioAttackDamage(character, enemy, 0, (1.04 + q * 0.04) * (1 + lost / 200), true);
                     } else {
-                        ba = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true);
+                        ba = rioAttackDamage(character, enemy, 0, 0.38 + q * 0.03, true);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -234,7 +234,7 @@ const Rio = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        ba += rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
+                        ba += rioAttackDamage(character, enemy, 0, 0.42 + q * 0.03, false);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);

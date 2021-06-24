@@ -24,9 +24,9 @@ const Whip = [
     ,{
          Type: "Whip"
         ,Name: "Wind_Whip"
-        ,Attack_Power: 24
-        ,Extra_Skill_Damage: 20
-        ,Title: "Wind Whip\n\nAttack Power +24\nExtra Skill Damage +20"
+        ,Attack_Power: 36
+        ,Movement_Speed: 0.1
+        ,Title: "Wind Whip\n\nAttack Power +36\nMovement Speed +0.1"
         ,Rarity: "Rare"
     }
     ,{
@@ -40,19 +40,19 @@ const Whip = [
     ,{
          Type: "Whip"
         ,Name: "Thunder_Whip"
-        ,Attack_Power: 50
+        ,Attack_Power: 60
         ,Attack_Speed: 10
-        ,Skill_Amplification_Percent: 15
-        ,Skill_Amplification_Percent_per_level: 1
-        ,Title: "Thunder Whip\n\nAttack Power +50\nAttack Speed +10%\nSkill Amplification +15%\nSkill Amplification per level +1%"
+        ,Skill_Amplification_Percent_per_level: 2
+        ,Title: "Thunder Whip\n\nAttack Power +60\nAttack Speed +10%\nSkill Amplification per level +2%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Whip"
         ,Name: "Gleipnir"
         ,Attack_Power: 55
-        ,Extra_Skill_Damage: 40
-        ,Title: "Gleipnir\n\nAttack Power +55\nExtra Skill Damage +40"
+        ,Extra_Skill_Damage: 30
+        ,Movement_Speed: 0.1
+        ,Title: "Gleipnir\n\nAttack Power +55\nExtra Skill Damage +30\nMovement Speed +0.1"
         ,Rarity: "Epic"
     }
     ,{

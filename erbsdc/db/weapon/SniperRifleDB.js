@@ -69,10 +69,10 @@ const SniperRifle = [
     ,{
          Type: "SniperRifle"
         ,Name: "NTW-20"
-        ,Attack_Power: 92
+        ,Attack_Power: 90
         ,Vision_Range: 2
         ,Skill_Amplification_Percent: 24
-        ,Title: "NTW-20\n\nAttack Power +92\nVision Range +2\nSkill Amplification +24%"
+        ,Title: "NTW-20\n\nAttack Power +90\nVision Range +2\nSkill Amplification +24%"
         ,Rarity: "Epic"
         ,Ammo: 1
     }

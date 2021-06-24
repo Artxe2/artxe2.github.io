@@ -1,9 +1,9 @@
 'use strict';
 const Hart = {
      Attack_Power: 22
-    ,Attack_Power_Growth: 3
-    ,Health: 600
-    ,Health_Growth: 63
+    ,Attack_Power_Growth: 3.3
+    ,Health: 660
+    ,Health_Growth: 60
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 420

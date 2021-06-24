@@ -1,9 +1,9 @@
 'use strict';
 const Jackie = {
      Attack_Power: 35
-    ,Attack_Power_Growth: 2.7
-    ,Health: 670
-    ,Health_Growth: 77
+    ,Attack_Power_Growth: 3
+    ,Health: 730
+    ,Health_Growth: 74
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.03
     ,Stamina: 430
@@ -129,12 +129,12 @@ const Jackie = {
             const w = character.W_LEVEL.selectedIndex - 1;
             let min, max;
             if (character.DIV.querySelector('.jackie_w').checked && w >= 0) {
-                min = calcSkillDamage(character, enemy, 150 + r * 150, 0.7 + 0.1 + w * 0.025, 1);
-                max = calcSkillDamage(character, enemy, 300 + r * 150, 1 + 0.1 + w * 0.025, 1);
+                min = calcSkillDamage(character, enemy, 100 + r * 125, 0.7 + 0.1 + w * 0.025, 1);
+                max = calcSkillDamage(character, enemy, 250 + r * 125, 1 + 0.1 + w * 0.025, 1);
                 return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
             }
-            min = calcSkillDamage(character, enemy, 150 + r * 150, 0.7, 1);
-            max = calcSkillDamage(character, enemy, 300 + r * 150, 1, 1);
+            min = calcSkillDamage(character, enemy, 100 + r * 125, 0.7, 1);
+            max = calcSkillDamage(character, enemy, 250 + r * 125, 1, 1);
             return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
         }
         return '-';
@@ -426,9 +426,9 @@ const Jackie = {
                     if (r >= 0) {
                         if (rr > 0) {
                             if (bleeding[index] && ww) {
-                                damage += calcSkillDamage(character, enemy, 150 + r * 150, 0.7 + 0.1 + w * 0.025, 1);
+                                damage += calcSkillDamage(character, enemy, 100 + r * 125, 0.7 + 0.1 + w * 0.025, 1);
                             } else {
-                                damage += calcSkillDamage(character, enemy, 150 + r * 150, 0.7, 1);
+                                damage += calcSkillDamage(character, enemy, 100 + r * 125, 0.7, 1);
                             }
                             rr = 0;
                         } else {
@@ -440,9 +440,9 @@ const Jackie = {
                     if (r >= 0) {
                         if (rr > 0) {
                             if (bleeding[index] && ww) {
-                                damage += calcSkillDamage(character, enemy, 300 + r * 150, 1 + 0.1 + w * 0.025, 1);
+                                damage += calcSkillDamage(character, enemy, 250 + r * 125, 1 + 0.1 + w * 0.025, 1);
                             } else {
-                                damage += calcSkillDamage(character, enemy, 300 + r * 150, 1, 1);
+                                damage += calcSkillDamage(character, enemy, 250 + r * 125, 1, 1);
                             }
                             rr = 0;
                         } else {

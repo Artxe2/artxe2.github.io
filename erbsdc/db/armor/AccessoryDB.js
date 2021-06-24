@@ -130,7 +130,7 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Gilded_Quill_Fan"
         ,Extra_Skill_Damage: 12
-        ,Title: "Gilded Quill Fan\n\nExtra Skill Damage +12\nHealing Reductions (Skills) -25%"
+        ,Title: "Gilded Quill Fan\n\nExtra Skill Damage +12\nHealing Reductions (Skills) -30%"
         ,Rarity: "Uncommon"
     }
     ,{
@@ -220,9 +220,9 @@ const Accessory = [
          Type: "Accessory"
         ,Name: "Hawkeye"
         ,Attack_Power: 10
-        ,Vision_Range: 1.5
+        ,Vision_Range: 2
         ,Attack_Range: 0.5
-        ,Title: "Hawkeye\n\nAttack Power +10\nVision_Range +1.5\nAttack Range +0.5"
+        ,Title: "Hawkeye\n\nAttack Power +10\nVision_Range +2\nAttack Range +0.5"
         ,Rarity: "Rare"
     }
     ,{
@@ -264,10 +264,10 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "True_Samadhi_Fire"
-        ,HP_Regen: 1.5
-        ,SP_Regen: 1.5
+        ,Attack_Power: 10
+        ,Defense: 10
         ,Extra_Normal_Attack_Damage: 15
-        ,Title: "True Samadhi Fire\n\nHP Regen +1.5\nSP Regen +1.5\nExtra Normal Attack Damage +15"
+        ,Title: "True Samadhi Fire\n\nAttack Power +10\nDefense +10\nExtra Normal Attack Damage +15"
         ,Rarity: "Epic"
     }
     ,{

@@ -1,9 +1,9 @@
 'use strict';
 const Sissela = {
      Attack_Power: 23
-    ,Attack_Power_Growth: 2.4
-    ,Health: 590
-    ,Health_Growth: 60
+    ,Attack_Power_Growth: 2.7
+    ,Health: 650
+    ,Health_Growth: 57
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 400

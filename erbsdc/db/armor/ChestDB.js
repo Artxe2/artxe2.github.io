@@ -116,9 +116,9 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Suit"
-        ,Life_Steal: 5
+        ,Life_Steal: 15
         ,Normal_Attack_Damage_Reduction: 12
-        ,Title: "Suit\n\nLife Steal +5\nNormal Attack Damage Reduction +12"
+        ,Title: "Suit\n\nLife Steal +15\nNormal Attack Damage Reduction +12"
         ,Rarity: "Rare"
     }
     ,{
@@ -169,10 +169,10 @@ const Chest = [
          Type: "Chest"
         ,Name: "Covert_Agent_Uniform"
         ,Defense: 30
-        ,HP_Regen: 2
+        ,HP_Regen: 1
         ,Vision_Range: 2
-        ,Cooldown_Reduction: 12
-        ,Title: "Convert Agent Uniform\n\nDefense +30\nHP Regen +2\nVision Range +2\nCooldown Reduction +12%"
+        ,Cooldown_Reduction: 15
+        ,Title: "Convert Agent Uniform\n\nDefense +30\nHP Regen +1\nVision Range +2\nCooldown Reduction +15%"
         ,Rarity: "Rare"
     }
     ,{
@@ -192,7 +192,7 @@ const Chest = [
         ,Defense: 13
         ,Movement_speed_while_not_in_combat: 0.1
         ,Normal_Attack_Damage_Reduction: 11
-        ,Title: "Rocker`s Jacket\n\nAttack Power +28\nDefense +13\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -40%"
+        ,Title: "Rocker`s Jacket\n\nAttack Power +28\nDefense +13\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -45%"
         ,Rarity: "Epic"
     }
     ,{
@@ -289,9 +289,9 @@ const Chest = [
         ,Defense: 32
         ,HP_Regen: 1
         ,SP_Regen_Percent: 85
-        ,Cooldown_Reduction: 12
+        ,Cooldown_Reduction: 15
         ,Cooldown_Reduction_Cap: 5
-        ,Title: "High Priest Robes\n\nDefense +32\nHP Regen +1\nSP Regen +85%\nCooldown Reduction +12%\nCooldown Reduction Cap +5%"
+        ,Title: "High Priest Robes\n\nDefense +32\nHP Regen +1\nSP Regen +85%\nCooldown Reduction +15%\nCooldown Reduction Cap +5%"
         ,Rarity: "Epic"
     }
     ,{
@@ -299,11 +299,9 @@ const Chest = [
         ,Name: "Blazing_Dress"
         ,Attack_Power: 20
         ,Defense: 30
-        ,HP_Regen: 1.5
-        ,SP_Regen: 1.5
-        ,SP_Regen_Percent: 75
+        ,SP_Regen_Percent: 100
         ,Flame_Barrier: true
-        ,Title: "Blazing Dress\n\nAttack Power +20\nDefense +30\nHP Regen +2\nSP Regen +2\nSP Regen +75%\nFlame_Barrier"
+        ,Title: "Blazing Dress\n\nAttack Power +20\nDefense +30\nSP Regen +100%\nFlame_Barrier"
         ,Rarity: "Legendary"
     }
     ,{

@@ -70,7 +70,7 @@ const Throws = [
          Type: "Throws"
         ,Name: "Spiky_Bouncy_Ball"
         ,Attack_Power: 40
-        ,Title: "Spiky Bouncy Ball\n\nAttack Power +40\nHealing Reduction (Skills) -25%"
+        ,Title: "Spiky Bouncy Ball\n\nAttack Power +40\nHealing Reduction (Skills) -30%"
         ,Rarity: "Rare"
     }
     ,{
@@ -80,6 +80,14 @@ const Throws = [
         ,Attack_Speed: 60
         ,Cooldown_Reduction: 8
         ,Title: "Incendiary Bomb\n\nAttack Power +63\nAttack Speed +60%\nCooldown Reduction +8%"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Throws"
+        ,Name: "Grenade_of_Antioch"
+        ,Attack_Power: 80
+        ,Extra_Normal_Attack_Damage: 60
+        ,Title: "Grenade of Antioch\n\nAttack Power +80\nExtra Normal Attack Damage +60"
         ,Rarity: "Epic"
     }
     ,{
@@ -109,19 +117,26 @@ const Throws = [
     }
     ,{
          Type: "Throws"
-        ,Name: "Ruthenium_Marble"
-        ,Attack_Power: 73
-        ,Skill_Amplification_Percent: 28
-        ,Title: "Ruthenium Marble\n\nAttack Power +73\nSkill Amplification +28%\nHealing Reduction (Skills) -25%"
+        ,Name: "Fireball"
+        ,Attack_Power: 18
+        ,Extra_Skill_Damage_per_level: 3
+        ,Title: "Fireball\n\nAttack Power +18\nSkill Amplification per level +3"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Throws"
-        ,Name: "Grenade_of_Antioch"
-        ,Attack_Power: 85
-        ,Extra_Normal_Attack_Damage: 85
-        ,Title: "Grenade of Antioch\n\nAttack Power +85\nExtra Normal Attack Damage +85"
+        ,Name: "Ruthenium_Marble"
+        ,Attack_Power: 73
+        ,Skill_Amplification_Percent: 28
+        ,Title: "Ruthenium Marble\n\nAttack Power +73\nSkill Amplification +28%\nHealing Reduction (Skills) -30%"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Throws"
+        ,Name: "Dyadic_Prism"
+        ,Attack_Power: 108
+        ,Attack_Speed: 25
+        ,Title: "Dyadic Prism\n\nAttack Power +108\nAttack Damage +25%"
         ,Rarity: "Legendary"
-
     }
 ];

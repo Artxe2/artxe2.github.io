@@ -72,20 +72,19 @@ const Rapier = [
          Type: "Rapier"
         ,Name: "Meteor_Claymore"
         ,Attack_Power: 70
-        ,Critical_Strike_Chance: 20
-        ,Critical_Damage: 10
         ,Cooldown_Reduction: 12
-        ,Title: "Meteor Claymore\n\nAttack Power +70\nCritical Strike Chance +20%\nCritical Damage +10%\nCooldown Reduction +12%"
+        ,Focused_Impact: true
+        ,Title: "Meteor Claymore\n\nAttack Power +70\nCooldown Reduction +12%\nFocused_Impact"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Rapier"
         ,Name: "Joyeuse"
-        ,Attack_Power: 73
+        ,Attack_Power: 76
         ,Attack_Speed_per_level: 1
-        ,Movement_Speed: 0.15
+        ,Movement_Speed: 0.1
         ,Critical_Damage: 12
-        ,Title: "Joyeuse\n\nAttack Power +73\nAttack Speed per level +1%\nMovement Speed +0.15\nCritical Damage +12%"
+        ,Title: "Joyeuse\n\nAttack Power +76\nAttack Speed per level +1%\nMovement Speed +0.1\nCritical Damage +12%"
         ,Rarity: "Epic"
     }
     ,{

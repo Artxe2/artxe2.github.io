@@ -98,7 +98,7 @@ const Arm = [
         ,Name: "Sword_Stopper"
         ,Defense: 36
         ,Normal_Attack_Damage_Reduction: 12
-        ,Title: "Sword Stopper\n\nDefense +36\nNormal Attack Damage Reduction +12\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Sword Stopper\n\nDefense +36\nNormal Attack Damage Reduction +12\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Epic"
     }
     ,{

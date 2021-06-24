@@ -1,9 +1,9 @@
 'use strict';
 const Isol = {
      Attack_Power: 27
-    ,Attack_Power_Growth: 2.9
-    ,Health: 600
-    ,Health_Growth: 57
+    ,Attack_Power_Growth: 3.2
+    ,Health: 660
+    ,Health_Growth: 54
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.03
     ,Stamina: 400

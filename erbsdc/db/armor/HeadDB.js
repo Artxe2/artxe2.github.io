@@ -111,9 +111,9 @@ const Head = [
          Type: "Head"
         ,Name: "Motorcycle_Helmet"
         ,Attack_Power: 10
-        ,Max_HP: 300
+        ,Max_HP: 285
         ,Vision_Range: 1
-        ,Title: "Motorcycle Helmet\n\nAttack Power +10\nMax HP +300\nVision Range +1"
+        ,Title: "Motorcycle Helmet\n\nAttack Power +10\nMax HP +285\nVision Range +1"
         ,Rarity: "Rare"
     }
     ,{
@@ -183,20 +183,27 @@ const Head = [
         ,Max_SP: 200
         ,Movement_Speed: 0.2
         ,Life_Steal: 20
-        ,Movement_speed_while_not_in_combat: 0.1
         ,Biotic_Infusion: true
-        ,Title: "Chinese Opera Mask\n\nDefense +20\nMax SP +200\nMovement Speed +0.2\nLife Steal +20%\nMovement speed while not in combat +0.1\nBiotic_Infusion"
+        ,Title: "Chinese Opera Mask\n\nDefense +20\nMax SP +200\nMovement Speed +0.2\nLife Steal +20%\nBiotic_Infusion"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Head"
+        ,Name: "Mohawk_Headgear"
+        ,Max_HP: 315
+        ,Normal_Attack_Damage_Reduction: 7
+        ,Title: "Mohawk Headgear\n\nMax HP +315\nNormal Attack Damage Reduction +7\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Head"
         ,Name: "Laurel_Wreath"
+        ,Attack_Power:10
         ,Defense: 20
         ,Max_SP: 580
-        ,HP_Regen: 2
         ,SP_Regen: 2
-        ,Extra_Normal_Attack_Damage: 21
-        ,Title: "Laurel Wreath\n\nDefense +20\nMax SP +580\nHP Regen +2\nSP Regen +2\nExtra Normal Attack Damage +21"
+        ,Extra_Normal_Attack_Damage: 17
+        ,Title: "Laurel Wreath\n\nAttack Power +10\nDefense +20\nMax SP +580\nSP Regen +2\nExtra Normal Attack Damage +17"
         ,Rarity: "Legendary"
     }
     ,{

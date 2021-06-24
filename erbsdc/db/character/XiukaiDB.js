@@ -1,9 +1,9 @@
 'use strict';
 const Xiukai = {
      Attack_Power: 40
-    ,Attack_Power_Growth: 2.2
-    ,Health: 640
-    ,Health_Growth: 77
+    ,Attack_Power_Growth: 2.5
+    ,Health: 700
+    ,Health_Growth: 74
     ,Health_Regen: 1
     ,Health_Regen_Growth: 0.06
     ,Stamina: 420

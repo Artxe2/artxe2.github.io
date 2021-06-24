@@ -24,7 +24,7 @@ const Bat = [
          Type: "Bat"
         ,Name: "Goblin_Bat"
         ,Attack_Power: 27
-        ,Title: "Goblin Bat\n\nAttack Power +27\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Goblin Bat\n\nAttack Power +27\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Rare"
     }
     ,{
@@ -46,6 +46,32 @@ const Bat = [
     }
     ,{
          Type: "Bat"
+        ,Name: "Reinforced_Club"
+        ,Attack_Power: 40
+        ,Movement_Speed: -0.1
+        ,Title: "Reinforced Club\n\nAttack Power +40\nMovement Speed -0.1"
+        ,Rarity: "Rare"
+    }
+    ,{
+         Type: "Bat"
+        ,Name: "Magic_Stick"
+        ,Attack_Power: 59
+        ,Vision_Range: 1
+        ,Life_Steal: 30
+        ,Skill_Amplification_Percent: 30
+        ,Title: "Magic Stick\n\nAttack Power +59\nVision Range +1\nLife Steal +30%\nSkill Amplification +30%"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Bat"
+        ,Name: "Vajra"
+        ,Attack_Power: 100
+        ,Focused_Impact: true
+        ,Title: "Vajra\n\nAttack Power +100\nFocused_Impact"
+        ,Rarity: "Epic"
+    }
+    ,{
+         Type: "Bat"
         ,Name: "Statue_of_Soteria"
         ,Attack_Power: 64
         ,Attack_Power_per_level: 2
@@ -61,7 +87,7 @@ const Bat = [
         ,Name: "Mallet"
         ,Attack_Power: 85
         ,Attack_Speed: 50
-        ,Title: "Mallet\n\nAttack Power +85\nAttack Speed +50%\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Mallet\n\nAttack Power +85\nAttack Speed +50%\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Epic"
     }
     ,{
@@ -71,16 +97,6 @@ const Bat = [
         ,SP_Regen: 0.8
         ,Extra_Skill_Damage: 25
         ,Title: "Spy Umbrella\n\nAttack Power +65\nSP Regen +0.8\nExtra Skill Damage +25"
-        ,Rarity: "Epic"
-    }
-    ,{
-         Type: "Bat"
-        ,Name: "Magic_Stick"
-        ,Attack_Power: 59
-        ,Vision_Range: 1
-        ,Life_Steal: 30
-        ,Skill_Amplification_Percent: 30
-        ,Title: "Magic Stick\n\nAttack Power +59\nVision Range +1\nLife Steal +30%\nSkill Amplification +30%"
         ,Rarity: "Epic"
     }
     ,{

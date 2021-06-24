@@ -24,7 +24,7 @@ const Bow = [
          Type: "Bow"
         ,Name: "Composite_Bow"
         ,Attack_Power: 25
-        ,Title: "Composite Bow\n\nAttack Power +25\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "Composite Bow\n\nAttack Power +25\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Rare"
     }
     ,{
@@ -70,9 +70,9 @@ const Bow = [
          Type: "Bow"
         ,Name: "Ancient_Bolt"
         ,Attack_Power: 60
-        ,Extra_Normal_Attack_Damage: 40
+        ,Extra_Normal_Attack_Damage: 36
         ,Extra_Normal_Attack_Damage_per_level: 1
-        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +40\nExtra Normal Attack Damage per level +1"
+        ,Title: "Ancient Bolt\n\nAttack Power +60\nExtra Normal Attack Damage +36\nExtra Normal Attack Damage per level +1"
         ,Rarity: "Epic"
     }
     ,{
@@ -92,7 +92,7 @@ const Bow = [
         ,Attack_Power_per_level: 2
         ,Attack_Speed: 50
         ,Vision_Range: 1
-        ,Title: "Twinbow\n\nAttack Power +50\nAttack Power per level +2\nAttack Speed +50%\nVision Range +1\nHealing Reduction (Normal Attacks) -25%"
+        ,Title: "Twinbow\n\nAttack Power +50\nAttack Power per level +2\nAttack Speed +50%\nVision Range +1\nHealing Reduction (Normal Attacks) -30%"
         ,Rarity: "Epic"
     }
     ,{
@@ -110,7 +110,7 @@ const Bow = [
         ,Attack_Power: 60
         ,Movement_Speed: 0.1
         ,Extra_Skill_Damage: 45
-        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nExtra Skill Damage +45\nHealing Reduction (Skills) -25%"
+        ,Title: "Elemental Bow\n\nAttack Power +60\nMovement Speed +0.1\nExtra Skill Damage +45\nHealing Reduction (Skills) -30%"
         ,Rarity: "Epic"
     }
     ,{

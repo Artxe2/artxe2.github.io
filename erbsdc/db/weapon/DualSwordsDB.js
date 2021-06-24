@@ -22,7 +22,7 @@ const DualSwords = [
         ,Attack_Power: 49
         ,Attack_Speed: 12
         ,Life_Steal: 20
-        ,Title: "Divine Dual Swords\n\nAttack Power +49\nAttack Speed +12%\nLife Steal +20%\nHealing Reduction (Skills) -40%"
+        ,Title: "Divine Dual Swords\n\nAttack Power +49\nAttack Speed +12%\nLife Steal +20%\nHealing Reduction (Skills) -45%"
         ,Rarity: "Epic"
     }
     ,{

@@ -1,9 +1,9 @@
 'use strict';
 const Hyejin = {
      Attack_Power: 29
-    ,Attack_Power_Growth: 2.5
-    ,Health: 615
-    ,Health_Growth: 65
+    ,Attack_Power_Growth: 2.8
+    ,Health: 675
+    ,Health_Growth: 62
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.03
     ,Stamina: 400
@@ -76,7 +76,7 @@ const Hyejin = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 45 + e * 25, 0.3, 1);
-            const damage2 = calcSkillDamage(character, enemy, 50 + e * 30, 0.7, 1);
+            const damage2 = calcSkillDamage(character, enemy, 50 + e * 25, 0.7, 1);
             const cool = 10000 / ((16 - e * 1.5) * (100 - character.cooldown_reduction) + 50);
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
@@ -197,7 +197,7 @@ const Hyejin = {
                     if (e >= 0) {
                         if (ee) {
                             ee = false;
-                            damage += calcSkillDamage(character, enemy, 50 + e * 30, 0.7, 1);
+                            damage += calcSkillDamage(character, enemy, 50 + e * 25, 0.7, 1);
                         } else {
                             ee = true;
                             damage += calcSkillDamage(character, enemy, 45 + e * 25, 0.3, 1);

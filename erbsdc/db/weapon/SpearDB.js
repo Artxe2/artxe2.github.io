@@ -84,7 +84,7 @@ const Spear = [
         ,Movement_Speed: -0.07
         ,Extra_Skill_Damage: 21
         ,Extra_Skill_Damage_per_level: 1
-        ,Title: "Fangtian Huaji\n\nAttack Power +84\nMovement Speed -0.07\nExtra Skill Damage +21\nSkill Amplification per level +1\n Healing Reduction (Skills) -40%"
+        ,Title: "Fangtian Huaji\n\nAttack Power +84\nMovement Speed -0.07\nExtra Skill Damage +21\nSkill Amplification per level +1\n Healing Reduction (Skills) -45%"
         ,Rarity: "Epic"
     }
     ,{
@@ -100,11 +100,8 @@ const Spear = [
     ,{
          Type: "Spear"
         ,Name: "Blazing_Lance"
-        ,Attack_Power: 115
-        ,HP_Regen: 2
-        ,SP_Regen: 2
-        ,Extra_Normal_Attack_Damage: 33
-        ,Title: "Blazing Lance\n\nAttack Power +115\nHP Regen +2\nSP Regen +2\nExtra Normal Attack Damage +33"
+        ,Attack_Power: 90
+        ,Title: "Blazing Lance\n\nAttack Power +90"
         ,Rarity: "Legendary"
     }
     ,{

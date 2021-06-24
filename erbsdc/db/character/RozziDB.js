@@ -1,9 +1,9 @@
 'use strict';
 const Rozzi = {
      Attack_Power: 26
-    ,Attack_Power_Growth: 2.3
-    ,Health: 625
-    ,Health_Growth: 79
+    ,Attack_Power_Growth: 2.6
+    ,Health: 685
+    ,Health_Growth: 76
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 440
@@ -13,7 +13,7 @@ const Rozzi = {
     ,Defense: 22
     ,Defense_Growth: 1.4
     ,Atk_Speed: 0.11
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.05
     ,Sight_Range: 8
     ,Attack_Range: 0.4
     ,weapons: [Pistol]
@@ -108,7 +108,7 @@ const Rozzi = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const coe = 0.6 + t * 0.1;
+            const coe = 0.6 + t * 0.05;
             const damage1 = baseAttackDamage(character, enemy, 0, 0.6, character.critical_strike_chance, 1);
             const damage2 = baseAttackDamage(character, enemy, 0, coe, character.critical_strike_chance, 1);
             const min1 = baseAttackDamage(character, enemy, 0, 0.6, 0, 1);
@@ -162,7 +162,7 @@ const Rozzi = {
         let shield = 0, c, ba;
         let ee = data.vars.ee, healBan = data.vars.healBan;
         if (character.weapon) {
-            const coe = 0.6 + t * 0.1;
+            const coe = 0.6 + t * 0.05;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {

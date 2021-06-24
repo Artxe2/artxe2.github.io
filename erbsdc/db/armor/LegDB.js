@@ -124,8 +124,8 @@ const Leg = [
         ,SP_Regen: 0.5
         ,SP_Regen_Percent: 50
         ,Movement_Speed: 0.28
-        ,Extra_Skill_Damage: 14
-        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.28\nExtra Skill Damage +14"
+        ,Extra_Skill_Damage: 16
+        ,Title: "Straitjacket Sneakers\n\nSP Regen +0.5\nSP Regen +50%\nMovement Speed +0.28\nExtra Skill Damage +16"
         ,Rarity: "Epic"
     }
     ,{
@@ -154,7 +154,7 @@ const Leg = [
         ,HP_Regen: 0.7
         ,Attack_Speed: 15
         ,Movement_Speed: 0.3
-        ,Title: "White Rhinos\n\nHP Regen +0.7\nAttack Speed +15%\nMovement Speed +0.3\nHealing Reduction (Normal Attacks) -40%"
+        ,Title: "White Rhinos\n\nHP Regen +0.7\nAttack Speed +15%\nMovement Speed +0.3\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Epic"
     }
     ,{
@@ -183,9 +183,9 @@ const Leg = [
         ,SP_Regen: 1.5
         ,SP_Regen_Percent: 60
         ,Movement_Speed: 0.25
-        ,Movement_speed_while_not_in_combat: 0.35
+        ,Movement_speed_while_not_in_combat: 0.3
         ,Extra_Skill_Damage: 22
-        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.35\nExtra Skill Damage +22"
+        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.3\nExtra Skill Damage +22"
         ,Rarity: "Legendary"
     }
     ,{
@@ -205,8 +205,8 @@ const Leg = [
         ,SP_Regen: 1
         ,Movement_Speed: 0.35
         ,Critical_Strike_Chance: 15
-        ,Life_Steal: 12
-        ,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.35\nCritical Strike Chance +15%\nLife Steal +12%"
+        ,Life_Steal: 15
+        ,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.35\nCritical Strike Chance +15%\nLife Steal +15%"
         ,Rarity: "Legendary"
     }
 ];

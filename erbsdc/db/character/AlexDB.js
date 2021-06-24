@@ -1,9 +1,9 @@
 'use strict';
 const Alex = {
      Attack_Power: 19
-    ,Attack_Power_Growth: 2.1
-    ,Health: 600
-    ,Health_Growth: 74
+    ,Attack_Power_Growth: 2.4
+    ,Health: 660
+    ,Health_Growth: 71
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.04
     ,Stamina: 450
@@ -89,10 +89,10 @@ const Alex = {
         if (character.weapon && w >= 0) {
             let damage, cool;
             if (character.isMelee) {
-                damage = calcSkillDamage(character, enemy, 60 + w * 30, 0.5, 1);
+                damage = calcSkillDamage(character, enemy, 70 + w * 35, 0.5, 1);
                 cool = 10000 / (12 * (100 - character.cooldown_reduction));
             } else {
-                damage = calcSkillDamage(character, enemy, 40 + w * 40, 0.4, 1);
+                damage = calcSkillDamage(character, enemy, 50 + w * 50, 0.6, 1);
                 cool = 10000 / (15 * (100 - character.cooldown_reduction));
             }
             return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -233,9 +233,9 @@ const Alex = {
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
                         if (character.isMelee) {
-                            damage += calcSkillDamage(character, enemy, 60 + w * 30, 0.5, 1);
+                            damage += calcSkillDamage(character, enemy, 70 + w * 35, 0.5, 1);
                         } else {
-                            damage += calcSkillDamage(character, enemy, 40 + w * 40, 0.4, 1);
+                            damage += calcSkillDamage(character, enemy, 50 + w * 50, 0.6, 1);
                         }
                     }
                 } else if (c === 'e') {

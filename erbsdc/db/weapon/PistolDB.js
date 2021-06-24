@@ -71,10 +71,11 @@ const Pistol = [
     ,{
          Type: "Pistol"
         ,Name: "Elegance"
-        ,Attack_Power: 90
+        ,Attack_Power: 60
+        ,Attack_Power_per_level: 2
         ,Movement_Speed: 0.2
         ,Vision_Range: 5
-        ,Title: "Elegance\n\nAttack Power +90\nMovement Speed +0.2\nVision Range +5"
+        ,Title: "Elegance\n\nAttack Power +60\nAttack Power per level +2\nMovement Speed +0.2\nVision Range +5"
         ,Rarity: "Epic"
         ,Ammo: 6
     }
@@ -83,10 +84,10 @@ const Pistol = [
         ,Name: "Electron_Blaster"
         ,Attack_Power: 55
         ,Attack_Speed: 55
-        ,Movement_Speed: 0.12
-        ,Extra_Normal_Attack_Damage: 13
+        ,Movement_Speed: 0.1
+        ,Extra_Normal_Attack_Damage: 10
         ,Extra_Normal_Attack_Damage_per_level: 2
-        ,Title: "Electron Blaster\n\nAttack Power +55\nAttack Speed +55%\nMovement Speed +0.12\nExtra Normal Attack Damage +13\nExtra Normal Attack Damage per level +2"
+        ,Title: "Electron Blaster\n\nAttack Power +55\nAttack Speed +55%\nMovement Speed +0.1\nExtra Normal Attack Damage +10\nExtra Normal Attack Damage per level +2"
         ,Rarity: "Epic"
         ,Ammo: 10
     }

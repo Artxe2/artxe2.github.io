@@ -1,9 +1,9 @@
 'use strict';
 const Chiara = {
      Attack_Power: 34
-    ,Attack_Power_Growth: 2
-    ,Health: 610
-    ,Health_Growth: 57
+    ,Attack_Power_Growth: 2.3
+    ,Health: 670
+    ,Health_Growth: 54
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.02
     ,Stamina: 410
@@ -12,7 +12,7 @@ const Chiara = {
     ,Stamina_Regen_Growth: 0.03
     ,Defense: 25
     ,Defense_Growth: 1.3
-    ,Atk_Speed: 0.11
+    ,Atk_Speed: 0.13
     ,Movement_Speed: 3.2
     ,Sight_Range: 8
     ,Attack_Range: 0.4
@@ -50,7 +50,7 @@ const Chiara = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const damage = calcSkillDamage(character, enemy, 60 + q * 40, 0.6, 1);
+            const damage = calcSkillDamage(character, enemy, 60 + q * 40, 0.75, 1);
             const cool = 10000 / ((10 - q * 1) * (100 - character.cooldown_reduction) + 12);
             return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
@@ -60,9 +60,9 @@ const Chiara = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage = calcSkillDamage(character, enemy, 80 + w * 40, 0.75, 1);
-            const shield = floor(90 + w * 35 + character.attack_power * 0.6);
-            const cool = 10000 / ((16 - w * 1) * (100 - character.cooldown_reduction));
+            const damage = calcSkillDamage(character, enemy, 60 + w * 40, 0.6, 1);
+            const shield = floor(60 + w * 40 + character.attack_power * 0.85);
+            const cool = 10000 / ((18 - w * 2) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> _s: </b><b class='shield'>" + shield + "</b><b> _s/s: </b><b class='shield'>" + round(shield * cool) / 100 + '</b>';
         }
         return '-';
@@ -72,8 +72,8 @@ const Chiara = {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 40 + e * 20, 0.3, 1);
-            const damage2 = calcSkillDamage(character, enemy, 70 + e * 40, 0.7, 1);
-            const cool = 10000 / ((17 - e * 1.5) * (100 - character.cooldown_reduction));
+            const damage2 = calcSkillDamage(character, enemy, 100 + e * 25, 0.7, 1);
+            const cool = 10000 / ((14 - e) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
         return '-';
@@ -82,7 +82,7 @@ const Chiara = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage1 = calcSkillDamage(character, enemy, 10 + r * 10, 0.2, 1);
+            const damage1 = calcSkillDamage(character, enemy, 5 + r * 10, 0.2, 1);
             const damage2 = floor(200 + r * 100 + character.attack_power * 1);
             const heal = calcHeal(damage1 * 0.2, 1, enemy);
             return "<b class='damage'>" + (damage1 * 12 + damage2) + '</b> ( ' + damage1 + " x 12, <b class='damage'>" + damage2 + "</b> ) <b> _h/s: </b><b class='heal'>" + heal + '</b>';
@@ -153,7 +153,7 @@ const Chiara = {
 
         const cool = (16 - w * 1) * (100 - character.cooldown_reduction) / 100;
         if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
-            shield += floor(90 + w * 35 + character.attack_power * 0.6);
+            shield += floor(60 + w * 40 + character.attack_power * 0.85);
         }
 
         if (character.weapon) {
@@ -189,7 +189,7 @@ const Chiara = {
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
-                        damage += calcSkillDamage(character, enemy, 60 + q * 40, 0.6, 1);
+                        damage += calcSkillDamage(character, enemy, 60 + q * 40, 0.75, 1);
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
@@ -200,7 +200,7 @@ const Chiara = {
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
-                        damage += calcSkillDamage(character, enemy, 80 + w * 40, 0.75, 1);
+                        damage += calcSkillDamage(character, enemy, 60 + w * 40, 0.6, 1);
                     }
                 } else if (c === 'e') {
                     if (e >= 0) {
@@ -241,7 +241,7 @@ const Chiara = {
                         for (let x = index; x <= index + 5 && x < defense_minus.length; x++) {
                             defense_minus[x] = dm;
                         }
-                        damage += calcSkillDamage(character, enemy, 70 + e * 40, 0.7, 1);
+                        damage += calcSkillDamage(character, enemy, 100 + e * 25, 0.7, 1);
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
@@ -268,7 +268,7 @@ const Chiara = {
                                     enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                                 }
                             }
-                            ba = calcSkillDamage(character, enemy, 10 + r * 10, 0.2, 1);
+                            ba = calcSkillDamage(character, enemy, 5 + r * 10, 0.2, 1);
                             damage += ba;
                             heal += calcHeal(ba * 0.2, 1, enemy);
                         }

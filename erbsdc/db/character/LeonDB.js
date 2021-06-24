@@ -1,9 +1,9 @@
 'use strict';
 const Leon = {
      Attack_Power: 33
-    ,Attack_Power_Growth: 2.2
-    ,Health: 650
-    ,Health_Growth: 82
+    ,Attack_Power_Growth: 2.5
+    ,Health: 710
+    ,Health_Growth: 79
     ,Health_Regen: 1.1
     ,Health_Regen_Growth: 0.07
     ,Stamina: 420
@@ -77,7 +77,7 @@ const Leon = {
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             const shield = floor(60 + w * 35 + character.attack_power * 0.3);
-            const wBonus = calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+            const wBonus = calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
             if (character.DIV.querySelector('.leon_t').checked) {
                 const tBonus = calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
                 return "<b class='damage'>" + (damage + wBonus + tBonus) + '</b> ( ' +  min + ', ' + wBonus + ', ' + tBonus + ' - ' + max + ', ' + wBonus + ', ' + tBonus + ' )';
@@ -90,7 +90,7 @@ const Leon = {
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
-            const damage = calcSkillDamage(character, enemy, 60 + e * 40, 0.35, 1);
+            const damage = calcSkillDamage(character, enemy, 60 + e * 30, 0.35, 1);
             const cool = 10000 / ((20 - e) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
@@ -203,7 +203,7 @@ const Leon = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (ww > 0) {
                         ww--;
-                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                     }
                 } else if (c === 'A') {
                     ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
@@ -211,7 +211,7 @@ const Leon = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (ww > 0) {
                         ww--;
-                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                     }
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
@@ -223,7 +223,7 @@ const Leon = {
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
-                        damage += calcSkillDamage(character, enemy, 60 + e * 40, 0.35, 1);
+                        damage += calcSkillDamage(character, enemy, 60 + e * 30, 0.35, 1);
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
@@ -250,7 +250,7 @@ const Leon = {
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                             if (ww > 0) {
                                 ww--;
-                                damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                                damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                             }
                         }
                     }
@@ -265,7 +265,7 @@ const Leon = {
                             damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
                             if (ww > 0) {
                                 ww--;
-                                damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                                damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                             }
                         }
                     }
@@ -276,7 +276,7 @@ const Leon = {
                     damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
                     if (ww > 0) {
                         ww--;
-                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                     }
                 } else if (c === 'T') {
                     ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
@@ -285,7 +285,7 @@ const Leon = {
                     damage += calcSkillDamage(character, enemy, 5 + t * 5, 0.2, 1);
                     if (ww > 0) {
                         ww--;
-                        damage += calcSkillDamage(character, enemy, 10 + w * 10, 0.3, 1);
+                        damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                     }
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {

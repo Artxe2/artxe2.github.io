@@ -1,16 +1,16 @@
 'use strict';
 const Aya = {
-     Attack_Power: 25
-    ,Attack_Power_Growth: 3.3
-    ,Health: 580
-    ,Health_Growth: 60
+     Attack_Power: 22
+    ,Attack_Power_Growth: 3.6
+    ,Health: 640
+    ,Health_Growth: 57
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.07
     ,Stamina: 440
     ,Stamina_Growth: 22
     ,Stamina_Regen: 2.3
     ,Stamina_Regen_Growth: 0.07
-    ,Defense: 20
+    ,Defense: 25
     ,Defense_Growth: 1.4
     ,Atk_Speed: 0.14
     ,Movement_Speed: 3.05

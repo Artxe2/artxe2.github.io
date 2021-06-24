@@ -151,4 +151,12 @@ const Glove = [
         ,Title: "Imperial Silk Gloves\n\nAttack Power +88\nMovement Speed +0.15"
         ,Rarity: "Epic"
     }
+    ,{
+         Type: "Glove"
+        ,Name: "Mark_of_the_Phoenix"
+        ,Attack_Power: 48
+        ,Smolder: true
+        ,Title: "Mark_of_the_Phoenix\n\nAttack Power +48\nSmolder"
+        ,Rarity: "Legendary"
+    }
 ];

@@ -153,10 +153,10 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Azure_Dagger"
-        ,Attack_Power: 20
+        ,Attack_Power: 22
         ,Extra_Normal_Attack_Damage: 33
         ,Extra_Skill_Damage: 20
-        ,Title: "Azure Dagger\n\nAttack Power +20\nExtra Normal Attack Damage +33\nExtra Skill Damage +20"
+        ,Title: "Azure Dagger\n\nAttack Power +22\nExtra Normal Attack Damage +33\nExtra Skill Damage +20"
         ,Rarity: "Epic"
     }
     ,{
@@ -195,11 +195,11 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Petal_Torrent"
-        ,Attack_Power: 75
-        ,Critical_Damage: 30
-        ,Extra_Normal_Attack_Damage: 140
+        ,Attack_Power: 70
+        ,Critical_Damage: 25
+        ,Extra_Normal_Attack_Damage: 135
         ,Extra_Skill_Damage: 30
-        ,Title: "Petal Torrent\n\nAttack Power +75\nCritical Damage +30%\nExtra Normal Attack Damage +140\nExtra Skill Damage +30"
+        ,Title: "Petal Torrent\n\nAttack Power +70\nCritical Damage +25%\nExtra Normal Attack Damage +135\nExtra Skill Damage +30"
         ,Rarity: "Legendary"
     }
 ];

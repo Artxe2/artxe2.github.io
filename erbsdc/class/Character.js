@@ -811,21 +811,22 @@ class Character {
             this.pure_heal_reduction =
                 this.weapon && (
                     this.weapon.Name === 'Damascus_Steel_Thorn' ||
-                    this.weapon.Name === 'Dainsleif' ||
                     this.weapon.Name === 'Harpe' ||
                     this.weapon.Name === 'Divine_Dual_Swords' ||
                     this.weapon.Name === 'Fangtian_Huaji' ||
                     this.weapon.Name === 'Goblin_Bat' || this.weapon.Name === 'Mallet' ||
                     this.weapon.Name === 'Composite_Bow' ||
-                    this.weapon.Name === 'The_Smiting_Dragon' || this.weapon.Name === 'Cerberus') ? 40 :
+                    this.weapon.Name === 'The_Smiting_Dragon' || this.weapon.Name === 'Cerberus' ||
+                    this.weapon.Name === 'Gleipnir'
+                    ) ? 45 :
                     this.weapon && (
                         this.weapon.Name === 'Spiky_Bouncy_Ball' || this.weapon.Name === 'Ruthenium_Marble' ||
                         this.weapon.Name === 'Twinbow' || this.weapon.Name === 'Elemental_Bow') ||
                     this.chest && this.chest.Name === 'Rocker`s_Jacket' ||
                     this.arm && this.arm.Name === 'Sword_Stopper' ||
                     this.leg && this.leg.Name === 'White_Rhinos' ||
-                    this.accessory && this.accessory.Name === 'White_Crane_Fan' ? this.isMelee ? 40 : 25 :
-                    this.accessory && this.accessory.Name === 'Gilded_Quill_Fan' ? 25 : 0;
+                    this.accessory && this.accessory.Name === 'White_Crane_Fan' ? this.isMelee ? 45 : 30 :
+                    this.accessory && this.accessory.Name === 'Gilded_Quill_Fan' ? 30 : 0;
             this.heal_reduction =
                 rozzi_w && rozzi_w.checked ? 40 : this.pure_heal_reduction;
 
@@ -841,10 +842,10 @@ class Character {
             const leon_t = this.DIV.querySelector('.leon_t');
             const rio_q = this.DIV.querySelector('.rio_q');
             const attack_speed_bonus =
-                (jackie_r && jackie_r.checked && r >= 0 ? 20 + r * 5 : 0) +
+                (jackie_r && jackie_r.checked && r >= 0 ? 15 + r * 5 : 0) +
                 (nadine_e && e >= 0 ? (10 + e * 5) * (nadine_e.checked ? 2 : 1) : 0) +
                 (lida_w && lida_w.checked && w >= 0 ? 20 + t * 10 : 0) +
-                (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0) +
+                (silvia_t ? (silvia_t.value == 15 ? 10 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0) +
                 (luke_w_u && luke_w_u.checked && w >= 0 ? this.DIV.querySelector('.luke_w_s').value * 8 : 0) +
                 (this.character === Alex && this.weapon && !this.isMelee && e >= 0 ? 6 + e * 3 : 0) +
                 (sua_t && sua_t.checked ? 40 : 0) +
@@ -855,7 +856,7 @@ class Character {
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_attack_speed);
             this.attack_speed =
                 round((this.character === Eleven ? 0.9 : 1) *
-                    (this.character.Atk_Speed + this.weapon_attack_speed - (rio_q && rio_q.checked ? 0.3 : 0)) *
+                    (this.character.Atk_Speed + this.weapon_attack_speed - (rio_q && rio_q.checked ? 0.25 : 0)) *
                     (100 + attack_speed_percent)) / 100;
             if (this.attack_speed < 0) {
                 this.attack_speed = 0;
@@ -942,14 +943,14 @@ class Character {
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification) +
                     calcEquip(this, 'Skill_Amplification_Percent') +
                     calcEquip(this, 'Skill_Amplification_Percent_per_level') * (level + 1) +
-                    (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0) +
+                    (silvia_t ? (silvia_t.value == 15 ? 10 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0) +
                     skill_amplification_bonus;
             this.EXTRA_SKILL_DAMAGE.innerText =
                 this.extra_skill_damage + '| ' + round(this.skill_amplification) + '%';
             this.pure_extra_skill_damage = calcEquip(this, 'Extra_Skill_Damage', 2) + calcEquip(this, 'Extra_Skill_Damage_per_level', 2) * (level + 1);
             this.pure_skill_amplification =
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 5 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0);
+                    calcEquip(this, 'Skill_Amplification_Percent') + (silvia_t ? (silvia_t.value == 15 ? 10 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0);
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
             if (this.chest && this.chest.Name === 'Queen_of_Hearts') {
@@ -1011,7 +1012,7 @@ class Character {
             const defense_bonus =
                 (hyunwoo_w && hyunwoo_w.checked ? 6 + w * 14 + this.defense * 0.1 : 0) +
                 (silvia_r && r >= 0 && silvia_r.checked ? 2 + er * 14 : 0) +
-                (this.character === Alex && this.weapon && this.isMelee ? 10 + t * 5 : 0);
+                (this.character === Alex && this.weapon && this.isMelee ? 10 + t * 7 : 0);
             this.defense =
                 floor((this.character.Defense + this.character.Defense_Growth * level +
                     calcEquip(this, 'Defense', 2) + calcEquip(this, 'Defense_per_level', 2) * (level + 1) +
@@ -1056,7 +1057,7 @@ class Character {
             this.normal_attack_damage_reduction =
                 calcEquip(this, 'Normal_Attack_Damage_Reduction');
             this.normal_attack_damage_reduction_percent =
-                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 1);
+                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 0.8);
             this.NORMAL_ATTACK_DAMAGE_REDUCTION.innerText =
                 this.normal_attack_damage_reduction + '| ' + this.normal_attack_damage_reduction_percent + '%';
 

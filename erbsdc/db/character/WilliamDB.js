@@ -1,16 +1,16 @@
 'use strict';
-const Adriana = {
+const William = {
      Attack_Power: 28
-    ,Attack_Power_Growth: 3.2
-    ,Health: 690
-    ,Health_Growth: 59
+    ,Attack_Power_Growth: 2.9
+    ,Health: 630
+    ,Health_Growth: 62
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.03
     ,Stamina: 480
     ,Stamina_Growth: 9
     ,Stamina_Regen: 1
     ,Stamina_Regen_Growth: 0.01
-    ,Defense: 29
+    ,Defense: 27
     ,Defense_Growth: 2
     ,Atk_Speed: 0.04
     ,Movement_Speed: 3.05

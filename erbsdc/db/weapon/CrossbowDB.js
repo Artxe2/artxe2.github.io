@@ -62,9 +62,9 @@ const Crossbow = [
          Type: "Crossbow"
         ,Name: "Ballista"
         ,Attack_Power: 75
-        ,Attack_Speed: -10
+        ,Attack_Speed: -6
         ,Skill_Amplification_Percent_per_level: 2
-        ,Title: "Ballista\n\nAttack Power +75\nAttack Speed -10%\nSkill Amplification per level +2%"
+        ,Title: "Ballista\n\nAttack Power +75\nAttack Speed -6%\nSkill Amplification per level +2%"
         ,Rarity: "Epic"
     }
     ,{

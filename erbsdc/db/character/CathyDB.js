@@ -1,9 +1,9 @@
 'use strict';
 const Cathy = {
      Attack_Power: 26
-    ,Attack_Power_Growth: 2.4
-    ,Health: 640
-    ,Health_Growth: 82
+    ,Attack_Power_Growth: 2.7
+    ,Health: 700
+    ,Health_Growth: 79
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.06
     ,Stamina: 440
@@ -11,7 +11,7 @@ const Cathy = {
     ,Stamina_Regen: 2
     ,Stamina_Regen_Growth: 0.08
     ,Defense: 24
-    ,Defense_Growth: 2
+    ,Defense_Growth: 2.3
     ,Atk_Speed: 0.12
     ,Movement_Speed: 3.15
     ,Sight_Range: 8

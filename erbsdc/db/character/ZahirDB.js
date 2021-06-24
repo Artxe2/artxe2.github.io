@@ -1,9 +1,9 @@
 'use strict';
 const Zahir = {
      Attack_Power: 25
-    ,Attack_Power_Growth: 2.7
-    ,Health: 620
-    ,Health_Growth: 61
+    ,Attack_Power_Growth: 3
+    ,Health: 680
+    ,Health_Growth: 58
     ,Health_Regen: 0.6
     ,Health_Regen_Growth: 0.03
     ,Stamina: 400
@@ -96,7 +96,7 @@ const Zahir = {
         if (character.weapon && r >= 0) {
             const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 50 + r * 90, 0.5, 1);
-            const add = calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
+            const add = calcSkillDamage(character, enemy, 50 + r * 35, 0.65, 1);
             const bonus = calcSkillDamage(character, enemy, 10 + t * 10, 0.15, 1);
             return "<b class='damage'>" + (damage + add * 4) + ' - ' + (damage + bonus + add * 4) + '</b> ( ' + damage + ', ' + bonus + ', ' + add + ' x 4, )';
         }
@@ -231,7 +231,7 @@ const Zahir = {
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + r * 40, 0.65, 1);
+                        damage += calcSkillDamage(character, enemy, 50 + r * 35, 0.65, 1);
                         if (!tt) {
                             tt = true;
                         }

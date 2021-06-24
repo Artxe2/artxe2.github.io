@@ -1,9 +1,9 @@
 'use strict';
 const Nadine = {
      Attack_Power: 32
-    ,Attack_Power_Growth: 2.0
-    ,Health: 635
-    ,Health_Growth: 57
+    ,Attack_Power_Growth: 2.3
+    ,Health: 695
+    ,Health_Growth: 54
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.03
     ,Stamina: 350

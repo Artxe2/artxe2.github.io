@@ -1,9 +1,9 @@
 'use strict';
 const Emma = {
      Attack_Power: 37
-    ,Attack_Power_Growth: 2
-    ,Health: 650
-    ,Health_Growth: 57
+    ,Attack_Power_Growth: 2.3
+    ,Health: 710
+    ,Health_Growth: 54
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 450
@@ -11,7 +11,7 @@ const Emma = {
     ,Stamina_Regen: 1.6
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 31
-    ,Defense_Growth: 1.3
+    ,Defense_Growth: 1.1
     ,Atk_Speed: 0.1
     ,Movement_Speed: 3.05
     ,Sight_Range: 8
@@ -51,7 +51,7 @@ const Emma = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const e = character.E_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
+            const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.6, 1);
             const heal = calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / (5.5 * (100 - character.cooldown_reduction) + 13);
             return "<b class='damage'>" + damage + ' - ' + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * 2 * cool) / 100 + '</b>';
@@ -191,12 +191,12 @@ const Emma = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.6, 1);
                         heal += calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.6, 1);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -204,7 +204,7 @@ const Emma = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.6, 1);
                         heal += calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'w' || c === 'W') {

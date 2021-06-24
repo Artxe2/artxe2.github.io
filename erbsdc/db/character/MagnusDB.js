@@ -1,9 +1,9 @@
 'use strict';
 const Magnus = {
      Attack_Power: 32
-    ,Attack_Power_Growth: 2.2
-    ,Health: 710
-    ,Health_Growth: 79
+    ,Attack_Power_Growth: 2.5
+    ,Health: 770
+    ,Health_Growth: 76
     ,Health_Regen: 1
     ,Health_Regen_Growth: 0.05
     ,Stamina: 410
@@ -64,7 +64,7 @@ const Magnus = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage = calcSkillDamage(character, enemy, floor(1.5 + w * 0.5) * 10 + character.defense * 0.2, 0.4, 1);
+            const damage = calcSkillDamage(character, enemy, floor(1.5 + w * 0.5) * 10 + character.defense * 0.2, 0.3, 1);
             const cool = 10000 / (16 * (100 - character.cooldown_reduction) + 400 - floor(6 + w * 0.5) * 100);
             return "<b class='damage'>" + damage * floor(6 + w * 0.5) + '</b> ( ' + damage + ' x ' + floor(6 + w * 0.5) + " )<b> _sd/s: </b><b class='damage'>" + round((damage * floor(6 + w * 0.5)) * cool) / 100 + '</b>';
         }
@@ -182,7 +182,7 @@ const Magnus = {
                     if (w >= 0) {
                         const hit = floor(6 + w * 0.5);
                         for (let j = 0; j < hit; j++) {
-                            damage += calcSkillDamage(character, enemy, floor(1.5 + w * 0.5) * 10 + character.defense * 0.2, 0.4, 1);
+                            damage += calcSkillDamage(character, enemy, floor(1.5 + w * 0.5) * 10 + character.defense * 0.2, 0.3, 1);
                             if (enemy.character === Magnus) {
                                 let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {

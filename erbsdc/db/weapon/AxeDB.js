@@ -98,7 +98,7 @@ const Axe = [
         ,Movement_Speed: 0.07
         ,Attack_Range: 0.5
         ,Extra_Skill_Damage: 33
-        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.07\nAttack Range +0.5\nExtra Skill Damage +33\nHealing Reduction (Skills) -40%"
+        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.07\nAttack Range +0.5\nExtra Skill Damage +33\nHealing Reduction (Skills) -45%"
         ,Rarity: "Epic"
     }
     ,{

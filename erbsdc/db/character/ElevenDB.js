@@ -1,9 +1,9 @@
 'use strict';
 const Eleven = {
      Attack_Power: 33
-    ,Attack_Power_Growth: 2.2
-    ,Health: 700
-    ,Health_Growth: 80
+    ,Attack_Power_Growth: 2.5
+    ,Health: 760
+    ,Health_Growth: 77
     ,Health_Regen: 1.3
     ,Health_Regen_Growth: 0.07
     ,Stamina: 420
@@ -58,8 +58,8 @@ const Eleven = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const min = calcSkillDamage(character, enemy, 100 + q * 40, 0.5, 1);
-            const max = calcSkillDamage(character, enemy, (100 + q * 40) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
+            const min = calcSkillDamage(character, enemy, 100 + q * 50, 0.5, 1);
+            const max = calcSkillDamage(character, enemy, (100 + q * 50) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
             const cool = 10000 / ((6.5 - q * 0.5) * (100 - character.cooldown_reduction) - 150);
             return "<b class='damage'>" + min + ' - ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round((min + max) / 2 * cool) / 100 + '</b>';
         }
@@ -108,8 +108,8 @@ const Eleven = {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
             const heal = calcHeal(50 + t * 100, 1, enemy);
-            const tick = calcHeal(25, 1, enemy);
-            return "<b> _h: </b><b class='heal'>" + (heal + tick * 4) + '</b> ( ' + heal + ', ' + tick + ' x 4 )';
+            const tick = calcHeal(35, 1, enemy);
+            return "<b> _h: </b><b class='heal'>" + (heal + tick * 3) + '</b> ( ' + heal + ', ' + tick + ' x 3 )';
         }
         return '-';
     }
@@ -202,11 +202,11 @@ const Eleven = {
                     }
                 } else if (c === 'q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 100 + q * 40, 0.5, 1);
+                        damage += calcSkillDamage(character, enemy, 100 + q * 50, 0.5, 1);
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, (100 + q * 40) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
+                        damage += calcSkillDamage(character, enemy, (100 + q * 50) * (1.48 + q * 0.04), 0.5 * (1.48 + q * 0.04), 1);
                     }
                 } else if (c === 'e') {
                     if (e >= 0) {
@@ -254,20 +254,20 @@ const Eleven = {
                         }
                     }
                 } else if (c === 't' || c === 'T') {
-                    tt += 16;
+                    tt += 6;
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
                     }
                 }
             }
-            if (tt === 16) {
+            if (tt === 6) {
                 heal += calcHeal(50 + t * 100, 1, enemy);
             } else if (tt) {
                 tt--;
             }
             if (tt % 2) {
-                heal += calcHeal(20, 1, enemy);
+                heal += calcHeal(35, 1, enemy);
             }
             if (rr) {
                 rr--;

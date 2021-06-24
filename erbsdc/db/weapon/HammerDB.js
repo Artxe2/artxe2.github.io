@@ -75,10 +75,10 @@ const Hammer = [
          Type: "Hammer"
         ,Name: "Weight_of_the_World"
         ,Attack_Power: 88
-        ,Critical_Strike_Chance: 10
         ,Cooldown_Reduction: 12
         ,Skill_Amplification_Percent: 8
-        ,Title: "Weight of the World\n\nAttack Power +88\nCritical Strike Chance +10%\nCooldown Reduction +12%\nSkill Amplification +8%"
+        ,Focused_Impact: true
+        ,Title: "Weight of the World\n\nAttack Power +88\nCooldown Reduction +12%\nSkill Amplification +8%\nFocused_Impact"
         ,Rarity: "Epic"
     }
     ,{

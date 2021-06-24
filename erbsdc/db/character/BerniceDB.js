@@ -1,9 +1,9 @@
 'use strict';
 const Bernice = {
      Attack_Power: 25
-    ,Attack_Power_Growth: 2.4
-    ,Health: 700
-    ,Health_Growth: 77
+    ,Attack_Power_Growth: 2.7
+    ,Health: 760
+    ,Health_Growth: 74
     ,Health_Regen: 0.5
     ,Health_Regen_Growth: 0.06
     ,Stamina: 410

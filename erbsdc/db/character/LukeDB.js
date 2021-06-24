@@ -1,9 +1,9 @@
 'use strict';
 const Luke = {
      Attack_Power: 28
-    ,Attack_Power_Growth: 2.2
-    ,Health: 690
-    ,Health_Growth: 81
+    ,Attack_Power_Growth: 2.5
+    ,Health: 750
+    ,Health_Growth: 78
     ,Health_Regen: 1
     ,Health_Regen_Growth: 0.06
     ,Stamina: 420

@@ -1,9 +1,9 @@
 'use strict';
 const Sua = {
      Attack_Power: 23
-    ,Attack_Power_Growth: 2
-    ,Health: 660
-    ,Health_Growth: 74
+    ,Attack_Power_Growth: 2.3
+    ,Health: 720
+    ,Health_Growth: 71
     ,Health_Regen: 0.7
     ,Health_Regen_Growth: 0.06
     ,Stamina: 480
@@ -38,7 +38,7 @@ const Sua = {
             let damage, life;
             if (character.DIV.querySelector('.sua_t').checked) {
                 const t = character.T_LEVEL.selectedIndex;
-                damage = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.6, 1);
+                damage = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.45, 1);
                 life = calcHeal(damage * 0.3, character.attack_speed, enemy);
             } else {
                 const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
@@ -119,7 +119,7 @@ const Sua = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.6, 1);
+            const damage = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.45, 1);
             const heal = calcHeal(damage * 0.3, 1, enemy);
             return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + heal + '</b>';
         }
@@ -245,7 +245,7 @@ const Sua = {
                         }
                     }
                 } else if (c === 't' || c === 'T') {
-                    ba = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.6, 1);
+                    ba = calcSkillDamage(character, enemy, 30 + t * 45 + character.defense * 0.6, 0.45, 1);
                     damage += ba;
                     heal += calcHeal(ba * 0.3, 1, enemy);
                 } else if (c === 'p' || c === 'P') {

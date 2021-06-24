@@ -1,9 +1,9 @@
 'use strict';
 const Yuki = {
-     Attack_Power: 29
-    ,Attack_Power_Growth: 2.6
-    ,Health: 660
-    ,Health_Growth: 78
+     Attack_Power: 26
+    ,Attack_Power_Growth: 2.9
+    ,Health: 720
+    ,Health_Growth: 75
     ,Health_Regen: 0.7
     ,Health_Regen_Growth: 0.05
     ,Stamina: 410
@@ -76,7 +76,7 @@ const Yuki = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const t = character.T_LEVEL.selectedIndex;
-            const base = 20 + q * 30;
+            const base = 20 + q * 20;
             const coe = character.weapon.Type === 'DualSwords' ? 2 : 1;
             const damage = baseAttackDamage(character, enemy, base, coe, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, base, coe, 0, 1);
@@ -84,7 +84,7 @@ const Yuki = {
             const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
             const cool = 10000 / ((9 - q * 1) * (100 - character.cooldown_reduction) + 23);
             if (character.DIV.querySelector('.yuki_t').checked) {
-                const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
+                const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
                 return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + " )<b> _h: </b><b class='heal'>" + life + "</b><b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
             }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> _h: </b><b class='heal'>" + life + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -102,7 +102,7 @@ const Yuki = {
                 const cool = (550 + w * 50) / ((17 - e * 1) * (100 - character.cooldown_reduction) - 300) *
                     10000 / ((18 - w * 2) * (100 - character.cooldown_reduction));
                 if (character.DIV.querySelector('.yuki_t').checked) {
-                    const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
+                    const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
                     return "<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
                 }
                 return "<b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -118,7 +118,7 @@ const Yuki = {
             const damage = calcSkillDamage(character, enemy, 65 + e * 55, 0.4, 1);
             const cool = 10000 / ((17 - e * 1) * (100 - character.cooldown_reduction) - 300);
             if (character.DIV.querySelector('.yuki_t').checked) {
-                const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
+                const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
                 return "<b class='damage'>" + (damage + bonus) + '</b> ( ' + damage + ', ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
             }
             return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -133,7 +133,7 @@ const Yuki = {
             const damage1 = calcSkillDamage(character, enemy, 250 + r * 125, 1.5, 1);
             const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.15 + r * 0.05) : 0);
             if (character.DIV.querySelector('.yuki_t').checked) {
-                const bonus = calcTrueDamage(character, enemy, 15 + t * 15);
+                const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
                 return "<b class='damage'>" + (damage1 + bonus + damage2) + '</b> ( ' + damage1 + ', ' + bonus + ', ' + damage2 + ' )';
             }
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + ' )';
@@ -161,7 +161,7 @@ const Yuki = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = calcTrueDamage(character, enemy, 15 + t * 15);
+            const damage = calcTrueDamage(character, enemy, 20 + t * 15);
             return "<b class='damage'>" + damage + '</b>';
         }
         return '-';
@@ -211,9 +211,9 @@ const Yuki = {
         let tt = data.vars.tt;
         if (character.weapon) {
             const type = character.weapon.Type;
-            const base = 20 + q * 30;
+            const base = 20 + q * 20;
             const coe = character.weapon.Type === 'DualSwords' ? 2 : 1;
-            const bonus = calcTrueDamage(character, enemy, 15 + 15 * t);
+            const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {

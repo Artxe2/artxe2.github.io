@@ -1,14 +1,14 @@
 'use strict';
 const Lenox = {
      Attack_Power: 36
-    ,Attack_Power_Growth: 2.8
-    ,Health: 610
-    ,Health_Growth: 81
+    ,Attack_Power_Growth: 3.1
+    ,Health: 670
+    ,Health_Growth: 78
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.05
     ,Stamina: 380
     ,Stamina_Growth: 16
-    ,Stamina_Regen: 2.2
+    ,Stamina_Regen: 2.0 //
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 26
     ,Defense_Growth: 2
@@ -150,7 +150,7 @@ const Lenox = {
         let shield = 0, c, ba;
         const bleeding = data.vars.bleeding;
 
-        const cool = (20 - t * 4) * (100 - character.cooldown_reduction) / 100;
+        const cool = (20 - t * 5) * (100 - character.cooldown_reduction) / 100;
         if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
             shield += floor(character.max_hp * 0.1);
         }
