@@ -196,7 +196,13 @@ const Li_Dailin = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let bac = data.vars.bac, liquid = data.vars.liquid, qq = data.vars.qq, wq = data.vars.wq;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
@@ -410,6 +416,7 @@ const Li_Dailin = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 bac: bac,
                 liquid: liquid,
                 qq: qq,

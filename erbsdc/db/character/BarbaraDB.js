@@ -165,7 +165,12 @@ const Barbara = {
                     (enemy.max_hp ? enemy.max_hp * (0.005 + e * 0.005) : 0)) * 8 * 0.3);
         }
 
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const coe = 1.05 + r * 0.05;
             for (let i = 0; i < combo.length; i++) {
@@ -268,6 +273,7 @@ const Barbara = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 ww: ww,
                 rr: rr
             }

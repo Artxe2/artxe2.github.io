@@ -166,7 +166,13 @@ const Sua = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let qq = data.vars.qq, rr = data.vars.rr;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
@@ -262,6 +268,7 @@ const Sua = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 qq: qq,
                 rr: rr
             }

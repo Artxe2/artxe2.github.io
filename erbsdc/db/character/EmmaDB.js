@@ -166,7 +166,12 @@ const Emma = {
             shield += floor(100 + t * 25 + character.max_sp * (0.03 + t * 0.03));
         }
 
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
@@ -261,7 +266,8 @@ const Emma = {
             damage: damage,
             heal: heal,
             shield: shield,
-            vars: {}
+            vars: {
+                fi: fi,}
         };
     }
     ,COMBO_Option: 'qwaeDddRaaQrwa'

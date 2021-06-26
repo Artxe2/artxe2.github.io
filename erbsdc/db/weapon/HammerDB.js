@@ -77,8 +77,8 @@ const Hammer = [
         ,Attack_Power: 88
         ,Cooldown_Reduction: 12
         ,Skill_Amplification_Percent: 8
-        ,Focused_Impact: true
-        ,Title: "Weight of the World\n\nAttack Power +88\nCooldown Reduction +12%\nSkill Amplification +8%\nFocused_Impact"
+        ,Focused_Impact: 4
+        ,Title: "Weight of the World\n\nAttack Power +88\nCooldown Reduction +12%\nSkill Amplification +8%\nFocused_Impact 4s"
         ,Rarity: "Epic"
     }
     ,{

@@ -184,7 +184,13 @@ const Sissela = {
         let rr = data.vars.rr;
         heal += calcHeal(lost < 10 ? 0 :
             (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (rr ? 2 : 1), 0.5, enemy);
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             if (rr) {
                 rr--;
@@ -281,6 +287,7 @@ const Sissela = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 rr: rr
             }
         };

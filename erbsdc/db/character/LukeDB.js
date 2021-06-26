@@ -204,7 +204,13 @@ const Luke = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let qq = data.vars.qq, ww = data.vars.ww;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const bonus = calcSkillDamage(character, enemy, 10 + w * 10, 0.2, 1);
             if (ww) {
@@ -292,6 +298,7 @@ const Luke = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 qq: qq,
                 ww: ww,
             }

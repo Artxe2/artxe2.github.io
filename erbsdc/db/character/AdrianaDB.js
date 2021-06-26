@@ -19,7 +19,7 @@ const Adriana = {
     ,weapons: [Throws]
     ,correction: {
         Throws: [
-            [0, -16, -18],
+            [0, -13, -18],
             [0, 0, -3]
         ]
     }
@@ -148,7 +148,13 @@ const Adriana = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let ww = data.vars.ww, f = data.vars.f, td = data.vars.td, tt = data.vars.tt;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {
@@ -392,6 +398,7 @@ const Adriana = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 ww: ww,
                 f: f,
                 td: td,

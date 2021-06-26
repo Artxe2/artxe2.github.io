@@ -189,7 +189,12 @@ const Cathy = {
             shield += floor(100 + t * 25 + character.attack_power * 0.25);
         }
 
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const tra = calcTrueDamage(character, enemy, character.attack_power * 0.2);
             const ftra = calcTrueDamage(character, enemy, character.attack_power * 0.2 + character.max_hp * 0.0075);
@@ -500,6 +505,7 @@ const Cathy = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 bleeding: bleeding
             }
         };

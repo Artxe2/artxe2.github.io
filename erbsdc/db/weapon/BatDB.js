@@ -66,8 +66,8 @@ const Bat = [
          Type: "Bat"
         ,Name: "Vajra"
         ,Attack_Power: 100
-        ,Focused_Impact: true
-        ,Title: "Vajra\n\nAttack Power +100\nFocused_Impact"
+        ,Focused_Impact: 3
+        ,Title: "Vajra\n\nAttack Power +100\nFocused_Impact 3s"
         ,Rarity: "Epic"
     }
     ,{

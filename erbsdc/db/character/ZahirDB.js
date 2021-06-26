@@ -171,7 +171,13 @@ const Zahir = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let tt = data.vars.tt;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const bonus = calcSkillDamage(character, enemy, 10 + t * 10, 0.15, 1);
             for (let i = 0; i < combo.length; i++) {
@@ -272,6 +278,7 @@ const Zahir = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 tt: tt
             }
         };

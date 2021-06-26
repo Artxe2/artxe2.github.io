@@ -162,7 +162,13 @@ const Xiukai = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let cc = data.vars.cc;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const stack = parseInt(character.DIV.querySelector('.xiukai_t').value);
             for (let i = 0; i < combo.length; i++) {
@@ -277,6 +283,7 @@ const Xiukai = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 cc: cc
             }
         };

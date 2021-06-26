@@ -73,8 +73,8 @@ const Rapier = [
         ,Name: "Meteor_Claymore"
         ,Attack_Power: 70
         ,Cooldown_Reduction: 12
-        ,Focused_Impact: true
-        ,Title: "Meteor Claymore\n\nAttack Power +70\nCooldown Reduction +12%\nFocused_Impact"
+        ,Focused_Impact: 3
+        ,Title: "Meteor Claymore\n\nAttack Power +70\nCooldown Reduction +12%\nFocused_Impact 3s"
         ,Rarity: "Epic"
     }
     ,{

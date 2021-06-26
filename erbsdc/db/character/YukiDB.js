@@ -209,7 +209,13 @@ const Yuki = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
             let shield = 0, c, ba;
         let tt = data.vars.tt;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const base = 20 + q * 20;
             const coe = character.weapon.Type === 'DualSwords' ? 2 : 1;
@@ -351,6 +357,7 @@ const Yuki = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 tt: tt
             }
         };

@@ -265,7 +265,13 @@ const Jackie = {
         const bleeding = data.vars.bleeding;
         let ap = data.vars.ap, ww = data.vars.ww, rr = data.vars.rr,
             tt = data.vars.tt, ttt = data.vars.ttt, dd = data.vars.dd, stack = data.vars.stack;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const jackie_tw = [0.04, 0.08, 0.12];
             const jackie_ts = [0.10, 0.15, 0.20];
@@ -526,6 +532,7 @@ const Jackie = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 bleeding: bleeding,
                 ap: ap,
                 ww: ww,

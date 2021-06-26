@@ -128,7 +128,8 @@ const TwoHandedSword = [
         ,Name: "Dainsleif"
         ,Attack_Power: 83
         ,Life_Steal: 25
-        ,Title: "Dainsleif\n\nAttack Power +83\nLife Steal +25%\nHealing Reduction (Normal Attacks) -45%"
+        ,Focused_Impact: 4
+        ,Title: "Dainsleif\n\nAttack Power +83\nLife Steal +25%\nFocused_Impact 4s"
         ,Rarity: "Legendary"
     }
 ];

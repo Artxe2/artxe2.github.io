@@ -155,7 +155,12 @@ const Lenox = {
             shield += floor(character.max_hp * 0.1);
         }
 
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
@@ -260,6 +265,7 @@ const Lenox = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 bleeding: bleeding
             }
         };

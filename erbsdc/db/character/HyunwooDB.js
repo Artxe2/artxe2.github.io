@@ -19,11 +19,11 @@ const Hyunwoo = {
     ,weapons: [Glove, Tonfa]
     ,correction: {
         Glove: [
-            [0, -3, -3],
+            [0, -5, -7],
             [0, -2, -5]
         ],
         Tonfa: [
-            [0, -5, -9],
+            [0, -7, -12],
             [0, 0, 3]
         ]
     }
@@ -164,7 +164,13 @@ const Hyunwoo = {
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let ww = data.vars.ww, tt = data.vars.tt;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
@@ -295,6 +301,7 @@ const Hyunwoo = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 ww: ww,
                 tt: tt
             }

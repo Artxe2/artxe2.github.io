@@ -156,7 +156,12 @@ const Chiara = {
             shield += floor(60 + w * 40 + character.attack_power * 0.85);
         }
 
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             let dm;
             for (let i = 0; i < combo.length; i++) {
@@ -312,6 +317,7 @@ const Chiara = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 stack: stack,
                 rr: rr
             }

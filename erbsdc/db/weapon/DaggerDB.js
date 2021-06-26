@@ -96,8 +96,8 @@ const Dagger = [
         ,Name: "Fragarach"
         ,Attack_Power: 90
         ,Movement_Speed: 0.2
-        ,Focused_Impact: true
-        ,Title: "Fragarach\n\nAttack Power +90\nMovement Speed +0.2\nFocused_Impact"
+        ,Focused_Impact: 3
+        ,Title: "Fragarach\n\nAttack Power +90\nMovement Speed +0.2\nFocused_Impact 3s"
         ,Rarity: "Legendary"
     }
 ];

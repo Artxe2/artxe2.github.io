@@ -201,7 +201,13 @@ const Hart = {
         let shield = 0, c, ba;
         const sap = character.DIV.querySelector('.hart_ee').checked ? 23 : character.DIV.querySelector('.hart_e').checked ? 16 : 0;
         let ww = data.vars.ww, ee = data.vars.ee;
+
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
         if (character.weapon) {
+            let ficri = character.weapon.Focused_Impact * 2 === fi;
+            if (fi < character.weapon.Focused_Impact * 2) {
+                fi--;
+            }
             const type = character.weapon.Type;
             const hart_w = character.DIV.querySelector('.hart_w');
             const hart_ww = character.DIV.querySelector('.hart_ww');
@@ -384,6 +390,7 @@ const Hart = {
             heal: heal,
             shield: shield,
             vars: {
+                fi: fi,
                 ww: ww,
                 ee: ee
             }
