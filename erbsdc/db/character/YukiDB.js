@@ -234,7 +234,10 @@ const Yuki = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     if (tt) {
                         if (character.weapon.Type != 'DualSwords') {
                             tt--;
@@ -258,7 +261,10 @@ const Yuki = {
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     if (tt) {
                         if (character.weapon.Type != 'DualSwords') {
                             tt--;
@@ -283,7 +289,10 @@ const Yuki = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
-                        ba = baseAttackDamage(character, enemy, base, coe, auto_cri ? character.critical_strike_chance : 0, 1);
+                        if (fi === character.weapon.Focused_Impact * 2) {
+                            fi--;
+                        }
+                        ba = baseAttackDamage(character, enemy, base, coe, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                         if (tt) {
                             tt--;
                             ba += bonus;
@@ -293,7 +302,10 @@ const Yuki = {
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
-                        ba = baseAttackDamage(character, enemy, base, coe, auto_cri ? character.critical_strike_chance : 100, 1);
+                        if (fi === character.weapon.Focused_Impact * 2) {
+                            fi--;
+                        }
+                        ba = baseAttackDamage(character, enemy, base, coe, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                         if (tt) {
                             tt--;
                             ba += bonus;

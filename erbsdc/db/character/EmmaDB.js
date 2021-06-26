@@ -187,11 +187,17 @@ const Emma = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
@@ -244,12 +250,18 @@ const Emma = {
                         }
                     }
                 } else if (c === 't') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, character.max_sp * (0.03 + t * 0.005), 0, 1);
                 } else if (c === 'T') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, character.max_sp * (0.03 + t * 0.005), 0, 1);

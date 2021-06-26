@@ -186,7 +186,10 @@ const Hyunwoo = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (tt >= 50) {
@@ -197,7 +200,10 @@ const Hyunwoo = {
                     }
                     ww = false;
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (tt >= 50) {
@@ -272,6 +278,9 @@ const Hyunwoo = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Glove') {
+                            if (fi === character.weapon.Focused_Impact * 2) {
+                                fi--;
+                            }
                             const coe = wm < 13 ? 1.4 : 2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;

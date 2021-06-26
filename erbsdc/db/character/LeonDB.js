@@ -203,7 +203,10 @@ const Leon = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (ww > 0) {
@@ -211,7 +214,10 @@ const Leon = {
                         damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                     }
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (ww > 0) {

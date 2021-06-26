@@ -226,8 +226,11 @@ const Fiora = {
                     }
                 }
                 if (c === 'a') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     f++;
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
@@ -236,8 +239,11 @@ const Fiora = {
                         }
                     }
                 } else if (c === 'A') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     f++;
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
@@ -256,8 +262,14 @@ const Fiora = {
                     }
                 } else if (c === 'w') {
                     if (w >= 0) {
+                        if (fi === character.weapon.Focused_Impact * 2) {
+                            fi--;
+                        }
+                        if (fi === character.weapon.Focused_Impact * 2) {
+                            fi--;
+                        }
                         f += 2;
-                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
@@ -281,8 +293,14 @@ const Fiora = {
                     }
                 } else if (c === 'W') {
                     if (w >= 0) {
+                        if (fi === character.weapon.Focused_Impact * 2) {
+                            fi--;
+                        }
+                        if (fi === character.weapon.Focused_Impact * 2) {
+                            fi--;
+                        }
                         f += 2;
-                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);

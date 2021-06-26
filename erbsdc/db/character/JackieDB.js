@@ -300,8 +300,11 @@ const Jackie = {
                     }
                 }
                 if (c === 'a' || c === 'A') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     if (bleeding[index] && ww && w >= 0) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         heal += calcHeal(10 + w * 5 + character.attack_power * 0.1, 1, enemy);
                     } else {
                         ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);

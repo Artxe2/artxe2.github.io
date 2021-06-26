@@ -209,24 +209,30 @@ const Silvia = {
                     }
                 }
                 if (c === 'a') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     if (rr === 2) {
                         rr--;
-                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else if (rr) {
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'A') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     if (rr === 2) {
                         rr--;
-                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else if (rr) {
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }

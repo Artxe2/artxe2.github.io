@@ -228,7 +228,10 @@ const Hart = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     if (character.DIV.querySelector('.hart_t').checked) {
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -264,7 +267,10 @@ const Hart = {
                         }
                     }
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     if (character.DIV.querySelector('.hart_t').checked) {
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);

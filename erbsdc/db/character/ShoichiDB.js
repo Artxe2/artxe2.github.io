@@ -206,18 +206,24 @@ const Shoichi = {
                     }
                 }
                 if (c === 'a') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     if (tt === 5) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     if (tt === 5) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -283,6 +289,9 @@ const Shoichi = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Dagger') {
+                            if (fi === character.weapon.Focused_Impact * 2) {
+                                fi--;
+                            }
                             let currHp = enemy.max_hp ? enemy.max_hp - damage + heal + shield : 0;
                             if (currHp > enemy.max_hp) {
                                 currHp = enemy.max_hp;

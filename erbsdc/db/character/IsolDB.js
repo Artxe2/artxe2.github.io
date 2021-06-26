@@ -197,8 +197,11 @@ const Isol = {
                     }
                 }
                 if (c === 'a') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, auto_cri ? character.critical_strike_chance : 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -219,14 +222,17 @@ const Isol = {
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         qq += 3;
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         qq++;
                     }
                 } else if (c === 'A') {
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
                     if (type === 'AssaultRifle') {
-                        ba = baseAttackDamage(character, enemy, 0, 0.32, auto_cri ? character.critical_strike_chance : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
+                        ba = baseAttackDamage(character, enemy, 0, 0.32, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
@@ -247,7 +253,7 @@ const Isol = {
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         qq += 3;
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                         qq++;

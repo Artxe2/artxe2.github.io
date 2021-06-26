@@ -101,7 +101,8 @@ const Spear = [
          Type: "Spear"
         ,Name: "Blazing_Lance"
         ,Attack_Power: 90
-        ,Title: "Blazing Lance\n\nAttack Power +90"
+        ,Smolder: true
+        ,Title: "Blazing Lance\n\nAttack Power +90\nSmolder"
         ,Rarity: "Legendary"
     }
     ,{

@@ -183,7 +183,10 @@ const William = {
                     }
                 }
                 if (c === 'a') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     if (qq) {
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -192,12 +195,15 @@ const William = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, qc, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, qc, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     if (qq) {
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -206,7 +212,7 @@ const William = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, qc, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, qc, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -233,7 +239,10 @@ const William = {
                 } else if (c === 'r' || c === 'R') {
                     damage += calcSkillDamage(character, enemy, 150 + r * 100, 0.45, 1);
                 } else if (c === 't') {
-                    ba = baseAttackDamage(character, enemy, 0, 1 + tc, auto_cri ? character.critical_strike_chance : 0, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1 + tc, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     if (qq) {
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -242,12 +251,15 @@ const William = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, qc + tc, auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, qc + tc, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'T') {
-                    ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     if (qq) {
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -256,7 +268,7 @@ const William = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, qc + tc, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, qc + tc, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     }
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
