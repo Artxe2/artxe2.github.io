@@ -823,6 +823,7 @@ class Character {
                         this.weapon.Name === 'Spiky_Bouncy_Ball' || this.weapon.Name === 'Ruthenium_Marble' ||
                         this.weapon.Name === 'Twinbow' || this.weapon.Name === 'Elemental_Bow') ||
                     this.chest && this.chest.Name === 'Rocker`s_Jacket' ||
+                    this.head && this.head.Name === 'Mohawk_Headgear' ||
                     this.arm && this.arm.Name === 'Sword_Stopper' ||
                     this.leg && this.leg.Name === 'White_Rhinos' ||
                     this.accessory && this.accessory.Name === 'White_Crane_Fan' ? this.isMelee ? 45 : 30 :
