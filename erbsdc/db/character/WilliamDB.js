@@ -35,10 +35,19 @@ const William = {
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
         if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
+            const coe = 0.15 + t * 0.1;
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
+            const ba2 = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
+            let count = 1;
+            while ((1 / character.attack_speed) * count < 2) {
+                count++;
+            }
+            const damage2 = round((ba * (count - 1) + ba2) / count * character.attack_speed * 100) / 100;
             const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
-            return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
+            const life2 = calcHeal((ba * (count - 1) + ba2) / count  * (character.life_steal / 100), character.attack_speed, enemy);
+            return "<b> _d/s: </b><b class='damage'>" + damage + ' ~ ' + damage2 + "</b><b> _h/s: </b><b class='heal'>" + life + ' ~ ' + life2 + '</b>';
         }
         return '-';
     }
