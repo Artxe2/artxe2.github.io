@@ -182,7 +182,7 @@ const Li_Dailin = {
             'T: "평균 데미지" ( "1타 데미지", "2타 데미지" - "1타 치명타", "2타 치명타" / "1타 최대 강화", "2타 최대 강화" )\n';
     }
     ,COMBO_VARS: '{\"bac\":0,\"liquid\":0,\"bqqac\":0,\"wq\":0}'
-    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
+    ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus, enemyHp) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
         const e = character.E_LEVEL.selectedIndex - 1;
@@ -197,7 +197,9 @@ const Li_Dailin = {
         let shield = 0, c, ba;
         let bac = data.vars.bac, liquid = data.vars.liquid, qq = data.vars.qq, wq = data.vars.wq;
 
-        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
+        let sm = data.vars.sm || 0;
+        let sms = data.vars.sms || 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -208,7 +210,7 @@ const Li_Dailin = {
                 c = combo.charAt(i);
                 if (enemy.defense) {
                     if (enemy.character === Magnus) {
-                        let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                        let lost = floor((enemyHp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                         if (lost < 0) {
                             lost = 0;
                         }
@@ -218,6 +220,10 @@ const Li_Dailin = {
                     }
                 }
                 if (c === 'a') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -233,6 +239,14 @@ const Li_Dailin = {
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'A') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -301,7 +315,7 @@ const Li_Dailin = {
                         for (let j = 0; j < hit; j++) {
                             damage += calcSkillDamage(character, enemy, (25 + r * 30) * coe, 0.15 * coe, 1);
                             if (enemy.character === Magnus) {
-                                lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                                lost = floor((enemyHp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                                 if (lost < 0) {
                                     lost = 0;
                                 }
@@ -312,34 +326,13 @@ const Li_Dailin = {
                             bac -= 40;
                         }
                     }
-                } else if (c === 'd') {
+                } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            if (fi === character.weapon.Focused_Impact * 2) {
-                                fi--;
+                            if (character.weapon.Smolder && sm < 4) {
+                                sm++;
+                                sms = 8;
                             }
-                            const coe = wm < 13 ? 1.4 : 2;
-                            const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
-                            if (liquid) {
-                                ba = baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
-                                damage += ba;
-                                heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                            } else {
-                                ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                                damage += ba;
-                                heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                            }
-                        	liquid = 0;
-                        } else if (type === 'Nunchaku') {
-                            if (liquid === 1) {
-                            	liquid = 0;
-                            }
-                            damage += calcSkillDamage(character, enemy, wm < 13 ? 150 : 300, 0.5, 1);
-                        }
-                    }
-                } else if (c === 'D') {
-                    if (wm > 5) {
-                        if (type === 'Glove') {
                             if (fi === character.weapon.Focused_Impact * 2) {
                                 fi--;
                             }
@@ -356,66 +349,47 @@ const Li_Dailin = {
                                 heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                             }
                         } else if (type === 'Nunchaku') {
-                            damage += calcSkillDamage(character, enemy, wm < 13 ? 300 : 600, 1.5, 1);
+                            if (c === 'd') {
+                                damage += calcSkillDamage(character, enemy, wm < 13 ? 150 : 300, 0.5, 1);
+                            } else {
+                                damage += calcSkillDamage(character, enemy, wm < 13 ? 300 : 600, 1.5, 1);
+                            }
                         }
                     }
-                } else if (c === 't') {
+                } else if (c === 't' || c === 'T') {
+                    const crit = auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100;
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
+                        }
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
                     if (liquid > 1) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, crit, 1);
                         if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            let lost = floor((enemyHp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
                                 lost = 0;
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), crit, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
                         if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
+                            let lost = floor((enemyHp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                             if (lost < 0) {
                                 lost = 0;
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), auto_cri ? character.critical_strike_chance : 0, 1);
-                        damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    }
-                    liquid = 0;
-                } else if (c === 'T') {
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    if (liquid > 1) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + bac * 0.002, auto_cri ? character.critical_strike_chance : 100, 1);
-                        if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                            if (lost < 0) {
-                                lost = 0;
-                            }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
-                        }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : 100, 1);
-                        damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
-                        if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                            if (lost < 0) {
-                                lost = 0;
-                            }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
-                        }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), crit, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     }
@@ -426,6 +400,20 @@ const Li_Dailin = {
                     }
                 }
             }
+            if (index % 2) {
+                let currHp = enemy.max_hp ? data.hp- damage + heal + shield : 0;
+                if (currHp > enemy.max_hp) {
+                    currHp = enemy.max_hp;
+                } else if (currHp < 0) {
+                    currHp = 0;
+                }
+                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+            }
+            if (sms) {
+                sms--;
+            } else {
+                sm = 0;
+            }
         }
         damage += checkItemDamage(character, enemy, index);
         return {
@@ -435,6 +423,8 @@ const Li_Dailin = {
             shield: shield,
             vars: {
                 fi: fi,
+                sm: sm,
+                sms: sms,
                 bac: bac,
                 liquid: liquid,
                 qq: qq,

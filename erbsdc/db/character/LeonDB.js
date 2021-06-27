@@ -182,7 +182,9 @@ const Leon = {
             shield += floor(60 + w * 35 + character.attack_power * 0.3);
         }
 
-        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
+        let sm = data.vars.sm || 0;
+        let sms = data.vars.sms || 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -203,6 +205,10 @@ const Leon = {
                     }
                 }
                 if (c === 'a') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -214,6 +220,10 @@ const Leon = {
                         damage += calcSkillDamage(character, enemy, 10 + w * 5, 0.3, 1);
                     }
                 } else if (c === 'A') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -304,6 +314,20 @@ const Leon = {
                     }
                 }
             }
+            if (index % 2) {
+                let currHp = enemy.max_hp ? data.hp- damage + heal + shield : 0;
+                if (currHp > enemy.max_hp) {
+                    currHp = enemy.max_hp;
+                } else if (currHp < 0) {
+                    currHp = 0;
+                }
+                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+            }
+            if (sms) {
+                sms--;
+            } else {
+                sm = 0;
+            }
         }
         damage += checkItemDamage(character, enemy, index);
         return {
@@ -313,6 +337,8 @@ const Leon = {
             shield: shield,
             vars: {
                 fi: fi,
+                sm: sm,
+                sms: sms,
                 ww: ww
             }
         };

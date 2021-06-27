@@ -266,7 +266,9 @@ const Jackie = {
         let ap = data.vars.ap, ww = data.vars.ww, rr = data.vars.rr,
             tt = data.vars.tt, ttt = data.vars.ttt, dd = data.vars.dd, stack = data.vars.stack;
 
-        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
+        let sm = data.vars.sm || 0;
+        let sms = data.vars.sms || 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -300,6 +302,10 @@ const Jackie = {
                     }
                 }
                 if (c === 'a' || c === 'A') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -466,9 +472,18 @@ const Jackie = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Dagger') {
+                            if (character.weapon.Smolder && sm < 4) {
+                                sm++;
+                                sms = 8;
+                            }
+                            if (fi === character.weapon.Focused_Impact * 2) {
+                                fi--;
+                            }
                             let currHp = enemy.max_hp ? data.hp - damage + heal + shield : 0;
                             if (currHp > enemy.max_hp) {
                                 currHp = enemy.max_hp;
+                            } else if (currHp < 0) {
+                                currHp = 0;
                             }
                             if (bleeding[index] && ww) {
                                 ba = floor(baseAttackDamage(character, enemy, 0, 1 + 0.1 + w * 0.025, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
@@ -527,6 +542,20 @@ const Jackie = {
             if (index % 2 === 0 && bleeding[index]) {
                 damage += floor(bleeding[index]);
             }
+            if (index % 2) {
+                let currHp = enemy.max_hp ? data.hp- damage + heal + shield : 0;
+                if (currHp > enemy.max_hp) {
+                    currHp = enemy.max_hp;
+                } else if (currHp < 0) {
+                    currHp = 0;
+                }
+                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+            }
+            if (sms) {
+                sms--;
+            } else {
+                sm = 0;
+            }
         }
         damage += checkItemDamage(character, enemy, index);
         return {
@@ -536,6 +565,8 @@ const Jackie = {
             shield: shield,
             vars: {
                 fi: fi,
+                sm: sm,
+                sms: sms,
                 bleeding: bleeding,
                 ap: ap,
                 ww: ww,

@@ -166,7 +166,9 @@ const Emma = {
             shield += floor(100 + t * 25 + character.max_sp * (0.03 + t * 0.03));
         }
 
-        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
+        let sm = data.vars.sm || 0;
+        let sms = data.vars.sms || 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -187,6 +189,10 @@ const Emma = {
                     }
                 }
                 if (c === 'a') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -194,6 +200,10 @@ const Emma = {
                     damage += ba;
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -250,6 +260,10 @@ const Emma = {
                         }
                     }
                 } else if (c === 't') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -258,6 +272,10 @@ const Emma = {
                     heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, character.max_sp * (0.03 + t * 0.005), 0, 1);
                 } else if (c === 'T') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -271,6 +289,20 @@ const Emma = {
                     }
                 }
             }
+            if (index % 2) {
+                let currHp = enemy.max_hp ? data.hp- damage + heal + shield : 0;
+                if (currHp > enemy.max_hp) {
+                    currHp = enemy.max_hp;
+                } else if (currHp < 0) {
+                    currHp = 0;
+                }
+                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+            }
+            if (sms) {
+                sms--;
+            } else {
+                sm = 0;
+            }
         }
         damage += checkItemDamage(character, enemy, index);
         return {
@@ -279,7 +311,9 @@ const Emma = {
             heal: heal,
             shield: shield,
             vars: {
-                fi: fi,}
+                fi: fi,
+                sm: sm,
+                sms: sms, }
         };
     }
     ,COMBO_Option: 'qwaeDddRaaQrwa'

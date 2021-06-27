@@ -111,7 +111,8 @@ const TwoHandedSword = [
         ,Name: "Laevateinn"
         ,Attack_Power: 68
         ,Attack_Speed: 10
-        ,Title: "Laevateinn\n\nAttack Power +78\nAttack Speed +10%"
+        ,Smolder: true
+        ,Title: "Laevateinn\n\nAttack Power +78\nAttack Speed +10\nSmolder"
         ,Rarity: "Legendary"
     }
     ,{

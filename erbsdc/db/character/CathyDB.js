@@ -189,7 +189,9 @@ const Cathy = {
             shield += floor(100 + t * 25 + character.attack_power * 0.25);
         }
 
-        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0 ;
+        let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
+        let sm = data.vars.sm || 0;
+        let sms = data.vars.sms || 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -213,6 +215,10 @@ const Cathy = {
                     }
                 }
                 if (c === 'a') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -246,6 +252,10 @@ const Cathy = {
                         }
                     }
                 } else if (c === 'A') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
@@ -461,12 +471,19 @@ const Cathy = {
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Dagger') {
+
+                            if (character.weapon.Smolder && sm < 4) {
+                                sm++;
+                                sms = 8;
+                            }
                             if (fi === character.weapon.Focused_Impact * 2) {
                                 fi--;
                             }
                             let currHp = enemy.max_hp ? data.hp - damage + heal + shield : 0;
                             if (currHp > enemy.max_hp) {
                                 currHp = enemy.max_hp;
+                            } else if (currHp < 0) {
+                                currHp = 0;
                             }
                             if (bleeding[index] === 5) {
                                 character.critical_damage += 10 + t * 15;
@@ -506,6 +523,20 @@ const Cathy = {
                 }
             }
             damage += index % 2 === 0 && bleeding[index] ? bleeding[index] === 5 ? ftra : tra : 0;
+            if (index % 2) {
+                let currHp = enemy.max_hp ? data.hp- damage + heal + shield : 0;
+                if (currHp > enemy.max_hp) {
+                    currHp = enemy.max_hp;
+                } else if (currHp < 0) {
+                    currHp = 0;
+                }
+                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+            }
+            if (sms) {
+                sms--;
+            } else {
+                sm = 0;
+            }
         }
         damage += checkItemDamage(character, enemy, index);
         return {
@@ -515,6 +546,8 @@ const Cathy = {
             shield: shield,
             vars: {
                 fi: fi,
+                sm: sm,
+                sms: sms,
                 bleeding: bleeding
             }
         };

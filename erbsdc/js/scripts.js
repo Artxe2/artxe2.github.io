@@ -120,7 +120,6 @@ function checkItemDamage(character, enemy, index) {
         } else if (character.head.Name === 'Elysian_Halo' && enemy.max_hp) {
             if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
                 damage += calcItemDamage(character, enemy, enemy.max_hp * (character.isMelee ? 0.08 : 0.07));
-                console.log(enemy.max_hp * 0.06)
             }
         }
     }
