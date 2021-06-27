@@ -400,7 +400,7 @@ const Yuki = {
             }
         };
     }
-    ,COMBO_Option: 'aqaaewaqeaa'
+    ,COMBO_Option: 'aqaaewaqrdaea'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
