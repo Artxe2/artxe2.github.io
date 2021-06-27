@@ -951,7 +951,7 @@ class Character {
             this.pure_extra_skill_damage = calcEquip(this, 'Extra_Skill_Damage', 2) + calcEquip(this, 'Extra_Skill_Damage_per_level', 2) * (level + 1);
             this.pure_skill_amplification =
                 (!this.weapon ? 0 : (1 + wm) * this.weapon_mastery_skill_amplification) +
-                    calcEquip(this, 'Skill_Amplification_Percent') + calcEquip(this, 'Extra_Skill_Damage_per_level', 2) + (silvia_t ? (silvia_t.value == 15 ? 10 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0);
+                    calcEquip(this, 'Skill_Amplification_Percent') + calcEquip(this, 'Skill_Amplification_Percent_per_level', 2) + (silvia_t ? (silvia_t.value == 15 ? 10 : 0) + silvia_t.value * (0.4 + t * 0.4) : 0);
 
             this.cooldown_reduction = calcEquip(this, 'Cooldown_Reduction');
             if (this.chest && this.chest.Name === 'Queen_of_Hearts') {
