@@ -272,8 +272,12 @@ const Fiora = {
                     }
                 } else if (c === 'w') {
                     if (w >= 0) {
-                        if (fi === character.weapon.Focused_Impact * 2) {
-                            fi--;
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
+                            sms = 8;
+                            if (character.weapon.Smolder && sm < 4) {
+                                sm++;
+                            }
                         }
                         if (fi === character.weapon.Focused_Impact * 2) {
                             fi--;
@@ -303,8 +307,12 @@ const Fiora = {
                     }
                 } else if (c === 'W') {
                     if (w >= 0) {
-                        if (fi === character.weapon.Focused_Impact * 2) {
-                            fi--;
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
+                            sms = 8;
+                            if (character.weapon.Smolder && sm < 4) {
+                                sm++;
+                            }
                         }
                         if (fi === character.weapon.Focused_Impact * 2) {
                             fi--;
@@ -373,7 +381,7 @@ const Fiora = {
                 } else if (currHp < 0) {
                     currHp = 0;
                 }
-                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+                damage += calcTrueDamage(character, enemy, currHp * 0.03 * sm);
             }
             if (sms) {
                 sms--;

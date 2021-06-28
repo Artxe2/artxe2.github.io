@@ -197,9 +197,9 @@ const Shuriken = [
         ,Name: "Petal_Torrent"
         ,Attack_Power: 70
         ,Critical_Damage: 25
-        ,Extra_Normal_Attack_Damage: 135
-        ,Extra_Skill_Damage: 30
-        ,Title: "Petal Torrent\n\nAttack Power +70\nCritical Damage +25%\nExtra Normal Attack Damage +135\nExtra Skill Damage +30"
+        ,Extra_Normal_Attack_Damage: 130
+        ,Extra_Skill_Damage: 25
+        ,Title: "Petal Torrent\n\nAttack Power +70\nCritical Damage +25%\nExtra Normal Attack Damage +130\nExtra Skill Damage +25"
         ,Rarity: "Legendary"
     }
 ];

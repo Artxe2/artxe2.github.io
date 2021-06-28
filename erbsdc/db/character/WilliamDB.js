@@ -1,6 +1,6 @@
 'use strict';
 const William = {
-     Attack_Power: 20
+     Attack_Power: 24
     ,Attack_Power_Growth: 2.5
     ,Health: 680
     ,Health_Growth: 61
@@ -41,7 +41,7 @@ const William = {
             const ba2 = baseAttackDamage(character, enemy, 0, 1 + coe, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
             let count = 1;
-            while ((1 / character.attack_speed) * count < 2) {
+            while ((1 / character.attack_speed) * count < 1.5) {
                 count++;
             }
             const damage2 = round((ba * (count - 1) + ba2) / count * character.attack_speed * 100) / 100;
@@ -68,7 +68,7 @@ const William = {
             const as = calcAttackSpeed(character, 20 + q * 5);
             const damage = round(ba * as * 100) / 100;
             let count = 1;
-            while ((1 / as) * count < 2) {
+            while ((1 / as) * count < 1.5) {
                 count++;
             }
             const damage2 = round((ba * (count - 1) + ba2) / count * as * 100) / 100;
@@ -156,7 +156,6 @@ const William = {
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
-        const e = character.E_LEVEL.selectedIndex - 1;
         const r = character.R_LEVEL.selectedIndex - 1;
         const t = character.T_LEVEL.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
@@ -210,6 +209,9 @@ const William = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
+                        }
                         ba += baseAttackDamage(character, enemy, 0, qc, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     }
                     damage += ba;
@@ -230,6 +232,9 @@ const William = {
                                 lost = 0;
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        }
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
                         }
                         ba += baseAttackDamage(character, enemy, 0, qc, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     }
@@ -312,7 +317,7 @@ const William = {
                 } else if (currHp < 0) {
                     currHp = 0;
                 }
-                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+                damage += calcTrueDamage(character, enemy, currHp * 0.03 * sm);
             }
             if (sms) {
                 sms--;

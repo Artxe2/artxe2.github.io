@@ -249,7 +249,7 @@ const Magnus = {
                 } else if (currHp < 0) {
                     currHp = 0;
                 }
-                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+                damage += calcTrueDamage(character, enemy, currHp * 0.03 * sm);
             }
             if (sms) {
                 sms--;

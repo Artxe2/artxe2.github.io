@@ -1,6 +1,6 @@
 'use strict';
 const Luke = {
-     Attack_Power: 28
+     Attack_Power: 25
     ,Attack_Power_Growth: 2.5
     ,Health: 750
     ,Health_Growth: 78
@@ -313,7 +313,7 @@ const Luke = {
                 } else if (currHp < 0) {
                     currHp = 0;
                 }
-                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+                damage += calcTrueDamage(character, enemy, currHp * 0.03 * sm);
             }
             if (sms) {
                 sms--;

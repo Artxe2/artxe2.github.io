@@ -215,6 +215,9 @@ const Isol = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
+                        }
                         ba += baseAttackDamage(character, enemy, 0, 0.32, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -222,6 +225,9 @@ const Isol = {
                                 lost = 0;
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        }
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
@@ -293,7 +299,7 @@ const Isol = {
                 } else if (currHp < 0) {
                     currHp = 0;
                 }
-                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+                damage += calcTrueDamage(character, enemy, currHp * 0.03 * sm);
             }
             if (sms) {
                 sms--;

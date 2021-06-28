@@ -248,7 +248,6 @@ const Hart = {
                         }
                         if (character.weapon.Smolder && sm < 4) {
                             sm++;
-                            sms = 8;
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.15, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         if (character.DIV.querySelector('.hart_tt').checked) {
@@ -261,7 +260,6 @@ const Hart = {
                             }
                             if (character.weapon.Smolder && sm < 4) {
                                 sm++;
-                                sms = 8;
                             }
                             ba += baseAttackDamage(character, enemy, 0, 0.15, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         }
@@ -370,7 +368,7 @@ const Hart = {
                 } else if (currHp < 0) {
                     currHp = 0;
                 }
-                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+                damage += calcTrueDamage(character, enemy, currHp * 0.03 * sm);
             }
             if (sms) {
                 sms--;

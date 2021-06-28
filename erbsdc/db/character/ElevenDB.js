@@ -10,7 +10,7 @@ const Eleven = {
     ,Stamina_Growth: 16
     ,Stamina_Regen: 2
     ,Stamina_Regen_Growth: 0.04
-    ,Defense: 22
+    ,Defense: 26
     ,Defense_Growth: 3
     ,Atk_Speed: 0.11
     ,Movement_Speed: 3.2
@@ -195,6 +195,9 @@ const Eleven = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
                         }
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
+                        }
                         ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                         damage += ba;
                         heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
@@ -217,6 +220,9 @@ const Eleven = {
                                 lost = 0;
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        }
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
                         }
                         ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                         damage += ba;
@@ -304,7 +310,7 @@ const Eleven = {
                 } else if (currHp < 0) {
                     currHp = 0;
                 }
-                damage += calcTrueDamage(character, enemy, currHp * 0.02 * sm);
+                damage += calcTrueDamage(character, enemy, currHp * 0.03 * sm);
             }
             if (sms) {
                 sms--;

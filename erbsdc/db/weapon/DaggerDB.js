@@ -94,9 +94,9 @@ const Dagger = [
     ,{
          Type: "Dagger"
         ,Name: "Fragarach"
-        ,Attack_Power: 90
+        ,Attack_Power: 85
         ,Movement_Speed: 0.2
-        ,Focused_Impact: 3
+        ,Focused_Impact: 4
         ,Title: "Fragarach\n\nAttack Power +90\nMovement Speed +0.2\nFocused_Impact 3s"
         ,Rarity: "Legendary"
     }
