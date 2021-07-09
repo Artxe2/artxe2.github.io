@@ -251,6 +251,9 @@ const Rio = {
                         sws = 0.0001;
                     }
                     damage += ba;
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
+                    }
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     qq = !qq;
@@ -368,6 +371,7 @@ const Rio = {
         return {
             hp: data.hp - damage,
             damage: damage,
+            throns: throns,
             heal: heal,
             shield: shield,
             vars: {

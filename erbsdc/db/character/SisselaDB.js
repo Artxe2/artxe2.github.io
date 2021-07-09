@@ -177,6 +177,7 @@ const Sissela = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
+        let throns = 0;
         let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let lost = floor((character.max_hp - (myHp + heal)) * 100.0 / character.max_hp);
@@ -234,6 +235,9 @@ const Sissela = {
                         sws = 0.0001;
                     }
                     damage += ba;
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
+                    }
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
@@ -295,6 +299,9 @@ const Sissela = {
                         sws = 0.0001;
                     }
                     damage += ba;
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
+                    }
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, 26 + character.LEVEL.selectedIndex * 8, 0.2, 1);
                 } else if (c === 'p' || c === 'P') {
@@ -322,6 +329,7 @@ const Sissela = {
         return {
             hp: data.hp - damage,
             damage: damage,
+            throns: throns,
             heal: heal,
             shield: shield,
             vars: {

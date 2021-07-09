@@ -41,14 +41,14 @@ const Hyunwoo = {
         if (character.weapon) {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -102,7 +102,7 @@ const Hyunwoo = {
                 const coe = wm < 13 ? 1.4 : 2;
                 const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                 const min = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                const life = calcHeal(min * (character.life_steal / 100), 1, enemy);
+                const life = calcHeal(character, min * (character.life_steal / 100), 1, enemy);
                 return "<b class='damage'>" + min + "</b><b> _h: </b><b class='heal'>" + life + '</b>';
             }
             if (type === 'Tonfa') {
@@ -117,7 +117,7 @@ const Hyunwoo = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            return "<b> _h: </b><b class='heal'>" + calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy) + '</b>';
+            return "<b> _h: </b><b class='heal'>" + calcHeal(character, character.max_hp * (0.04 + t * 0.04), 1, enemy) + '</b>';
         }
         return '-';
     }
@@ -160,7 +160,8 @@ const Hyunwoo = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let throns = 0;
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let ww = data.vars.ww, tt = data.vars.tt;
@@ -208,6 +209,9 @@ const Hyunwoo = {
                         sws = 0.0001;
                     }
                     damage += ba;
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
+                    }
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (tt >= 50) {
                         heal += calcHeal(character, character.max_hp * (0.04 + t * 0.04), 1, enemy);
@@ -299,9 +303,9 @@ const Hyunwoo = {
                                 damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
                                 sws = 0.0001;
                             }
-                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                            heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                             if (tt >= 50) {
-                                heal += calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy);
+                                heal += calcHeal(character, character.max_hp * (0.07 + t * 0.04), 1, enemy);
                                 tt = 0;
                             } else {
                                 tt += 5;
@@ -336,6 +340,7 @@ const Hyunwoo = {
         return {
             hp: data.hp - damage,
             damage: damage,
+            throns: throns,
             heal: heal,
             shield: shield,
             vars: {

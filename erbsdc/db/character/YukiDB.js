@@ -207,6 +207,7 @@ const Yuki = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
+        let throns = 0;
         let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
             let shield = 0, c, ba;
@@ -279,31 +280,25 @@ const Yuki = {
                         }
                     }
                     damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'q') {
-                    if (q >= 0) {
-                        if (fi === character.weapon.Focused_Impact * 2) {
-                            fi--;
-                        }
-                        ba = baseAttackDamage(character, enemy, base, coe, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                        if (tt) {
-                            tt--;
-                            ba += bonus;
-                        }
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
                     }
-                } else if (c === 'Q') {
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                } else if (c === 'q' || c === 'Q') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'q' ? 0 : 100;
                     if (q >= 0) {
                         if (fi === character.weapon.Focused_Impact * 2) {
                             fi--;
                         }
-                        ba = baseAttackDamage(character, enemy, base, coe, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba = baseAttackDamage(character, enemy, base, coe, crit, 1);
                         if (tt) {
                             tt--;
                             ba += bonus;
                         }
                         damage += ba;
+                        if (enemy.head && enemy.head.Throns) {
+                            throns += floor(ba * 0.07);
+                        }
                         heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'w' || c === 'W') {
@@ -373,6 +368,7 @@ const Yuki = {
         return {
             hp: data.hp - damage,
             damage: damage,
+            throns: throns,
             heal: heal,
             shield: shield,
             vars: {

@@ -259,6 +259,7 @@ const Jackie = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
+        let throns = 0;
         let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
@@ -328,6 +329,9 @@ const Jackie = {
                         sws = 0.0001;
                     }
                     damage += ba;
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
+                    }
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
                         if (rr) {
@@ -356,6 +360,9 @@ const Jackie = {
                             ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         }
                         damage += ba;
+                        if (enemy.head && enemy.head.Throns) {
+                            throns += floor(ba * 0.07);
+                        }
                         heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         if (r >= 0) {
                             if (rr) {
@@ -508,6 +515,9 @@ const Jackie = {
                                 sws = 0.0001;
                             }
                             damage += ba;
+                            if (enemy.head && enemy.head.Throns) {
+                                throns += floor(ba * 0.07);
+                            }
                             heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         } else if (type === 'TwoHandedSword') {
                             if (bleeding[index] && ww) {
@@ -516,8 +526,6 @@ const Jackie = {
                             } else {
                                 damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1.75 : 2.25, 1);
                             }
-                            damage += ba;
-                            heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         } else if (type === 'DualSwords') {
                             if (bleeding[index] && ww) {
                                 for (let j = 0; j < 6; j++) {
@@ -577,6 +585,7 @@ const Jackie = {
         return {
             hp: data.hp - damage,
             damage: damage,
+            throns: throns,
             heal: heal,
             shield: shield,
             vars: {

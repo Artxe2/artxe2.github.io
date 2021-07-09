@@ -338,6 +338,7 @@ function simulateCombo() {
     const data0 = {
         hp: c1.max_hp ? c1.max_hp : 0,
         damage: 0,
+        throns: 0,
         heal: 0,
         shield: 0,
         vars: c0.character ? JSON.parse(c0.character.COMBO_VARS) : {}
@@ -345,6 +346,7 @@ function simulateCombo() {
     const data1 = {
         hp: c0.max_hp ? c0.max_hp : 0,
         damage: 0,
+        throns: 0,
         heal: 0,
         shield: 0,
         vars: c1.character ? JSON.parse(c1.character.COMBO_VARS) : {}
@@ -379,6 +381,8 @@ function simulateCombo() {
             data1.shield += d1.shield;
             data1.vars = d1.vars;
             if (c0.character) {
+                data0.damage += d1.throns;
+                data1.damage += d0.throns;
                 if (d0) {
                     if (d0.vars.healBan) {
                         d0.vars.healBan--;

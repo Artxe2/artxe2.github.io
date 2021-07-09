@@ -149,6 +149,7 @@ const Eleven = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
+        let throns = 0;
         let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
@@ -193,12 +194,6 @@ const Eleven = {
                         fi--;
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
-                    if (sws) {
-                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
-                        sws = 0.0001;
-                    }
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (rr) {
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -210,10 +205,17 @@ const Eleven = {
                         if (character.weapon.Smolder && sm < 4) {
                             sm++;
                         }
-                        ba = baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                        ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
                     }
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
+                    damage += ba;
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
+                    }
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 100 + q * 50, 0.5, 1);
@@ -308,6 +310,7 @@ const Eleven = {
         return {
             hp: data.hp - damage,
             damage: damage,
+            throns: throns,
             heal: heal,
             shield: shield,
             vars: {

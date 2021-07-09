@@ -199,6 +199,7 @@ const Fiora = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
+        let throns = 0;
         let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
@@ -249,6 +250,9 @@ const Fiora = {
                         sws = 0.0001;
                     }
                     damage += ba;
+                    if (enemy.head && enemy.head.Throns) {
+                        throns += floor(ba * 0.07);
+                    }
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
                         if (rr) {
@@ -278,10 +282,6 @@ const Fiora = {
                         }
                         f += 2;
                         ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
-                        if (sws) {
-                            damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
-                            sws = 0.0001;
-                        }
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
@@ -294,6 +294,10 @@ const Fiora = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
+                        if (sws) {
+                            damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                            sws = 0.0001;
+                        }
                         ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
                         if (r >= 0) {
                             if (rr) {
@@ -301,6 +305,9 @@ const Fiora = {
                             }
                         }
                         damage += ba;
+                        if (enemy.head && enemy.head.Throns) {
+                            throns += floor(ba * 0.07);
+                        }
                         heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'e' || c === 'E') {
@@ -356,6 +363,7 @@ const Fiora = {
         return {
             hp: data.hp - damage,
             damage: damage,
+            throns: throns,
             heal: heal,
             shield: shield,
             vars: {
