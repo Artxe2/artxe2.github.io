@@ -51,14 +51,14 @@ const Shoichi = {
                 ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             }
             const damage = floor(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -121,12 +121,12 @@ const Shoichi = {
                 let damage;
                 if (character.DIV.querySelector('.shoichi_t').value == 5) {
                     const t = character.T_LEVEL.selectedIndex;
-                    damage = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 100, 1);
+                    damage = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 0, 1);
                 } else {
-                    damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+                    damage = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                 }
                 const bonus = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * 0.08 : 0);
-                const heal = calcHeal(floor(damage + bonus) * (character.life_steal / 100), 1, enemy);
+                const heal = calcHeal(character, floor(damage + bonus) * (character.life_steal / 100), 1, enemy);
                 return "<b class='damage'>" + damage + ' ~ ' + floor(damage + bonus) + "</b><b> _h: </b><b class='heal'>" + heal + '</b>';
             }
         }
@@ -180,7 +180,7 @@ const Shoichi = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let tt = data.vars.tt;
@@ -188,6 +188,7 @@ const Shoichi = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -202,7 +203,7 @@ const Shoichi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -221,7 +222,7 @@ const Shoichi = {
                         ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -236,7 +237,7 @@ const Shoichi = {
                         ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (tt < 5) {
@@ -292,7 +293,7 @@ const Shoichi = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 25 + r * 35, 0.3, 1);
                     }
@@ -314,12 +315,12 @@ const Shoichi = {
                                 currHp = 0;
                             }
                             if (tt === 5) {
-                                ba = floor(baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                                ba = floor(baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 0, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
                             } else {
-                                ba = floor(baseAttackDamage(character, enemy, 0, 1, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                                ba = floor(baseAttackDamage(character, enemy, 0, 1, 0, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
                             }
                             damage += ba;
-                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                            heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         }
                     }
                 } else if (c === 't' || c === 'T') {
@@ -358,6 +359,7 @@ const Shoichi = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 tt: tt
             }
         };

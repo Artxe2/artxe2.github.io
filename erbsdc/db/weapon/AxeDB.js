@@ -87,8 +87,8 @@ const Axe = [
         ,Name: "Parashu"
         ,Attack_Power: 115
         ,Movement_Speed: 0.07
-        ,Cooldown_Reduction: 12
-        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.07\nCooldown Reduction +12%"
+        ,Cooldown_Reduction: 14
+        ,Title: "Parashu\n\nAttack Power +115\nMovement Speed +0.07\nCooldown Reduction +14%"
         ,Rarity: "Epic"
     }
     ,{
@@ -97,8 +97,8 @@ const Axe = [
         ,Attack_Power: 105
         ,Movement_Speed: 0.07
         ,Attack_Range: 0.5
-        ,Extra_Skill_Damage: 33
-        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.07\nAttack Range +0.5\nExtra Skill Damage +33\nHealing Reduction (Skills) -45%"
+        ,Extra_Skill_Damage: 35
+        ,Title: "Harpe\n\nAttack Power +105\nMovement Speed +0.07\nAttack Range +0.5\nExtra Skill Damage +35\nHealing Reduction (Skills) -45%"
         ,Rarity: "Epic"
     }
     ,{
@@ -107,8 +107,8 @@ const Axe = [
         ,Attack_Power: 92
         ,Attack_Speed_per_level: 3
         ,Movement_Speed: 0.1
-        ,Attack_Range: -0.35
-        ,Title: "The Juggernaut\n\nAttack Power +92\nAttack Speed per level +3%\nMovement Speed +0.1\nAttack Range -0.35"
+        ,Attack_Range: -0.2
+        ,Title: "The Juggernaut\n\nAttack Power +92\nAttack Speed per level +3%\nMovement Speed +0.1\nAttack Range -0.2"
         ,Rarity: "Epic"
     }
 ];

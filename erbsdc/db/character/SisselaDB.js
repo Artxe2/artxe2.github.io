@@ -41,7 +41,7 @@ const Sissela = {
         if (character.weapon) {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
@@ -50,9 +50,9 @@ const Sissela = {
     ,HPS: (character, enemy) => {
         const t = character.T_LEVEL.selectedIndex;
         const lost = character.DIV.querySelector('.sissela_t').value;
-        const passive = calcHeal(lost < 10 ? 0 :
+        const passive = calcHeal(character, lost < 10 ? 0 :
             (lost >= 90 ? 26 + t * 10 : 2 + t * 2 + (3 + t) * ((lost / 10 | 0) - 1)) * (character.DIV.querySelector('.sissela_r').checked ? 2 : 1), 1, enemy);
-        const total = round((passive + (calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        const total = round((passive + (calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy))) * 100) / 100;
         return "<b class='heal'>" + total + '</b>';
     }
@@ -60,8 +60,8 @@ const Sissela = {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
             const damage1 = calcSkillDamage(character, enemy, 40 + q * 20, 0.3, 1);
-            const damage2 = calcSkillDamage(character, enemy, 60 + q * 30, 0.5, 1);
-            const cost = 50 + q * 10;
+            const damage2 = calcSkillDamage(character, enemy, 60 + q * 30, 0.4, 1);
+            const cost = 55 + q * 5;
             const cool = 10000 / ((6.5 - q * 0.75) * (100 - character.cooldown_reduction) + 4);
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " ) <b> _cost: </b><b class='heal'>-" + cost + "</b><b> _sd/s: </b><b class='damage'>" + round((damage1 + damage2) * cool) / 100 + '</b>';
         }
@@ -177,17 +177,18 @@ const Sissela = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let lost = floor((character.max_hp - (myHp + heal)) * 100.0 / character.max_hp);
         let shield = 0, c, ba;
         let rr = data.vars.rr;
-        heal += calcHeal(lost < 10 ? 0 :
+        heal += calcHeal(character, lost < 10 ? 0 :
             (lost >= 90 ? 26 + et * 10 : 2 + et * 2 + (3 + et) * ((lost / 10 | 0) - 1)) * (rr ? 2 : 1), 0.5, enemy);
 
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -207,7 +208,7 @@ const Sissela = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -222,7 +223,7 @@ const Sissela = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -233,11 +234,11 @@ const Sissela = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 60 + q * 30, 0.5, 1);
-                        heal -= 50 + q * 10;
+                        damage += calcSkillDamage(character, enemy, 60 + q * 30, 0.4, 1);
+                        heal -= 55 + q * 5;
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
@@ -289,7 +290,7 @@ const Sissela = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, 26 + character.LEVEL.selectedIndex * 8, 0.2, 1);
                 } else if (c === 'T') {
                     if (character.weapon.Smolder && sm < 4) {
@@ -301,7 +302,7 @@ const Sissela = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, 26 + character.LEVEL.selectedIndex * 8, 0.2, 1);
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
@@ -334,6 +335,7 @@ const Sissela = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 rr: rr
             }
         };

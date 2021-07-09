@@ -185,9 +185,9 @@ const Accessory = [
     ,{
          Type: "Accessory"
         ,Name: "Magazine"
-        ,Max_HP: 330
+        ,Max_HP: 300
         ,Normal_Attack_Damage_Reduction: 6
-        ,Title: "Magazine\n\nMax HP +330\nNormal Attack Damage Reduction +6"
+        ,Title: "Magazine\n\nMax HP +300\nNormal Attack Damage Reduction +6"
         ,Rarity: "Rare"
     }
     ,{
@@ -223,6 +223,15 @@ const Accessory = [
         ,Vision_Range: 2
         ,Attack_Range: 0.5
         ,Title: "Hawkeye\n\nAttack Power +10\nVision_Range +2\nAttack Range +0.5"
+        ,Rarity: "Rare"
+    }
+    ,{
+         Type: "Accessory"
+        ,Name: "Jolly_Roger"
+        ,Attack_Power: 12
+        ,Life_Steal: 12
+        ,Swift_Strides: [ 120, 24 ]
+        ,Title: "Jolly Roger\n\nAttack Power +12\nLife Steal +12%\nSwift Strides 120 / 24m"
         ,Rarity: "Rare"
     }
     ,{
@@ -288,6 +297,14 @@ const Accessory = [
         ,Critical_Strike_Chance: 15
         ,Cooldown_Reduction: 12
         ,Title: "Emerald Tablet\n\nAttack Power +18\nDefense +18\nCritical Strike Chance +15%\nCooldown Reduction +12%"
+        ,Rarity: "Legendary"
+    }
+    ,{
+         Type: "Accessory"
+        ,Name: "Sanguine_Gunbai"
+        ,Cooldown_Reduction: 12
+        ,Swift_Strides: [ 200, 20 ]
+        ,Title: "Sanguine Gunbai\n\nCooldown Reduction +12%"
         ,Rarity: "Legendary"
     }
 ];

@@ -826,10 +826,15 @@ class Character {
                     this.head && this.head.Name === 'Mohawk_Headgear' ||
                     this.arm && this.arm.Name === 'Sword_Stopper' ||
                     this.leg && this.leg.Name === 'White_Rhinos' ||
-                    this.accessory && this.accessory.Name === 'White_Crane_Fan' ? this.isMelee ? 45 : 30 :
-                    this.accessory && this.accessory.Name === 'Gilded_Quill_Fan' ? 30 : 0;
+                    this.accessory && (
+                        this.accessory.Name === 'White_Crane_Fan' || this.accessory.Name === 'Gilded_Quill_Fan' ||
+                        this.accessory.Name === 'Sanguine_Gunbai'
+                    ) ? this.isMelee ? 45 : 35 : 0;
             this.heal_reduction =
                 rozzi_w && rozzi_w.checked ? 40 : this.pure_heal_reduction;
+
+            this.healing_received_increase = calcEquip(this, 'Healing_Received_Increase');
+            console.log('healing_received_increase: ', this.healing_received_increase);
 
             this.critical_damage_reduction = calcEquip(this, 'Critical_Damage_Reduction');
             this.CRITICAL_DAMAGE_REDUCTION.innerText = this.critical_damage_reduction + '%';
@@ -872,6 +877,7 @@ class Character {
             const axe_d_s = this.DIV.querySelector('.axe_d_s');
             const axe_d_u = this.DIV.querySelector('.axe_d_u');
             var hart_w_u = this.DIV.querySelector('.hart_w_u');
+            const xiukai_t = this.DIV.querySelector('.xiukai_t');
             const alex_q = this.DIV.querySelector('.alex_q');
             const attack_power_percent = 1 +
                 (jackie_t_w ? (jackie_t_w.checked ? jackie_tw[ t ] : 0) +
@@ -883,6 +889,7 @@ class Character {
                 (this.character === Adela && this.attack_speed > 0.66 ? floor((this.attack_speed - 0.66) * 100) * (0.2 + t * 0.3) : 0);
             this.attack_power =
                 floor((this.character.Attack_Power + this.character.Attack_Power_Growth * level +
+                    (xiukai_t && xiukai_t.value >= 100 ? 15 : 0) +
                     calcEquip(this, 'Attack_Power', 2) + calcEquip(this, 'Attack_Power_per_level', 2) * (level + 1) +
                     attack_power_bonus) * attack_power_percent);
             if (this.character === Adela) {
@@ -892,6 +899,7 @@ class Character {
             this.ATTACK_POWER.innerText = this.attack_power;
             this.pure_attack_power =
                 this.character.Attack_Power + this.character.Attack_Power_Growth * level +
+                (xiukai_t && xiukai_t.value >= 100 ? 15 : 0) +
                 calcEquip(this, 'Attack_Power', 2) + calcEquip(this, 'Attack_Power_per_level', 2) * (level + 1) +
                 attack_power_bonus;
 
@@ -910,7 +918,7 @@ class Character {
                 (shoichi_t ? shoichi_t.value * (5 + t * 2) : 0);
 
             const cathy_t = this.DIV.querySelector('.cathy_t');
-            const critical_damage_bonus = (cathy_t && cathy_t.checked ? 10 + t * 15 : 0);
+            const critical_damage_bonus = (cathy_t && cathy_t.checked ? 10 + t * 10 : 0);
             this.critical_damage =
                 calcEquip(this, 'Critical_Damage') + critical_damage_bonus;
             this.CRITICAL_DAMAGE.innerText = this.critical_damage + '%';
@@ -981,7 +989,7 @@ class Character {
             this.skill_damage_reduction =
                 calcEquip(this, 'Skill_Damage_Reduction');
             this.skill_damage_reduction_percent =
-                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 0.8 +
+                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 0.5 +
                     calcEquip(this, 'Skill_Damage_Reduction_Percent'));
             this.SKILL_DAMAGE_REDUCTION.innerText =
                 this.skill_damage_reduction + '| ' + this.skill_damage_reduction_percent + '%';
@@ -1001,7 +1009,7 @@ class Character {
             var chiara_t = this.enemy.DIV.querySelector('.chiara_t');
             const silvia_r = this.DIV.querySelector('.silvia_r');
             const defense_percent = 1 +
-                (magnus_t ? magnus_t.value * (0.002 + t * 0.002) : 0) +
+                (magnus_t ? magnus_t.value * (0.002 + t * 0.0025) : 0) +
                 (yuki_w && w >= 0 && yuki_w.checked ? 0.5 : 0);
             const defense_minus = 1 -
                 (hammer_d && hammer_d.checked && ewm > 5? ewm < 13 ? 0.2 : 0.35 : 0) -
@@ -1018,28 +1026,29 @@ class Character {
                 (this.character === Alex && this.weapon && this.isMelee ? 10 + t * 7 : 0);
             this.defense =
                 floor((this.character.Defense + this.character.Defense_Growth * level +
+                    (xiukai_t && xiukai_t.value >= 50 ? 10 : 0) +
                     calcEquip(this, 'Defense', 2) + calcEquip(this, 'Defense_per_level', 2) * (level + 1) +
                     (this.food && this.food.Name === 'Holy_Water' ? 10 : 0) + defense_bonus) * defense_percent * defense_minus);
             this.DEFENSE.innerText = this.defense;
             this.pure_defense =
                 this.character.Defense + this.character.Defense_Growth * level +
+                (xiukai_t && xiukai_t.value >= 50 ? 10 : 0) +
                     calcEquip(this, 'Defense', 2) + calcEquip(this, 'Defense_per_level', 2) * (level + 1) +
                     (this.food && this.food.Name === 'Holy_Water' ? 10 : 0);
 
-            const xiukai_t = this.DIV.querySelector('.xiukai_t');
             const chiara_r = this.DIV.querySelector('.chiara_r');
             const hp_bonus =
-                (xiukai_t ? xiukai_t.value * 7 : 0) +
                 (chiara_r && chiara_r.checked ? 150 + r * 75 : 0);
                 // (this.character === Alex && this.weapon && this.isMelee ? 50 + t * 50 : 0);
             this.max_hp =
                 floor((this.character.Health + this.character.Health_Growth * level + hp_bonus +
+                    (xiukai_t ? xiukai_t.value * 3 + (xiukai_t.value >= 150 ? 150 : 0) : 0) +
                     calcEquip(this, 'Max_HP', 2) + calcEquip(this, 'Max_HP_per_level', 2) * (level + 1)) *
                     (1 + (1 + this.HEALTH_MASTERY.selectedIndex) * 0.01));
             this.MAX_HP.innerText = this.max_hp;
             this.pure_max_hp =
-                floor((this.character.Health + this.character.Health_Growth * level + hp_bonus -
-                    (chiara_r && chiara_r.checked ? 150 + r * 75 : 0) +
+                floor((this.character.Health + this.character.Health_Growth * level +
+                    (xiukai_t ? xiukai_t.value * 3 + (xiukai_t.value >= 150 ? 150 : 0) : 0) +
                     calcEquip(this, 'Max_HP', 2) + calcEquip(this, 'Max_HP_per_level', 2) * (level + 1)) *
                     (1 + (1 + this.HEALTH_MASTERY.selectedIndex) * 0.01));
 
@@ -1060,7 +1069,7 @@ class Character {
             this.normal_attack_damage_reduction =
                 calcEquip(this, 'Normal_Attack_Damage_Reduction');
             this.normal_attack_damage_reduction_percent =
-                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 0.8);
+                round((1 + this.DEFENSE_MASTERY.selectedIndex) * 0.6);
             this.NORMAL_ATTACK_DAMAGE_REDUCTION.innerText =
                 this.normal_attack_damage_reduction + '| ' + this.normal_attack_damage_reduction_percent + '%';
 
@@ -1069,7 +1078,7 @@ class Character {
             chiara_t = this.DIV.querySelector('.chiara_t');
             const barbara_e = this.DIV.querySelector('.barbara_e');
             const move_percent = 1 +
-                (jackie_w && jackie_w.checked ? 0.08 + w * 0.04 : 0) +
+                (jackie_w && jackie_w.checked ? 0.08 + w * 0.03 : 0) +
                 (bernice_e && bernice_e.checked ? 0.12 + w * 0.02 : 0) +
                 (chiara_t && chiara_t.value == 4 ? 0.04 + t * 0.02 : 0) +
                 (silvia_r && silvia_r.checked ? 0.7 : 0) +

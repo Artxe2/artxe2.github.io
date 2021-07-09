@@ -12,7 +12,7 @@ const Bernice = {
     ,Stamina_Regen_Growth: 0.06
     ,Defense: 25
     ,Defense_Growth: 1.8
-    ,Atk_Speed: 0.24
+    ,Atk_Speed: 0.16 //
     ,Movement_Speed: 3.2
     ,Sight_Range: 9
     ,Attack_Range: -3.2
@@ -46,8 +46,8 @@ const Bernice = {
             const shot2 = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, character.critical_strike_chance, 2 + t);
             const damage1 = round(shot * as * 100) / 100;
             const damage2 = round(shot2 * as * 100) / 100;
-            const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
-            const life2 = calcHeal(shot2 * (character.life_steal / 100), as, enemy);
+            const life1 = calcHeal(character, shot * (character.life_steal / 100), as, enemy);
+            const life2 = calcHeal(character, shot2 * (character.life_steal / 100), as, enemy);
             if (enemy.attack_range && enemy.attack_range >= 3) {
                 return "<b class='damage'>" + damage1 + '</b> ~ ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> ~ ' + life2;
             }
@@ -57,7 +57,7 @@ const Bernice = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -110,8 +110,8 @@ const Bernice = {
                     baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
                 const damage1 = round(shot * as1 * 100) / 100;
                 const damage2 = round(shot * as2 * 100) / 100;
-                const life1 = calcHeal(shot * (character.life_steal / 100), as1, enemy);
-                const life2 = calcHeal(shot * (character.life_steal / 100), as2, enemy);
+                const life1 = calcHeal(character, shot * (character.life_steal / 100), as1, enemy);
+                const life2 = calcHeal(character, shot * (character.life_steal / 100), as2, enemy);
                 const cool = 30 * (100 - character.cooldown_reduction) / 100;
                 const shield = floor(100 + t * 50 + character.attack_power * 0.3);
                 return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2 +
@@ -166,7 +166,7 @@ const Bernice = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let cc = data.vars.cc;
@@ -174,6 +174,7 @@ const Bernice = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -207,7 +208,7 @@ const Bernice = {
                         ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1.5 + t * 0.5);
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -222,7 +223,7 @@ const Bernice = {
                         ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1.5 + t * 0.5);
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (cc) {
@@ -279,6 +280,7 @@ const Bernice = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 cc: cc
             }
         };

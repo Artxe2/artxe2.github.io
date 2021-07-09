@@ -3,7 +3,7 @@ const Hyunwoo = {
      Attack_Power: 34
     ,Attack_Power_Growth: 3.4
     ,Health: 670
-    ,Health_Growth: 74
+    ,Health_Growth: 71
     ,Health_Regen: 0.8
     ,Health_Regen_Growth: 0.04
     ,Stamina: 350
@@ -87,8 +87,8 @@ const Hyunwoo = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const min = calcSkillDamage(character, enemy, 200 + r * 100, 0.7, 1);
-            const max = calcSkillDamage(character, enemy, 600 + r * 300, 2.1, 1);
+            const min = calcSkillDamage(character, enemy, 200 + r * 100, 0.6, 1);
+            const max = calcSkillDamage(character, enemy, 600 + r * 300, 1.8, 1);
             return "<b class='damage'>" + min + ' ~ ' + max + '</b>';
         }
         return '-';
@@ -168,6 +168,7 @@ const Hyunwoo = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -182,7 +183,7 @@ const Hyunwoo = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -271,7 +272,7 @@ const Hyunwoo = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                             } else {
                                 enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                             }
@@ -281,22 +282,17 @@ const Hyunwoo = {
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 200 + r * 100, 0.7, 1);
+                        damage += calcSkillDamage(character, enemy, 200 + r * 100, 0.6, 1);
                         tt += 5;
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 600 + r * 300, 2.1, 1);
+                        damage += calcSkillDamage(character, enemy, 600 + r * 300, 1.8, 1);
                         tt += 5;
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
                         if (type === 'Glove') {
-                            if (character.weapon.Smolder && sm < 4) {
-                                sm++;
-                                sms = 8;
-                            }
-
                             if (character.weapon.Smolder && sm < 4) {
                                 sm++;
                                 sms = 8;
@@ -350,6 +346,7 @@ const Hyunwoo = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 ww: ww,
                 tt: tt
             }

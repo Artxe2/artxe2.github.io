@@ -46,10 +46,10 @@ const AssaultRifle = [
     ,{
          Type: "AssaultRifle"
         ,Name: "Type_95"
-        ,Attack_Power: 79
+        ,Attack_Power: 83
         ,Vision_Range: 2
         ,Attack_Range: 1
-        ,Title: "Type 95\n\nAttack Power +79\nVision Range +2\nAttack Range +1"
+        ,Title: "Type 95\n\nAttack Power +83\nVision Range +2\nAttack Range +1"
         ,Rarity: "Epic"
     }
     ,{

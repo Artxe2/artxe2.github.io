@@ -23,24 +23,25 @@ const Yuki = {
             [0, 2, -3]
         ],
         DualSwords: [
-            [0, -4, -6],
+            [0, -6, -9],
             [0, -3, -6]
         ]
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
             if (character.weapon.Type === 'DualSwords') {
                 if (character.DIV.querySelector('.yuki_t').checked) {
-                    const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+                    const bonus = calcTrueDamage(character, enemy, 25 + t * 15);
                     return "<b class='damage'>" + (damage + damage + bonus + bonus) + '</b> ( ' +  min + ', ' + bonus + ', ' + min + ', ' + bonus + ' - ' + max + ', ' + bonus + ', ' + max + ', ' + bonus + ' )';
                 }
                 return "<b class='damage'>" + (damage + damage) + '</b> ( ' +  min + ', ' + min + ' - ' + max + ', ' + max + ' )';
             }
             if (character.DIV.querySelector('.yuki_t').checked) {
-                const bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+                const bonus = calcTrueDamage(character, enemy, 25 + t * 15);
                 return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + ' )';
             }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
@@ -50,18 +51,19 @@ const Yuki = {
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
         if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
             let ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            let bonus = calcTrueDamage(character, enemy, 15 + 15 * character.T_LEVEL.selectedIndex);
+            let bonus = calcTrueDamage(character, enemy, 25 + t * 15);
             let damage;
             if (character.weapon.Type === 'DualSwords') {
                 ba += ba;
                 bonus += bonus;
             }
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             if (character.DIV.querySelector('.yuki_t').checked) {
-                damage= round((ba + bonus) * character.attack_speed * 100) / 100;
+                damage = round((ba + bonus) * character.attack_speed * 100) / 100;
             } else {
-                damage= round(ba * character.attack_speed * 100) / 100;
+                damage = round(ba * character.attack_speed * 100) / 100;
             }
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
@@ -69,7 +71,7 @@ const Yuki = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -81,10 +83,10 @@ const Yuki = {
             const damage = baseAttackDamage(character, enemy, base, coe, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, base, coe, 0, 1);
             const max = baseAttackDamage(character, enemy, base, coe, 100, 1);
-            const life = calcHeal(damage * (character.life_steal / 100), 1, enemy);
+            const life = calcHeal(character, damage * (character.life_steal / 100), 1, enemy);
             const cool = 10000 / ((9 - q * 1) * (100 - character.cooldown_reduction) + 23);
             if (character.DIV.querySelector('.yuki_t').checked) {
-                const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
+                const bonus = calcTrueDamage(character, enemy, 25 + t * 15);
                 return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + " )<b> _h: </b><b class='heal'>" + life + "</b><b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
             }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + " )<b> _h: </b><b class='heal'>" + life + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -102,7 +104,7 @@ const Yuki = {
                 const cool = (550 + w * 50) / ((17 - e * 1) * (100 - character.cooldown_reduction) - 300) *
                     10000 / ((18 - w * 2) * (100 - character.cooldown_reduction));
                 if (character.DIV.querySelector('.yuki_t').checked) {
-                    const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
+                    const bonus = calcTrueDamage(character, enemy, 25 + t * 15);
                     return "<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
                 }
                 return "<b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -114,11 +116,11 @@ const Yuki = {
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
-            const t = character.E_LEVEL.selectedIndex;
+            const t = character.T_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 65 + e * 55, 0.4, 1);
             const cool = 10000 / ((17 - e * 1) * (100 - character.cooldown_reduction) - 300);
             if (character.DIV.querySelector('.yuki_t').checked) {
-                const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
+                const bonus = calcTrueDamage(character, enemy, 25 + t * 15);
                 return "<b class='damage'>" + (damage + bonus) + '</b> ( ' + damage + ', ' + bonus + " )<b> _sd/s: </b><b class='damage'>" + round((damage + bonus) * cool) / 100 + '</b>';
             }
             return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
@@ -133,7 +135,7 @@ const Yuki = {
             const damage1 = calcSkillDamage(character, enemy, 250 + r * 125, 1.5, 1);
             const damage2 = calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.15 + r * 0.05) : 0);
             if (character.DIV.querySelector('.yuki_t').checked) {
-                const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
+                const bonus = calcTrueDamage(character, enemy, 25 + t * 15);
                 return "<b class='damage'>" + (damage1 + bonus + damage2) + '</b> ( ' + damage1 + ', ' + bonus + ', ' + damage2 + ' )';
             }
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + ' )';
@@ -161,7 +163,7 @@ const Yuki = {
     ,T_Skill: (character, enemy) => {
         if (character.weapon) {
             const t = character.T_LEVEL.selectedIndex;
-            const damage = calcTrueDamage(character, enemy, 20 + t * 15);
+            const damage = calcTrueDamage(character, enemy, 25 + t * 15);
             return "<b class='damage'>" + damage + '</b>';
         }
         return '-';
@@ -205,7 +207,7 @@ const Yuki = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
             let shield = 0, c, ba;
         let tt = data.vars.tt;
@@ -213,6 +215,7 @@ const Yuki = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -221,7 +224,7 @@ const Yuki = {
             const type = character.weapon.Type;
             const base = 20 + q * 20;
             const coe = character.weapon.Type === 'DualSwords' ? 2 : 1;
-            const bonus = calcTrueDamage(character, enemy, 20 + t * 15);
+            const bonus = calcTrueDamage(character, enemy, 25 + t * 15);
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
                 if (enemy.defense) {
@@ -230,7 +233,7 @@ const Yuki = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -256,7 +259,7 @@ const Yuki = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
                         if (tt) {
@@ -265,7 +268,7 @@ const Yuki = {
                         }
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -287,7 +290,7 @@ const Yuki = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
                         if (tt) {
@@ -296,7 +299,7 @@ const Yuki = {
                         }
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
                         if (fi === character.weapon.Focused_Impact * 2) {
@@ -308,7 +311,7 @@ const Yuki = {
                             ba += bonus;
                         }
                         damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
@@ -321,7 +324,7 @@ const Yuki = {
                             ba += bonus;
                         }
                         damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
@@ -360,7 +363,7 @@ const Yuki = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                                 }
                             }
                         }
@@ -396,6 +399,7 @@ const Yuki = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 tt: tt
             }
         };

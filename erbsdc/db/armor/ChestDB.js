@@ -188,11 +188,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Rocker`s_Jacket"
-        ,Attack_Power: 28
+        ,Attack_Power: 25
         ,Defense: 13
         ,Movement_speed_while_not_in_combat: 0.1
         ,Normal_Attack_Damage_Reduction: 11
-        ,Title: "Rocker`s Jacket\n\nAttack Power +28\nDefense +13\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -45%"
+        ,Title: "Rocker`s Jacket\n\nAttack Power +25\nDefense +13\nMovement speed while not in combat +0.1\nNormal Attack Damage Reduction +11\nHealing Reduction (Skills) -45%"
         ,Rarity: "Epic"
     }
     ,{
@@ -219,8 +219,8 @@ const Chest = [
         ,Name: "Amazoness_Armor"
         ,Defense: 28
         ,Max_HP: 155
-        ,Skill_Damage_Reduction_Percent: 20
-        ,Title: "Amazoness Armor\n\nDefense +28\nMax HP +155\nSkill Damage Reduction +20%"
+        ,Skill_Damage_Reduction_Percent: 17
+        ,Title: "Amazoness Armor\n\nDefense +28\nMax HP +155\nSkill Damage Reduction +17%"
         ,Rarity: "Epic"
     }
     ,{
@@ -257,9 +257,9 @@ const Chest = [
         ,Name: "Battle_Suit"
         ,Defense: 25
         ,Max_HP: 170
-        ,Normal_Attack_Damage_Reduction: 15
+        ,Normal_Attack_Damage_Reduction: 12
         ,Skill_Damage_Reduction_Percent: 8
-        ,Title: "Battle Suit\n\nDefense +25\nMax HP +170\nNormal Attack Damage Reduction +15\nSkill Damage Reduction +8%"
+        ,Title: "Battle Suit\n\nDefense +25\nMax HP +170\nNormal Attack Damage Reduction +12\nSkill Damage Reduction +8%"
         ,Rarity: "Epic"
     }
     ,{
@@ -276,11 +276,11 @@ const Chest = [
     ,{
          Type: "Chest"
         ,Name: "Tuxedo"
-        ,Defense: 30
+        ,Defense: 32
         ,Critical_Damage_Reduction: 8
         ,Life_Steal: 8
         ,Extra_Normal_Attack_Damage_per_level: 1
-        ,Title: "Tuxedo\n\nDefense +30\nCritical Damage Reduction +8%\nLife Steal +8%\nExtra Normal Attack Damage per level +1"
+        ,Title: "Tuxedo\n\nDefense +32\nCritical Damage Reduction +8%\nLife Steal +8%\nExtra Normal Attack Damage per level +1"
         ,Rarity: "Epic"
     }
     ,{

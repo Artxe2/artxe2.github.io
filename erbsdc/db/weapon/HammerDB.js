@@ -48,10 +48,10 @@ const Hammer = [
     ,{
          Type: "Hammer"
         ,Name: "Hammer_of_Dagda"
-        ,Attack_Power: 95
-        ,HP_Regen_Percent: 200
-        ,Extra_Normal_Attack_Damage: 22
-        ,Title: "Hammer of Dagda\n\nAttack Power +95\nHP Regen +200%\nExtra Normal Attack Damage +22"
+        ,Attack_Power: 98
+        ,HP_Regen_Percent: 150
+        ,Extra_Normal_Attack_Damage: 25
+        ,Title: "Hammer of Dagda\n\nAttack Power +98\nHP Regen +200%\nExtra Normal Attack Damage +25"
         ,Rarity: "Epic"
     }
     ,{
@@ -74,11 +74,11 @@ const Hammer = [
     ,{
          Type: "Hammer"
         ,Name: "Weight_of_the_World"
-        ,Attack_Power: 88
+        ,Attack_Power: 91
         ,Cooldown_Reduction: 12
         ,Skill_Amplification_Percent: 8
-        ,Focused_Impact: 4
-        ,Title: "Weight of the World\n\nAttack Power +88\nCooldown Reduction +12%\nSkill Amplification +8%\nFocused_Impact 4s"
+        ,Focused_Impact: 3
+        ,Title: "Weight of the World\n\nAttack Power +91\nCooldown Reduction +12%\nSkill Amplification +8%\nFocused_Impact 3s"
         ,Rarity: "Epic"
     }
     ,{

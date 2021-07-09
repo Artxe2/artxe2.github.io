@@ -99,9 +99,20 @@ const Pistol = [
         ,Movement_Speed: 0.1
         ,Vision_Range: 2.5
         ,Life_Steal: 22
-        ,Title: "Magnum-Boa\n\nAttack Power +84\nAttack Speed +25%\nMovement Speed +0.15\nVision Range +2.5\nLife Steal +22%"
+        ,Title: "Magnum-Boa\n\nAttack Power +84\nAttack Speed +25%\nMovement Speed +0.1\nVision Range +2.5\nLife Steal +22%"
         ,Rarity: "Epic"
         ,Ammo: 6
+    }
+    ,{
+         Type: "Pistol"
+        ,Name: "Glock_48"
+        ,Attack_Power: 70
+        ,Attack_Speed: 20
+        ,Movement_Speed: 0.1
+        ,Attack_Range: 0.5
+        ,Title: "Glock 48\n\nAttack Power +70\nAttack Speed +20%\nMovement Speed +0.1\nAttack Range +0.5"
+        ,Rarity: "Epic"
+        ,Ammo: 8
     }
     ,{
          Type: "Pistol"

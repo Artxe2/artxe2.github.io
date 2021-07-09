@@ -13,7 +13,7 @@ const Isol = {
     ,Defense: 23
     ,Defense_Growth: 1.2
     ,Atk_Speed: 0.14
-    ,Movement_Speed: 3.1
+    ,Movement_Speed: 3.05 //
     ,Sight_Range: 8
     ,Attack_Range: 0.45
     ,weapons: [Pistol, AssaultRifle]
@@ -59,15 +59,15 @@ const Isol = {
             }
             const damage1 = round(shot * as * 100) / 100;
             const damage2 = round(shot * character.attack_speed * 100) / 100;
-            const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
-            const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
+            const life1 = calcHeal(character, shot * (character.life_steal / 100), as, enemy);
+            const life2 = calcHeal(character, shot * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
         }
         return '-';
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -100,7 +100,7 @@ const Isol = {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
             const damage = floor((100 + r * 50 + character.attack_power * 0.3) * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
-            const cool = 10000 / ((30 - r * 5) * (100 - character.cooldown_reduction) + 54);
+            const cool = 10000 / ((30 - r * 2) * (100 - character.cooldown_reduction) + 54);
             return "<b class='damage'>" + damage + "</b><b> _d/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
@@ -120,8 +120,8 @@ const Isol = {
                     baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1) + (wm < 13 ? 6 : 9);
                 const damage1 = round(shot * as1 * 100) / 100;
                 const damage2 = round(shot * as2 * 100) / 100;
-                const life1 = calcHeal(shot * (character.life_steal / 100), as1, enemy);
-                const life2 = calcHeal(shot * (character.life_steal / 100), as2, enemy);
+                const life1 = calcHeal(character, shot * (character.life_steal / 100), as1, enemy);
+                const life2 = calcHeal(character, shot * (character.life_steal / 100), as2, enemy);
                 return "<b> _d/s: </b><b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
             }
         }
@@ -171,7 +171,7 @@ const Isol = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
         (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let qq = data.vars.qq, dd = data.vars.dd;
@@ -179,6 +179,7 @@ const Isol = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -193,7 +194,7 @@ const Isol = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -213,7 +214,7 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         if (character.weapon.Smolder && sm < 4) {
                             sm++;
@@ -224,19 +225,19 @@ const Isol = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         if (character.weapon.Smolder && sm < 4) {
                             sm++;
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
                         damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         qq += 3;
                     } else {
                         ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         damage += ba;
-                        heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         qq++;
                     }
                 } else if (c === 'q' || c === 'Q') {
@@ -264,7 +265,7 @@ const Isol = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                             }
                         }
                     }
@@ -317,6 +318,7 @@ const Isol = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 qq: qq,
                 dd: dd
             }

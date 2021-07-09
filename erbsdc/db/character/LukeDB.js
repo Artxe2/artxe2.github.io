@@ -42,7 +42,7 @@ const Luke = {
         if (character.weapon) {
             const w = character.W_LEVEL.selectedIndex - 1;
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             let damage;
             if (character.DIV.querySelector('.luke_w_u').checked && w >= 0) {
                 const bonus = calcSkillDamage(character, enemy, 20 + w * 15, 0.2, 1);
@@ -56,7 +56,7 @@ const Luke = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -74,7 +74,7 @@ const Luke = {
                 cd = round((damage1 + damage2) * cool) / 100;
             }
             if (character.DIV.querySelector('.luke_q').checked) {
-                const heal = calcHeal(calcSkillDamage(character, enemy, 50 + q * 30, 1, 1) * 0.8, 1, enemy);
+                const heal = calcHeal(character, calcSkillDamage(character, enemy, 50 + q * 30, 1, 1) * 0.8, 1, enemy);
                 return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )</b><b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + cd + '</b>';
             }
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' + damage1 + ', ' + damage2 + " )<b> _sd/s: </b><b class='damage'>" + cd + '</b>';
@@ -146,8 +146,8 @@ const Luke = {
             const t = character.T_LEVEL.selectedIndex;
             let stack = parseInt(character.DIV.querySelector('.luke_t').value);
             stack = stack > 50 ? floor(stack / 10 - 5) : 0;
-            const min = calcHeal(character.max_hp * ((t === 2 ? 0.01 : 0) + 0.05 + t * 0.03 + stack * 0.01), 1, enemy);
-            const max = calcHeal(character.max_hp * (0.1 + t * 0.05 + stack * 0.01), 1, enemy);
+            const min = calcHeal(character, character.max_hp * ((t === 2 ? 0.01 : 0) + 0.05 + t * 0.03 + stack * 0.01), 1, enemy);
+            const max = calcHeal(character, character.max_hp * (0.1 + t * 0.05 + stack * 0.01), 1, enemy);
             return "<b> _h: </b><b class='heal'> 0 ~ " + min + ' / ' + max + '</b>';
         }
         return ' - ';
@@ -200,7 +200,7 @@ const Luke = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let qq = data.vars.qq, ww = data.vars.ww;
@@ -208,6 +208,7 @@ const Luke = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -226,7 +227,7 @@ const Luke = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -241,7 +242,7 @@ const Luke = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (w >= 0) {
                         if (ww) {
                             damage += bonus;
@@ -257,7 +258,7 @@ const Luke = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (w >= 0) {
                         if (ww) {
                             damage += bonus;
@@ -270,7 +271,7 @@ const Luke = {
                             ba = calcSkillDamage(character, enemy, 50 + q * 30, 1, 1);
                             damage += ba;
                             if (character.DIV.querySelector('.luke_q').checked) {
-                                heal += calcHeal(ba * 0.8, 1, enemy);
+                                heal += calcHeal(character, ba * 0.8, 1, enemy);
                             }
                         } else {
                             qq = true;
@@ -331,6 +332,7 @@ const Luke = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 qq: qq,
                 ww: ww,
             }

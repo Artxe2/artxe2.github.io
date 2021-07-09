@@ -41,14 +41,14 @@ const Xiukai = {
         if (character.weapon) {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -93,7 +93,7 @@ const Xiukai = {
             const stack = parseInt(character.DIV.querySelector('.xiukai_t').value);
             const damage = calcSkillDamage(character, enemy, 20 + r * 45 + stack * 0.8, 0.5, 1);
             const cost = 100 + r * 20;
-            return "<b class='damage'>" + damage * 6 + '</b> ( ' + damage + " x 6 ) <b> _cost: </b><b class='heal'>-" + cost + '</b>';
+            return "<b class='damage'>" + damage * 7 + '</b> ( ' + damage + " x 7 ) <b> _cost: </b><b class='heal'>-" + cost + '</b>';
         }
         return '-';
     }
@@ -103,8 +103,8 @@ const Xiukai = {
         if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
             if (type === 'Dagger') {
-                const damage = baseAttackDamage(character, enemy, 0, 1, 100, 1);
-                const heal = calcHeal(floor(damage + (enemy.max_hp ? enemy.max_hp *0.08 : 0)) * (character.life_steal / 100), 1, enemy);
+                const damage = baseAttackDamage(character, enemy, 0, 1, 0, 1);
+                const heal = calcHeal(character, floor(damage + (enemy.max_hp ? enemy.max_hp *0.08 : 0)) * (character.life_steal / 100), 1, enemy);
                 return "<b class='damage'>" + damage + ' ~ ' + floor(damage + calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * 0.08 : 0)) + "</b><b> _h: </b><b class='heal'>" + heal + '</b>';
             }
             if (type === 'Spear') {
@@ -120,7 +120,7 @@ const Xiukai = {
     ,T_Skill: (character, enemy) => {
         return '';
     }
-    ,T_Option: "<input type='number' class='stack xiukai_t' value='0' onchange='fixLimitNum(this, 999)'><b>Stack"
+    ,T_Option: "<input type='number' class='stack xiukai_t' value='0' onchange='fixLimitNum(this, 150)'><b>Stack"
     ,Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -158,7 +158,7 @@ const Xiukai = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let cc = data.vars.cc;
@@ -166,6 +166,7 @@ const Xiukai = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -181,7 +182,7 @@ const Xiukai = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -196,7 +197,7 @@ const Xiukai = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -207,7 +208,7 @@ const Xiukai = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 70 + q * 40, 0.5, 1);
@@ -242,7 +243,7 @@ const Xiukai = {
                                 defense_minus[x] = dm;
                             }
                         }
-                        const hit = c === 'r' ? 3 : 6;
+                        const hit = c === 'r' ? 4 : 7;
                         for (let j = 0; j < hit; j++) {
                             damage += calcSkillDamage(character, enemy, 20 + r * 45 + stack * 0.8, 0.5, 1);
                             if (enemy.defense) {
@@ -251,7 +252,7 @@ const Xiukai = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                                 } else {
                                     enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                                 }
@@ -277,9 +278,9 @@ const Xiukai = {
                             } else if (currHp < 0) {
                                 currHp = 0;
                             }
-                            ba = floor(baseAttackDamage(character, enemy, 0, 1, 100, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                            ba = floor(baseAttackDamage(character, enemy, 0, 1, 0, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
                             damage += ba;
-                            heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                            heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         } else if (type === 'Spear') {
                             damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1);
                             if (c === 'D') {
@@ -288,7 +289,7 @@ const Xiukai = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                                 }
                                 damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 1 : 1.5, 1) * 2;
                             }
@@ -326,6 +327,7 @@ const Xiukai = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 cc: cc
             }
         };
@@ -348,8 +350,8 @@ const Xiukai = {
             'q & Q: Q스킬 데미지, CC기\n' +
             'w & W: W스킬 데미지, CC기\n' +
             'e & E: E스킬 1타 데미지, CC기\n' +
-            'r: R스킬 1.5초간 데미지\n' +
-            'R\ R스킬 3초간 데미지\n' +
+            'r: R스킬 2초간 데미지\n' +
+            'R\ R스킬 4초간 데미지\n' +
             't & T: 데미지 없음\n' +
             d +
             'p & P: 트랩 데미지';

@@ -120,10 +120,10 @@ const Head = [
          Type: "Head"
         ,Name: "Mithril_Helm"
         ,Defense: 38
-        ,Attack_Speed: 12
-        ,Movement_Speed: 0.2
+        ,Attack_Speed: 17
+        ,Movement_Speed: 0.12
         ,Cooldown_Reduction: 15
-        ,Title: "Mithril Helm\n\nDefense +38\nAttack Speed +12%\nMovement Speed +0.2\nCooldown Reduction +15%"
+        ,Title: "Mithril Helm\n\nDefense +38\nAttack Speed +17%\nMovement Speed +0.12\nCooldown Reduction +15%"
         ,Rarity: "Epic"
     }
     ,{
@@ -148,12 +148,12 @@ const Head = [
     ,{
          Type: "Head"
         ,Name: "Helm_of_Banneret"
-        ,Defense: 28
+        ,Defense: 24
         ,Max_SP: 200
         ,Movement_Speed: 0.1
         ,Cooldown_Reduction: 8
         ,Skill_Damage_Reduction_Percent: 11
-        ,Title: "Helm of Banneret\n\nDefense +28\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +8%\nSkill Damage Reduction +11%"
+        ,Title: "Helm of Banneret\n\nDefense +24\nMax SP +200\nMovement Speed +0.1\nCooldown Reduction +8%\nSkill Damage Reduction +11%"
         ,Rarity: "Epic"
     }
     ,{
@@ -181,18 +181,18 @@ const Head = [
         ,Name: "Chinese_Opera_Mask"
         ,Defense: 20
         ,Max_SP: 200
-        ,Movement_Speed: 0.2
+        ,Movement_Speed: 0.18
         ,Life_Steal: 20
         ,Biotic_Infusion: true
-        ,Title: "Chinese Opera Mask\n\nDefense +20\nMax SP +200\nMovement Speed +0.2\nLife Steal +20%\nBiotic_Infusion"
+        ,Title: "Chinese Opera Mask\n\nDefense +20\nMax SP +200\nMovement Speed +0.18\nLife Steal +20%\nBiotic_Infusion"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Head"
         ,Name: "Mohawk_Headgear"
         ,Max_HP: 315
-        ,Normal_Attack_Damage_Reduction: 7
-        ,Title: "Mohawk Headgear\n\nMax HP +315\nNormal Attack Damage Reduction +7\nHealing Reduction (Normal Attacks) -45%"
+        ,Throns: true
+        ,Title: "Mohawk Headgear\n\nMax HP +315\nThrons"
         ,Rarity: "Epic"
     }
     ,{

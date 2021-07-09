@@ -100,9 +100,9 @@ const Glove = [
          Type: "Glove"
         ,Name: "Bloodwing_Knuckles"
         ,Attack_Power: 53
-        ,Max_HP: 225
+        ,Max_HP: 240
         ,Movement_Speed: 0.1
-        ,Title: "Bloodwing Knuckles\n\nAttack Power +53\nMax HP +225\nMovement Speed +0.1"
+        ,Title: "Bloodwing Knuckles\n\nAttack Power +53\nMax HP +240\nMovement Speed +0.1"
         ,Rarity: "Epic"
     }
     ,{

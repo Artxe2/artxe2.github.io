@@ -19,19 +19,19 @@ const Alex = {
     ,weapons: [TwoHandedSword, Pistol, Shuriken, Tonfa]
     ,correction: {
         TwoHandedSword: [
-            [0, -6, -8],
+            [0, -8, -11],
             [0, 0, -3]
         ],
         Pistol: [
-            [0, -6, -8],
+            [0, -8, -11],
             [0, 0, -3]
         ],
         Shuriken: [
-            [0, -6, -8],
+            [0, -8, -11],
             [0, 0, -3]
         ],
         Tonfa: [
-            [0, -6, -8],
+            [0, -8, -11],
             [0, 0, -3]
         ]
     }
@@ -52,20 +52,20 @@ const Alex = {
                 const shot = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
                 const damage1 = round(shot * as * 100) / 100;
                 const damage2 = round(shot * character.attack_speed * 100) / 100;
-                const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
-                const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
+                const life1 = calcHeal(character, shot * (character.life_steal / 100), as, enemy);
+                const life2 = calcHeal(character, shot * (character.life_steal / 100), character.attack_speed, enemy);
                 return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
             }
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -83,7 +83,7 @@ const Alex = {
         }
         return '-';
     }
-    ,Q_Option: "_ <input type='number' class='stack alex_q' value='0' onchange='fixLimitNum(this, 3)'><b>Stack</b>"
+    ,Q_Option: "_ <input type='number' class='stack alex_q' value='0' onchange='fixLimitNum(this, 4)'><b>Stack</b>"
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
@@ -181,7 +181,7 @@ const Alex = {
             'D: ' + skill + '\n' +
             'T: "데미지 없음"\n';
     }
-    ,COMBO_VARS: '{\"qq\":0,\"rr\":false}'
+    ,COMBO_VARS: '{\"qm\":0,\"qr\":0,\"rr\":false}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -191,14 +191,15 @@ const Alex = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
-        let qq = data.vars.qq, rr = data.vars.rr;
+        let qm = data.vars.qm, qr = data.vars.qr, rr = data.vars.rr;
 
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -207,14 +208,14 @@ const Alex = {
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);
-                character.attack_power = floor(character.pure_attack_power * (1 + qq * 0.04));
+                character.attack_power = floor(character.pure_attack_power * (1 + (qm + qr) * 0.04));
                 if (enemy.defense) {
                     if (enemy.character === Magnus) {
                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -229,7 +230,7 @@ const Alex = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -240,16 +241,19 @@ const Alex = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (character.isMelee) {
                             damage += calcSkillDamage(character, enemy, 30 + q * 35, 0.4, 1);
+                            if (qm < 2) {
+                                qm++;
+                            }
                         } else {
                             damage += calcSkillDamage(character, enemy, 50 + q * 40, 0.3, 1);
-                        }
-                        if (qq <= 3) {
-                            qq++;
+                            if (qr < 2) {
+                                qr++;
+                            }
                         }
                     }
                 } else if (c === 'w' || c === 'W') {
@@ -340,7 +344,9 @@ const Alex = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
-                qq: qq,
+                sws: sws,
+                qm: qm,
+                qr: qr,
                 rr: rr
             }
         };

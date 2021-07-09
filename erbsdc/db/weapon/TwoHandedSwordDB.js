@@ -74,8 +74,8 @@ const TwoHandedSword = [
         ,Name: "Arondight"
         ,Attack_Power: 50
         ,Attack_Speed: 30
-        ,Extra_Normal_Attack_Damage: 25
-        ,Title: "Arondight\n\nAttack Power +50\nAttack Speed +30%\nExtra Normal Attack Damage +25"
+        ,Extra_Normal_Attack_Damage: 30
+        ,Title: "Arondight\n\nAttack Power +50\nAttack Speed +30%\nExtra Normal Attack Damage +30"
         ,Rarity: "Epic"
     }
     ,{
@@ -83,9 +83,9 @@ const TwoHandedSword = [
         ,Name: "Excalibur"
         ,Attack_Power: 60
         ,Max_HP: 360
-        ,HP_Regen_Percent: 150
-        ,Attack_Speed: 10
-        ,Title: "Excalibur\n\nAttack Power +60\nMax HP +360\nHP Regen +150%\nAttack Speed +10%"
+        ,HP_Regen_Percent: 125
+        ,Attack_Speed: 15
+        ,Title: "Excalibur\n\nAttack Power +60\nMax HP +360\nHP Regen +125%\nAttack Speed +15%"
         ,Rarity: "Epic"
     }
     ,{

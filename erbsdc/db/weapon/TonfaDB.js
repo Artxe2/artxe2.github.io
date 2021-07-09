@@ -52,9 +52,9 @@ const Tonfa = [
          Type: "Tonfa"
         ,Name: "Plasma_Tonfa"
         ,Attack_Power: 60
-        ,Defense: 24
+        ,Defense: 21
         ,Vision_Range: 5
-        ,Title: "Plasma Tonfa\n\nAttack Power +60\nDefense +24\nVision Range +5"
+        ,Title: "Plasma Tonfa\n\nAttack Power +60\nDefense +21\nVision Range +5"
         ,Rarity: "Epic"
     }
     ,{

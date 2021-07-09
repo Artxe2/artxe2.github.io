@@ -3,7 +3,7 @@ const Rozzi = {
      Attack_Power: 26
     ,Attack_Power_Growth: 2.6
     ,Health: 685
-    ,Health_Growth: 76
+    ,Health_Growth: 56 //
     ,Health_Regen: 0.4
     ,Health_Regen_Growth: 0.02
     ,Stamina: 440
@@ -40,15 +40,15 @@ const Rozzi = {
                 baseAttackDamage(character, enemy, 0, 0.48, character.critical_strike_chance, 1);
             const damage1 = round(shot * as * 100) / 100;
             const damage2 = round(shot * character.attack_speed * 100) / 100;
-            const life1 = calcHeal(shot * (character.life_steal / 100), as, enemy);
-            const life2 = calcHeal(shot * (character.life_steal / 100), character.attack_speed, enemy);
+            const life1 = calcHeal(character, shot * (character.life_steal / 100), as, enemy);
+            const life2 = calcHeal(character, shot * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage1 + '</b> - ' + damage2 + "<b> _h/s: </b><b class='heal'>" + life1 + '</b> - ' + life2;
         }
         return '-';
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -116,7 +116,7 @@ const Rozzi = {
             const max1 = baseAttackDamage(character, enemy, 0, 0.6, 100, 1);
             const max2 = baseAttackDamage(character, enemy, 0, coe, 100, 1);
             const dps = round((damage1 + damage2) * character.attack_speed * 100) / 100;
-            const life = calcHeal((damage1 + damage2) * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, (damage1 + damage2) * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + (damage1 + damage2) + '</b> ( ' +  min1 + ', ' + min2 + ' - ' + max1 + ', ' + max2 + " ) <b> _d/s: </b><b class='damage'>" + dps + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
@@ -157,7 +157,7 @@ const Rozzi = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let ee = data.vars.ee, healBan = data.vars.healBan;
@@ -165,6 +165,7 @@ const Rozzi = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -179,7 +180,7 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -194,7 +195,7 @@ const Rozzi = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -205,7 +206,7 @@ const Rozzi = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 30 + q * 40, 0.3, 1);
@@ -255,11 +256,11 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     }
                     ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'T') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -277,11 +278,11 @@ const Rozzi = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     }
                     ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
@@ -313,6 +314,7 @@ const Rozzi = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 ee: ee,
                 healBan: healBan
             }

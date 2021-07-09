@@ -86,8 +86,8 @@ const Throws = [
          Type: "Throws"
         ,Name: "Grenade_of_Antioch"
         ,Attack_Power: 80
-        ,Extra_Normal_Attack_Damage: 55
-        ,Title: "Grenade of Antioch\n\nAttack Power +80\nExtra Normal Attack Damage +55"
+        ,Extra_Normal_Attack_Damage: 50
+        ,Title: "Grenade of Antioch\n\nAttack Power +80\nExtra Normal Attack Damage +50"
         ,Rarity: "Epic"
     }
     ,{
@@ -95,8 +95,8 @@ const Throws = [
         ,Name: "David`s_Sling"
         ,Attack_Power: 68
         ,HP_Regen_Percent: 150
-        ,Extra_Normal_Attack_Damage: 33
-        ,Title: "David`s Sling\n\nAttack Power +68\nHP Regen +150%\nExtra Normal Attack Damage +33"
+        ,Extra_Normal_Attack_Damage: 36
+        ,Title: "David`s Sling\n\nAttack Power +68\nHP Regen +150%\nExtra Normal Attack Damage +36"
         ,Rarity: "Epic"
     }
     ,{
@@ -111,16 +111,16 @@ const Throws = [
          Type: "Throws"
         ,Name: "High_Explosive_Grenade"
         ,Attack_Power: 56
-        ,Extra_Normal_Attack_Damage: 60
-        ,Title: "High Explosive Grenade\n\nAttack Power +56\nExtra Normal Attack Damage +60"
+        ,Extra_Normal_Attack_Damage: 50
+        ,Title: "High Explosive Grenade\n\nAttack Power +56\nExtra Normal Attack Damage +50"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Throws"
         ,Name: "Fireball"
         ,Attack_Power: 18
-        ,Extra_Skill_Damage_per_level: 3
-        ,Title: "Fireball\n\nAttack Power +18\nSkill Amplification per level +3"
+        ,Extra_Skill_Damage_per_level: 3.5
+        ,Title: "Fireball\n\nAttack Power +18\nSkill Amplification per level +3.5"
         ,Rarity: "Epic"
     }
     ,{
@@ -134,9 +134,9 @@ const Throws = [
     ,{
          Type: "Throws"
         ,Name: "Dyadic_Prism"
-        ,Attack_Power: 108
-        ,Attack_Speed: 25
-        ,Title: "Dyadic Prism\n\nAttack Power +108\nAttack Damage +25%"
+        ,Attack_Power: 102
+        ,Attack_Speed: 33
+        ,Title: "Dyadic Prism\n\nAttack Power +102\nAttack Damage +33%"
         ,Rarity: "Legendary"
     }
 ];

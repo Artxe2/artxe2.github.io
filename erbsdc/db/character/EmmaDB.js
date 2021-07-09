@@ -37,14 +37,14 @@ const Emma = {
         if (character.weapon) {
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const damage = round(ba * character.attack_speed * 100) / 100;
-            const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+            const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -52,7 +52,7 @@ const Emma = {
         if (character.weapon && q >= 0) {
             const e = character.E_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 40 + q * 40, 0.6, 1);
-            const heal = calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
+            const heal = calcHeal(character, (60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / (5.5 * (100 - character.cooldown_reduction) + 13);
             return "<b class='damage'>" + damage + ' - ' + damage * 2 + '</b> ( ' + damage + " x 2 ) <b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * 2 * cool) / 100 + '</b>';
         }
@@ -64,7 +64,7 @@ const Emma = {
         if (character.weapon && w >= 0) {
             const e = character.E_LEVEL.selectedIndex;
             const damage = calcSkillDamage(character, enemy, 60 + w * 60, 0.75, 1);
-            const heal = calcHeal((60 + w * 10) * (0.12 + e * 0.02), 1, enemy);
+            const heal = calcHeal(character, (60 + w * 10) * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / ((11 - w * 1) * (100 - character.cooldown_reduction) - 179);
             return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + heal + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
@@ -74,7 +74,7 @@ const Emma = {
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
-            const heal = calcHeal((70 + e * 10) * (0.12 + e * 0.02), 1, enemy);
+            const heal = calcHeal(character, (70 + e * 10) * (0.12 + e * 0.02), 1, enemy);
             return "<b> _h: </b><b class='heal'>" + heal + '</b>'
         }
         return '-';
@@ -86,7 +86,7 @@ const Emma = {
             const e = character.E_LEVEL.selectedIndex;
             const min = calcSkillDamage(character, enemy, 125 + r * 25, 0.45, 1);
             const max = calcSkillDamage(character, enemy, 200 + r * 25, 0.75, 1);
-            const heal = calcHeal(100 * (0.12 + e * 0.02), 1, enemy);
+            const heal = calcHeal(character, 100 * (0.12 + e * 0.02), 1, enemy);
             const cool = 10000 / ((24 - r * 3) * (100 - character.cooldown_reduction));
             return "<b class='damage'>" + min + "</b><b> / </b><b class='damage'>" + max + ' - ' + max * 2 + '</b> ( ' + max + " x 2 )<b> _h: </b><b class='heal'>" + heal + ' ~ ' + heal * 2 + "</b><b> _sd/s: </b><b class='damage'>" + round(max * cool) / 100 + '</b>';
         }
@@ -157,7 +157,7 @@ const Emma = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
 
@@ -169,6 +169,7 @@ const Emma = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -183,7 +184,7 @@ const Emma = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -198,7 +199,7 @@ const Emma = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
@@ -209,11 +210,11 @@ const Emma = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q') {
                     if (q >= 0) {
                         damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.6, 1);
-                        heal += calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
+                        heal += calcHeal(character, (60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'Q') {
                     if (q >= 0) {
@@ -223,29 +224,29 @@ const Emma = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         damage += calcSkillDamage(character, enemy, 40 + q * 40, 0.6, 1);
-                        heal += calcHeal((60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
+                        heal += calcHeal(character, (60 + q * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
                         damage += calcSkillDamage(character, enemy, 60 + w * 60, 0.75, 1);
-                        heal += calcHeal((60 + w * 10) * (0.12 + e * 0.02), 1, enemy);
+                        heal += calcHeal(character, (60 + w * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
-                        heal += calcHeal((70 + e * 10) * (0.12 + e * 0.02), 1, enemy);
+                        heal += calcHeal(character, (70 + e * 10) * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'r') {
                     if (r >= 0) {
                         damage += calcSkillDamage(character, enemy, 125 + r * 25, 0.45, 1);
-                        heal += calcHeal(100 * (0.12 + e * 0.02), 1, enemy);
+                        heal += calcHeal(character, 100 * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'R') {
                     if (r >= 0) {
                         damage += calcSkillDamage(character, enemy, 200 + r * 25, 0.75, 1);
-                        heal += calcHeal(100 * (0.12 + e * 0.02), 1, enemy);
+                        heal += calcHeal(character, 100 * (0.12 + e * 0.02), 1, enemy);
                     }
                 } else if (c === 'd') {
                     if (wm > 5) {
@@ -269,7 +270,7 @@ const Emma = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, character.max_sp * (0.03 + t * 0.005), 0, 1);
                 } else if (c === 'T') {
                     if (character.weapon.Smolder && sm < 4) {
@@ -281,7 +282,7 @@ const Emma = {
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     damage += calcSkillDamage(character, enemy, character.max_sp * (0.03 + t * 0.005), 0, 1);
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
@@ -313,7 +314,8 @@ const Emma = {
             vars: {
                 fi: fi,
                 sm: sm,
-                sms: sms, }
+                sms: sms,
+                sws: sws, }
         };
     }
     ,COMBO_Option: 'qwaeDddRaaQrwa'

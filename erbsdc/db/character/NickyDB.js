@@ -1,37 +1,38 @@
 'use strict';
-const Magnus = {
-     Attack_Power: 32
-    ,Attack_Power_Growth: 2.5
-    ,Health: 770
-    ,Health_Growth: 76
-    ,Health_Regen: 1
-    ,Health_Regen_Growth: 0.05
+const Nicky = {
+     Attack_Power: 24
+    ,Attack_Power_Growth: 2.2
+    ,Health: 660
+    ,Health_Growth: 67
+    ,Health_Regen: 0.7
+    ,Health_Regen_Growth: 0.06 //
     ,Stamina: 410
-    ,Stamina_Growth: 14
+    ,Stamina_Growth: 22
     ,Stamina_Regen: 1.9
     ,Stamina_Regen_Growth: 0.06
-    ,Defense: 25
-    ,Defense_Growth: 1.5
-    ,Atk_Speed: 0.16 //
-    ,Movement_Speed: 3.25
+    ,Defense: 20
+    ,Defense_Growth: 2
+    ,Atk_Speed: 0.11
+    ,Movement_Speed: 3.1 //
     ,Sight_Range: 8
-    ,Attack_Range: 0.5
-    ,weapons: [Hammer, Bat]
+    ,Attack_Range: 0.4
+    ,weapons: [Glove]
     ,correction: {
-        Hammer: [
-            [0, -5, -9],
-            [0, 0, -3]
-        ],
-        Bat: [
-            [0, -3, -6],
-            [0, 0, -3]
+        Glove: [
+            [0, 0, 0],
+            [0, 0, 0]
         ]
     }
     ,Base_Attack: (character, enemy) => {
         if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
             const damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             const min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
             const max = baseAttackDamage(character, enemy, 0, 1, 100, 1);
+            if (character.DIV.querySelector('.nicky_t').checked) {
+                const bonus = calcTrueDamage(character, enemy, 10 + t * 20);
+                return "<b class='damage'>" + (damage + bonus) + '</b> ( ' +  min + ', ' + bonus + ' - ' + max + ', ' + bonus + ' )';
+            }
             return "<b class='damage'>" + damage + '</b> ( ' +  min + ' - ' + max + ' )';
         }
         return '-';
@@ -39,9 +40,16 @@ const Magnus = {
     ,Base_Attack_Option: ''
     ,DPS: (character, enemy) => {
         if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
             const ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
-            const damage = round(ba * character.attack_speed * 100) / 100;
+            let damage;
             const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
+            if (character.DIV.querySelector('.nicky_t').checked) {
+                const bonus = calcTrueDamage(character, enemy, 10 + t * 20);
+                damage = round((ba + bonus) * character.attack_speed * 100) / 100;
+            } else {
+                damage = round(ba * character.attack_speed * 100) / 100;
+            }
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
         return '-';
@@ -54,9 +62,11 @@ const Magnus = {
     ,Q_Skill: (character, enemy) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         if (character.weapon && q >= 0) {
-            const damage = calcSkillDamage(character, enemy, 40 + q * 60, 0.6, 1);
-            const cool = 10000 / ((18 - q * 2.5) * (100 - character.cooldown_reduction) + 80);
-            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            const min = calcSkillDamage(character, enemy, 30 + q * 25, 0.4, 1);
+            const max = calcSkillDamage(character, enemy, 60 + q * 50, 0.8, 1);
+            const damage = calcSkillDamage(character, enemy, 25 + q * 25, 1, 1);
+            const cool = 10000 / ((9 - q) * (100 - character.cooldown_reduction) + 100);
+            return "<b class='damage'>" + (max + damage) + '</b> ( ' + min + ', ' + damage + ' ~ ' + max + ', ' + damage  + " )<b> _sd/s: </b><b class='damage'>" + round((max + damage) * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -64,9 +74,9 @@ const Magnus = {
     ,W_Skill: (character, enemy) => {
         const w = character.W_LEVEL.selectedIndex - 1;
         if (character.weapon && w >= 0) {
-            const damage = calcSkillDamage(character, enemy, floor(1.5 + w * 0.5) * 10 + character.defense * 0.2, 0.3, 1);
-            const cool = 10000 / (16 * (100 - character.cooldown_reduction) + 400 - floor(6 + w * 0.5) * 100);
-            return "<b class='damage'>" + damage * floor(6 + w * 0.5) + '</b> ( ' + damage + ' x ' + floor(6 + w * 0.5) + " )<b> _sd/s: </b><b class='damage'>" + round((damage * floor(6 + w * 0.5)) * cool) / 100 + '</b>';
+            const damage = calcSkillDamage(character, enemy, 20 + w * 20, 0.2, 1);
+            const cool = 10000 / ((9 - w * 0.5) * (100 - character.cooldown_reduction));
+            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -74,9 +84,10 @@ const Magnus = {
     ,E_Skill: (character, enemy) => {
         const e = character.E_LEVEL.selectedIndex - 1;
         if (character.weapon && e >= 0) {
-            const damage = calcSkillDamage(character, enemy, 60 + e * 55, 0.4, 1);
-            const cool = 10000 / ((13 - e * 1) * (100 - character.cooldown_reduction) + 20);
-            return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
+            const min = calcSkillDamage(character, enemy, 60 + e * 50, 0.4, 1);
+            const max = calcSkillDamage(character, enemy, 90 + e * 75, 0.4, 1);
+            const cool = 10000 / ((14 - e * 1.5) * (100 - character.cooldown_reduction));
+            return "<b class='damage'>" + min + ', ' + max + "</b><b> _sd/s: </b><b class='damage'>" + round(min * cool) / 100 + '</b>';
         }
         return '-';
     }
@@ -84,32 +95,41 @@ const Magnus = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const damage = calcSkillDamage(character, enemy, 200 + r * 150, 2, 1);
+            const damage = calcSkillDamage(character, enemy, 150 + r * 100, 0.7, 1);
             return "<b class='damage'>" + damage + '</b>';
         }
         return '-';
     }
     ,R_Option: ''
     ,D_Skill: (character, enemy) => {
-        if (character.weapon && character.WEAPON_MASTERY.selectedIndex > 5) {
+        const wm = character.WEAPON_MASTERY.selectedIndex;
+        if (character.weapon && wm > 5) {
             const type = character.weapon.Type;
-            if (type === 'Hammer') {
-                return "<b class='damage'>" + calcSkillDamage(character, enemy, character.WEAPON_MASTERY.selectedIndex < 13 ? 150 + character.defense : 300 + character.defense * 2, 0, 1) + '</b>';
-            }
-            if (type === 'Bat') {
-                return "<b class='damage'>" + calcSkillDamage(character, enemy, 0, character.WEAPON_MASTERY.selectedIndex < 13 ? 2 : 3, 1) + '</b>';
+            if (type === 'Glove') {
+                const t = character.T_LEVEL.selectedIndex;
+                const coe = wm < 13 ? 1.4 : 2;
+                const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
+                const bonus2 = character.DIV.querySelector('.nicky_t').checked ?
+                    calcTrueDamage(character, enemy, 10 + t * 20) : 0;
+                const damage = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus + bonus2;
+                const life = calcHeal(character, damage * (character.life_steal / 100), 1, enemy);
+                return "<b class='damage'>" + damage + "</b><b> _h: </b><b class='heal'>" + life + '</b>';
             }
         }
         return '-';
     }
     ,D_Option: (character, enemy) => {
-        return !character.weapon || character.weapon.Type !== 'Hammer' ? '' :
-            "<b> _use</b><input type='checkbox' class='hammer_d' onchange='updateDisplay()'>";
-    }
-    ,T_Skill: (character, enemy) => {
         return '';
     }
-    ,T_Option: "_LostHP: <input type='number' class='stack magnus_t' value='0' onchange='fixLimitNum(this, 100)'><b>%</b>"
+    ,T_Skill: (character, enemy) => {
+        if (character.weapon) {
+            const t = character.T_LEVEL.selectedIndex;
+            const damage = calcTrueDamage(character, enemy, 10 + t * 20);
+            return "<b class='damage'>" + damage + '</b>';
+        }
+        return '-';
+    }
+    ,T_Option: "<b> _use</b><input type='checkbox' class='nicky_t' onchange='updateDisplay()'>"
     ,Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -119,25 +139,23 @@ const Magnus = {
         }
         const weapon = character.weapon.Type;
         const type =
-            weapon === 'Hammer' ? '망치' :
-            weapon === 'Bat' ? '방망이' :
+            weapon === 'Glove' ? '글러브' :
             '';
         const skill =
-            weapon === 'Hammer' ? '"스킬 데미지" _use "스킬 사용"' :
-            weapon === 'Bat' ? '"스킬 데미지"' :
+            weapon === 'Glove' ? '"스킬 데미지" _h: "스킬 흡혈량"' :
             '';
-        return '매그너스 ( ' + type + ' )\n' +
+        return '니키 ( ' + type + ' )\n' +
             'A: "평균 데미지" ( "평타 데미지" - "치명타 데미지" )\n' +
             'DPS: "초당 데미지" _h/s: "초당 흡혈량"\n' +
             'HPS: "초당 회복량"\n' +
-            'Q: "스킬 데미지"\n' +
-            'W: "합산 데미지" ( "틱당 데미지" x "타수" )\n' +
-            'E: "스킬 데미지"\n' +
+            'Q: "합산 데미지" ( "최소 데미지", "2타 데미지" ~ "최대 데미지", "2타 데미지" )\n' +
+            'W: "스킬 데미지"\n' +
+            'E: "스킬 데미지" - "분노 데미지"\n' +
             'R: "스킬 데미지"\n' +
             'D: ' + skill + '\n' +
-            'T: _"잃은 체력"\n';
+            'T: "추가 데미지" _use "스킬 사용"\n';
     }
-    ,COMBO_VARS: '{}'
+    ,COMBO_VARS: '{\"qq\":false}'
     ,COMBO: (character, enemy, data, combo, index, de_bonus, de_percent, defense_bonus, defense_percent, defense_minus) => {
         const q = character.Q_LEVEL.selectedIndex - 1;
         const w = character.W_LEVEL.selectedIndex - 1;
@@ -151,6 +169,7 @@ const Magnus = {
         let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
+        let qq = data.vars.qq;
 
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
@@ -175,7 +194,7 @@ const Magnus = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
+                if (c === 'a' || c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -183,60 +202,60 @@ const Magnus = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'A') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
-                        damage += calcSkillDamage(character, enemy, 40 + q * 60, 0.6, 1);
+                        if (qq) {
+                            damage += calcSkillDamage(character, enemy, 25 + q * 25, 1, 1);
+                        } else if (c == 'q') {
+                            damage += calcSkillDamage(character, enemy, 30 + q * 25, 0.4, 1);
+                        } else {
+                            damage += calcSkillDamage(character, enemy, 60 + q * 50, 0.8, 1);
+                        }
+                        qq = !qq;
                     }
                 } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
-                        const hit = floor(6 + w * 0.5);
-                        for (let j = 0; j < hit; j++) {
-                            damage += calcSkillDamage(character, enemy, floor(1.5 + w * 0.5) * 10 + character.defense * 0.2, 0.3, 1);
-                            if (enemy.character === Magnus) {
-                                let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                                if (lost < 0) {
-                                    lost = 0;
-                                }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
-                            }
-                        }
+                        damage += calcSkillDamage(character, enemy, 20 + w * 20, 0.2, 1);
                     }
                 } else if (c === 'e' || c === 'E') {
                     if (e >= 0) {
-                        damage += calcSkillDamage(character, enemy, 60 + e * 55, 0.4, 1);
+                        damage += calcSkillDamage(character, enemy, c == 'e' ? 60 + e * 50 : 90 + e * 75, 0.4, 1);
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        damage += calcSkillDamage(character, enemy, 200 + r * 150, 2, 1);
+                        damage += calcSkillDamage(character, enemy, 150 + r * 100, 0.7, 1);
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
-                        if (type === 'Hammer') {
-                            const dm = wm < 13 ? -0.2 : -0.35;
-                            for (let x = index + 1; x <= index + (wm < 13 ? 10 : 14) && x < defense_minus.length; x++) {
-                                defense_minus[x] = dm;
+                        if (type === 'Glove') {
+                            if (character.weapon.Smolder && sm < 4) {
+                                sm++;
+                                sms = 8;
                             }
-                            damage +=  calcSkillDamage(character, enemy, wm < 13 ? 150 + character.defense : 300 + character.defense * 2, 0, 1);
-                        } else if (type === 'Bat') {
-                            damage += calcSkillDamage(character, enemy, 0, wm < 13 ? 2 : 3, 1);
+                            if (fi === character.weapon.Focused_Impact * 2) {
+                                fi--;
+                            }
+                            const coe = wm < 13 ? 1.4 : 2;
+                            const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
+                            ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
+                            heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                            damage += ba;
                         }
                     }
                 } else if (c === 't' || c === 'T') {
-                    damage += calcSkillDamage(character, enemy, 25 + t * 35, 0.3, 1);
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
+                    if (fi === character.weapon.Focused_Impact * 2) {
+                        fi--;
+                    }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100, 1);
+                    damage += ba + calcTrueDamage(character, 10 + t * 20);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {
                         damage += floor(character.trap.Trap_Damage * (1.04 + character.TRAP_MASTERY.selectedIndex * 0.04));
@@ -269,10 +288,11 @@ const Magnus = {
                 sm: sm,
                 sms: sms,
                 sws: sws,
+                qq: qq
             }
         };
     }
-    ,COMBO_Option: 'qeadaraq'
+    ,COMBO_Option: 'QaqwEeaaEqaq'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
@@ -282,16 +302,18 @@ const Magnus = {
         }
         const weapon = character.weapon.Type;
         const d =
-            weapon === 'Hammer' ? 'd & D: 무스 데미지\n' :
-            weapon === 'Bat' ? 'd & D: 무스 데미지\n' :
+            weapon === 'Glove' ? 'd & D: 무스 데미지\n' :
             '';
         return 'a: 기본공격 데미지\n' +
             'A: 치명타 데미지\n' +
-            'q & Q: Q스킬 데미지\n' +
+            'q: Q스킬 최소 데미지 / 2타 데미지\n' +
+            'q: Q스킬 최대 데미지 / 2타 데미지\n' +
             'w & W: W스킬 데미지\n' +
-            'e & E: E스킬 데미지\n' +
+            'e: E스킬 데미지\n' +
+            'E: E스킬 강화 데미지\n' +
             'r & R: R스킬 데미지\n' +
-            't && T: 데미지 없음\n' +
+            't: 패시브 데미지\n' +
+            'T: 패시브 치명타 데미지\n' +
             d +
             'p & P: 트랩 데미지';
     }

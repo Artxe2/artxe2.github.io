@@ -92,8 +92,8 @@ const SniperRifle = [
         ,Name: "The_Deadly_Ray"
         ,Attack_Power: 100
         ,Vision_Range: 2.5
-        ,Skill_Amplification_Percent: 33
-        ,Title: "The Deadly Ray\n\nAttack Power +100\nVision Range +2.5\nSkill Amplification +33%"
+        ,Skill_Amplification_Percent: 28
+        ,Title: "The Deadly Ray\n\nAttack Power +100\nVision Range +2.5\nSkill Amplification +28%"
         ,Rarity: "Legendary"
         ,Ammo: 2
     }

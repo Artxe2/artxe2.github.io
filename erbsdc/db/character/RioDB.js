@@ -47,14 +47,14 @@ const Rio = {
                 const max = rioAttackDamage(character, enemy, 0, (1.04 + q * 0.04) * 1.25, true);
                 const ba = (min * 3 + max) / 4;
                 const damage = round(ba * character.attack_speed * 100) / 100;
-                const life = calcHeal(ba * (character.life_steal / 100), character.attack_speed, enemy);
+                const life = calcHeal(character, ba * (character.life_steal / 100), character.attack_speed, enemy);
                 return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
             } else {
                 const ba = rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, true) +
                     rioAttackDamage(character, enemy, 0, 0.4 + q * 0.03, false);
                 const damage1 = round(ba * character.attack_speed * 100) / 100;
                 const damage2 = round(ba * calcAttackSpeed(character, 10 + q * 5) * 100) / 100;
-                const life = calcHeal(ba * (character.life_steal / 100), calcAttackSpeed(character, 10 + q * 5), enemy);
+                const life = calcHeal(character, ba * (character.life_steal / 100), calcAttackSpeed(character, 10 + q * 5), enemy);
                 return damage1 + " - <b class='damage'>" + damage2 + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
             }
         }
@@ -62,7 +62,7 @@ const Rio = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -74,7 +74,7 @@ const Rio = {
         if (character.weapon && w >= 0) {
             if (character.DIV.querySelector('.rio_q').checked) {
                 const damage = calcSkillDamage(character, enemy, 45 + w * 45, 0.55, 1);
-                const cool = 10000 / ((10 - w) * (100 - character.cooldown_reduction) * 0.3);
+                const cool = 10000 / ((10 - w) * (100 - character.cooldown_reduction) * 0.5);
                 return "<b class='damage'>" + damage + "</b><b> _sd/s: </b><b class='damage'>" + round(damage * cool) / 100 + '</b>';
             } else {
                 const damage1 = calcSkillDamage(character, enemy, 30 + w * 20, 0.3, 1);
@@ -183,7 +183,7 @@ const Rio = {
         const wm = character.WEAPON_MASTERY.selectedIndex;
         const et = enemy.T_LEVEL.selectedIndex;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         let qq = data.vars.qq;
@@ -191,6 +191,7 @@ const Rio = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -205,7 +206,7 @@ const Rio = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -220,12 +221,12 @@ const Rio = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         ba += rioAttackDamage(character, enemy, 0, 0.42 + q * 0.03, false);
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'A') {
                     if (qq) {
                         let lost = enemy.max_hp ? floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp) : 0;
@@ -240,12 +241,12 @@ const Rio = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         ba += rioAttackDamage(character, enemy, 0, 0.42 + q * 0.03, false);
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     qq = !qq;
                 } else if (c === 'w') {
@@ -268,7 +269,7 @@ const Rio = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                                 }
                                 damage += calcSkillDamage(character, enemy, (30 + w * 20) * 0.5, 0.3 * 0.5, 1);
                             }
@@ -285,7 +286,7 @@ const Rio = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                             }
                             damage += calcSkillDamage(character, enemy, 40 + e * 10, 0.3, 1);
                         }
@@ -302,7 +303,7 @@ const Rio = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                                 }
                             }
                         }
@@ -319,7 +320,7 @@ const Rio = {
                                     if (lost < 0) {
                                         lost = 0;
                                     }
-                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                    enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                                 }
                             }
                             damage += calcSkillDamage(character, enemy, 150 + r * 50, 0.6, 1);
@@ -368,6 +369,7 @@ const Rio = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 qq: qq
             }
         };

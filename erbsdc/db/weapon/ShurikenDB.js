@@ -173,8 +173,8 @@ const Shuriken = [
          Type: "Shuriken"
         ,Name: "Wind_and_Fire_Wheels"
         ,Attack_Power: 55
-        ,Skill_Amplification_Percent: 23
-        ,Title: "Wind and Fire Wheels\n\nAttack Power +55\nSkill Amplification +23%"
+        ,Skill_Amplification_Percent: 25
+        ,Title: "Wind and Fire Wheels\n\nAttack Power +55\nSkill Amplification +25%"
         ,Rarity: "Epic"
     }
     ,{
@@ -195,11 +195,11 @@ const Shuriken = [
     ,{
          Type: "Shuriken"
         ,Name: "Petal_Torrent"
-        ,Attack_Power: 70
+        ,Attack_Power: 67
         ,Critical_Damage: 25
         ,Extra_Normal_Attack_Damage: 130
-        ,Extra_Skill_Damage: 25
-        ,Title: "Petal Torrent\n\nAttack Power +70\nCritical Damage +25%\nExtra Normal Attack Damage +130\nExtra Skill Damage +25"
+        ,Extra_Skill_Damage: 20
+        ,Title: "Petal Torrent\n\nAttack Power +67\nCritical Damage +25%\nExtra Normal Attack Damage +130\nExtra Skill Damage +20"
         ,Rarity: "Legendary"
     }
 ];

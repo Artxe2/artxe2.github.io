@@ -96,9 +96,9 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Sword_Stopper"
-        ,Defense: 36
-        ,Normal_Attack_Damage_Reduction: 12
-        ,Title: "Sword Stopper\n\nDefense +36\nNormal Attack Damage Reduction +12\nHealing Reduction (Normal Attacks) -45%"
+        ,Defense: 33
+        ,Normal_Attack_Damage_Reduction: 9
+        ,Title: "Sword Stopper\n\nDefense +33\nNormal Attack Damage Reduction +9\nHealing Reduction (Normal Attacks) -45%"
         ,Rarity: "Epic"
     }
     ,{
@@ -132,12 +132,11 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Creed_of_the_Knight"
-        ,Attack_Power: 25
+        ,Attack_Power: 22
         ,Defense: 25
         ,HP_Regen: 1.2
-        ,Movement_Speed: -0.03
         ,Critical_Damage: 25
-        ,Title: "Creed pf the Knight\n\nAttack Power +25\nDefense +25\nHP Regen +1.2\nMovement Speed -0.03\nCritical Damage +25%"
+        ,Title: "Creed pf the Knight\n\nAttack Power +22\nDefense +25\nHP Regen +1.2\nCritical Damage +25%"
         ,Rarity: "Epic"
     }
     ,{
@@ -152,20 +151,20 @@ const Arm = [
     ,{
          Type: "Arm"
         ,Name: "Cube_Watch"
-        ,Defense: 20
+        ,Defense: 25
         ,Attack_Speed: 50
         ,Cooldown_Reduction: 10
-        ,Title: "Cube Watch\n\nDefense +20\nAttack Speed +50%\nCooldown Reduction +10%"
+        ,Title: "Cube Watch\n\nDefense +25\nAttack Speed +50%\nCooldown Reduction +10%"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Arm"
         ,Name: "Burnished_Aegis"
         ,Attack_Power: 5
-        ,Defense: 20
+        ,Defense:15
         ,Max_HP: 300
-        ,Max_SP: 250
-        ,Title: "Burnished Aegis\n\nAttack Power +5\nDefense +20\nMax HP +300\nMax SP +250"
+        ,Max_SP: 300
+        ,Title: "Burnished Aegis\n\nAttack Power +5\nDefense +15\nMax HP +300\nMax SP +300"
         ,Rarity: "Epic"
     }
     ,{
@@ -176,16 +175,25 @@ const Arm = [
        ,Title: "Tindalos Band\n\nCooldown Reduction +12%\nExtra Skill Damage +12%"
        ,Rarity: "Epic"
    }
+   ,{
+       Type: "Arm"
+      ,Name: "Nightingale"
+      ,Attack_Power: 10
+      ,Max_HP: 120
+      ,Healing_Received_Increase: 20
+      ,Title: "Nightingale\n\nAttack Power +10\nMax HP +120\nHealing Received Increase +20%"
+      ,Rarity: "Epic"
+  }
     ,{
          Type: "Arm"
         ,Name: "Bracelet_of_Skadi"
         ,Max_HP: 100
         ,Max_HP_per_level: 10
         ,Max_SP: 250
-        ,HP_Regen: 1.5
-        ,SP_Regen: 1.5
+        ,HP_Regen: 1.2
+        ,SP_Regen: 1.2
         ,Extra_Skill_Damage: 27
-        ,Title: "Bracelet of Skadi\n\nMax HP +100\nMax HP per level +10\nMax SP +250\nHP Regen +1.5\nSP Regen +1.5\nExtra Skill Damage +27"
+        ,Title: "Bracelet of Skadi\n\nMax HP +100\nMax HP per level +10\nMax SP +250\nHP Regen +1.2\nSP Regen +1.2\nExtra Skill Damage +27"
         ,Rarity: "Legendary"
     }
     ,{

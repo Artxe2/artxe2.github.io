@@ -71,7 +71,7 @@ const Leg = [
         ,Attack_Speed: 2
         ,Movement_Speed: 0.2
         ,Title: "Boots\n\nHP Regen +0.6\nAttack Speed +2%\nMovement Speed +0.2"
-        ,Rarity: "Rare"
+        ,Rarity: "Uncommon"
     }
     ,{
          Type: "Leg"
@@ -95,27 +95,27 @@ const Leg = [
         ,Name: "Killer_Heels"
         ,Attack_Power: 5
         ,SP_Regen: 0.8
-        ,Movement_Speed: 0.18
+        ,Movement_Speed: 0.22
         ,Critical_Strike_Chance: 10
-        ,Title: "Killer Heels\n\nAttack Power +5\nSP Regen +0.8\nMovement Speed +0.18\nCritical Strike Chance +10%"
+        ,Title: "Killer Heels\n\nAttack Power +5\nSP Regen +0.8\nMovement Speed +0.22\nCritical Strike Chance +10%"
         ,Rarity: "Rare"
     }
     ,{
          Type: "Leg"
         ,Name: "Feather_Boots"
         ,HP_Regen: 1
-        ,Attack_Speed: 35
+        ,Attack_Speed: 30
         ,Movement_Speed: 0.35
-        ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +35%\nMovement Speed +0.35"
+        ,Title: "Feather Boots\n\nHP Regen +1\nAttack Speed +30%\nMovement Speed +0.35"
         ,Rarity: "Epic"
     }
     ,{
          Type: "Leg"
         ,Name: "Maverick_Runner"
         ,Attack_Power: 10
-        ,Movement_Speed: 0.33
+        ,Movement_Speed: 0.35
         ,Tenacity: true
-        ,Title: "Maverick Runner\n\nAttack Power 10\nMovement Speed +0.33\nTenacity"
+        ,Title: "Maverick Runner\n\nAttack Power 10\nMovement Speed +0.35\nTenacity"
         ,Rarity: "Epic"
     }
     ,{
@@ -140,12 +140,12 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Bucephalus"
-        ,Attack_Power: 10
+        ,Attack_Power: 5
         ,Defense: 10
         ,SP_Regen: 1
         ,Movement_Speed: 0.3
-        ,Critical_Strike_Chance: 15
-        ,Title: "Bucephalus\n\nAttack Power +10\nDefense +10\nSP Regen +1\nMovement Speed +0.3\nCriticall Strike Chance +15%"
+        ,Critical_Strike_Chance: 18
+        ,Title: "Bucephalus\n\nAttack Power +5\nDefense +10\nSP Regen +1\nMovement Speed +0.3\nCriticall Strike Chance +18%"
         ,Rarity: "Epic"
     }
     ,{
@@ -179,13 +179,13 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Glacial_Shoes"
-        ,HP_Regen: 1.5
-        ,SP_Regen: 1.5
+        ,HP_Regen: 1.2
+        ,SP_Regen: 1.2
         ,SP_Regen_Percent: 60
         ,Movement_Speed: 0.25
         ,Movement_speed_while_not_in_combat: 0.3
         ,Extra_Skill_Damage: 22
-        ,Title: "Glacial Shoes\n\nHP Regen +1.5\nSP Regen +1.5\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.3\nExtra Skill Damage +22"
+        ,Title: "Glacial Shoes\n\nHP Regen +1.2\nSP Regen +1.2\n SP Regen +60%\nMovement Speed +0.25\nMovement speed while not in combat +0.3\nExtra Skill Damage +22"
         ,Rarity: "Legendary"
     }
     ,{
@@ -201,12 +201,11 @@ const Leg = [
     ,{
          Type: "Leg"
         ,Name: "Red_Shoes"
-        ,Attack_Power: 5
+        ,Attack_Power: 20
         ,SP_Regen: 1
-        ,Movement_Speed: 0.35
-        ,Critical_Strike_Chance: 15
+        ,Movement_Speed: 0.38
         ,Life_Steal: 15
-        ,Title: "Red Shoes\n\nAttack Power +5\nSP Regen +1\n Movement Speed +0.35\nCritical Strike Chance +15%\nLife Steal +15%"
+        ,Title: "Red Shoes\n\nAttack Power +20\nSP Regen +1\n Movement Speed +0.38\nLife Steal +15%"
         ,Rarity: "Legendary"
     }
 ];

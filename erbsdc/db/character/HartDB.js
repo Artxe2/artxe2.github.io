@@ -1,6 +1,6 @@
 'use strict';
 const Hart = {
-     Attack_Power: 22
+     Attack_Power: 24
     ,Attack_Power_Growth: 3.3
     ,Health: 660
     ,Health_Growth: 60
@@ -50,14 +50,14 @@ const Hart = {
                 const ba2 = baseAttackDamage(character, enemy, 0, 0.15, character.critical_strike_chance, 1);
                 if (character.DIV.querySelector('.hart_tt').checked) {
                     damage = round((ba1 + ba2 + ba2) * character.attack_speed * 100) / 100;
-                    life = calcHeal((ba1 + ba2 + ba2) * (character.life_steal / 100), character.attack_speed, enemy);
+                    life = calcHeal(character, (ba1 + ba2 + ba2) * (character.life_steal / 100), character.attack_speed, enemy);
                 } else {
                     damage = round((ba1 + ba2) * character.attack_speed * 100) / 100;
-                    life = calcHeal((ba1 + ba2) * (character.life_steal / 100), character.attack_speed, enemy);
+                    life = calcHeal(character, (ba1 + ba2) * (character.life_steal / 100), character.attack_speed, enemy);
                 }
             } else {
                 damage = round(ba1 * character.attack_speed * 100) / 100;
-                life = calcHeal(ba1 * (character.life_steal / 100), character.attack_speed, enemy);
+                life = calcHeal(character, ba1 * (character.life_steal / 100), character.attack_speed, enemy);
             }
             return "<b class='damage'>" + damage + "</b><b> _h/s: </b><b class='heal'>" + life + '</b>';
         }
@@ -65,7 +65,7 @@ const Hart = {
     }
     ,DPS_Option: ''
     ,HPS: (character, enemy) => {
-        return "<b class='heal'>" + calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        return "<b class='heal'>" + calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy) + '</b>';
     }
     ,Q_Skill: (character, enemy) => {
@@ -111,9 +111,9 @@ const Hart = {
     ,R_Skill: (character, enemy) => {
         const r = character.R_LEVEL.selectedIndex - 1;
         if (character.weapon && r >= 0) {
-            const regen = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+            const regen = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
                 (character.food ? character.food.HP_Regen / 30 : 0), 2, enemy);
-            const heal = calcHeal(20 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy);
+            const heal = calcHeal(character, 20 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy);
             const total = round((heal + regen) * 5 * 100) / 100
             return "<b> _h: </b><b class='heal'>" + total + "</b> ( [ <b class='heal'>" + heal + '</b>, ' + regen + ' ] x 5s )';
         }
@@ -196,7 +196,7 @@ const Hart = {
         const et = enemy.T_LEVEL.selectedIndex;
         const auto_cri = character.AUTO_CRI.checked;
         let damage = 0;
-        let heal = calcHeal(character.hp_regen * (character.hp_regen_percent + 100) / 100 +
+        let heal = calcHeal(character, character.hp_regen * (character.hp_regen_percent + 100) / 100 +
             (character.food ? character.food.HP_Regen / 30 : 0), 1, enemy);
         let shield = 0, c, ba;
         const sap = character.DIV.querySelector('.hart_ee').checked ? 23 : character.DIV.querySelector('.hart_e').checked ? 16 : 0;
@@ -205,6 +205,7 @@ const Hart = {
         let fi = character.weapon && character.weapon.Focused_Impact ? data.vars.fi || character.weapon.Focused_Impact * 2 : 0;
         let sm = data.vars.sm || 0;
         let sms = data.vars.sms || 0;
+        let sws = character.accessory && character.accessory.Swift_Strides ? data.vars.sws || character.accessory.Swift_Strides : 0;
         if (character.weapon) {
             let ficri = character.weapon.Focused_Impact * 2 === fi;
             if (fi < character.weapon.Focused_Impact * 2) {
@@ -224,7 +225,7 @@ const Hart = {
                         if (lost < 0) {
                             lost = 0;
                         }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     } else {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
@@ -244,7 +245,7 @@ const Hart = {
                             if (lost < 0) {
                                 lost = 0;
                             }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
                         if (character.weapon.Smolder && sm < 4) {
                             sm++;
@@ -256,7 +257,7 @@ const Hart = {
                                 if (lost < 0) {
                                     lost = 0;
                                 }
-                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.004)) * (1 + defense_minus[index]));
+                                enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                             }
                             if (character.weapon.Smolder && sm < 4) {
                                 sm++;
@@ -265,7 +266,7 @@ const Hart = {
                         }
                     }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
 
                     if (ww[index] && ww[index] === 1) {
                         for (let x = index; ww[x]; x++) {
@@ -347,7 +348,7 @@ const Hart = {
                     }
                 } else if (c === 'r' || c === 'R') {
                     if (r >= 0) {
-                        heal += calcHeal(20 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy) * 5;
+                        heal += calcHeal(character, 20 + r * 10 + (character.max_hp * (0.02 + r * 0.01)), 1, enemy) * 5;
                     }
                 } else if (c === 'd' || c === 'D') {
                     if (wm > 5) {
@@ -386,6 +387,7 @@ const Hart = {
                 fi: fi,
                 sm: sm,
                 sms: sms,
+                sws: sws,
                 ww: ww,
                 ee: ee
             }

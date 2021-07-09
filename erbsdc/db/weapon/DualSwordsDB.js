@@ -38,8 +38,8 @@ const DualSwords = [
          Type: "DualSwords"
         ,Name: "Dioscuri"
         ,Attack_Power: 48
-        ,Attack_Speed: 40
-        ,Title: "Dioscuri\n\nAttack Power +48\nAttack Speed +40%"
+        ,Attack_Speed: 48
+        ,Title: "Dioscuri\n\nAttack Power +48\nAttack Speed +48%"
         ,Rarity: "Epic"
     }
     ,{

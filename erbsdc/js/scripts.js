@@ -75,7 +75,7 @@ function calcAttackSpeed(character, bonusAs) {
 }
 
 function calcEquip(character, name, n) {
-    let coe = 1.007 + character.CRAFT_MASTERY.selectedIndex * 0.007;
+    let coe = round(1.007 + character.CRAFT_MASTERY.selectedIndex * 0.007, 3);
     if (n) {
         for (let i = 0; i < n; i++) {
             coe *= 10;
@@ -95,12 +95,15 @@ function calcEquip(character, name, n) {
     return result;
 }
 
-function calcHeal(heal, ps, enemy) {
-    let hr = enemy.heal_reduction ? (100 - enemy.heal_reduction) / 100 : 1;
+function calcHeal(character, heal, ps, enemy) {
+    let hr = (100 +
+        (character.healing_received_increase ? character.healing_received_increase : 0) -
+        (enemy.heal_reduction ? enemy.heal_reduction : 0)
+        ) / 100;
     if (hr <= 0) {
         return 0;
     }
-    return round(heal * hr * ps * 100) / 100;
+    return round(heal * hr * ps, 2);
 }
 
 function checkItemDamage(character, enemy, index) {
@@ -108,14 +111,14 @@ function checkItemDamage(character, enemy, index) {
     let cool = 1;
     if (character.chest && character.chest.Name === 'Blazing_Dress') {
         if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
-            damage += calcItemDamage(character, enemy, character.max_hp * (character.isMelee ? 0.03 : 0.025));
+            damage += calcItemDamage(character, enemy, character.max_hp * (character.isMelee ? 0.035 : 0.03));
         }
     }
     cool = 3;
     if (character.head && character.weapon) {
         if (character.head.Name === 'Chinese_Opera_Mask') {
             if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
-                damage += calcItemDamage(character, enemy, (character.isMelee ? 10 : 8.5) * (character.LEVEL.selectedIndex + 1));
+                damage += calcItemDamage(character, enemy, (character.isMelee ? 9 : 8) * (character.LEVEL.selectedIndex + 1));
             }
         } else if (character.head.Name === 'Elysian_Halo' && enemy.max_hp) {
             if (index === 0 || floor(index / 2 / cool) > floor((index - 1) / 2 / cool)) {
