@@ -320,7 +320,7 @@ const Nicky = {
             }
         };
     }
-    ,COMBO_Option: 'QaqwEeaaEqaq'
+    ,COMBO_Option: 'QadqwEeaaEqaq'
     ,COMBO_Help: (character) => {
         if (!character.character) {
             return 'select character plz';
