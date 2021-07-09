@@ -200,6 +200,9 @@ const Cathy = {
             }
             if (sws) {
                 sws += character.movement_speed / 2;
+                if (sws > character.accessory.Swift_Strides[1] ) {
+                    sws = character.accessory.Swift_Strides[1];
+                }
             }
             const type = character.weapon.Type;
             const tra = calcTrueDamage(character, enemy, character.attack_power * 0.2);

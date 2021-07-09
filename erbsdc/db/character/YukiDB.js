@@ -223,6 +223,9 @@ const Yuki = {
             }
             if (sws) {
                 sws += character.movement_speed / 2;
+                if (sws > character.accessory.Swift_Strides[1] ) {
+                    sws = character.accessory.Swift_Strides[1];
+                }
             }
             const type = character.weapon.Type;
             const base = 20 + q * 20;

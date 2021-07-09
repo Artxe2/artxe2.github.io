@@ -200,6 +200,9 @@ const Silvia = {
             }
             if (sws) {
                 sws += character.movement_speed / 2;
+                if (sws > character.accessory.Swift_Strides[1] ) {
+                    sws = character.accessory.Swift_Strides[1];
+                }
             }
             for (let i = 0; i < combo.length; i++) {
                 c = combo.charAt(i);

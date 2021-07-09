@@ -277,6 +277,9 @@ const Jackie = {
             }
             if (sws) {
                 sws += character.movement_speed / 2;
+                if (sws > character.accessory.Swift_Strides[1] ) {
+                    sws = character.accessory.Swift_Strides[1];
+                }
             }
             const type = character.weapon.Type;
             const jackie_tw = [0.04, 0.08, 0.12];

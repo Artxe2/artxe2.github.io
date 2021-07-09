@@ -183,6 +183,9 @@ const Zahir = {
             }
             if (sws) {
                 sws += character.movement_speed / 2;
+                if (sws > character.accessory.Swift_Strides[1] ) {
+                    sws = character.accessory.Swift_Strides[1];
+                }
             }
             const type = character.weapon.Type;
             const bonus = calcSkillDamage(character, enemy, 10 + t * 10, 0.15, 1);

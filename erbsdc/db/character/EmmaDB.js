@@ -177,6 +177,9 @@ const Emma = {
             }
             if (sws) {
                 sws += character.movement_speed / 2;
+                if (sws > character.accessory.Swift_Strides[1] ) {
+                    sws = character.accessory.Swift_Strides[1];
+                }
             }
             const type = character.weapon.Type;
             for (let i = 0; i < combo.length; i++) {

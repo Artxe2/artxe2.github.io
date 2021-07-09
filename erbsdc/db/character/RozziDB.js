@@ -173,6 +173,9 @@ const Rozzi = {
             }
             if (sws) {
                 sws += character.movement_speed / 2;
+                if (sws > character.accessory.Swift_Strides[1] ) {
+                    sws = character.accessory.Swift_Strides[1];
+                }
             }
             const coe = 0.6 + t * 0.05;
             for (let i = 0; i < combo.length; i++) {
