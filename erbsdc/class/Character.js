@@ -833,8 +833,8 @@ class Character {
             this.heal_reduction =
                 rozzi_w && rozzi_w.checked ? 40 : this.pure_heal_reduction;
 
-            this.healing_received_increase = calcEquip(this, 'Healing_Received_Increase');
-            console.log('healing_received_increase: ', this.healing_received_increase);
+            // this.healing_received_increase = calcEquip(this, 'Healing_Received_Increase');
+            this.healing_received_increase = this.arm && this.arm.Name === 'Nightingale' ? 20 : 0;
 
             this.critical_damage_reduction = calcEquip(this, 'Critical_Damage_Reduction');
             this.CRITICAL_DAMAGE_REDUCTION.innerText = this.critical_damage_reduction + '%';
