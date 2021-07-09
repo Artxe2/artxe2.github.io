@@ -28,9 +28,9 @@ const Shoichi = {
             let damage, min, max;
             if (character.DIV.querySelector('.shoichi_t').value == 5) {
                 const t = character.T_LEVEL.selectedIndex;
-                damage = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, character.critical_strike_chance, 1);
-                min = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 0, 1);
-                max = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 100, 1);
+                damage = baseAttackDamage(character, enemy, 0, 1 + 0.1 + t * 0.05, character.critical_strike_chance, 1);
+                min = baseAttackDamage(character, enemy, 0, 1 + 0.1 + t * 0.05, 0, 1);
+                max = baseAttackDamage(character, enemy, 0, 1 + 0.1 + t * 0.05, 100, 1);
             } else {
                 damage = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
                 min = baseAttackDamage(character, enemy, 0, 1, 0, 1);
@@ -46,7 +46,7 @@ const Shoichi = {
             let ba;
             if (character.DIV.querySelector('.shoichi_t').value == 5) {
                 const t = character.T_LEVEL.selectedIndex;
-                ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, character.critical_strike_chance, 1);
+                ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + t * 0.05, character.critical_strike_chance, 1);
             } else {
                 ba = baseAttackDamage(character, enemy, 0, 1, character.critical_strike_chance, 1);
             }
@@ -121,7 +121,7 @@ const Shoichi = {
                 let damage;
                 if (character.DIV.querySelector('.shoichi_t').value == 5) {
                     const t = character.T_LEVEL.selectedIndex;
-                    damage = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 0, 1);
+                    damage = baseAttackDamage(character, enemy, 0, 1 + 0.1 + t * 0.05, 0, 1);
                 } else {
                     damage = baseAttackDamage(character, enemy, 0, 1, 0, 1);
                 }
@@ -214,7 +214,8 @@ const Shoichi = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
+                if (c === 'a' || c === 'A') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -222,25 +223,10 @@ const Shoichi = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    if (tt === 5) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                    } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                    }
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'A') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    if (tt === 5) {
-                        ba = baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                    } else {
-                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, tt === 5 ? 1 + 0.1 + t * 0.05 : 1, crit, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
                     }
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
@@ -321,9 +307,13 @@ const Shoichi = {
                                 currHp = 0;
                             }
                             if (tt === 5) {
-                                ba = floor(baseAttackDamage(character, enemy, 0, 1 + 0.1 + 0.05 * t, 0, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                                ba = floor(baseAttackDamage(character, enemy, 0, 1 + 0.1 + t * 0.05, 0, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
                             } else {
                                 ba = floor(baseAttackDamage(character, enemy, 0, 1, 0, 1) + calcTrueDamage(character, enemy, enemy.max_hp ? currHp * 0.08 : 0));
+                            }
+                            if (sws) {
+                                damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                                sws = 0.0001;
                             }
                             damage += ba;
                             heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);

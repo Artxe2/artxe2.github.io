@@ -226,26 +226,8 @@ const Li_Dailin = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    if (liquid > 1) {
-                        liquid = liquid === 2 ? 1 : 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                    } else {
-                        liquid = 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                    }
-                } else if (c === 'A') {
+                if (c === 'a' || c === 'A') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -259,15 +241,17 @@ const Li_Dailin = {
                     }
                     if (liquid > 1) {
                         liquid = liquid === 2 ? 1 : 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1 * (1 + bac * 0.002), crit, 1);
                     } else {
                         liquid = 0;
-                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
                     }
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
+                    damage += ba;
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (liquid === 1) {
@@ -348,13 +332,15 @@ const Li_Dailin = {
                             if (liquid) {
                                 liquid = 0;
                                 ba = baseAttackDamage(character, enemy, 0, (1 + coe) * (1 + bac * 0.002), 0, 1) + bonus;
-                                damage += ba;
-                                heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                             } else {
                                 ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
-                                damage += ba;
-                                heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                             }
+                            if (sws) {
+                                damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                                sws = 0.0001;
+                            }
+                            damage += ba;
+                            heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         } else if (type === 'Nunchaku') {
                             if (c === 'd') {
                                 damage += calcSkillDamage(character, enemy, wm < 13 ? 150 : 300, 0.5, 1);
@@ -364,7 +350,7 @@ const Li_Dailin = {
                         }
                     }
                 } else if (c === 't' || c === 'T') {
-                    const crit = auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100;
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -384,9 +370,7 @@ const Li_Dailin = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), crit, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2) * (1 + bac * 0.002), auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100, 1);
                     } else {
                         ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
                         if (enemy.character === Magnus) {
@@ -396,10 +380,14 @@ const Li_Dailin = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), crit, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                        ba += baseAttackDamage(character, enemy, 0, (0.4 + t * 0.2), auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100, 1);
                     }
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
+                    damage += ba;
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     liquid = 0;
                 } else if (c === 'p' || c === 'P') {
                     if (character.trap) {

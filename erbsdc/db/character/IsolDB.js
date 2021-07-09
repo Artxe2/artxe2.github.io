@@ -237,15 +237,17 @@ const Isol = {
                             sm++;
                         }
                         ba += baseAttackDamage(character, enemy, 0, 0.48, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1) + (dd ? wm < 13 ? 6 : 9 : 0);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         qq += 3;
                     } else {
                         ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                         qq++;
                     }
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
+                    damage += ba;
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (qq) {

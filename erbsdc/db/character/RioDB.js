@@ -218,9 +218,24 @@ const Rio = {
                     }
                 }
                 if (c === 'a') {
+                    if (character.weapon.Smolder && sm < 4) {
+                        sm++;
+                        sms = 8;
+                    }
                     if (qq) {
-                        ba = rioAttackDamage(character, enemy, 0, 1.04 + q * 0.04, true);
+                        if (c === 'a' || c === 'A') {
+                            ba = rioAttackDamage(character, enemy, 0, 1.04 + q * 0.04, true);
+                        } else {
+                            let lost = enemy.max_hp ? floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp) : 0;
+                            if (lost < 0) {
+                                lost = 0;
+                            }
+                            ba = rioAttackDamage(character, enemy, 0, (1.04 + q * 0.04) * (1 + lost / 200), true);
+                        }
                     } else {
+                        if (character.weapon.Smolder && sm < 4) {
+                            sm++;
+                        }
                         ba = rioAttackDamage(character, enemy, 0, 0.38 + q * 0.03, true);
                         if (enemy.character === Magnus) {
                             let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
@@ -231,25 +246,9 @@ const Rio = {
                         }
                         ba += rioAttackDamage(character, enemy, 0, 0.42 + q * 0.03, false);
                     }
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'A') {
-                    if (qq) {
-                        let lost = enemy.max_hp ? floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp) : 0;
-                        if (lost < 0) {
-                            lost = 0;
-                        }
-                        ba = rioAttackDamage(character, enemy, 0, (1.04 + q * 0.04) * (1 + lost / 200), true);
-                    } else {
-                        ba = rioAttackDamage(character, enemy, 0, 0.38 + q * 0.03, true);
-                        if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                            if (lost < 0) {
-                                lost = 0;
-                            }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
-                        }
-                        ba += rioAttackDamage(character, enemy, 0, 0.42 + q * 0.03, false);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
                     }
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);

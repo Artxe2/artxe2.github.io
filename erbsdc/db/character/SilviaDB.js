@@ -217,7 +217,8 @@ const Silvia = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
+                if (c === 'a' || c === 'A') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -227,32 +228,16 @@ const Silvia = {
                     }
                     if (rr === 2) {
                         rr--;
-                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, crit, 1);
                     } else if (rr) {
-                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
+                        ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
                     }
-                } else if (c === 'A') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
                     }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    if (rr === 2) {
-                        rr--;
-                        ba = baseAttackDamage(character, enemy, 0, 1 + r * 0.25, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                    } else if (rr) {
-                        ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                    }
+                    damage += ba;
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
                     if (q >= 0) {
                         if (rr) {

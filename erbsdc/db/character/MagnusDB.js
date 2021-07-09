@@ -182,6 +182,7 @@ const Magnus = {
                     }
                 }
                 if (c === 'a' || c === 'A') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -189,7 +190,11 @@ const Magnus = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {

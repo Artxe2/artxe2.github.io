@@ -200,7 +200,7 @@ const Bernice = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
+                if (c === 'a' || c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -209,24 +209,13 @@ const Bernice = {
                         fi--;
                     }
                     if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                     } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1.5 + t * 0.5);
+                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1.5 + t * 0.5);
                     }
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'A') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    if (enemy.attack_range && enemy.attack_range >= 3) {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.74 : t === 1 ? 0.87 : 1.03, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                    } else {
-                        ba = baseAttackDamage(character, enemy, 0, t === 0 ? 0.96 : t === 1 ? 1.08 : 1.20, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1.5 + t * 0.5);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
                     }
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);

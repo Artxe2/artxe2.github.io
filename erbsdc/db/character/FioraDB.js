@@ -234,7 +234,7 @@ const Fiora = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
+                if (c === 'a' || c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -243,24 +243,11 @@ const Fiora = {
                         fi--;
                     }
                     f++;
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                    if (r >= 0) {
-                        if (rr) {
-                            damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
-                        }
+                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
                     }
-                } else if (c === 'A') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    f++;
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (r >= 0) {
@@ -277,7 +264,7 @@ const Fiora = {
                             damage += calcSkillDamage(character, enemy, 60 + q * 60, 0.25, 1);
                         }
                     }
-                } else if (c === 'w') {
+                } else if (c === 'w' || c === 'W') {
                     if (w >= 0) {
                         if (character.weapon.Smolder && sm < 4) {
                             sm++;
@@ -290,7 +277,11 @@ const Fiora = {
                             fi--;
                         }
                         f += 2;
-                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
+                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
+                        if (sws) {
+                            damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                            sws = 0.0001;
+                        }
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
@@ -303,42 +294,7 @@ const Fiora = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 0, 1);
-                        if (r >= 0) {
-                            if (rr) {
-                                damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
-                            }
-                        }
-                        damage += ba;
-                        heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                    }
-                } else if (c === 'W') {
-                    if (w >= 0) {
-                        if (character.weapon.Smolder && sm < 4) {
-                            sm++;
-                            sms = 8;
-                            if (character.weapon.Smolder && sm < 4) {
-                                sm++;
-                            }
-                        }
-                        if (fi === character.weapon.Focused_Impact * 2) {
-                            fi--;
-                        }
-                        f += 2;
-                        ba = baseAttackDamage(character, enemy, 0, 0.6 + w * 0.1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                        if (r >= 0) {
-                            if (rr) {
-                                damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);
-                            }
-                        }
-                        if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                            if (lost < 0) {
-                                lost = 0;
-                            }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
-                        }
-                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 0.2 + w * 0.1, auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
                         if (r >= 0) {
                             if (rr) {
                                 damage += calcSkillDamage(character, enemy, 20 + r * 20, 0.04 + r * 0.14, 1);

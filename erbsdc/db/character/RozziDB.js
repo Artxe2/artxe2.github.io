@@ -192,6 +192,7 @@ const Rozzi = {
                     }
                 }
                 if (c === 'a' || c === 'A') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -199,7 +200,11 @@ const Rozzi = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
@@ -234,7 +239,8 @@ const Rozzi = {
                         damage += calcSkillDamage(character, enemy, 100 + r * 75, 0.35, 1) +
                             calcTrueDamage(character, enemy, enemy.max_hp ? enemy.max_hp * (0.04 + r * 0.03) : 0);
                     }
-                } else if (c === 't') {
+                } else if (c === 't' || c === 'T') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -245,7 +251,11 @@ const Rozzi = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    ba = baseAttackDamage(character, enemy, 0, 0.6, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 0.6, crit, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
                     if (enemy.character === Magnus) {
                         let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
                         if (lost < 0) {
@@ -253,29 +263,7 @@ const Rozzi = {
                         }
                         enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                     }
-                    ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 0, 1);
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'T') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                        if (character.weapon.Smolder && sm < 4) {
-                            sm++;
-                        }
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    ba = baseAttackDamage(character, enemy, 0, 0.6, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                    if (enemy.character === Magnus) {
-                        let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                        if (lost < 0) {
-                            lost = 0;
-                        }
-                        enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
-                    }
-                    ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : 100, 1);
+                    ba += baseAttackDamage(character, enemy, 0, coe, auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100, 1);
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'p' || c === 'P') {

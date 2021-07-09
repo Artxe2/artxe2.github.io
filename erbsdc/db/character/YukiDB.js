@@ -244,7 +244,8 @@ const Yuki = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
+                if (c === 'a' || c === 'A') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -252,12 +253,16 @@ const Yuki = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
                     if (tt) {
                         if (character.weapon.Type != 'DualSwords') {
                             tt--;
                         }
                         ba += bonus;
+                    }
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
                     }
                     if (character.weapon.Type === 'DualSwords') {
                         if (enemy.character === Magnus) {
@@ -267,38 +272,7 @@ const Yuki = {
                             }
                             enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
                         }
-                        ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 0, 1);
-                        if (tt) {
-                            tt--;
-                            ba += bonus;
-                        }
-                    }
-                    damage += ba;
-                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
-                } else if (c === 'A') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                    if (tt) {
-                        if (character.weapon.Type != 'DualSwords') {
-                            tt--;
-                        }
-                        ba += bonus;
-                    }
-                    if (character.weapon.Type === 'DualSwords') {
-                        if (enemy.character === Magnus) {
-                            let lost = floor((enemy.max_hp - (data.hp - damage + heal + shield)) * 100.0 / enemy.max_hp);
-                            if (lost < 0) {
-                                lost = 0;
-                            }
-                            enemy.defense = floor(enemy.pure_defense * (1 + lost * (0.002 + et * 0.0025)) * (1 + defense_minus[index]));
-                        }
-                        ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : 100, 1);
+                        ba += baseAttackDamage(character, enemy, 0, 1, auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
                         if (tt) {
                             tt--;
                             ba += bonus;

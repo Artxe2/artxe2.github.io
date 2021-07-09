@@ -201,6 +201,7 @@ const Nicky = {
                     }
                 }
                 if (c === 'a' || c === 'A') {
+                    const crit = ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100;
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -208,7 +209,11 @@ const Nicky = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 'a' ? 0 : 100, 1);
+                    ba = baseAttackDamage(character, enemy, 0, 1, crit, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
                     damage += ba;
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'q' || c === 'Q') {
@@ -247,6 +252,10 @@ const Nicky = {
                             const coe = wm < 13 ? 1.4 : 2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
+                            if (sws) {
+                                damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                                sws = 0.0001;
+                            }
                             heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                             damage += ba;
                         }
@@ -260,6 +269,10 @@ const Nicky = {
                         fi--;
                     }
                     ba = baseAttackDamage(character, enemy, 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : c === 't' ? 0 : 100, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
                     damage += ba + calcTrueDamage(character, 10 + t * 20);
                     heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                 } else if (c === 'p' || c === 'P') {

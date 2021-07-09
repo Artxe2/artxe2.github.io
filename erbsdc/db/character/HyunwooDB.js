@@ -194,7 +194,7 @@ const Hyunwoo = {
                         enemy.defense = floor((enemy.pure_defense + defense_bonus[index]) * (1 + defense_percent[index]) * (1 + defense_minus[index]));
                     }
                 }
-                if (c === 'a') {
+                if (c === 'a' || c === 'A') {
                     if (character.weapon.Smolder && sm < 4) {
                         sm++;
                         sms = 8;
@@ -202,29 +202,15 @@ const Hyunwoo = {
                     if (fi === character.weapon.Focused_Impact * 2) {
                         fi--;
                     }
-                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 0, 1);
+                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 'a' ? 0 : 100, 1);
+                    if (sws) {
+                        damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                        sws = 0.0001;
+                    }
                     damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
+                    heal += calcHeal(character, ba * (character.life_steal / 100), 1, enemy);
                     if (tt >= 50) {
-                        heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
-                        tt = 0;
-                    } else {
-                        tt += 5;
-                    }
-                    ww = false;
-                } else if (c === 'A') {
-                    if (character.weapon.Smolder && sm < 4) {
-                        sm++;
-                        sms = 8;
-                    }
-                    if (fi === character.weapon.Focused_Impact * 2) {
-                        fi--;
-                    }
-                    ba = baseAttackDamage(character, enemy, ww ? character.defense * 0.15 : 0, 1, ficri ? 100 : auto_cri ? character.critical_strike_chance : 100, 1);
-                    damage += ba;
-                    heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
-                    if (tt >= 50) {
-                        heal += calcHeal(character.max_hp * (0.04 + t * 0.04), 1, enemy);
+                        heal += calcHeal(character, character.max_hp * (0.04 + t * 0.04), 1, enemy);
                         tt = 0;
                     } else {
                         tt += 5;
@@ -309,6 +295,10 @@ const Hyunwoo = {
                             const coe = wm < 13 ? 1.4 : 2;
                             const bonus = calcTrueDamage(character, enemy, wm < 13 ? 50 : 100);
                             ba = baseAttackDamage(character, enemy, 0, 1 + coe, 0, 1) + bonus;
+                            if (sws) {
+                                damage += calcItemDamage(character, enemy, character.accessory.Swift_Strides[0] * round(sws / character.accessory.Swift_Strides[1], 2));
+                                sws = 0.0001;
+                            }
                             heal += calcHeal(ba * (character.life_steal / 100), 1, enemy);
                             if (tt >= 50) {
                                 heal += calcHeal(character.max_hp * (0.07 + t * 0.04), 1, enemy);
