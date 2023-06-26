@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Gacha Ceiling Using Exponential Probability Increasing Method</title>
+    </head>
+    <body>
+        <div style="height:50px"></div>
+        <ul id="list">
+            <li>
+                <input style="width:50px" type="number" value="1" onchange="changePercentage(0)" onclick="drawGraph(0)" />%
+                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
+                <span></span>
+            </li>
+            <li>
+                <input style="width:50px" type="number" value="3" onchange="changePercentage(1)" onclick="drawGraph(1)" />%
+                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
+                <span></span>
+            </li>
+            <li>
+                <input style="width:50px" type="number" value="16" onchange="changePercentage(2)" onclick="drawGraph(2)" />%
+                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
+                <span></span>
+            </li>
+            <li>
+                <input style="width:50px" type="number" value="80" readonly />%
+                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
+                <span></span>
+            </li>
+        </ul>
+        <span>TOTAL: </span><span id="total">0</span><br />
+        <button onclick="simulate(1)">1</button>
+        <button onclick="simulate(10)">10</button>
+        <button onclick="simulate(100)">100</button>
+        <button onclick="simulate(1000)">1000</button>
+        <button onclick="simulate(10000)">10000</button>
+        <button onclick="simulate(100000)">100000</button>
+        <div>
+            <canvas id="graph" width="1920px" height="1080px" style="width:100%;border:1px solid #000"></canvas>
+        </div>
+        <script>
+function calcModel(percentage) {
+    if (percentage <= 0 || percentage > 1) {
+        return null
+    }
+    const ceiling = Math.ceil(2 / percentage) - 1
+    let low = 1
+    let high = 1.4
+    for(;;) {
+        const mid = (low + high) / 2
+        const init = 1 / Math.pow(mid, ceiling)
+        let expectedCost = 1
+        let continuousFailure = 1
+        let currentPercentage = init
+        for (let i = 0; i <= ceiling; i++) {
+            continuousFailure *= 1 - currentPercentage
+            expectedCost += continuousFailure
+            currentPercentage *= mid
+        }
+        if (1 / expectedCost >= percentage) {
+            if (high - low <= 1e-15) {
+                return {
+                    percentage: percentage
+                    , init: init
+                    , multiply: mid
+                    , ceiling: ceiling
+                }
+            }
+            low = mid
+        } else {
+            high = mid
+        }
+    }
+}
+
+let fail
+const list = (() => {
+    const inputs = document.querySelectorAll("#list>li>input")
+    const array = []
+    for (let i = 0; i < inputs.length - 1; i++) {
+        array[i] = calcModel(inputs[i].value / 100)
+    }
+    fail = inputs[array.length].value / 100
+    return array
+})()
+const display = (() => {
+    const spans = document.querySelectorAll("#list>li>span:nth-child(n+1)")
+    const array = []
+    for (let i = 0; i < spans.length; i++) {
+        array[i / 2] = [ spans[i++], spans[i] ]
+    }
+    return array
+})()
+const count = [ 0, 0, 0, 0 ]
+const stack = [ 0, 0, 0 ]
+const total = document.querySelector("#total")
+let mm = 0
+
+function drawGraph(m) {
+    mm = m
+    const { percentage, init, multiply, ceiling } = list[m]
+    const before = []
+    var a = 1
+    for (let i = 0; i <= ceiling; i++) {
+        before[i] = a * percentage
+        a *= 1 - percentage
+    }
+    before[ceiling + 1] = a * percentage
+    const after = []
+    var a = 1
+    let b = init
+    for (let i = 0; i <= ceiling; i++) {
+        after[i] = a * b
+        a *= 1 - b
+        b *= multiply
+    }
+    const ctx = document.querySelector("#graph").getContext("2d")
+    const width = 1920
+    const height = 1080
+    const max = Math.max(Math.max.apply(null, before), Math.max.apply(null, after))
+    const yScale = height / max
+    const xStep = width / (ceiling + 2)
+    ctx.clearRect(0, 0, width, height)
+
+    var acc = before[0]
+    var x = xStep
+    var y = height - before[0] * yScale
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    for (let i = 1; i <= ceiling; i++) {
+        x += xStep
+        y = height - before[i] * yScale
+        ctx.lineTo(x, y)
+        if (acc < 0.25) {
+            acc += before[i]
+            if (acc >= 0.25) {
+                ctx.lineTo(x, (height + y * 3) / 4)
+                ctx.moveTo(x, y)
+            }
+        } else if (acc < 0.5) {
+            acc += before[i]
+            if (acc >= 0.5) {
+                ctx.lineTo(x, (height * 3 + y) / 4)
+                ctx.moveTo(x, y)
+            }
+        } else if (acc < 0.75) {
+            acc += before[i]
+            if (acc >= 0.75) {
+                ctx.lineTo(x, (height + y * 3) / 4)
+                ctx.moveTo(x, y)
+            }
+        }
+    }
+    ctx.lineTo(width, height - before[ceiling + 1] * yScale)
+    ctx.strokeStyle = "#0f0"
+    ctx.lineWidth = 2
+    ctx.stroke()
+
+    var acc = after[0]
+    var x = xStep
+    var y = height - after[0] * yScale
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    for (let i = 1; i <= ceiling; i++) {
+        x += xStep
+        y = height - after[i] * yScale
+        ctx.lineTo(x, y)
+        if (acc < 0.25) {
+            acc += after[i]
+            if (acc >= 0.25) {
+                ctx.lineTo(x, (height + y * 3) / 4)
+                ctx.moveTo(x, y)
+            }
+        } else if (acc < 0.5) {
+            acc += after[i]
+            if (acc >= 0.5) {
+                ctx.lineTo(x, (height * 3 + y) / 4)
+                ctx.moveTo(x, y)
+            }
+        } else if (acc < 0.75) {
+            acc += after[i]
+            if (acc >= 0.75) {
+                ctx.lineTo(x, (height + y * 3) / 4)
+                ctx.moveTo(x, y)
+            }
+        }
+    }
+    ctx.lineTo(x, height)
+    ctx.strokeStyle = "#f00"
+    ctx.lineWidth = 2
+    ctx.stroke()
+
+    var x = 0
+    var y = 0
+    ctx.beginPath()
+    ctx.moveTo(xStep, height)
+    for (let i = 0; i <= stack[m]; i++) {
+        x += xStep
+        y = height - after[i] * yScale
+        ctx.lineTo(x, y)
+    }
+    ctx.lineTo(x, height)
+    ctx.fillStyle = "#00f"
+    ctx.fill()
+}
+
+function getRoles() {
+    const array = []
+    for (let i = 0; i < list.length; i++) {
+        const { percentage, init, multiply, ceiling } = list[i]
+        array[i] = init * multiply ** Math.min(stack[i], ceiling)
+    }
+    array[list.length] = fail
+    let left = 1 - array[0]
+    let sum = 0
+    let t
+    for (let i = 1; i < array.length; i++) {
+        sum += array[i]
+    }
+    for (let i = 1; i < array.length; i++) {
+        t = left / sum
+        sum -= array[i]
+        array[i] *= t
+        left -= array[i]
+    }
+    return array
+}
+
+function simulate(n) {
+    total.innerHTML = Number(total.innerHTML) + n
+    let roles = getRoles()
+    while (n-- > 0) {
+        let r = Math.random()
+        for (let i = 0; i < list.length; i++) {
+            if ((r -= roles[i]) < 0) {
+                stack[i] = Math.max(0, stack[i] - list[i].ceiling) - 1
+                count[i]++
+                break
+            }
+        }
+        if (r >= 0) {
+            count[list.length]++
+        }
+        for (const i in stack) {
+            stack[i]++
+        }
+        roles = getRoles()
+    }
+    for (let i = 0; i < roles.length; i++) {
+        display[i][0].innerHTML = (roles[i] * 100).toFixed(6)
+    }
+    for (let i = 0; i < count.length; i++) {
+        display[i][1].innerHTML = count[i]
+    }
+    drawGraph(mm)
+}
+
+function changePercentage(i) {
+    const inputs = document.querySelectorAll("#list>li>input")
+    let v = Number(inputs[i].value)
+    if (v < 0) {
+        inputs[i].value = list[i].percentage * 100
+        return
+    }
+    let l = 100
+    for (let j = 0; j < list.length; j++) {
+        l -= inputs[j].value
+    }
+    if (l < inputs[i].value) {
+        inputs[i].value = (v + l) / 2
+        changePercentage(i)
+    } else {
+        inputs[list.length].value = l
+        fail = l / 100
+        stack[i] *= list[i].percentage * 100 / v
+        list[i] = calcModel(v / 100)
+        simulate(0)
+    }
+}
+
+simulate(0)
+        </script>
+    </body>
+</html>
