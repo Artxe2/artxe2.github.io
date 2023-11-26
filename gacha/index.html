@@ -303,13 +303,28 @@
 					}
 					draw_general_graph(.01)
 				</script>
-			</div>
+		</div>
 			<!-- <- draw_general_graph -->
 			<div>
 				<script>
 					var a = probability_table(.01)
-					var b = probability_table(.02)
-					console.log(a, b)
+						var b = probability_table(.02)
+					console.log(
+						calc_roles(a.init, a.multiply, 40),
+						calc_roles(b.init, b.multiply, 21)
+					)
+					function calc_roles(init, multiply, stack) {
+						let roles_count = 1
+						let left = 1
+						let percentage
+						for (;;) {
+							left *= 1 - (percentage = init * multiply ** stack++)
+							roles_count += left
+							if (percentage >= 1) {
+								return roles_count
+							}
+						}
+					}
 				</script>
 			</div>
 		</main>
