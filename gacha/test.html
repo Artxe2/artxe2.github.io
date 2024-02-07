@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>점진적 누적 확률 모형 GAPM(Gradual Accumulated Probability Model)</title>
+		<script src="https://artxe2.github.io/css-lube/css-lube.min.js"></script>
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+		<script>
+			function expect_cost(init, multiply, stack) {
+				let roles_count = 1
+				let left = 1
+				let percentage
+				for (;;) {
+					left *= 1 - (percentage = init * multiply ** stack++)
+					roles_count += left
+					if (percentage >= 1) {
+						return roles_count
+					}
+				}
+			}
+			function probability_table(percentage) {
+				const ceiling = (2 / percentage)|0
+				let low = 1
+				let high = 2
+				for(;;) {
+					const multiply = (low + high) / 2
+					const init = 1 / Math.pow(multiply, ceiling - 1)
+					let roles_count = 1
+					let left = 1
+					for (let i = 0; i < ceiling; i++) {
+						left *= 1 - init * multiply ** i
+						roles_count += left
+					}
+					if (1 / roles_count >= percentage) {
+						if (high - low <= 1e-15) {
+							return {
+								percentage: 1 / roles_count
+								, init
+								, multiply
+								, ceiling
+							}
+						}
+						low = multiply
+					} else {
+						high = multiply
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<main id="view" class="bg=#eef"></main>
+		<script>
+			const list = [1, 4, 16, 79]
+			document.getElementById("view").innerHTML = `
+				<ul>
+					${list.map(v => `
+						<li>
+							<span class=>${v}</span>
+						</li>
+					`).join("")}
+				</ul>
+			`
+		</script>
+	</body>
+</html>
