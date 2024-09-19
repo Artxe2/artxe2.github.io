@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MP3 Converter</title>
+</head>
+<body>
+  <h1>MP3 파일을 320 kbps로 변환하기</h1>
+  <input type="file" id="audioInput" accept="audio/*">
+  <button id="convertBtn">변환하기</button>
+  <a id="downloadLink" style="display: none">다운로드</a>
+
+  <!-- FFmpeg.js를 위한 스크립트 추가 -->
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+  
+  <script>
+    const { createFFmpeg, fetchFile } = FFmpeg;
+
+    document.getElementById('convertBtn').addEventListener('click', async () => {
+      const audioInput = document.getElementById('audioInput').files[0];
+      
+      if (!audioInput) {
+        alert("파일을 선택해주세요.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(audioInput);
+      
+      reader.onload = async () => {
+        const arrayBuffer = reader.result;
+
+        // ffmpeg.js를 이용해 파일을 처리
+        const ffmpeg = createFFmpeg({ log: true });
+        
+        await ffmpeg.load();
+        
+        // 파일 읽기 및 변환 준비
+        ffmpeg.FS('writeFile', 'input.mp3', new Uint8Array(arrayBuffer));
+        
+        // 파일 변환 명령어
+        await ffmpeg.run('-i', 'input.mp3', '-b:a', '320k', 'output.mp3');
+        
+        // 변환된 파일을 가져옴
+        const data = ffmpeg.FS('readFile', 'output.mp3');
+        
+        // Blob을 이용해 파일로 변환 후 다운로드 링크 생성
+        const blob = new Blob([data.buffer], { type: 'audio/mpeg' });
+        const url = URL.createObjectURL(blob);
+        
+        const downloadLink = document.getElementById('downloadLink');
+        downloadLink.href = url;
+        downloadLink.download = 'converted-320kbps.mp3';
+        downloadLink.style.display = 'block';
+        downloadLink.textContent = '다운로드: 변환된 MP3 파일';
+      };
+    });
+  </script>
+</body>
+</html>
