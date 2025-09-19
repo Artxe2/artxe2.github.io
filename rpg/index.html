@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Page Title</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+	<div id="root">
+
+	</div>
+	<script>
+		/**
+		 * 강화: 0 ~ 20
+		 * 공격력 180 + 80, 90 + 60 => 410
+		 * 
+		 * 잠재능력: 12 * 3 * 2 => 144
+		 * 공격력 / 적중
+		 */
+		const weapons = {
+			weapon: {},
+			sub_weapon: {}
+		}
+		/**
+		 * 강화: 0 ~ 20
+		 * 90 + 40 => 780(6)
+		 * 
+		 * 잠재능력: 12 * 3 => 216(6)
+		 * 방어력 / 회피
+		 */
+		const equipments = {
+			helmet: {},
+			armor: {},
+			pants: {},
+			gloves: {},
+			boots: {},
+			cloak: {}
+		}
+		/**
+		 * 강화: 0 ~ 20
+		 * 45 + 40 => 765(9)
+		 * 
+		 * 잠재능력: 12 * 3 => 324(9)
+		 * 공격력
+		 */
+		const accessories = {
+			ring1: {},
+			ring2: {},
+			ring3: {},
+			necklace: {},
+			earring1: {},
+			earring2: {},
+			bracelet: {},
+			badge: {},
+			emblem: {}
+		}
+		/**
+		 * 레벨당 올스탯 +1
+		 * 레벨당 요구 경험치 = 피보나치 수열
+		 * 레벨: 90 ~ 100
+		 */
+		const player_rich = {
+			attack: 100 + 410 + 765 + 324,
+			accuracy: 100 + 144,
+			defense: 100 + 780,
+			dodge_rate: 100 + 216
+		}
+		const player_poor = {
+			attack: 90 + 410 + 765 + 324,
+			accuracy: 90 + 144,
+			defense: 90 + 780,
+			dodge_rate: 90 + 216
+		}
+		const stats_a = {
+			attack: 200 + 100,
+			accuracy: 0,
+			defense: 100,
+			dodge_rate: 0
+		}
+		const stats_b = {
+			attack: 200,
+			accuracy: 100,
+			defense: 100,
+			dodge_rate: 0
+		}
+		const stats_c = {
+			attack: 200,
+			accuracy: 0,
+			defense: 100 + 100,
+			dodge_rate: 0
+		}
+		const stats_d = {
+			attack: 200,
+			accuracy: 0,
+			defense: 100,
+			dodge_rate: 100
+		}
+		function damage_calc(attacker, defender) {
+			const base_damage = Math.max(0, attacker.attack - defender.defense)
+			if (attacker.accuracy > defender.dodge_rate) {
+				const critical_damage = 1.5 + (attacker.accuracy - defender.dodge_rate / 2) / 100
+				const critical_rate = Math.min(1, (attacker.accuracy - defender.dodge_rate / 2) / 100)
+				return (1 - critical_rate) * base_damage + base_damage * critical_damage * critical_rate
+			}
+			if (defender.dodge_rate > attacker.accuracy) {
+				const deflect_damage = Math.max(0, 0.5 - (defender.dodge_rate / 2 - attacker.accuracy) / 100)
+				const deflect_rate = Math.max(1, (defender.dodge_rate / 2 - attacker.accuracy) / 100)
+				return (1 - deflect_rate) * base_damage + base_damage * deflect_damage * deflect_rate
+			}
+			return base_damage
+		}
+		function enhancement_cost(grade, end) {
+			let cost = 0
+			for (let i = 0; i < grade; i++) {
+				const p = end - i
+				cost += 100 / (end - i) * (1 + cost * i / 200)
+			}
+			return cost
+		}
+	</script>
+	<script>
+		document.getElementById("root").innerHTML = `<pre>
+A -> A: ${damage_calc(stats_a, stats_a)}
+A -> B: ${damage_calc(stats_a, stats_b)}
+A -> C: ${damage_calc(stats_a, stats_c)}
+A -> D: ${damage_calc(stats_a, stats_d)}
+
+B -> A: ${damage_calc(stats_b, stats_a)}
+B -> B: ${damage_calc(stats_b, stats_b)}
+B -> C: ${damage_calc(stats_b, stats_c)}
+B -> D: ${damage_calc(stats_b, stats_d)}
+
+C -> A: ${damage_calc(stats_c, stats_a)}
+C -> B: ${damage_calc(stats_c, stats_b)}
+C -> C: ${damage_calc(stats_c, stats_c)}
+C -> D: ${damage_calc(stats_c, stats_d)}
+
+D -> A: ${damage_calc(stats_d, stats_a)}
+D -> B: ${damage_calc(stats_d, stats_b)}
+D -> C: ${damage_calc(stats_d, stats_c)}
+D -> D: ${damage_calc(stats_d, stats_d)}
+</pre>`
+	</script>
+</body>
+</html>

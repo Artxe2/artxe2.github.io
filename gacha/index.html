@@ -1,283 +1,546 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <title>Gacha Ceiling Using Exponential Probability Increasing Method</title>
-    </head>
-    <body>
-        <div style="height:50px"></div>
-        <ul id="list">
-            <li>
-                <input style="width:50px" type="number" value="1" onchange="changePercentage(0)" onclick="drawGraph(0)" />%
-                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
-                <span></span>
-            </li>
-            <li>
-                <input style="width:50px" type="number" value="3" onchange="changePercentage(1)" onclick="drawGraph(1)" />%
-                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
-                <span></span>
-            </li>
-            <li>
-                <input style="width:50px" type="number" value="16" onchange="changePercentage(2)" onclick="drawGraph(2)" />%
-                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
-                <span></span>
-            </li>
-            <li>
-                <input style="width:50px" type="number" value="80" readonly />%
-                (<span style="display:inline-block;width:80px;text-align:right"></span>%):
-                <span></span>
-            </li>
-        </ul>
-        <span>TOTAL: </span><span id="total">0</span><br />
-        <button onclick="simulate(1)">1</button>
-        <button onclick="simulate(10)">10</button>
-        <button onclick="simulate(100)">100</button>
-        <button onclick="simulate(1000)">1000</button>
-        <button onclick="simulate(10000)">10000</button>
-        <button onclick="simulate(100000)">100000</button>
-        <div>
-            <canvas id="graph" width="1920px" height="1080px" style="width:100%;border:1px solid #000"></canvas>
-        </div>
-        <script>
-function calcModel(percentage) {
-    if (percentage <= 0 || percentage > 1) {
-        return null
-    }
-    const ceiling = Math.ceil(2 / percentage) - 1
-    let low = 1
-    let high = 1.4
-    for(;;) {
-        const mid = (low + high) / 2
-        const init = 1 / Math.pow(mid, ceiling)
-        let expectedCost = 1
-        let continuousFailure = 1
-        let currentPercentage = init
-        for (let i = 0; i <= ceiling; i++) {
-            continuousFailure *= 1 - currentPercentage
-            expectedCost += continuousFailure
-            currentPercentage *= mid
-        }
-        if (1 / expectedCost >= percentage) {
-            if (high - low <= 1e-15) {
-                return {
-                    percentage: percentage
-                    , init: init
-                    , multiply: mid
-                    , ceiling: ceiling
-                }
-            }
-            low = mid
-        } else {
-            high = mid
-        }
-    }
-}
-
-let fail
-const list = (() => {
-    const inputs = document.querySelectorAll("#list>li>input")
-    const array = []
-    for (let i = 0; i < inputs.length - 1; i++) {
-        array[i] = calcModel(inputs[i].value / 100)
-    }
-    fail = inputs[array.length].value / 100
-    return array
-})()
-const display = (() => {
-    const spans = document.querySelectorAll("#list>li>span:nth-child(n+1)")
-    const array = []
-    for (let i = 0; i < spans.length; i++) {
-        array[i / 2] = [ spans[i++], spans[i] ]
-    }
-    return array
-})()
-const count = [ 0, 0, 0, 0 ]
-const stack = [ 0, 0, 0 ]
-const total = document.querySelector("#total")
-let mm = 0
-
-function drawGraph(m) {
-    mm = m
-    const { percentage, init, multiply, ceiling } = list[m]
-    const before = []
-    var a = 1
-    for (let i = 0; i <= ceiling; i++) {
-        before[i] = a * percentage
-        a *= 1 - percentage
-    }
-    before[ceiling + 1] = a * percentage
-    const after = []
-    var a = 1
-    let b = init
-    for (let i = 0; i <= ceiling; i++) {
-        after[i] = a * b
-        a *= 1 - b
-        b *= multiply
-    }
-    const ctx = document.querySelector("#graph").getContext("2d")
-    const width = 1920
-    const height = 1080
-    const max = Math.max(Math.max.apply(null, before), Math.max.apply(null, after))
-    const yScale = height / max
-    const xStep = width / (ceiling + 2)
-    ctx.clearRect(0, 0, width, height)
-
-    var acc = before[0]
-    var x = xStep
-    var y = height - before[0] * yScale
-    ctx.beginPath()
-    ctx.moveTo(x, y)
-    for (let i = 1; i <= ceiling; i++) {
-        x += xStep
-        y = height - before[i] * yScale
-        ctx.lineTo(x, y)
-        if (acc < 0.25) {
-            acc += before[i]
-            if (acc >= 0.25) {
-                ctx.lineTo(x, (height + y * 3) / 4)
-                ctx.moveTo(x, y)
-            }
-        } else if (acc < 0.5) {
-            acc += before[i]
-            if (acc >= 0.5) {
-                ctx.lineTo(x, (height * 3 + y) / 4)
-                ctx.moveTo(x, y)
-            }
-        } else if (acc < 0.75) {
-            acc += before[i]
-            if (acc >= 0.75) {
-                ctx.lineTo(x, (height + y * 3) / 4)
-                ctx.moveTo(x, y)
-            }
-        }
-    }
-    ctx.lineTo(width, height - before[ceiling + 1] * yScale)
-    ctx.strokeStyle = "#0f0"
-    ctx.lineWidth = 2
-    ctx.stroke()
-
-    var acc = after[0]
-    var x = xStep
-    var y = height - after[0] * yScale
-    ctx.beginPath()
-    ctx.moveTo(x, y)
-    for (let i = 1; i <= ceiling; i++) {
-        x += xStep
-        y = height - after[i] * yScale
-        ctx.lineTo(x, y)
-        if (acc < 0.25) {
-            acc += after[i]
-            if (acc >= 0.25) {
-                ctx.lineTo(x, (height + y * 3) / 4)
-                ctx.moveTo(x, y)
-            }
-        } else if (acc < 0.5) {
-            acc += after[i]
-            if (acc >= 0.5) {
-                ctx.lineTo(x, (height * 3 + y) / 4)
-                ctx.moveTo(x, y)
-            }
-        } else if (acc < 0.75) {
-            acc += after[i]
-            if (acc >= 0.75) {
-                ctx.lineTo(x, (height + y * 3) / 4)
-                ctx.moveTo(x, y)
-            }
-        }
-    }
-    ctx.lineTo(x, height)
-    ctx.strokeStyle = "#f00"
-    ctx.lineWidth = 2
-    ctx.stroke()
-
-    var x = 0
-    var y = 0
-    ctx.beginPath()
-    ctx.moveTo(xStep, height)
-    for (let i = 0; i <= stack[m]; i++) {
-        x += xStep
-        y = height - after[i] * yScale
-        ctx.lineTo(x, y)
-    }
-    ctx.lineTo(x, height)
-    ctx.fillStyle = "#00f"
-    ctx.fill()
-}
-
-function getRoles() {
-    const array = []
-    for (let i = 0; i < list.length; i++) {
-        const { percentage, init, multiply, ceiling } = list[i]
-        array[i] = init * multiply ** Math.min(stack[i], ceiling)
-    }
-    array[list.length] = fail
-    let left = 1 - array[0]
-    let sum = 0
-    let t
-    for (let i = 1; i < array.length; i++) {
-        sum += array[i]
-    }
-    for (let i = 1; i < array.length; i++) {
-        t = left / sum
-        sum -= array[i]
-        array[i] *= t
-        left -= array[i]
-    }
-    return array
-}
-
-function simulate(n) {
-    total.innerHTML = Number(total.innerHTML) + n
-    let roles = getRoles()
-    while (n-- > 0) {
-        let r = Math.random()
-        for (let i = 0; i < list.length; i++) {
-            if ((r -= roles[i]) < 0) {
-                stack[i] = Math.max(0, stack[i] - list[i].ceiling) - 1
-                count[i]++
-                break
-            }
-        }
-        if (r >= 0) {
-            count[list.length]++
-        }
-        for (const i in stack) {
-            stack[i]++
-        }
-        roles = getRoles()
-    }
-    for (let i = 0; i < roles.length; i++) {
-        display[i][0].innerHTML = (roles[i] * 100).toFixed(6)
-    }
-    for (let i = 0; i < count.length; i++) {
-        display[i][1].innerHTML = count[i]
-    }
-    drawGraph(mm)
-}
-
-function changePercentage(i) {
-    const inputs = document.querySelectorAll("#list>li>input")
-    let v = Number(inputs[i].value)
-    if (v < 0) {
-        inputs[i].value = list[i].percentage * 100
-        return
-    }
-    let l = 100
-    for (let j = 0; j < list.length; j++) {
-        l -= inputs[j].value
-    }
-    if (l < inputs[i].value) {
-        inputs[i].value = (v + l) / 2
-        changePercentage(i)
-    } else {
-        inputs[list.length].value = l
-        fail = l / 100
-        stack[i] *= list[i].percentage * 100 / v
-        list[i] = calcModel(v / 100)
-        simulate(0)
-    }
-}
-
-simulate(0)
-        </script>
-    </body>
+	<head>
+		<title>점진적 누적 확률 모형 GAPM(Gradual Accumulated Probability Model)</title>
+		<script src="https://artxe2.github.io/css-lube/css-lube.min.js"></script>
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+		<script>
+			function expect_cost(init, multiply, stack) {
+				let roles_count = 1
+				let left = 1
+				let percentage
+				for (;;) {
+					left *= 1 - (percentage = init * multiply ** stack++)
+					roles_count += left
+					if (percentage >= 1) {
+						return roles_count
+					}
+				}
+			}
+			function probability_table(percentage) {
+				const ceiling = (2 / percentage)|0
+				let low = 1
+				let high = 2
+				for(;;) {
+					const multiply = (low + high) / 2
+					const init = 1 / Math.pow(multiply, ceiling - 1)
+					let roles_count = 1
+					let left = 1
+					for (let i = 0; i < ceiling; i++) {
+						left *= 1 - init * multiply ** i
+						roles_count += left
+					}
+					if (1 / roles_count >= percentage) {
+						if (high - low <= 1e-15) {
+							return {
+								percentage: 1 / roles_count
+								, init
+								, multiply
+								, ceiling
+							}
+						}
+						low = multiply
+					} else {
+						high = multiply
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<main class="p=0_2em">
+			<!-- draw_general_graph -> -->
+			<h1 class="ta=center fs=3em bold">점진적 누적 확률 모형 GAPM<br>(Gradual Accumulated Probability Model)</h1>
+			<div class="h=4em"></div>
+			<h2 class="ta=center fs=2em bold">일반적인 확률 모형의 시도 횟수에 따른 당첨 확률 양상</h2>
+			<div class="h=1em"></div>
+			<div class="flex jc=center">
+				<a class="w=min(100%,800px) h=0em pb=min(56.25%,450px) bd=1px_solid_#000">
+					<div id="general-graph"></div>
+				</a>
+				<script>
+					function draw_general_graph(percentage) {
+						const ceiling = (3 / percentage)|0
+						const data = [{ probability_of_success: 0, dice_rolls: 0 }]
+						const fail_percentage = 1 - percentage
+						let line_25
+						let line_75
+						let acc = 0
+						let left = 1
+						for (let i = 1; i <= ceiling; i++) {
+							acc += left * percentage
+							left *= fail_percentage
+							data[i] = {
+								dice_rolls: i,
+								probability_of_success: acc
+							}
+							if (!line_25 && acc >= .25) {
+								line_25 = i
+							} else if (!line_75 && acc >= .75) {
+								line_75 = i - 1
+							}
+						}
+						const width = 800
+						const height = 450
+						const padding = 40
+						const svg = d3.select("#general-graph")
+							.append("svg")
+							.attr("viewBox", "0 0 800 450")
+						const x_scale = d3.scaleLinear()
+							.domain([0, data.at(-1).dice_rolls])
+							.range([padding, width - padding])
+						const y_scale = d3.scaleLinear()
+							.domain([0, 1])
+							.range([height - padding, padding])
+						const line = d3.line()
+							.x(d => x_scale(d.dice_rolls))
+							.y(d => y_scale(d.probability_of_success))
+						svg.append("path")
+							.datum(data)
+							.attr("fill", "none")
+							.attr("stroke", "steelblue")
+							.attr("stroke-width", 4)
+							.attr("d", line)
+						svg.append("g")
+							.attr("transform", `translate(0, ${height - padding})`)
+							.call(d3.axisBottom(x_scale))
+						svg.append("g")
+							.attr("transform", `translate(${padding}, 0)`)
+							.call(d3.axisLeft(y_scale))
+						svg.append("text")
+							.attr("x", width)
+							.attr(
+								"y",
+								padding / 2
+								+ (1 - data.at(-1).probability_of_success)
+								* (height - padding * 2)
+							)
+							.attr("text-anchor", "end")
+							.attr("alignment-baseline", "middle")
+							.text(
+								(data.at(-1).probability_of_success * 100).toFixed(2) + "%"
+							)
+						svg.append("text")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_25
+							)
+							.attr("y", padding / 2)
+							.attr("text-anchor", "middle")
+							.attr("alignment-baseline", "middle")
+							.text(
+								line_25
+							)
+						svg.append("text")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_75
+							)
+							.attr("y", padding / 2)
+							.attr("text-anchor", "middle")
+							.attr("alignment-baseline", "middle")
+							.text(
+								line_75
+							)
+						svg.append("rect")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_25
+							)
+							.attr("y", padding)
+							.attr(
+								"width",
+								(width - padding * 2) / ceiling * (line_75 - line_25)
+							)
+							.attr("height", height - padding * 2)
+							.attr("fill", "rgba(0, 255, 0, 0.2)")
+					}
+					draw_general_graph(.01)
+				</script>
+			</div>
+			<!-- <- draw_general_graph -->
+			<div class="h=4em"></div>
+			<!-- draw_ceiling_graph -> -->
+			<h2 class="ta=center fs=2em bold">천장 시스템을 도입한 확률 모형의 시도 횟수에 따른 당첨 확률 양상</h2>
+			<div class="h=1em"></div>
+			<div class="flex jc=center">
+				<div class="w=min(100%,800px) h=0em pb=min(56.25%,450px) bd=1px_solid_#000">
+					<div id="ceiling-graph"></div>
+				</div>
+				<script>
+					function draw_ceiling_graph(percentage) {
+						const ceiling = (1.5 / percentage)|0
+						const data = [{ probability_of_success: 0, dice_rolls: 0 }]
+						const fail_percentage = 1 - percentage
+						let line_25
+						let line_75
+						let acc = 0
+						let left = 1
+						for (let i = 1; i <= ceiling; i++) {
+							acc += left * percentage
+							left *= fail_percentage
+							data[i] = {
+								dice_rolls: i,
+								probability_of_success: acc
+							}
+							if (!line_25 && acc >= .25) {
+								line_25 = i
+							} else if (!line_75 && acc >= .75) {
+								line_75 = i - 1
+							}
+						}
+						const width = 800
+						const height = 450
+						const padding = 40
+						const svg = d3.select("#ceiling-graph")
+							.append("svg")
+							.attr("viewBox", "0 0 800 450")
+						const x_scale = d3.scaleLinear()
+							.domain([0, data.at(-1).dice_rolls])
+							.range([padding, width - padding])
+						const y_scale = d3.scaleLinear()
+							.domain([0, 1])
+							.range([height - padding, padding])
+						const line = d3.line()
+							.x(d => x_scale(d.dice_rolls))
+							.y(d => y_scale(d.probability_of_success))
+						svg.append("path")
+							.datum(data)
+							.attr("fill", "none")
+							.attr("stroke", "steelblue")
+							.attr("stroke-width", 4)
+							.attr("d", line)
+						svg.append("g")
+							.attr("transform", `translate(0, ${height - padding})`)
+							.call(d3.axisBottom(x_scale))
+						svg.append("g")
+							.attr("transform", `translate(${padding}, 0)`)
+							.call(d3.axisLeft(y_scale))
+						svg.append("text")
+							.attr("x", width)
+							.attr(
+								"y",
+								padding / 2
+								+ (1 - data.at(-1).probability_of_success)
+								* (height - padding * 2)
+							)
+							.attr("text-anchor", "end")
+							.attr("alignment-baseline", "middle")
+							.text(
+								(data.at(-1).probability_of_success * 100).toFixed(2) + "%"
+							)
+						svg.append("text")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_25
+							)
+							.attr("y", padding / 2)
+							.attr("text-anchor", "middle")
+							.attr("alignment-baseline", "middle")
+							.text(
+								line_25
+							)
+						svg.append("text")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_75
+							)
+							.attr("y", padding / 2)
+							.attr("text-anchor", "middle")
+							.attr("alignment-baseline", "middle")
+							.text(
+								line_75
+							)
+						svg.append("rect")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_25
+							)
+							.attr("y", padding)
+							.attr(
+								"width",
+								(width - padding * 2) / ceiling * (line_75 - line_25)
+							)
+							.attr("height", height - padding * 2)
+							.attr("fill", "rgba(0, 255, 0, 0.2)")
+					}
+					draw_ceiling_graph(.005)
+				</script>
+			</div>
+			<!-- <- draw_ceiling_graph -->
+			<div class="h=4em"></div>
+			<!-- draw_gapm_graph -> -->
+			<h2 class="ta=center fs=2em bold">GAPM의 시도 횟수에 따른 당첨 확률 양상</h2>
+			<div class="h=1em"></div>
+			<div class="flex jc=center">
+				<div class="w=min(100%,800px) h=0em pb=min(56.25%,450px) bd=1px_solid_#000">
+					<div id="gapm-graph"></div>
+				</div>
+				<script>
+					function draw_gapm_graph(percentage) {
+						const { init, multiply } = probability_table(percentage)
+						const ceiling = (2 / percentage)|0
+						const data = [{ probability_of_success: 0, dice_rolls: 0 }]
+						let line_25
+						let line_75
+						let acc = 0
+						let left = 1
+						percentage = init
+						for (let i = 1; i <= ceiling; i++) {
+							acc += left * percentage
+							left *= 1 - percentage
+							data[i] = {
+								dice_rolls: i,
+								probability_of_success: acc
+							}
+							percentage = init * multiply ** i
+							if (!line_25 && acc >= .25) {
+								line_25 = i
+							} else if (!line_75 && acc >= .75) {
+								line_75 = i - 1
+							}
+						}
+						const width = 800
+						const height = 450
+						const padding = 40
+						const svg = d3.select("#gapm-graph")
+							.append("svg")
+							.attr("viewBox", "0 0 800 450")
+						const x_scale = d3.scaleLinear()
+							.domain([0, data.at(-1).dice_rolls])
+							.range([padding, width - padding])
+						const y_scale = d3.scaleLinear()
+							.domain([0, 1])
+							.range([height - padding, padding])
+						const line = d3.line()
+							.x(d => x_scale(d.dice_rolls))
+							.y(d => y_scale(d.probability_of_success))
+						svg.append("path")
+							.datum(data)
+							.attr("fill", "none")
+							.attr("stroke", "steelblue")
+							.attr("stroke-width", 4)
+							.attr("d", line)
+						svg.append("g")
+							.attr("transform", `translate(0, ${height - padding})`)
+							.call(d3.axisBottom(x_scale))
+						svg.append("g")
+							.attr("transform", `translate(${padding}, 0)`)
+							.call(d3.axisLeft(y_scale))
+						svg.append("text")
+							.attr("x", width)
+							.attr(
+								"y",
+								padding / 2
+								+ (1 - data.at(-1).probability_of_success)
+								* (height - padding * 2)
+							)
+							.attr("text-anchor", "end")
+							.attr("alignment-baseline", "middle")
+							.text(
+								(data.at(-1).probability_of_success * 100).toFixed(2) + "%"
+							)
+						svg.append("text")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_25
+							)
+							.attr("y", padding / 2)
+							.attr("text-anchor", "middle")
+							.attr("alignment-baseline", "middle")
+							.text(
+								line_25
+							)
+						svg.append("text")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_75
+							)
+							.attr("y", padding / 2)
+							.attr("text-anchor", "middle")
+							.attr("alignment-baseline", "middle")
+							.text(
+								line_75
+							)
+						svg.append("rect")
+							.attr(
+								"x",
+								padding
+								+ (width - padding * 2) / ceiling * line_25
+							)
+							.attr("y", padding)
+							.attr(
+								"width",
+								(width - padding * 2) / ceiling * (line_75 - line_25)
+							)
+							.attr("height", height - padding * 2)
+							.attr("fill", "rgba(0, 255, 0, 0.2)")
+					}
+					draw_gapm_graph(.01)
+				</script>
+			</div>
+			<!-- <- draw_gapm_graph -->
+			<div class="h=4em"></div>
+			<!-- draw_gapm_fail_graph -> -->
+			<h2 class="ta=center fs=2em bold">GAPM의 실패 횟수에 따른 누적 확률과 당첨 기대비용 양상</h2>
+			<div class="h=1em"></div>
+			<div class="flex jc=center">
+				<div class="w=min(100%,800px) h=0em pb=min(56.25%,450px) bd=1px_solid_#000">
+					<div id="gapm-fail-graph"></div>
+				</div>
+				<script>
+					function draw_gapm_fail_graph(percentage) {
+						const { init, multiply } = probability_table(percentage)
+						const ceiling = (2 / percentage)|0
+						const data = [{ probability_of_success: 0, dice_rolls: 0 }]
+						for (let i = 0; i < ceiling; i++) {
+							data[i] = {
+								dice_rolls: i,
+								expected_cost: expect_cost(init, multiply, i),
+								percentage: init * multiply ** i
+							}
+						}
+						const width = 800
+						const height = 450
+						const padding = 40
+						const svg = d3.select("#gapm-fail-graph")
+							.append("svg")
+							.attr("viewBox", "0 0 800 450")
+						const x_scale = d3.scaleLinear()
+							.domain([0, ceiling])
+							.range([padding, width - padding])
+						const y_scale = d3.scaleLinear()
+							.domain([0, 1 / percentage])
+							.range([height - padding, padding])
+						const line = d3.line()
+							.x(d => x_scale(d.dice_rolls))
+							.y(d => y_scale(d.expected_cost))
+						svg.append("path")
+							.datum(data)
+							.attr("fill", "none")
+							.attr("stroke", "steelblue")
+							.attr("stroke-width", 4)
+							.attr("d", line)
+						const line2 = d3.line()
+							.x(d => x_scale(d.dice_rolls))
+							.y(d => y_scale(d.percentage * 100))
+						svg.append("path")
+							.datum(data)
+							.attr("fill", "none")
+							.attr("stroke", "firebrick")
+							.attr("stroke-width", 4)
+							.attr("d", line2)
+						svg.append("g")
+							.attr("transform", `translate(0, ${height - padding})`)
+							.call(d3.axisBottom(x_scale))
+						svg.append("g")
+							.attr("transform", `translate(${padding}, 0)`)
+							.call(d3.axisLeft(y_scale))
+						svg.append("text")
+							.attr("x", width - padding)
+							.attr(
+								"y",
+								padding / 2
+								+ (height - padding * 2)
+							)
+							.attr("text-anchor", "end")
+							.attr("alignment-baseline", "middle")
+							.text(
+								(data.at(-1).expected_cost)
+							)
+						svg.append("text")
+							.attr("x", width - padding / 2)
+							.attr(
+								"y",
+								padding / 2
+								+ (1 - data.at(-1).percentage)
+								* (height - padding * 2)
+							)
+							.attr("text-anchor", "end")
+							.attr("alignment-baseline", "middle")
+							.text(
+								(data.at(-1).percentage * 100).toFixed(2) + "%"
+							)
+					}
+					draw_gapm_fail_graph(.01)
+				</script>
+			</div>
+			<!-- <- draw_gapm_fail_graph -->
+			<div class="h=4em"></div>
+			<!-- draw_gapm_fail_graph -> -->
+			<h2 class="ta=center fs=2em bold">GAPM의 실패 횟수에 따른 스택 가치 양상</h2>
+			<div class="h=1em"></div>
+			<div class="flex jc=center">
+				<div class="w=min(100%,800px) h=0em pb=min(56.25%,450px) bd=1px_solid_#000">
+					<div id="gapm-fail-value-graph"></div>
+				</div>
+				<script>
+					function draw_gapm_fail_value_graph(percentage) {
+						const { init, multiply } = probability_table(percentage)
+						const ceiling = (2 / percentage)|0
+						const data = [{ probability_of_success: 0, dice_rolls: 0 }]
+						for (let i = 0; i < ceiling; i++) {
+							data[i] = {
+								dice_rolls: i,
+								expected_cost: expect_cost(init, multiply, i),
+								percentage: init * multiply ** i
+							}
+						}
+						const width = 800
+						const height = 450
+						const padding = 40
+						const svg = d3.select("#gapm-fail-value-graph")
+							.append("svg")
+							.attr("viewBox", "0 0 800 450")
+						const x_scale = d3.scaleLinear()
+							.domain([0, ceiling])
+							.range([padding, width - padding])
+						const y_scale = d3.scaleLinear()
+							.domain([0, 1 / percentage])
+							.range([height - padding, padding])
+						const line = d3.line()
+							.x(d => x_scale(d.dice_rolls))
+							.y(d => y_scale(1 / percentage - d.expected_cost))
+						svg.append("path")
+							.datum(data)
+							.attr("fill", "none")
+							.attr("stroke", "steelblue")
+							.attr("stroke-width", 4)
+							.attr("d", line)
+						const line2 = d3.line()
+							.x(d => x_scale(d.dice_rolls))
+							.y(d => y_scale(d.percentage * 100))
+						svg.append("g")
+							.attr("transform", `translate(0, ${height - padding})`)
+							.call(d3.axisBottom(x_scale))
+						svg.append("g")
+							.attr("transform", `translate(${padding}, 0)`)
+							.call(d3.axisLeft(y_scale))
+						svg.append("text")
+							.attr("x", width - padding)
+							.attr(
+								"y",
+								padding / 2
+							)
+							.attr("text-anchor", "end")
+							.attr("alignment-baseline", "middle")
+							.text(
+								(1 / percentage - data.at(-1).expected_cost)
+							)
+					}
+					draw_gapm_fail_value_graph(.01)
+				</script>
+			</div>
+			<!-- <- draw_gapm_fail_value_graph -->
+			<div class="h=4em"></div>
+		</main>
+	</body>
 </html>
