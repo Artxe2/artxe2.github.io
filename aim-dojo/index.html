@@ -13,7 +13,7 @@
 				--grid-bold: rgba(255,255,255,0.12);
 				--grid-thin: rgba(255,255,255,0.06);
 				--target: rgba(56, 89, 120, 0.70);     /* 어둡고 차가운 파랑-슬레이트 */
-				--target_core: rgba(28, 52, 74, 0.92); /* 더 어둡게 */
+				--target-core: rgba(28, 52, 74, 0.92); /* 더 어둡게 */
 			}
 			html, body { height: 100%; margin: 0; background: var(--bg); color: var(--fg); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
 			canvas { display: block; width: 100%; height: 100%; cursor: crosshair; transition: filter .12s ease; }
@@ -53,7 +53,7 @@
 		<div id="wrap">
 			<canvas class="blur" id="canvas"></canvas>
 			<div class="hud" id="hud">
-				<label>Best Score</label> <span id="best_score">—</span> ·
+				<label>Score/Best</label> <span id="best_score">—</span> ·
 				<label>Avg On-Target</label> <span id="avg_on_target">—</span> ms ·
 				<label>Accuracy</label> <span id="accuracy">—</span> % ·
 				<label>Critical</label> <span id="crit_rate">—</span> %
@@ -140,11 +140,13 @@
 		hall_width_ratio: 0.35,
 		hit_period_s: 0.05,
 		hud_update_interval: 100,
+		ls_key: "best_score",
 		pulse_alpha: 0.6,
 		pulse_duration_s: 0.25,
 		pulse_rings: 2,
 		sound_decay_s: 0.2,
 		sound_volume: 100,
+		stats_window_ms: 30_000,
 		target: {
 			base_radius: 5,
 			move_change_interval_ms: 500,
@@ -192,7 +194,9 @@
 				master: audio_master,
 				sample_buffer: audio_buffer
 			},
-			best_score: 0,
+			best_score: Number(
+				localStorage.getItem(Config.ls_key) || 0
+			),
 			camera: { x: 0, y: 0 },
 			/** @type {number?} */
 			crit_enter_ms: null,
@@ -620,16 +624,17 @@
 	}
 	/** @returns {void} */
 	function on_resize() {
-		State.w = Document.canvas.clientWidth * devicePixelRatio
-		State.h = Document.canvas.clientHeight * devicePixelRatio
-		Document.canvas.width = innerWidth * devicePixelRatio
-		Document.canvas.height = innerHeight * devicePixelRatio
+		const { canvas } = Document
+		canvas.width = State.w = innerWidth * devicePixelRatio
+		canvas.height = State.h = innerHeight * devicePixelRatio
 		update_sens_calc()
 		if (!State.is_locked) draw(performance.now())
 	}
-	/** @returns {void} */
-	function prune_1m() {
-		const cutoff = State.g_time_ms - 60000
+	/**
+	 * @param {number} cutoff
+	 * @returns {void}
+	 */
+	function prune_window(cutoff) {
 		while (Stats.crit_size && Stats.crit_end_t[Stats.crit_head] < cutoff) {
 			Stats.sum_crit_ms -= Stats.crit_dur[Stats.crit_head]
 			Stats.crit_head = (Stats.crit_head + 1) % Stats.crit_end_t.length
@@ -765,9 +770,9 @@
 			}
 			return sum
 		}
-		prune_1m()
 		const now = State.g_time_ms
-		const cutoff = now - 60000
+		const cutoff = now - Config.stats_window_ms
+		prune_window(cutoff)
 		const ongoing_hover_ms = State.hover_enter_ms != null
 			? Math.max(
 				0,
@@ -796,41 +801,45 @@
 			Document.avg_on_target,
 			avg_hover != null ? String(Math.round(avg_hover)) : "—"
 		)
-		const press_ms_60s = ongoing_press_ms
+		const press_ms_window = ongoing_press_ms
 			+ clip_sum(
 				Stats.press_end_t,
 				Stats.press_dur,
 				Stats.press_size,
 				Stats.press_head
 			)
-		const hover_ms_60s = ongoing_hover_ms
+		const hover_ms_window = ongoing_hover_ms
 			+ clip_sum(
 				Stats.hover_end_t,
 				Stats.hover_dur,
 				Stats.hover_size,
 				Stats.hover_head
 			)
-		const crit_ms_60s = ongoing_crit_ms
+		const crit_ms_window = ongoing_crit_ms
 			+ clip_sum(
 				Stats.crit_end_t,
 				Stats.crit_dur,
 				Stats.crit_size,
 				Stats.crit_head
 			)
-		const score_60s = Math.round(hover_ms_60s + crit_ms_60s)
-		if (score_60s > State.best_score) {
-			State.best_score = score_60s
-			set_text_if_changed(
-				Document.best_score,
-				State.best_score
+		const current_score = (hover_ms_window + crit_ms_window)|0
+		if (current_score > State.best_score) {
+			State.best_score = current_score
+			localStorage.setItem(
+				Config.ls_key,
+				String(State.best_score)
 			)
 		}
-		const acc_pct = press_ms_60s > 0 ? (hover_ms_60s / press_ms_60s) * 100 : null
+		set_text_if_changed(
+			Document.best_score,
+			`${current_score} / ${State.best_score}`
+		)
+		const acc_pct = press_ms_window > 0 ? (hover_ms_window / press_ms_window) * 100 : null
 		set_text_if_changed(
 			Document.accuracy,
 			acc_pct != null ? acc_pct.toFixed(1) : "—"
 		)
-		const crit_pct = hover_ms_60s > 0 ? (crit_ms_60s / hover_ms_60s) * 100 : null
+		const crit_pct = hover_ms_window > 0 ? (crit_ms_window / hover_ms_window) * 100 : null
 		set_text_if_changed(
 			Document.crit_rate,
 			crit_pct != null ? crit_pct.toFixed(1) : "—"
