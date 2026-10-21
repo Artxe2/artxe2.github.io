@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en" class="--bg=#F3F1EC;--panel=#FFFFFF;--sunk=#F6F4F0;--line=#E4E0D8;--line-strong=#CFC9BE;--grid=#F0EDE7;--ink=#1D1C1A;--muted=#716C63;--target=#E0612F;--target-soft=rgba(224,97,47,.16);--voice=#3B6FD8;--good=#16935F;--off=#C9780F;--rec=#DD3B30
+	@dark@--bg=#111213;--panel=#191A1C;--sunk=#212326;--line=#2B2D31;--line-strong=#43464C;--grid=#202226;--ink=#ECEAE5;--muted=#99958D;--target=#F2875A;--target-soft=rgba(242,135,90,.18);--voice=#7FA6F5;--good=#3CCB8E;--off=#F2B04A;--rec=#FF5C52
+	csm=light @dark@csm=dark ff=Inter,_system-ui,_-apple-system,_'Segoe_UI',_sans-serif
+	_:focus-visible/ol=2_solid_--voice;outline-offset=2
+	_[hidden]/d=none!important">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sing a major scale in C3–C4, C4–C5 or C5–C6, see your pitch against the guide, and record takes.">
+<title>Pitch Trace</title>
+<script src="https://artxe.github.io/click-css/min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body class="h=auto mah=none mih=100% bg=--bg c=--ink fs=15 -webkit-font-smoothing=antialiased">
+<div class="grid gtr=auto_minmax(340px,_1fr)_auto_auto g=14 maw=1080 mih=100dvh mx=auto p=20_20_32 @max-width=640px@p=12_12_24;g=10">
+
+	<header class="flex wrap ai=center jc=space-between g=12_20">
+		<div class="miw=0 f=1_1_240px">
+			<h1 class="fs=22 fw=700 ls=-0.02em lh=1.2">Pitch Trace</h1>
+			<p class="c=--muted fs=14">Sing the scale with the guide and watch where your voice lands.</p>
+		</div>
+		<div id="ranges" class="flex p=4 g=4 br=12 bg=--panel bd=1_solid_--line
+			_button/h=36;px=16;br=8;c=--muted;fs=14;fw=600;font-variant-numeric=tabular-nums;tr=background_.15s,color_.15s
+			_button:hover/c=--ink
+			_button[aria-checked=true]/bg=--ink;c=--bg" role="radiogroup" aria-label="Range">
+			<button type="button" role="radio" aria-checked="false" data-range="0">C3–C4</button>
+			<button type="button" role="radio" aria-checked="true" data-range="1">C4–C5</button>
+			<button type="button" role="radio" aria-checked="false" data-range="2">C5–C6</button>
+		</div>
+	</header>
+
+	<main class="grid gtr=auto_minmax(0,_1fr) miw=0 br=16 bg=--panel bd=1_solid_--line o=hidden">
+		<div class="flex ai=center g=16 mih=72 p=10_16 bdb=1_solid_--line @max-width=640px@g=10;p=8_12">
+			<div class="flex ai=baseline g=10 miw=0 fg=1 font-variant-numeric=tabular-nums">
+				<span id="note" class="fs=40 fw=700 lh=1 ls=-0.03em miw=72 @max-width=640px@fs=32;miw=58">–</span>
+				<span id="syl" class="fs=18 fw=600 c=--muted miw=36"></span>
+				<span id="cents" class="fs=15 fw=600 c=--muted miw=48
+					[data-tone=good]/c=--good
+					[data-tone=off]/c=--off"></span>
+				<span id="hz" class="fs=13 c=--muted @max-width=640px@none"></span>
+			</div>
+			<div id="target" class="flex column ai=flex-end lh=1.25" hidden>
+				<span class="fs=12 c=--muted">Target</span>
+				<b id="targetName" class="fs=17 fw=700 c=--target"></b>
+			</div>
+			<div id="recBadge" class="flex ai=center g=8 h=30 px=12 br=999 bg=--rec c=#fff fs=13 fw=600 font-variant-numeric=tabular-nums
+				_i/w=8;h=8;br=50%;bg=#fff" hidden><i></i><span id="recTime">0:00</span></div>
+		</div>
+		<div id="plot" class="relative mih=0">
+			<canvas id="roll" class="absolute in=0 w=100% h=100%" aria-label="Pitch roll: guide notes and your sung pitch over time"></canvas>
+			<p id="idle" class="absolute l=76 r=16 b=14 p=10_12 br=10 bg=--sunk c=--muted fs=13 pe=none @max-width=640px@l=66;r=10;b=10">Press <b class="fw=600 c=--ink">Guide</b> to hear the scale, <b class="fw=600 c=--ink">Mic</b> to see your pitch, or <b class="fw=600 c=--ink">Record</b> to keep a take. Use headphones so the guide stays out of the mic.</p>
+		</div>
+	</main>
+
+	<section class="flex wrap ai=center g=10 @max-width=640px@grid;gtc=1fr_1fr;g=8" aria-label="Controls">
+		<button id="guideBtn" type="button" aria-pressed="false" class="flex ai=center jc=center g=8 h=44 px=16 br=12 bg=--panel bd=1_solid_--line fs=15 fw=600 tr=background_.15s,border-color_.15s
+			:hover/bdc=--line-strong
+			[aria-pressed=true]/bg=--target;bdc=--target;c=#fff
+			_svg/w=18;h=18;fill=currentColor
+			[aria-pressed=true]_.play/none
+			[aria-pressed=false]_.stop/none">
+			<svg class="play" viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4.2v11.6a.8.8 0 0 0 1.2.7l9.3-5.8a.8.8 0 0 0 0-1.4L7.2 3.5A.8.8 0 0 0 6 4.2Z"/></svg>
+			<svg class="stop" viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="5" width="10" height="10" rx="1.5"/></svg>
+			<span>Guide</span>
+		</button>
+
+		<label class="flex ai=center g=6 h=44 pl=12 pr=4 br=12 bg=--panel bd=1_solid_--line c=--muted fs=14
+			_select/h=34;px=6;br=8;bd=0;bg=transparent;c=--ink;fw=600;cs=pointer">Step
+			<select id="step">
+				<option value="1.5">Slow</option>
+				<option value="1" selected>Medium</option>
+				<option value="0.6">Fast</option>
+			</select>
+		</label>
+
+		<label class="flex ai=center g=10 h=44 px=12 br=12 bg=--panel bd=1_solid_--line c=--muted fs=14 @max-width=640px@gc=1_/_-1
+			@max-width=640px@_input/fg=1
+			_input/w=110;accent-color=--target;cs=pointer">Volume
+			<input id="vol" type="range" min="0" max="100" value="35">
+		</label>
+
+		<div class="fg=1 @max-width=640px@none"></div>
+
+		<button id="micBtn" type="button" aria-pressed="false" class="flex ai=center jc=center g=8 h=44 px=16 br=12 bg=--panel bd=1_solid_--line fs=15 fw=600 tr=background_.15s,border-color_.15s
+			:hover/bdc=--line-strong
+			[aria-pressed=true]/bg=--voice;bdc=--voice;c=#fff
+			_svg/w=18;h=18;fill=none;stroke=currentColor;stroke-width=1.8;stroke-linecap=round">
+			<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="2.5" width="6" height="10" rx="3"/><path d="M4.5 9.5a5.5 5.5 0 0 0 11 0M10 15v2.5"/></svg>
+			<span>Mic</span>
+		</button>
+
+		<button id="recBtn" type="button" aria-pressed="false" class="flex ai=center jc=center g=8 h=44 px=18 br=12 bg=--ink bd=1_solid_--ink c=--bg fs=15 fw=600 tr=background_.15s,border-color_.15s
+			:hover/op=.9
+			:disabled/op=.4;cs=not-allowed
+			[aria-pressed=true]/bg=--rec;bdc=--rec;c=#fff
+			_i/w=12;h=12;br=50%;bg=--rec;tr=border-radius_.15s
+			[aria-pressed=true]_i/br=2;bg=#fff">
+			<i aria-hidden="true"></i><span id="recLabel">Record</span>
+		</button>
+	</section>
+
+	<section aria-labelledby="takesTitle" class="grid g=10">
+		<div class="flex wrap ai=baseline jc=space-between g=4_12">
+			<h2 id="takesTitle" class="fs=16 fw=700">Takes</h2>
+			<p id="status" class="c=--muted fs=13" role="status"><span class="@coarse@none">Keys: Space guide · M mic · R record · 1–3 range</span></p>
+		</div>
+		<p id="empty" class="p=20 br=12 bd=1.5_dashed_--line c=--muted fs=14 ta=center">No takes yet. Press Record and sing along with the guide.</p>
+		<ol id="takes" class="grid g=8
+			>li/grid;gtc=44_minmax(0,_1fr)_auto_auto;ai=center;g=14;p=10_12;br=12;bg=--panel;bd=1_solid_--line
+			>li.playing/bdc=--voice;bsd=0_0_0_1_--voice
+			_.tt/fw=600
+			_.meta/c=--muted;fs=13;font-variant-numeric=tabular-nums
+			_.score/ta=right;fs=12;c=--muted;font-variant-numeric=tabular-nums;lh=1.3
+			_.score_b/d=block;fs=18;fw=700;c=--ink
+			_.score_b.good/c=--good
+			_.score_b.off/c=--off
+			_:is(button,a)/grid;pci=center;w=40;h=40;br=10;c=--muted
+			_:is(button,a):hover/bg=--sunk;c=--ink
+			_.play/w=44;h=44;br=50%;bg=--ink;c=--bg
+			_.play:hover/bg=--ink;c=--bg;op=.9
+			_svg/w=18;h=18;fill=currentColor
+			_.acts/flex
+			@max-width=640px@>li/gtc=44_minmax(0,_1fr)_auto;g=10
+			@max-width=640px@_.acts/gc=2_/_-1;ml=-10"></ol>
+	</section>
+</div>
+
+<script src="pitch.js"></script>
+<script type="module">
+const { RANGES, detectPitch, freqToMidi, midiToFreq, noteName, solfa, pitchTracker, steadyNote, viewRange, guideTarget, takeStats, takeFileName } = Pitch;
+
+const $ = s => document.querySelector(s);
+const WINDOW = 8, NOW_AT = 0.7, GUTTER = 62, TOLERANCE = 30, GAP = 0.15;
+const ui = {
+	plot: $('#plot'), roll: $('#roll'), note: $('#note'), syl: $('#syl'), cents: $('#cents'), hz: $('#hz'),
+	target: $('#target'), targetName: $('#targetName'), idle: $('#idle'), recBadge: $('#recBadge'), recTime: $('#recTime'),
+	guideBtn: $('#guideBtn'), step: $('#step'), vol: $('#vol'), micBtn: $('#micBtn'), recBtn: $('#recBtn'),
+	recLabel: $('#recLabel'), takes: $('#takes'), empty: $('#empty'), status: $('#status'), ranges: $('#ranges')
+};
+
+const st = {
+	range: +ui.ranges.querySelector('[aria-checked=true]').dataset.range, step: 1, ctx: null,
+	guide: null,     // { osc, gain, start, scheduled }
+	mic: null,       // { stream, source, analyser, buf }
+	micAsk: null,    // the pending microphone request
+	micWanted: false,
+	live: [],        // recent samples on the AudioContext clock
+	track: pitchTracker(),
+	rec: null,       // { recorder, start, take }
+	takes: [],
+	replay: null,    // { take, audio }
+	view: null,      // { low, high, at }: the pitch span on screen, eased toward viewRange
+	note: null,      // the note named in the readout
+	W: 0, H: 0
+};
+
+const lo = () => RANGES[st.range].lo;
+const rangeLabel = l => (RANGES.find(r => r.lo === l) || RANGES[0]).label;
+const say = msg => { ui.status.textContent = msg; };
+const fmt = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+
+function audio() {
+	if (!st.ctx) st.ctx = new (window.AudioContext || window.webkitAudioContext)();
+	if (st.ctx.state === 'suspended') st.ctx.resume();
+	return st.ctx;
+}
+
+/* ---------- guide tone ---------- */
+const guideGain = () => (ui.vol.value / 100) ** 2 * 0.5;
+
+function startGuide() {
+	const ctx = audio(), osc = ctx.createOscillator(), gain = ctx.createGain(), start = ctx.currentTime + 0.08;
+	osc.type = 'sine';
+	gain.gain.value = 0;
+	osc.connect(gain).connect(ctx.destination);
+	osc.frequency.setValueAtTime(midiToFreq(lo()), start);
+	osc.start();
+	gain.gain.setTargetAtTime(guideGain(), start, 0.03);
+	st.guide = { osc, gain, start, scheduled: -1 };
+	schedule();
+	ui.guideBtn.setAttribute('aria-pressed', 'true');
+}
+
+function stopGuide() {
+	if (!st.guide) return;
+	const { osc, gain } = st.guide, t = st.ctx.currentTime;
+	gain.gain.cancelScheduledValues(t);
+	gain.gain.setTargetAtTime(0, t, 0.04);
+	osc.stop(t + 0.3);
+	st.guide = null;
+	ui.guideBtn.setAttribute('aria-pressed', 'false');
+}
+
+// Queue each step's frequency a little ahead so timing survives a busy main thread.
+function schedule() {
+	const g = st.guide;
+	if (!g) return;
+	const now = st.ctx.currentTime;
+	for (let i = g.scheduled + 1; g.start + i * st.step < now + 0.25; i++) {
+		g.osc.frequency.setTargetAtTime(midiToFreq(guideTarget(i * st.step, st.step, lo())), Math.max(now, g.start + i * st.step), 0.025);
+		g.scheduled = i;
+	}
+}
+setInterval(schedule, 50);
+
+function reschedule() {
+	const g = st.guide;
+	if (!g) return;
+	const now = st.ctx.currentTime;
+	g.osc.frequency.cancelScheduledValues(now);
+	g.scheduled = Math.max(-1, Math.floor((now - g.start) / st.step) - 1);
+	schedule();
+}
+
+/* ---------- microphone ---------- */
+// Callers during a pending request share it, so a double click opens one stream.
+function micOn() {
+	if (st.mic) return Promise.resolve(true);
+	return st.micAsk || (st.micAsk = openMic().finally(() => { st.micAsk = null; }));
+}
+
+async function openMic() {
+	const ctx = audio();
+	try {
+		// Gain control lifts quiet singing, so it is heard and its takes are not faint. Echo cancellation stays
+		// off: it takes a voice on the guide's note for the guide's echo and wipes the pitch out (headphones
+		// keep the guide out of the mic instead).
+		const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: true } });
+		const source = ctx.createMediaStreamSource(stream), analyser = ctx.createAnalyser();
+		analyser.fftSize = 2048;
+		source.connect(analyser);
+		st.mic = { stream, source, analyser, buf: new Float32Array(analyser.fftSize) };
+		ui.micBtn.setAttribute('aria-pressed', 'true');
+		return true;
+	} catch (e) {
+		say(e && e.name === 'NotAllowedError' ? 'Microphone blocked. Allow it in the site settings and try again.' : 'No microphone available.');
+		return false;
+	}
+}
+
+function micOff() {
+	if (!st.mic || st.rec) return;
+	st.mic.stream.getTracks().forEach(t => t.stop());
+	st.mic.source.disconnect();
+	st.mic = null;
+	st.track = pitchTracker();
+	ui.micBtn.setAttribute('aria-pressed', 'false');
+}
+
+function listen() {
+	const m = st.mic, now = st.ctx.currentTime;
+	m.analyser.getFloatTimeDomainData(m.buf);
+	const r = detectPitch(m.buf, st.ctx.sampleRate, { minFreq: 70, maxFreq: 1400 });
+	const midi = st.track(now, r ? freqToMidi(r.freq) : null);
+	const s = { t: now, midi, target: st.guide ? guideTarget(now - st.guide.start, st.step, lo()) : null, lo: lo() };
+	st.live.push(s);
+	while (st.live.length && st.live[0].t < now - WINDOW) st.live.shift();
+	if (st.rec) st.rec.take.samples.push({ ...s, t: +(now - st.rec.start).toFixed(3), midi: midi == null ? null : +midi.toFixed(3) });
+}
+
+/* ---------- recording ---------- */
+function pickMime() {
+	if (!window.MediaRecorder) return null;
+	return ['audio/webm;codecs=opus', 'audio/mp4', 'audio/ogg;codecs=opus', 'audio/webm'].find(t => MediaRecorder.isTypeSupported(t)) || '';
+}
+
+async function startRec() {
+	const mime = pickMime();
+	if (mime == null) return say('Recording is not supported in this browser.');
+	stopReplay();
+	if (!(await micOn()) || st.rec) return;
+	const take = { id: Date.now(), date: new Date(), lo: lo(), samples: [], duration: 0 };
+	const recorder = new MediaRecorder(st.mic.stream, mime ? { mimeType: mime } : undefined);
+	const chunks = [];
+	recorder.ondataavailable = e => { if (e.data.size) chunks.push(e.data); };
+	recorder.onstop = () => {
+		take.mime = recorder.mimeType || mime || 'audio/webm';
+		take.blob = new Blob(chunks, { type: take.mime });
+		addTake(take);
+	};
+	recorder.start(250);
+	st.rec = { recorder, start: st.ctx.currentTime, take };
+	ui.recBtn.setAttribute('aria-pressed', 'true');
+	ui.recLabel.textContent = 'Stop';
+	ui.recBadge.hidden = false;
+}
+
+function stopRec() {
+	if (!st.rec) return;
+	const { recorder, take, start } = st.rec;
+	take.duration = st.ctx.currentTime - start;
+	st.rec = null;
+	recorder.stop();
+	ui.recBtn.setAttribute('aria-pressed', 'false');
+	ui.recLabel.textContent = 'Record';
+	ui.recBadge.hidden = true;
+	if (!st.micWanted) micOff();
+}
+
+/* ---------- takes, kept in IndexedDB when the browser allows it ---------- */
+const db = new Promise(res => {
+	try {
+		const r = indexedDB.open('pitch-trace', 1);
+		r.onupgradeneeded = () => r.result.createObjectStore('takes', { keyPath: 'id' });
+		r.onsuccess = () => res(r.result);
+		r.onerror = r.onblocked = () => res(null);
+	} catch (e) { res(null); }
+});
+
+async function store(mode, op) {
+	const d = await db;
+	if (!d) return null;
+	return new Promise(res => {
+		try {
+			const req = op(d.transaction('takes', mode).objectStore('takes'));
+			req.onsuccess = () => res(req.result);
+			req.onerror = () => res(null);
+		} catch (e) { res(null); }
+	});
+}
+
+function addTake(take) {
+	if (take.duration < 0.5) return say('That take was too short to keep.');
+	st.takes.unshift(take);
+	store('readwrite', s => s.put(take));
+	renderTakes();
+	say(`Saved take ${st.takes.length}.`);
+}
+
+function deleteTake(id) {
+	const t = st.takes.find(x => x.id === id);
+	if (!t || !confirm('Delete this take?')) return;
+	if (st.replay && st.replay.take === t) stopReplay();
+	st.takes = st.takes.filter(x => x !== t);
+	store('readwrite', s => s.delete(id));
+	renderTakes();
+}
+
+function downloadTake(id) {
+	const t = st.takes.find(x => x.id === id);
+	if (!t) return;
+	const a = document.createElement('a');
+	a.href = URL.createObjectURL(t.blob);
+	a.download = takeFileName(t.date, t.mime);
+	a.click();
+	setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+const ICON = {
+	play: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 4.2v11.6a.8.8 0 0 0 1.2.7l9.3-5.8a.8.8 0 0 0 0-1.4L7.7 3.5a.8.8 0 0 0-1.2.7Z"/></svg>',
+	stop: '<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="5" width="10" height="10" rx="1.5"/></svg>',
+	down: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5a.9.9 0 0 1 .9.9v7.9l2.6-2.6a.9.9 0 1 1 1.3 1.3l-4.1 4.1a.9.9 0 0 1-1.3 0L5.3 10a.9.9 0 1 1 1.3-1.3l2.5 2.6V3.4a.9.9 0 0 1 .9-.9ZM4 15.6h12a.9.9 0 0 1 0 1.8H4a.9.9 0 0 1 0-1.8Z"/></svg>',
+	del: '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 2.5h4a1 1 0 0 1 1 1V4h3a.9.9 0 0 1 0 1.8h-.6l-.7 10a1.8 1.8 0 0 1-1.8 1.7H7.1a1.8 1.8 0 0 1-1.8-1.7l-.7-10H4A.9.9 0 0 1 4 4h3v-.5a1 1 0 0 1 1-1Zm-1.6 3.3.7 9.9h5.8l.7-9.9Z"/></svg>'
+};
+
+function renderTakes() {
+	const n = st.takes.length;
+	ui.empty.hidden = n > 0;
+	ui.takes.innerHTML = st.takes.map((t, i) => {
+		const k = n - i, s = takeStats(t.samples, TOLERANCE), on = st.replay && st.replay.take === t;
+		const score = !s.voiced
+			? `<b>–</b>no pitch heard`
+			: s.inTune == null
+			? `<b>${Math.round(s.voiced / t.samples.length * 100)}%</b>voiced · no guide`
+			: `<b class="${s.inTune >= 0.6 ? 'good' : 'off'}">${Math.round(s.inTune * 100)}%</b>in tune · ${Math.round(s.meanCents)}¢ off`;
+		const when = t.date.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+		return `<li data-id="${t.id}"${on ? ' class="playing"' : ''}>
+			<button class="play" data-act="play" aria-label="${on ? 'Stop' : 'Play'} take ${k}">${on ? ICON.stop : ICON.play}</button>
+			<div class="miw=0"><div class="tt">Take ${k} · ${rangeLabel(t.lo)}</div><div class="meta">${when} · ${fmt(t.duration)}</div></div>
+			<div class="score">${score}</div>
+			<div class="acts"><button data-act="dl" aria-label="Download take ${k}" title="Download">${ICON.down}</button><button data-act="del" aria-label="Delete take ${k}" title="Delete">${ICON.del}</button></div>
+		</li>`;
+	}).join('');
+}
+
+ui.takes.addEventListener('click', e => {
+	const b = e.target.closest('[data-act]');
+	if (!b) return;
+	const id = +b.closest('li').dataset.id, act = b.dataset.act;
+	if (act === 'play') st.replay && st.replay.take.id === id ? stopReplay() : startReplay(id);
+	else if (act === 'dl') downloadTake(id);
+	else if (act === 'del') deleteTake(id);
+});
+
+/* ---------- replay: play a take and scroll its pitch trace in sync ---------- */
+function startReplay(id) {
+	const take = st.takes.find(x => x.id === id);
+	if (!take || st.rec) return;
+	stopReplay();
+	const a = new Audio(URL.createObjectURL(take.blob));
+	st.replay = { take, audio: a };
+	a.onended = stopReplay;
+	a.play().catch(() => { say('Could not play this take.'); stopReplay(); });
+	renderTakes();
+}
+
+function stopReplay() {
+	if (!st.replay) return;
+	const a = st.replay.audio;
+	a.pause();
+	URL.revokeObjectURL(a.src);
+	st.replay = null;
+	renderTakes();
+}
+
+/* ---------- pitch roll ---------- */
+const cx = ui.roll.getContext('2d');
+
+function fit() {
+	const d = window.devicePixelRatio || 1;
+	st.W = ui.plot.clientWidth;
+	st.H = ui.plot.clientHeight;
+	ui.roll.width = Math.round(st.W * d);
+	ui.roll.height = Math.round(st.H * d);
+	cx.setTransform(d, 0, 0, d, 0, 0);
+}
+new ResizeObserver(fit).observe(ui.plot);
+
+// Index of the last sample at or before t, or -1.
+function indexAt(list, t) {
+	let a = 0, b = list.length - 1, r = -1;
+	while (a <= b) {
+		const m = (a + b) >> 1;
+		if (list[m].t <= t) { r = m; a = m + 1; } else b = m - 1;
+	}
+	return r;
+}
+
+function sampleAt(list, t) {
+	const i = indexAt(list, t);
+	return i >= 0 && t - list[i].t < GAP ? list[i] : null;
+}
+
+function colors() {
+	const cs = getComputedStyle(document.documentElement), c = {};
+	for (const k of ['panel', 'line', 'line-strong', 'grid', 'ink', 'muted', 'target', 'target-soft', 'voice', 'good', 'off']) c[k] = cs.getPropertyValue('--' + k).trim();
+	return c;
+}
+
+const tone = s => s.target == null ? 'voice' : Math.abs(s.midi - s.target) * 100 <= TOLERANCE ? 'good' : 'off';
+
+function line(x0, y0, x1, y1) {
+	cx.beginPath();
+	cx.moveTo(x0, y0);
+	cx.lineTo(x1, y1);
+	cx.stroke();
+}
+
+// Eases the pitch span on screen toward the guide's octave plus wherever the voice went in view.
+function follow(v) {
+	const goal = viewRange(v.samples, v.lo, v.now - WINDOW, v.now), at = performance.now(), p = st.view;
+	const k = p ? 1 - Math.exp(-(at - p.at) / 250) : 1;
+	st.view = p ? { low: p.low + (goal.low - p.low) * k, high: p.high + (goal.high - p.high) * k, at } : { ...goal, at };
+	const label = `Pitch roll from ${noteName(st.view.low)} to ${noteName(st.view.high)}: guide notes and your sung pitch over time`;
+	if (ui.roll.getAttribute('aria-label') !== label) ui.roll.setAttribute('aria-label', label);
+	return { low: st.view.low, high: st.view.high };
+}
+
+function draw(v) {
+	const { W, H } = st;
+	if (!W || !H) return;
+	const c = colors(), pad = 10, { low, high } = v, row = (H - 2 * pad) / (high - low);
+	const plotW = W - GUTTER, nowX = GUTTER + plotW * NOW_AT;
+	const y = m => pad + (high - m) * row, x = t => nowX + (t - v.now) / WINDOW * plotW;
+	cx.clearRect(0, 0, W, H);
+
+	// Rows shrink as the span grows. Below 14px labels a semitone apart would touch, so Fa and Ti
+	// lose theirs and only Do keeps its note name; below 9px only Do is labelled.
+	const crowded = row < 14;
+	cx.lineWidth = 1;
+	cx.textBaseline = 'middle';
+	for (let m = Math.ceil(low); m <= Math.floor(high); m++) {
+		const yy = Math.round(y(m)) + 0.5, syl = solfa(m), tonic = m % 12 === 0;
+		cx.strokeStyle = syl ? (tonic ? c['line-strong'] : c.line) : c.grid;
+		line(GUTTER, yy, W, yy);
+		if (!syl || (!tonic && (row < 9 || (crowded && (syl === 'Fa' || syl === 'Ti'))))) continue;
+		cx.textAlign = 'left';
+		cx.font = `${tonic ? 700 : 600} 12px Inter, system-ui, sans-serif`;
+		cx.fillStyle = tonic ? c.ink : c.muted;
+		cx.fillText(syl, 10, yy);
+		if (!tonic && crowded) continue;
+		cx.font = '500 10px Inter, system-ui, sans-serif';
+		cx.fillStyle = c.muted;
+		cx.textAlign = 'right';
+		cx.fillText(noteName(m), GUTTER - 8, yy);
+	}
+
+	cx.save();
+	cx.beginPath();
+	cx.rect(GUTTER, 0, plotW, H);
+	cx.clip();
+
+	// guide notes as bars, merged from the target at every other pixel
+	const bar = (m, x0, x1) => {
+		const active = x0 <= nowX && nowX <= x1, h = row * 0.72;
+		cx.beginPath();
+		cx.roundRect(x0, y(m) - h / 2, Math.max(4, x1 - x0), h, h / 2);
+		cx.fillStyle = c['target-soft'];
+		cx.fill();
+		if (active) { cx.strokeStyle = c.target; cx.lineWidth = 2; cx.stroke(); }
+		if (x1 - x0 > 34 && h >= 10) {
+			cx.fillStyle = c.target;
+			cx.font = '600 11px Inter, system-ui, sans-serif';
+			cx.textAlign = 'left';
+			cx.fillText(solfa(m) || noteName(m), x0 + 10, y(m));
+		}
+	};
+	let run = null;
+	for (let px = GUTTER; px <= W + 2; px += 2) {
+		const m = v.targetAt(v.now + (px - nowX) / plotW * WINDOW);
+		if (run && run.m === m) { run.x1 = px; continue; }
+		if (run && run.m != null) bar(run.m, run.x0, run.x1);
+		run = { m, x0: px, x1: px };
+	}
+	if (run && run.m != null) bar(run.m, run.x0, run.x1);
+
+	cx.strokeStyle = c.muted;
+	cx.lineWidth = 1;
+	cx.setLineDash([3, 4]);
+	line(Math.round(nowX) + 0.5, 0, Math.round(nowX) + 0.5, H);
+	cx.setLineDash([]);
+
+	// sung pitch
+	const list = v.samples;
+	cx.lineWidth = 3;
+	cx.lineCap = 'round';
+	const end = indexAt(list, v.now);
+	for (let i = Math.max(1, indexAt(list, v.now - WINDOW)); i <= end; i++) {
+		const a = list[i - 1], b = list[i];
+		if (a.midi == null || b.midi == null || b.t - a.t > GAP) continue;
+		cx.strokeStyle = c[tone(b)];
+		line(x(a.t), y(a.midi), x(b.t), y(b.midi));
+	}
+	const cur = sampleAt(list, v.now);
+	if (cur && cur.midi != null) {
+		cx.beginPath();
+		cx.arc(x(cur.t), y(cur.midi), 6, 0, Math.PI * 2);
+		cx.fillStyle = c[tone(cur)];
+		cx.fill();
+		cx.strokeStyle = c.panel;
+		cx.lineWidth = 2;
+		cx.stroke();
+	}
+	cx.restore();
+	return cur;
+}
+
+function readout(cur, target) {
+	const has = cur && cur.midi != null;
+	st.note = steadyNote(has ? cur.midi : null, st.note);
+	ui.note.textContent = has ? noteName(st.note) : '–';
+	ui.syl.textContent = has ? solfa(st.note) : '';
+	if (has) {
+		const ref = cur.target != null ? cur.target : st.note, d = Math.round((cur.midi - ref) * 100);
+		ui.cents.textContent = `${d > 0 ? '+' : d < 0 ? '−' : '±'}${Math.abs(d)}¢`;
+		ui.cents.dataset.tone = cur.target == null ? '' : tone(cur);
+		ui.hz.textContent = `${Math.round(midiToFreq(cur.midi))} Hz`;
+	} else {
+		ui.cents.textContent = ui.hz.textContent = '';
+		ui.cents.dataset.tone = '';
+	}
+	ui.target.hidden = target == null;
+	if (target != null) ui.targetName.textContent = `${noteName(target)} · ${solfa(target)}`;
+}
+
+function frame() {
+	let v;
+	if (st.replay) {
+		const { take, audio: a } = st.replay, now = a.currentTime, near = sampleAt(take.samples, now);
+		v = { now, lo: near ? near.lo : take.lo, samples: take.samples, target: near ? near.target : null, targetAt: t => { const s = sampleAt(take.samples, t); return s ? s.target : null; } };
+	} else {
+		const now = st.ctx ? st.ctx.currentTime : 0, g = st.guide;
+		if (st.mic) listen();
+		const fromGuide = t => g && t >= g.start ? guideTarget(t - g.start, st.step, lo()) : null;
+		v = { now, lo: lo(), samples: st.live, target: fromGuide(now), targetAt: t => {
+			if (t >= now) return fromGuide(t);
+			const s = sampleAt(st.live, t);
+			return s ? s.target : fromGuide(t);
+		} };
+	}
+	Object.assign(v, follow(v));
+	readout(draw(v), v.target);
+	ui.idle.hidden = !!(st.guide || st.mic || st.replay);
+	if (st.rec) ui.recTime.textContent = fmt(st.ctx.currentTime - st.rec.start);
+	requestAnimationFrame(frame);
+}
+
+/* ---------- controls ---------- */
+function setRange(i) {
+	st.range = i;
+	ui.ranges.querySelectorAll('button').forEach(b => b.setAttribute('aria-checked', String(+b.dataset.range === i)));
+	reschedule();
+}
+
+function toggleMic() {
+	if (st.mic) {
+		if (st.rec) return say('Stop recording first.');
+		st.micWanted = false;
+		micOff();
+	} else {
+		stopReplay();
+		st.micWanted = true;
+		micOn();
+	}
+}
+
+ui.ranges.addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRange(+b.dataset.range); });
+ui.guideBtn.onclick = () => {
+	if (st.guide) return stopGuide();
+	stopReplay();
+	startGuide();
+};
+ui.micBtn.onclick = toggleMic;
+ui.recBtn.onclick = () => st.rec ? stopRec() : startRec();
+ui.step.onchange = () => {
+	st.step = +ui.step.value;
+	if (st.guide) { stopGuide(); startGuide(); }
+};
+ui.vol.oninput = () => { if (st.guide) st.guide.gain.gain.setTargetAtTime(guideGain(), st.ctx.currentTime, 0.03); };
+document.addEventListener('keydown', e => {
+	if (e.repeat || e.ctrlKey || e.metaKey || e.altKey || e.target.closest('select, input')) return;
+	const k = e.key.toLowerCase();
+	if (k === ' ') { e.preventDefault(); ui.guideBtn.click(); }
+	else if (k === 'm') toggleMic();
+	else if (k === 'r') ui.recBtn.click();
+	else if (RANGES[k - 1]) setRange(k - 1);
+});
+
+if (pickMime() == null) { ui.recBtn.disabled = true; say('Recording is not supported in this browser.'); }
+store('readonly', s => s.getAll()).then(list => {
+	if (!list) return;
+	st.takes = list.concat(st.takes.filter(t => !list.some(x => x.id === t.id))).sort((a, b) => b.id - a.id);
+	renderTakes();
+});
+renderTakes();
+fit();
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

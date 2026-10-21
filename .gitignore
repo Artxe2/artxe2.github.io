@@ -1,0 +1,5 @@
+.tmp/
+.claude/settings.local.json
+node_modules/
+.eslintcache
+coverage/

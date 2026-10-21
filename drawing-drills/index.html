@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en" class="--paper=#E6E9EB;--sheet=#F8F9F9;--ink=#1D2125;--ink-2=#5B6368;--rule=#C8CED1;--blue=#2A86C4;--on-blue=#FFFFFF;--red=#CF3F28
+	@dark@--paper=#14181B;--sheet=#1D2226;--ink=#E5E8EA;--ink-2=#99A2A8;--rule=#343B40;--blue=#5DB3E6;--on-blue=#0B1820;--red=#F06A52
+	csm=light @dark@csm=dark
+	pt=env(safe-area-inset-top,0px) pb=env(safe-area-inset-bottom,0px)
+	_:focus-visible/ol=2_solid_--blue;outline-offset=2
+	_[hidden]/d=none!important">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drawing Drills</title>
+<script src="https://artxe.github.io/click-css/min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+</head>
+<body data-tab="dots" class="h=auto mah=none mih=100% bg=--paper c=--ink ff='IBM_Plex_Sans',_system-ui,_-apple-system,_sans-serif fs=15 lh=1.6
+	[data-tab=lines]_.refonly/none
+	_.btn/d=inline-flex;ai=center;p=6_12;bd=1_solid_--rule;br=6;bg=--sheet;c=--ink;fs=14;lh=1.4;cs=pointer
+	_.btn.primary/bg=--blue;bdc=--blue;c=--on-blue;fw=500
+	_.btn[aria-pressed=true]/bdc=--ink;bsd=inset_0_0_0_1_--ink
+	_.btn:disabled/op=.4;cs=default
+	_.hint/mb=14;maw=70ch;c=--ink-2
+	_.stage/flex;jc=center;g=12
+	_.panel/relative
+	_canvas/d=block;br=4;bsd=0_0_0_1_--rule;bg=--sheet;touch-action=none;cs=crosshair
+	_canvas.mirror/tf=scaleX(-1)
+	_.cap/absolute;t=6;l=8;p=0_6;br=3;bg=--sheet;c=--ink-2;fs=12;pe=none
+	_.bar/flex;wrap;ai=center;jc=space-between;g=10;mt=12
+	_.prompt/fs=16
+	_.prompt_b/c=--blue;fw=600
+	_.actions/flex;wrap;g=8
+	_.result/grid;gtc=auto_1fr;ai=start;g=12_28;mt=18;p=18;bd=1_solid_--rule;br=8;bg=--sheet
+	_.num/fs=44;fw=600;lh=1;font-variant-numeric=tabular-nums;c=--red
+	_.lbl/d=block;mt=6;fs=13;c=--ink-2
+	_.notes/pl=18;list-style=disc
+	_.notes>li+li/mt=4
+	_.trend/gc=1_/_-1;flex;wrap;ai=center;g=8_14;pt=12;bdt=1_solid_--rule;c=--ink-2;fs=13
+	_.trend_polyline/fill=none;stroke=--blue;stroke-width=2;stroke-linejoin=round;stroke-linecap=round
+	_.empty/p=48_20;bd=1.5_dashed_--rule;br=10;ta=center;c=--ink-2
+	_.empty_p/my=6
+	_.empty_.btn/mt=10
+	_.field/flex;ai=center;g=8;fs=14;c=--ink-2
+	_.field_:is(select,input)/p=5_8;bd=1_solid_--rule;br=6;bg=--sheet;c=--ink;fs=14
+	_.field_input/w=72
+	@max-width=560px@_.result/gtc=1fr
+	@max-width=560px@_.num/fs=36">
+<header class="flex wrap ai=center g=12_20 p=14_clamp(12px,_3vw,_28px) bdb=1_solid_--rule">
+	<div class="flex wrap ai=baseline g=4_14 mr=auto">
+		<h1 class="fs=20 fw=600 ls=-0.01em">Drawing Drills</h1>
+		<p class="flex ai=center g=6 fs=13 c=--ink-2
+			_i/d=inline-block;w=16;h=3;br=2">
+			<i class="bg=--blue"></i>Your eye<i class="bg=--red ml=8"></i>Actual
+		</p>
+	</div>
+	<nav class="tabs flex o=hidden bd=1_solid_--rule br=8 bg=--sheet
+		_button/p=7_14;bg=transparent;c=--ink-2;fs=14
+		_button[aria-selected=true]/bg=--ink;c=--sheet
+		@max-width=560px@_button/p=7_10" role="tablist" aria-label="Drill">
+		<button role="tab" data-tab="dots" aria-selected="true">Landmarks</button>
+		<button role="tab" data-tab="lines" aria-selected="false">Lines</button>
+		<button role="tab" data-tab="draw" aria-selected="false">Overlay</button>
+	</nav>
+	<div class="refonly flex wrap g=8">
+		<label class="btn primary" for="file">Upload photo</label>
+		<input id="file" type="file" accept="image/*" multiple hidden>
+		<button class="btn" id="flipRef" aria-pressed="false">Flip photo</button>
+	</div>
+</header>
+<div id="thumbs" class="refonly flex g=8 p=10_clamp(12px,_3vw,_28px) ox=auto bdb=1_solid_--rule
+	:empty/none
+	_button/p=0;bd=2_solid_transparent;br=4
+	_button[aria-current=true]/bdc=--blue
+	_img/d=block;h=56;w=auto;br=2"></div>
+
+<main class="maw=1200 mx=auto p=16_clamp(12px,_3vw,_28px)_40">
+	<section class="tab" id="tab-dots">
+		<p class="hint">Pick a landmark set, look at the photo, and place each point in order on the paper on the right. Then mark the true points on the photo. Free mode works the other way around: mark reference points on the photo first, then copy them to the paper, so it works for objects, backgrounds and compositions too. Random shape needs no photo: copy the numbered corners. Flash shows the reference only briefly, so you place the points from memory. Left and right mean the screen's left and right.</p>
+		<div class="empty" data-empty>
+			<p>Upload a photo: people, faces, hands, objects, scenery, anything. If several subjects share one image, crop them one at a time for accurate results.</p>
+			<p>On a computer you can also paste with Ctrl+V or drag a file in.</p>
+			<label class="btn primary" for="file">Upload photo</label>
+			<button class="btn" id="dShape">Try a random shape</button>
+		</div>
+		<div data-needs>
+			<div class="flex wrap ai=center g=10_18 mb=12">
+				<label class="field">Landmarks
+					<select id="dPreset"><option value="full">Full body</option><option value="upper">Upper body</option><option value="face">Face</option><option value="hand">Hand</option><option value="free">Free (any photo)</option><option value="shape">Random shape (no photo)</option></select>
+				</label>
+				<label class="field" id="freeWrap" hidden>Points <input id="freeN" type="number" min="4" max="15" value="8"></label>
+				<label class="field">Reference
+					<select id="dFlash"><option value="0">Always visible</option><option value="3000">Flash 3 s</option><option value="1500">Flash 1.5 s</option></select>
+				</label>
+			</div>
+			<div class="stage" data-stage>
+				<div class="panel"><canvas id="dRef" aria-label="Reference photo"></canvas><span class="cap">Photo</span></div>
+				<div class="panel"><canvas id="dDraw" aria-label="Paper for placing points"></canvas><span class="cap">Paper</span></div>
+			</div>
+			<div class="bar">
+				<p class="prompt" id="dPrompt"></p>
+				<div class="actions">
+					<button class="btn" id="dUndo">Undo</button>
+					<button class="btn" id="dOverlay" aria-pressed="true" hidden>Show photo</button>
+					<button class="btn" id="dFit" aria-pressed="false" hidden>Fit size &amp; position</button>
+					<button class="btn" id="dAgain">Start over</button>
+				</div>
+			</div>
+			<ol id="lm" class="flex wrap g=2_14 mt=12 fs=13 c=--ink-2
+				_li.now/c=--blue;fw=600"></ol>
+			<div class="result" id="dResult" hidden></div>
+		</div>
+	</section>
+
+	<section class="tab" id="tab-lines" hidden>
+		<p class="hint">Connect the two points in one stroke. Before touching down, ghost the path in the air two or three times, and draw from the shoulder, not the wrist.</p>
+		<div class="lstage"><canvas id="lCanvas" aria-label="Line practice paper"></canvas></div>
+		<div class="bar"><p class="prompt" id="lMsg"></p><div class="actions"><button class="btn" id="lSkip">New line</button></div></div>
+		<div class="result" id="lResult" hidden></div>
+	</section>
+
+	<section class="tab" id="tab-draw" hidden>
+		<p class="hint">Draw on the right while looking at the photo, overlay the photo to see where you drifted, then clear and draw it again. Three layers let you fade a rough sketch and draw cleaner lines over it. Once it feels familiar, hide the photo and draw from memory.</p>
+		<div class="empty" data-empty>
+			<p>Upload a photo: people, objects, scenery, anything.</p>
+			<label class="btn primary" for="file">Upload photo</label>
+		</div>
+		<div data-needs>
+			<div class="stage" data-stage>
+				<div class="panel"><canvas id="oRef" aria-label="Reference photo"></canvas><span class="cap">Photo</span></div>
+				<div class="panel"><canvas id="oDraw" aria-label="Drawing paper"></canvas><span class="cap">Paper</span></div>
+			</div>
+			<div class="bar">
+				<div class="actions">
+					<button class="btn" id="oOverlay" aria-pressed="false">Overlay photo</button>
+					<button class="btn" id="oHide" aria-pressed="false">Hide photo</button>
+					<button class="btn" id="oMirror" aria-pressed="false">Mirror view</button>
+				</div>
+				<div class="actions">
+					<button class="btn" id="oUndo">Undo</button>
+					<button class="btn" id="oClear">Clear layer</button>
+				</div>
+			</div>
+			<div class="bar
+				_[data-layer]/flex;ai=center;g=8
+				_input/w=88;accent-color=--blue;cs=pointer
+				_output/miw=44;fs=13;c=--ink-2;font-variant-numeric=tabular-nums">
+				<div id="oLayers" class="flex wrap fsk=1 g=8_18" role="group" aria-label="Layers: pick one to draw on and set its opacity">
+					<div data-layer="0"><button class="btn" aria-pressed="true">Layer 1</button><input type="range" min="0" max="100" value="100" aria-label="Layer 1 opacity"><output>100%</output></div>
+					<div data-layer="1"><button class="btn" aria-pressed="false">Layer 2</button><input type="range" min="0" max="100" value="100" aria-label="Layer 2 opacity"><output>100%</output></div>
+					<div data-layer="2"><button class="btn" aria-pressed="false">Layer 3</button><input type="range" min="0" max="100" value="100" aria-label="Layer 3 opacity"><output>100%</output></div>
+				</div>
+				<label class="flex ai=center g=8 fs=14 c=--ink-2">Line <input id="oWidth" type="range" min="1" max="16" step="0.5" value="2.5"><output id="oWidthOut">2.5 px</output></label>
+			</div>
+		</div>
+	</section>
+</main>
+
+<script src="drills.js"></script>
+<script type="module">
+const { avg, fitProportion, lineStats, randomShape } = Drills;
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const $=s=>document.querySelector(s);
+const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const FONT='"IBM Plex Sans", system-ui, sans-serif';
+let refs=[],cur=-1,flipRef=false,tab='dots';
+
+function ctxOf(c){const d=window.devicePixelRatio||1;const x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);return x}
+function sizeCanvas(c,w,h){const d=window.devicePixelRatio||1;c.style.width=w+'px';c.style.height=h+'px';c.width=Math.round(w*d);c.height=Math.round(h*d);c._w=w;c._h=h}
+function img(){return cur>=0?refs[cur]:null}
+function asp(){const i=img();return i?i.naturalWidth/i.naturalHeight:.55}
+function pairSize(stage,a=asp()){const W=stage.clientWidth,gap=12;const maxH=Math.max(260,Math.min(window.innerHeight*.64,680));let h=maxH,w=h*a;if(2*w+gap>W){w=(W-gap)/2;h=w/a}return{w:Math.floor(w),h:Math.floor(h)}}
+function paper(x,w,h){x.clearRect(0,0,w,h);x.fillStyle=cv('--sheet');x.fillRect(0,0,w,h)}
+function drawRef(x,w,h,alpha){const i=img();if(!i)return;x.save();x.globalAlpha=alpha;if(flipRef){x.translate(w,0);x.scale(-1,1)}x.drawImage(i,0,0,w,h);x.restore()}
+// Mirrored canvases are flipped by CSS, so the label is drawn flipped to read normally.
+function hiddenLabel(x,w,h,text,mir){x.save();if(mir){x.translate(w,0);x.scale(-1,1)}x.fillStyle=cv('--ink-2');x.font='500 14px '+FONT;x.textAlign='center';x.fillText(text,w/2,h/2);x.restore()}
+function norm(e,c,mir){const r=c.getBoundingClientRect();let px=(e.clientX-r.left)/r.width;if(mir)px=1-px;return{x:Math.min(1,Math.max(0,px)),y:Math.min(1,Math.max(0,(e.clientY-r.top)/r.height))}}
+function dot(x,px,py,col,label,ring){x.beginPath();x.arc(px,py,ring?7:5,0,Math.PI*2);if(ring){x.strokeStyle=col;x.lineWidth=2;x.stroke()}else{x.fillStyle=col;x.fill()}if(label){x.font='600 12px '+FONT;x.fillStyle=col;x.fillText(label,px+8,py-7)}}
+function skel(x,pts,w,h,col,alpha,edges){x.save();x.globalAlpha=alpha;x.strokeStyle=col;x.lineWidth=1.5;x.lineCap='round';for(const[a,b]of (edges||[])){if(pts[a]&&pts[b]){x.beginPath();x.moveTo(pts[a].x*w,pts[a].y*h);x.lineTo(pts[b].x*w,pts[b].y*h);x.stroke()}}x.restore()}
+function spark(vals){if(vals.length<2)return'';const W=180,H=40,p=4;const mx=Math.max(...vals),mn=Math.min(...vals),r=(mx-mn)||1;const pts=vals.map((v,i)=>(p+i*(W-2*p)/(vals.length-1)).toFixed(1)+','+(p+(1-(v-mn)/r)*(H-2*p)).toFixed(1)).join(' ');return`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true"><polyline points="${pts}"/></svg>`}
+
+/* ---------- landmarks ---------- */
+const PRESETS={
+  full:{name:'Full body',lm:['Top of head','Chin','Left shoulder','Right shoulder','Crotch','Left knee','Right knee','Left foot','Right foot'],edges:[[0,1],[2,3],[1,4],[4,5],[5,7],[4,6],[6,8]]},
+  upper:{name:'Upper body',lm:['Top of head','Chin','Left shoulder','Right shoulder','Left elbow','Right elbow','Left wrist','Right wrist','Solar plexus'],edges:[[0,1],[2,3],[2,4],[4,6],[3,5],[5,7],[1,8]]},
+  face:{name:'Face',lm:['Top of head','Hairline','Left eye','Right eye','Nose tip','Mouth center','Chin','Left cheekbone','Right cheekbone'],edges:[[0,1],[2,3],[7,8],[4,5],[5,6]]},
+  hand:{name:'Hand',lm:['Wrist center','Thumb tip','Index tip','Middle tip','Ring tip','Pinky tip','Index knuckle','Pinky knuckle'],edges:[[0,6],[0,7],[6,7],[6,2],[7,5],[0,1]]},
+  free:{name:'Free',lm:null,edges:[]},
+  shape:{name:'Random shape',lm:null,edges:[]}
+};
+const KEY='dots2';
+const D={preset:'full',freeN:8,flash:0,order:['guess','truth'],phase:'guess',g:[],t:[],res:null,overlay:true,fit:false,armed:false,hideRef:false};
+let flashT=0;
+const dRef=$('#dRef'),dDraw=$('#dDraw');
+const P=()=>PRESETS[D.preset];
+const N=()=>P().lm?P().lm.length:D.freeN;
+const nm=i=>P().lm?`${i+1}. ${P().lm[i]}`:`point ${i+1}`;
+const arr=ph=>ph==='guess'?D.g:D.t;
+const isShape=()=>D.preset==='shape';
+const dReady=()=>isShape()||!!img();
+const dAsp=()=>isShape()?1:asp();
+const dEdges=()=>isShape()?D.t.map((_,i)=>[i,(i+1)%D.t.length]):P().edges;
+const refName=()=>isShape()?'shape':'photo';
+function dReset(){
+  D.order=D.preset==='free'?['truth','guess']:isShape()?['guess']:['guess','truth'];D.phase=D.order[0];D.g=[];D.t=isShape()?randomShape(D.freeN):[];D.res=null;$('#dResult').hidden=true;
+  clearTimeout(flashT);D.armed=D.hideRef=false;
+  $('#lm').innerHTML=P().lm?P().lm.map((n,i)=>`<li>${i+1}. ${n}</li>`).join(''):'';
+  $('#freeWrap').hidden=!!P().lm;
+}
+function dLayout(){if(!dReady())return;const{w,h}=pairSize($('#tab-dots [data-stage]'),dAsp());sizeCanvas(dRef,w,h);sizeCanvas(dDraw,w,h);dRender()}
+function dRender(){
+  if(!dReady()||!dRef._w)return;
+  const w=dRef._w,h=dRef._h,red=cv('--red'),blue=cv('--blue'),ink=cv('--ink'),E=dEdges();
+  // Flash starts once the guess phase is on screen, and the reference stays hidden until the guesses are in.
+  if(D.flash&&D.phase==='guess'&&!D.armed&&tab==='dots'){D.armed=true;flashT=setTimeout(()=>{D.hideRef=true;dRender()},D.flash)}
+  let x=ctxOf(dRef);paper(x,w,h);
+  if(D.phase==='guess'&&D.hideRef)hiddenLabel(x,w,h,'Hidden: place the points from memory');
+  else if(isShape()){skel(x,D.t,w,h,ink,1,E);D.t.forEach((p,i)=>dot(x,p.x*w,p.y*h,ink,String(i+1)))}
+  else{drawRef(x,w,h,1);skel(x,D.t,w,h,red,.85,E);D.t.forEach((p,i)=>dot(x,p.x*w,p.y*h,red,String(i+1)))}
+  x=ctxOf(dDraw);paper(x,w,h);
+  if(D.phase==='result'&&D.res){
+    if(D.overlay&&!isShape())drawRef(x,w,h,.4);
+    // Unfitted by default: the dots stay exactly where they were placed.
+    const ga=D.fit?D.res.aligned:D.g;
+    skel(x,D.t,w,h,red,.9,E);skel(x,ga,w,h,blue,.9,E);
+    x.save();x.strokeStyle=red;x.lineWidth=1;x.setLineDash([3,3]);
+    ga.forEach((p,i)=>{x.beginPath();x.moveTo(p.x*w,p.y*h);x.lineTo(D.t[i].x*w,D.t[i].y*h);x.stroke()});x.restore();
+    D.t.forEach(p=>dot(x,p.x*w,p.y*h,red));ga.forEach((p,i)=>dot(x,p.x*w,p.y*h,blue,String(i+1)));
+  }else{skel(x,D.g,w,h,blue,.6,E);D.g.forEach((p,i)=>dot(x,p.x*w,p.y*h,blue,String(i+1)))}
+  dPrompt();
+}
+function dPrompt(){
+  const p=$('#dPrompt'),free=!P().lm;let i=-1;
+  if(D.phase==='guess'){i=D.g.length;p.innerHTML=free?`Place <b>point ${i+1}</b> from the ${refName()} on the paper`:`Place <b>${nm(i)}</b> on the paper`}
+  else if(D.phase==='truth'){i=D.t.length;p.innerHTML=free?`Mark reference <b>point ${i+1}</b> on the photo (${N()} total). Ends, corners and bends work best.`:`Now mark the true <b>${nm(i)}</b> on the photo`}
+  else p.textContent=D.fit?`Your dots scaled and shifted onto the ${refName()}, so only proportions differ.`:`Your dots exactly where you placed them, red is the ${refName()}.`;
+  document.querySelectorAll('#lm li').forEach((li,k)=>li.classList.toggle('now',k===i));
+  $('#dFit').hidden=D.phase!=='result';$('#dOverlay').hidden=D.phase!=='result'||isShape();
+  $('#dUndo').disabled=D.phase===D.order[0]&&arr(D.phase).length===0;
+}
+function place(ph,pt){
+  const a=arr(ph);a.push(pt);
+  if(a.length>=N()){const k=D.order.indexOf(ph);if(k<D.order.length-1){D.phase=D.order[k+1];D.armed=false}else if(dCompute())D.phase='result';else a.pop()}
+  dRender();
+}
+function dCompute(){
+  const a=dAsp(),A=p=>({x:p.x*a,y:p.y}),d=(p,q)=>Math.hypot(p.x-q.x,p.y-q.y),mid=(p,q)=>({x:(p.x+q.x)/2,y:(p.y+q.y)/2});
+  const g=D.g.map(A),t=D.t.map(A),fit=fitProportion(g,t);
+  if(!fit)return false;
+  const{aligned:al,errs,mean,raw,scale,worst}=fit;
+  const bb=q=>{const xs=q.map(p=>p.x),ys=q.map(p=>p.y);return{w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)}};
+  const tb=bb(t),gb=bb(g);
+  const notes=[];
+  const cmp=(gv,tv,big,small,th=.12)=>{const r=gv/tv;if(!isFinite(r)||!(tv>1e-6))return;if(r>1+th)notes.push(`${big} (${Math.round((r-1)*100)}%)`);else if(r<1-th)notes.push(`${small} (${Math.round((1-r)*100)}%)`)};
+  const pr=D.preset;
+  if(pr==='full'){
+    const gF=mid(g[7],g[8]),tF=mid(t[7],t[8]);
+    const legR=(q,F)=>{const up=d(q[0],q[4]);return up/((up+d(q[4],F))||1)};
+    const dl=(legR(g,gF)-legR(t,tF))*100;
+    if(dl>2)notes.push(`Torso too long, legs too short: the crotch sits ${dl.toFixed(1)}% of the height too low.`);
+    else if(dl<-2)notes.push(`Legs too long: the crotch sits ${(-dl).toFixed(1)}% of the height too high.`);
+    else notes.push('Torso-to-leg ratio is accurate.');
+    const gH=d(g[0],gF),tH=d(t[0],tF);
+    cmp(d(g[0],g[1])/gH,d(t[0],t[1])/tH,'Head too big','Head too small',.15);
+    cmp(d(g[2],g[3])/gH,d(t[2],t[3])/tH,'Shoulders too wide','Shoulders too narrow',.15);
+  }else if(pr==='upper'){
+    const gh=d(g[0],g[1]),th=d(t[0],t[1]);
+    cmp(d(g[2],g[3])/gh,d(t[2],t[3])/th,'Shoulders too wide for the head','Shoulders too narrow for the head');
+    cmp((d(g[2],g[4])+d(g[3],g[5]))/gh,(d(t[2],t[4])+d(t[3],t[5]))/th,'Upper arms too long','Upper arms too short');
+  }else if(pr==='face'){
+    const ge=mid(g[2],g[3]),te=mid(t[2],t[3]);
+    const eyeR=(q,e)=>d(q[0],e)/((d(q[0],e)+d(e,q[6]))||1);
+    const de=(eyeR(g,ge)-eyeR(t,te))*100;
+    if(de>3)notes.push(`Eyes placed too low (${de.toFixed(1)}% of the head length).`);
+    else if(de<-3)notes.push(`Eyes placed too high (${(-de).toFixed(1)}% of the head length). The most common mistake: the eyes sit lower than you think, about halfway down the head.`);
+    else notes.push('Eye height is accurate.');
+    cmp(d(g[7],g[8])/d(g[0],g[6]),d(t[7],t[8])/d(t[0],t[6]),'Face too wide','Face too narrow');
+    cmp(d(g[2],g[3])/d(g[7],g[8]),d(t[2],t[3])/d(t[7],t[8]),'Eyes too far apart','Eyes too close together',.15);
+  }else if(pr==='hand'){
+    cmp(d(g[6],g[2])/d(g[0],g[6]),d(t[6],t[2])/d(t[0],t[6]),'Fingers too long for the palm','Fingers too short for the palm');
+    cmp(d(g[6],g[7])/d(g[0],g[3]),d(t[6],t[7])/d(t[0],t[3]),'Hand too wide','Hand too narrow');
+  }
+  if(gb.h>1e-6&&tb.h>1e-6)cmp(gb.w/gb.h,tb.w/tb.h,'Whole figure too wide','Whole figure too tall and thin',.1);
+  notes.push(`Biggest miss: ${nm(worst)} (${errs[worst].toFixed(1)}%).`);
+  const hk=pr+(D.flash?':flash':''),name=P().name+(D.flash?' (flash)':'');
+  const hist=store.get(KEY,[]);hist.push({t:Date.now(),p:hk,err:+mean.toFixed(2)});store.set(KEY,hist.slice(-300));
+  D.res={aligned:al.map(p=>({x:p.x/a,y:p.y})),mean};
+  const eh=hist.filter(v=>v.p===hk).map(v=>v.err);
+  let tr2=`${name}: ${eh.length} attempt${eh.length===1?'':'s'}. A trend shows from 6.`;
+  if(eh.length>=6){const now=avg(eh.slice(-3)),before=avg(eh.slice(-6,-3)),diff=before-now;tr2=`${name}: last 3 average ${now.toFixed(1)}%, `+(Math.abs(diff)<.3?'about the same as the 3 before.':diff>0?`${diff.toFixed(1)} points better than the 3 before.`:`${(-diff).toFixed(1)} points worse than the 3 before.`)}
+  $('#dResult').innerHTML=`<div><span class="num">${mean.toFixed(1)}%</span><span class="lbl">Proportion error, relative to overall size</span></div>
+  <ul class="notes">${notes.map(n=>`<li>${n}</li>`).join('')}<li>Your drawing is ${Math.round(scale*100)}% the size of the ${refName()}, and ${raw.toFixed(1)}% off before fitting size and position.</li></ul>
+  <div class="trend">${spark(eh.slice(-20))}<p>${tr2} Lower is better.</p></div>`;
+  $('#dResult').hidden=false;
+  return true;
+}
+dDraw.addEventListener('pointerdown',e=>{if(!dReady()||D.phase!=='guess')return;e.preventDefault();place('guess',norm(e,dDraw))});
+dRef.addEventListener('pointerdown',e=>{if(!dReady()||D.phase!=='truth')return;e.preventDefault();place('truth',norm(e,dRef))});
+$('#dUndo').onclick=()=>{
+  if(D.phase==='result'){const h=store.get(KEY,[]);store.set(KEY,h.slice(0,-1));D.phase=D.order[D.order.length-1];arr(D.phase).pop();D.res=null;$('#dResult').hidden=true}
+  else{const a=arr(D.phase);if(a.length)a.pop();else if(D.phase===D.order[1]){D.phase=D.order[0];arr(D.phase).pop()}}
+  dRender()};
+$('#dAgain').onclick=()=>{dReset();dRender()};
+$('#dOverlay').onclick=e=>{D.overlay=!D.overlay;e.currentTarget.setAttribute('aria-pressed',D.overlay);dRender()};
+$('#dFit').onclick=e=>{D.fit=!D.fit;e.currentTarget.setAttribute('aria-pressed',D.fit);dRender()};
+function setPreset(p){D.preset=p;$('#dPreset').value=p;dReset();syncEmpty();dLayout();dPrompt()}
+$('#dPreset').onchange=e=>setPreset(e.target.value);
+$('#dShape').onclick=()=>setPreset('shape');
+$('#dFlash').onchange=e=>{D.flash=+e.target.value;dReset();dRender();dPrompt()};
+$('#freeN').onchange=e=>{D.freeN=Math.min(15,Math.max(4,parseInt(e.target.value,10)||8));e.target.value=D.freeN;dReset();dRender();dPrompt()};
+dReset();
+
+/* ---------- lines ---------- */
+const L={A:null,B:null,pts:[],t0:0,drawing:false,done:false,session:[]};
+const lc=$('#lCanvas');
+function lLayout(){const w=$('#tab-lines .lstage').clientWidth;const h=Math.floor(Math.max(300,Math.min(window.innerHeight*.58,540)));sizeCanvas(lc,w,h);lNew()}
+function lNew(){
+  const w=lc._w,h=lc._h,m=36,diag=Math.hypot(w,h);let A,B,k=0,len;
+  do{A={x:m+Math.random()*(w-2*m),y:m+Math.random()*(h-2*m)};B={x:m+Math.random()*(w-2*m),y:m+Math.random()*(h-2*m)};len=Math.hypot(A.x-B.x,A.y-B.y);k++}
+  while((len<.3*diag||len>.75*diag)&&k<100);
+  Object.assign(L,{A,B,pts:[],done:false});lRender();
+  $('#lMsg').textContent='Ghost the path 2 or 3 times, then draw it in one go.';
+}
+function lRender(){
+  if(!lc._w||!L.A)return;
+  const w=lc._w,h=lc._h,x=ctxOf(lc),red=cv('--red'),blue=cv('--blue'),ink=cv('--ink');paper(x,w,h);
+  if(L.done){x.save();x.strokeStyle=red;x.lineWidth=1.5;x.setLineDash([6,5]);x.beginPath();x.moveTo(L.A.x,L.A.y);x.lineTo(L.B.x,L.B.y);x.stroke();x.restore()}
+  if(L.pts.length>1){x.strokeStyle=L.done?blue:ink;x.lineWidth=2.5;x.lineCap='round';x.lineJoin='round';x.beginPath();x.moveTo(L.pts[0].x,L.pts[0].y);for(const p of L.pts)x.lineTo(p.x,p.y);x.stroke()}
+  dot(x,L.A.x,L.A.y,ink,'',true);dot(x,L.B.x,L.B.y,ink,'',true);
+}
+function lPt(e){const r=lc.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+lc.addEventListener('pointerdown',e=>{e.preventDefault();if(L.done){lNew();return}L.pts=[lPt(e)];L.drawing=true;L.t0=performance.now();try{lc.setPointerCapture(e.pointerId)}catch(_){}lRender()});
+lc.addEventListener('pointermove',e=>{if(!L.drawing)return;const evs=e.getCoalescedEvents?e.getCoalescedEvents():[e];for(const ev of (evs.length?evs:[e]))L.pts.push(lPt(ev));lRender()});
+const lEnd=()=>{if(!L.drawing)return;L.drawing=false;lEval()};
+lc.addEventListener('pointerup',lEnd);lc.addEventListener('pointercancel',lEnd);
+$('#lSkip').onclick=()=>lNew();
+function lEval(){
+  const{A,B,pts}=L,{dev,endP,plen,score}=lineStats(A,B,pts);
+  if(pts.length<3||plen<.4*Math.hypot(B.x-A.x,B.y-A.y)){L.pts=[];lRender();$('#lMsg').textContent='Too short. Draw all the way to the other point in one stroke.';return}
+  const dt=(performance.now()-L.t0)/1000;
+  L.done=true;L.session.push(score);
+  const h=store.get('lines',[]);h.push({t:Date.now(),s:score,d:+dev.toFixed(2),e:+endP.toFixed(2),dt:+dt.toFixed(2)});store.set('lines',h.slice(-600));
+  lRender();
+  let tip='Good. Keep that feel.';
+  if(dt>1.2)tip='Slow strokes wobble. Ghost the path enough, then draw fast in one go.';
+  else if(dev>2)tip='The line bent or wobbled. Lock your wrist and push from the shoulder.';
+  else if(endP>5)tip='You missed the end point. Keep your eyes on the target, not on the pen.';
+  const sc=h.map(v=>v.s);let tr=`${sc.length} lines total.`;
+  if(sc.length>=40){const now=avg(sc.slice(-20)),before=avg(sc.slice(-40,-20));tr=`Last 20 average ${now.toFixed(0)}, the 20 before ${before.toFixed(0)}.`}
+  $('#lResult').innerHTML=`<div><span class="num">${score}</span><span class="lbl">Line score</span></div>
+  <ul class="notes"><li>Wobble ${dev.toFixed(1)}%, end point error ${endP.toFixed(1)}% (of the line length)</li><li>Took ${dt.toFixed(1)} s</li><li>${tip}</li></ul>
+  <div class="trend">${spark(sc.slice(-30))}<p>This session: ${L.session.length} lines, average ${avg(L.session).toFixed(0)}. ${tr}</p></div>`;
+  $('#lResult').hidden=false;
+  $('#lMsg').textContent='Tap the paper for the next line.';
+}
+
+/* ---------- overlay drawing ---------- */
+// Strokes ({w,pts}) live on three layers stacked 1 to 3; `done` lists the layer of each finished stroke for undo.
+const O={layers:[[],[],[]],alpha:[1,1,1],active:0,width:2.5,done:[],cur:null,overlay:false,hide:false,mirror:false};
+const oRef=$('#oRef'),oDraw=$('#oDraw'),oFlat=document.createElement('canvas');
+function oLayout(){if(!img())return;const{w,h}=pairSize($('#tab-draw [data-stage]'));sizeCanvas(oRef,w,h);sizeCanvas(oDraw,w,h);oRender()}
+function oClearAll(){O.layers=O.layers.map(()=>[]);O.done=[];O.cur=null}
+function oStroke(x,s,w,h){
+  const p=s.pts;
+  if(p.length===1){x.beginPath();x.arc(p[0].x*w,p[0].y*h,s.w/2,0,Math.PI*2);x.fill();return}
+  x.lineWidth=s.w;x.beginPath();x.moveTo(p[0].x*w,p[0].y*h);for(const q of p)x.lineTo(q.x*w,q.y*h);x.stroke();
+}
+function oRender(){
+  if(!img()||!oRef._w)return;
+  const w=oRef._w,h=oRef._h,ink=cv('--ink');
+  let x=ctxOf(oRef);paper(x,w,h);
+  if(O.hide)hiddenLabel(x,w,h,'Photo hidden',O.mirror);else drawRef(x,w,h,1);
+  x=ctxOf(oDraw);paper(x,w,h);if(O.overlay)drawRef(x,w,h,.4);
+  // Each layer is flattened first so its opacity applies to the whole layer and crossing strokes do not darken.
+  if(oFlat.width!==oDraw.width||oFlat.height!==oDraw.height){oFlat.width=oDraw.width;oFlat.height=oDraw.height}
+  const f=ctxOf(oFlat);
+  O.layers.forEach((L,i)=>{
+    const ss=O.cur&&O.active===i?L.concat([O.cur]):L;
+    if(!ss.length||!O.alpha[i])return;
+    f.clearRect(0,0,w,h);f.strokeStyle=ink;f.fillStyle=ink;f.lineCap='round';f.lineJoin='round';
+    for(const s of ss)oStroke(f,s,w,h);
+    x.save();x.setTransform(1,0,0,1,0,0);x.globalAlpha=O.alpha[i];x.drawImage(oFlat,0,0);x.restore();
+  });
+  [oRef,oDraw].forEach(c=>c.classList.toggle('mirror',O.mirror));
+}
+oDraw.addEventListener('pointerdown',e=>{if(!img())return;e.preventDefault();O.cur={w:O.width,pts:[norm(e,oDraw,O.mirror)]};try{oDraw.setPointerCapture(e.pointerId)}catch(_){}oRender()});
+oDraw.addEventListener('pointermove',e=>{if(!O.cur)return;const evs=e.getCoalescedEvents?e.getCoalescedEvents():[e];for(const ev of (evs.length?evs:[e]))O.cur.pts.push(norm(ev,oDraw,O.mirror));oRender()});
+const oEnd=()=>{if(!O.cur)return;O.layers[O.active].push(O.cur);O.done.push(O.active);O.cur=null;oRender()};
+oDraw.addEventListener('pointerup',oEnd);oDraw.addEventListener('pointercancel',oEnd);
+function tog(id,key){$(id).onclick=e=>{O[key]=!O[key];e.currentTarget.setAttribute('aria-pressed',O[key]);oRender()}}
+tog('#oOverlay','overlay');tog('#oHide','hide');tog('#oMirror','mirror');
+$('#oUndo').onclick=()=>{const i=O.done.pop();if(i!=null)O.layers[i].pop();oRender()};
+$('#oClear').onclick=()=>{O.layers[O.active]=[];O.done=O.done.filter(i=>i!==O.active);O.overlay=false;$('#oOverlay').setAttribute('aria-pressed','false');oRender()};
+$('#oLayers').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;O.active=+b.parentNode.dataset.layer;document.querySelectorAll('#oLayers button').forEach(x=>x.setAttribute('aria-pressed',x===b))});
+$('#oLayers').addEventListener('input',e=>{const row=e.target.closest('[data-layer]');O.alpha[+row.dataset.layer]=e.target.value/100;row.querySelector('output').textContent=e.target.value+'%';oRender()});
+$('#oWidth').addEventListener('input',e=>{O.width=+e.target.value;$('#oWidthOut').textContent=O.width+' px'});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){if(tab==='draw'){e.preventDefault();$('#oUndo').click()}else if(tab==='dots'){e.preventDefault();$('#dUndo').click()}}});
+
+/* ---------- photos ---------- */
+function syncEmpty(){document.querySelectorAll('.tab').forEach(s=>{const ok=s.id==='tab-dots'?dReady():!!img();s.querySelectorAll('[data-empty]').forEach(el=>el.hidden=ok);s.querySelectorAll('[data-needs]').forEach(el=>el.hidden=!ok)})}
+function renderThumbs(){$('#thumbs').innerHTML=refs.map((im,i)=>`<button data-i="${i}" aria-current="${i===cur}" aria-label="Photo ${i+1}"><img src="${im.src}" alt=""></button>`).join('')}
+function selectRef(i){cur=i;if(isShape()){D.preset='free';$('#dPreset').value='free'}dReset();oClearAll();syncEmpty();renderThumbs();layout()}
+$('#thumbs').addEventListener('click',e=>{const b=e.target.closest('button[data-i]');if(b)selectRef(+b.dataset.i)});
+function addFiles(files){
+  [...files].filter(f=>f&&f.type&&f.type.startsWith('image/')).forEach(f=>{
+    const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{refs.push(im);selectRef(refs.length-1)};im.src=r.result};r.readAsDataURL(f);
+  });
+}
+$('#file').addEventListener('change',e=>{addFiles(e.target.files);e.target.value=''});
+document.addEventListener('paste',e=>{const items=[...((e.clipboardData&&e.clipboardData.items)||[])].filter(i=>i.type.startsWith('image/')).map(i=>i.getAsFile());if(items.length)addFiles(items)});
+document.addEventListener('dragover',e=>e.preventDefault());
+document.addEventListener('drop',e=>{e.preventDefault();if(e.dataTransfer)addFiles(e.dataTransfer.files)});
+$('#flipRef').onclick=e=>{flipRef=!flipRef;e.currentTarget.setAttribute('aria-pressed',flipRef);dReset();oClearAll();layout()};
+
+/* ---------- tabs, sizing ---------- */
+function layout(){if(tab==='dots')dLayout();else if(tab==='lines')lLayout();else oLayout()}
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  tab=b.dataset.tab;document.body.dataset.tab=tab;
+  document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('.tab').forEach(s=>s.hidden=s.id!=='tab-'+tab);
+  layout();
+}));
+let lastW=window.innerWidth,rt;
+window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{if(Math.abs(window.innerWidth-lastW)<2&&tab==='lines')return;lastW=window.innerWidth;layout()},150)});
+const mq=window.matchMedia('(prefers-color-scheme: dark)');
+const rerender=()=>{dRender();lRender();oRender()};
+if(mq.addEventListener)mq.addEventListener('change',rerender);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(rerender);
+syncEmpty();dPrompt();
+</script>
+</body>
+</html>
